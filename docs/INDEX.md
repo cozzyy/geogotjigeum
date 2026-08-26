@@ -47,6 +47,9 @@ docs/
 - [`product/quiz-expansion-plan-v1.1.md`](product/quiz-expansion-plan-v1.1.md)  
   작품당 20문제, 장소 연계, 비로그인·저공수 운영을 중심으로 한 퀴즈 확대 기획안.
 
+- [`product/representative-approval-automation-blueprint-v1.md`](product/representative-approval-automation-blueprint-v1.md)  
+  대표 승인 중심으로 AI·n8n·GitHub를 연결하는 단계별 운영·자동화 설계.
+
 ## QA / 점검
 
 - [`qa/live-site-baseline-audit-2026-08-26.md`](qa/live-site-baseline-audit-2026-08-26.md)  
