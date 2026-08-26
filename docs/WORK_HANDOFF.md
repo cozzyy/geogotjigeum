@@ -20,7 +20,8 @@
 6. `docs/INDEX.md`
 7. `docs/qa/live-site-baseline-audit-2026-08-26.md`
 8. `docs/product/representative-approval-automation-blueprint-v1.md`
-9. 열린 GitHub Issues
+9. `docs/qa/i18n-language-switcher-remediation-plan-v2.md`
+10. 열린 GitHub Issues
 
 Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 
@@ -34,6 +35,7 @@ Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 - 라이브 사이트 표본 점검·기존 문서 잠정 상태 분류를 `docs/qa/live-site-baseline-audit-2026-08-26.md`에 기록
 - 사용자 노출 스크립트 오류를 Issue #7로 등록
 - 대표 승인 기반 AI 운영·자동화 설계 문서와 Hold Issue #8 등록
+- 실제 `site/` 소스 기준의 다국어 전환·번역 준비상태 통합안 v2와 개발 Issue #10 등록
 
 ## 4. 현재 열린 주요 Issues
 - #2 `[OPS] GitHub Project - AI 공동개발 보드 최초 설정`
@@ -42,14 +44,16 @@ Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 - #5 `[OPS] Inbox - 아이디어·녹취·메일 입력 흐름 파일럿`
 - #7 `[BUG] 홈 화면 - 사용자에게 노출되는 스크립트 오류 점검`
 - #8 `[OPS] 대표 승인 기반 AI 운영·자동화 구축` (Hold)
+- #10 `[DEV] 다국어 언어 전환·번역 준비상태 통합`
 
 ## 5. 다음 우선순위
 1. Issue #4: 실제 운영 사이트 소스코드와 배포 환경의 canonical 위치 확인
 2. Issue #7: 홈·영어 홈의 사용자 노출 스크립트 오류 수정
-3. Issue #2: GitHub Projects 보드 실제 생성 및 필드 설정
-4. Issue #3: 코드 기준으로 기존 문서의 구현상태를 확정하고 후속 Issue 분리
-5. Issue #5: 실제 메모/녹취/메일 1건으로 Inbox 파일럿 실행
-6. Issue #8: 사용자가 “자동화하자”라고 지시하면 설계 문서의 Phase A부터 착수
+3. Issue #10: 다국어 전환·번역 준비상태 통합 구현(기준: `docs/qa/i18n-language-switcher-remediation-plan-v2.md`)
+4. Issue #2: GitHub Projects 보드 실제 생성 및 필드 설정
+5. Issue #3: 코드 기준으로 기존 문서의 구현상태를 확정하고 후속 Issue 분리
+6. Issue #5: 실제 메모/녹취/메일 1건으로 Inbox 파일럿 실행
+7. Issue #8: 사용자가 “자동화하자”라고 지시하면 설계 문서의 Phase A부터 착수
 
 ## 6. 새 Work 채팅에서 사용할 첫 프롬프트
 아래 문장을 첫 메시지로 사용한다.
