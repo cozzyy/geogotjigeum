@@ -1,6 +1,23 @@
 # 그곳지금 문서 인덱스
 
-그곳지금 프로젝트에서 ChatGPT와 함께 작성·정리한 주요 문서를 GitHub에서 관리하기 위한 인덱스입니다.
+그곳지금 프로젝트의 주요 기획·운영 문서와 AI 공동작업 문서를 관리하는 인덱스입니다.
+
+## AI 공동개발 운영 문서
+
+- [`../AGENTS.md`](../AGENTS.md)  
+  ChatGPT, Claude, Manus, 외부 개발자가 공통으로 따라야 하는 작업 규칙.
+
+- [`PROJECT_STATE.md`](PROJECT_STATE.md)  
+  새로운 세션이 가장 먼저 확인할 현재 프로젝트 상태와 우선순위.
+
+- [`ROADMAP.md`](ROADMAP.md)  
+  AI 공동개발 기반 구축부터 Inbox·자동보고·멀티에이전트 고도화까지의 단계별 로드맵.
+
+- [`PROJECT_MANAGEMENT.md`](PROJECT_MANAGEMENT.md)  
+  GitHub Projects를 업무 DB처럼 사용하기 위한 필드, View, Issue, Inbox, Done, 인수인계 규칙.
+
+- [`DECISIONS.md`](DECISIONS.md)  
+  여러 AI와 개발자가 계속 알아야 할 주요 프로젝트 의사결정 기록.
 
 ## 디렉터리
 
@@ -11,6 +28,8 @@ docs/
 ├─ qa/          사이트 점검·QA 보고서
 └─ seo/         SEO·글로벌·광고·개발 요청 문서
 ```
+
+정리 전 아이디어·녹취·메일·메모는 저장소 루트의 [`../inbox/`](../inbox/)를 사용합니다.
 
 ## SEO / 개발
 
@@ -40,12 +59,14 @@ docs/
 
 ## 관리 원칙
 
-1. GitHub에서는 검색·변경이 쉬운 Markdown을 기본 관리 포맷으로 사용한다.
-2. 문서 파일명은 영문 소문자와 하이픈을 기본으로 하며 날짜 또는 버전을 포함한다.
-3. 과거 DOCX/HTML 자료는 내용이 동일하면 Markdown 관리본을 우선한다.
-4. 실제 개발에 반영된 문서는 수정 시 버전을 올리거나 Git commit history로 변경 이력을 남긴다.
-5. 신규 기획안은 성격에 따라 `content`, `product`, `qa`, `seo` 중 하나에 저장한다.
+1. GitHub를 프로젝트의 Single Source of Truth로 사용한다.
+2. 코드·문서는 Repository, 할 일은 Issues, 진행상태는 GitHub Projects에서 관리한다.
+3. 새로운 AI/개발자는 `AGENTS.md → PROJECT_STATE.md → ROADMAP.md → 열린 Issues` 순으로 확인한다.
+4. Markdown을 기본 관리 포맷으로 사용한다.
+5. 문서 파일명은 영문 소문자와 하이픈을 기본으로 하며 날짜 또는 버전을 포함한다.
+6. 실제 개발에 반영된 문서는 Git commit history와 Issues/PR로 변경 이력을 남긴다.
+7. 중요한 방향 변경은 `DECISIONS.md`에 기록한다.
 
 ## 이관 메모
 
-이번 정리에서는 현재 File Library와 대화에서 확인 가능한 그곳지금 관련 생성 문서를 우선 이관했다. 과거 원본 중 GitHub 커넥터가 직접 바이너리를 가져올 수 없는 DOCX/HTML은 내용 기반 Markdown 관리본으로 정리했다. 이후 원본 보존이 꼭 필요한 파일은 `archive/originals/`에 별도 보관하는 방식이 적절하다.
+현재 저장소에는 기획·SEO·콘텐츠·QA 문서가 중심으로 들어와 있다. 운영 웹사이트의 전체 애플리케이션 소스코드는 별도 확인이 필요하다. 과거 원본 중 원본 보존이 꼭 필요한 바이너리 문서는 필요 시 `archive/originals/`에 별도 보관한다.
