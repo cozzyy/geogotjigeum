@@ -26,31 +26,49 @@
 - `docs/seo/naver-seo-development-request-2026-08-05.md`
 - `docs/seo/seo-growth-adsense-plan-v1.0.md`
 
+### AI 공동개발 운영
+- `AGENTS.md`
+- `CLAUDE.md`
+- `docs/PROJECT_MANAGEMENT.md`
+- `docs/ROADMAP.md`
+- `docs/DECISIONS.md`
+- `inbox/README.md`
+- `.github/ISSUE_TEMPLATE/`
+- `.github/pull_request_template.md`
+
 ### 문서 인덱스
 - `docs/INDEX.md`
 
 ## 3. 현재 확인된 구조적 상태
-- 문서 저장소 구조는 이미 `content / product / qa / seo`로 분리되어 있다.
-- 현재 GitHub 저장소에는 위 문서들과 README가 중심이며, 운영 웹사이트의 전체 애플리케이션 소스코드는 아직 이 저장소에서 확인되지 않는다.
-- GitHub Issue 기반 작업관리는 아직 시작 전 상태다.
-- GitHub Projects 보드는 별도로 생성/설정해야 한다.
-- AI 공동작업을 위한 `AGENTS.md`, `CLAUDE.md`, 프로젝트 상태/의사결정/관리 규칙을 v1에서 추가한다.
+- 문서 저장소 구조는 `content / product / qa / seo`로 분리되어 있다.
+- AI 공동개발 시스템 v1의 운영 문서와 Issue/PR 템플릿은 `main`에 반영 완료됐다.
+- GitHub Issue 기반 작업관리를 시작했으며 초기 운영 Issue #2~#5가 등록돼 있다.
+- GitHub Projects 보드는 아직 생성/설정 전이며 Issue #2에서 추적한다.
+- 현재 GitHub 저장소에는 문서가 중심이며, 운영 웹사이트의 전체 애플리케이션 소스코드는 아직 이 저장소에서 확인되지 않는다. Issue #4에서 저장소 전략을 결정한다.
 
 ## 4. 진행 중인 시스템 구축
 ### AI 공동개발 시스템 v1
-목표:
-- ChatGPT, Claude, Manus, 외부 개발자가 동일한 프로젝트 기억을 공유
-- 새로운 채팅에서도 GitHub만 읽으면 업무를 이어받을 수 있게 함
-- 아이디어 → Issue → 개발/콘텐츠 → Review → Done 흐름을 표준화
-- 완료/미완료/보류 상태를 GitHub에서 추적
+완료:
+- 공통 AI 규칙 `AGENTS.md`
+- Claude 시작점 `CLAUDE.md`
+- 현재 상태 / 로드맵 / 의사결정 로그
+- GitHub Projects DB 필드 설계
+- Issue Form 2종과 PR 인수인계 템플릿
+- Inbox 운영 규칙
+- 초기 운영 Issues 등록
+
+남음:
+- GitHub Project 실제 생성 및 필드/View 설정 (#2)
+- 기존 문서 실행 상태 분류 및 후속 Issue 연결 (#3)
+- 운영 사이트 소스코드 Repository 전략 결정 (#4)
+- Inbox 실제 입력 파일럿 (#5)
 
 ## 5. 우선순위 높은 다음 작업
-1. GitHub Projects 보드 생성 및 필드 설정
-2. 기존 문서 6종을 실제 실행 업무와 연결해 Issue로 전환/분류
-3. 운영 사이트 소스코드가 별도 저장소에 있다면 이 저장소와의 관계 결정
-4. 아이디어·녹취·메일을 받을 `Inbox` 흐름 실제 운영 시작
+1. #2 GitHub Projects 보드 생성 및 필드 설정
+2. #4 운영 사이트 소스코드 저장 위치 확인 및 Repository 관계 결정
+3. #3 기존 문서 6종의 실제 실행 상태 판정
+4. #5 아이디어·녹취·메일 Inbox 흐름 실제 파일럿
 5. 주간 상태보고 자동화 설계
-6. AI가 작업 종료 시 `PROJECT_STATE.md`를 갱신하는 습관 정착
 
 ## 6. Project에서 추적할 핵심 정보
 - Status
@@ -63,15 +81,22 @@
 - Source
 - Target date
 - Last reviewed
+- Result/PR
 
 세부 필드 정의는 `docs/PROJECT_MANAGEMENT.md` 참조.
 
-## 7. 신규 에이전트 인수인계 문구
+## 7. 현재 열린 초기 Issues
+- #2 `[OPS] GitHub Project - AI 공동개발 보드 최초 설정`
+- #3 `[OPS] 기존 문서 - 실행 상태 분류 및 Issue 연결`
+- #4 `[DEV] 운영 사이트 - 소스코드 저장 위치 확인 및 Repository 전략 결정`
+- #5 `[OPS] Inbox - 아이디어·녹취·메일 입력 흐름 파일럿`
+
+## 8. 신규 에이전트 인수인계 문구
 새로운 AI 세션에서는 아래와 같이 시작하면 된다.
 
 > `cozzyy/geogotjigeum` 저장소를 이 프로젝트의 Single Source of Truth로 사용해. 먼저 `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md`와 열린 Issues를 읽고, 현재 상태를 파악한 뒤 작업을 이어가. 이미 완료된 일을 중복으로 하지 말고, 중요한 결과와 상태 변경은 다시 GitHub에 남겨.
 
-## 8. 상태 갱신 원칙
+## 9. 상태 갱신 원칙
 이 문서는 모든 세부 작업을 적는 로그가 아니다. 다음 경우에만 갱신한다.
 - 새로운 핵심 기능이 완료됨
 - 중요한 콘텐츠 묶음이 공개/완료됨
