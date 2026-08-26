@@ -1,0 +1,41 @@
+name: Inbox 입력
+summary: 아이디어, 녹취, 이메일, 회의 메모 등 아직 정리되지 않은 입력을 등록합니다.
+description: 아이디어, 녹취, 이메일, 회의 메모 등 아직 정리되지 않은 입력을 등록합니다.
+title: "[INBOX] "
+body:
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      options:
+        - User
+        - Voice Memo
+        - Email
+        - Meeting
+        - Research
+        - QA
+        - Analytics
+        - Agent
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: raw
+    attributes:
+      label: 원문 / 입력 내용
+      description: 정리하지 않아도 됩니다. 원문 또는 핵심 내용을 그대로 넣습니다.
+    validations:
+      required: true
+  - type: input
+    id: related
+    attributes:
+      label: 관련 작품 / 기능
+  - type: textarea
+    id: agent_summary
+    attributes:
+      label: AI 정리
+      description: 에이전트가 중복 여부, 추천 Type/Priority/Area, 다음 행동을 정리합니다.
+  - type: textarea
+    id: linked
+    attributes:
+      label: 연결된 문서 / Issue
