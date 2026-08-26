@@ -19,7 +19,8 @@
 5. `docs/DECISIONS.md`
 6. `docs/INDEX.md`
 7. `docs/qa/live-site-baseline-audit-2026-08-26.md`
-8. 열린 GitHub Issues
+8. `docs/product/representative-approval-automation-blueprint-v1.md`
+9. 열린 GitHub Issues
 
 Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 
@@ -32,6 +33,7 @@ Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 - PR 인수인계 템플릿 추가
 - 라이브 사이트 표본 점검·기존 문서 잠정 상태 분류를 `docs/qa/live-site-baseline-audit-2026-08-26.md`에 기록
 - 사용자 노출 스크립트 오류를 Issue #7로 등록
+- 대표 승인 기반 AI 운영·자동화 설계 문서와 Hold Issue #8 등록
 
 ## 4. 현재 열린 주요 Issues
 - #2 `[OPS] GitHub Project - AI 공동개발 보드 최초 설정`
@@ -39,6 +41,7 @@ Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 - #4 `[DEV] 운영 사이트 - 소스코드 저장 위치 확인 및 Repository 전략 결정`
 - #5 `[OPS] Inbox - 아이디어·녹취·메일 입력 흐름 파일럿`
 - #7 `[BUG] 홈 화면 - 사용자에게 노출되는 스크립트 오류 점검`
+- #8 `[OPS] 대표 승인 기반 AI 운영·자동화 구축` (Hold)
 
 ## 5. 다음 우선순위
 1. Issue #4: 실제 운영 사이트 소스코드와 배포 환경의 canonical 위치 확인
@@ -46,7 +49,7 @@ Claude를 사용하는 경우 `CLAUDE.md`도 함께 확인한다.
 3. Issue #2: GitHub Projects 보드 실제 생성 및 필드 설정
 4. Issue #3: 코드 기준으로 기존 문서의 구현상태를 확정하고 후속 Issue 분리
 5. Issue #5: 실제 메모/녹취/메일 1건으로 Inbox 파일럿 실행
-6. 이후 주간 상태보고 자동화 설계
+6. Issue #8: 사용자가 “자동화하자”라고 지시하면 설계 문서의 Phase A부터 착수
 
 ## 6. 새 Work 채팅에서 사용할 첫 프롬프트
 아래 문장을 첫 메시지로 사용한다.
