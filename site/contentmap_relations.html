@@ -1,0 +1,2337 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>등장인물 관계도</title>
+<style>
+  :root{ color-scheme: dark; background:#171a21; }
+  html,body{ margin:0; padding:0; height:100%; background:#171a21; color:#eef1f5; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif; }
+  body{ padding:14px; }
+  .btn{ appearance:button; display:inline-flex; align-items:center; justify-content:center; gap:4px; min-height:30px; padding:0 12px;
+    border:1px solid #2b303b; border-radius:999px; color:#eef1f5; background:#1e222b; cursor:pointer; font-size:12.5px; font-weight:700; }
+  .btn:hover{ background:#262c38; }
+  .btn.btn-primary{ border-color:transparent; background:#e0603a; color:#fff; }
+  .card{ border-radius:10px; padding:12px; background:#1e222b; border:1px solid #2b303b; }
+  .text-small{ font-size:11.8px; }
+  .text-muted{ color:#9aa4b2; }
+  #story-relations{ width:100%; }
+  #story-relations .viz-controls{ display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px; margin-bottom:.6rem; }
+  #story-relations .other-works-panel{ display:flex; flex-wrap:wrap; gap:8px; width:100%; margin-top:4px; padding:10px; border:1px solid #2b303b; border-radius:10px; background:#1a1e27; max-height:260px; overflow-y:auto; }
+  #story-relations .other-works-panel[hidden]{ display:none; }
+  #story-relations #other-works-toggle{ color:#9aa4b2; }
+  #story-relations .viz-row{ display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-start; gap:1rem; margin-bottom:.6rem; color:#9aa4b2; }
+  #story-relations .legend{ display:inline-block; width:1.4rem; height:3px; margin-right:.3rem; vertical-align:middle; }
+  #story-relations .legend.family{ background:#e0603a; }
+  #story-relations .legend.ally{ background:#f3883b; }
+  #story-relations .legend.conflict{ background:#ff5c56; }
+  #story-relations .legend.guide{ background:#9b79ec; }
+  #story-relations #relation-detail{ margin-bottom:.6rem; padding:.6rem .8rem; }
+  #story-relations #relation-canvas{ display:block; width:100%; height:auto; overflow:visible; }
+  #story-relations .group-box{ fill:rgba(255,255,255,.04); stroke:#2b303b; stroke-width:1; }
+  #story-relations .group-label{ fill:#eef1f5; font-weight:600; }
+  #story-relations .node-card{ fill:#1e222b; stroke:#2b303b; stroke-width:1; cursor:pointer; }
+  #story-relations .node-card:hover, #story-relations .node-card:focus{ stroke:#5a6577; stroke-width:2; }
+  #story-relations .node-card.selected{ stroke:#e0603a; stroke-width:3; }
+  #story-relations .node-card.dim, #story-relations .edge.dim, #story-relations .edge-label.dim{ opacity:.12; }
+  #story-relations .node-name{ fill:#eef1f5; font-weight:700; pointer-events:none; }
+  #story-relations .node-ja, #story-relations .node-role{ fill:#9aa4b2; pointer-events:none; }
+  #story-relations .avatar{ fill:rgba(58,124,224,.18); stroke:#2b303b; pointer-events:none; }
+  #story-relations .avatar-text{ fill:#eef1f5; font-weight:700; text-anchor:middle; pointer-events:none; }
+  #story-relations .edge{ fill:none; stroke-width:2; opacity:.8; }
+  #story-relations .edge.family{ stroke:#e0603a; }
+  #story-relations .edge.ally{ stroke:#f3883b; }
+  #story-relations .edge.conflict{ stroke:#ff5c56; }
+  #story-relations .edge.guide{ stroke:#9b79ec; stroke-dasharray:5 3; }
+  #story-relations .edge-label{ fill:#eef1f5; paint-order:stroke; stroke:#171a21; stroke-width:4; stroke-linejoin:round; font-size:10px; }
+
+  /* ---- 대망 시대별 관계 변화(타임라인 애니메이션) ---- */
+  #timeline-strip{ display:none; gap:6px; overflow-x:auto; padding:2px 2px 10px; margin-bottom:2px; }
+  #timeline-strip .btn{ flex-shrink:0; font-weight:600; }
+  #timeline-strip .btn.active{ border-color:transparent; background:#e0603a; color:#fff; }
+  #timeline-caption{ display:none; }
+  #timeline-caption .yr{ color:#f3883b; font-weight:800; margin-right:6px; }
+  .tl-node-name{ fill:#eef1f5; font-weight:700; text-anchor:middle; pointer-events:none; }
+  .tl-node-sub{ fill:#9aa4b2; text-anchor:middle; pointer-events:none; }
+  .tl-axis-label{ fill:#5a6577; font-size:10.5px; }
+  .tl-axis-line{ stroke:#2b303b; stroke-width:1; stroke-dasharray:3 4; }
+  .tl-edge{ fill:none; stroke-width:2; opacity:.85; transition:opacity .3s ease; }
+  .tl-edge.strained{ stroke:#ff5c56; stroke-dasharray:6 4; }
+  .tl-node-circle{ transition:cx 1.1s cubic-bezier(.4,0,.2,1),cy 1.1s cubic-bezier(.4,0,.2,1),r 1.1s ease,opacity .8s ease; }
+  .tl-edge{ transition:d 1.1s cubic-bezier(.4,0,.2,1),opacity .6s ease; }
+</style>
+</head>
+<body>
+<div id="story-relations">
+  <div class="viz-controls" aria-label="작품 선택">
+    <button type="button" id="current-work-chip" class="btn btn-primary" aria-haspopup="true"></button>
+    <button type="button" id="other-works-toggle" class="btn" aria-expanded="false">다른 작품 보기 ▾</button>
+    <div id="other-works-panel" class="other-works-panel" hidden>
+      <button type="button" class="btn" data-work="daemang">《대망》 핵심 관계</button>
+      <button type="button" class="btn" data-work="daemang-timeline">🕰️ 《대망》 시대별 관계 변화</button>
+      <button type="button" class="btn" data-work="kiminonawa">《君の名は。》 전체 관계</button>
+      <button type="button" class="btn" data-work="suzume">《すずめの戸締まり》 관계</button>
+      <button type="button" class="btn" data-work="poksshak">《폭싹 속았수다》 관계</button>
+      <button type="button" class="btn" data-work="breakingbad">《Breaking Bad》 관계</button>
+      <button type="button" class="btn" data-work="harrypotter">《Harry Potter》 관계</button>
+      <button type="button" class="btn" data-work="kdemonhunters">《케이팝 데몬 헌터스》 관계</button>
+      <button type="button" class="btn" data-work="gameofthrones">《Game of Thrones》 관계</button>
+      <button type="button" class="btn" data-work="wednesday">《Wednesday》 관계</button>
+      <button type="button" class="btn" data-work="strangerthings">《Stranger Things》 관계</button>
+      <button type="button" class="btn" data-work="squidgame">《오징어 게임》 관계</button>
+      <button type="button" class="btn" data-work="emilyinparis">《Emily in Paris》 관계</button>
+      <button type="button" class="btn" data-work="bridgerton">《Bridgerton》 관계</button>
+      <button type="button" class="btn" data-work="lotr">《반지의 제왕》 관계</button>
+      <button type="button" class="btn" data-work="moneyheist">《종이의 집》 관계</button>
+      <button type="button" class="btn" data-work="onepiece">《원피스》 관계</button>
+      <button type="button" class="btn" data-work="jikji">《직지: 아모르 마네트》 관계</button>
+      <button type="button" class="btn" data-work="glory">《더 글로리》 관계</button>
+      <button type="button" class="btn" data-work="woo">《이상한 변호사 우영우》 관계</button>
+      <button type="button" class="btn" data-work="taebaek">《태백산맥》 관계</button>
+      <button type="button" class="btn" data-work="sunshine">《미스터 션샤인》 관계</button>
+      <button type="button" class="btn" data-work="pachinko">《파친코》 관계</button>
+      <button type="button" class="btn" data-work="namiya">《나미야 잡화점의 기적》 관계</button>
+      <button type="button" class="btn" data-work="suspectx">《용의자 X의 헌신》 관계</button>
+      <button type="button" class="btn" data-work="byakuya">《백야행》 관계</button>
+      <button type="button" class="btn" data-work="kimetsu">《귀멸의 칼날》 관계</button>
+      <button type="button" class="btn" data-work="hope">《호프》 관계</button>
+      <button type="button" class="btn" data-work="odyssey">《오디세이》 관계</button>
+      <button type="button" class="btn" data-work="dokkaebi">《도깨비》 관계</button>
+      <button type="button" class="btn" data-work="gwandong">《관동별곡》 관계</button>
+      <button type="button" class="btn" data-work="wangsanam">《왕과 사는 남자》 관계</button>
+      <button type="button" class="btn" data-work="spiderman">《스파이더맨: 홈커밍》 관계</button>
+      <button type="button" class="btn" data-work="sonyeon">《소년이 온다》 관계</button>
+      <button type="button" class="btn" data-work="priests">《검은 사제들》 관계</button>
+      <button type="button" class="btn" data-work="littleforest">《리틀 포레스트》 관계</button>
+      <button type="button" class="btn" data-work="isatong">《이 사랑 통역 되나요?》 관계</button>
+      <button type="button" class="btn" data-work="conanhighway">《명탐정 코난: 하이웨이의 타천사》 관계</button>
+      <button type="button" class="btn" data-work="prada2">《악마는 프라다를 입는다 2》 관계</button>
+      <button type="button" class="btn" data-work="wintersonata">《겨울연가》 관계</button>
+      <button type="button" class="btn" data-work="coffeeprince">《커피프린스 1호점》 관계</button>
+      <button type="button" class="btn" data-work="daejanggeum">《대장금》 관계</button>
+    </div>
+  </div>
+  <div class="viz-row text-small" aria-label="관계선 범례">
+    <span><i class="legend family"></i>가족·연인</span>
+    <span><i class="legend ally"></i>동맹·친구</span>
+    <span><i class="legend conflict"></i>적대·갈등</span>
+    <span><i class="legend guide"></i>스승·조언</span>
+  </div>
+  <div id="relation-detail" class="card text-small" aria-live="polite">인물 카드를 선택하면 연결 관계가 강조됩니다.</div>
+  <div id="timeline-strip"></div>
+  <div id="timeline-caption" class="card text-small"></div>
+  <svg id="relation-canvas" role="img" aria-labelledby="relation-title relation-desc">
+    <title id="relation-title">등장인물 관계도</title>
+    <desc id="relation-desc">세력별 인물 카드와 가족, 동맹, 적대, 조언 관계를 선으로 표시한 관계도입니다.</desc>
+    <g class="groups"></g>
+    <g class="edges"></g>
+    <g class="nodes"></g>
+  </svg>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById("story-relations");
+  const svg = root.querySelector("#relation-canvas");
+  const groupLayer = svg.querySelector(".groups");
+  const edgeLayer = svg.querySelector(".edges");
+  const nodeLayer = svg.querySelector(".nodes");
+  const detail = root.querySelector("#relation-detail");
+  const NS = "http://www.w3.org/2000/svg";
+
+  const data = {
+    daemang: {
+      title: "《대망》 핵심 인물 관계도",
+      groups: [
+        { id:"tokugawa", label:"도쿠가와 가문·가신단" },
+        { id:"oda", label:"오다 가문" },
+        { id:"imagawa", label:"이마가와·다케다" },
+        { id:"toyotomi", label:"도요토미 정권" },
+        { id:"sekigahara", label:"세키가하라 서군" },
+        { id:"osaka", label:"오사카성 최후 세력" }
+      ],
+      nodes: [
+        ["ieyasu","도쿠가와 이에야스","徳川家康","주인공","tokugawa"],
+        ["odai","오다이노카타","於大の方","어머니","tokugawa"],
+        ["hirotada","마쓰다이라 히로타다","松平広忠","아버지","tokugawa"],
+        ["tsukiyama","쓰키야마도노","築山殿","정실","tokugawa"],
+        ["nobuyasu","마쓰다이라 노부야스","松平信康","장남","tokugawa"],
+        ["hidetada","도쿠가와 히데타다","徳川秀忠","제2대 쇼군","tokugawa"],
+        ["tadakatsu","혼다 다다카쓰","本多忠勝","사천왕","tokugawa"],
+        ["naomasa","이이 나오마사","井伊直政","사천왕","tokugawa"],
+        ["masanobu","혼다 마사노부","本多正信","정치 참모","tokugawa"],
+        ["mototada","도리이 모토타다","鳥居元忠","후시미성 충신","tokugawa"],
+        ["hanzo","핫토리 한조","服部半蔵","이가 탈출 조력","tokugawa"],
+        ["nobunaga","오다 노부나가","織田信長","동맹자","oda"],
+        ["nobuhide","오다 노부히데","織田信秀","다케치요 억류","oda"],
+        ["tokuhime","도쿠히메","徳姫","노부야스의 아내","oda"],
+        ["mitsuhide","아케치 미쓰히데","明智光秀","혼노지 반란","oda"],
+        ["yoshimoto","이마가와 요시모토","今川義元","인질기의 주군","imagawa"],
+        ["sessai","다이겐 셋사이","太原雪斎","스승","imagawa"],
+        ["shingen","다케다 신겐","武田信玄","미카타가하라 강적","imagawa"],
+        ["katsuyori","다케다 가쓰요리","武田勝頼","나가시노 강적","imagawa"],
+        ["hideyoshi","도요토미 히데요시","豊臣秀吉","천하 경쟁자","toyotomi"],
+        ["nene","기타노만도코로","北政所","히데요시 정실","toyotomi"],
+        ["kiyomasa","가토 기요마사","加藤清正","도요토미 무단파","toyotomi"],
+        ["mitsunari","이시다 미쓰나리","石田三成","서군 실질 지휘","sekigahara"],
+        ["yoshitsugu","오타니 요시쓰구","大谷吉継","미쓰나리의 벗","sekigahara"],
+        ["hideaki","고바야카와 히데아키","小早川秀秋","전투 중 배반","sekigahara"],
+        ["terumoto","모리 데루모토","毛利輝元","서군 총대장","sekigahara"],
+        ["yodo","요도도노","淀殿","오사카성 중심","osaka"],
+        ["hideyori","도요토미 히데요리","豊臣秀頼","도요토미 후계자","osaka"],
+        ["senhime","센히메","千姫","두 가문의 연결","osaka"],
+        ["yukimura","사나다 노부시게","真田信繁","이에야스 본진 돌파","osaka"]
+      ],
+      edges: [
+        ["hirotada","ieyasu","부자","family"],["odai","ieyasu","모자","family"],
+        ["ieyasu","tsukiyama","부부","family"],["ieyasu","nobuyasu","부자","family"],
+        ["ieyasu","hidetada","부자·후계","family"],["nobuyasu","tokuhime","부부","family"],
+        ["ieyasu","tadakatsu","주군·가신","ally"],["ieyasu","naomasa","주군·가신","ally"],
+        ["ieyasu","masanobu","주군·참모","guide"],["ieyasu","mototada","주군·충신","ally"],
+        ["ieyasu","hanzo","이가 탈출","ally"],["sessai","ieyasu","교육","guide"],
+        ["yoshimoto","ieyasu","주군·인질","guide"],["nobuhide","ieyasu","인질 억류","conflict"],
+        ["nobunaga","ieyasu","기요스 동맹","ally"],["nobunaga","nobuyasu","할복 압력","conflict"],
+        ["mitsuhide","nobunaga","혼노지","conflict"],["shingen","ieyasu","미카타가하라","conflict"],
+        ["katsuyori","ieyasu","나가시노","conflict"],["hideyoshi","ieyasu","경쟁·신종","conflict"],
+        ["hideyoshi","nene","부부","family"],["hideyoshi","yodo","부부","family"],
+        ["hideyoshi","hideyori","부자","family"],["nene","ieyasu","우호","ally"],
+        ["kiyomasa","ieyasu","동군계 협력","ally"],["mitsunari","ieyasu","세키가하라","conflict"],
+        ["mitsunari","yoshitsugu","우정·서군","ally"],["mitsunari","terumoto","서군","ally"],
+        ["hideaki","mitsunari","배반","conflict"],["hideaki","ieyasu","동군 전향","ally"],
+        ["yodo","hideyori","모자","family"],["hidetada","senhime","부녀","family"],
+        ["senhime","hideyori","부부","family"],["yukimura","ieyasu","오사카 결전","conflict"]
+      ]
+    },
+    kiminonawa: {
+      title: "《君の名は。》 등장인물 관계도",
+      groups: [
+        { id:"miyamizu", label:"이토모리·미야미즈 가문" },
+        { id:"friends", label:"이토모리 친구·지역사회" },
+        { id:"tokyo", label:"도쿄·타키의 주변" },
+        { id:"bridge", label:"시간과 인연의 중심" }
+      ],
+      nodes: [
+        ["taki","타치바나 타키","立花瀧","남자 주인공","bridge"],
+        ["mitsuha","미야미즈 미츠하","宮水三葉","여자 주인공","bridge"],
+        ["yotsuha","미야미즈 요츠하","宮水四葉","여동생","miyamizu"],
+        ["hitoha","미야미즈 히토하","宮水一葉","외할머니","miyamizu"],
+        ["toshiki","미야미즈 토시키","宮水俊樹","아버지·정장","miyamizu"],
+        ["futaba","미야미즈 후타바","宮水二葉","어머니","miyamizu"],
+        ["tessie","테시가와라 카츠히코","勅使河原克彦","친구·대피작전","friends"],
+        ["sayaka","나토리 사야카","名取早耶香","친구·방송부","friends"],
+        ["tessieDad","테시가와라의 아버지","勅使河原の父","건설회사 사장","friends"],
+        ["yukino","유키짱 선생님","雪野百香里","고전 교사","friends"],
+        ["okudera","오쿠데라 미키","奥寺ミキ","아르바이트 선배","tokyo"],
+        ["tsukasa","후지이 츠카사","藤井司","타키의 친구","tokyo"],
+        ["takagi","타카기 신타","高木真太","타키의 친구","tokyo"],
+        ["takiDad","타키의 아버지","瀧の父","보호자","tokyo"],
+        ["sayakaSister","사야카의 언니","早耶香の姉","정사무소 직원","friends"],
+        ["musubi","무스비·구미히모","結び・組紐","시간을 잇는 상징","bridge"]
+      ],
+      edges: [
+        ["taki","mitsuha","몸 바꾸기·사랑","family"],
+        ["mitsuha","yotsuha","자매","family"],["mitsuha","hitoha","손녀·외할머니","family"],
+        ["mitsuha","toshiki","부녀·갈등","conflict"],["mitsuha","futaba","모녀","family"],
+        ["futaba","toshiki","부부","family"],["futaba","hitoha","모녀","family"],
+        ["mitsuha","tessie","친구","ally"],["mitsuha","sayaka","친구","ally"],
+        ["tessie","sayaka","친구·연인","family"],["tessie","tessieDad","부자·갈등","conflict"],
+        ["sayaka","sayakaSister","자매","family"],["yukino","mitsuha","황혼의 복선","guide"],
+        ["taki","okudera","동경·선후배","family"],["taki","tsukasa","친구","ally"],
+        ["taki","takagi","친구","ally"],["taki","takiDad","부자","family"],
+        ["tsukasa","okudera","이토모리 동행","ally"],["taki","musubi","시간 연결","guide"],
+        ["mitsuha","musubi","가문의 전통","guide"],["hitoha","musubi","전승","guide"],
+        ["tessie","sayakaSister","대피계획 연결","ally"],["toshiki","tessieDad","지역 정치","ally"]
+      ]
+    },
+    poksshak: {
+      title: "《폭싹 속았수다》 등장인물 관계도",
+      groups: [
+        { id:"family", label:"애순·관식 직계가족" },
+        { id:"aesunFamily", label:"애순의 원가족" },
+        { id:"gwansikFamily", label:"관식의 가족" },
+        { id:"jamnyeo", label:"잠녀(해녀) 3인방" },
+        { id:"sangilne", label:"상길네(도동리 이웃)" },
+        { id:"seoulCircle", label:"금명의 서울·광주 인연" }
+      ],
+      nodes: [
+        ["aesun","오애순","1950s~현재","여자 주인공","family"],
+        ["gwansik","양관식","1950s~현재","남자 주인공·애순의 남편","family"],
+        ["geummyeong","양금명","현재","애순·관식의 장녀","family"],
+        ["eunmyeong","양은명","현재","애순·관식의 둘째","family"],
+        ["dongmyeong","양동명","현재","애순·관식의 막내아들","family"],
+        ["gwangrye","전광례","1950s","애순의 어머니·해녀","aesunFamily"],
+        ["hangyu","오한규","한국전쟁기","애순의 친아버지","aesunFamily"],
+        ["chunok","김춘옥","1950s","애순의 할머니","aesunFamily"],
+        ["hanmu","오한무","1950s","애순의 작은아버지","aesunFamily"],
+        ["byeongcheol","염병철","1950s~","애순 어머니의 재혼 상대","aesunFamily"],
+        ["sunnam","염순남","1950s~","애순의 이복동생","aesunFamily"],
+        ["sunbong","염순봉","1950s~","애순의 이복동생","aesunFamily"],
+        ["makcheon","박막천","1950s","관식의 할머니","gwansikFamily"],
+        ["gyeokok","권계옥","1950s~","관식의 어머니","gwansikFamily"],
+        ["sambo","양삼보","1950s~","관식의 아버지","gwansikFamily"],
+        ["gyeongok","양경옥","1950s~","관식의 누나·금명의 고모","gwansikFamily"],
+        ["dongmin","서동민","현재","양경옥의 아들","gwansikFamily"],
+        ["chungsu","박충수","1950s~현재","잠녀 3인방","jamnyeo"],
+        ["yangim","최양임","1950s~현재","잠녀 3인방","jamnyeo"],
+        ["gyeongja","홍경자","1950s~현재","잠녀 3인방","jamnyeo"],
+        ["sanggil","부상길","1950s~현재","상길네 가장","sangilne"],
+        ["yeongran","박영란","1950s~현재","상길네 가족","sangilne"],
+        ["hyeonsuk","부현숙","1950s~현재","상길네 가족","sangilne"],
+        ["oseong","부오성","1950s~현재","상길네 가족","sangilne"],
+        ["haneum","부한음","1950s~현재","상길네 가족","sangilne"],
+        ["jeongsuk","부정숙","1950s~현재","상길네 가족","sangilne"],
+        ["yeongsu","부영수","1950s~현재","상길네 가족","sangilne"],
+        ["yeongbeom","박영범","현재","금명의 남자친구·차관 집안 장남","seoulCircle"],
+        ["buyong","윤부용","현재","박영범의 어머니","seoulCircle"],
+        ["chungseop","박충섭","현재","극장 간판화가·금명의 인연","seoulCircle"]
+      ],
+      edges: [
+        ["aesun","gwansik","부부","family"],
+        ["aesun","geummyeong","모녀","family"],
+        ["aesun","eunmyeong","모녀","family"],
+        ["aesun","dongmyeong","모자","family"],
+        ["gwansik","geummyeong","부녀","family"],
+        ["gwansik","eunmyeong","부녀","family"],
+        ["gwansik","dongmyeong","부자","family"],
+        ["gwangrye","aesun","모녀","family"],
+        ["hangyu","aesun","부녀(생부)","family"],
+        ["chunok","aesun","조손","family"],
+        ["hanmu","aesun","삼촌·조카","family"],
+        ["byeongcheol","gwangrye","재혼 부부","family"],
+        ["gwangrye","sunnam","모녀","family"],
+        ["gwangrye","sunbong","모자","family"],
+        ["aesun","sunnam","이복자매","family"],
+        ["aesun","sunbong","이복남매","family"],
+        ["makcheon","gwansik","조손","family"],
+        ["gyeokok","gwansik","모자","family"],
+        ["sambo","gwansik","부자","family"],
+        ["gyeongok","gwansik","남매","family"],
+        ["gyeongok","dongmin","모자","family"],
+        ["gyeongok","geummyeong","고모·조카","family"],
+        ["chungsu","yangim","잠녀 동료","ally"],
+        ["yangim","gyeongja","잠녀 동료","ally"],
+        ["gyeongja","gwangrye","잠녀 동료","ally"],
+        ["chungsu","gwangrye","잠녀 동료","ally"],
+        ["sanggil","aesun","도동리 이웃","ally"],
+        ["sanggil","yeongran","부부","family"],
+        ["yeongran","hyeonsuk","가족","family"],
+        ["hyeonsuk","oseong","가족","family"],
+        ["oseong","haneum","가족","family"],
+        ["haneum","jeongsuk","가족","family"],
+        ["jeongsuk","yeongsu","가족","family"],
+        ["geummyeong","yeongbeom","연인(과거)","ally"],
+        ["yeongbeom","buyong","모자","family"],
+        ["geummyeong","chungseop","깐느극장 인연","ally"]
+      ]
+    },
+    suzume: {
+      title: "《すずめの戸締まり》 등장인물 관계도",
+      groups: [
+        { id:"iwato", label:"이와토 가족" },
+        { id:"closer", label:"폐쇄사 가문" },
+        { id:"keystone", label:"요석" },
+        { id:"companions", label:"여정 중 만난 사람들" }
+      ],
+      nodes: [
+        ["suzume","이와토 스즈메","岩戸すずめ","여자 주인공","iwato"],
+        ["tamaki","이와토 타마키","岩戸環","이모","iwato"],
+        ["souta","무나카타 소타","宗像草太","폐쇄사","closer"],
+        ["hitsujiro","무나카타 히츠지로","宗像羊朗","소타의 조부","closer"],
+        ["daijin","다이진","ダイジン","요석","keystone"],
+        ["sadaijin","사다이진","サダイジン","또 다른 요석","keystone"],
+        ["serizawa","세리자와 토모야","芹澤朋也","소타의 친구","companions"],
+        ["chika","아마베 치카","海部千果","에히메에서 만난 소녀","companions"],
+        ["rumi","니노미야 루미","二ノ宮ルミ","고베 스낵바 주인","companions"]
+      ],
+      edges: [
+        ["suzume","tamaki","조카·이모","family"],
+        ["suzume","souta","여정의 동료","ally"],
+        ["souta","hitsujiro","손자·조부","family"],
+        ["hitsujiro","sadaijin","오랜 인연","guide"],
+        ["daijin","sadaijin","같은 요석","guide"],
+        ["daijin","suzume","따름·집착","ally"],
+        ["souta","serizawa","대학 친구","ally"],
+        ["serizawa","suzume","도쿄까지 동행","ally"],
+        ["suzume","chika","에히메에서의 우정","ally"],
+        ["suzume","rumi","고베에서의 우정","ally"],
+        ["tamaki","serizawa","여정 동행","ally"]
+      ]
+    },
+    breakingbad: {
+      title: "《Breaking Bad》 등장인물 관계도",
+      groups: [
+        { id:"family", label:"화이트 가족" },
+        { id:"jesseCircle", label:"제시 핑크맨 주변 인물" },
+        { id:"gusOrg", label:"구스 프링 조직·카르텔" },
+        { id:"legalBiz", label:"법률·사업 관계자" }
+      ],
+      nodes: [
+        ["walter","월터 화이트","하이젠버그","주인공","family"],
+        ["skyler","스카일러 화이트","2008~2013","아내","family"],
+        ["hank","행크 슈레이더","2008~2013","DEA 요원·처형","family"],
+        ["marie","마리 슈레이더","2008~2013","행크의 아내·처제","family"],
+        ["walterjr","월터 주니어","2008~2013","아들","family"],
+        ["jesse","제시 핑크맨","2008~2013","제자·동업자","jesseCircle"],
+        ["jane","제인 마골리스","2008~2013","제시의 연인","jesseCircle"],
+        ["andrea","안드레아 칸티요","2008~2013","제시의 연인(후반)","jesseCircle"],
+        ["brock","브록 칸티요","2008~2013","안드레아의 아들","jesseCircle"],
+        ["combo","콤보","2008~2013","제시의 친구","jesseCircle"],
+        ["skinnypete","스키니 피트","2008~2013","제시의 친구","jesseCircle"],
+        ["badger","배저","2008~2013","제시의 친구","jesseCircle"],
+        ["emilio","에밀리오 코야마","2008~2013","초반 딜러","jesseCircle"],
+        ["krazy8","크레이지-8","2008~2013","초반 딜러","jesseCircle"],
+        ["gus","구스타보(구스) 프링","2008~2013","배후 유통 총책","gusOrg"],
+        ["mike","마이크 얼먼트라웃","2008~2013","구스의 해결사","gusOrg"],
+        ["victor","빅터","2008~2013","구스의 부하","gusOrg"],
+        ["tyrus","타이러스 킷","2008~2013","구스의 부하","gusOrg"],
+        ["hector","헥터 살라만카","2008~2013","살라만카 가문 원로","gusOrg"],
+        ["tuco","투코 살라만카","2008~2013","살라만카 행동대장","gusOrg"],
+        ["cousins","살라만카 사촌들","2008~2013","가문의 처형자","gusOrg"],
+        ["juanbolsa","후안 볼사","2008~2013","카르텔 연락책","gusOrg"],
+        ["gale","게일 보티커","2008~2013","구스의 화학자","gusOrg"],
+        ["lydia","리디아 로다르테-케일리","2008~2013","시즌5 유통 파트너","gusOrg"],
+        ["todd","토드 알퀴스트","2008~2013","네오나치 연계","gusOrg"],
+        ["jack","잭 웰커","2008~2013","네오나치 갱단 리더","gusOrg"],
+        ["saul","사울 굿맨(지미 맥길)","2008~2013","변호사","legalBiz"],
+        ["kim","킴 웩슬러","2008~2013","사울의 동료 변호사","legalBiz"],
+        ["huell","휴엘 바비뉴","2008~2013","사울의 경호원","legalBiz"]
+      ],
+      edges: [
+        ["walter","skyler","부부","family"],
+        ["walter","walterjr","부자","family"],
+        ["skyler","walterjr","모자","family"],
+        ["skyler","marie","자매","family"],
+        ["hank","marie","부부","family"],
+        ["walter","hank","처남·매형, 훗날 수사 대상","conflict"],
+        ["walter","jesse","스승·동업자","guide"],
+        ["jesse","jane","연인","family"],
+        ["jesse","andrea","연인","family"],
+        ["andrea","brock","모자","family"],
+        ["jesse","combo","친구·동업자","ally"],
+        ["jesse","skinnypete","친구·동업자","ally"],
+        ["jesse","badger","친구·동업자","ally"],
+        ["jesse","emilio","초반 충돌","conflict"],
+        ["jesse","krazy8","초반 충돌","conflict"],
+        ["walter","krazy8","초반 충돌","conflict"],
+        ["gus","mike","고용주·해결사","ally"],
+        ["gus","victor","고용주·부하","ally"],
+        ["gus","tyrus","고용주·부하","ally"],
+        ["gus","gale","고용주·화학자","ally"],
+        ["gus","hector","오랜 악연","conflict"],
+        ["hector","tuco","삼촌·조카","family"],
+        ["hector","cousins","가문 원로·처형자","family"],
+        ["tuco","walter","초반 대립","conflict"],
+        ["cousins","hank","사막 총격전","conflict"],
+        ["gus","juanbolsa","카르텔 연락","ally"],
+        ["walter","gus","동업·긴장 관계","conflict"],
+        ["mike","jesse","동료","ally"],
+        ["lydia","walter","유통 파트너","ally"],
+        ["lydia","todd","사업 파트너","ally"],
+        ["todd","jack","삼촌·조카","family"],
+        ["jack","walter","최후의 적","conflict"],
+        ["walter","saul","의뢰인·변호사","ally"],
+        ["saul","kim","동료","ally"],
+        ["saul","huell","고용주·경호원","ally"],
+        ["saul","jesse","변호사·의뢰인","ally"]
+      ]
+    },
+    harrypotter: {
+      title: "《Harry Potter》 등장인물 관계도",
+      groups: [
+        { id:"trio", label:"황금 트리오" },
+        { id:"staff", label:"호그와트 교수진" },
+        { id:"weasleyDA", label:"위즐리 가족·덤블도어의 군대" },
+        { id:"darkside", label:"볼드모트·죽음을 먹는 자·말포이 가족" },
+        { id:"marauders", label:"마루더 세대·해리 부모 세대" }
+      ],
+      nodes: [
+        ["harry","해리 포터","1991~1998","주인공","trio"],
+        ["ron","론 위즐리","1991~1998","해리의 친구","trio"],
+        ["hermione","헤르미온느 그레인저","1991~1998","해리의 친구","trio"],
+        ["dumbledore","알버스 덤블도어","~1997","호그와트 교장","staff"],
+        ["mcgonagall","미네르바 맥고나걸","1991~1998","그리핀도르 담임","staff"],
+        ["snape","세베루스 스네이프","1991~1998","마법약 교수","staff"],
+        ["hagrid","루베우스 해그리드","1991~1998","사냥터지기","staff"],
+        ["slughorn","호레이스 슬러그혼","1996~1998","마법약 교수","staff"],
+        ["ginny","지니 위즐리","1992~1998","론의 여동생","weasleyDA"],
+        ["neville","네빌 롱바텀","1991~1998","DA 핵심 멤버","weasleyDA"],
+        ["luna","루나 러브굿","1993~1998","래번클로 학생","weasleyDA"],
+        ["arthur","아서 위즐리","1992~1998","론의 아버지","weasleyDA"],
+        ["molly","몰리 위즐리","1992~1998","론의 어머니","weasleyDA"],
+        ["fred","프레드 위즐리","1991~1998","론의 형","weasleyDA"],
+        ["george","조지 위즐리","1991~1998","론의 형","weasleyDA"],
+        ["cedric","세드릭 디고리","1994~1995","후플푸프 대표","weasleyDA"],
+        ["krum","빅터 크룸","1994~1995","덤스트랭 대표","weasleyDA"],
+        ["fleur","플뢰르 들라쿠르","1994~1998","보바통 대표","weasleyDA"],
+        ["ollivander","개릭 올리밴더","1991~1998","지팡이 장인","weasleyDA"],
+        ["voldemort","볼드모트","~1998","최종 적대자","darkside"],
+        ["bellatrix","벨라트릭스 레스트레인지","1996~1998","볼드모트의 최측근","darkside"],
+        ["lucius","루시우스 말포이","1992~1998","드레이코의 아버지","darkside"],
+        ["narcissa","나르시사 말포이","1997~1998","드레이코의 어머니","darkside"],
+        ["draco","드레이코 말포이","1991~1998","해리의 경쟁자","darkside"],
+        ["pettigrew","피터 페티그루","1981·1993·1998","마루더·배신자","darkside"],
+        ["umbridge","돌로레스 엄브리지","1995~1996","마법부 차관","darkside"],
+        ["sirius","시리우스 블랙","1993~1996","해리의 대부","marauders"],
+        ["lupin","리무스 루핀","1993~1998","방어술 교수","marauders"],
+        ["james","제임스 포터","~1981","해리의 아버지","marauders"],
+        ["lily","릴리 포터","~1981","해리의 어머니","marauders"],
+        ["moody","앨러스터 무디","1994~1997","전직 오러","marauders"],
+        ["dobby","도비","1992~1998","집요정","marauders"]
+      ],
+      edges: [
+        ["harry","ron","가장 가까운 친구","ally"],
+        ["harry","hermione","가장 가까운 친구","ally"],
+        ["ron","hermione","오랜 친구·훗날의 인연","ally"],
+        ["harry","dumbledore","보호자·교장","guide"],
+        ["harry","snape","불편한 스승","conflict"],
+        ["harry","hagrid","첫 안내자","guide"],
+        ["harry","mcgonagall","담임 교수","guide"],
+        ["harry","voldemort","예언으로 얽힌 숙적","conflict"],
+        ["harry","draco","학교 안 경쟁자","conflict"],
+        ["harry","sirius","대부","family"],
+        ["harry","lupin","부모 세대의 친구","guide"],
+        ["harry","ginny","동반자로 성장","family"],
+        ["harry","cedric","트리위저드 동료","ally"],
+        ["harry","dobby","은인·피보호자","ally"],
+        ["ron","ginny","남매","family"],
+        ["ron","fred","형제","family"],
+        ["ron","george","형제","family"],
+        ["ron","arthur","부자","family"],
+        ["ron","molly","모자","family"],
+        ["fred","george","쌍둥이","family"],
+        ["arthur","molly","부부","family"],
+        ["neville","luna","DA 동료","ally"],
+        ["neville","dumbledore","저항의 중심으로 성장","guide"],
+        ["luna","harry","DA 동료","ally"],
+        ["cedric","krum","트리위저드 참가자","ally"],
+        ["cedric","fleur","트리위저드 참가자","ally"],
+        ["krum","hermione","무도회 파트너","ally"],
+        ["fleur","arthur","훗날 며느리·시아버지","family"],
+        ["ollivander","harry","지팡이 장인·손님","guide"],
+        ["ollivander","voldemort","같은 불사조 깃털의 비밀","conflict"],
+        ["snape","lily","평생의 헌신","family"],
+        ["snape","james","학창시절 악연","conflict"],
+        ["snape","dumbledore","오랜 신뢰 관계","guide"],
+        ["snape","voldemort","이중 첩자","conflict"],
+        ["dumbledore","voldemort","오랜 숙적","conflict"],
+        ["dumbledore","mcgonagall","오랜 동료","ally"],
+        ["dumbledore","hagrid","신뢰하는 동료","ally"],
+        ["dumbledore","slughorn","동료 교수","ally"],
+        ["slughorn","voldemort","젊은 시절 제자","guide"],
+        ["sirius","james","마루더 절친","ally"],
+        ["sirius","lupin","마루더 절친","ally"],
+        ["sirius","pettigrew","배신당한 우정","conflict"],
+        ["james","lily","부부","family"],
+        ["james","harry","부자","family"],
+        ["lily","harry","모자","family"],
+        ["james","pettigrew","마루더 동료","conflict"],
+        ["pettigrew","voldemort","배신 후 충성","ally"],
+        ["voldemort","bellatrix","광신적 충성","ally"],
+        ["voldemort","lucius","죽음을 먹는 자","ally"],
+        ["lucius","narcissa","부부","family"],
+        ["lucius","draco","부자","family"],
+        ["narcissa","draco","모자","family"],
+        ["narcissa","bellatrix","자매","family"],
+        ["draco","voldemort","강요된 임무","conflict"],
+        ["umbridge","dumbledore","마법부 대 호그와트","conflict"],
+        ["umbridge","harry","5편 최대 갈등","conflict"],
+        ["moody","harry","전투 훈련","guide"],
+        ["dobby","lucius","속박된 주종 관계(과거)","conflict"]
+      ]
+    },
+    kdemonhunters: {
+      title: "《케이팝 데몬 헌터스》 등장인물 관계도",
+      groups: [
+        { id:"huntrx", label:"HUNTR/X" },
+        { id:"sajaboys", label:"사자 보이즈" },
+        { id:"others", label:"주변 인물" }
+      ],
+      nodes: [
+        ["rumi","루미","현재","HUNTR/X 리더","huntrx"],
+        ["mira","미라","현재","HUNTR/X 멤버","huntrx"],
+        ["zoey","조이","현재","HUNTR/X 멤버","huntrx"],
+        ["jinu","지누","현재","사자 보이즈 리더","sajaboys"],
+        ["gwima","귀마","현재","사자 보이즈 배후 악마","sajaboys"],
+        ["celine","셀린","현재","HUNTR/X 멘토","others"],
+        ["bobby","바비","현재","코믹 서포트","others"]
+      ],
+      edges: [
+        ["rumi","mira","팀 동료","ally"],
+        ["rumi","zoey","팀 동료","ally"],
+        ["mira","zoey","팀 동료","ally"],
+        ["rumi","jinu","라이벌·감정적 교감","conflict"],
+        ["jinu","gwima","조종당하는 관계","conflict"],
+        ["rumi","celine","오랜 멘토","guide"],
+        ["rumi","gwima","최종 대립","conflict"],
+        ["mira","bobby","팀 서포트","ally"]
+      ]
+    },
+    gameofthrones: {
+      title: "《왕좌의 게임》 등장인물 관계도",
+      groups: [
+        { id:"stark", label:"스타크 가문" },
+        { id:"lannister", label:"라니스터 가문" },
+        { id:"targaryen", label:"타르가르옌 진영" },
+        { id:"others", label:"기타 세력" }
+      ],
+      nodes: [
+        ["ned","네드 스타크","S1","윈터펠 영주","stark"],
+        ["catelyn","캐틀린 스타크","S1~3","네드의 아내","stark"],
+        ["robb","롭 스타크","S1~3","네드의 장남","stark"],
+        ["sansa","산사 스타크","전체","네드의 장녀","stark"],
+        ["arya","아리아 스타크","전체","네드의 차녀","stark"],
+        ["jon","존 스노우","전체","나이트워치·타르가르옌","stark"],
+        ["bran","브란 스타크","전체","네드의 차남","stark"],
+        ["tywin","티윈 라니스터","S1~4","라니스터 가주","lannister"],
+        ["cersei","세르세이 라니스터","전체","왕비","lannister"],
+        ["jaime","제이미 라니스터","전체","킹스가드","lannister"],
+        ["tyrion","티리온 라니스터","전체","티윈의 막내","lannister"],
+        ["joffrey","조프리 바라테온","S1~4","세르세이의 아들","lannister"],
+        ["daenerys","대너리스 타르가르옌","전체","드래곤의 어머니","targaryen"],
+        ["jorah","조라 모르몬트","전체","대너리스의 기사","targaryen"],
+        ["littlefinger","리틀핑거","S1~6","궁정 모사꾼","others"],
+        ["varys","바리스","전체","궁정 첩보가","others"],
+        ["sandor","산도르 클레게인","전체","아리아의 보호자","others"],
+        ["nightking","나이트킹","후반부","백귀의 수장","others"]
+      ],
+      edges: [
+        ["ned","catelyn","부부","family"],
+        ["ned","robb","부자","family"],
+        ["ned","sansa","부녀","family"],
+        ["ned","arya","부녀","family"],
+        ["ned","bran","부자","family"],
+        ["ned","jon","아버지처럼 키운 사이","family"],
+        ["catelyn","robb","모자","family"],
+        ["robb","arya","남매","family"],
+        ["sansa","arya","자매","family"],
+        ["jon","daenerys","동맹·연인","ally"],
+        ["tywin","cersei","부녀","family"],
+        ["tywin","jaime","부자","family"],
+        ["tywin","tyrion","불화하는 부자","conflict"],
+        ["cersei","jaime","쌍둥이 남매","family"],
+        ["cersei","joffrey","모자","family"],
+        ["cersei","tyrion","불화하는 남매","conflict"],
+        ["tyrion","daenerys","조언자","guide"],
+        ["daenerys","jorah","충성스런 기사","ally"],
+        ["littlefinger","sansa","위험한 후견인","conflict"],
+        ["varys","tyrion","오랜 동료","ally"],
+        ["sandor","arya","뜻밖의 보호자","guide"],
+        ["ned","littlefinger","배신당한 신뢰","conflict"],
+        ["jon","nightking","최종 대립","conflict"]
+      ]
+    },
+    wednesday: {
+      title: "《웬즈데이》 등장인물 관계도",
+      groups: [
+        { id:"students", label:"네버모어 학생" },
+        { id:"staff", label:"교직원" },
+        { id:"family", label:"아담스 가족" }
+      ],
+      nodes: [
+        ["wednesday","웬즈데이 아담스","현재","주인공","students"],
+        ["enid","이니드 싱클레어","현재","룸메이트","students"],
+        ["xavier","자비에 소프","현재","동급생","students"],
+        ["tyler","타일러 갤핀","현재","마을 청년","students"],
+        ["bianca","비앙카 발린저","현재","동급생","students"],
+        ["ajax","아약스 페트로풀로스","현재","동급생","students"],
+        ["weems","라리사 윔스","현재","네버모어 교장","staff"],
+        ["thornhill","마릴린 손힐","현재","식물학 교수","staff"],
+        ["gomez","고메즈 아담스","현재","웬즈데이의 아버지","family"],
+        ["morticia","모티시아 아담스","현재","웬즈데이의 어머니","family"],
+        ["pugsley","퍼그슬리 아담스","현재","웬즈데이의 남동생","family"],
+        ["thing","텡","현재","아담스 가문의 손","family"]
+      ],
+      edges: [
+        ["wednesday","enid","룸메이트·진짜 우정","ally"],
+        ["wednesday","xavier","복잡한 감정선","conflict"],
+        ["wednesday","tyler","의심과 위험한 끌림","conflict"],
+        ["wednesday","weems","교장과 학생","conflict"],
+        ["wednesday","thornhill","숨겨진 정체를 둘러싼 갈등","conflict"],
+        ["wednesday","gomez","부녀","family"],
+        ["wednesday","morticia","모녀","family"],
+        ["wednesday","pugsley","남매","family"],
+        ["wednesday","thing","충실한 조력자","ally"],
+        ["enid","ajax","동급생 로맨스","ally"],
+        ["bianca","xavier","동급생 갈등","conflict"],
+        ["gomez","morticia","부부","family"]
+      ]
+    },
+    strangerthings: {
+      title: "《기묘한 이야기》 등장인물 관계도",
+      groups: [
+        { id:"kids", label:"아이들" },
+        { id:"teens", label:"십대로 성장한 멤버" },
+        { id:"adults", label:"어른들" }
+      ],
+      nodes: [
+        ["mike","마이크 휠러","1983~","친구 그룹 리더","kids"],
+        ["eleven","일레븐","1983~","초능력 소녀","kids"],
+        ["will","윌 바이어스","1983~","실종됐던 소년","kids"],
+        ["dustin","더스틴 헨더슨","1983~","친구 그룹","kids"],
+        ["lucas","루카스 싱클레어","1983~","친구 그룹","kids"],
+        ["max","맥스 메이필드","1984~","전학생","teens"],
+        ["steve","스티브 해링턴","1983~","십대에서 어른으로 성장","teens"],
+        ["robin","로빈 버클리","1985~","스티브의 동료","teens"],
+        ["nancy","낸시 휠러","1983~","마이크의 누나","teens"],
+        ["jonathan","조나단 바이어스","1983~","윌의 형","teens"],
+        ["hopper","짐 호퍼","1983~","호킨스 경찰서장","adults"],
+        ["joyce","조이스 바이어스","1983~","윌의 어머니","adults"]
+      ],
+      edges: [
+        ["mike","eleven","연인","ally"],
+        ["mike","will","오랜 친구","ally"],
+        ["mike","dustin","친구 그룹","ally"],
+        ["mike","lucas","친구 그룹","ally"],
+        ["lucas","max","연인","ally"],
+        ["will","jonathan","형제","family"],
+        ["will","joyce","모자","family"],
+        ["joyce","hopper","연인 관계로 발전","ally"],
+        ["nancy","jonathan","연인","ally"],
+        ["nancy","mike","남매","family"],
+        ["steve","robin","베프 관계로 발전","ally"],
+        ["steve","nancy","과거 연인","conflict"],
+        ["hopper","eleven","양아버지","family"],
+        ["eleven","will","업사이드다운을 통한 연결","ally"]
+      ]
+    },
+    squidgame: {
+      title: "《오징어 게임》 등장인물 관계도",
+      groups: [
+        { id:"players", label:"참가자" },
+        { id:"outside", label:"게임 밖 인물" }
+      ],
+      nodes: [
+        ["gihun","성기훈","현재","456번·주인공","players"],
+        ["sangwoo","조상우","현재","기훈의 옛 친구","players"],
+        ["saebyeok","강새벽","현재","탈북자","players"],
+        ["ali","알리","현재","외국인 노동자","players"],
+        ["deoksu","장덕수","현재","조직폭력배 출신","players"],
+        ["ilnam","오일남","현재","001번 노인","players"],
+        ["frontman","프론트맨","현재","게임 운영 총책","outside"],
+        ["junho","황준호","현재","잠입 경찰","outside"]
+      ],
+      edges: [
+        ["gihun","sangwoo","어릴 적부터의 친구·라이벌","conflict"],
+        ["gihun","saebyeok","동맹","ally"],
+        ["gihun","ali","동맹","ally"],
+        ["gihun","ilnam","의문의 노인과의 우정","guide"],
+        ["ilnam","frontman","충격적 진실로 연결","conflict"],
+        ["sangwoo","deoksu","일시적 동맹","ally"],
+        ["deoksu","ali","배신","conflict"],
+        ["junho","frontman","형제","family"],
+        ["gihun","frontman","최종 대립","conflict"]
+      ]
+    },
+    emilyinparis: {
+      title: "《에밀리, 파리에 가다》 등장인물 관계도",
+      groups: [
+        { id:"savoir", label:"사보아르 동료" },
+        { id:"romance", label:"로맨스 상대" },
+        { id:"friends", label:"친구" }
+      ],
+      nodes: [
+        ["emily","에밀리 쿠퍼","현재","주인공","savoir"],
+        ["sylvie","실비 그라토","현재","에밀리의 상사","savoir"],
+        ["luc","뤽","현재","동료","savoir"],
+        ["julien","줄리앙","현재","동료","savoir"],
+        ["gabriel","가브리엘","현재","이웃 셰프","romance"],
+        ["alfie","알피","현재","영국인 연인","romance"],
+        ["marcello","마르첼로","현재","로마에서 만난 인연","romance"],
+        ["camille","카미유","현재","가브리엘의 전 연인","romance"],
+        ["mindy","민디 챈","현재","절친","friends"]
+      ],
+      edges: [
+        ["emily","sylvie","상사·문화 차이 갈등","conflict"],
+        ["emily","luc","동료","ally"],
+        ["emily","julien","동료","ally"],
+        ["emily","mindy","절친","ally"],
+        ["emily","gabriel","이웃에서 연인으로","conflict"],
+        ["emily","alfie","새로운 연애","ally"],
+        ["emily","marcello","로마에서 시작된 인연","ally"],
+        ["gabriel","camille","과거 연인","conflict"],
+        ["camille","emily","삼각관계 갈등","conflict"]
+      ]
+    },
+    bridgerton: {
+      title: "《브리저튼》 등장인물 관계도",
+      groups: [
+        { id:"bridgerton", label:"브리저튼 가족" },
+        { id:"season1", label:"시즌1 — 다프네" },
+        { id:"season2", label:"시즌2 — 앤서니" },
+        { id:"season3", label:"시즌3 — 페넬로페" }
+      ],
+      nodes: [
+        ["violet","바이올렛 브리저튼","현재","브리저튼가의 어머니","bridgerton"],
+        ["anthony","앤서니 브리저튼","현재","장남","bridgerton"],
+        ["benedict","베네딕트 브리저튼","현재","차남","bridgerton"],
+        ["colin","콜린 브리저튼","현재","삼남","bridgerton"],
+        ["daphne","다프네 브리저튼","현재","장녀","bridgerton"],
+        ["eloise","엘로이즈 브리저튼","현재","차녀","bridgerton"],
+        ["simon","사이먼 바셋","S1","헤이스팅스 공작","season1"],
+        ["kate","케이트 샤르마","S2","앤서니의 상대","season2"],
+        ["penelope","페넬로페 페더링턴","현재","레이디 휘슬다운","season3"]
+      ],
+      edges: [
+        ["violet","anthony","모자","family"],
+        ["violet","benedict","모자","family"],
+        ["violet","colin","모자","family"],
+        ["violet","daphne","모녀","family"],
+        ["violet","eloise","모녀","family"],
+        ["anthony","benedict","형제","family"],
+        ["anthony","colin","형제","family"],
+        ["daphne","eloise","자매","family"],
+        ["daphne","simon","계약에서 진짜 사랑으로","ally"],
+        ["anthony","kate","애증에서 사랑으로","conflict"],
+        ["colin","penelope","오랜 친구에서 연인으로","ally"],
+        ["eloise","penelope","절친에서 갈등으로","conflict"]
+      ]
+    },
+    lotr: {
+      title: "《반지의 제왕》 등장인물 관계도",
+      groups: [
+        { id:"fellowship", label:"반지 원정대" },
+        { id:"enemies", label:"적대 세력" },
+        { id:"others", label:"기타 인물" }
+      ],
+      nodes: [
+        ["frodo","프로도 배긴스","제3시대","반지의 소지자","fellowship"],
+        ["sam","샘와이즈 갬지","제3시대","프로도의 동료","fellowship"],
+        ["gandalf","간달프","제3시대","마법사","fellowship"],
+        ["aragorn","아라고른","제3시대","곤도르의 왕위 계승자","fellowship"],
+        ["legolas","레골라스","제3시대","요정 궁수","fellowship"],
+        ["gimli","김리","제3시대","드워프 전사","fellowship"],
+        ["boromir","보로미르","제3시대","곤도르의 전사","fellowship"],
+        ["merry","메리","제3시대","호빗","fellowship"],
+        ["pippin","피핀","제3시대","호빗","fellowship"],
+        ["sauron","사우론","제3시대","최종 적대자","enemies"],
+        ["gollum","골룸","제3시대","반지에 홀린 존재","others"],
+        ["galadriel","갈라드리엘","제3시대","요정 여왕","others"]
+      ],
+      edges: [
+        ["frodo","sam","가장 깊은 우정","ally"],
+        ["frodo","gandalf","안내자","guide"],
+        ["frodo","gollum","반지로 얽힌 위험한 관계","conflict"],
+        ["frodo","sauron","최종 대립","conflict"],
+        ["gandalf","aragorn","동료","ally"],
+        ["aragorn","legolas","동료","ally"],
+        ["aragorn","gimli","동료","ally"],
+        ["legolas","gimli","경쟁에서 우정으로","ally"],
+        ["boromir","aragorn","갈등 후 신뢰","conflict"],
+        ["boromir","frodo","반지의 유혹에 흔들림","conflict"],
+        ["merry","pippin","절친","ally"],
+        ["frodo","galadriel","조력자","guide"],
+        ["gandalf","sauron","오랜 숙적","conflict"]
+      ]
+    },
+    moneyheist: {
+      title: "《종이의 집》 등장인물 관계도",
+      groups: [
+        { id:"heist1", label:"조폐국 작전 팀" },
+        { id:"heist2", label:"중앙은행 작전 합류" },
+        { id:"outside", label:"팀 밖 인물" }
+      ],
+      nodes: [
+        ["professor","교수","현재","작전 설계자","heist1"],
+        ["tokyo","도쿄","현재","화자","heist1"],
+        ["berlin","베를린","현재","현장 지휘자","heist1"],
+        ["nairobi","나이로비","현재","인쇄 담당","heist1"],
+        ["rio","리우","현재","해커","heist1"],
+        ["denver","덴버","현재","팀원","heist1"],
+        ["moscow","모스크바","현재","덴버의 아버지","heist1"],
+        ["palermo","팔레르모","현재","중앙은행 작전 지휘","heist2"],
+        ["lisbon","리스본(라켈)","현재","전직 경찰","outside"]
+      ],
+      edges: [
+        ["professor","berlin","형제","family"],
+        ["professor","lisbon","연인","ally"],
+        ["tokyo","rio","연인","ally"],
+        ["denver","moscow","부자","family"],
+        ["berlin","palermo","과거 인연","conflict"],
+        ["professor","tokyo","설계자와 화자","guide"],
+        ["professor","nairobi","신뢰 관계","ally"],
+        ["lisbon","professor","경찰에서 팀원으로","conflict"],
+        ["berlin","nairobi","현장 갈등","conflict"]
+      ]
+    },
+    onepiece: {
+      title: "《원피스》 등장인물 관계도",
+      groups: [
+        { id:"strawhat", label:"밀짚모자 해적단" },
+        { id:"allies", label:"동료·인연" },
+        { id:"rivals", label:"라이벌·적대 세력" }
+      ],
+      nodes: [
+        ["luffy","몽키 D. 루피","연재중","선장","strawhat"],
+        ["zoro","롤로노아 조로","연재중","검사","strawhat"],
+        ["nami","나미","연재중","항해사","strawhat"],
+        ["usopp","우솝","연재중","저격수","strawhat"],
+        ["sanji","상디","연재중","요리사","strawhat"],
+        ["chopper","토니토니 쵸파","연재중","의사","strawhat"],
+        ["robin","니코 로빈","연재중","고고학자","strawhat"],
+        ["shanks","샹크스","연재중","루피의 출발점","allies"],
+        ["ace","에이스","연재중","루피의 의형","allies"],
+        ["coby","코비","연재중","해군으로 성장","allies"],
+        ["blackbeard","검은수염","연재중","대립하는 꿈","rivals"],
+        ["arlong","아론","과거","나미의 과거","rivals"]
+      ],
+      edges: [
+        ["luffy","zoro","선장과 첫 동료","ally"],
+        ["luffy","nami","선장과 동료","ally"],
+        ["luffy","usopp","선장과 동료","ally"],
+        ["luffy","sanji","선장과 동료","ally"],
+        ["luffy","chopper","선장과 동료","ally"],
+        ["luffy","robin","선장과 동료","ally"],
+        ["luffy","shanks","꿈을 물려준 인연","guide"],
+        ["luffy","ace","의형제","family"],
+        ["luffy","coby","우정에서 각자의 길로","ally"],
+        ["luffy","blackbeard","대립하는 야망","conflict"],
+        ["nami","arlong","고향을 짓밟은 원수","conflict"],
+        ["ace","blackbeard","비극적 대립","conflict"]
+      ]
+    },
+    jikji: {
+      title: "《직지: 아모르 마네트》 등장인물 관계도",
+      groups: [
+        { id:"investigators", label:"취재진·수사" },
+        { id:"academia", label:"학계·연구자" },
+        { id:"europe", label:"유럽 서사축" },
+        { id:"historical", label:"실존 인물" }
+      ],
+      nodes: [
+        ["kimkiyeon","김기연","현재","사회부 기자","investigators"],
+        ["jeonhyeongwoo","전형우","현재(사망)","고려대 라틴어 교수","academia"],
+        ["kimjeongjin","김정진","현재","청주 직지 연구자","academia"],
+        ["choidohyeon","최도현","현재","강력계 형사","investigators"],
+        ["ohseongjae","오성재","현재","사회부 데스크","investigators"],
+        ["eunsukarena","은수(카레나)","현재","두 개의 이름을 가진 인물","europe"],
+        ["professorfischer","피셔 교수","현재","유럽 인쇄사 연구자","academia"],
+        ["pembleton","펨블턴","현재","바티칸 문서를 둘러싼 비밀","europe"],
+        ["clementdurand","클레망 뒤랑","현재","BnF 동양문헌실 사서","europe"],
+        ["gutenberg","구텐베르크","15세기","유럽 금속활자 발명가(실존)","historical"],
+        ["sejong","세종대왕","15세기","조선 4대 국왕(실존)","historical"],
+        ["parkbyeongseon","박병선","1972년~","직지 대모(실존)","historical"],
+        ["henrivever","앙리 베베르","20세기 초","직지의 전 소장자(실존)","historical"],
+        ["baegunhwasang","백운화상","고려 말","직지의 원저자(실존)","historical"]
+      ],
+      edges: [
+        ["kimkiyeon","jeonhyeongwoo","죽음을 취재하며 사건에 뛰어듦","guide"],
+        ["kimkiyeon","kimjeongjin","청주에서 직지의 실체를 배움","guide"],
+        ["kimkiyeon","choidohyeon","사건을 함께 좇는 관계","ally"],
+        ["kimkiyeon","ohseongjae","취재를 지원받는 관계","ally"],
+        ["kimkiyeon","eunsukarena","유럽에서 얽히는 인연","ally"],
+        ["kimkiyeon","pembleton","바티칸 편지를 둘러싼 대립","conflict"],
+        ["kimkiyeon","clementdurand","직지 실물 확인을 위한 협조 요청","ally"],
+        ["jeonhyeongwoo","kimjeongjin","직지 연구로 이어진 학문적 인연","ally"],
+        ["eunsukarena","professorfischer","구텐베르크 단서를 공유","ally"],
+        ["professorfischer","gutenberg","연구 대상","guide"],
+        ["kimjeongjin","gutenberg","직지-구텐베르크 비교 연구","guide"],
+        ["kimjeongjin","baegunhwasang","직지의 원저자 연구","guide"],
+        ["clementdurand","parkbyeongseon","같은 자리를 지켜온 사서로서의 계승","guide"],
+        ["parkbyeongseon","henrivever","그가 남긴 유증으로 이어진 직지의 행방","guide"],
+        ["pembleton","eunsukarena","비밀을 둘러싼 긴장","conflict"]
+      ]
+    },
+    glory: {
+      title: "《더 글로리》 등장인물 관계도",
+      groups: [
+        { id:"victim", label:"피해·복수" },
+        { id:"allies", label:"조력 연대" },
+        { id:"perp", label:"가해 공모" },
+        { id:"family", label:"가족·아이" }
+      ],
+      nodes: [
+        ["moondongeun","문동은","현재","학교폭력 피해자·교사","victim"],
+        ["juyeojeong","주여정","현재","의사·조력자","allies"],
+        ["kanghyeonnam","강현남","현재","조력자·가정폭력 피해자","allies"],
+        ["parkyeonjin","박연진","현재","가해 집단 중심·기상캐스터","perp"],
+        ["hadoyoung","하도영","현재","연진의 남편·기업인","family"],
+        ["jeonjaejun","전재준","현재","가해자·골프장 소유주","perp"],
+        ["leesara","이사라","현재","가해 집단·예술 관련","perp"],
+        ["choihyejeong","최혜정","현재","가해 집단·종교 권력","perp"],
+        ["sonmyeongoh","손명오","현재","가해 집단 하위","perp"]
+      ],
+      edges: [
+        ["moondongeun","parkyeonjin","피해와 추적, 응징","conflict"],
+        ["moondongeun","juyeojeong","사랑과 신뢰 사이","ally"],
+        ["moondongeun","kanghyeonnam","서로의 목표를 교환하는 연대","ally"],
+        ["moondongeun","hadoyoung","바둑을 통한 접점","guide"],
+        ["parkyeonjin","hadoyoung","부부, 감춰진 진실","family"],
+        ["parkyeonjin","jeonjaejun","공모, 계급, 배신","ally"],
+        ["parkyeonjin","leesara","공모, 계급상승 욕망","ally"],
+        ["parkyeonjin","choihyejeong","공모, 종교적 위선","ally"],
+        ["jeonjaejun","sonmyeongoh","소유와 심부름꾼 관계","conflict"],
+        ["leesara","choihyejeong","서로의 약점을 붙잡은 관계","conflict"]
+      ]
+    },
+    woo: {
+      title: "《이상한 변호사 우영우》 등장인물 관계도",
+      groups: [
+        { id:"hanbada", label:"한바다 팀" },
+        { id:"family", label:"가족 비밀" },
+        { id:"friend", label:"우정·일상" }
+      ],
+      nodes: [
+        ["wooyoungwoo","우영우","현재","신입 변호사(주인공)","hanbada"],
+        ["leejunho","이준호","현재","송무팀 직원","hanbada"],
+        ["jungmyungsuk","정명석","현재","시니어 변호사","hanbada"],
+        ["choisuyeon","최수연","현재","동료 변호사","hanbada"],
+        ["kwonminwoo","권민우","현재","동료 변호사","hanbada"],
+        ["wookwangho","우광호","현재","영우의 아버지","family"],
+        ["taesumi","태수미","현재","법조인·정치권 인물","family"],
+        ["dongkeurami","동그라미","현재","친구","friend"]
+      ],
+      edges: [
+        ["wooyoungwoo","leejunho","동료에서 연인으로","ally"],
+        ["wooyoungwoo","jungmyungsuk","스승과 동료 변호사","guide"],
+        ["wooyoungwoo","choisuyeon","경쟁이자 연대","ally"],
+        ["wooyoungwoo","kwonminwoo","공정성을 둘러싼 논쟁","conflict"],
+        ["wooyoungwoo","wookwangho","보호와 자립 사이의 부녀","family"],
+        ["wooyoungwoo","taesumi","정체와 충돌하는 비밀","conflict"],
+        ["wooyoungwoo","dongkeurami","있는 그대로 받아들이는 우정","ally"],
+        ["jungmyungsuk","choisuyeon","시니어와 동료의 신뢰","guide"],
+        ["jungmyungsuk","kwonminwoo","성과와 편견 사이의 지도","guide"],
+        ["wookwangho","taesumi","과거의 선택이 남긴 균열","conflict"]
+      ]
+    },
+    taebaek: {
+      title: "《태백산맥》 등장인물 관계도",
+      groups: [
+        { id:"leftist", label:"좌익·유격대" },
+        { id:"rightist", label:"우익·지역권력" },
+        { id:"moderate", label:"중도·지식인" },
+        { id:"civilian", label:"민간인·생활세계" }
+      ],
+      nodes: [
+        ["yeomsangjin","염상진","1948~1953","좌익 지도자·농민운동가","leftist"],
+        ["jeonghaseop","정하섭","1948~1953","좌익 활동가","leftist"],
+        ["hadaechi","하대치","1948~1953","농민·유격대","leftist"],
+        ["kimbeomjun","김범준","1948~1953","김범우의 형·좌익 계열","leftist"],
+        ["anchangmin","안창민","1948~1953","청년·지역 인물","leftist"],
+        ["ijisuk","이지숙","1948~1953","여성·사회참여 인물","leftist"],
+        ["yeomsanggu","염상구","1948~1953","우익 청년단·벌교 주먹세계","rightist"],
+        ["choiikseung","최익승","1948~1953","토착 권력·우익 계열","rightist"],
+        ["baeknamsik","백남식","1948~1953","우익·지역 권력","rightist"],
+        ["kimbeomwoo","김범우","1948~1953","중도 민족주의 지식인","moderate"],
+        ["simjaemo","심재모","1948~1953","군·공권력 내부 인물","moderate"],
+        ["seominyeong","서민영","1948~1953","교사·지식인","moderate"],
+        ["sohwa","소화","1948~1953","무당·민간인 여성","civilian"],
+        ["sonseungho","손승호","1948~1953","지역 인물·생활세계","civilian"],
+        ["juksandaek","죽산댁","1948~1953","염상진의 가족","civilian"],
+        ["oeseodaek","외서댁","1948~1953","민간인 여성","civilian"],
+        ["deulmoldaek","들몰댁","1948~1953","민간인 여성","civilian"],
+        ["kimsayong","김사용","1948~1953","지역 원로·김범우 가문","civilian"],
+        ["ihyeonsang","이현상","1948~1953(실존)","남부군(지리산 유격사령부) 총사령관","leftist"],
+        ["yeommuchil","염무칠","~1948","염상진·염상구 형제의 아버지·숯장수","leftist"],
+        ["hosandaek","호산댁","1948~1953","염상진·염상구 형제의 어머니","leftist"],
+        ["gwangjo","광조","1948~1953","염상진의 아들","leftist"],
+        ["deoksun","덕순","1948~1953","염상진의 딸","leftist"],
+        ["itaesik","이태식","1949~1953","구빨치산 유격대장(백아산 지구)","leftist"],
+        ["cheonjeombagu","천점바구","1949~1953","빨치산 유격대장","leftist"],
+        ["sotdukkeong","솥뚜껑","1949~1953","빨치산 중대장(머슴 출신)","leftist"],
+        ["gangkyeongae","강경애","1949~1953","여자 빨치산(이태식 연대)","leftist"],
+        ["jowonje","조원제","1949~1953","빨치산 소년전사","leftist"],
+        ["seonwoojin","선우진","1948~1953","영어 교사·방첩대·신문기자","rightist"],
+        ["yanghyoseok","양효석","1948~1953","국군 장교(육사 출신)","rightist"],
+        ["hyeonjunbae","현준배","1948~1953","벌교 지주·현오봉의 아버지","rightist"],
+        ["hyeonobong","현오봉","1948~1953","육군 소위(현준배의 아들)","rightist"],
+        ["songgyeonghui","송경희","1948~1953","순수문학 지향 시인 지망생","rightist"],
+        ["namintae","남인태","1948~1953","벌교경찰서장","rightist"],
+        ["jeonmyeonghwan","전명환","1948~1953","자애병원 원장","moderate"],
+        ["gangyang","강 양","~1950","자애병원 간호사","moderate"],
+        ["gwonbyeongje","권병제","1948~1953","경찰서장","moderate"],
+        ["igeunsul","이근술","1948~1953","경찰(보도연맹 학살 불가담)","moderate"],
+        ["woljuseunim","월주 스님","1948~1953","선암사 주지스님","moderate"],
+        ["jangmoksa","장 목사","1948~1953","순천교회 목사","moderate"],
+        ["oss_instructor","OSS 교관","1943~1945","미군 전략사무국(OSS) 훈련 교관","moderate"],
+        ["doraji","도라지","1900년대~","하와이 거주 한인 이민 여성","civilian"],
+        ["geochang_yumok","신끝순","1951~","거창사건 유족","civilian"],
+        ["bodoyeonmaeng_yumok","윤끝단","1950~","보도연맹 학살 유족","civilian"]
+      ],
+      edges: [
+        ["yeomsangjin","yeomsanggu","같은 부모 아래 갈라선 형제, 반대편 권력","conflict"],
+        ["yeomsangjin","hadaechi","조직, 명령, 동지","ally"],
+        ["yeomsangjin","juksandaek","혈연, 감시와 불안을 나눔","family"],
+        ["yeomsangjin","anchangmin","조직, 동지","ally"],
+        ["jeonghaseop","sohwa","사랑과 보호, 이념과 신앙이 겹친 관계","family"],
+        ["jeonghaseop","yeomsangjin","조직, 동지","ally"],
+        ["hadaechi","anchangmin","동지, 토지·계급 문제","ally"],
+        ["kimbeomwoo","kimbeomjun","같은 가족, 서로 다른 정치적 선택","family"],
+        ["kimbeomwoo","seominyeong","토론, 중도적 해결 모색","ally"],
+        ["kimbeomwoo","simjaemo","토론, 민간인 보호를 둘러싼 공감","ally"],
+        ["kimbeomwoo","kimsayong","가문, 세대의 시선","family"],
+        ["simjaemo","seominyeong","합리적 질서를 향한 공감","ally"],
+        ["yeomsanggu","choiikseung","권력, 기회주의","ally"],
+        ["yeomsanggu","baeknamsik","권력, 감시, 보복","ally"],
+        ["choiikseung","baeknamsik","토착 권력과 공권력의 결탁","ally"],
+        ["oeseodaek","deulmoldaek","생계, 소문, 침묵을 함께 견딤","ally"],
+        ["sohwa","oeseodaek","벌교 여성들의 생활세계","ally"],
+        ["sonseungho","kimbeomwoo","지역 관계, 생활사","ally"],
+        ["yeommuchil","hosandaek","염상진·염상구 형제를 함께 키운 부모","family"],
+        ["yeommuchil","yeomsangjin","혈연, 숯장수 아버지와 좌익 지도자 아들","family"],
+        ["yeommuchil","yeomsanggu","혈연, 같은 아버지 아래 다른 길을 간 아들","family"],
+        ["hosandaek","yeomsangjin","혈연, 아들의 선택을 지켜보는 어머니","family"],
+        ["hosandaek","yeomsanggu","혈연, 아들의 선택을 지켜보는 어머니","family"],
+        ["yeomsangjin","gwangjo","혈연, 아버지와 아들","family"],
+        ["yeomsangjin","deoksun","혈연, 아버지와 딸","family"],
+        ["ihyeonsang","yeomsangjin","남부군 총사령관과 지역 유격대 지도자, 조직상의 지도","guide"],
+        ["ihyeonsang","itaesik","남부군 총사령관과 백아산 지구 유격대장","guide"],
+        ["itaesik","cheonjeombagu","같은 산악 지구의 유격대장 동료","ally"],
+        ["itaesik","sotdukkeong","유격대 지휘 체계 속 동지","ally"],
+        ["itaesik","gangkyeongae","같은 연대에서 함께 싸운 동지","ally"],
+        ["jowonje","anchangmin","소년전사와 청년 지도자, 조직의 위아래","guide"],
+        ["seonwoojin","namintae","방첩대와 경찰서장, 정보와 공권력의 협력","ally"],
+        ["yanghyoseok","namintae","국군 장교와 경찰서장, 토벌 작전의 협력","ally"],
+        ["hyeonjunbae","hyeonobong","혈연, 지주 아버지와 군인 아들","family"],
+        ["hyeonjunbae","choiikseung","벌교 토착 지주 세력 간의 결탁","ally"],
+        ["songgyeonghui","seonwoojin","같은 신문사·문학을 매개로 한 동료 관계","ally"],
+        ["jeonmyeonghwan","gangyang","같은 병원에서 환자를 돌본 원장과 간호사","ally"],
+        ["jeonmyeonghwan","anchangmin","부상당한 안창민을 몰래 치료해 준 인연","guide"],
+        ["jeonmyeonghwan","igeunsul","국가폭력 앞에서 각자의 방식으로 양심을 지킨 인물들","ally"],
+        ["gwonbyeongje","igeunsul","해직된 이근술을 복직시키려 애쓴 서장과 순경","ally"],
+        ["gwonbyeongje","simjaemo","서로 배려하며 협력한 경찰서장과 계엄군 사령관","ally"],
+        ["woljuseunim","seominyeong","종교는 다르지만 서로 존경하는 승려와 교사","ally"],
+        ["jangmoksa","seominyeong","오랜 우정을 나눈 목사와 교사","ally"],
+        ["oss_instructor","kimbeomwoo","버마 전선 이후 OSS 훈련을 함께한 교관과 훈련생","guide"],
+        ["doraji","kimbeomwoo","하와이에서 학병 탈출 청년을 돌봐준 이민 여성과 김범우","guide"],
+        ["bodoyeonmaeng_yumok","gangyang","같은 보도연맹 예비검속 학살 사건으로 희생된 이들","conflict"],
+        ["geochang_yumok","namintae","국가폭력 피해자와 공권력을 상징적으로 잇는 긴장 관계","conflict"]
+      ]
+    },
+    sunshine: {
+      title: "《미스터 션샤인》 등장인물 관계도",
+      groups: [
+        { id:"mainfive", label:"다섯 주인공" },
+        { id:"royal", label:"대한제국 황실(실존)" },
+        { id:"righteous", label:"의병·고애신 가문" },
+        { id:"collab", label:"친일·이완익 계열" },
+        { id:"japanese", label:"일본군·무신회" },
+        { id:"foreign", label:"실존 외국 인물" },
+        { id:"kimfamily", label:"김희성 가문" },
+        { id:"uslegation", label:"미국공사관 계열" },
+        { id:"community", label:"글로리호텔·생활공동체" }
+      ],
+      nodes: [
+        ["eugenechoi","유진 초이","1900년대 초","미 해병대 대위","mainfive"],
+        ["goaeshin","고애신","1900년대 초","의병 저격수","mainfive"],
+        ["gudongmae","구동매","1900년대 초","무신회 낭인","mainfive"],
+        ["kimhuiseong","김희성","1900년대 초","정혼자","mainfive"],
+        ["kudohina","쿠도 히나","1900년대 초","글로리호텔 주인","mainfive"],
+        ["emperorgojong","고종 황제","1852~1919","대한제국 황제","royal"],
+        ["heungseondaewongun","흥선대원군","1820~1898","고종의 아버지","royal"],
+        ["empressmyeongseong","명성황후","1851~1895","고종의 왕비","royal"],
+        ["imperialconsortsunheon","순헌황귀비","1854~1911","고종의 후궁","royal"],
+        ["anchangho","안창호","1878~1938","독립운동가","royal"],
+        ["yijungmun","이정문","1900년대 초","의병 비밀 지휘자","righteous"],
+        ["gosahong","고사홍","1900년대 초","애신의 할아버지","righteous"],
+        ["hamandaek","함안댁","1900년대 초","애신의 유모","righteous"],
+        ["haengrangabeom","행랑아범","1900년대 초","애신의 하인","righteous"],
+        ["ladycho","조씨 부인","1900년대 초","애신의 백모","righteous"],
+        ["goaesun","고애순","1900년대 초","애신의 사촌","righteous"],
+        ["hwangeunsan","황은산","1900년대 초","도공·의병 지도자","righteous"],
+        ["yoshinoko","요시노 코","1900년대 초","황은산의 조수","righteous"],
+        ["jangseunggu","장승구","1900년대 초","애신의 사격 스승","righteous"],
+        ["hongpa","홍파","1900년대 초","장승구의 아내","righteous"],
+        ["junyoung","준영","1900년대 초","젊은 양반","righteous"],
+        ["soah","소아","1900년대 초","기생 출신 의병","righteous"],
+        ["jeonseungjae","전승재","1900년대 초","의병","righteous"],
+        ["songyeong","송영","1900년대 초","해외 의병","righteous"],
+        ["yisangmok","이상목","1900년대 초","지게꾼·의병","righteous"],
+        ["parkmugeol","박무결","1900년대 초","종지기·의병","righteous"],
+        ["bakerrighteous","제빵사","1900년대 초","빵집 주인·의병","righteous"],
+        ["gosangwan","고상완","(고인)","애신의 아버지","righteous"],
+        ["kimhuijin","김희진","(고인)","애신의 어머니","righteous"],
+        ["yiwanik","이완익","1900년대 초","친일 권력자","collab"],
+        ["yideokmun","이덕문","1900년대 초","이완익의 수하","collab"],
+        ["yisehun","이세훈","1900년대 초","외부대신","collab"],
+        ["kimyongju","김용주","1900년대 초","배신자","collab"],
+        ["matsuyama","마츠야마","1900년대 초","일본인 의사","collab"],
+        ["moritakashi","모리 다카시","1900년대 초","일본군 대좌","japanese"],
+        ["sasakisoyu","사사키 소유","1900년대 초","일본군 소좌","japanese"],
+        ["sergeanttsuda","츠다 하사","1900년대 초","일본군 하사관","japanese"],
+        ["sergeantyamada","야마다 하사","1900년대 초","일본군 하사관","japanese"],
+        ["yuzo","유조","1900년대 초","구동매의 부하","japanese"],
+        ["hotaru","호타루","1900년대 초","점술가","japanese"],
+        ["musinsocietyleader","무신회 수장","1900년대 초","무신회 지도자","japanese"],
+        ["gudongmaemother","구동매의 어머니","(고인)","백정 신분","japanese"],
+        ["gudongmaefather","구동매의 아버지","(고인)","백정","japanese"],
+        ["hyungki","형기","1900년대 초","조선인 통역","japanese"],
+        ["suzuki","스즈키","1900년대 초","일본공사관 직원","japanese"],
+        ["itohirobumi","이토 히로부미","1841~1909","초대 조선통감","foreign"],
+        ["hayashigonsuke","하야시 곤스케","1860~1939","주한 일본공사","foreign"],
+        ["hasegawayoshimichi","하세가와 요시미치","1850~1924","주차군 사령관","foreign"],
+        ["horaceallen","호러스 알렌","1858~1932","주한 미국공사","foreign"],
+        ["theodoreroosevelt","시어도어 루스벨트","1858~1919","미국 대통령","foreign"],
+        ["frederickmackenzie","매켄지","1869~1931","영국인 기자","foreign"],
+        ["kimpanseo","김판서","1900년대 초","희성의 할아버지","kimfamily"],
+        ["kimanpyeong","김안평","1900년대 초","희성의 아버지","kimfamily"],
+        ["yunhoseon","윤호선","1900년대 초","희성의 어머니","kimfamily"],
+        ["yeonju","연주","1900년대 초","희성의 아내","kimfamily"],
+        ["kylemoore","카일 무어","1900년대 초","유진의 상관","uslegation"],
+        ["imgwansu","임관수","1900년대 초","공사관 통역관","uslegation"],
+        ["sondomi","손도미","1900년대 초","공사관 소년","uslegation"],
+        ["sonsumi","손수미","1900년대 초","도미의 누나","uslegation"],
+        ["josephstenson","조지프 스텐슨","1900년대 초","선교사","uslegation"],
+        ["stella","스텔라","1900년대 초","선교사·영어 교사","uslegation"],
+        ["yunnamjong","윤남종","1900년대 초","희성의 조수","uslegation"],
+        ["gwidan","귀단","1900년대 초","호텔 하녀·첩자","community"],
+        ["ilsik","일식","1900년대 초","상점 운영자","community"],
+        ["chunsik","춘식","1900년대 초","상점 운영자","community"]
+      ],
+      edges: [
+        ["eugenechoi","goaeshin","엇갈린 사랑, 신분을 넘어선 관계","romance"],
+        ["eugenechoi","gudongmae","같은 시대를 사는 대립적 관계","conflict"],
+        ["eugenechoi","kimhuiseong","우정에 가까운 신뢰","ally"],
+        ["eugenechoi","kudohina","정보와 거래로 얽힌 관계","ally"],
+        ["goaeshin","kimhuiseong","정혼자, 우정에 가까운 관계","family"],
+        ["goaeshin","gudongmae","과거의 인연, 복잡한 감정","conflict"],
+        ["goaeshin","kudohina","같은 시대, 다른 선택","ally"],
+        ["kimhuiseong","kudohina","글로리호텔을 매개로 한 관계","ally"],
+        ["goaeshin","gosahong","조부와 손녀, 명문가의 무게","family"],
+        ["goaeshin","hamandaek","유모와 보살핌","family"],
+        ["goaeshin","haengrangabeom","주인과 충직한 하인","ally"],
+        ["goaeshin","ladycho","백모의 모성적 보살핌","family"],
+        ["goaeshin","goaesun","사촌 관계","family"],
+        ["goaeshin","jangseunggu","사격 스승과 제자","guide"],
+        ["jangseunggu","hongpa","부부, 함께 애신을 지킴","family"],
+        ["goaeshin","gosangwan","부모를 여읜 상실","family"],
+        ["goaeshin","kimhuijin","부모를 여읜 상실","family"],
+        ["gosangwan","kimhuijin","부부, 의병 활동 중 사망","family"],
+        ["gosangwan","jeonseungjae","의병 동료","ally"],
+        ["gosangwan","songyeong","처가 인연","family"],
+        ["hwangeunsan","yoshinoko","스승과 조수, 국적을 넘은 신뢰","guide"],
+        ["hwangeunsan","goaeshin","의병 지도자와 은밀한 협력","ally"],
+        ["yijungmun","goaeshin","의병 지휘 체계 안의 관계","ally"],
+        ["yisangmok","parkmugeol","의병 동료","ally"],
+        ["bakerrighteous","goaeshin","의병 조직 내 은밀한 협력","ally"],
+        ["soah","goaeshin","기생 출신 의병 동료","ally"],
+        ["gudongmae","yiwanik","무신회와 친일 권력의 결탁","ally"],
+        ["gudongmae","yuzo","주인과 충직한 부하","ally"],
+        ["gudongmae","hotaru","동거인, 위태로운 유대","ally"],
+        ["gudongmae","gudongmaemother","백정 신분의 어머니, 비극의 시작","family"],
+        ["gudongmae","gudongmaefather","백정 신분의 아버지, 비극의 시작","family"],
+        ["gudongmae","musinsocietyleader","조직과 수장","ally"],
+        ["gudongmae","kudohina","과거의 인연","conflict"],
+        ["yiwanik","kudohina","친일 권력자와 숨겨진 딸","family"],
+        ["yiwanik","yideokmun","권력자와 수하","ally"],
+        ["yiwanik","yisehun","친일 세력 간 결탁","ally"],
+        ["yiwanik","kimyongju","배신을 이용하는 관계","ally"],
+        ["yiwanik","matsuyama","친일 세력 간 결탁","ally"],
+        ["moritakashi","sasakisoyu","일본군 지휘 체계","ally"],
+        ["sasakisoyu","sergeanttsuda","상관과 부하","ally"],
+        ["sasakisoyu","sergeantyamada","상관과 부하","ally"],
+        ["hyungki","suzuki","일본공사관 동료","ally"],
+        ["emperorgojong","heungseondaewongun","부자, 정치적 긴장","family"],
+        ["emperorgojong","empressmyeongseong","부부","family"],
+        ["emperorgojong","imperialconsortsunheon","황제와 후궁","family"],
+        ["itohirobumi","hayashigonsuke","조선 통제를 위한 협력","ally"],
+        ["hayashigonsuke","hasegawayoshimichi","외교와 군사의 협력","ally"],
+        ["kimpanseo","kimanpyeong","조부와 아버지","family"],
+        ["kimanpyeong","kimhuiseong","아버지와 아들","family"],
+        ["yunhoseon","kimhuiseong","어머니와 아들","family"],
+        ["kimhuiseong","yeonju","부부","family"],
+        ["yeonju","junyoung","남매","family"],
+        ["kylemoore","eugenechoi","상관과 부하","guide"],
+        ["imgwansu","eugenechoi","통역관과 협력","ally"],
+        ["josephstenson","eugenechoi","은인과 은혜를 입은 소년","guide"],
+        ["stella","yunnamjong","교사와 학생","guide"],
+        ["sondomi","sonsumi","남매","family"],
+        ["gwidan","gudongmae","첩자와 정보 제공 대상","conflict"],
+        ["ilsik","chunsik","동업자","ally"]
+      ]
+    },
+    pachinko: {
+      title: "《파친코》 4세대 가족·관계도",
+      // 기획안(Apple_TV_파친코_신규_콘텐츠_기획안_V1) 4절 클러스터 7개를 그대로 반영.
+      // 기본 화면은 핵심 12명만 표시하고 집단별로 단계 확장한다는 원칙(4절)에 따라
+      // 선자·한수·이삭·노아·모자수·솔로몬을 중심 그룹으로 우선 배치했다.
+      groups: [
+        { id:"sunjafamily", label:"선자 가족" },
+        { id:"sunjahansuisak", label:"선자–한수–이삭" },
+        { id:"osakacommunity", label:"오사카 공동체" },
+        { id:"brothers", label:"형제(노아·모자수)" },
+        { id:"finance1989", label:"1989 금융" },
+        { id:"mozasufamily", label:"모자수 가족" },
+        { id:"historicalpower", label:"역사 권력(제도·집단)" }
+      ],
+      nodes: [
+        ["hoonie","훈이","1910~20년대","선자의 아버지","sunjafamily"],
+        ["yangjin","양진","1910~45년대","선자의 어머니","sunjafamily"],
+        ["sunja","선자","1910년대~1989","4대의 중심 인물","sunjafamily"],
+        ["baeknoa","백노아","1930~50년대","선자의 장남","brothers"],
+        ["baekmozasu","백모자수","1930년대~1989","선자의 차남","brothers"],
+        ["baeksolomon","백솔로몬","1989","모자수의 아들","finance1989"],
+        ["kohansu","고한수","1920년대~1989","상인·권력자, 노아의 생부","sunjahansuisak"],
+        ["baekisak","백이삭","1930년대","목사, 선자의 남편","sunjahansuisak"],
+        ["baekyoseb","백요셉","1930~50년대","이삭의 형","osakacommunity"],
+        ["choigyunghee","최경희","1930년대~1989","요셉의 아내","osakacommunity"],
+        ["kimchangho","김창호","1945 전후","가족의 조력자","osakacommunity"],
+        ["reverendyu","유 목사","1930년대","교회 인물","osakacommunity"],
+        ["naomi","나오미","1989","솔로몬의 금융회사 동료","finance1989"],
+        ["tomandrews","톰 앤드루스","1989","솔로몬의 상사","finance1989"],
+        ["mamoruyoshii","마모루 요시이","1989","사업가","finance1989"],
+        ["hangeumja","한금자","1989","토지 소유자","finance1989"],
+        ["etsuko","에츠코","1970~80년대","모자수의 연인","mozasufamily"],
+        ["hana","하나","1970~80년대","에츠코의 딸","mozasufamily"],
+        ["yumi","유미","1950~70년대","모자수의 아내(원작)","mozasufamily"],
+        ["phoebe","피비","1970~80년대","솔로몬의 연인","finance1989"],
+        ["harukitotoyama","하루키 토토야마","1950~70년대","모자수의 친구","osakacommunity"],
+        ["kato","카토","1989","노년 선자의 친구","sunjafamily"],
+        ["childsunja","어린 선자","1910년대","시기별 배역","sunjafamily"],
+        ["teensunja","십대 선자","1920~30년대","시기별 배역","sunjafamily"],
+        ["oldsunja","노년 선자","1989","시기별 배역","sunjafamily"],
+        ["childnoa","어린 노아","1930~45년","시기별 배역","brothers"],
+        ["teennoa","청소년 노아","1945 전후","시기별 배역","brothers"],
+        ["adultnoa","청년 노아","1950년대","시기별 배역","brothers"],
+        ["childmozasu","어린 모자수","1930~45년","시기별 배역","brothers"],
+        ["adultmozasu","성인 모자수","1950년대~1989","시기별 배역","brothers"],
+        ["youngsolomon","청년 솔로몬","1989","시기별 배역","finance1989"],
+        ["oldkyunghee","노년 경희","1989","시기별 배역","osakacommunity"],
+        ["japanese_police1","일본 경찰(제도)","1920년대~1945","식민 통제·감시 집단","historicalpower"],
+        ["yakuza_men","야쿠자 부하들(집단)","1950년대~1989","한수·전후 사업 권력의 폭력 기반","historicalpower"],
+        ["pachinko_staff","파친코 종업원들(집단)","1950년대~1989","모자수 사업의 비공식 경제","historicalpower"],
+        ["factory_supervisor","공장 감독(제도)","1930년대~1945","조선인 노동자 통제","historicalpower"],
+        ["tokyo_bank_executives","도쿄 은행 임원진(집단)","1989","솔로몬에게 성과를 요구하는 기업 권력","historicalpower"],
+        ["real_estate_agent","부동산 중개인","1989","한금자 토지 거래 연결","historicalpower"]
+      ],
+      edges: [
+        ["hoonie","yangjin","부부, 하숙집을 함께 꾸림","family"],
+        ["hoonie","sunja","아버지와 딸, 존엄을 가르침","family"],
+        ["yangjin","sunja","어머니와 딸, 생활의 지혜를 물려줌","family"],
+        ["sunja","kohansu","첫사랑, 보호와 소유의 경계가 흐린 관계","romance"],
+        ["sunja","baekisak","결혼, 심판 대신 책임을 선택받음","family"],
+        ["kohansu","baeknoa","생부, 숨겨진 혈연(스포일러)","conflict"],
+        ["baekisak","baeknoa","호적상 아버지, 성을 물려줌","family"],
+        ["sunja","baeknoa","어머니와 장남","family"],
+        ["sunja","baekmozasu","어머니와 차남","family"],
+        ["baeknoa","baekmozasu","형제, 같은 차별에 다른 방식으로 반응","family"],
+        ["baekmozasu","baeksolomon","아버지와 아들, 더 넓은 기회를 지원","family"],
+        ["baekisak","baekyoseb","형제, 오사카 이주 초기를 함께함","family"],
+        ["baekyoseb","choigyunghee","부부","family"],
+        ["sunja","choigyunghee","동서, 김치 장사로 함께 생계를 책임짐","ally"],
+        ["choigyunghee","kimchangho","전시기 얽히는 감정, 사랑과 책임 사이","conflict"],
+        ["baekisak","reverendyu","오사카 조선인 교회의 신앙 공동체","ally"],
+        ["baeksolomon","naomi","금융회사 동료이자 경쟁자","conflict"],
+        ["baeksolomon","tomandrews","상사와 부하, 완전히 내부인으로 인정받지 못함","conflict"],
+        ["baeksolomon","hangeumja","땅을 사들여야 하는 거래 상대","conflict"],
+        ["tomandrews","hangeumja","회사의 개발 논리와 거절","conflict"],
+        ["mamoruyoshii","hangeumja","같은 거래를 둘러싼 자본의 이해관계","conflict"],
+        ["baeksolomon","mamoruyoshii","벗어나려 했던 자본 구조로 다시 끌려들어감","conflict"],
+        ["baeksolomon","phoebe","미국 유학 시절의 연인","romance"],
+        ["baekmozasu","etsuko","가족 바깥의 관계","romance"],
+        ["etsuko","hana","모녀, 딸의 상실","family"],
+        ["baekmozasu","yumi","부부(원작), 솔로몬의 어머니","family"],
+        ["baekmozasu","harukitotoyama","재일조선인과 일본인 사이의 우정","friend"],
+        ["oldsunja","kato","노년의 외로움과 새로운 관계 가능성","friend"],
+        ["childsunja","teensunja","같은 인물의 시기별 배역","family"],
+        ["teensunja","oldsunja","같은 인물의 시기별 배역","family"],
+        ["childnoa","teennoa","같은 인물의 시기별 배역","family"],
+        ["teennoa","adultnoa","같은 인물의 시기별 배역","family"],
+        ["childmozasu","adultmozasu","같은 인물의 시기별 배역","family"],
+        ["baeksolomon","youngsolomon","같은 인물의 시기별 배역","family"],
+        ["choigyunghee","oldkyunghee","같은 인물의 시기별 배역","family"],
+        ["kohansu","japanese_police1","관동대지진 당시 폭력에서 살아남은 배경(회상)","conflict"],
+        ["kohansu","yakuza_men","전후 사업 권력의 폭력적 기반","ally"],
+        ["baekmozasu","pachinko_staff","파친코 사업의 고용주와 종업원","ally"],
+        ["baekyoseb","factory_supervisor","공장 노동자와 감독의 위계","conflict"],
+        ["baeksolomon","tokyo_bank_executives","성과와 충성을 요구받는 조직 권력","conflict"],
+        ["baeksolomon","real_estate_agent","한금자 토지 거래를 매개하는 실무 관계","ally"]
+      ]
+    },
+    namiya: {
+      title: "《나미야 잡화점의 기적》 편지로 이어진 사람들",
+      // 이 작품은 결말의 반전이 핵심이라, 인물 간 관계선의 라벨은 구체적 정체·혈연을 밝히지 않고
+      // '편지를 주고받음' 수준으로 절제해서 표기한다(스포일러 최소화 원칙).
+      groups: [
+        { id:'namiyafamily', label:'나미야 일가' },
+        { id:'thieves', label:'좀도둑 3인방' },
+        { id:'letters', label:'고민상담 사연자' },
+        { id:'marumitsuen', label:'환광원' }
+      ],
+      nodes: [
+        ['namiyayuji','나미야 유지','쇼와시대','잡화점 주인','namiyafamily'],
+        ['namiyatakayuki','나미야 다카유키','현대','유지의 아들','namiyafamily'],
+        ['namiyashungo','나미야 슌고','현대','일가의 증손자','namiyafamily'],
+        ['shota','쇼타','현대','좀도둑 3인방','thieves'],
+        ['atsuya','아쓰야','현대','좀도둑 3인방','thieves'],
+        ['kohei','고헤이','현대','좀도둑 3인방','thieves'],
+        ['tsukikoshizuko','달 토끼(기타자와 시즈코)','1979년','펜싱선수','letters'],
+        ['katsuo','생선가게 예술가(마쓰오카 가쓰로)','쇼와시대','아마추어 뮤지션','letters'],
+        ['midori','그린 리버(기와베 미도리)','쇼와시대','고민상담 사연자','letters'],
+        ['kosuke','폴 레논(와쿠 고스케)','쇼와시대','고민상담 사연자','letters'],
+        ['harumi','예전에 길을 잃었던 강아지(무토 하루미)','현대','고민상담 사연자','marumitsuen'],
+        ['akikominazuki','미나즈키 아키코','~1969년','환광원 설립자','marumitsuen'],
+        ['yoshikazuminazuki','미나즈키 요시카즈','1988년 무렵','환광원 관장','marumitsuen'],
+        ['seri','미즈히라 세리','현대','환광원 출신 가수','marumitsuen'],
+        ['tatsu','미즈히라 다쓰','현대','세리의 남동생','marumitsuen']
+      ],
+      edges: [
+        ['namiyayuji','namiyatakayuki','아버지와 아들','family'],
+        ['namiyatakayuki','namiyashungo','할아버지와 증손자','family'],
+        ['namiyayuji','akikominazuki','오래전 마음을 나눴던 사이(집안의 반대로 헤어짐)','romance'],
+        ['shota','atsuya','좀도둑 동료','ally'],
+        ['shota','kohei','좀도둑 동료','ally'],
+        ['atsuya','kohei','좀도둑 동료','ally'],
+        ['shota','namiyayuji','편지를 통해 얽히는 인연 — 자세한 사연은 작품에서 확인','conflict'],
+        ['namiyayuji','tsukikoshizuko','고민상담 편지를 주고받음','ally'],
+        ['namiyayuji','katsuo','고민상담 편지를 주고받음','ally'],
+        ['namiyayuji','midori','고민상담 편지를 주고받음','ally'],
+        ['namiyayuji','kosuke','고민상담 편지를 주고받음','ally'],
+        ['shota','harumi','편지를 통해 얽히는 인연 — 자세한 사연은 작품에서 확인','conflict'],
+        ['akikominazuki','yoshikazuminazuki','남매','family'],
+        ['akikominazuki','harumi','환광원 설립자와 원생','guide'],
+        ['seri','tatsu','남매','family'],
+        ['seri','harumi','환광원에서 함께 자란 사이','ally'],
+        ['yoshikazuminazuki','harumi','환광원 관장과 원생','guide']
+      ]
+    },
+    suspectx: {
+      title: "《용의자 X의 헌신》 옆집에서 시작된 이야기",
+      // 이 작품은 이시가미가 실제로 무엇을 했는지가 결말의 트릭이므로, 그와 관련된 관계선은
+      // 구체적 내용 없이 '사건을 통해 얽히는 인연' 수준으로 절제해서 표기한다(스포일러 최소화 원칙).
+      groups: [
+        { id:'neighbors', label:'이웃' },
+        { id:'investigation', label:'수사' }
+      ],
+      nodes: [
+        ['ishigami_tetsuya','이시가미 데쓰야','현대','고교 수학교사','neighbors'],
+        ['hanaoka_yasuko','하나오카 야스코','현대','도시락가게 직원','neighbors'],
+        ['hanaoka_misato','하나오카 미사토','현대','야스코의 딸','neighbors'],
+        ['togashi_shinji','도가시 신지','현대','야스코의 전 남편','neighbors'],
+        ['yukawa_manabu','유카와 마나부','현대',"물리학자 '갈릴레오'",'investigation'],
+        ['kusanagi_shunpei','구사나기 슌페이','현대','형사','investigation'],
+        ['utsumi_kaoru','우츠미 가오루','현대','형사','investigation']
+      ],
+      edges: [
+        ['ishigami_tetsuya','hanaoka_yasuko','옆집 이웃','ally'],
+        ['hanaoka_yasuko','hanaoka_misato','모녀','family'],
+        ['hanaoka_yasuko','togashi_shinji','전 부부','conflict'],
+        ['ishigami_tetsuya','togashi_shinji','사건을 통해 얽히는 인연 — 자세한 사연은 작품에서 확인','conflict'],
+        ['yukawa_manabu','kusanagi_shunpei','대학 동창이자 수사 파트너','ally'],
+        ['kusanagi_shunpei','utsumi_kaoru','선후배 형사','ally'],
+        ['yukawa_manabu','ishigami_tetsuya','대학 시절부터 서로의 실력을 알아본 사이','conflict'],
+        ['yukawa_manabu','hanaoka_yasuko','수사를 통해 알게 되는 사이 — 자세한 사연은 작품에서 확인','conflict']
+      ]
+    },
+    byakuya: {
+      title: "《백야행》 19년을 건너온 두 사람",
+      // 이 작품은 두 주인공의 관계와 진실이 19년에 걸쳐 서서히 드러나는 것이 핵심이므로,
+      // 관계선은 구체적 인과관계 없이 절제된 수준으로만 표기한다(스포일러 최소화 원칙을 특히 엄격히 적용).
+      groups: [
+        { id:'nishimoto', label:'니시모토가' },
+        { id:'kirihara', label:'기리하라가' },
+        { id:'investigation', label:'수사' }
+      ],
+      nodes: [
+        ['yukiho','가라사와 유키호','1973~1992','여주인공','nishimoto'],
+        ['nishimoto_fumiyo','니시모토 후미요','~1973','유키호의 어머니','nishimoto'],
+        ['terasaki_tadao','데라사키 타다오','~1973','후미요와 가까웠던 인물','nishimoto'],
+        ['ryoji','기리하라 료지','1973~1992','남주인공','kirihara'],
+        ['kirihara_yosuke','기리하라 요스케','~1973','전당포 주인','kirihara'],
+        ['kirihara_yayoiko','기리하라 야요이코','1973~','료지의 어머니','kirihara'],
+        ['sasagaki_junzo','사사가키 준조','1973~1992','형사','investigation']
+      ],
+      edges: [
+        ['nishimoto_fumiyo','yukiho','모녀','family'],
+        ['nishimoto_fumiyo','terasaki_tadao','가까운 사이','ally'],
+        ['kirihara_yosuke','ryoji','부자','family'],
+        ['kirihara_yosuke','kirihara_yayoiko','부부','family'],
+        ['kirihara_yayoiko','ryoji','모자','family'],
+        ['kirihara_yosuke','nishimoto_fumiyo','사건을 통해 얽히는 인연 — 자세한 사연은 작품에서 확인','conflict'],
+        ['sasagaki_junzo','kirihara_yosuke','수사 대상 사건의 피해자','conflict'],
+        ['sasagaki_junzo','yukiho','오랜 세월 놓지 못하는 추적 — 자세한 사연은 작품에서 확인','conflict'],
+        ['sasagaki_junzo','ryoji','오랜 세월 놓지 못하는 추적 — 자세한 사연은 작품에서 확인','conflict'],
+        ['yukiho','ryoji','어린 시절부터 알고 지낸 사이 — 자세한 사연은 작품에서 확인','conflict']
+      ]
+    },
+    kimetsu: {
+      title: "《귀멸의 칼날》 오니에 맞선 이들의 인연",
+      groups: [
+        { id:'kamado', label:'카마도 가족' },
+        { id:'hashira', label:'귀살대 주(하시라)' },
+        { id:'ubuyashiki', label:'우부야시키 가문' },
+        { id:'kizuki', label:'12귀월' }
+      ],
+      nodes: [
+        ['tanjiro','카마도 탄지로','다이쇼시대','주인공','kamado'],
+        ['nezuko','카마도 네즈코','다이쇼시대','탄지로의 여동생','kamado'],
+        ['zenitsu','아가츠마 젠이츠','다이쇼시대','귀살대 동료','kamado'],
+        ['inosuke','하시비라 이노스케','다이쇼시대','귀살대 동료','kamado'],
+        ['giyu','토미오카 기유','다이쇼시대','수주','hashira'],
+        ['shinobu','코쵸 시노부','다이쇼시대','충주','hashira'],
+        ['tengen','우즈이 텐겐','다이쇼시대','음주','hashira'],
+        ['kyojuro','렌고쿠 쿄쥬로','다이쇼시대','염주(고인)','hashira'],
+        ['mitsuri','칸로지 미츠리','다이쇼시대','연주','hashira'],
+        ['obanai','이구로 오바나이','다이쇼시대','사주','hashira'],
+        ['sanemi','시나즈가와 사네미','다이쇼시대','풍주','hashira'],
+        ['kagaya','우부야시키 카가야','다이쇼시대','귀살대 당주','ubuyashiki'],
+        ['muzan','키부츠지 무잔','헤이안시대~다이쇼시대','오니의 시조','kizuki'],
+        ['akaza','아카자','다이쇼시대','상현의 삼','kizuki']
+      ],
+      edges: [
+        ['tanjiro','nezuko','오누이 — 인간으로 되돌리려 여정을 시작함','family'],
+        ['tanjiro','zenitsu','귀살대 동기이자 동료','ally'],
+        ['tanjiro','inosuke','귀살대 동기이자 동료','ally'],
+        ['tanjiro','giyu','탄지로를 처음 살려 보낸 하시라','ally'],
+        ['tanjiro','kyojuro','무한열차에서 함께 싸운 인연 — 자세한 사연은 작품에서 확인','ally'],
+        ['tanjiro','akaza','무한열차·무한성에서 거듭 맞서는 숙적','conflict'],
+        ['shinobu','tengen','같은 하시라 동료','ally'],
+        ['mitsuri','obanai','서로에게 마음을 여는 사이 — 자세한 사연은 작품에서 확인','ally'],
+        ['sanemi','obanai','같은 하시라 동료','ally'],
+        ['kagaya','giyu','당주와 대원','ally'],
+        ['kagaya','shinobu','당주와 대원','ally'],
+        ['muzan','akaza','오니의 시조와 그 부하','ally'],
+        ['muzan','kagaya','백여 년에 걸친 귀살대와 오니의 대립 — 자세한 사연은 작품에서 확인','conflict'],
+        ['muzan','tanjiro','가족을 앗아간 원수','conflict']
+      ]
+    },
+    hope: {
+      title: "《호프》 서로 다른 두 존재 사이에서",
+      groups: [
+        { id:'human', label:'인간' },
+        { id:'alien', label:'외계 생명체' },
+        { id:'village', label:'마을 조연' }
+      ],
+      nodes: [
+        ['beomseok','고범석','극중 1980년대 초','호포출장소 소장','human'],
+        ['seonggi','고성기','극중 1980년대 초','사냥꾼 리더','human'],
+        ['seongae','임성애','극중 1980년대 초','호포출장소 소속','human'],
+        ['vamigere','바미기르','극중 1980년대 초','외계 생명체','alien'],
+        ['maveyyo','마베이요','극중 1980년대 초','외계 생명체','alien'],
+        ['jaur','조르','극중 1980년대 초','외계 생명체','alien'],
+        ['kali','칼리','극중 1980년대 초','외계 종족의 황태자','alien'],
+        ['nagyeon','낙연','극중 1980년대 초','마을 주민','village'],
+        ['yangbae','양배','극중 1980년대 초','저수지 인근 목수','village'],
+        ['haesul','박해술','극중 1980년대 초','심마니 노인','village'],
+        ['gyeongseok','경석','극중 1980년대 초','정육점 주인','village']
+      ],
+      edges: [
+        ['beomseok','seongae','같은 출장소 동료','ally'],
+        ['beomseok','nagyeon','사건을 함께 겪으며 얽히는 사이','ally'],
+        ['beomseok','gyeongseok','오랜 친구 — 오인 사격으로 얽히는 사연은 작품에서 확인','conflict'],
+        ['seonggi','vamigere','마을에서 맞닥뜨리는 존재','conflict'],
+        ['seonggi','maveyyo','숲과 고속도로에서 거듭 맞서는 상대','conflict'],
+        ['seonggi','jaur','숲에서 처음 조우하는 외계 생명체','conflict'],
+        ['yangbae','kali','숲에서 조우해 사살한 어린 외계 생명체 — 자세한 사연은 작품에서 확인','conflict'],
+        ['haesul','seongae','목격담을 전하는 사이','ally'],
+        ['seongae','beomseok','해술의 목격담을 전달하며 사건 확대의 계기를 만드는 사이','ally'],
+        ['maveyyo','jaur','같은 외계 생명체 무리','ally'],
+        ['kali','jaur','실은 부모 자식 관계 — 자세한 사연은 작품에서 확인','family']
+      ]
+    },
+    odyssey: {
+      title: "《오디세이》 신들의 시험과 귀향의 실",
+      groups: [
+        { id:'royal', label:'이타카 왕가' },
+        { id:'suitor_crew', label:'구혼자·부하' },
+        { id:'sparta_mycenae', label:'스파르타·미케네' },
+        { id:'divine', label:'신·괴물' }
+      ],
+      nodes: [
+        ['odysseus','오디세우스','귀향 10년','이타카의 왕','royal'],
+        ['penelope','페넬로페','귀향 10년','이타카의 왕비','royal'],
+        ['telemachus','텔레마코스','귀향 10년','이타카의 왕자','royal'],
+        ['antinous','안티노오스','귀향 10년','구혼자 대표','suitor_crew'],
+        ['eumaeus','에우마이오스','귀향 10년','돼지치기','suitor_crew'],
+        ['eurylochus','에우릴로코스','귀향 10년','오디세우스의 부관','suitor_crew'],
+        ['sinon','시논','트로이 전쟁기','이타카 병사','suitor_crew'],
+        ['menelaus','메넬라오스','귀향 10년','스파르타의 왕','sparta_mycenae'],
+        ['helen','헬레네','귀향 10년','스파르타의 왕비','sparta_mycenae'],
+        ['agamemnon','아가멤논','트로이 전쟁기','미케네의 왕','sparta_mycenae'],
+        ['clytemnestra','클리타임네스트라','트로이 전쟁기','미케네의 왕비','sparta_mycenae'],
+        ['athena','아테나','신화 시대','지혜와 전략의 여신','divine'],
+        ['calypso','칼립소','귀향 10년','오기기아 섬의 여신','divine'],
+        ['circe','키르케','귀향 1년차','아이아이아 섬의 마녀','divine'],
+        ['polyphemus','폴리페무스','귀향 1년차','외눈박이 거인','divine'],
+        ['poseidon','포세이돈','신화 시대','바다의 신','divine']
+      ],
+      edges: [
+        ['odysseus','penelope','20년을 기다린 부부 — 재회의 방식은 작품에서 확인','family'],
+        ['odysseus','telemachus','부자 — 결말에서 왕위를 넘겨받는 사이','family'],
+        ['penelope','antinous','수의를 짜는 척 구혼을 거절하는 사이','conflict'],
+        ['telemachus','antinous','암살 위협까지 받는 대립 관계','conflict'],
+        ['odysseus','eumaeus','거지로 변장한 오디세우스를 알아보는 옛 심복','ally'],
+        ['odysseus','eurylochus','부관이지만 리더십에 거듭 반발하는 사이','conflict'],
+        ['odysseus','sinon','목마 작전을 함께한 전우 — 저승에서 다시 만난다','ally'],
+        ['sinon','antinous','징병 추첨을 둘러싼 원한 — 자세한 사연은 작품에서 확인','conflict'],
+        ['menelaus','helen','트로이 전쟁의 명목상 원인이 된 불안정한 부부','family'],
+        ['agamemnon','clytemnestra','귀향 후 파국을 맞는 부부 — 자세한 사연은 작품에서 확인','conflict'],
+        ['helen','clytemnestra','쌍둥이 자매','family'],
+        ['odysseus','athena','오디세우스를 각별히 아끼는 수호신','ally'],
+        ['odysseus','calypso','오랫동안 그를 붙잡아 둔 여신 — 자세한 사연은 작품에서 확인','conflict'],
+        ['odysseus','circe','부하들을 돼지로 만들었다가 화해에 이르는 마녀','conflict'],
+        ['odysseus','polyphemus','실명당한 원한이 저주로 이어지는 사이','conflict'],
+        ['polyphemus','poseidon','부자 — 포세이돈이 오디세우스를 벌하는 이유','family'],
+        ['poseidon','odysseus','극 전체를 관통하는 실질적 적대신','conflict']
+      ]
+    },
+    dokkaebi: {
+      title: "《도깨비》 900년을 넘나든 인연",
+      groups: [
+        { id:'goblin_pair', label:'도깨비·신부' },
+        { id:'reaper_pair', label:'저승사자·써니' },
+        { id:'goryeo', label:'고려시대 인물' },
+        { id:'modern_side', label:'현대 주변 인물' }
+      ],
+      nodes: [
+        ['kim_shin','김신 (도깨비)','고려~현대','불멸의 도깨비','goblin_pair'],
+        ['ji_eun_tak','지은탁','현대','도깨비의 신부','goblin_pair'],
+        ['wang_yeo_grim_reaper','저승사자 (왕여)','고려~현대','기억을 잃은 저승사자','reaper_pair'],
+        ['kim_sun_sunny','김선 (써니)','고려~현대','김신의 누이·저승사자의 짝','reaper_pair'],
+        ['park_joong_heon','박중헌','고려','간신, 근본 악역','goryeo'],
+        ['goryeo_prev_king','선왕','고려','왕여의 선대 국왕','goryeo'],
+        ['yoo_deok_hwa','유덕화','현대','천우그룹 후계자','modern_side'],
+        ['yoo_shin_woo','유신우 회장','현대','천우그룹 회장','modern_side'],
+        ['kim_secretary_do_young','김비서','현대','천우그룹 비서→CEO','modern_side'],
+        ['ji_yeon_sook','지연숙','현대','은탁의 이모','modern_side'],
+        ['samshin_grandmother','삼신할매','현대','생명을 점지하는 신','modern_side']
+      ],
+      edges: [
+        ['kim_shin','ji_eun_tak','900년을 기다린 도깨비와 신부 — 결말은 작품에서 확인','family'],
+        ['wang_yeo_grim_reaper','kim_sun_sunny','저승사자와 삼계탕집 사장으로 다시 만난 인연','family'],
+        ['kim_shin','wang_yeo_grim_reaper','도깨비 하우스를 함께 쓰는 룸메이트이자 옛 왕과 신하','ally'],
+        ['kim_shin','kim_sun_sunny','고려시대의 하나뿐인 남매','family'],
+        ['kim_shin','park_joong_heon','김신을 역적으로 몬 원수','conflict'],
+        ['park_joong_heon','goryeo_prev_king','독살을 저지른 간신과 선왕','conflict'],
+        ['park_joong_heon','wang_yeo_grim_reaper','어린 왕여를 조종한 간신과 왕','conflict'],
+        ['wang_yeo_grim_reaper','kim_shin','김신을 죽음으로 몬 옛 왕 — 훗날 밝혀지는 진실','conflict'],
+        ['kim_shin','yoo_deok_hwa','금으로 일으킨 가문의 후손이자 하숙집 세입자','ally'],
+        ['yoo_deok_hwa','yoo_shin_woo','손자와 할아버지','family'],
+        ['yoo_shin_woo','kim_secretary_do_young','회장과 비서','ally'],
+        ['kim_shin','kim_secretary_do_young','오래전부터 은밀히 도움을 준 은인','ally'],
+        ['ji_eun_tak','ji_yeon_sook','조카를 학대한 이모','conflict'],
+        ['samshin_grandmother','ji_eun_tak','생명을 점지하고 운명에 개입하는 신','ally']
+      ]
+    },
+    gwandong: {
+      title: "《관동별곡》 임금과 신하, 그리고 관동팔경",
+      groups: [
+        { id:'author', label:'작자' },
+        { id:'royal', label:'조선 왕실' }
+      ],
+      nodes: [
+        ['jeong_cheol','정철 (송강)','1580년','강원도관찰사','author'],
+        ['seonjo','선조','재위 1567~1608','조선 제14대 국왕','royal']
+      ],
+      edges: [
+        ['seonjo','jeong_cheol','정철에게 강원도관찰사 직함을 내린 임금과 신하 — 관동별곡은 그 은혜에 대한 감격으로 시작된다','ally']
+      ]
+    },
+    wangsanam: {
+      title: "《왕과 사는 남자》 등장인물 관계도",
+      groups: [
+        { id:'royal', label:'조선 왕실' },
+        { id:'sejoregime', label:'계유정난 찬탈세력' },
+        { id:'purged', label:'계유정난 피화인' },
+        { id:'geumseong', label:'금성대군 복위운동' },
+        { id:'sixmartyrs', label:'사육신' },
+        { id:'livingsix', label:'생육신' },
+        { id:'loyalty', label:'충절' },
+        { id:'betrayal', label:'밀고·변절' },
+        { id:'original', label:'영화 오리지널 캐릭터' }
+      ],
+      nodes: [
+        ['danjong','단종 (이홍위)','1441~1457','조선 6대 왕','royal'],
+        ['munjong','문종','1414~1452','단종의 부','royal'],
+        ['jeongsun','정순왕후 송씨','1440~1521','단종의 비','royal'],
+        ['songhyeonsu','송현수','~1457','정순왕후의 부친','royal'],
+        ['sejo','세조 (수양대군)','1417~1468','조선 7대 왕','sejoregime'],
+        ['hanmyeonghoe','한명회','1415~1487','책사·훈신','sejoregime'],
+        ['gimjongseo','김종서','1383~1453','좌의정','purged'],
+        ['hwangboin','황보인','1387~1453','영의정','purged'],
+        ['anpyeong','안평대군','1418~1453','세종의 3남','purged'],
+        ['geumseong','금성대군 (이유)','1426~1457','세종의 6남','geumseong'],
+        ['ibohheum','이보흠','~1457','순흥부사','geumseong'],
+        ['seongsammun','성삼문','1418~1456','사육신','sixmartyrs'],
+        ['bakpaengnyeon','박팽년','1417~1456','사육신','sixmartyrs'],
+        ['hawiji','하위지','1412~1456','사육신','sixmartyrs'],
+        ['igae','이개','1417~1456','사육신','sixmartyrs'],
+        ['yuseongwon','유성원','~1456','사육신','sixmartyrs'],
+        ['yueungbu','유응부','~1456','사육신(무신)','sixmartyrs'],
+        ['gimmungi','김문기','1399~1456','사육신(추가 인정)','sixmartyrs'],
+        ['gimsiseup','김시습','1435~1493','생육신','livingsix'],
+        ['namhyoon','남효온','1454~1492','생육신·「육신전」 저자','livingsix'],
+        ['eomheungdo','엄흥도','15세기','영월 호장','loyalty'],
+        ['gimjil','김질','1422~1478','단종 복위 거사 밀고자','betrayal'],
+        ['jeongchangson','정창손','1402~1487','김질의 장인·밀고 가담','betrayal'],
+        ['maehwa','매화','영화 설정','단종을 보필한 궁녀(영화 오리지널)','original']
+      ],
+      edges: [
+        ['danjong','sejo','숙부가 조카의 왕위를 빼앗다 — 이 작품 전체를 관통하는 갈등의 축','conflict'],
+        ['danjong','munjong','부자 — 문종은 어린 세자를 원로 대신들에게 부탁하고 일찍 승하한다','family'],
+        ['danjong','jeongsun','부부 — 유배로 생이별하고 다시 만나지 못한다','family'],
+        ['danjong','eomheungdo','아무도 곁을 지키려 하지 않을 때 유일하게 목숨 걸고 곁을 지킨 인물 — 영화의 실질적 주제','guide'],
+        ['danjong','maehwa','단종을 가장 가까이서 보필한 궁녀(영화 오리지널 캐릭터)','guide'],
+        ['sejo','hanmyeonghoe','계유정난을 함께 설계하고 실행한 책사','ally'],
+        ['sejo','gimjongseo','계유정난 당일 밤 직접 찾아가 살해하다','conflict'],
+        ['sejo','hwangboin','같은 밤, 부하를 시켜 살해하다','conflict'],
+        ['sejo','anpyeong','이복형제 — 강화도로 유배 보낸 뒤 사사하다','conflict'],
+        ['sejo','geumseong','친형제 — 끝까지 반대하다 결국 사사하다','conflict'],
+        ['sejo','seongsammun','자신을 시해하려 한 옛 신하를 처형하다','conflict'],
+        ['geumseong','ibohheum','순흥에서 함께 단종 복위를 도모한 동지','ally'],
+        ['geumseong','songhyeonsu','같은 해, 단종 복위 관련 사건으로 함께 처형되다','ally'],
+        ['seongsammun','bakpaengnyeon','집현전 동료이자 단종 복위 거사의 핵심 동지','ally'],
+        ['seongsammun','hawiji','거사를 함께 도모한 동지','ally'],
+        ['seongsammun','igae','거사를 함께 도모한 동지','ally'],
+        ['seongsammun','yuseongwon','거사를 함께 도모한 동지','ally'],
+        ['seongsammun','yueungbu','문신과 무신, 서로 다른 역할로 거사를 함께 준비하다','ally'],
+        ['seongsammun','gimmungi','병력 동원을 맡은 동지','ally'],
+        ['seongsammun','gimjil','함께 거사를 도모했던 동료에게 밀고당하다','conflict'],
+        ['gimjil','jeongchangson','장인과 사위 — 함께 세조에게 밀고하다','family'],
+        ['gimjil','sejo','밀고 이후 공신에 책록되며 영달하다','ally'],
+        ['gimsiseup','danjong','벼슬을 버리고 평생 절의를 지키며 단종을 그리워하다','guide'],
+        ['namhyoon','seongsammun','후대에 「육신전」을 저술해 이들의 이름을 역사에 남기다','guide']
+      ]
+    },
+    spiderman: {
+      title: "《스파이더맨: 홈커밍》 등장인물 관계도",
+      groups: [
+        { id:'protagonists', label:'피터의 친구들' },
+        { id:'school', label:'미드타운 학생들' },
+        { id:'schoolstaff', label:'교직원' },
+        { id:'family', label:'가족·이웃' },
+        { id:'avengers', label:'어벤져스·스타크' },
+        { id:'vulture', label:'벌처 일당' }
+      ],
+      nodes: [
+        ['sm_peter','피터 파커 / 스파이더맨','현재','주인공','protagonists'],
+        ['sm_ned','네드 리즈','현재','피터의 절친','protagonists'],
+        ['sm_mj','미셸 "MJ" 존스','현재','급우','protagonists'],
+        ['sm_liz','리즈 앨런','현재','디케슬론 팀 주장','school'],
+        ['sm_flash','유진 "플래시" 톰슨','현재','피터의 라이벌','school'],
+        ['sm_betty','베티 브랜트','현재','디케슬론 팀원','school'],
+        ['sm_morita','모리타 교장','현재','미드타운 교장','schoolstaff'],
+        ['sm_harrington','해링턴 선생님','현재','디케슬론 담당 교사','schoolstaff'],
+        ['sm_may','메이 파커','현재','피터의 이모','family'],
+        ['sm_delmar','델마 아저씨','현재','동네 델리 사장','family'],
+        ['sm_tonystark','토니 스타크 / 아이언맨','현재','피터의 멘토','avengers'],
+        ['sm_happy','해피 호건','현재','피터의 담당자','avengers'],
+        ['sm_pepper','페퍼 포츠','현재','스타크 인더스트리 CEO','avengers'],
+        ['sm_hoag','앤 마리 호그','현재','데미지 컨트롤 국장','avengers'],
+        ['sm_toomes','에이드리언 툼스 / 벌처','현재','메인 빌런','vulture'],
+        ['sm_doris','도리스 툼스','현재','툼스의 아내','vulture'],
+        ['sm_brice','재크슨 브라이스 / 쇼커','현재','툼스의 부하','vulture'],
+        ['sm_schultz','허먼 슐츠 / 쇼커','현재','툼스의 부하','vulture'],
+        ['sm_mason','피니어스 메이슨 / 팅커러','현재','무기 제작 기술자','vulture'],
+        ['sm_aaron','애런 데이비스','현재','소규모 밀매업자','vulture']
+      ],
+      edges: [
+        ['sm_peter','sm_ned','가장 친한 친구 — 스파이더맨의 정체를 아는 첫 번째 인물','ally'],
+        ['sm_peter','sm_mj','같은 반 급우, 시리즈가 진행될수록 가까워지는 관계','ally'],
+        ['sm_peter','sm_liz','짝사랑하는 3학년 선배','ally'],
+        ['sm_peter','sm_flash','사사건건 놀리는 라이벌','conflict'],
+        ['sm_peter','sm_may','이모이자 유일한 보호자','family'],
+        ['sm_peter','sm_delmar','단골 델리 사장, 은행 강도 사건에서 그를 구해줌','ally'],
+        ['sm_peter','sm_tonystark','멘토이자 엄격한 시험관','guide'],
+        ['sm_peter','sm_happy','연락을 애타게 기다리는 담당자','ally'],
+        ['sm_peter','sm_toomes','벌처의 정체를 알게 되며 최대 숙적이 됨','conflict'],
+        ['sm_peter','sm_aaron','무기 추적 과정에서 얽히는 소규모 밀매업자','conflict'],
+        ['sm_ned','sm_mj','피터를 통해 알게 된 같은 반 친구','ally'],
+        ['sm_liz','sm_toomes','아버지와 딸 — 리즈는 아버지의 이중생활을 전혀 모름','family'],
+        ['sm_liz','sm_doris','모녀','family'],
+        ['sm_liz','sm_flash','같은 디케슬론 팀 동료','ally'],
+        ['sm_liz','sm_betty','같은 디케슬론 팀 동료','ally'],
+        ['sm_harrington','sm_liz','디케슬론 팀 담당 교사와 팀 주장','guide'],
+        ['sm_harrington','sm_morita','같은 학교 동료 교사','ally'],
+        ['sm_may','sm_delmar','같은 동네 이웃','ally'],
+        ['sm_tonystark','sm_happy','오랜 보디가드이자 파트너','ally'],
+        ['sm_tonystark','sm_pepper','스타크 인더스트리의 파트너','ally'],
+        ['sm_tonystark','sm_hoag','데미지 컨트롤과 협력하는 관계','ally'],
+        ['sm_toomes','sm_doris','부부 — 도리스는 남편의 이중생활을 전혀 모름','family'],
+        ['sm_toomes','sm_hoag','일자리를 빼앗긴 원한 관계','conflict'],
+        ['sm_toomes','sm_brice','무기 밀매 조직의 부하','ally'],
+        ['sm_toomes','sm_schultz','무기 밀매 조직의 부하','ally'],
+        ['sm_toomes','sm_mason','무기 제작을 맡기는 기술자','ally'],
+        ['sm_toomes','sm_aaron','무기를 판매하는 소규모 거래처','ally'],
+        ['sm_brice','sm_schultz','"쇼커" 슈트를 물려받는 동료','ally']
+      ]
+    },
+    sonyeon: {
+      title: "《소년이 온다》 인물 관계도",
+      groups: [
+        { id:'boys', label:'상무관의 소년들' },
+        { id:'survivors', label:'살아남은 이들' },
+        { id:'family', label:'가족' },
+        { id:'real', label:'실존 인물' }
+      ],
+      nodes: [
+        ['sy_dongho','강동호','1980년','상무관 자원봉사 · 화자','boys'],
+        ['sy_jeongdae','정대','1980년','동호의 친구 · 화자','boys'],
+        ['sy_eunsook','은숙','1980년대','상무관 자원봉사 · 화자','survivors'],
+        ['sy_jinsu','김진수','1980~1990년','구금 생존자 · 화자','survivors'],
+        ['sy_seonju','선주','2000년대','구금 생존자 · 화자','survivors'],
+        ['sy_mother','동호의 어머니','현재','화자','family'],
+        ['sy_moonjaehak','문재학','1963~1980','실존 희생자 (동호의 모티브)','real'],
+        ['sy_yoonsangwon','윤상원','1950~1980','실존 인물 · 시민군 대변인','real'],
+        ['sy_parkyongjun','박용준','1956~1980','실존 인물 · YWCA 활동가','real'],
+        ['sy_hinzpeter','위르겐 힌츠페터','1980년','실존 인물 · 외신 기자','real']
+      ],
+      edges: [
+        ['sy_dongho','sy_jeongdae','정대의 죽음을 목격하고 상무관에 남기로 결심함','ally'],
+        ['sy_dongho','sy_eunsook','상무관에서 함께 시신 수습을 도움','ally'],
+        ['sy_dongho','sy_mother','모자 — 어머니의 만류에도 상무관에 남음','family'],
+        ['sy_eunsook','sy_jinsu','같은 시기 항쟁을 겪은 동료','ally'],
+        ['sy_jinsu','sy_seonju','구금 중 함께 고통을 겪은 동료','ally'],
+        ['sy_dongho','sy_moonjaehak','소설 속 동호는 실존 인물 문재학이 모티브','guide'],
+        ['sy_moonjaehak','sy_yoonsangwon','같은 시기 옛 전남도청에서 최후를 맞음','ally'],
+        ['sy_yoonsangwon','sy_parkyongjun','시민 수습대책위·YWCA에서 함께 활동','ally'],
+        ['sy_hinzpeter','sy_yoonsangwon','외신 기자회견을 통해 실상을 세계에 알림','ally']
+      ]
+    },
+    priests: {
+      title: "《검은 사제들》 등장인물 관계도",
+      groups: [
+        { id:'exorcists', label:'구마 사제단' },
+        { id:'church', label:'교단 지도부' },
+        { id:'victim', label:'피해자·가족' },
+        { id:'shaman', label:'무속' }
+      ],
+      nodes: [
+        ['pr_kim','김범신 신부','현재','주인공 · 프란치스코회','exorcists'],
+        ['pr_choi','최준호 부제','현재','신학생 · 조수','exorcists'],
+        ['pr_jeong','정기범 신부','현재','김범신의 스승','exorcists'],
+        ['pr_italian','이탈리아인 스승 사제','과거','첫 구마 실패','exorcists'],
+        ['pr_dean','학장 신부','현재','신학교 학장','church'],
+        ['pr_monsignor','토마스 몬시뇰','현재','명동성당 총괄','church'],
+        ['pr_abbot','수도원장','현재','프란치스코회 상급자','church'],
+        ['pr_youngshin','이영신','현재','빙의 소녀','victim'],
+        ['pr_parents','영신의 부모','현재','영신의 가족','victim'],
+        ['pr_choisister','최부제의 여동생','과거(회상)','최준호의 트라우마','victim'],
+        ['pr_shaman','제천 법사','현재','대살굿 시도','shaman'],
+        ['pr_yeongju','영주','현재','법사의 딸','shaman']
+      ],
+      edges: [
+        ['pr_kim','pr_choi','스승·조수 — 구마 의식을 함께 수행','guide'],
+        ['pr_kim','pr_jeong','제자·스승 관계','guide'],
+        ['pr_jeong','pr_italian','같은 시대 구마 사제단 동료','ally'],
+        ['pr_kim','pr_dean','구마 허가를 둘러싼 갈등','conflict'],
+        ['pr_kim','pr_abbot','비공식 허가를 받아냄','ally'],
+        ['pr_dean','pr_choi','최준호를 김범신에게 배정함','guide'],
+        ['pr_monsignor','pr_kim','명동성당(계산성당) 총괄 사제','ally'],
+        ['pr_kim','pr_youngshin','빙의를 확신하고 구마를 시도함','guide'],
+        ['pr_youngshin','pr_parents','딸과 부모','family'],
+        ['pr_choi','pr_choisister','여동생을 잃은 트라우마','family'],
+        ['pr_shaman','pr_yeongju','부녀 — 함께 대살굿을 시도','family'],
+        ['pr_shaman','pr_youngshin','먼저 시도했으나 실패한 무속 의식','conflict']
+      ]
+    },
+    littleforest: {
+      title: "《리틀 포레스트》 등장인물 관계도",
+      groups: [
+        { id:'friends', label:'소꿉친구 삼총사' },
+        { id:'family', label:'가족' },
+        { id:'neighbors', label:'동네 사람들' }
+      ],
+      nodes: [
+        ['lf_hyewon','송혜원','현재','주인공','friends'],
+        ['lf_jaeha','이재하','현재','소꿉친구 · 농부','friends'],
+        ['lf_eunsook','주은숙','현재','소꿉친구 · 농협 직원','friends'],
+        ['lf_mother','혜원 엄마','과거(회상)','혜원의 어머니','family'],
+        ['lf_aunt','복순 고모','현재','혜원의 고모','family'],
+        ['lf_postman','우체부','현재','동네 집배원','neighbors'],
+        ['lf_hooni','훈이','현재','동네 청년','neighbors'],
+        ['lf_ogu','오구','현재','혜원의 반려견','family']
+      ],
+      edges: [
+        ['lf_hyewon','lf_jaeha','소꿉친구 — 다시 가까워짐','ally'],
+        ['lf_hyewon','lf_eunsook','소꿉친구 삼총사','ally'],
+        ['lf_jaeha','lf_eunsook','소꿉친구 삼총사','ally'],
+        ['lf_hyewon','lf_mother','모녀 — 말없이 떠난 엄마를 회상함','family'],
+        ['lf_hyewon','lf_aunt','고모와 조카','family'],
+        ['lf_hyewon','lf_ogu','반려견과 주인','family'],
+        ['lf_hyewon','lf_postman','동네에서 자주 마주치는 이웃','ally'],
+        ['lf_jaeha','lf_hooni','동네 청년들','ally']
+      ]
+    },
+    isatong: {
+      title: "《이 사랑 통역 되나요?》 등장인물 관계도",
+      groups: [
+        { id:'trip', label:"'로맨틱 트립' 삼각관계" },
+        { id:'crew', label:'제작진' }
+      ],
+      nodes: [
+        ['is_hojin','주호진','현재','로맨틱 트립 통역사 · 남자 주인공','trip'],
+        ['is_moohee','차무희 (도라미)','현재','글로벌 톱스타 · 여자 주인공','trip'],
+        ['is_hiro','히로','현재','일본 배우 · 로맨스 프린스','trip'],
+        ['is_jiseon','신지선','현재','로맨틱 트립 PD · 호진의 첫사랑','crew'],
+        ['is_yongwoo','김용우','현재','무희 매니저','crew']
+      ],
+      edges: [
+        ['is_hojin','is_moohee','통역으로 얽히며 사랑에 빠짐','family'],
+        ['is_moohee','is_hiro','같은 예능 공동 출연 · 삼각관계','conflict'],
+        ['is_hojin','is_hiro','무희를 사이에 둔 삼각관계','conflict'],
+        ['is_hojin','is_jiseon','오랜 첫사랑, 여전히 미련이 남음','family'],
+        ['is_jiseon','is_yongwoo','직진 로맨스로 다가서는 사이','family'],
+        ['is_moohee','is_yongwoo','톱스타와 매니저','ally'],
+        ['is_moohee','is_jiseon','출연자와 담당 PD','ally']
+      ]
+    },
+    conanhighway: {
+      title: "《명탐정 코난: 하이웨이의 타천사》 등장인물 관계도",
+      groups: [
+        { id:'conan', label:'코난 일행' },
+        { id:'kanagawapolice', label:'가나가와현경' },
+        { id:'culprits', label:'사건의 배후' },
+        { id:'victims', label:'희생자·배경 인물' }
+      ],
+      nodes: [
+        ['ch_conan','에도가와 코난','현재','주인공 · 명탐정','conan'],
+        ['ch_ran','모리 란','현재','코난의 소꿉친구','conan'],
+        ['ch_kogoro','모리 코고로','현재','란의 아버지 · 사립탐정','conan'],
+        ['ch_sonoko','스즈키 소노코','현재','란의 절친','conan'],
+        ['ch_sera','세라 마스미','현재','고교생 탐정 · 잠입수사','conan'],
+        ['ch_chihaya','하기와라 치하야','현재','교통기동대 소대장 · 실질적 주인공','kanagawapolice'],
+        ['ch_yokomizo','요코미조 주고','현재','수사1과 경부','kanagawapolice'],
+        ['ch_asagi','아사기 이치카','현재','전직 백주 대원 · 루시퍼의 실제 탑승자','culprits'],
+        ['ch_oomae','오오마에 카즈아키','현재','엔젤 개발자 · 진짜 배후','culprits'],
+        ['ch_ryuuri','류우리 키리코','현재','사사키의 누나 · 복수극의 설계자','culprits'],
+        ['ch_sasaki','사사키 나오유키','사건 이전 사망','류우리의 동생 · 발단 인물','victims'],
+        ['ch_aoki','아오키 유이치로','사건 발생 시점 사망','전직 레이서 · 피해자','victims'],
+        ['ch_kenji','하기와라 켄지','7년 전 순직','치하야의 남동생','victims']
+      ],
+      edges: [
+        ['ch_conan','ch_ran','소꿉친구','ally'],
+        ['ch_conan','ch_kogoro','란의 아버지','ally'],
+        ['ch_conan','ch_sera','대등한 라이벌 탐정','ally'],
+        ['ch_conan','ch_chihaya','사건 해결의 파트너 · 자리 바꿔치기 트릭을 함께 설계','guide'],
+        ['ch_sera','ch_aoki','아오키를 대신해 잠입수사','guide'],
+        ['ch_chihaya','ch_yokomizo','파트너 · 훈훈한 관계','ally'],
+        ['ch_chihaya','ch_asagi','과거 선후배 · 극 후반 자리를 바꿔 오오마에의 자백을 받아냄','conflict'],
+        ['ch_chihaya','ch_kenji','남매 · 켄지의 순직이 치하야의 상실감의 근원','family'],
+        ['ch_asagi','ch_oomae','오오마에에게 은밀히 고용돼 루시퍼를 몰아옴','conflict'],
+        ['ch_oomae','ch_sasaki','불법 데이터 수집을 눈치챈 사사키를 살해','conflict'],
+        ['ch_oomae','ch_aoki','아사기를 시켜 아오키마저 제거','conflict'],
+        ['ch_ryuuri','ch_sasaki','친남매 · 동생의 복수를 위해 움직임','family'],
+        ['ch_ryuuri','ch_asagi','동생의 복수를 위해 은밀히 조종','conflict'],
+        ['ch_ryuuri','ch_oomae','요코하마 베이브리지로 유인해 헬기 저격 시도','conflict']
+      ]
+    },
+    prada2: {
+      title: "《악마는 프라다를 입는다 2》 등장인물 관계도",
+      groups: [
+        { id:'runway', label:'런웨이 핵심 인물' },
+        { id:'newcast', label:'신규 인물 · 인수전' },
+        { id:'family', label:'가족·지인' }
+      ],
+      nodes: [
+        ['pr_miranda','미란다 프리슬리','현재','런웨이 편집장','runway'],
+        ['pr_andy','앤디 삭스','현재','신임 피처 에디터','runway'],
+        ['pr_emily','에밀리 찰턴','현재','디올 임원 · 인수 시도자','runway'],
+        ['pr_nigel','나이젤 키플링','현재','아트 디렉터','runway'],
+        ['pr_stuart','스튜어트','현재','미란다의 남편','family'],
+        ['pr_sasha','사샤 반스','현재','자선사업가 · 런웨이 인수자','newcast'],
+        ['pr_benji','벤지 반스','현재','테크 억만장자 · 에밀리의 약혼자','newcast'],
+        ['pr_amari','아마리','현재','미란다의 수석 조수','newcast'],
+        ['pr_jay','제이 라비츠','현재','이르브의 아들 · 인수 시도자','newcast'],
+        ['pr_irv','이르브 라비츠','극 중반 사망','모기업 회장','family']
+      ],
+      edges: [
+        ['pr_andy','pr_miranda','신임 피처 에디터와 편집장 · 재회','guide'],
+        ['pr_andy','pr_nigel','나이젤의 은밀한 추천으로 채용됨','ally'],
+        ['pr_andy','pr_emily','한때 동료 · 인수전 파트너였다가 화해','ally'],
+        ['pr_miranda','pr_nigel','20년간 과소평가해온 파트너 · 결말에서 인정','guide'],
+        ['pr_miranda','pr_stuart','부부','family'],
+        ['pr_miranda','pr_irv','오랜 상사 · 승진이 무산됨','conflict'],
+        ['pr_irv','pr_jay','부자 · 아버지의 죽음으로 경영권 승계','family'],
+        ['pr_jay','pr_miranda','런웨이 매각을 밀어붙이는 대립 관계','conflict'],
+        ['pr_emily','pr_benji','약혼 관계 · 결말에서 파경','conflict'],
+        ['pr_emily','pr_jay','런웨이 인수를 함께 시도','ally'],
+        ['pr_benji','pr_sasha','전 연인 관계','conflict'],
+        ['pr_andy','pr_sasha','미란다와 함께 인수를 제안','guide'],
+        ['pr_sasha','pr_miranda','인수를 통해 미란다의 자리를 지켜줌','ally'],
+        ['pr_amari','pr_miranda','현직 수석 조수 · 차세대 미란다로 불림','guide']
+      ]
+    },
+    wintersonata: {
+      title: "《겨울연가》 등장인물 관계도",
+      groups: [
+        { id:'core', label:'삼각관계 중심' },
+        { id:'friends', label:'친구·지인' },
+        { id:'family', label:'가족' }
+      ],
+      nodes: [
+        ['ws_junsang','강준상(이민형)','고교~현재','실종 후 재미 건축가로 재등장','core'],
+        ['ws_yujin','정유진','고교~현재','준상·상혁 사이의 중심 인물','core'],
+        ['ws_sanghyuk','김상혁','고교~현재','유진의 약혼자','core'],
+        ['ws_chaerin','오채린','고교~현재','준상을 짝사랑하는 친구','friends'],
+        ['ws_jinsuk','구정숙','고교~현재','유진의 친구','friends'],
+        ['ws_yongguk','권용국','고교~현재','상혁의 친구','friends'],
+        ['ws_mihee','강미희','현재','준상의 이복 누나','family'],
+        ['ws_yujinmom','유진 모','과거~현재','유진의 어머니','family'],
+        ['ws_sanghyukmom','상혁 모','과거~현재','상혁의 어머니 · 준상의 생모','family']
+      ],
+      edges: [
+        ['ws_junsang','ws_yujin','고교 시절 첫사랑 · 10년 만의 재회','ally'],
+        ['ws_yujin','ws_sanghyuk','약혼 관계 · 준상 등장 이후 흔들림','conflict'],
+        ['ws_junsang','ws_sanghyuk','고교 시절 삼각관계의 한 축 · 이복형제 관계로 밝혀짐','conflict'],
+        ['ws_junsang','ws_chaerin','채린의 짝사랑 상대','ally'],
+        ['ws_junsang','ws_sanghyukmom','친모임이 뒤늦게 밝혀짐','family'],
+        ['ws_sanghyuk','ws_sanghyukmom','모자','family'],
+        ['ws_yujin','ws_jinsuk','절친','ally'],
+        ['ws_sanghyuk','ws_yongguk','친구','ally'],
+        ['ws_junsang','ws_mihee','이복 남매','family']
+      ]
+    },
+    coffeeprince: {
+      title: "《커피프린스 1호점》 등장인물 관계도",
+      groups: [
+        { id:'core', label:'커피프린스 핵심 인물' },
+        { id:'staff', label:'커피프린스 직원' },
+        { id:'family', label:'가족' }
+      ],
+      nodes: [
+        ['cp_hangyul','최한결','현재','커피프린스 사장','core'],
+        ['cp_eunchan','고은찬','현재','남장 취업 · 소녀가장','core'],
+        ['cp_hanseong','최한성','현재','한결의 사촌형 · 화가','core'],
+        ['cp_yuju','한유주','현재','화가 · 한성의 연인','core'],
+        ['cp_gyesik','홍계식','현재','커피프린스 직원','staff'],
+        ['cp_harim','진하림','현재','커피프린스 직원 · 뮤지션 지망','staff'],
+        ['cp_seongi','노선기','현재','커피프린스 직원','staff'],
+        ['cp_minyeop','황민엽','현재','한결의 라이벌','staff'],
+        ['cp_soonyoung','박순영','현재','한결의 할머니','family'],
+        ['cp_father','한결 부','과거~현재','한결의 아버지','family'],
+        ['cp_eunsae','고은새','현재','은찬의 여동생','family']
+      ],
+      edges: [
+        ['cp_hangyul','cp_eunchan','사장과 직원 · 게이인 척 연기를 제안하며 시작된 로맨스','ally'],
+        ['cp_hanseong','cp_yuju','이별과 재회를 반복하는 연인','conflict'],
+        ['cp_hangyul','cp_hanseong','사촌 형제','family'],
+        ['cp_hangyul','cp_soonyoung','손자와 할머니 · 정략결혼을 강요받음','family'],
+        ['cp_eunchan','cp_eunsae','자매 · 은찬이 실질적 가장','family'],
+        ['cp_hangyul','cp_gyesik','사장과 고참 직원','ally'],
+        ['cp_eunchan','cp_harim','커피프린스 동료','ally'],
+        ['cp_eunchan','cp_seongi','커피프린스 동료','ally'],
+        ['cp_hangyul','cp_minyeop','비즈니스 라이벌','conflict']
+      ]
+    },
+    daejanggeum: {
+      title: "《대장금》 등장인물 관계도",
+      groups: [
+        { id:'core', label:'장금 중심' },
+        { id:'palace', label:'수라간·내의원' },
+        { id:'royal', label:'왕실' }
+      ],
+      nodes: [
+        ['dj_janggeum','서장금','수라간 궁녀~어의','주인공 · 조선 최초 여성 어의','core'],
+        ['dj_jeongho','민정호','현재','장금의 정인 · 무관','core'],
+        ['dj_hansanggung','한상궁','현재','장금의 스승','palace'],
+        ['dj_seonggeum','최성금','현재','수라간 최고상궁 가문 · 장금의 라이벌','palace'],
+        ['dj_geumyeong','최금영','현재','성금의 조카','palace'],
+        ['dj_jungjong','중종','현재','조선 11대 임금','royal'],
+        ['dj_wanghu','정현왕후','현재','대비','royal'],
+        ['dj_yunssi','폐비 윤씨','과거 사사됨','장금의 어머니와 얽힌 비극의 배경 인물','royal']
+      ],
+      edges: [
+        ['dj_janggeum','dj_hansanggung','스승과 제자 · 요리와 의술을 사사','guide'],
+        ['dj_janggeum','dj_jeongho','정인 관계','ally'],
+        ['dj_janggeum','dj_seonggeum','수라간 최고상궁 가문과의 오랜 대립','conflict'],
+        ['dj_seonggeum','dj_geumyeong','고모와 조카 · 같은 편','ally'],
+        ['dj_geumyeong','dj_janggeum','라이벌','conflict'],
+        ['dj_janggeum','dj_jungjong','신임을 얻어 어의녀가 됨','guide'],
+        ['dj_jungjong','dj_wanghu','국왕과 대비','family']
+      ]
+    }
+  };
+
+  /* ============================================================
+     대망 — 시대별 관계 변화 애니메이션
+     축 설계: Y = 그 시점의 권력·영향력(위로 갈수록 강함), X = 이에야스와의 관계
+     (이에야스 본인은 항상 중앙 기준선에 고정, 다른 인물이 그를 기준으로
+     오른쪽=가깝고 우호적, 왼쪽=멀고 대립적으로 배치됨)
+     가신단은 주군 옆의 작은 위성 노드로 표시하고, 매파/온건파처럼
+     같은 진영 안에서도 입장이 갈리는 경우 위성 노드끼리도 좌우로 벌어짐.
+     ============================================================ */
+  const TL_W = 640, TL_H = 320, TL_CX = 320;
+  const tlChar = {
+    ieyasu:    { label:"이에야스", sub:"주인공", color:"#1D9E75" },
+    nobunaga:  { label:"노부나가", sub:"오다", color:"#378ADD" },
+    hideyoshi: { label:"히데요시", sub:"도요토미", color:"#E0A83A" },
+    tadakatsu: { label:"혼다 다다카쓰", sub:"가신·매파", color:"#7f8794", small:true },
+    masanobu:  { label:"혼다 마사노부", sub:"가신·온건파", color:"#7f8794", small:true },
+    mitsunari: { label:"이시다 미쓰나리", sub:"도요토미 잔당", color:"#c05a5a", small:true }
+  };
+  const daemangTimeline = [
+    { year:"1560", title:"오케하자마 전투", caption:"노부나가가 이마가와를 꺾고 급부상. 이에야스는 독립의 계기를 얻지만, 히데요시는 아직 변두리의 하급 무사일 뿐이다.",
+      pos:{ ieyasu:[320,215,20], nobunaga:[400,95,24], hideyoshi:[170,290,10], tadakatsu:[280,245,9], masanobu:[350,248,9] } },
+    { year:"1562", title:"기요스 동맹", caption:"노부나가와 이에야스, 20년 이어질 동맹의 시작. 두 사람의 거리가 눈에 띄게 가까워진다.",
+      pos:{ ieyasu:[320,200,20], nobunaga:[430,85,24], hideyoshi:[190,280,11], tadakatsu:[285,232,9], masanobu:[355,235,9] } },
+    { year:"1575", title:"나가시노 전투", caption:"셋이 함께 다케다를 격파. 히데요시가 눈에 띄게 힘을 키우며 이에야스 쪽으로도 다가온다.",
+      pos:{ ieyasu:[320,175,21], nobunaga:[420,70,25], hideyoshi:[400,150,17], tadakatsu:[290,205,9], masanobu:[360,208,9] } },
+    { year:"1579", title:"노부야스·쓰키야마도노 사건", caption:"정치적 동맹은 그대로지만, 노부나가의 의심에 굴복해 아들과 아내를 잃는다. 위치는 안 변해도 관계의 색이 달라지는 순간 — 가신단 안에서도 반발이 인다.",
+      pos:{ ieyasu:[320,175,21], nobunaga:[420,70,25], hideyoshi:[400,155,17], tadakatsu:[250,210,9], masanobu:[358,206,9] }, strain:["nobunaga-ieyasu"] },
+    { year:"1582.6", title:"혼노지의 변", caption:"노부나가 퇴장. 히데요시가 단숨에 정점으로 뛰어오르고, 이에야스는 그 새 권력자와의 거리를 아직 가늠하지 못한다.",
+      pos:{ ieyasu:[320,180,21], nobunaga:[520,300,9], hideyoshi:[250,45,28], tadakatsu:[270,215,9], masanobu:[360,210,9] }, fade:["nobunaga"] },
+    { year:"1584", title:"고마키·나가쿠테 전투", caption:"히데요시와 정면충돌 — 군사적으로는 밀리지 않았지만, 다가서야 하는 건 결국 이에야스 쪽이다. 강경파 다다카쓰는 여전히 저만치 물러서 있다.",
+      pos:{ ieyasu:[300,165,21], nobunaga:[520,300,7], hideyoshi:[240,35,29], tadakatsu:[210,200,9], masanobu:[300,195,9] }, fade:["nobunaga"], strain:["ieyasu-hideyoshi"] },
+    { year:"1586", title:"오사카성 신종", caption:"표정 관리 끝에 정식으로 신종. 온건파 마사노부는 가까이 다가서고, 매파 다다카쓰는 마지못해 뒤따른다.",
+      pos:{ ieyasu:[320,160,21], nobunaga:[520,300,6], hideyoshi:[430,30,29], tadakatsu:[280,195,9], masanobu:[380,185,9] }, fade:["nobunaga"] },
+    { year:"1590", title:"관동 이봉", caption:"이에야스, 늪지투성이 간토를 자원해 맡으며 슬쩍 거리를 벌린다. 물리적으로는 멀어지지만, 그 땅이 훗날 에도가 된다.",
+      pos:{ ieyasu:[320,140,22], nobunaga:[520,300,5], hideyoshi:[430,30,29] }, fade:["nobunaga"] },
+    { year:"1598", title:"도요토미 히데요시 사망", caption:"정점에 있던 히데요시가 무대에서 사라진다. 권력의 공백 속에서 이에야스가 서서히 위로 떠오른다.",
+      pos:{ ieyasu:[320,105,23], hideyoshi:[540,25,10], mitsunari:[160,150,15] }, fade:["hideyoshi"] },
+    { year:"1600.9", title:"세키가하라 전투", caption:"도요토미 잔당(이시다 미쓰나리)과의 정면 대결. 이에야스가 마침내 최상단으로 올라선다.",
+      pos:{ ieyasu:[320,55,25], mitsunari:[130,140,15] }, strain:["ieyasu-mitsunari"] },
+    { year:"1603~1616", title:"쇼군 취임 ~ 통일 완성", caption:"정이대장군 선하, 에도 막부 개창. 노부나가도 히데요시도 없는 자리에서, 이에야스 홀로 정상에 선다.",
+      pos:{ ieyasu:[320,30,27] } }
+  ];
+  let tlIdx = 0;
+
+  function tlEdgePairs(frame){
+    const ids = Object.keys(frame.pos);
+    const pairs = [];
+    if (ids.includes("nobunaga")) pairs.push(["nobunaga","ieyasu"]);
+    if (ids.includes("hideyoshi")) pairs.push(["hideyoshi","ieyasu"]);
+    if (ids.includes("mitsunari")) pairs.push(["mitsunari","ieyasu"]);
+    if (ids.includes("tadakatsu")) pairs.push(["tadakatsu","ieyasu"]);
+    if (ids.includes("masanobu")) pairs.push(["masanobu","ieyasu"]);
+    return pairs;
+  }
+
+  function drawTimelineFrame(idx){
+    tlIdx = idx;
+    const frame = daemangTimeline[idx];
+    svg.setAttribute("viewBox", `0 0 ${TL_W} ${TL_H}`);
+    groupLayer.replaceChildren(); edgeLayer.replaceChildren(); nodeLayer.replaceChildren();
+
+    let defs = svg.querySelector("defs");
+    if (!defs){ defs = el("defs",{}); svg.insertBefore(defs, svg.firstChild); }
+    defs.replaceChildren();
+    Object.entries(tlChar).forEach(([id,c])=>{
+      const grad = el("radialGradient",{id:"tlg-"+id,cx:"38%",cy:"32%",r:"75%"});
+      const s1 = el("stop",{offset:"0%","stop-color":c.color,"stop-opacity":"0.95"});
+      const s2 = el("stop",{offset:"100%","stop-color":c.color,"stop-opacity":"0.55"});
+      grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad);
+    });
+
+    groupLayer.appendChild(el("line",{x1:TL_CX,y1:14,x2:TL_CX,y2:TL_H-30,class:"tl-axis-line"}));
+    const axTop=el("text",{x:14,y:20,class:"tl-axis-label"}); axTop.textContent="↑ 권력·영향력 강함"; groupLayer.appendChild(axTop);
+    const axBot=el("text",{x:14,y:TL_H-16,class:"tl-axis-label"}); axBot.textContent="↓ 권력·영향력 약함"; groupLayer.appendChild(axBot);
+    const axL=el("text",{x:14,y:TL_H/2,class:"tl-axis-label"}); axL.textContent="← 이에야스와 대립·거리"; groupLayer.appendChild(axL);
+    const axR=el("text",{x:TL_W-14,y:TL_H/2,class:"tl-axis-label","text-anchor":"end"}); axR.textContent="이에야스와 우호·밀착 →"; groupLayer.appendChild(axR);
+
+    tlEdgePairs(frame).forEach(([a,b])=>{
+      const pa=frame.pos[a], pb=frame.pos[b];
+      if (!pa||!pb) return;
+      const [x1,y1]=pa, [x2,y2]=pb;
+      const bend=Math.max(20,Math.abs(x2-x1)*.25);
+      const key1=a+"-"+b, key2=b+"-"+a;
+      const strained=(frame.strain||[]).includes(key1)||(frame.strain||[]).includes(key2);
+      const faded=(frame.fade||[]).includes(a)||(frame.fade||[]).includes(b);
+      const path=el("path",{d:`M${x1},${y1} C${x1+bend},${y1} ${x2-bend},${y2} ${x2},${y2}`,class:"tl-edge"+(strained?" strained":""),style:`opacity:${faded?0.15:0.85}`});
+      edgeLayer.appendChild(path);
+    });
+
+    Object.entries(frame.pos).forEach(([id,p])=>{
+      const [x,y,r]=p;
+      const c=tlChar[id];
+      const faded=(frame.fade||[]).includes(id);
+      const g=el("g",{});
+      const circle=el("circle",{cx:x,cy:y,r:r,fill:`url(#tlg-${id})`,stroke:c.color,"stroke-width":"1.5",class:"tl-node-circle",style:`opacity:${faded?0.35:1}`});
+      g.appendChild(circle);
+      const name=el("text",{x:x,y:y+r+15,class:"tl-node-name","font-size":c.small?"10.5":"12.5",style:`opacity:${faded?0.4:1}`});
+      name.textContent=c.label; g.appendChild(name);
+      const sub=el("text",{x:x,y:y+r+27,class:"tl-node-sub","font-size":"9.5",style:`opacity:${faded?0.4:1}`});
+      sub.textContent=c.sub; g.appendChild(sub);
+      nodeLayer.appendChild(g);
+    });
+
+    root.querySelectorAll("#timeline-strip .btn").forEach((b,i)=>b.classList.toggle("active", i===idx));
+    const capEl = root.querySelector("#timeline-caption");
+    capEl.innerHTML = `<span class="yr">${frame.year}</span>${frame.title} — <span class="text-muted">${frame.caption}</span>`;
+  }
+
+  function buildTimelineStrip(){
+    const strip = root.querySelector("#timeline-strip");
+    strip.replaceChildren();
+    daemangTimeline.forEach((f,i)=>{
+      const b=document.createElement("button");
+      b.type="button"; b.className="btn";
+      b.textContent=f.year;
+      b.addEventListener("click",()=>drawTimelineFrame(i));
+      strip.appendChild(b);
+    });
+  }
+
+  const urlParams = new URLSearchParams(location.search);
+  const qw = urlParams.get("work");
+  let current = (qw === "kiminonawa" || qw === "suzume" || qw === "poksshak" || qw === "breakingbad" || qw === "harrypotter" || qw === "kdemonhunters" || qw === "gameofthrones" || qw === "wednesday" || qw === "strangerthings" || qw === "squidgame" || qw === "emilyinparis" || qw === "bridgerton" || qw === "lotr" || qw === "moneyheist" || qw === "onepiece" || qw === "jikji" || qw === "glory" || qw === "woo" || qw === "taebaek" || qw === "sunshine" || qw === "pachinko" || qw === "namiya" || qw === "suspectx" || qw === "byakuya" || qw === "kimetsu" || qw === "hope" || qw === "odyssey" || qw === "dokkaebi" || qw === "gwandong" || qw === "wangsanam" || qw === "spiderman" || qw === "sonyeon" || qw === "priests" || qw === "littleforest" || qw === "isatong" || qw === "conanhighway" || qw === "prada2" || qw === "wintersonata" || qw === "coffeeprince" || qw === "daejanggeum") ? qw : "daemang";
+  let selected = null;
+  const el = (name, attrs = {}) => {
+    const node = document.createElementNS(NS, name);
+    Object.entries(attrs).forEach(([k,v]) => node.setAttribute(k, v));
+    return node;
+  };
+
+  function layout(dataset, mobile) {
+    const groupCount = dataset.groups.length;
+    const cols = mobile ? 1 : (groupCount > 4 ? 3 : 2);
+    const groupW = mobile ? 300 : 370;
+    const gapX = mobile ? 0 : 25;
+    const cardW = mobile ? 132 : 160;
+    const cardH = 56;
+    const gapY = 12;
+    const result = { nodes:{}, groups:[] };
+    let yCursor = 12;
+    dataset.groups.forEach((g, gi) => {
+      const members = dataset.nodes.filter(n => n[4] === g.id);
+      const groupCol = mobile ? 0 : gi % cols;
+      const groupRow = mobile ? gi : Math.floor(gi / cols);
+      const cardsPerRow = mobile ? 2 : 2;
+      const rows = Math.ceil(members.length / cardsPerRow);
+      const gh = 48 + rows * (cardH + gapY);
+      let gx, gy;
+      if (mobile) {
+        gx = 10; gy = yCursor; yCursor += gh + 18;
+      } else {
+        gx = 10 + groupCol * (groupW + gapX);
+        const heights = [];
+        for (let r=0; r<groupRow; r++) {
+          const groupRowItems = dataset.groups.slice(r*cols, r*cols+cols);
+          const maxMembers = Math.max(...groupRowItems.map(x => dataset.nodes.filter(n => n[4] === x.id).length));
+          heights.push(48 + Math.ceil(maxMembers/2)*(cardH+gapY) + 18);
+        }
+        gy = 12 + heights.reduce((a,b)=>a+b,0);
+      }
+      result.groups.push({ ...g, x:gx, y:gy, w:groupW, h:gh });
+      members.forEach((n, i) => {
+        const col = i % cardsPerRow;
+        const row = Math.floor(i / cardsPerRow);
+        result.nodes[n[0]] = { x:gx+14+col*(cardW+16), y:gy+36+row*(cardH+gapY), w:cardW, h:cardH };
+      });
+    });
+    const width = mobile ? 320 : cols*groupW+(cols-1)*gapX+20;
+    const height = mobile ? yCursor : Math.max(...result.groups.map(g=>g.y+g.h))+16;
+    return { ...result, width, height };
+  }
+
+  function syncButtons(){
+    root.querySelectorAll("#other-works-panel button[data-work]").forEach(b=>{
+      const active = b.dataset.work === current;
+      b.classList.toggle("btn-primary", active);
+      b.setAttribute("aria-pressed", String(active));
+    });
+    const chip = root.querySelector("#current-work-chip");
+    if (chip){
+      const activeBtn = Array.from(root.querySelectorAll("#other-works-panel button[data-work]")).find(b=>b.dataset.work===current);
+      chip.textContent = activeBtn ? activeBtn.textContent : current;
+    }
+  }
+
+  function setOtherWorksOpen(open){
+    const panel = root.querySelector("#other-works-panel");
+    const toggle = root.querySelector("#other-works-toggle");
+    if (!panel || !toggle) return;
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "접기 ▲" : "다른 작품 보기 ▾";
+  }
+
+  function showTimelineMode(show){
+    root.querySelector("#timeline-strip").style.display = show ? "flex" : "none";
+    root.querySelector("#timeline-caption").style.display = show ? "block" : "none";
+    root.querySelector("#relation-detail").style.display = show ? "none" : "block";
+    root.querySelector(".viz-row").style.display = show ? "none" : "flex";
+  }
+
+  function draw() {
+    if (current === "daemang-timeline"){
+      showTimelineMode(true);
+      buildTimelineStrip();
+      drawTimelineFrame(0);
+      syncButtons();
+      return;
+    }
+    showTimelineMode(false);
+    const dataset = data[current];
+    const mobile = root.getBoundingClientRect().width < 560;
+    const pos = layout(dataset, mobile);
+    svg.setAttribute("viewBox", `0 0 ${pos.width} ${pos.height}`);
+    groupLayer.replaceChildren(); edgeLayer.replaceChildren(); nodeLayer.replaceChildren();
+
+    pos.groups.forEach(g => {
+      groupLayer.appendChild(el("rect",{x:g.x,y:g.y,width:g.w,height:g.h,rx:8,class:"group-box"}));
+      const label = el("text",{x:g.x+12,y:g.y+22,class:"group-label","font-size":"13"});
+      label.textContent = g.label; groupLayer.appendChild(label);
+    });
+
+    dataset.edges.forEach(([a,b,label,type]) => {
+      const p1=pos.nodes[a], p2=pos.nodes[b];
+      if (!p1 || !p2) return;
+      const x1=p1.x+p1.w/2, y1=p1.y+p1.h/2, x2=p2.x+p2.w/2, y2=p2.y+p2.h/2;
+      const bend=Math.max(24,Math.abs(x2-x1)*.22);
+      const path=el("path",{d:`M${x1},${y1} C${x1+bend},${y1} ${x2-bend},${y2} ${x2},${y2}`,class:`edge ${type}`,"data-a":a,"data-b":b});
+      edgeLayer.appendChild(path);
+      if (!mobile || Math.abs(y2-y1)<180) {
+        const text=el("text",{x:(x1+x2)/2,y:(y1+y2)/2-4,class:"edge-label","font-size":"10","text-anchor":"middle","data-a":a,"data-b":b});
+        text.textContent=label; edgeLayer.appendChild(text);
+      }
+    });
+
+    dataset.nodes.forEach(([id,ko,ja,role]) => {
+      const p=pos.nodes[id];
+      const g=el("g",{"data-id":id,role:"button","aria-label":`${ko}, ${role}`});
+      const card=el("rect",{x:p.x,y:p.y,width:p.w,height:p.h,rx:6,class:"node-card"});
+      g.appendChild(card);
+      const avatar=el("circle",{cx:p.x+19,cy:p.y+20,r:12,class:"avatar"}); g.appendChild(avatar);
+      const initial=el("text",{x:p.x+19,y:p.y+24,class:"avatar-text","font-size":"11"});
+      initial.textContent=ko.slice(0,1); g.appendChild(initial);
+      const name=el("text",{x:p.x+37,y:p.y+17,class:"node-name","font-size":"11"});
+      name.textContent=ko.length>12?ko.slice(0,12)+"…":ko; g.appendChild(name);
+      const jat=el("text",{x:p.x+37,y:p.y+31,class:"node-ja","font-size":"9"});
+      jat.textContent=ja.length>13?ja.slice(0,13)+"…":ja; g.appendChild(jat);
+      const rt=el("text",{x:p.x+10,y:p.y+48,class:"node-role","font-size":"9"});
+      rt.textContent=role.length>16?role.slice(0,16)+"…":role; g.appendChild(rt);
+      g.addEventListener("click",()=>selectNode(id));
+      nodeLayer.appendChild(g);
+    });
+    selected=null;
+    detail.textContent = dataset.title + " — 인물 카드를 선택하면 연결 관계가 강조됩니다.";
+    syncButtons();
+  }
+
+  function selectNode(id) {
+    const dataset=data[current];
+    selected = selected===id ? null : id;
+    const connected=new Set(selected?[selected]:[]);
+    const relations=[];
+    if (selected) dataset.edges.forEach(([a,b,label]) => {
+      if(a===selected||b===selected){ connected.add(a); connected.add(b); relations.push(`${dataset.nodes.find(n=>n[0]===a)[1]} ↔ ${dataset.nodes.find(n=>n[0]===b)[1]}: ${label}`); }
+    });
+    nodeLayer.querySelectorAll("g[data-id]").forEach(g=>{
+      const card=g.querySelector(".node-card");
+      card.classList.toggle("selected",g.dataset.id===selected);
+      card.classList.toggle("dim",Boolean(selected&&!connected.has(g.dataset.id)));
+    });
+    edgeLayer.querySelectorAll("[data-a]").forEach(e=>e.classList.toggle("dim",Boolean(selected&&e.dataset.a!==selected&&e.dataset.b!==selected)));
+    if (!selected) detail.textContent=data[current].title+" — 인물 카드를 선택하면 연결 관계가 강조됩니다.";
+    else {
+      const node=dataset.nodes.find(n=>n[0]===selected);
+      detail.textContent=`${node[1]} (${node[2]}) — ${relations.join(" · ") || "표시된 직접 관계 없음"}`;
+    }
+  }
+
+  root.querySelectorAll("#other-works-panel button[data-work]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      current=button.dataset.work;
+      draw();
+      setOtherWorksOpen(false);
+    });
+  });
+  root.querySelector("#other-works-toggle").addEventListener("click",()=>{
+    const panel = root.querySelector("#other-works-panel");
+    setOtherWorksOpen(Boolean(panel && panel.hidden));
+  });
+  root.querySelector("#current-work-chip").addEventListener("click",()=>{
+    const panel = root.querySelector("#other-works-panel");
+    setOtherWorksOpen(Boolean(panel && panel.hidden));
+  });
+  let lastMobile=null;
+  new ResizeObserver(()=>{
+    const mobile=root.getBoundingClientRect().width<560;
+    if(mobile!==lastMobile){lastMobile=mobile;draw();}
+  }).observe(root);
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+const DAEJANGGEUM_LOCATIONS = [
+  {
+    "id": "yangju_theme_park",
+    "order": 1,
+    "modernName": "양주 대장금 테마파크 터 (경기 양주, 폐장)",
+    "lat": 37.7853,
+    "lng": 127.0453,
+    "description": "대장금을 촬영하기 위해 실제로 지어진 원조 세트장. 궁궐 야외세트·수라간·소주방·동헌 등을 재현해 2004년 일반에 개방됐지만, 안전 문제와 노후화로 2011년 말 폐장했다. 세트 일부는 이후 용인대장금파크로 옮겨 복원됐다.",
+    "description_en": "The original set built specifically to film Dae Jang Geum — reconstructed palace exteriors, the royal kitchen, and government offices — which opened to the public in 2004 but closed in late 2011 due to safety concerns and deterioration. Some of the sets were later moved to and restored at Yongin Daejanggeum Park.",
+    "tag": "실제 촬영지 — 원조 세트장 (현재는 폐장)",
+    "tag_en": "REAL SETTING (closed) — the original drama set",
+    "travelTip": "경기 양주시 만송동, 舊 MBC 문화동산 내. 2011년 폐장 이후 일반 관람 불가.",
+    "travelTip_en": "Mansong-dong, Yangju, Gyeonggi-do (former MBC Cultural Complex). Closed to the public since 2011."
+  },
+  {
+    "id": "yongin_daejanggeum_park",
+    "order": 2,
+    "modernName": "용인대장금파크 (경기 용인, 원조 세트의 후신)",
+    "lat": 37.1128,
+    "lng": 127.2864,
+    "description": "지금 '대장금파크'로 불리는 이곳은 사실 2003년 대장금 방영 당시 실제 촬영지가 아니다. 원래는 'MBC 드라미아'라는 별도의 사극 종합 세트장으로, 2011년 양주 세트가 폐장한 뒤 2015년 8월 대장금 IP를 살려 '대장금파크'로 개칭하며 양주의 세트 일부를 이전·복원한 곳이다. 태종 이방원·슈룹·옷소매 붉은 끝동 등 다른 사극도 이곳에서 촬영됐다.",
+    "description_en": "Despite the name, this park was not the actual 2003 filming location. It began as 'MBC Dramia,' a separate historical-drama backlot, and was only renamed 'Daejanggeum Park' in August 2015 — after the original Yangju set closed in 2011 — with some Yangju structures relocated and restored here. Other sageuk dramas have also been filmed here.",
+    "tag": "실제 촬영지 — 원조 세트 후신 (2015년 개칭, 원본 촬영지 아님)",
+    "tag_en": "REAL SETTING (successor site, renamed 2015 — not the original filming location)",
+    "travelTip": "경기 용인시 처인구 백암면 용천드라마길. 성인 11,000원(2026년 기준), 상시 운영.",
+    "travelTip_en": "Yongcheon Drama-gil, Baegam-myeon, Cheoin-gu, Yongin, Gyeonggi-do. Adult admission ₩11,000 (as of 2026), open year-round."
+  },
+  {
+    "id": "jeju_folk_village",
+    "order": 3,
+    "modernName": "제주민속촌박물관 (제주 서귀포 표선면)",
+    "lat": 33.3169,
+    "lng": 126.8367,
+    "description": "장금이 제주로 유배된 시기의 관아·움막 장면이 촬영된 곳. 2003년 12월 17일간 촬영이 진행됐다. 지금도 촬영 안내판과 포토존, 의상·대본·약초·의료기구를 전시한 미니 테마파크가 남아있다.",
+    "description_en": "Where the scenes of Jang-geum's exile to Jeju — including the government office and her hut — were filmed, over 17 days in December 2003. A filming-location sign, photo zone, and a small exhibit of costumes, scripts, herbs, and medical instruments remain today.",
+    "tag": "실제 촬영지 — 장금의 제주 유배 장면",
+    "tag_en": "REAL SETTING — Jang-geum's Jeju exile scenes, filmed here",
+    "travelTip": "제주 서귀포시 표선면 민속해안로. 박물관으로 상시 운영.",
+    "travelTip_en": "Minsok Haean-ro, Pyoseon-myeon, Seogwipo, Jeju. Open year-round as a museum."
+  },
+  {
+    "id": "hyeopjae_beach",
+    "order": 4,
+    "modernName": "협재해수욕장 (제주 제주시)",
+    "lat": 33.3941,
+    "lng": 126.2397,
+    "description": "장금과 민정호가 함께 산책하고 배를 타러 가는 장면이 촬영된 해변. 제주 서쪽 해안의 대표적인 해수욕장으로 지금도 관광객이 즐겨 찾는다.",
+    "description_en": "The beach where Jang-geum and Min Jeong-ho walk together and head out by boat. It's one of the most popular beaches on Jeju's west coast and remains a major tourist draw today.",
+    "tag": "실제 촬영지 — 장금·정호의 해변 장면",
+    "tag_en": "REAL SETTING — Jang-geum and Jeong-ho's beach scene, filmed here",
+    "travelTip": "제주 제주시 한림읍. 에메랄드빛 바다로 유명한 해수욕장.",
+    "travelTip_en": "Hallim-eup, Jeju City. Famous for its emerald-colored water."
+  },
+  {
+    "id": "naganeupseong",
+    "order": 5,
+    "modernName": "낙안읍성 (전남 순천)",
+    "lat": 34.9539,
+    "lng": 127.3467,
+    "description": "장터와 백정마을 장면이 촬영된 조선시대 읍성. 지금도 실제 주민이 거주하는 민속마을로 상시 개방돼 있다.",
+    "description_en": "The Joseon-era walled town where market and butcher-village scenes were filmed. It remains an inhabited folk village open to visitors today.",
+    "tag": "실제 촬영지 — 장터·백정마을 장면",
+    "tag_en": "REAL SETTING — market and village scenes, filmed here",
+    "travelTip": "전남 순천시 낙안면. 실제 주민이 거주하는 민속마을로 상시 관람 가능.",
+    "travelTip_en": "Nagan-myeon, Suncheon, Jeollanam-do. A living folk village, open to visitors year-round."
+  },
+  {
+    "id": "gyeongbokgung_sojubang",
+    "order": 6,
+    "modernName": "경복궁 소주방 (서울 종로구)",
+    "lat": 37.5788,
+    "lng": 126.9770,
+    "description": "궁중 수라간 관련 장면의 배경으로 여러 여행 정보에 언급되는 장소이지만, 정확히 어느 회차의 어떤 장면인지는 1차 출처로 확인되지 않았다. 참고 정보로만 수록한다.",
+    "description_en": "Frequently mentioned in travel guides as a backdrop for the drama's royal-kitchen scenes, though which specific episode or scene has not been confirmed against a primary source. Included here for reference only.",
+    "tag": "언급됨 — 구체 장면 미확인",
+    "tag_en": "MENTIONED — specific scene unconfirmed",
+    "travelTip": "서울 종로구 경복궁 내. 궁 관람 시간에 맞춰 상시 개방.",
+    "travelTip_en": "Inside Gyeongbokgung Palace, Jongno-gu, Seoul. Open during regular palace visiting hours."
+  },
+  {
+    "id": "hwaseong_haenggung",
+    "order": 7,
+    "modernName": "화성행궁 (경기 수원)",
+    "lat": 37.2807,
+    "lng": 127.0107,
+    "description": "궁중 사극 촬영지로 자주 언급되는 행궁이지만, 대장금의 구체적인 촬영 장면은 1차 출처로 확인되지 않았다. 참고 정보로만 수록한다.",
+    "description_en": "Often cited as a filming location for palace-drama scenes in general, but Dae Jang Geum's specific use of this site is not confirmed against a primary source. Included here for reference only.",
+    "tag": "언급됨 — 구체 장면 미확인",
+    "tag_en": "MENTIONED — specific scene unconfirmed",
+    "travelTip": "경기 수원시 팔달구. 상시 개방된 관광지.",
+    "travelTip_en": "Paldal-gu, Suwon, Gyeonggi-do. A regularly open tourist site."
+  }
+];
