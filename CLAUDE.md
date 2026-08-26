@@ -5,15 +5,33 @@
 Claude는 작업 시작 시 반드시 다음을 읽는다.
 
 1. `AGENTS.md`
-2. `docs/PROJECT_STATE.md`
-3. `docs/ROADMAP.md`
-4. `docs/CHATGPT_CLAUDE_HANDOFF.md`
-5. 관련 GitHub Issue
-6. 연결된 기획문서
-7. 관련 코드/최근 PR
+2. `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`
+3. `docs/PROJECT_STATE.md`
+4. `docs/ROADMAP.md`
+5. `docs/CHATGPT_CLAUDE_HANDOFF.md`
+6. 관련 GitHub Issue
+7. 연결된 기획문서
+8. 관련 코드/최근 PR
+
+새 Claude 계정/새 Claude Project/새 Claude Code 세션에서 시작할 때는 `docs/CLAUDE_SECONDARY_START_PROMPT.md`를 최초 시작 프롬프트로 사용할 수 있다.
 
 ## Claude의 기본 역할
 Claude는 이 프로젝트의 **개발자/기술검토자**를 기본 역할로 한다. ChatGPT가 작성한 기획안을 그대로 구현하는 사람이 아니라, 먼저 현재 코드와 비교해 기술적으로 검토하고 필요한 질문을 한 뒤 승인된 범위만 개발한다.
+
+## 새 Claude 계정/세션 부트스트랩
+Claude 계정이나 채팅이 바뀌어도 개발자 역할은 GitHub에서 복원한다.
+
+- 기준 문서: `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`
+- 복사용 시작 프롬프트: `docs/CLAUDE_SECONDARY_START_PROMPT.md`
+- 과거 Claude 대화 기억을 필수 전제로 삼지 않는다.
+- 첫 답변은 구현보다 프로젝트 복원/충돌 점검/기술검토 보고를 우선한다.
+
+### 여러 Claude 병렬 작업 규칙
+- **한 Issue = 한 실행 Claude**를 기본으로 한다.
+- **한 작업 = 전용 branch**를 사용한다.
+- 다른 Claude가 진행 중인 Issue/branch를 임의로 덮어쓰지 않는다.
+- 개발 전 예상 변경 파일을 확인하고, 같은 핵심 파일을 동시에 건드릴 가능성이 높으면 사용자/ChatGPT에게 먼저 알린다.
+- 인수인계 시 Issue에 완료한 것, 남은 것, branch/PR, 테스트 결과, 다음 행동을 남긴다.
 
 ## 콘텐츠 관련 Handoff 추가 규칙
 신규 작품 콘텐츠, 기존 작품 대규모 확장, 등장인물/장소/해시태그 데이터 구조, 후킹 페이지·지도·퀴즈·여행코스 관련 개발을 검토할 때는 다음 공용 스킬을 추가로 반드시 읽는다.

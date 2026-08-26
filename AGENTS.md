@@ -9,6 +9,8 @@
 4. 관련 문서 및 열린 GitHub Issue
 5. 코드 작업이라면 관련 PR/최근 변경사항
 
+Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`를 읽고, 필요 시 `docs/CLAUDE_SECONDARY_START_PROMPT.md`를 시작 프롬프트로 사용한다.
+
 대화 기억만으로 현재 상태를 추정하지 않는다.
 
 ## 2. 작업 단위
@@ -16,6 +18,8 @@
 - Issue 없이 큰 기능을 바로 개발하지 않는다.
 - 기존 작업과 중복되는지 먼저 검색한다.
 - 아이디어/메모/녹취/메일은 먼저 `Inbox` 성격으로 기록한 뒤 실행 가능한 Issue로 정리한다.
+- 여러 Claude를 병렬로 사용할 때는 **한 Issue = 한 실행 Claude**, **한 작업 = 전용 branch**를 기본으로 한다.
+- 다른 Claude가 진행 중인 Issue/branch를 임의로 덮어쓰지 않는다.
 
 ## 3. 기본 상태
 일반 작업: `Inbox → Planned → Todo → In Progress → Review → Done`
@@ -48,6 +52,7 @@
 - 운영에 영향이 큰 변경은 가능하면 `main`에 직접 커밋하지 않는다.
 - 기존 파일을 대량 삭제하거나 구조를 크게 바꾸기 전에는 사용자 승인을 받는다.
 - Secret/API Key/개인정보를 저장소에 커밋하지 않는다.
+- 병렬 Claude 작업 시 개발 전 예상 변경 파일을 확인하고, 같은 핵심 파일을 동시에 수정할 가능성이 높으면 먼저 사용자/ChatGPT에게 알린다.
 
 ## 7. 문서 위치
 - 현재 상태: `docs/PROJECT_STATE.md`
@@ -55,6 +60,8 @@
 - 주요 의사결정: `docs/DECISIONS.md`
 - 프로젝트/Issue 관리 규칙: `docs/PROJECT_MANAGEMENT.md`
 - ChatGPT→Claude 인수인계: `docs/CHATGPT_CLAUDE_HANDOFF.md`
+- Claude 계정/세션 복원: `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`
+- 2차 Claude 시작 프롬프트: `docs/CLAUDE_SECONDARY_START_PROMPT.md`
 - 작품 콘텐츠 기획: `docs/content/`
 - 기능 기획: `docs/product/`
 - QA: `docs/qa/`
