@@ -1,0 +1,77 @@
+name: 작업 / 기능 요청
+description: 개발, 콘텐츠, SEO, QA, 조사 등 실행 가능한 작업을 등록합니다.
+title: "[TYPE] "
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - content
+        - product
+        - development
+        - qa
+        - seo
+        - research
+        - bug
+        - ops
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0 Critical
+        - P1 High
+        - P2 Medium
+        - P3 Low
+    validations:
+      required: true
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      description: 예) Home, Map, Hooking Page, Content, Quiz, SEO, i18n, Infra
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 목적
+      description: 왜 이 작업을 해야 하는지 적습니다.
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 배경 / 출처
+      description: 사용자 요청, 메모, 이메일, QA, 분석 데이터 등 출처를 적습니다.
+  - type: textarea
+    id: tasks
+    attributes:
+      label: 해야 할 일
+      description: 구체적인 작업 항목을 적습니다.
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 완료 기준
+      description: 어떤 상태가 되면 Done인지 적습니다.
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent / Owner
+      description: ChatGPT, Claude, Manus 또는 사람 담당자
+  - type: textarea
+    id: links
+    attributes:
+      label: 관련 문서 / 링크
+  - type: textarea
+    id: notes
+    attributes:
+      label: 주의사항 / 인수인계 메모
