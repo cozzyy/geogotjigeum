@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>삼체 — 우주 지도</title>
+<style>
+  :root{ color-scheme: dark; background:#0b0e16; }
+  html,body{ margin:0; padding:0; min-height:100%; background:#0b0e16; color:#eef1f5; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif; }
+  body{ padding:16px 16px 40px; }
+  a{ color:inherit; }
+  h1{ font-size:16px; margin:0 0 4px; }
+  .intro{ font-size:12.3px; line-height:1.7; color:#9aa4b2; max-width:760px; margin:0 0 14px; }
+  .intro b{ color:#d7dee8; }
+  .toolbar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+  .btn{ appearance:button; display:inline-flex; align-items:center; justify-content:center; gap:5px; min-height:30px; padding:0 12px;
+    border:1px solid #262c3d; border-radius:999px; color:#eef1f5; background:#131826; cursor:pointer; font-size:12.3px; font-weight:700; }
+  .btn:hover{ background:#1a2033; }
+  .btn.active{ border-color:transparent; background:#6d4fd6; color:#fff; }
+  .btn.wwt{ margin-left:auto; border-color:#2b6cb0; color:#8fc2ff; background:#0f1e33; }
+  .btn.wwt:hover{ background:#132741; }
+  .back-link{ font-size:12px; color:#8fb0ff; text-decoration:none; }
+  .back-link:hover{ text-decoration:underline; }
+  .zone-legend{ display:flex; flex-wrap:wrap; gap:14px; font-size:11.3px; color:#9aa4b2; margin-bottom:10px; }
+  .zone-legend i{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+  .zone-legend .solar i{ background:#f3b23b; }
+  .zone-legend .interstellar i{ background:#7fb0ff; }
+  .zone-legend .ships i{ background:#5be0a0; }
+  .zone-legend .phenomena i{ background:#ff6f9c; }
+  #canvasWrap{ background:radial-gradient(ellipse at 50% 40%, #131a2c 0%, #0b0e16 70%); border:1px solid #1c2233; border-radius:14px; overflow:hidden; }
+  #universeCanvas{ display:block; width:100%; height:auto; }
+  .star-node{ cursor:pointer; }
+  .star-node circle.core{ transition:r .2s ease, filter .2s ease; }
+  .star-node:hover circle.core, .star-node.selected circle.core{ filter:drop-shadow(0 0 6px currentColor); }
+  .star-node.selected circle.ring{ stroke:#fff; stroke-width:2; opacity:1; }
+  .star-node circle.ring{ fill:none; stroke:currentColor; stroke-width:1; opacity:.5; }
+  .star-label{ fill:#c7cedb; font-size:11px; font-weight:600; pointer-events:none; text-anchor:middle; }
+  .star-label.dim{ opacity:.35; }
+  .star-node.dim{ opacity:.25; }
+  .zone-bg-label{ fill:#262c3d; font-size:34px; font-weight:800; letter-spacing:.05em; pointer-events:none; }
+  #detailCard{ margin-top:14px; background:#131826; border:1px solid #24304a; border-radius:12px; padding:16px 18px; display:none; }
+  #detailCard.show{ display:block; }
+  #detailCard .kicker{ font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:6px; }
+  #detailCard .kicker.solar{ color:#f3b23b; }
+  #detailCard .kicker.interstellar{ color:#7fb0ff; }
+  #detailCard .kicker.ships{ color:#5be0a0; }
+  #detailCard .kicker.phenomena{ color:#ff6f9c; }
+  #detailCard h2{ font-size:19px; margin:0 0 8px; }
+  #detailCard .tag{ display:inline-block; background:#1e2536; color:#9aa4b2; font-size:11px; padding:3px 10px; border-radius:999px; margin-bottom:12px; }
+  #detailCard .desc{ font-size:13.3px; line-height:1.75; color:#dfe4ec; margin-bottom:12px; }
+  #detailCard .science-box{ background:#0f1e33; border:1px solid #24406b; border-radius:10px; padding:12px 14px; margin-bottom:12px; }
+  #detailCard .science-box .label{ display:block; color:#7fb0ff; font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+  #detailCard .science-box .text{ font-size:12.6px; line-height:1.7; color:#c7dcff; }
+  #detailCard .travel-box{ background:#10201a; border:1px solid #234433; border-radius:10px; padding:12px 14px; }
+  #detailCard .travel-box .label{ display:block; color:#7ee0a3; font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+  #detailCard .travel-box .text{ font-size:12.6px; line-height:1.7; color:#bfe8cf; }
+  .empty-hint{ font-size:12.5px; color:#5a6577; padding:6px 2px 0; }
+  @media (max-width:640px){
+    #universeCanvas{ height:520px; }
+    .btn.wwt{ margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<h1>🌌 삼체 — 우주 지도</h1>
+<p class="intro">이 지도는 실제 천구 좌표가 아니라, <b>이야기 전개를 따라가기 위한 개념도</b>입니다. 태양계 → 항성간 공간 → 이름 있는 함선들 → 사건/현상, 네 구역으로 나누어 삼체 3부작에 등장하는 우주적 장소들을 정리했어요. 실제 밤하늘에서 알파centauri를 찾아보고 싶다면 오른쪽 위 'WorldWide Telescope에서 실제 밤하늘 보기' 버튼을 눌러보세요.</p>
+<div class="toolbar" role="group" aria-label="구역 선택">
+  <button type="button" class="btn active" data-zone="all">전체</button>
+  <button type="button" class="btn" data-zone="solar">☀️ 태양계</button>
+  <button type="button" class="btn" data-zone="interstellar">✨ 항성간 공간</button>
+  <button type="button" class="btn" data-zone="ships">🚀 이름 있는 함선</button>
+  <button type="button" class="btn" data-zone="phenomena">⚡ 사건·현상</button>
+  <a class="btn wwt" href="https://worldwidetelescope.org/webclient/" target="_blank" rel="noopener">🔭 WorldWide Telescope에서 실제 밤하늘 보기</a>
+</div>
+<div class="zone-legend">
+  <span class="solar"><i></i>태양계</span>
+  <span class="interstellar"><i></i>항성간 공간</span>
+  <span class="ships"><i></i>이름 있는 함선</span>
+  <span class="phenomena"><i></i>사건·현상</span>
+</div>
+<div id="canvasWrap">
+  <svg id="universeCanvas" viewBox="0 0 1280 760" role="img" aria-labelledby="uTitle uDesc">
+    <title id="uTitle">삼체 우주 지도</title>
+    <desc id="uDesc">삼체 3부작에 등장하는 우주적 장소와 함선, 사건을 구역별로 배치한 개념도입니다.</desc>
+    <g class="zoneBgLabels"></g>
+    <g class="starNodes"></g>
+  </svg>
+</div>
+<div id="detailCard"></div>
+<p class="empty-hint" id="emptyHint">노드를 클릭하면 상세 설명이 여기에 표시됩니다.</p>
+<p style="margin-top:22px;"><a class="back-link" href="index.html?work=santi">← 메인 지도(그곳, 지금)로 돌아가기</a></p>
+
+<script src="contentmap_santi_locations.js"></script>
+<script src="contentmap_santi_extra.js"></script>
+<script>
+(function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  const ZONE_COLOR = { solar:'#f3b23b', interstellar:'#7fb0ff', ships:'#5be0a0', phenomena:'#ff6f9c' };
+  const ZONE_LABEL = { solar:'태양계', interstellar:'항성간 공간', ships:'함선', phenomena:'사건·현상' };
+  const spaceLocs = (typeof SANTI_LOCATIONS !== 'undefined' ? SANTI_LOCATIONS : []).filter(function(l){ return l.realm === 'space'; });
+  const scenes = (typeof SANTI_SCENES !== 'undefined') ? SANTI_SCENES : [];
+  const notes = (typeof SCIENCE_NOTES !== 'undefined') ? SCIENCE_NOTES : {};
+
+  const svg = document.getElementById('universeCanvas');
+  const nodesLayer = svg.querySelector('.starNodes');
+  const bgLayer = svg.querySelector('.zoneBgLabels');
+  const detailCard = document.getElementById('detailCard');
+  const emptyHint = document.getElementById('emptyHint');
+
+  let currentZone = 'all';
+  let selectedId = null;
+
+  const el = function(name, attrs){
+    const n = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function(k){ n.setAttribute(k, attrs[k]); });
+    return n;
+  };
+
+  function relatedScenes(locId){
+    return scenes.filter(function(s){ return s.locId === locId; });
+  }
+
+  function selectNode(loc){
+    selectedId = loc.id;
+    draw();
+    const color = ZONE_COLOR[loc.zone] || '#8fb0ff';
+    const note = loc.scienceNoteId ? notes[loc.scienceNoteId] : null;
+    const scn = relatedScenes(loc.id);
+    detailCard.className = 'show';
+    detailCard.innerHTML =
+      '<div class="kicker ' + loc.zone + '">' + (ZONE_LABEL[loc.zone] || loc.zone) + '</div>' +
+      '<h2>' + loc.modernName + '</h2>' +
+      '<span class="tag">' + (loc.tag || '') + '</span>' +
+      '<div class="desc">' + (loc.description || '') + '</div>' +
+      (note ? '<div class="science-box"><span class="label">🔬 ' + note.title + '</span><div class="text">' + note.body + '</div></div>' : '') +
+      '<div class="travel-box"><span class="label">🔭 실제로 확인해보기</span><div class="text">' + (loc.travelTip || '') + '</div></div>' +
+      (scn.length ? '<div style="margin-top:12px;font-size:12px;color:#9aa4b2;">📜 관련 장면: ' + scn.map(function(s){ return s.title; }).join(' · ') + '</div>' : '');
+    if (typeof detailCard.scrollIntoView === 'function') detailCard.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    emptyHint.style.display = 'none';
+  }
+
+  function draw(){
+    nodesLayer.innerHTML = '';
+    bgLayer.innerHTML = '';
+    const zoneCenters = { solar:[330,590], interstellar:[860,190], ships:[980,560], phenomena:[430,150] };
+    Object.keys(zoneCenters).forEach(function(z){
+      const c = zoneCenters[z];
+      const label = el('text', Object.assign({ x:c[0], y:c[1], class:'zone-bg-label', opacity: (currentZone==='all'||currentZone===z) ? .5 : .12 }));
+      label.textContent = ZONE_LABEL[z];
+      bgLayer.appendChild(label);
+    });
+
+    spaceLocs.forEach(function(loc){
+      const visible = currentZone === 'all' || currentZone === loc.zone;
+      const color = ZONE_COLOR[loc.zone] || '#8fb0ff';
+      const g = el('g', { class:'star-node' + (visible ? '' : ' dim') + (loc.id === selectedId ? ' selected' : ''), style:'color:' + color, tabindex:'0' });
+      const r = loc.zone === 'solar' && loc.id === 'sun' ? 14 : (loc.zone === 'ships' ? 7 : 9);
+      g.appendChild(el('circle', { class:'ring', cx:loc.mapX, cy:loc.mapY, r:r+5 }));
+      g.appendChild(el('circle', { class:'core', cx:loc.mapX, cy:loc.mapY, r:r, fill:color }));
+      const label = el('text', { class:'star-label' + (visible ? '' : ' dim'), x:loc.mapX, y:loc.mapY + r + 14 });
+      label.textContent = loc.modernName.length > 16 ? loc.modernName.slice(0,15) + '…' : loc.modernName;
+      g.appendChild(label);
+      g.addEventListener('click', function(){ selectNode(loc); });
+      g.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') selectNode(loc); });
+      nodesLayer.appendChild(g);
+    });
+  }
+
+  document.querySelectorAll('.toolbar .btn[data-zone]').forEach(function(b){
+    b.addEventListener('click', function(){
+      currentZone = b.dataset.zone;
+      document.querySelectorAll('.toolbar .btn[data-zone]').forEach(function(x){ x.classList.toggle('active', x === b); });
+      draw();
+    });
+  });
+
+  draw();
+
+  // ?loc=id 쿼리 파라미터로 들어오면(메인 지도의 '🌌 우주 지도에서 보기' 버튼) 해당 노드를 바로 선택
+  const params = new URLSearchParams(location.search);
+  const wantLoc = params.get('loc');
+  if (wantLoc){
+    const found = spaceLocs.find(function(l){ return l.id === wantLoc; });
+    if (found){
+      currentZone = found.zone;
+      document.querySelectorAll('.toolbar .btn[data-zone]').forEach(function(x){ x.classList.toggle('active', x.dataset.zone === found.zone); });
+      draw();
+      selectNode(found);
+    }
+  }
+})();
+</script>
+</body>
+</html>

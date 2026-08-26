@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+  <meta name="naver-site-verification" content="0512374962f5ac8a38d912a2c512eb5b603c9410" />
+  <meta name="naver-site-verification" content="4dee8076a8b09ac087ad449bfea68514e2c24783" />
+
+  <!-- 2026-08 Bing Webmaster Tools 등록 준비(기획안 4-6절) — Bing Webmaster Tools(bing.com/webmasters)에
+       geugotjigeum.com을 추가하면 "HTML 메타 태그" 인증 방식에서 발급되는 코드를 아래 content=""에
+       그대로 넣으면 된다. 이 계정 가입/사이트 등록 자체는 로그인이 필요해 개발자가 대신 할 수 없는
+       유일한 수동 단계이고, 나머지(사이트맵 제출과 동일한 역할을 하는 IndexNow 자동 알림)는 이미
+       구현해 뒀다 — indexnow_submit.js와 루트의 48fab9be607d79156a9c5da1746eb288.txt 키 파일 참고. -->
+  <!-- <meta name="msvalidate.01" content="여기에_Bing_Webmaster_Tools_인증코드" /> -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // ?work=로 공유 링크나 /works/ 페이지의 '지도에서 보기' 버튼을 통해 들어온 경우,
+  // 지도(map.on('load'))가 완전히 뜨기 전까지는 정적 HTML 기본값인 랜딩 소개 화면
+  // ("왜 이 사이트를 만들었을까요?")이 그대로 그려져 있다가 뒤늦게 지도 화면으로
+  // 바뀌는 깜빡임이 있었다. body가 파싱되기 전에 <html>에 클래스를 미리 달아,
+  // 랜딩 화면이 아예 화면에 그려지지 않도록 CSS에서 선제적으로 숨긴다.
+  (function(){
+    try {
+      if (new URLSearchParams(location.search).get('work')) {
+        document.documentElement.classList.add('gcjg-boot-work');
+        // 안전장치: work id가 잘못됐거나 지도 로딩이 비정상적으로 오래 걸리는 경우에도
+        // 화면이 계속 빈 상태로 남지 않도록, 일정 시간 뒤에도 여전히 랜딩 화면 상태
+        // (#app.landing)면 숨김을 풀어 원래의 랜딩 소개 화면으로 되돌린다.
+        setTimeout(function(){
+          var appEl = document.getElementById('app');
+          if (appEl && appEl.classList.contains('landing')) {
+            document.documentElement.classList.remove('gcjg-boot-work');
+          }
+        }, 4000);
+      }
+    } catch(e){}
+  })();
+</script>
+<title>那個地方，現在 | 韓劇・電影・動畫拍攝地與故事場景地圖</title>
+
+<meta
+  name="description"
+  content="在一張地圖上探索韓劇、電影、動畫、小說中的真實拍攝地與故事場景，附旅遊小提示。"
+>
+
+<link rel="canonical" href="https://geugotjigeum.com/zh/">
+
+<!-- 2026-08 2단계 다국어: 언어별 상호 hreflang (x-default는 한국어 홈 —
+     이 사이트의 원본 콘텐츠 언어이자 최대 트래픽 시장이므로) -->
+<link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/">
+<link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/">
+<link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/">
+
+<!-- og:url / og:image / twitter:image는 현재 배포 주소를 사용합니다. -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="그곳, 지금">
+
+<meta
+  property="og:title"
+  content="那個地方，現在 | 韓劇・電影・動畫拍攝地與故事場景地圖"
+>
+
+<meta
+  property="og:description"
+  content="在一張地圖上探索韓劇、電影、動畫、小說中的真實拍攝地與故事場景，附旅遊小提示。"
+>
+
+<meta
+  property="og:url"
+  content="https://geugotjigeum.com/zh/"
+>
+
+<meta
+  property="og:image"
+  content="https://geugotjigeum.com/og-image.png"
+>
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta
+  name="twitter:title"
+  content="那個地方，現在 | 韓劇・電影・動畫拍攝地與故事場景地圖"
+>
+
+<meta
+  name="twitter:description"
+  content="在一張地圖上探索韓劇、電影、動畫、小說中的真實拍攝地與故事場景，附旅遊小提示。"
+>
+
+<meta name="twitter:image" content="https://geugotjigeum.com/og-image.png">
+<!-- 방문자 통계(GA4) 연동 완료 — 측정 ID: G-H2KNQYH97M
+     대신 Plausible처럼 쿠키 없는 도구를 쓰고 싶다면, 이 <script> 두 줄을 지우고
+     <script defer data-domain="당신의도메인" src="https://plausible.io/js/script.js"></script> 로 교체하면 됩니다. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2KNQYH97M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-H2KNQYH97M');
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<link rel="stylesheet" href="/contentmap_style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
+     crossorigin="anonymous"></script>
+
+<!-- 2026-08 SEO 1단계: 홈 WebSite 구조화 데이터 (사이트 내 검색 기능 없어 SearchAction은 생략) -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"그곳, 지금","alternateName":"That Place, Now","url":"https://geugotjigeum.com/","inLanguage":["ko","en","ja"]}</script>
+</head>
+<body>
+<div id="jsError"></div>
+<div id="app" class="landing">
+  <header>
+    <div class="header-left">
+      <div class="brand" onclick="goToLanding()" role="button" tabindex="0" title="처음 화면으로">
+        <svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e0603a"/>
+              <stop offset="100%" stop-color="#3a7ce0"/>
+            </linearGradient>
+          </defs>
+          <path d="M20 3c-7.7 0-14 6.3-14 14 0 10.5 14 20 14 20s14-9.5 14-20c0-7.7-6.3-14-14-14z" fill="url(#brandGrad)"/>
+          <circle cx="20" cy="17" r="6.5" fill="#12141a"/>
+          <path d="M14.2 19.8 C14.2 16.8 17.2 16.1 20 17.4 C22.8 16.1 25.8 16.8 25.8 19.8 C25.8 19.8 22.8 18.2 20 19.3 C17.2 18.2 14.2 19.8 14.2 19.8 Z" fill="#eef1f5"/>
+          <path d="M20 17.2 C20.4 15 19.2 13 20.4 11.2" stroke="#eef1f5" stroke-width="1.2" stroke-dasharray="1.3 1.6" stroke-linecap="round" fill="none"/>
+          <circle cx="20.6" cy="10.6" r="1.05" fill="#eef1f5"/>
+        </svg>
+        <div>
+          <h1>그곳, 지금</h1>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <button type="button" class="home-icon-btn" id="homeIconBtn" onclick="goToLanding()" title="처음 화면으로" aria-label="처음 화면으로">🏠 <span id="homeIconBtnText">홈</span></button>
+      <div class="lang-toggle" id="langToggle">
+        <button data-lang="ko">KR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="ja">JP</button>
+        <button data-lang="zh" id="langZhBtn" class="active">中文</button>
+      </div>
+    </div>
+  </header>
+  <div id="crossPromo"></div>
+  <div id="landingScreen">
+    <div class="landing-inner">
+      <div class="landing-hero" id="landingHero">
+        <div class="landing-hero-collage" id="landingHeroCollage" aria-hidden="true"></div>
+        <div class="landing-hero-content">
+          <h2 id="landingHeadline">대한민국 대표 콘텐츠 여행 사이트, 그곳 지금</h2>
+          <div id="landingCounterBanner" class="landing-counter-banner" aria-live="polite"></div>
+          <div id="landingFilterWrap" class="landing-filter-hero"></div>
+          <div class="landing-hero-actions" id="landingHeroActions">
+            <button type="button" class="hero-action-btn" id="heroRegionBtn" onclick="toggleHeroPanel('region')">🗺️ <span id="heroRegionBtnText">지역별 여행</span></button>
+            <button type="button" class="hero-action-btn" id="heroNearbyBtn" onclick="openNearbyModal()">📍 <span id="heroNearbyBtnText">내주변여행</span></button>
+            <button type="button" class="hero-action-btn" id="heroSearchBtn" onclick="openNearbyModal({addressMode:true})">🔍 <span id="heroSearchBtnText">여행지찾기</span></button>
+          </div>
+          <button type="button" class="hero-today-pick" id="heroTodayPick" hidden>
+            <div class="hero-today-pick-img" id="heroTodayPickImg"></div>
+            <div class="hero-today-pick-text">
+              <span class="hero-today-pick-label" id="heroTodayPickLabel">오늘의 장소</span>
+              <span class="hero-today-pick-title" id="heroTodayPickTitle"></span>
+              <span class="hero-today-pick-hook" id="heroTodayPickHook"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div id="heroRegionPanel" class="hero-region-panel" hidden>
+        <div id="regionRowWrap" class="region-row-wrap">
+          <div class="region-row-label" id="regionRowLabel">🗺️ 지역으로 찾기</div>
+          <div class="region-row-scroller">
+            <button type="button" class="region-scroll-arrow left" id="regionScrollLeft" onclick="scrollRegionRow(-1)" aria-label="이전 지역">‹</button>
+            <div class="region-row" id="regionRow"></div>
+            <button type="button" class="region-scroll-arrow right" id="regionScrollRight" onclick="scrollRegionRow(1)" aria-label="다음 지역">›</button>
+          </div>
+        </div>
+      </div>
+      <div id="landingResultCount" class="filter-result-count"></div>
+      <div class="landing-cards" id="landingCards"></div>
+      <p class="landing-blurb landing-blurb-footer" id="landingBlurb">'그곳, 지금'은 제 개인 블로그입니다. 만화·영화·애니메이션을 보다가 문득 <b>"저 장면에 나온 곳은 지금 실제로 어떤 모습일까?"</b> 궁금해졌던, 지극히 개인적인 호기심에서 시작했어요. 이야기 속 장소가 사실은 지금도 갈 수 있는 진짜 여행지라는 걸 알게 되면, 그 작품을 더 오래 더 깊이 좋아하게 되더라고요. 그런 마음으로 하나씩 조사해서 채워가고 있는 저만의 기록입니다.</p>
+      <div class="landing-footer"><a href="#" id="footerReportLink" onclick="openReportModal();return false;">📝 장소·인물 제안</a><a href="/regions/" id="footerRegionsLink">🗺️ 지역으로 찾기</a><a href="/places/" id="footerPlacesLink">📍 장소로 찾기</a><a href="/about/" id="footerAboutLink">서비스 소개</a><a href="/contact/" id="footerContactLink">문의</a><a href="/privacy/" id="footerPrivacyLink">개인정보처리방침</a><a href="/terms/" id="footerTermsLink">이용약관</a></div>
+    </div>
+  </div>
+  <div id="main">
+    <div id="mapWrap">
+      <div id="map"></div>
+    </div>
+    <div id="dragHandle" title="드래그해서 지도/정보 비율 조절" role="separator" aria-orientation="vertical" tabindex="0"></div>
+    <div id="sidebar">
+      <h2 id="sidebarTitle">장소를 선택하세요</h2>
+      <div id="sidebarBody"><div class="empty-state">지도 위의 점을 클릭하면 이곳에 상세 정보(작중 지명, 현재 지명, 여행 정보)가 표시됩니다.</div></div>
+    </div>
+  </div>
+  <div class="mobile-tabbar" id="mobileTabbar">
+    <button data-view="map" class="active">🗺️ 지도</button>
+    <button data-view="info">📋 정보</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="relationsModal">
+  <div class="modal-box">
+    <div class="modal-box-header">
+      <h3 id="relationsModalTitle">등장인물 관계도</h3>
+      <button class="modal-close" onclick="closeRelationsModal()">✕</button>
+    </div>
+    <iframe id="relationsFrame" src="" title="등장인물 관계도"></iframe>
+  </div>
+</div>
+
+<div class="modal-overlay" id="summaryModal">
+  <div class="modal-box summary-box">
+    <div class="modal-box-header">
+      <h3 id="summaryModalTitle">작품 내용 상세</h3>
+      <button class="modal-close" onclick="closeSummaryModal()">✕</button>
+    </div>
+    <div class="summary-body" id="summaryBody"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quizModal">
+  <div class="modal-box quiz-box">
+    <div class="modal-box-header">
+      <h3 id="quizModalTitle">🍊 폭싹 속았수다 퀴즈</h3>
+      <button class="modal-close" onclick="closeQuizModal()">✕</button>
+    </div>
+    <div class="quiz-body" id="quizBody"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="reportModal">
+  <div class="modal-box report-box">
+    <div class="modal-box-header">
+      <h3 id="reportModalTitle">📝 장소·인물 제안하기</h3>
+      <button class="modal-close" onclick="closeReportModal()">✕</button>
+    </div>
+    <div class="report-body">
+      <p id="reportBodyText">여러분이 작품 속에서 아시는 장소나 인물이 이 사이트에 나오지 않거나, 카페·식당 등 작품과 관련된 장소를 알고 계시면 메일을 보내주세요. 장소나 인물 검색에 나오도록 하겠습니다.</p>
+      <div class="report-email-box">
+        <span id="reportEmailNote">아래 이메일로 알려주세요</span>
+        <a href="mailto:geugotjigeum@gmail.com" class="report-email-link">geugotjigeum@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="nearbyModal">
+  <div class="modal-box nearby-box">
+    <div class="modal-box-header">
+      <h3 id="nearbyModalTitleText">📍 내 주변 콘텐츠 투어</h3>
+      <button class="modal-close" onclick="closeNearbyModal()">✕</button>
+    </div>
+    <div class="nearby-modal-body" id="nearbyModalBody"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="countryLocModal">
+  <div class="modal-box nearby-box">
+    <div class="modal-box-header">
+      <h3 id="countryLocModalTitleText">🌍 국가별 실제 장소</h3>
+      <button class="modal-close" onclick="closeCountryLocModal()">✕</button>
+    </div>
+    <div class="nearby-modal-body" id="countryLocModalBody"></div>
+  </div>
+</div>
+
+<div class="copy-box" id="copyBox">
+  <input type="text" id="copyBoxInput" readonly onclick="this.select()">
+  <button onclick="copyLinkNow()">복사</button>
+  <button class="copy-box-close" onclick="document.getElementById('copyBox').style.display='none'">✕</button>
+</div>
+
+<div class="modal-overlay" id="usageGuideModal">
+  <div class="modal-box guide-box">
+    <div class="modal-box-header">
+      <h3><span id="guideModalTitleText">👋 처음이신가요? 이렇게 써보세요</span></h3>
+      <button class="modal-close" onclick="dismissUsageGuide(0)">✕</button>
+    </div>
+    <div class="guide-body" id="guideBody">
+      <p class="guide-intro">'그곳, 지금'은 제 개인 프로젝트예요 — 이야기 속 장소가 실제로는 어떤 모습인지 궁금해서 만든, 진짜 여행으로 이어지는 지도입니다.</p>
+      <div class="guide-step"><span class="num">1</span><div><b>지도 위의 점을 클릭하세요</b><br>동그란 점이 작중 배경이 된 진짜 장소예요. 클릭하면 오른쪽(모바일은 하단 '정보' 탭)에 자세한 정보가 나와요.</div></div>
+      <div class="guide-step"><span class="num">2</span><div><b>📸 사진 더 보기로 실제 모습을 확인하세요</b><br>인스타그램·유튜브·트위터 등에서 그 장소를 실제로 찍은 사진과 영상을 바로 찾아볼 수 있어요.</div></div>
+      <div class="guide-step"><span class="num">3</span><div><b>실제로 가보기 &amp; 여행 코스 만들기</b><br>구글맵 위치 보기, 그리고 '추천 여행 코스 만들기'로 진짜 여행을 계획해보세요.</div></div>
+      <div class="guide-step"><span class="num">4</span><div><b>다른 작품으로 갈아타기</b><br>상단 탭을 누르거나, 왼쪽 위 로고를 누르면 작품 선택 화면으로 돌아갈 수 있어요.</div></div>
+    </div>
+    <div class="guide-footer" id="guideFooter">
+      <button class="guide-btn ghost" onclick="dismissUsageGuide(1)">오늘 하루 안 보기</button>
+      <button class="guide-btn ghost" onclick="dismissUsageGuide(7)">1주일간 안 보기</button>
+      <button class="guide-btn primary" onclick="dismissUsageGuide(0)">확인했어요</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.onerror = function(msg, src, line){
+  var e = document.getElementById('jsError');
+  e.style.display = 'block';
+  e.textContent = '스크립트 오류: ' + msg + ' (line ' + line + ')\n이 메시지를 캡처해서 알려주세요.';
+};
+</script>
+<script src="/contentmap_details.js"></script>
+<script src="/contentmap_data.js"></script>
+<script src="/contentmap_hook_images.js"></script>
+<script src="/contentmap_ja_content.js"></script>
+<script src="/contentmap_zh_content.js"></script>
+<script src="/contentmap_quiz_poksshak.js"></script>
+<script src="/contentmap_culture.js"></script>
+<script src="/contentmap_app.js"></script>
+</body>
+</html>

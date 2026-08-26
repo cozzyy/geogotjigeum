@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지역으로 촬영지 찾기 — 그곳, 지금</title>
+<meta name="description" content="나라별로는 실제 촬영 장소까지, 국내 지역별로는 연결된 작품까지 확인할 수 있어요.">
+<link rel="canonical" href="https://geugotjigeum.com/regions/">
+<link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/regions/">
+<link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/regions/">
+<link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/regions/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/regions/">
+<link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/regions/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="그곳, 지금">
+<meta property="og:title" content="지역으로 촬영지 찾기 — 그곳, 지금">
+<meta property="og:description" content="나라별로는 실제 촬영 장소까지, 국내 지역별로는 연결된 작품까지 확인할 수 있어요.">
+<meta property="og:url" content="https://geugotjigeum.com/regions/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="지역으로 촬영지 찾기 — 그곳, 지금">
+<meta name="twitter:description" content="나라별로는 실제 촬영 장소까지, 국내 지역별로는 연결된 작품까지 확인할 수 있어요.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2KNQYH97M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-H2KNQYH97M');
+</script>
+<style>
+  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink:hover{text-decoration:underline;}
+  .wsLangs{display:flex;align-items:center;background:#f2f3f5;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;font-size:12.5px;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:4px 9px;border-radius:999px;}
+  .wsLangs a.on{color:#fff;background:var(--accent2);font-weight:700;}
+  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
+  .kicker{font-size:12.5px;font-weight:700;color:var(--accent2);letter-spacing:.02em;margin:0 0 8px;}
+  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
+  .breadcrumb a{color:var(--sub);text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+  h1{font-size:24px;line-height:1.4;margin:0 0 12px;}
+  .intro{font-size:15.5px;color:#333;margin:0 0 24px;}
+  .noteBox{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 26px;}
+  h2{font-size:18px;margin:32px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+  .chipRow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .regionChip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink);background:#f6f7f9;border:1px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;}
+  .regionChip:hover{border-color:var(--accent2);color:var(--accent2);}
+  .regionChip .cnt{color:var(--sub);font-weight:500;}
+  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease;}
+  .workCard:hover{border-color:#d5d9e0;background:#fafbfc;}
+  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);}
+  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;}
+  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent2);}
+  .locGroup{margin-bottom:26px;}
+  .locGroup > a.groupTitle{display:inline-block;font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;margin-bottom:10px;}
+  .locGroup > a.groupTitle:hover{color:var(--accent2);}
+  .locCard{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;}
+  .locCard:hover{border-color:#d5d9e0;background:#fafbfc;}
+  .locCard h4{font-size:14.5px;margin:0 0 4px;color:var(--ink);}
+  .locCard p{font-size:13px;color:var(--sub);margin:0;}
+  .locCard .cta{font-size:12.5px;font-weight:600;color:var(--accent2);margin-top:6px;display:inline-block;}
+  footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
+  footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
+  footer a:hover{color:var(--accent2);}
+  .hubSection{margin-bottom:36px;}
+  @media (max-width:480px){
+    .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
+    main{padding:22px 16px 48px;}
+    h1{font-size:20px;}
+    .workCard{padding:13px 14px;}
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"지역으로 촬영지 찾기","url":"https://geugotjigeum.com/regions/"}</script>
+</head>
+<body>
+<header class="wsHeader">
+  <a class="brand" href="https://geugotjigeum.com/">
+    <svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e0603a"/>
+          <stop offset="100%" stop-color="#3a7ce0"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 3c-7.7 0-14 6.3-14 14 0 10.5 14 20 14 20s14-9.5 14-20c0-7.7-6.3-14-14-14z" fill="url(#brandGrad)"/>
+      <circle cx="20" cy="17" r="6.5" fill="#12141a"/>
+      <path d="M14.2 19.8 C14.2 16.8 17.2 16.1 20 17.4 C22.8 16.1 25.8 16.8 25.8 19.8 C25.8 19.8 22.8 18.2 20 19.3 C17.2 18.2 14.2 19.8 14.2 19.8 Z" fill="#eef1f5"/>
+      <path d="M20 17.2 C20.4 15 19.2 13 20.4 11.2" stroke="#eef1f5" stroke-width="1.2" stroke-dasharray="1.3 1.6" stroke-linecap="round" fill="none"/>
+      <circle cx="20.6" cy="10.6" r="1.05" fill="#eef1f5"/>
+    </svg>
+    <span>그곳, 지금</span>
+  </a>
+  <nav class="wsLangs" aria-label="Languages"><a href="https://geugotjigeum.com/regions/" class="on">KR</a>
+    <a href="https://geugotjigeum.com/en/regions/">EN</a>
+    <a href="https://geugotjigeum.com/ja/regions/">JP</a>
+    <a href="https://geugotjigeum.com/zh/regions/">中文</a></nav>
+  <a class="backLink" href="https://geugotjigeum.com/">🏠 홈</a>
+</header>
+<main>
+  <p class="kicker">지역으로 찾기</p>
+  <h1>지역으로 촬영지 찾기</h1>
+  <p class="intro">나라별로는 실제 촬영 장소까지, 국내 지역별로는 연결된 작품까지 확인할 수 있어요.</p>
+  <div class="hubSection">
+    <h2>나라별 촬영지</h2>
+    <div class="chipRow">
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-japan/">일본 <span class="cnt">(214)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-usa/">미국 <span class="cnt">(137)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-uk/">영국 <span class="cnt">(47)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-italy/">이탈리아 <span class="cnt">(30)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-canada/">캐나다 <span class="cnt">(21)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-greece/">그리스 <span class="cnt">(18)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-france/">프랑스 <span class="cnt">(16)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-new-zealand/">뉴질랜드 <span class="cnt">(14)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-spain/">스페인 <span class="cnt">(13)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-germany/">독일 <span class="cnt">(11)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-romania/">루마니아 <span class="cnt">(10)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-china/">중국 <span class="cnt">(8)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-north-korea/">북한 <span class="cnt">(8)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-south-africa/">남아프리카공화국 <span class="cnt">(7)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-croatia/">크로아티아 <span class="cnt">(5)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-iceland/">아이슬란드 <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-morocco/">모로코 <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-ireland/">아일랜드 <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-panama/">파나마 <span class="cnt">(2)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-malta/">몰타 <span class="cnt">(2)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-australia/">호주 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-venezuela/">베네수엘라 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-belgium/">벨기에 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-denmark/">덴마크 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-myanmar/">미얀마 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-western-sahara/">서사하라 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-turkiye/">튀르키예 <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/regions/country-tunisia/">튀니지 <span class="cnt">(1)</span></a>
+    </div>
+  </div>
+  <div class="hubSection">
+    <h2>국내 지역별 작품</h2>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-seoul/">서울 <span class="cnt">(128)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-junggu/">서울 중구 <span class="cnt">(43)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-jongno/">서울 종로 <span class="cnt">(39)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-gangnam/">서울 강남 <span class="cnt">(8)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-yongsan/">서울 용산 <span class="cnt">(7)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-seodaemun/">서울 서대문 <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-dobong/">서울 도봉 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-gwangjin/">서울 광진 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-dongdaemun/">서울 동대문 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-seongdong/">서울 성동 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-songpa/">서울 송파 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-yeongdeungpo/">서울 영등포 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-dongjak/">서울 동작 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-seocho/">서울 서초 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-gwanak/">서울 관악 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-mapo/">서울 마포 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-seoul-seongbuk/">서울 성북 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-busan/">부산 <span class="cnt">(67)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-yeongdo/">부산 영도 <span class="cnt">(24)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-junggu/">부산 중구 <span class="cnt">(13)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-donggu/">부산 동구 <span class="cnt">(9)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-namgu/">부산 남구 <span class="cnt">(6)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-seogu/">부산 서구 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-haeundae/">부산 해운대 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-dongnae/">부산 동래 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-saha/">부산 사하 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-geumjeong/">부산 금정 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-busanjin/">부산 부산진 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-busan-suyeong/">부산 수영 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-daegu/">대구 <span class="cnt">(14)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-daegu-junggu/">대구 중구 <span class="cnt">(8)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daegu-namgu/">대구 남구 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daegu-gunwi/">대구 군위 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daegu-dalseo/">대구 달서 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daegu-dalseong/">대구 달성 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-incheon/">인천 <span class="cnt">(36)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-junggu/">인천 중구 <span class="cnt">(18)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-ganghwa/">인천 강화 <span class="cnt">(9)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-yeonsu/">인천 연수 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-donggu/">인천 동구 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-seogu/">인천 서구 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-incheon-ongjin/">인천 옹진 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-gwangju/">광주 <span class="cnt">(21)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-gwangju-donggu/">광주 동구 <span class="cnt">(12)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gwangju-bukgu/">광주 북구 <span class="cnt">(7)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gwangju-namgu/">광주 남구 <span class="cnt">(2)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-daejeon/">대전 <span class="cnt">(7)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-daejeon-donggu/">대전 동구 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daejeon-yuseong/">대전 유성 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-daejeon-junggu/">대전 중구 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-ulsan/">울산 <span class="cnt">(0)</span></a>
+    
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-gangwon/">강원 <span class="cnt">(33)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-yeongwol/">강원 영월 <span class="cnt">(18)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-gangneung/">강원 강릉 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-goseong/">강원 고성 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-pyeongchang/">강원 평창 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-samcheok/">강원 삼척 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-sokcho/">강원 속초 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-yangyang/">강원 양양 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-yeoncheon/">강원 연천 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gangwon-wonju/">강원 원주 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-gyeonggi/">경기 <span class="cnt">(15)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-paju/">경기 파주 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-goyang/">경기 고양 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-namyangju/">경기 남양주 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-anseong/">경기 안성 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-bucheon/">경기 부천 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-seongnam/">경기 성남 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-suwon/">경기 수원 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-anyang/">경기 안양 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-yangpyeong/">경기 양평 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeonggi-hanam/">경기 하남 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-gyeongnam/">경남 <span class="cnt">(12)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-sancheong/">경남 산청 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-changwon/">경남 창원 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-hamyang/">경남 함양 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-geoje/">경남 거제 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-geochang/">경남 거창 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-jinju/">경남 진주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-hadong/">경남 하동 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongnam-hapcheon/">경남 합천 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-gyeongbuk/">경북 <span class="cnt">(22)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-gunwi/">경북 군위 <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-uiseong/">경북 의성 <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-andong/">경북 안동 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-uljin/">경북 울진 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-chilgok/">경북 칠곡 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-gyeongju/">경북 경주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-mungyeong/">경북 문경 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-sangju/">경북 상주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-yeongju/">경북 영주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-gyeongbuk-cheongdo/">경북 청도 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-sejong/">세종 <span class="cnt">(1)</span></a>
+    
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-jeonnam/">전남 <span class="cnt">(93)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-boseong/">전남 보성 <span class="cnt">(35)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-suncheon/">전남 순천 <span class="cnt">(16)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-yeosu/">전남 여수 <span class="cnt">(14)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-haenam/">전남 해남 <span class="cnt">(13)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-gurye/">전남 구례 <span class="cnt">(6)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-mokpo/">전남 목포 <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-gangjin/">전남 강진 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-goheung/">전남 고흥 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-gokseong/">전남 곡성 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-naju/">전남 나주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-damyang/">전남 담양 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonnam-hwasun/">전남 화순 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-jeonbuk/">전북 <span class="cnt">(9)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonbuk-namwon/">전북 남원 <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonbuk-gochang/">전북 고창 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonbuk-jeonju/">전북 전주 <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeonbuk-jeongeup/">전북 정읍 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-jeju/">제주 <span class="cnt">(17)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeju-jejusi/">제주 제주시 <span class="cnt">(12)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-jeju-seogwipo/">제주 서귀포 <span class="cnt">(5)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-chungnam/">충남 <span class="cnt">(21)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungnam-nonsan/">충남 논산 <span class="cnt">(17)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungnam-gongju/">충남 공주 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungnam-buyeo/">충남 부여 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungnam-cheonan/">충남 천안 <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungnam-hongseong/">충남 홍성 <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/regions/kr-chungbuk/">충북 <span class="cnt">(11)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/regions/kr-chungbuk-cheongju/">충북 청주 <span class="cnt">(11)</span></a></div>
+  </div>
+  </div>
+</main>
+<footer>
+  &copy; 그곳, 지금 — 이야기 속 장소를 실제로 가볼 수 있는 개인 여행지도 블로그<br>
+  <a href="https://geugotjigeum.com/about/">서비스 소개</a>
+  <a href="https://geugotjigeum.com/places/">장소로 찾기</a>
+  <a href="https://geugotjigeum.com/contact/">문의</a>
+  <a href="https://geugotjigeum.com/privacy/">개인정보처리방침</a>
+  <a href="https://geugotjigeum.com/terms/">이용약관</a>
+</footer>
+</body>
+</html>

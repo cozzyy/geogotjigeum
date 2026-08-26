@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+# 2026-08: /?work=id 는 지도 SPA 진입용 얇은 껍데기 URL이라 검색엔진이 내용을 거의
+# 읽지 못한다. 같은 콘텐츠의 완전한 정적 버전이 /works/{id}/ (및 /en/, /ja/)에 있고
+# canonical도 그쪽을 가리키므로, 중복/저품질 색인을 막기 위해 크롤링에서 제외한다.
+Disallow: /*?work=*
+Disallow: /en/*?work=*
+Disallow: /ja/*?work=*
+
+Sitemap: https://geugotjigeum.com/sitemap.xml

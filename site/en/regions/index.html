@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find filming locations by region — That Place, Now</title>
+<meta name="description" content="Countries link to exact filming locations; domestic regions link to the connected stories.">
+<link rel="canonical" href="https://geugotjigeum.com/en/regions/">
+<link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/regions/">
+<link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/regions/">
+<link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/regions/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/regions/">
+<link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/regions/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="That Place, Now">
+<meta property="og:title" content="Find filming locations by region — That Place, Now">
+<meta property="og:description" content="Countries link to exact filming locations; domestic regions link to the connected stories.">
+<meta property="og:url" content="https://geugotjigeum.com/en/regions/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Find filming locations by region — That Place, Now">
+<meta name="twitter:description" content="Countries link to exact filming locations; domestic regions link to the connected stories.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2KNQYH97M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-H2KNQYH97M');
+</script>
+<style>
+  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink:hover{text-decoration:underline;}
+  .wsLangs{display:flex;align-items:center;background:#f2f3f5;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;font-size:12.5px;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:4px 9px;border-radius:999px;}
+  .wsLangs a.on{color:#fff;background:var(--accent2);font-weight:700;}
+  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
+  .kicker{font-size:12.5px;font-weight:700;color:var(--accent2);letter-spacing:.02em;margin:0 0 8px;}
+  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
+  .breadcrumb a{color:var(--sub);text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+  h1{font-size:24px;line-height:1.4;margin:0 0 12px;}
+  .intro{font-size:15.5px;color:#333;margin:0 0 24px;}
+  .noteBox{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 26px;}
+  h2{font-size:18px;margin:32px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+  .chipRow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .regionChip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink);background:#f6f7f9;border:1px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;}
+  .regionChip:hover{border-color:var(--accent2);color:var(--accent2);}
+  .regionChip .cnt{color:var(--sub);font-weight:500;}
+  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease;}
+  .workCard:hover{border-color:#d5d9e0;background:#fafbfc;}
+  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);}
+  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;}
+  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent2);}
+  .locGroup{margin-bottom:26px;}
+  .locGroup > a.groupTitle{display:inline-block;font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;margin-bottom:10px;}
+  .locGroup > a.groupTitle:hover{color:var(--accent2);}
+  .locCard{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;}
+  .locCard:hover{border-color:#d5d9e0;background:#fafbfc;}
+  .locCard h4{font-size:14.5px;margin:0 0 4px;color:var(--ink);}
+  .locCard p{font-size:13px;color:var(--sub);margin:0;}
+  .locCard .cta{font-size:12.5px;font-weight:600;color:var(--accent2);margin-top:6px;display:inline-block;}
+  footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
+  footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
+  footer a:hover{color:var(--accent2);}
+  .hubSection{margin-bottom:36px;}
+  @media (max-width:480px){
+    .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
+    main{padding:22px 16px 48px;}
+    h1{font-size:20px;}
+    .workCard{padding:13px 14px;}
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Find filming locations by region","url":"https://geugotjigeum.com/en/regions/"}</script>
+</head>
+<body>
+<header class="wsHeader">
+  <a class="brand" href="https://geugotjigeum.com/en/">
+    <svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e0603a"/>
+          <stop offset="100%" stop-color="#3a7ce0"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 3c-7.7 0-14 6.3-14 14 0 10.5 14 20 14 20s14-9.5 14-20c0-7.7-6.3-14-14-14z" fill="url(#brandGrad)"/>
+      <circle cx="20" cy="17" r="6.5" fill="#12141a"/>
+      <path d="M14.2 19.8 C14.2 16.8 17.2 16.1 20 17.4 C22.8 16.1 25.8 16.8 25.8 19.8 C25.8 19.8 22.8 18.2 20 19.3 C17.2 18.2 14.2 19.8 14.2 19.8 Z" fill="#eef1f5"/>
+      <path d="M20 17.2 C20.4 15 19.2 13 20.4 11.2" stroke="#eef1f5" stroke-width="1.2" stroke-dasharray="1.3 1.6" stroke-linecap="round" fill="none"/>
+      <circle cx="20.6" cy="10.6" r="1.05" fill="#eef1f5"/>
+    </svg>
+    <span>That Place, Now</span>
+  </a>
+  <nav class="wsLangs" aria-label="Languages"><a href="https://geugotjigeum.com/regions/">KR</a>
+    <a href="https://geugotjigeum.com/en/regions/" class="on">EN</a>
+    <a href="https://geugotjigeum.com/ja/regions/">JP</a>
+    <a href="https://geugotjigeum.com/zh/regions/">中文</a></nav>
+  <a class="backLink" href="https://geugotjigeum.com/en/">🏠 Home</a>
+</header>
+<main>
+  <p class="kicker">Browse by region</p>
+  <h1>Find filming locations by region</h1>
+  <p class="intro">Countries link to exact filming locations; domestic regions link to the connected stories.</p>
+  <div class="hubSection">
+    <h2>By country</h2>
+    <div class="chipRow">
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-japan/">Japan <span class="cnt">(214)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-usa/">USA <span class="cnt">(137)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-uk/">UK <span class="cnt">(47)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-italy/">Italy <span class="cnt">(30)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-canada/">Canada <span class="cnt">(21)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-greece/">Greece <span class="cnt">(18)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-france/">France <span class="cnt">(16)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-new-zealand/">New Zealand <span class="cnt">(14)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-spain/">Spain <span class="cnt">(13)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-germany/">Germany <span class="cnt">(11)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-romania/">Romania <span class="cnt">(10)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-china/">China <span class="cnt">(8)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-north-korea/">North Korea <span class="cnt">(8)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-south-africa/">South Africa <span class="cnt">(7)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-croatia/">Croatia <span class="cnt">(5)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-iceland/">Iceland <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-morocco/">Morocco <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-ireland/">Ireland <span class="cnt">(4)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-panama/">Panama <span class="cnt">(2)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-malta/">Malta <span class="cnt">(2)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-australia/">Australia <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-venezuela/">Venezuela <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-belgium/">Belgium <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-denmark/">Denmark <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-myanmar/">Myanmar <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-western-sahara/">Western Sahara <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-turkiye/">Turkiye <span class="cnt">(1)</span></a>
+    <a class="regionChip" href="https://geugotjigeum.com/en/regions/country-tunisia/">Tunisia <span class="cnt">(1)</span></a>
+    </div>
+  </div>
+  <div class="hubSection">
+    <h2>By region (Korea)</h2>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-seoul/">Seoul <span class="cnt">(128)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-junggu/">Seoul Jung-gu <span class="cnt">(43)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-jongno/">Seoul Jongno <span class="cnt">(39)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-gangnam/">Seoul Gangnam <span class="cnt">(8)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-yongsan/">Seoul Yongsan <span class="cnt">(7)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-seodaemun/">Seoul Seodaemun <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-dobong/">Seoul Dobong <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-gwangjin/">Seoul Gwangjin <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-dongdaemun/">Seoul Dongdaemun <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-seongdong/">Seoul Seongdong <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-songpa/">Seoul Songpa <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-yeongdeungpo/">Seoul Yeongdeungpo <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-dongjak/">Seoul Dongjak <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-seocho/">Seoul Seocho <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-gwanak/">Seoul Gwanak <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-mapo/">Seoul Mapo <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-seoul-seongbuk/">Seoul Seongbuk <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-busan/">Busan <span class="cnt">(67)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-yeongdo/">Busan Yeongdo <span class="cnt">(24)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-junggu/">Busan Jung-gu <span class="cnt">(13)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-donggu/">Busan Dong-gu <span class="cnt">(9)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-namgu/">Busan Nam-gu <span class="cnt">(6)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-seogu/">Busan Seo-gu <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-haeundae/">Busan Haeundae <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-dongnae/">Busan Dongnae <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-saha/">Busan Saha <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-geumjeong/">Busan Geumjeong <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-busanjin/">Busan Busanjin <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-busan-suyeong/">Busan Suyeong <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-daegu/">Daegu <span class="cnt">(14)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daegu-junggu/">Daegu Jung-gu <span class="cnt">(8)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daegu-namgu/">Daegu Nam-gu <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daegu-gunwi/">Daegu Gunwi <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daegu-dalseo/">Daegu Dalseo <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daegu-dalseong/">Daegu Dalseong <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-incheon/">Incheon <span class="cnt">(36)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-junggu/">Incheon Jung-gu <span class="cnt">(18)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-ganghwa/">Incheon Ganghwa <span class="cnt">(9)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-yeonsu/">Incheon Yeonsu <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-donggu/">Incheon Dong-gu <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-seogu/">Incheon Seo-gu <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-incheon-ongjin/">Incheon Ongjin <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-gwangju/">Gwangju <span class="cnt">(21)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gwangju-donggu/">Gwangju Dong-gu <span class="cnt">(12)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gwangju-bukgu/">Gwangju Buk-gu <span class="cnt">(7)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gwangju-namgu/">Gwangju Nam-gu <span class="cnt">(2)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-daejeon/">Daejeon <span class="cnt">(7)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daejeon-donggu/">Daejeon Dong-gu <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daejeon-yuseong/">Daejeon Yuseong <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-daejeon-junggu/">Daejeon Jung-gu <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-ulsan/">Ulsan <span class="cnt">(0)</span></a>
+    
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-gangwon/">Gangwon <span class="cnt">(33)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-yeongwol/">Gangwon Yeongwol <span class="cnt">(18)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-gangneung/">Gangwon Gangneung <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-goseong/">Gangwon Goseong <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-pyeongchang/">Gangwon Pyeongchang <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-samcheok/">Gangwon Samcheok <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-sokcho/">Gangwon Sokcho <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-yangyang/">Gangwon Yangyang <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-yeoncheon/">Gangwon Yeoncheon <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gangwon-wonju/">Gangwon Wonju <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-gyeonggi/">Gyeonggi <span class="cnt">(15)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-paju/">Gyeonggi Paju <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-goyang/">Gyeonggi Goyang <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-namyangju/">Gyeonggi Namyangju <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-anseong/">Gyeonggi Anseong <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-bucheon/">Gyeonggi Bucheon <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-seongnam/">Gyeonggi Seongnam <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-suwon/">Gyeonggi Suwon <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-anyang/">Gyeonggi Anyang <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-yangpyeong/">Gyeonggi Yangpyeong <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeonggi-hanam/">Gyeonggi Hanam <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-gyeongnam/">Gyeongnam <span class="cnt">(12)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-sancheong/">Gyeongnam Sancheong <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-changwon/">Gyeongnam Changwon <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-hamyang/">Gyeongnam Hamyang <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-geoje/">Gyeongnam Geoje <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-geochang/">Gyeongnam Geochang <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-jinju/">Gyeongnam Jinju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-hadong/">Gyeongnam Hadong <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongnam-hapcheon/">Gyeongnam Hapcheon <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk/">Gyeongbuk <span class="cnt">(22)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-gunwi/">Gyeongbuk Gunwi <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-uiseong/">Gyeongbuk Uiseong <span class="cnt">(5)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-andong/">Gyeongbuk Andong <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-uljin/">Gyeongbuk Uljin <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-chilgok/">Gyeongbuk Chilgok <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-gyeongju/">Gyeongbuk Gyeongju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-mungyeong/">Gyeongbuk Mungyeong <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-sangju/">Gyeongbuk Sangju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-yeongju/">Gyeongbuk Yeongju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-gyeongbuk-cheongdo/">Gyeongbuk Cheongdo <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-sejong/">Sejong <span class="cnt">(1)</span></a>
+    
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-jeonnam/">Jeonnam <span class="cnt">(93)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-boseong/">Jeonnam Boseong <span class="cnt">(35)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-suncheon/">Jeonnam Suncheon <span class="cnt">(16)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-yeosu/">Jeonnam Yeosu <span class="cnt">(14)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-haenam/">Jeonnam Haenam <span class="cnt">(13)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-gurye/">Jeonnam Gurye <span class="cnt">(6)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-mokpo/">Jeonnam Mokpo <span class="cnt">(3)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-gangjin/">Jeonnam Gangjin <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-goheung/">Jeonnam Goheung <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-gokseong/">Jeonnam Gokseong <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-naju/">Jeonnam Naju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-damyang/">Jeonnam Damyang <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonnam-hwasun/">Jeonnam Hwasun <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-jeonbuk/">Jeonbuk <span class="cnt">(9)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonbuk-namwon/">Jeonbuk Namwon <span class="cnt">(4)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonbuk-gochang/">Jeonbuk Gochang <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonbuk-jeonju/">Jeonbuk Jeonju <span class="cnt">(2)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeonbuk-jeongeup/">Jeonbuk Jeongeup <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-jeju/">Jeju <span class="cnt">(17)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeju-jejusi/">Jeju Jeju-si <span class="cnt">(12)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-jeju-seogwipo/">Jeju Seogwipo <span class="cnt">(5)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-chungnam/">Chungnam <span class="cnt">(21)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungnam-nonsan/">Chungnam Nonsan <span class="cnt">(17)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungnam-gongju/">Chungnam Gongju <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungnam-buyeo/">Chungnam Buyeo <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungnam-cheonan/">Chungnam Cheonan <span class="cnt">(1)</span></a>
+<a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungnam-hongseong/">Chungnam Hongseong <span class="cnt">(1)</span></a></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a class="regionChip" style="font-weight:800;" href="https://geugotjigeum.com/en/regions/kr-chungbuk/">Chungbuk <span class="cnt">(11)</span></a>
+    <div class="chipRow" style="margin-left:4px;"><a class="regionChip" href="https://geugotjigeum.com/en/regions/kr-chungbuk-cheongju/">Chungbuk Cheongju <span class="cnt">(11)</span></a></div>
+  </div>
+  </div>
+</main>
+<footer>
+  &copy; That Place, Now — a personal travel-map blog connecting stories to the real places behind them<br>
+  <a href="https://geugotjigeum.com/about/">About</a>
+  <a href="https://geugotjigeum.com/contact/">Contact</a>
+  <a href="https://geugotjigeum.com/privacy/">Privacy</a>
+  <a href="https://geugotjigeum.com/terms/">Terms</a>
+</footer>
+</body>
+</html>

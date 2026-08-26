@@ -1,0 +1,1150 @@
+:root{
+  --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --text:#eef1f5; --sub:#9aa4b2;
+  --accent:#e0603a; --accent2:#3a7ce0; --border:#2b303b;
+  /* 2026-08: 랜딩 카드 테두리·"둘러보기" 링크 전용 색상 — 원래는 작품마다 다른 pinColor를 썼는데,
+     카드 순서가 세션마다 랜덤으로 섞이면서 "이 색 = 이 작품"이라는 구분 의미가 없어졌고, pinColor
+     중 일부는 어두운 배경(--panel2)과 대비가 약해 테두리도 "둘러보기" 글자도 거의 안 보이는
+     문제가 있었다. 모든 카드에 같은 밝은 오렌지 하나로 통일해 항상 눈에 띄도록 함. */
+  --card-accent:#ff9d42;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text);}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh;}
+
+header{
+  padding:14px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:linear-gradient(180deg,#171a21,#12141a);
+}
+header h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px;}
+header p{margin:2px 0 0;color:var(--sub);font-size:12.5px;}
+/* 2026-08 UI 개편: 헤더를 "로고" 묶음(왼쪽)과 "홈 버튼 + 언어 토글" 묶음(오른쪽) 두 그룹으로
+   단순화 — 사용법/작품선택/내주변투어 버튼은 랜딩 화면 본문에 이미 같은 기능이 있어 제거했다.
+   2026-08 재조정: 홈 버튼을 처음엔 로고 바로 옆(왼쪽)에 작게 뒀더니 "로고 누르는 것과 뭐가
+   다르냐"는 피드백을 받았다 — 로고와 같은 자리에 있으면 아무리 별도 버튼이어도 심리적으로
+   같은 동작처럼 느껴진다. 로고와 반대편(오른쪽, 언어 토글 옆)으로 옮기고, 아이콘만이 아니라
+   "홈" 글자까지 넣은 알약 버튼으로 키워서 확실히 구분되는 별도의 액션으로 보이게 했다. */
+.header-left{display:flex;align-items:center;gap:8px;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.home-icon-btn{
+  flex-shrink:0;display:flex;align-items:center;gap:6px;height:38px;padding:0 16px;
+  border-radius:999px;background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  font-size:14px;font-weight:700;cursor:pointer;transition:.12s;
+}
+.home-icon-btn:hover{border-color:var(--accent2);background:rgba(58,124,224,.15);color:var(--accent2);}
+.home-icon-btn:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:10px;padding:2px 6px;margin:-2px -6px;}
+.brand:hover{background:rgba(255,255,255,.05);}
+.brand:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+.brand-logo{width:34px;height:34px;flex-shrink:0;}
+
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0;}
+
+/* #main은 지도:정보 비율이 화면 폭에 비례하도록 %기반 flex-basis를 쓰고,
+   초광폭 모니터에서 지도가 지나치게 커지지 않도록 전체 폭에 상한을 둔다. */
+/* 2026-08 버그 수정: max-width:1680px 때문에 1680px보다 넓은 모니터(예: 1800~1920px)에서는
+   지도 화면 좌우로 커다란 검은 여백이 남았다("PC 화면을 너무 못 쓰고 있다" — UX 개편 기획안 지적사항 1).
+   지도는 넓을수록 유용한 콘텐츠이므로 굳이 좁혀 가둘 이유가 없다 — 초광각 모니터에서 사이드바
+   텍스트 줄 길이가 지나치게 늘어지는 것만 막을 수 있게 상한을 2400px로 크게 늘렸다
+   (사이드바 자체에도 별도 max-width:1300px가 있어 텍스트 가독성은 그쪽에서 이미 보호됨). */
+#main{flex:1;display:flex;min-height:0;max-width:2400px;margin:0 auto;width:100%;}
+#mapWrap{flex:1 1 auto;min-width:0;position:relative;}
+#map{width:100%;height:100%;background:#0c1620;}
+
+/* 2026-08 UX 개편 기획안 반영: 지도:사이드바 기본 비율을 5:5 → 지도 58% : 사이드바 42%로 조정.
+   지도가 이 서비스의 핵심 발견 공간인데 절반만 차지하면 좁아 보인다는 지적(장소가 넓게 퍼진
+   작품일수록 특히 불리) — 사이드바 42%로도 텍스트·버튼은 충분히 읽히므로 지도 쪽에 여유를 더 줬다.
+   #dragHandle을 마우스로 당기면 사용자가 직접 비율을 바꿀 수 있다 (contentmap_app.js의
+   initResizer() 참고). 드래그 중에는 자바스크립트가 인라인 style.flexBasis를 직접 지정하므로
+   아래 flex:0 0 42%는 '초기값'일 뿐이고, 이후에는 인라인 스타일이 우선한다. */
+#sidebar{
+  flex:0 0 42%;min-width:300px;max-width:1300px;flex-shrink:0;border-left:1px solid var(--border);
+  background:var(--panel);overflow-y:auto;padding:18px;
+}
+#sidebar.sidebar-detail{ flex-basis:42%;max-width:1300px; }
+#sidebar.resizing{transition:none !important;}
+#sidebar:not(.resizing){transition:flex-basis .2s ease;}
+#sidebar h2{font-size:14px;margin:0 0 10px;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;}
+
+/* ---- 지도:사이드바 크기 조절 핸들 (마우스로 드래그해서 비율 변경) ---- */
+#dragHandle{
+  flex:0 0 7px;width:7px;cursor:col-resize;position:relative;background:var(--border);
+  flex-shrink:0;touch-action:none;
+}
+#dragHandle::before{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:3px;height:36px;border-radius:3px;background:#4a5266;
+}
+#dragHandle:hover,#dragHandle.dragging{background:var(--accent2);}
+#dragHandle:hover::before,#dragHandle.dragging::before{background:#fff;}
+body.resizing-cursor{cursor:col-resize !important;user-select:none;}
+body.resizing-cursor *{user-select:none;}
+
+.empty-state{color:var(--sub);font-size:13.5px;line-height:1.7;padding:10px 2px;}
+
+/* ---- 작품 대표 이미지 ---- */
+.hero-image{border-radius:12px;overflow:hidden;margin-bottom:4px;border:1px solid var(--border);}
+.hero-image img{display:block;width:100%;max-height:220px;object-fit:cover;background:#0c1620;}
+.hero-credit{background:#12141a;padding:5px 10px;}
+.hero-credit a{color:var(--sub);font-size:10.5px;text-decoration:none;}
+.hero-credit a:hover{color:var(--sub);text-decoration:underline;}
+
+/* ---- 장소 실제 사진 (위키백과에서 자동으로 찾아와 상세 패널 맨 위에 크게 표시) ---- */
+.photo-hero{position:relative;background:#0c1620;min-height:140px;overflow:hidden;}
+.photo-hero img{display:block;width:100%;max-height:320px;object-fit:cover;}
+.photo-hero.loading{display:flex;align-items:center;justify-content:center;min-height:160px;}
+.photo-hero-skel{color:var(--sub);font-size:12.5px;display:flex;align-items:center;gap:8px;}
+.photo-hero-skel::before{content:'';width:14px;height:14px;border-radius:50%;border:2px solid #3a4152;border-top-color:var(--accent2);animation:photoSpin .8s linear infinite;}
+@keyframes photoSpin{to{transform:rotate(360deg);}}
+.photo-hero-credit{
+  position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);
+  color:#fff;font-size:10.8px;text-decoration:none;padding:16px 12px 8px;
+}
+.photo-hero-credit:hover{text-decoration:underline;}
+
+/* ---- 처음 화면(작품 선택 랜딩) ---- */
+#landingScreen{display:none;flex:1;overflow-y:auto;padding:40px 20px 60px;}
+#app.landing #landingScreen{display:flex;flex-direction:column;align-items:center;}
+#app.landing #main{display:none;}
+#app.landing #crossPromo{display:none !important;}
+
+/* ?work= 링크로 들어와 지도가 뜰 준비를 하는 동안(<html class="gcjg-boot-work">, index.html 헤더의
+   인라인 스크립트 참고) 정적 HTML 기본값인 랜딩 소개 화면이 잠깐 그려졌다가 지도 화면으로
+   바뀌는 깜빡임을 막는다. HTML의 class="landing"이 아직 안 지워진 시점에도 CSS에서 선제적으로
+   랜딩 화면을 숨기고 지도 레이아웃을 보여준다. */
+html.gcjg-boot-work #app.landing #landingScreen{display:none;}
+html.gcjg-boot-work #app.landing #main{display:flex;}
+.landing-inner{max-width:980px;width:100%;text-align:center;}
+.landing-kicker{color:var(--accent2);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+.landing-inner h2{font-size:26px;margin:0 0 16px;}
+.landing-blurb{font-size:14.5px;line-height:1.85;color:#d7dee8;max-width:720px;margin:0 auto 14px;text-align:left;}
+.landing-blurb b{color:#fff;}
+
+/* ============================================================
+   2026-08 UI 개편: 랜딩 히어로 — "기능은 많은데 여행 욕구는 약하다"는 기획 피드백에 따라,
+   기존엔 텍스트만 있던 상단을 실제 작품 대표 이미지 콜라주 + 밝은 배경으로 바꿨다. 사이트
+   전체를 라이트 테마로 바꾸는 대신(비용·위험 큼) 이 히어로 박스 안에서만 밝게 하고, 나머지
+   화면은 기존 다크 테마를 그대로 유지한다 — 어두운 배경 위에 뜬 밝은 카드처럼 보이는 효과.
+   ============================================================ */
+/* 2026-08 재조정: color-scheme:light를 명시 — 일부 모바일 브라우저(안드로이드 크롬/삼성인터넷의
+   "웹사이트 다크모드 강제" 기능 등)가 밝은 배경을 멋대로 어둡게, 어두운 글자를 밝게 뒤집어버리는
+   현상을 막기 위함. 이 히어로 영역은 항상 밝은 카드로 보여야 하는 의도된 디자인이라는 걸
+   브라우저에게 알려준다. */
+.landing-hero{position:relative;border-radius:24px;overflow:hidden;margin:4px 0 26px;isolation:isolate;color-scheme:light;}
+.landing-hero-collage{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:2px;}
+/* 2026-08 재조정: "누르스름하고 빛바랜 사진 같다"는 피드백 — 기존엔 brightness(.92) saturate(1.05)로
+   오히려 원본보다 어둡고 덜 채도있게 눌러놨었다. 실제 여행 욕구를 자극하려면 사진이 쨍하고
+   생생해야 하므로 밝기·채도·대비를 모두 끌어올렸다. */
+.hero-collage-tile{background-size:cover;background-position:center;filter:brightness(1.08) saturate(1.4) contrast(1.06);transition:filter .35s ease;}
+/* 2026-08 히어로 주목도 개선 #5: 콜라주 타일에 마우스를 올리면 살짝 밝아지는 반응 — 정적으로
+   보이던 배경이 "살아있다"는 느낌을 주기 위함. transform이 아닌 filter로 반응시켜, 아래 #1의
+   transform 기반 켄번즈 줌 애니메이션과 매 프레임 충돌(덮어쓰기)하지 않도록 했다. */
+.hero-collage-tile:hover{filter:brightness(1.28) saturate(1.55) contrast(1.08);}
+/* 2026-08 히어로 주목도 개선 #1: 콜라주 타일 슬로우줌(켄번즈 효과) — 완전히 정지된 배경이
+   허전하다는 피드백에 따라, 아주 느리게(20~30초 주기) 확대되는 애니메이션을 얹었다.
+   타일마다 duration/delay를 다르게 줘서 전부 같은 박자로 움직이지 않게 했다.
+   prefers-reduced-motion 사용자는 애니메이션 없이 정지 화면 그대로 유지. */
+@media (prefers-reduced-motion: no-preference){
+  .hero-collage-tile{animation:heroTileZoom 26s ease-in-out infinite alternate;transform-origin:center;}
+  .hero-collage-tile:nth-child(2n){animation-duration:30s;animation-delay:-4s;}
+  .hero-collage-tile:nth-child(3n){animation-delay:-11s;}
+  .hero-collage-tile:nth-child(4n){animation-duration:22s;animation-delay:-16s;}
+  .hero-collage-tile:nth-child(5n){animation-duration:28s;animation-delay:-8s;}
+  .hero-collage-tile:nth-child(6n){animation-duration:24s;animation-delay:-19s;}
+}
+@keyframes heroTileZoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.13);}
+}
+/* 2026-08 재조정: 크림색(누런) 톤 오버레이가 사진을 빛바랜 것처럼 만든다는 피드백 —
+   따뜻한 크림색(255,248,238) 대신 순백색으로 바꿔 사진 원색이 최대한 쨍하게 비치도록 하고,
+   상단(헤드라인 부분) 불투명도도 낮춰 사진이 더 선명하게 드러나게 했다. 텍스트 가독성은
+   흰색 오버레이 자체의 밝기와 헤드라인의 텍스트 그림자로 보완한다. */
+.landing-hero::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.78) 45%,rgba(255,255,255,.94) 100%);
+}
+.landing-hero-content{position:relative;z-index:2;padding:52px 24px 36px;}
+/* 2026-08 재조정: 헤드라인이 본문과 비슷한 톤(짙은 남색)이라 눈에 덜 띈다는 피드백 —
+   사이트 전체에서 강조색으로 이미 쓰고 있는 --accent(주황빛 테라코타)로 바꿔 카운터 배너·버튼
+   호버 등과 같은 색 언어를 유지하면서도 헤드라인이 히어로에서 확실히 도드라지게 했다. */
+.landing-hero-content h2{margin:0 0 20px;font-size:30px;font-weight:800;color:var(--accent);letter-spacing:-.01em;line-height:1.4;text-shadow:0 1px 18px rgba(255,255,255,.7),0 1px 2px rgba(255,255,255,.6);}
+/* 2026-08 히어로 주목도 개선 #2: 헤드라인이 페이지 첫 로드 시 한 번 슬라이드업+페이드인 — 카운터
+   배너(매번 재생)와 달리, 이건 최초 페인트 때 딱 한 번만 자연스럽게 재생되는 연출이라 CSS
+   애니메이션만으로 충분하고 별도 JS 트리거가 필요 없다. */
+@media (prefers-reduced-motion: no-preference){
+  .landing-hero-content h2{animation:heroHeadlineIn .7s cubic-bezier(.16,1,.3,1) both;}
+}
+@keyframes heroHeadlineIn{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.landing-hero-content .landing-counter-banner{margin:0 0 20px;}
+.landing-hero-content .landing-filter-hero{margin:0 auto;}
+.landing-hero-content .filter-bar{box-shadow:0 10px 28px rgba(0,0,0,.22);}
+
+/* 2026-08 UI 개편: 검색창이 히어로 밖(카드 위)으로 밀려나 불편하다는 피드백 — "지역으로 찾기",
+   "내 주변 콘텐츠 투어", "다른 장소로 찾기"(주소 검색)를 각각 독립된 큰 섹션으로 늘어놓는 대신,
+   히어로 검색창 바로 아래에 짧은 버튼 3개로 압축했다. 버튼 자체엔 설명 문구를 달지 않아
+   ("이건 뭐지?" 하는 호기심을 유도하는 게 의도) — 눌러야 내용이 드러난다.
+   지역별 여행: #heroRegionPanel을 펼쳐 기존 지역칩을 그대로 보여줌.
+   내주변여행 / 여행지찾기: 기존 '내 주변 콘텐츠 투어' 모달을 열되, 후자는 주소 검색이 바로 펼쳐진 채로 연다. */
+.landing-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.hero-action-btn{
+  display:inline-flex;align-items:center;gap:7px;background:#1a1c22;color:#fff;
+  border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:11px 20px;
+  font-size:13.5px;font-weight:700;font-family:inherit;cursor:pointer;transition:.12s;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+.hero-action-btn:hover{border-color:var(--accent2);background:#22252e;}
+.hero-action-btn.active{background:var(--accent2);border-color:var(--accent2);}
+
+/* 히어로 바로 아래, 카드 위에 나타나는 "지역별 여행" 펼침 패널 — 기존 지역칩(.region-row-wrap)을
+   그대로 감싸고, 배경만 살짝 얹어 히어로에서 이어지는 하나의 동작처럼 보이게 한다. */
+.hero-region-panel{
+  background:var(--panel2);border:1px solid var(--border);border-radius:16px;
+  padding:16px 18px 10px;margin:0 0 22px;
+}
+.hero-region-panel .region-row-wrap{margin:0;max-width:none;}
+
+/* 2026-08 히어로 주목도 개선 #3: "오늘의 장소" 미니 프리뷰 — 정적인 히어로 안에 매일 조금씩
+   달라지는 요소를 심어 재방문 유인을 준다. 날짜 기반으로 결정론적으로 골라, "오늘의"라는
+   표현이 항상 사실이 되도록 함(pickTodayWork() 참고). 클릭하면 바로 그 작품의 인터랙티브
+   지도로 진입(enterWork). 히어로 안 다른 버튼들과 같은 어두운 필 톤을 따라간다. */
+.hero-today-pick{
+  display:flex;align-items:center;gap:12px;width:100%;max-width:420px;margin:16px auto 0;
+  background:#1a1c22;border:1px solid rgba(255,255,255,.12);border-radius:16px;
+  padding:9px 16px 9px 9px;cursor:pointer;text-align:left;font-family:inherit;
+  transition:.15s;box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+.hero-today-pick:hover{border-color:var(--accent2);background:#22252e;}
+.hero-today-pick[hidden]{display:none;}
+.hero-today-pick-img{
+  width:50px;height:50px;flex:0 0 50px;border-radius:12px;background-size:cover;
+  background-position:center;background-color:#333;
+}
+.hero-today-pick-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.hero-today-pick-label{font-size:10px;font-weight:800;color:var(--card-accent);text-transform:uppercase;letter-spacing:.05em;}
+.hero-today-pick-title{font-size:13.5px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hero-today-pick-hook{font-size:11.5px;color:rgba(255,255,255,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* 2026-08 신규: 랜딩 상단 동적 카운터 배너(task #384) — 인물/이야기/장소 규모를 한눈에 보여주고,
+   장소 수는 진입할 때마다 카운트업 애니메이션으로 주목을 끈다.
+   2026-08 개편(task #433): 밝은 히어로 배경 위에서도 대비가 확실하도록 어두운 배지로 바꾸고,
+   숫자를 한 번 더 키워서 "이 사이트의 규모"가 한눈에 강조되도록 했다. */
+.landing-counter-banner{display:flex;justify-content:center;margin:0 0 16px;}
+.landing-counter-banner:empty{display:none;}
+.counter-banner-text{
+  display:inline-block;font-size:15px;font-weight:700;color:#fff;background:#1a1c22;
+  border:1px solid rgba(255,157,66,.55);border-radius:999px;padding:13px 24px;line-height:1.5;
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+}
+.counter-banner-num{color:var(--card-accent);font-size:40px;font-weight:900;padding:0 4px;line-height:1;vertical-align:middle;display:inline-block;}
+
+/* ---- 2026-08 홈 화면 정보 우선순위 재배치: 검색을 최상단으로, 서비스 소개 글은
+   맨 아래로 내리고, 그 자리에 빠른 진입 버튼/인기 작품 행을 배치했다. ---- */
+.landing-filter-hero{max-width:640px;margin:0 auto 18px;}
+.landing-filter-hero .filter-bar{padding:16px 18px;}
+.landing-filter-hero .filter-search{font-size:14px;padding:11px 14px;}
+.landing-blurb-footer{
+  font-size:12.5px;line-height:1.8;color:var(--sub);max-width:680px;
+  margin:36px auto 0;padding-top:20px;border-top:1px dashed var(--border);text-align:left;
+}
+.landing-blurb-footer b{color:#c7cedb;}
+/* 2026-08 "한국 여행 코스 보기"(country 필터 재사용 버튼)와 "지금 인기있는 작품"(고정 큐레이션
+   목록) 자리를 대체 — 실제 장소 좌표를 지역별로 묶어 계산한 REGION_DEFS를 칩으로 노출한다.
+   칩 안의 숫자는 그 지역에 실제 장소가 있는 작품 수(거짓 "인기" 표시가 아니라 사실 그대로). */
+.region-row-wrap{max-width:820px;margin:22px auto 4px;text-align:left;}
+.region-row-label{font-size:12.5px;font-weight:700;color:var(--sub);margin:0 0 10px;}
+/* 2026-08 UI 개편(task #434): 브라우저 기본 가로 스크롤바가 그대로 보여서 마감이 덜 된
+   것처럼 보인다는 지적 — 스크롤바를 숨기고, 대신 좌우 화살표 버튼(.region-scroll-arrow)과
+   양쪽 가장자리 페이드 효과(::before/::after)로 "더 스크롤할 게 있다"는 걸 알려준다. */
+.region-row-scroller{position:relative;display:flex;align-items:center;gap:4px;}
+.region-row-scroller::before,.region-row-scroller::after{
+  content:'';position:absolute;top:0;bottom:6px;width:28px;z-index:2;pointer-events:none;
+}
+.region-row-scroller::before{left:34px;background:linear-gradient(90deg,var(--bg),transparent);}
+.region-row-scroller::after{right:34px;background:linear-gradient(270deg,var(--bg),transparent);}
+.region-scroll-arrow{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;z-index:3;
+  background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;
+}
+.region-scroll-arrow:hover{border-color:var(--accent2);color:var(--accent2);}
+/* #regionRow는 이제 "1단계(광역+국가) 칩 줄" + "펼쳐진 시군구 자식 칩 줄" 두 줄을 세로로 쌓는
+   컨테이너 — 가로 스크롤 flex 레이아웃은 안쪽 .region-row-chips에만 적용한다(2026-08 드릴다운 추가). */
+.region-row{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0;}
+.region-row-chips{
+  display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.region-row-chips::-webkit-scrollbar{display:none;}
+.region-chip{
+  flex:0 0 auto;border:1px solid var(--border);background:var(--panel2);color:var(--text);
+  padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;
+  font-family:inherit;white-space:nowrap;transition:.12s;
+}
+.region-chip:hover{border-color:var(--accent2);}
+.region-chip.active{background:var(--accent2);border-color:var(--accent2);color:#fff;}
+.region-chip-count{opacity:.65;font-size:11.5px;font-weight:700;margin-left:2px;}
+/* 광역(부모) 칩이 펼쳐진 상태 — 시군구 자식이 있다는 걸 화살표로 보여주고, 펼쳐졌을 때 강조한다. */
+.region-chip-caret{opacity:.55;font-size:9px;margin-left:3px;}
+.region-chip.expanded{border-color:var(--accent2);}
+/* 펼쳐진 시군구 자식 칩 줄 — 부모 칩 줄과 구분되도록 살짝 들여쓰고 옅은 배경을 준다. */
+.region-chip-row-children{
+  display:flex;gap:8px;flex-wrap:wrap;padding:10px 0 2px 18px;
+  border-left:2px solid var(--border);margin-left:4px;
+}
+.region-chip-child{background:transparent;font-size:12.5px;padding:6px 12px;}
+/* 국가 단위 칩(COUNTRY_REGION_DEFS) — 한국 지역칩과 섞이지 않도록 테두리를 점선으로 구분하고,
+   숫자 배지는 작품 수가 아니라 그 나라의 실제 장소 수를 뜻한다는 점을 시각적으로도 살짝 구분한다.
+   국가 칩은 드릴다운이 없는 단일 단계다. */
+.region-chip-country{border-style:dashed;margin-left:4px;}
+.region-chip-country:first-of-type{margin-left:10px;}
+.region-chip-country.active{background:var(--accent);border-color:var(--accent);border-style:solid;}
+.landing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;text-align:left;}
+.landing-footer{margin-top:28px;text-align:center;font-size:12px;color:var(--sub);}
+.landing-footer a{color:var(--sub);text-decoration:underline;margin:0 8px;}
+.landing-footer a:hover{color:var(--accent2);}
+.landing-card{
+  border:1px solid var(--border);background:var(--panel2);border-radius:14px;overflow:hidden;
+  padding:0;color:var(--text);font-family:inherit;text-align:left;display:flex;flex-direction:column;
+  transition:transform .15s ease,border-color .15s ease;border-top:3px solid var(--card-accent);
+}
+.landing-card:hover{transform:translateY(-3px);border-color:var(--card-accent);}
+/* 카드 안의 정보 링크(/works/작품명/)와 지도 진입 버튼은 서로 다른 두 개의 독립된
+   클릭 대상이다 — 하나가 다른 하나를 감싸거나 흉내내지 않는다. */
+.landing-card-infolink{
+  display:flex;flex-direction:column;flex:1;color:inherit;text-decoration:none;cursor:pointer;
+}
+.landing-card-img{height:140px;overflow:hidden;background:#0c1620;}
+.landing-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.landing-card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;}
+.landing-card-title{font-size:16px;font-weight:800;margin-bottom:4px;}
+.landing-card-sub{font-size:11px;color:var(--sub);margin-bottom:10px;}
+.landing-card-summary{font-size:12.5px;line-height:1.65;color:#c7cedb;flex:1;}
+.landing-card-mapbtn{
+  appearance:none;border:none;border-top:1px solid var(--border);background:transparent;
+  color:var(--card-accent);font-family:inherit;font-size:12px;font-weight:700;
+  text-align:left;padding:12px 16px;cursor:pointer;transition:background .15s ease;
+}
+.landing-card-mapbtn:hover{background:rgba(255,255,255,0.04);}
+
+/* ============================================================
+   국가·매체·장르 필터 UI (2026-08 신규) — 랜딩 화면과 헤더의
+   '작품 선택' 드롭다운 패널이 같은 클래스를 공유한다.
+   ============================================================ */
+.filter-bar{
+  display:flex;flex-direction:column;gap:10px;text-align:left;
+  background:var(--panel2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 16px;margin:0 0 6px;
+}
+.filter-search{
+  width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);
+  background:var(--panel);color:var(--text);font-size:13px;font-family:inherit;
+}
+.filter-search:focus{outline:none;border-color:var(--accent2);}
+.filter-search::placeholder{color:var(--sub);}
+/* 2026-08 수정: 예전엔 라벨(국가/매체/장르)과 칩 목록을 한 줄에 나란히(baseline) 배치했는데,
+   장르처럼 칩 개수가 많은 줄은 라벨+첫 칩이 한 줄에 다 안 들어가는 순간 칩 목록 전체가
+   통째로 다음 줄로 넘어가버려서, 첫 칩("전체")만 혼자 어중간하게 줄바꿈되어 보이는 문제가 있었다.
+   라벨을 칩 목록 위에 항상 별도 줄로 고정해서, 칩 개수와 무관하게 항상 일관되게 보이도록 한다. */
+.filter-group{display:flex;flex-direction:column;align-items:flex-start;gap:6px;}
+.filter-group-label{font-size:11.5px;color:var(--sub);font-weight:700;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.filter-chip{
+  border:1px solid var(--border);background:var(--panel);color:var(--sub);
+  padding:5px 11px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:600;
+  transition:.12s;
+}
+.filter-chip:hover{border-color:#3a4152;color:var(--text);}
+.filter-chip.active{background:var(--accent2);border-color:var(--accent2);color:#fff;}
+.filter-reset-btn{
+  align-self:flex-start;background:transparent;border:none;color:var(--sub);
+  font-size:11.5px;text-decoration:underline;cursor:pointer;padding:2px 0;
+}
+.filter-reset-btn:hover{color:var(--text);}
+.filter-result-count{font-size:12px;color:var(--sub);margin:2px 2px 12px;text-align:left;}
+.filter-empty{
+  grid-column:1/-1;color:var(--sub);font-size:13.5px;text-align:center;
+  padding:36px 16px;border:1px dashed var(--border);border-radius:12px;
+}
+
+/* ---- 헤더 '작품 선택' 드롭다운 (기존 #workTabs 가로 탭 목록을 대체) ----
+   작품 수가 계속 늘어나면서 탭을 한 줄에 다 못 보여주게 돼, 필터+검색이 딸린
+   드롭다운 패널 하나로 바꿨다. */
+.work-picker-wrap{position:relative;}
+.work-picker-toggle-btn{
+  border:1px solid var(--border);background:var(--panel2);color:var(--text);
+  padding:9px 14px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;
+}
+.work-picker-toggle-btn:hover{border-color:#3a4152;}
+#workPickerActiveTitle{color:var(--accent2);font-weight:700;margin:0 2px;}
+.work-picker-panel{
+  position:absolute;top:calc(100% + 8px);left:0;z-index:40;
+  width:min(420px,calc(100vw - 32px));max-height:70vh;overflow-y:auto;
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;
+  padding:14px;box-shadow:0 12px 32px rgba(0,0,0,.45);
+}
+.work-picker-panel .filter-bar{margin-bottom:2px;background:var(--panel2);}
+.work-picker-list{display:flex;flex-direction:column;gap:4px;}
+.work-picker-item{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  border:1px solid transparent;background:transparent;color:var(--text);
+  padding:8px 10px;border-radius:9px;cursor:pointer;font-family:inherit;
+}
+.work-picker-item:hover{background:var(--panel2);}
+.work-picker-item.active{background:var(--panel2);border-color:var(--accent2);}
+.work-picker-item-text{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.work-picker-item-title{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.work-picker-item-sub{font-size:11px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* 2026-08 수정: 예전엔 데스크톱에서는 이 토글을 숨기고 칩을 전부 펼쳐서 보여줬는데,
+   화면 진입하자마자 분류표부터 쫙 펼쳐지는 게 사용자에게 "꼰대같다"는 피드백을 받았다.
+   이제 데스크톱/모바일 구분 없이 항상 접힘 상태로 시작하고, 이 버튼을 눌러야 펼쳐진다.
+   클래스명(filter-toggle-mobile)은 예전 이름 그대로 남겨뒀지만 기능은 전체 화면 공통이다. */
+.filter-toggle-mobile{
+  display:inline-block;align-self:flex-start;background:transparent;border:1px solid var(--border);
+  color:var(--sub);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;
+  cursor:pointer;font-family:inherit;
+}
+.filter-toggle-mobile:hover{color:var(--text);border-color:#3a4152;}
+.filter-bar .filter-group{display:none;}
+.filter-bar.expanded .filter-group{display:flex;}
+
+/* ---- 사용법 안내 모달 상단 취지 문구 ---- */
+.guide-intro{font-size:12.5px;line-height:1.7;color:var(--sub);margin:0 0 16px;padding-bottom:14px;border-bottom:1px dashed var(--border);}
+
+.work-intro-long{
+  margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);
+  white-space:pre-line;line-height:1.85;font-size:13.2px;color:var(--text);
+}
+.read-more-btn{
+  display:inline-block;margin-top:10px;background:none;border:1px solid var(--border);color:var(--accent2);
+  padding:6px 13px;border-radius:999px;font-size:11.8px;font-weight:700;cursor:pointer;
+}
+.read-more-btn:hover{border-color:var(--accent2);}
+
+/* ---- 모달 (등장인물 관계도 등) ---- */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:2000;background:rgba(8,10,14,.72);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.show{display:flex;}
+.modal-box{
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;
+  width:100%;max-width:900px;height:min(720px,88vh);display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.modal-box-header{
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  border-bottom:1px solid var(--border);background:#12141a;
+}
+.modal-box-header h3{margin:0;font-size:14px;}
+.modal-close{background:#2b303b;border:0;color:var(--text);width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1;}
+.modal-close:hover{background:#3a4152;}
+.modal-box iframe{flex:1;width:100%;border:0;background:#fff;}
+
+/* ---- 장소·인물 제안하기 (2026-08: 미완성 구글폼 대신 텍스트+이메일로 교체) ---- */
+.report-box{max-width:480px;height:auto !important;}
+.report-body{padding:20px 22px 24px;}
+.report-body p{margin:0 0 18px;font-size:13.5px;line-height:1.7;color:var(--text);}
+.report-email-box{
+  background:var(--panel2);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;text-align:center;
+}
+.report-email-box span{display:block;font-size:11.5px;color:var(--sub);margin-bottom:8px;}
+.report-email-link{font-size:16px;font-weight:700;color:var(--accent2);text-decoration:none;word-break:break-all;}
+.report-email-link:hover{text-decoration:underline;}
+
+/* ---- 내 주변 콘텐츠 투어 (2026-08 신규, 진입은 이제 히어로의 "내주변여행"/"여행지찾기" 버튼) ---- */
+.nearby-box{max-width:640px;height:min(760px,90vh);}
+.nearby-modal-body{flex:1;overflow-y:auto;padding:16px 18px 20px;display:flex;flex-direction:column;gap:14px;}
+.nearby-intro{font-size:12.8px;line-height:1.7;color:var(--sub);margin:0;}
+.nearby-loc-controls{display:flex;flex-direction:column;gap:8px;}
+/* 2026-08: '현재 위치 사용'을 확실한 기본 행동으로 보이도록 큰 버튼 하나로 강조하고,
+   '다른 장소로 찾기'는 그 아래 작은 텍스트 링크로 눌러야만 입력창이 펼쳐지게 했다 —
+   두 방법이 나란히 있어서 뭘 먼저 써야 할지 헷갈린다는 피드백을 반영. */
+.nearby-loc-btn-primary{
+  align-self:stretch;background:var(--accent2);border:none;color:#fff;
+  padding:14px 18px;border-radius:12px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;
+}
+.nearby-loc-btn-primary:hover{filter:brightness(1.08);}
+.nearby-addr-toggle{
+  align-self:flex-start;background:transparent;border:none;color:var(--sub);
+  font-size:12px;text-decoration:underline;cursor:pointer;padding:2px 0;font-family:inherit;
+}
+.nearby-addr-toggle:hover{color:var(--text);}
+.nearby-addr-row{display:flex;gap:8px;}
+.nearby-addr-row .filter-search{flex:1;}
+.nearby-loc-status{font-size:12px;color:var(--accent2);min-height:16px;}
+.nearby-results{flex:1;}
+.nearby-result-list{display:flex;flex-direction:column;gap:8px;}
+.nearby-result-item{
+  display:block;width:100%;text-align:left;border:1px solid var(--border);border-left:4px solid var(--tier-color,var(--accent2));
+  background:var(--panel2);border-radius:10px;padding:10px 12px;cursor:pointer;font-family:inherit;color:var(--text);
+  transition:border-color .12s;
+}
+.nearby-result-item:hover{border-color:#3a4152;border-left-color:var(--tier-color,var(--accent2));}
+.nearby-result-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.nearby-result-name{font-size:13.5px;font-weight:700;}
+.nearby-result-dist{font-size:11.5px;color:var(--sub);flex-shrink:0;}
+.nearby-result-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;}
+.nearby-result-work{font-size:11.5px;font-weight:700;}
+.nearby-tier-badge{font-size:10px;font-weight:700;color:#12141a;padding:2px 8px;border-radius:999px;}
+.nearby-cat-badge{font-size:10px;color:var(--sub);border:1px solid var(--border);padding:2px 8px;border-radius:999px;}
+.nearby-tier-inline{
+  display:inline-block;margin-top:10px;font-size:11px;font-weight:700;color:#12141a;
+  padding:4px 10px;border-radius:999px;
+}
+
+/* ---- 작품 소개 화면 '장소｜작품｜인물｜여행' 탭 (2026-08 지도 UX 개편 3단계) ----
+   4개 패널을 전부 렌더링해두고 display만 토글하는 방식이라, 별도 상태 관리 없이도
+   탭을 오가는 동안 코스 생성 결과·검색어 등이 유지된다(switchWorkTab() 참고). */
+.work-tabbar{display:flex;gap:6px;background:#12141a;border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:14px;}
+.work-tab-btn{flex:1;background:transparent;border:0;color:#b7bfcb;padding:10px 6px;border-radius:9px;font-size:13.5px;font-weight:700;cursor:pointer;}
+.work-tab-btn:hover{color:var(--text);}
+.work-tab-btn.active{background:var(--accent);color:#fff;}
+.work-tab-panel{animation:workTabFade .15s ease;}
+@keyframes workTabFade{from{opacity:.4;}to{opacity:1;}}
+@media (max-width:520px){
+  .work-tab-btn{font-size:12.5px;padding:9px 4px;}
+}
+
+/* 2026-08 10라운드: 장소/인물/여행 탭이 "글자만 있는 어두운 목록"이라 여행하는 기분이 안 난다는
+   피드백 반영. 실제 장소·인물 사진은 저작권상 직접 게시할 수 없으니, 이미 라이선스 확인된
+   작품 히어로 이미지를 탭 배경에 아주 은은하게 깔아 "이 작품의 세계관 안에 있다"는 느낌을 주고,
+   그 위 카드들은 불투명 배경(.tab-panel-scenic 안의 컴포넌트는 전부 solid 배경 유지)이라
+   가독성은 그대로 지킨다. 이미지가 없는 작품은 자동으로 폴백(순수 그라데이션)되어 깨지지 않음. */
+.tab-panel-scenic{
+  border-radius:16px;padding:14px 12px 4px;margin:0 -4px;
+  background-size:cover;background-position:top center;background-repeat:no-repeat;
+}
+.tab-scenic-header{
+  display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;margin:0 0 12px;
+  background:linear-gradient(90deg,rgba(224,96,58,.22),rgba(58,124,224,.14));
+  border:1px solid rgba(224,96,58,.35);
+}
+.tab-scenic-header .icon{font-size:19px;line-height:1;}
+.tab-scenic-header .label{font-size:13.5px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.04em;}
+.tab-scenic-header .count{margin-left:auto;font-size:12px;font-weight:700;color:#ffd9c4;background:rgba(0,0,0,.28);padding:3px 9px;border-radius:999px;}
+
+/* 2026-08 지도 UX 개편 6~8라운드 — '작품' 탭 포스터형 히어로. 처음엔 대표작 8개로 시범
+   적용했다가(6라운드) 사용자 확인 후 39개 전체로 확장했다(8라운드, HERO_POSTER_PILOT=null이면
+   heroImage 있는 모든 작품에 적용, app.js 참고). 기존 .hero-image(작은 썸네일)보다 훨씬 크게
+   키우고, 제목·태그라인을 그라데이션 오버레이로 이미지 위에 얹어 "영화 포스터"처럼 보이게 한다.
+   예고편 CTA와 후킹페이지용 추가 이미지 콜라주(HOOK_IMAGES_CLIENT)도 함께 쓴다. */
+.work-poster-hero{position:relative;border-radius:14px;overflow:hidden;margin-bottom:4px;border:1px solid var(--border);}
+.work-poster-hero img{display:block;width:100%;height:340px;object-fit:cover;background:#0c1620;}
+.work-poster-overlay{position:absolute;left:0;right:0;bottom:0;padding:20px 16px 14px;
+  background:linear-gradient(180deg,rgba(15,17,21,0) 0%,rgba(15,17,21,.6) 45%,rgba(15,17,21,.96) 100%);}
+/* 2026-08 9라운드: 탭바 위 별도 제목(h2)을 없애고 이 오버레이 제목 하나만 남기기로 하면서,
+   이게 유일한 작품 제목이라는 게 한눈에 보이도록 크기·굵기·자간을 더 키웠다(21px→25px). */
+.work-poster-title{color:#fff;font-size:25px;font-weight:800;line-height:1.28;letter-spacing:-.01em;text-shadow:0 2px 10px rgba(0,0,0,.6);}
+.work-poster-tagline{color:#e8ebef;font-size:13.5px;line-height:1.5;margin-top:7px;opacity:.92;}
+.work-poster-trailer-cta{margin:10px 0 2px;}
+.work-poster-trailer-cta .course-btn{width:100%;box-sizing:border-box;font-size:15px;font-weight:800;padding:13px 14px;
+  border-width:2px;background:rgba(224,168,98,.1);}
+.work-photo-collage{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 4px;}
+.work-photo-collage figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.work-photo-collage img{display:block;width:100%;height:120px;object-fit:cover;background:#0c1620;}
+.work-photo-collage figcaption{background:#12141a;padding:4px 8px;}
+.work-photo-collage figcaption a{color:var(--sub);font-size:10px;line-height:1.4;text-decoration:none;display:block;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.work-photo-collage figcaption a:hover{color:var(--sub);text-decoration:underline;}
+/* 2026-08 8라운드: 이 사이트의 실제 "모바일 전환" 기준점은 768px다(#main이 지도/정보 세로
+   스택으로 바뀌는 지점, 이 파일 하단 @media(max-width:768px) 블록 참고) — 기존엔 520px 한
+   단계만 있어서 520~768px 사이 태블릿·큰 폰 폭에서는 여전히 340px짜리 히어로가 그대로 나와
+   화면을 너무 많이 차지했다. 768px 기준으로 한 단계 낮추고, 실제 좁은 폰(≤400px)에서 한 번
+   더 낮춘다. */
+@media (max-width:768px){
+  .work-poster-hero img{height:240px;}
+  .work-poster-title{font-size:22px;}
+  .work-poster-tagline{font-size:13px;}
+  .work-poster-trailer-cta .course-btn{font-size:14px;padding:12px 14px;}
+  .work-photo-collage img{height:104px;}
+}
+@media (max-width:400px){
+  .work-poster-hero img{height:200px;}
+  .work-poster-title{font-size:19px;}
+  .work-poster-tagline{font-size:12px;}
+  .work-photo-collage{gap:6px;}
+  .work-photo-collage img{height:84px;}
+  .work-photo-collage figcaption{padding:3px 6px;}
+  .work-photo-collage figcaption a{font-size:9.5px;}
+}
+
+.detail-card{background:var(--panel2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.detail-hero{
+  padding:26px 20px 20px;background:linear-gradient(135deg, var(--hero-color,#e0603a) 0%, #12141a 130%);
+}
+.detail-hero .kicker{font-size:12.5px;color:rgba(255,255,255,.9);font-weight:700;letter-spacing:.04em;margin-bottom:8px;}
+.detail-hero h3{margin:0 0 6px;font-size:24px;line-height:1.3;color:#fff;}
+.detail-hero .sub{color:rgba(255,255,255,.92);font-size:14.5px;}
+.detail-body{padding:18px 20px 20px;}
+.detail-card .desc{font-size:14.5px;line-height:1.85;margin-bottom:14px;white-space:pre-line;}
+/* 2026-08 4라운드: 어두운 배경(--panel2)에서 태그필 글자가 var(--sub) 회색이라 잘 안 보인다는
+   지적 반영 — 배경을 조금 밝히고 글자를 var(--text)에 가깝게, 크기도 키움. */
+.tag-pill{display:inline-block;background:#333a48;color:#dfe4ea;font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;margin:0 6px 12px 0;}
+
+/* 2026-08 3라운드: 사이드바 상단의 "장소 정보/인물 정보" 같은 보일러플레이트 소제목은
+   상세 카드(detail-hero)가 이미 제목을 크게 보여주므로 화면만 복잡하게 만든다는 지적 반영 —
+   장소/인물 상세 화면(sidebar-detail)에서는 숨기고, 작품 소개 화면에서는 작품명 표시에 계속 쓴다. */
+#sidebar.sidebar-detail #sidebarTitle{display:none;}
+
+/* 2026-08 3라운드: "이야기 속 이 장소" 진행 막대를 별도 박스에서 파란 제목 배너 안으로 옮기고,
+   안 채워진 구간 색을 반투명 흰색으로 바꿔 첫 장소(진행률 0%)에서도 막대 전체가 항상 보이게 함
+   (예전엔 안 채워진 구간이 박스 배경과 거의 같은 색이라 흰 점 하나만 보이는 버그가 있었음). */
+.hero-story-progress{margin-top:16px;}
+.hero-story-progress .story-progress-slider{
+  -webkit-appearance:none; appearance:none;
+  width:100%; height:16px; margin:0 0 6px; padding:0;
+  background:transparent; cursor:pointer; display:block; touch-action:pan-y;
+}
+.hero-story-progress .story-progress-slider:focus{ outline:none; }
+.hero-story-progress .story-progress-slider::-webkit-slider-runnable-track{
+  height:7px; border-radius:999px;
+  background:linear-gradient(90deg,#fff 0%,#fff var(--pct,0%),rgba(255,255,255,.32) var(--pct,0%),rgba(255,255,255,.32) 100%);
+}
+.hero-story-progress .story-progress-slider::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none;
+  width:17px; height:17px; border-radius:50%; margin-top:-5px;
+  background:#fff; border:3px solid var(--hero-color,#e0603a); cursor:grab; box-shadow:0 1px 5px rgba(0,0,0,.45);
+}
+.hero-story-progress .story-progress-slider::-webkit-slider-thumb:active{ cursor:grabbing; transform:scale(1.15); }
+.hero-story-progress .story-progress-slider::-moz-range-track{ height:7px; border-radius:999px; background:rgba(255,255,255,.32); }
+.hero-story-progress .story-progress-slider::-moz-range-progress{ height:7px; border-radius:999px; background:#fff; }
+.hero-story-progress .story-progress-slider::-moz-range-thumb{
+  width:17px; height:17px; border-radius:50%; border:3px solid var(--hero-color,#e0603a);
+  background:#fff; cursor:grab; box-shadow:0 1px 5px rgba(0,0,0,.45);
+}
+.hero-story-progress .story-progress-slider::-moz-range-thumb:active{ cursor:grabbing; }
+.hero-story-progress .story-progress-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.95);margin:0;}
+
+.era-toggle{display:flex;background:#12141a;border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:14px;}
+.era-toggle button{flex:1;background:transparent;border:0;color:#b7bfcb;padding:8px 8px;border-radius:8px;font-size:13.5px;cursor:pointer;font-weight:700;}
+.era-toggle button.active{background:var(--accent);color:#fff;}
+
+.travel-box{background:#12211a;border:1px solid #234433;border-radius:10px;padding:14px 15px;margin-bottom:14px;}
+.travel-box .label{display:block;color:#7ee0a3;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+.travel-btn{
+  display:inline-flex;align-items:center;gap:6px;background:#2ea043;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:11px 16px;border-radius:8px;margin-bottom:10px;
+}
+.travel-btn:hover{background:#3bb955;}
+.travel-box .tip{font-size:13.3px;line-height:1.6;color:#bfe8cf;}
+
+/* ---- 소셜/사진 검색 (실제 방문자들이 찍은 사진 찾아보기) ---- */
+.social-box{background:#1a1420;border:1px solid #3a2a4a;border-radius:10px;padding:12px 15px;margin-bottom:14px;}
+.social-box .label{display:block;color:#e0c0ff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px;}
+.social-links{display:flex;flex-wrap:wrap;gap:7px;}
+.social-chip{
+  display:inline-flex;align-items:center;gap:5px;background:#2a2033;border:1px solid #4a3860;color:var(--text);
+  text-decoration:none;font-size:13.5px;font-weight:600;padding:9px 13px;border-radius:999px;
+}
+.social-chip:hover{border-color:#d9a8ff;color:#d9a8ff;}
+.social-chip.spot-chip{border-color:#e0c04a;color:#f0d98a;}
+.social-chip.spot-chip:hover{border-color:#f0d98a;color:#f0d98a;}
+.social-tip{margin-top:9px;font-size:12px;line-height:1.6;color:#d3b6ec;}
+.social-box + .social-box{margin-top:-6px;}
+
+.people-list{margin-top:14px;}
+.person-chip{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  background:linear-gradient(135deg,var(--panel2),#242a37);border:1px solid var(--border);
+  color:var(--text);padding:14px 16px;border-radius:12px;margin-bottom:9px;cursor:pointer;font-size:16px;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);transition:transform .12s ease,border-color .12s ease;
+}
+.person-chip:hover{border-color:var(--accent);transform:translateY(-1px);}
+.person-chip .pname{font-weight:800;margin-bottom:3px;font-size:16.5px;}
+.person-chip .pyears{color:#c3cadb;font-size:13.5px;}
+.person-chip .person-chip-text{min-width:0;flex:1;}
+.person-chip .pname,.person-chip .pyears{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* ---- 2026-08 등장인물 카드 UI: 실제 스틸/배우 사진을 이 사이트에 직접 게시하지 않는 저작권
+   원칙(portrait는 위키백과 프로필로 링크만 함)을 지키면서도 "밋밋하다"는 피드백을 보완하기 위해,
+   이름 첫 글자 기반의 컬러 이니셜 아바타를 텍스트 카드 위에 얹었다. actorWikiUrl이 있는 인물에는
+   작은 배우 아이콘 배지를 달아, 실제 캐스팅된 배우 프로필로 이어지는 링크가 있다는 걸 미리 알려준다.
+   2026-08 10라운드: "화면이 칙칙하다"는 피드백으로 아바타를 38px→50px로 키우고 색 발광 그림자를
+   추가해 목록 전체의 색감·존재감을 높였다. */
+.person-avatar{
+  position:relative;flex-shrink:0;width:50px;height:50px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);box-shadow:0 0 0 2px rgba(255,255,255,.08),0 3px 10px rgba(0,0,0,.35);
+}
+.person-avatar.has-actor::after{
+  content:'🎭';position:absolute;bottom:-3px;right:-3px;font-size:10px;line-height:1;
+  background:#1a1c22;border:1.5px solid var(--panel2);border-radius:50%;width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+}
+.detail-hero-with-avatar{display:flex;align-items:center;gap:14px;}
+.detail-hero-avatar{
+  position:relative;flex-shrink:0;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16);
+  border:2px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:800;color:#fff;
+}
+.detail-hero-avatar.has-actor::after{
+  content:'🎭';position:absolute;bottom:-2px;right:-2px;font-size:12px;line-height:1;
+  background:#1a1c22;border:1.5px solid var(--panel2);border-radius:50%;width:19px;height:19px;
+  display:flex;align-items:center;justify-content:center;
+}
+.detail-hero-text{min-width:0;}
+
+/* ---- 공식 예고편 유튜브 임베드 (2026-08 신규, WORK_TRAILERS) ----
+   iframe 자체는 고정 크기라 padding-top 트릭으로 16:9 비율을 유지한 채 컨테이너 폭에 맞춰
+   반응형으로 줄어들게 한다 — 모바일 사이드바 폭에서도 잘림 없이 보임. */
+.trailer-embed-wrap{position:relative;width:100%;padding-top:56.25%;margin-top:6px;border-radius:12px;overflow:hidden;background:#000;}
+.trailer-embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.trailer-embed-credit{font-size:11px;color:var(--sub);margin-top:5px;}
+
+.maplibregl-popup-content{background:#1e222b;color:#eef1f5;border-radius:8px;font-size:11.8px;padding:5px 10px;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.maplibregl-popup-tip{border-top-color:#1e222b !important;border-bottom-color:#1e222b !important;}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip{border-bottom-color:#1e222b !important;}
+.maplibregl-canvas-container{background:#0c1620;}
+.maplibregl-ctrl-attrib{font-size:10px;}
+
+/* ---- 지도 마커 클릭 퀵팝업 (해시태그를 지도 위에서 바로 보여줌) ---- */
+.quick-popup .maplibregl-popup-content{
+  padding:12px 14px 10px;border-radius:12px;background:#1a1420;border:1px solid #3a2a4a;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+.quick-popup .maplibregl-popup-close-button{color:#c9a8e0;font-size:16px;padding:2px 6px;}
+.quick-popup .maplibregl-popup-tip{border-top-color:#1a1420 !important;border-bottom-color:#1a1420 !important;}
+.qp-title{font-weight:800;font-size:13.5px;margin:0 16px 2px 0;}
+.qp-sub{color:var(--sub);font-size:11px;margin-bottom:8px;}
+.qp-scene{color:#d9b8ff;font-size:11.3px;line-height:1.55;margin:2px 0 9px;}
+.qp-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+.qp-chip{
+  display:inline-flex;align-items:center;gap:4px;background:#241c2c;border:1px solid #3a2a4a;color:var(--text);
+  text-decoration:none;font-size:10.8px;font-weight:600;padding:5px 9px;border-radius:999px;
+}
+.qp-chip:hover{border-color:#d9a8ff;color:#d9a8ff;}
+.qp-chip.qp-spot{border-color:#4a3a20;color:#e0c07a;}
+.qp-hint{font-size:10.3px;color:#9aa4b2;border-top:1px dashed #3a2a4a;padding-top:7px;}
+
+/* ---- '기억나시나요?' 장면 훅 (팬이라면 바로 떠오르게) ---- */
+.scene-moment{
+  background:#1a1420;border:1px solid #3a2a4a;border-radius:10px;padding:11px 14px;
+  font-size:12.8px;line-height:1.7;color:#e6d4ff;margin-bottom:12px;
+}
+.scene-moment b{color:#fff;}
+
+/* ---- 2026-08 전후 비교(작품 속/지금) UI ----
+   기획안 4-5절: "작품 속 스틸컷"은 저작권상 이 사이트에 직접 게시할 수 없으므로, 왼쪽엔 이미
+   있는 장면 묘사(SCENE_MOMENTS) 텍스트로 "그때"를, 오른쪽엔 위키미디어에서 자동으로 찾아온
+   실제 사진(ensurePhoto)으로 "지금"을 나란히 배치해 같은 "전후 비교" 효과를 낸다.
+   SCENE_MOMENTS에 값이 있는 장소에서만 뜨고, 없으면 기존처럼 사진만 상단에 표시된다. */
+.compare-card{display:grid;grid-template-columns:1fr 1fr;}
+.compare-panel{display:flex;flex-direction:column;min-height:150px;}
+.compare-panel-label{
+  font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  padding:8px 12px 6px;flex-shrink:0;
+}
+.compare-then{background:#1a1420;}
+.compare-then .compare-panel-label{color:#c9a8ff;}
+.compare-then-text{padding:0 14px 14px;font-size:12.5px;line-height:1.7;color:#e6d4ff;flex:1;}
+.compare-now{background:#0c1620;}
+.compare-now .compare-panel-label{color:#8fd0a8;background:#0c1620;position:relative;z-index:1;}
+.compare-now .photo-hero{min-height:0;flex:1;}
+.compare-now .photo-hero.loading{min-height:110px;}
+.compare-now .photo-hero img{max-height:none;height:100%;}
+@media (max-width:520px){
+  .compare-card{grid-template-columns:1fr;}
+  .compare-panel{min-height:0;}
+}
+
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:#2b303b;border-radius:4px;}
+
+#jsError{display:none;position:fixed;inset:0;background:#0f1115;color:#eef1f5;padding:30px;font-size:14px;line-height:1.7;z-index:9999;white-space:pre-wrap;}
+
+/* ---- 크로스 프로모션 배너 ---- */
+#crossPromo{
+  display:none;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:8px 20px;background:linear-gradient(90deg,#1c2230,#151922);
+  border-bottom:1px solid var(--border);font-size:12.2px;cursor:pointer;
+}
+#crossPromo:hover{background:#20283a;}
+#crossPromo .cp-current{color:var(--sub);white-space:nowrap;}
+#crossPromo .cp-current b{color:var(--text);font-weight:700;}
+#crossPromo .cp-sep{color:#3a4152;}
+#crossPromo .cp-teaser{color:#d7dee8;}
+#crossPromo .cp-teaser u{color:var(--accent2);text-decoration:none;font-weight:700;}
+#crossPromo .arrow{color:var(--accent2);font-weight:700;margin-left:auto;}
+
+/* ---- 방문 진행률 배지 ---- */
+.progress-badge{
+  display:inline-flex;align-items:center;gap:6px;background:#1c2734;border:1px solid #2b3a4d;
+  color:#8fd0ff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;margin-left:8px;
+}
+
+/* ---- 이야기 맥락 카드 (지도 대신 서사적 정보로 장소를 설명) ---- */
+.story-context{background:#1a1622;border:1px solid #362a4a;border-radius:10px;padding:14px 15px;margin-bottom:14px;}
+.story-context .label{display:block;color:#c79bff;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;}
+/* 2026-08: 정적인 막대 → 드래그로 앞뒤 장소를 넘길 수 있는 슬라이더로 교체.
+   웹킷 계열은 '채워진 구간' 표시를 자체 지원하지 않아 --pct 변수로 그라데이션 경계를 직접 계산한다
+   (JS의 scrubStoryProgress()가 드래그할 때마다 이 변수를 갱신). 파이어폭스는 ::-moz-range-progress로
+   대신 처리한다. */
+.story-progress-slider{
+  -webkit-appearance:none; appearance:none;
+  width:100%; height:16px; margin:0 0 6px; padding:0;
+  background:transparent; cursor:pointer; display:block; touch-action:pan-y;
+}
+.story-progress-slider:focus{ outline:none; }
+.story-progress-slider::-webkit-slider-runnable-track{
+  height:7px; border-radius:999px;
+  background:linear-gradient(90deg,#e0603a 0%,#3a7ce0 var(--pct,0%),#241d33 var(--pct,0%),#241d33 100%);
+}
+.story-progress-slider::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none;
+  width:16px; height:16px; border-radius:50%; margin-top:-4.5px;
+  background:#fff; border:3px solid #3a7ce0; cursor:grab; box-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+.story-progress-slider::-webkit-slider-thumb:active{ cursor:grabbing; transform:scale(1.15); }
+.story-progress-slider::-moz-range-track{ height:7px; border-radius:999px; background:#241d33; }
+.story-progress-slider::-moz-range-progress{ height:7px; border-radius:999px; background:linear-gradient(90deg,#e0603a,#3a7ce0); }
+.story-progress-slider::-moz-range-thumb{
+  width:16px; height:16px; border-radius:50%; border:3px solid #3a7ce0;
+  background:#fff; cursor:grab; box-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+.story-progress-slider::-moz-range-thumb:active{ cursor:grabbing; }
+.story-progress-label{font-size:11.3px;color:#d7c4f5;margin-bottom:10px;}
+.story-stats{display:flex;gap:16px;flex-wrap:wrap;}
+.story-stat{flex:1;min-width:90px;}
+.story-stat .n{font-size:19px;font-weight:800;color:#fff;line-height:1.2;}
+.story-stat .l{font-size:11px;color:#9aa4b2;margin-top:2px;}
+
+/* ---- 초보자 요약 토글 ---- */
+.desc-toggle{display:flex;gap:6px;margin-bottom:8px;}
+.desc-toggle button{
+  background:#1c2028;border:1px solid var(--border);color:var(--sub);font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:999px;cursor:pointer;
+}
+.desc-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* ---- 지역 특산물 ---- */
+.specialty-box{background:#241b12;border:1px solid #4a3720;border-radius:10px;padding:12px 15px;margin-bottom:14px;}
+.specialty-box .label{display:block;color:#e0a862;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;}
+.specialty-box .text{font-size:13.5px;line-height:1.65;color:#e8cfa8;}
+
+/* ---- 과학 노트 (삼체 등 SF 작품의 물리학/천문학 개념 설명) ---- */
+.science-box{background:#131c2e;border:1px solid #24406b;border-radius:10px;padding:12px 15px;margin-bottom:14px;}
+.science-box .label{display:block;color:#7fb0ff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;}
+.science-box .text{font-size:13.5px;line-height:1.75;color:#c7dcff;}
+
+/* ---- 같은 지역, 다른 이야기 (크로스 작품) ---- */
+.cross-box{background:#1a1f2e;border:1px solid #2c3550;border-radius:10px;padding:12px 15px;margin-bottom:14px;}
+.cross-box .label{display:block;color:#9fb4ff;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+.cross-box .cross-item{display:block;background:#222a3d;border:1px solid #313c58;border-radius:8px;padding:8px 10px;margin-bottom:6px;color:var(--text);text-decoration:none;font-size:12.5px;cursor:pointer;}
+.cross-box .cross-item:hover{border-color:var(--accent2);}
+.cross-box .cross-item .t{font-weight:700;}
+.cross-box .cross-item .s{color:var(--sub);font-size:11px;}
+
+/* ---- 지도 '처음 위치로' 버튼 + 원거리 장소 발견 칩 (2026-08 신규) ---- */
+.map-home-ctrl button{
+  width:29px;height:29px;font-size:15px;line-height:29px;padding:0;background:#fff;border:0;cursor:pointer;
+}
+.map-home-ctrl button:hover{background:#f2f2f2;}
+.offscreen-chips{
+  position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:500;
+  display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none;
+}
+.offscreen-chip{
+  pointer-events:auto;background:rgba(20,22,30,.88);color:#fff;border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);white-space:nowrap;
+}
+.offscreen-chip:hover{background:var(--accent);border-color:var(--accent);}
+
+/* ---- 온보딩 하이라이트 ---- */
+.onboarding-hint{
+  position:absolute;left:14px;top:14px;z-index:600;background:var(--accent);color:#fff;
+  padding:10px 14px;border-radius:10px;font-size:12.5px;font-weight:600;max-width:240px;
+  box-shadow:0 4px 16px rgba(224,96,58,.4);animation:hintPulse 1.6s ease-in-out infinite;
+}
+.onboarding-hint button{margin-left:8px;background:rgba(255,255,255,.25);border:0;color:#fff;border-radius:6px;padding:2px 7px;cursor:pointer;font-size:11px;}
+@keyframes hintPulse{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+
+/* ---- 추천 여행 코스 ---- */
+/* 2026-08 10라운드: 점선 테두리의 밋밋한 회색 박스라 "여행 가는 기분이 안 난다"는 지적 반영 —
+   그라데이션 배경 + 굵은 글씨로 톤을 올렸다. 작품 탭의 개별 버튼(예고편/줄거리 등)은 각자 고유
+   테두리색을 인라인 style로 지정해 쓰므로 그 색은 그대로 유지되고, 배경만 공통으로 밝아진다. */
+.course-btn{
+  display:block;width:100%;text-align:center;
+  background:linear-gradient(135deg,#232838,#1a2230);border:1px solid var(--border);color:var(--text);
+  padding:13px;border-radius:12px;cursor:pointer;font-size:14.5px;font-weight:800;margin:10px 0 4px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .12s ease,border-color .12s ease;
+}
+.course-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+/* 2026-08 지도 UX 개편: "작품 더 알아보기" 접이식 섹션 — 네이티브 <details>/<summary> 마커 제거 후
+   직접 화살표를 그려서 다른 course-btn과 톤을 맞춘다. */
+details.course-btn{margin:10px 0 4px;}
+details.course-btn summary{font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+details.course-btn summary::-webkit-details-marker{display:none;}
+details.course-btn summary::marker{content:'';}
+details.course-btn summary::after{content:'▾';font-size:11px;color:var(--sub);margin-left:8px;flex-shrink:0;transition:transform .2s ease;}
+details.course-btn[open] summary::after{transform:rotate(180deg);}
+details.course-btn[open]{border-color:var(--accent);}
+details.course-btn > div .course-btn{margin:0;}
+.course-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px 15px 6px;margin-top:10px;}
+.course-box h4{margin:0 0 12px;font-size:12.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.04em;}
+.course-day{margin-bottom:16px;}
+.course-day .d{display:flex;align-items:baseline;justify-content:space-between;font-weight:700;font-size:12.8px;margin-bottom:10px;color:var(--accent2);}
+.course-day .d .km{font-weight:600;font-size:11px;color:var(--sub);}
+.course-timeline{position:relative;padding-left:20px;}
+.course-stop{position:relative;padding-bottom:16px;}
+.course-stop:last-child{padding-bottom:2px;}
+.course-stop::before{content:'';position:absolute;left:-20px;top:2px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--panel2);box-shadow:0 0 0 1px var(--accent);}
+.course-stop::after{content:'';position:absolute;left:-15px;top:13px;width:2px;bottom:0;background:#333a4a;}
+.course-stop:last-child::after{display:none;}
+.course-stop .name{font-weight:700;font-size:12.6px;cursor:pointer;color:var(--text);background:none;border:0;padding:0;text-align:left;font-family:inherit;}
+.course-stop .name:hover{color:var(--accent);text-decoration:underline;}
+.course-stop .leg{color:var(--sub);font-size:11px;margin-top:3px;}
+
+/* ---- 공유 버튼 ---- */
+/* 2026-08 3라운드: 예전엔 "이 장소 링크"라는 이름으로 story-context 통계 카드 옆에 인라인으로
+   붙어 있어 위치도 이름도 뜬금없었다는 지적 반영 — "공유하기"로 이름을 바꾸고, 실제 갈 곳(지도/위키)
+   CTA 바로 아래, 폭 전체를 쓰는 독립 버튼으로 옮겼다(margin-left 제거, 전체 너비). */
+.share-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;box-sizing:border-box;
+  background:#2b303b;border:1px solid var(--border);color:var(--text);
+  font-size:13px;font-weight:700;padding:10px 12px;border-radius:8px;cursor:pointer;margin:0 0 14px;
+}
+.share-btn:hover{border-color:var(--accent2);}
+.toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e222b;color:#fff;
+  padding:10px 18px;border-radius:999px;font-size:12.5px;box-shadow:0 4px 16px rgba(0,0,0,.4);z-index:9999;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.toast.show{opacity:1;}
+
+/* ---- 링크 복사 상자 (공유 대체 UI — navigator.share가 없거나 실패해도 항상 눈에 보임) ---- */
+.copy-box{
+  display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  align-items:center;gap:8px;background:#1e222b;border:1px solid var(--border);border-radius:12px;
+  padding:10px 12px;z-index:3000;box-shadow:0 8px 24px rgba(0,0,0,.45);max-width:92vw;
+}
+.copy-box input{
+  flex:1;min-width:200px;background:#12141a;border:1px solid var(--border);color:var(--text);
+  padding:7px 10px;border-radius:8px;font-size:12px;
+}
+.copy-box button:not(.copy-box-close){
+  background:var(--accent2);border:0;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;border-radius:8px;cursor:pointer;
+}
+.copy-box-close{background:transparent;border:0;color:var(--sub);cursor:pointer;font-size:14px;padding:0 4px;}
+
+/* ---- 사용법 다시보기 버튼 (헤더) ---- */
+.guide-open-btn{
+  background:var(--panel2);border:1px solid var(--border);color:var(--sub);
+  padding:8px 13px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer;flex-shrink:0;
+}
+.guide-open-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+
+/* ---- 언어 선택 토글 (헤더) ---- */
+.lang-toggle{
+  display:flex;background:var(--panel2);border:1px solid var(--border);border-radius:999px;
+  padding:3px;flex-shrink:0;gap:2px;
+}
+.lang-toggle button{
+  background:transparent;border:0;color:var(--sub);padding:6px 11px;border-radius:999px;
+  font-size:11.5px;font-weight:700;cursor:pointer;
+}
+.lang-toggle button.active{background:var(--accent);color:#fff;}
+/* 2026-08 3단계: 번체 중문 서비스 정식 개시로 자리표시자 스타일(점선 테두리) 제거 —
+   이제 zh 버튼도 나머지 3개 언어와 완전히 동일하게 동작·표시된다. */
+@media (max-width:768px){
+  .lang-toggle button{padding:5px 9px;font-size:11px;}
+}
+
+/* ---- 작품 내용 상세(개조식 줄거리) 모달 ---- */
+.summary-box{max-width:640px;height:auto !important;max-height:88vh;}
+.summary-body{padding:18px 20px 22px;overflow-y:auto;}
+.spoiler-banner{
+  display:flex;gap:10px;align-items:flex-start;background:#3a2412;border:1px solid #7a4a1f;
+  border-radius:10px;padding:12px 14px;margin-bottom:18px;
+}
+.spoiler-banner .icon{font-size:20px;line-height:1;flex-shrink:0;}
+.spoiler-banner .label{display:block;color:#f0b06a;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px;}
+.spoiler-banner .text{font-size:12.8px;line-height:1.65;color:#f3d9b8;}
+.summary-section{margin-bottom:18px;}
+.summary-section h4{margin:0 0 8px;font-size:13.5px;color:var(--accent2);font-weight:800;}
+.summary-section ul{margin:0;padding-left:0;list-style:none;}
+.summary-section li{
+  position:relative;padding-left:16px;margin-bottom:7px;font-size:13px;line-height:1.65;color:var(--text);
+}
+.summary-section li::before{content:"•";position:absolute;left:2px;color:var(--accent2);}
+.summary-ending-box{
+  background:#12141a;border:1px dashed var(--border);border-radius:10px;padding:12px 14px;margin-top:4px;
+}
+.summary-ending-box .label{display:block;color:var(--sub);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
+.summary-ending-box .text{font-size:12.8px;line-height:1.6;color:var(--sub);font-style:italic;}
+@media (max-width:768px){
+  .summary-box{max-width:100%;}
+}
+
+/* ---- 작품 퀴즈 모달 (2026-08 9라운드 — 폭싹속았수다 파일럿) ---- */
+.quiz-box{max-width:520px;height:auto !important;max-height:88vh;}
+.quiz-body{padding:18px 20px 22px;overflow-y:auto;}
+.quiz-progress{font-size:11.5px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;}
+.quiz-question{font-size:15.5px;font-weight:700;line-height:1.55;color:var(--text);margin-bottom:16px;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+.quiz-option-btn{
+  text-align:left;background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  border-radius:10px;padding:12px 14px;font-size:13.5px;cursor:pointer;transition:border-color .15s ease,background .15s ease;
+}
+.quiz-option-btn:hover:not(:disabled){border-color:var(--accent2);}
+.quiz-option-btn:disabled{cursor:default;opacity:.85;}
+.quiz-option-btn.correct{border-color:#3ac07c;background:rgba(58,192,124,.14);color:#7fe0ab;font-weight:700;}
+.quiz-option-btn.wrong{border-color:#e0603a;background:rgba(224,96,58,.14);color:#f0a084;}
+.quiz-feedback{font-size:13.5px;font-weight:700;margin-top:14px;}
+.quiz-feedback.correct{color:#7fe0ab;}
+.quiz-feedback.wrong{color:#f0a084;}
+.quiz-reward-box{
+  background:#3a2412;border:1px solid #7a4a1f;border-radius:10px;padding:12px 14px;margin-top:10px;
+}
+.quiz-reward-box .label{display:block;color:#f0b06a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
+.quiz-reward-box .text{font-size:13px;line-height:1.65;color:#f3d9b8;}
+.quiz-result-score{font-size:22px;font-weight:800;color:var(--text);text-align:center;margin:8px 0 4px;}
+.quiz-result-sub{font-size:13px;color:var(--sub);text-align:center;margin-bottom:18px;}
+@media (max-width:768px){
+  .quiz-box{max-width:100%;}
+}
+
+/* ---- 사용법 안내 모달 ---- */
+.guide-box{max-width:480px;height:auto !important;max-height:90vh;}
+.guide-body{padding:18px 20px 4px;overflow-y:auto;}
+.guide-step{display:flex;gap:12px;margin-bottom:18px;}
+.guide-step .num{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;
+}
+.guide-step div b{display:block;font-size:13.5px;margin-bottom:4px;}
+.guide-step div{font-size:12.8px;line-height:1.65;color:var(--sub);}
+.guide-footer{
+  display:flex;gap:8px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--border);background:#12141a;
+}
+.guide-btn{border-radius:8px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer;flex:1;min-width:110px;}
+.guide-btn.ghost{background:transparent;border:1px solid var(--border);color:var(--sub);}
+.guide-btn.ghost:hover{border-color:#3a4152;color:var(--text);}
+.guide-btn.primary{background:var(--accent);border:1px solid var(--accent);color:#fff;}
+.guide-btn.primary:hover{background:#ea7250;}
+
+.mobile-tabbar{display:none;}
+
+/* ============================================================
+   모바일 반응형 (≤768px) — 지도를 상단 카드로, 사이드바를 아래로 쌓음
+   ============================================================ */
+@media (max-width: 768px){
+  header{padding:10px 14px;gap:8px;}
+  header h1{font-size:15px;}
+  header p{display:none;}
+  .brand-logo{width:28px;height:28px;}
+  /* 2026-08 UI 개편: 헤더가 홈 아이콘+로고, 언어 토글 두 그룹만 남아 모바일에서도 이미
+     한 줄에 여유 있게 들어간다 — 예전처럼 별도의 접이식 메뉴가 필요하지 않다. */
+  .header-left{gap:6px;}
+  .header-right{gap:6px;}
+  .home-icon-btn{height:32px;padding:0 11px;font-size:12.5px;gap:4px;}
+
+  /* 2026-08 모바일 점검: 카운터 배너 문구가 작품/인물 수가 늘면서(1,284명·39개 이야기·1,090곳)
+     좁은 화면 폭에서 알약(pill) 모양 배지 안에 다 안 들어가고 두 줄로 꺾인다. 원래 border-radius:999px
+     + 32px짜리 큰 숫자는 한 줄일 때만 예쁘고, 두 줄로 꺾이면 알약이 아니라 둥근 사각형처럼 뭉개져
+     보인다. 모바일에서는 글자 크기를 줄이고 모서리도 완전한 알약 대신 적당한 라운드로 낮춰서
+     두 줄이 되어도 자연스럽게 보이도록 한다. */
+  .counter-banner-text{font-size:12.5px;padding:8px 14px;border-radius:14px;line-height:1.55;}
+  .counter-banner-num{font-size:22px;}
+
+  /* 2026-08 UI 개편(task #431 모바일 재설계): 히어로 콜라주는 칸 수를 줄이고 안쪽 여백도
+     좁혀서 헤드라인·카운터 배너·검색창이 화면에 더 빨리(스크롤 없이 가깝게) 보이도록 한다. */
+  .landing-hero{border-radius:16px;margin:0 0 18px;}
+  .landing-hero-collage{grid-template-columns:repeat(3,1fr);}
+  /* 2026-08 9라운드 재조정: 위 "타일 하나가 커서 어두워 보인다"는 가정으로 오버레이를 거의
+     불투명한 흰색(86~97%)까지 올려놨었는데, 그 결과 정작 사진 자체가 거의 안 보일 정도로
+     하얗게 씻겨나가 "칙칙하고 生気 없다"는 정반대 피드백을 받았다(PC는 이미 밝고 쨍하게
+     보인다는 평가를 받은 상태). 오버레이를 데스크톱과 비슷한 수준으로 크게 낮추고 사진
+     밝기·채도를 desktop 수준으로 올려서, 사진이 실제로 화면에 드러나며 여행 욕구를 자극하도록
+     되돌렸다. 헤드라인 가독성은 기존 텍스트 그림자(h2의 text-shadow)로 계속 보완된다. */
+  .landing-hero::before{
+    background:linear-gradient(180deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.7) 45%,rgba(255,255,255,.9) 100%);
+  }
+  .hero-collage-tile{filter:brightness(1.12) saturate(1.45) contrast(1.08);}
+  .landing-hero-content{padding:28px 16px 24px;}
+  .landing-hero-content h2{font-size:21px;margin:0 0 14px;}
+  .landing-hero-actions{margin-top:16px;gap:8px;}
+  .hero-action-btn{padding:9px 15px;font-size:12.5px;}
+  .hero-today-pick{max-width:100%;margin:12px 0 0;padding:8px 12px 8px 8px;}
+  .hero-today-pick-img{width:42px;height:42px;flex:0 0 42px;}
+  .hero-today-pick-title{font-size:12.5px;}
+  .hero-today-pick-hook{font-size:11px;}
+  .hero-region-panel{padding:14px 14px 8px;margin:0 0 18px;}
+  /* 화살표 버튼은 데스크톱에서만 보여주고, 모바일은 터치 스와이프가 더 자연스러워서
+     화살표 없이 페이드 힌트만 남긴다(엄지로 스와이프할 공간을 화살표가 가리지 않도록). */
+  .region-scroll-arrow{display:none;}
+  .region-row-scroller::before,.region-row-scroller::after{width:20px;}
+
+  #crossPromo{padding:7px 14px;font-size:11.3px;}
+  #crossPromo .cp-current{display:none;}
+  #crossPromo .cp-sep{display:none;}
+
+  /* 지도/정보를 동시에 쌓지 않고, 하단 탭으로 하나씩 전체 높이로 보여줌
+     (예전엔 지도가 46vh로 눌린 채 정보는 스크롤해야 보여서 둘 다 보기 불편했음) */
+  #main{flex-direction:column;overflow:hidden;min-height:0;}
+
+  #mapWrap{width:100%;min-height:0;box-shadow:none;}
+  #map{width:100%;height:100%;}
+
+  #dragHandle{display:none;}
+
+  #sidebar{
+    flex:0 0 100%;max-width:100%;width:100%;flex-shrink:0;border-left:0;border-top:1px solid var(--border);
+    overflow-y:auto;padding:16px 14px 20px;display:none;
+  }
+  #sidebar.sidebar-detail{flex-basis:100%;max-width:100%;width:100%;}
+
+  #landingScreen{padding:24px 16px 40px;}
+  .landing-blurb{font-size:13.3px;}
+  .landing-cards{grid-template-columns:1fr;}
+
+  #app:not(.view-info) #sidebar{display:none;}
+  #app.view-info #mapWrap{display:none;}
+  #app.view-info #sidebar{display:block;flex:1;}
+
+  .mobile-tabbar{
+    display:flex;flex-shrink:0;background:#12141a;border-top:1px solid var(--border);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom, 0));gap:8px;
+  }
+  #app.landing .mobile-tabbar{display:none;}
+  /* 지도가 갑자기 화면에 뜨면 뭔가 낯설 수 있어서, 지금 어디에 있는지 한눈에 보이도록
+     탭 버튼을 훨씬 크고 뚜렷한 '진짜 버튼'처럼 만듦 (기존엔 작은 텍스트+밑줄 표시라 눈에 잘 안 띄었음) */
+  .mobile-tabbar button{
+    flex:1;padding:14px 8px;background:#1c2028;border:1px solid var(--border);border-radius:12px;color:var(--sub);
+    font-size:14.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .mobile-tabbar button.active{color:#fff;background:var(--accent);border-color:var(--accent);}
+
+  /* 2026-08 4라운드: PC 기준 카드 크기를 그대로 모바일 좁은 폭에 적용하면 오히려 줄바꿈이
+     늘어나 어수선해 보였다 — 히어로 제목·부제·태그필·버튼류를 모바일 전용 크기로 한 번 더
+     조정해 한 화면에 자연스럽게 들어오게 정리했다. 통계 카드(story-stat)는 항목8에서 이미
+     화면에서 완전히 제거된 죽은 규칙이라 삭제. */
+  .detail-hero{padding:20px 16px 16px;}
+  .detail-hero h3{font-size:19px;}
+  .detail-hero .sub{font-size:13px;}
+  .detail-body{padding:15px 16px 18px;}
+  .tag-pill{font-size:12.5px;padding:4px 10px;}
+  .travel-btn{width:100%;justify-content:center;font-size:14px;padding:12px 14px;}
+  .person-chip{font-size:15px;padding:13px 14px;}
+  .person-avatar{width:44px;height:44px;font-size:17px;}
+  .social-chip{font-size:13px;padding:9px 12px;}
+
+  .onboarding-hint{max-width:200px;font-size:11.5px;padding:8px 12px;}
+
+  .maplibregl-ctrl-top-left{top:8px;left:8px;}
+
+  .hero-image img{max-height:160px;}
+  .modal-overlay{padding:0;}
+  .modal-box{max-width:100%;height:100%;border-radius:0;}
+
+  .guide-open-btn{padding:6px 10px;font-size:11.5px;}
+  .guide-box{max-height:100%;}
+  .guide-footer{flex-direction:column;}
+  .guide-btn{width:100%;}
+}
