@@ -20,6 +20,7 @@
 
 ### QA
 - `docs/qa/language-toggle-audit-2026-08-25.md`
+- `docs/qa/live-site-baseline-audit-2026-08-26.md`
 
 ### SEO/성장
 - `docs/seo/global-seo-ui-content-development-plan-v1.md`
@@ -42,12 +43,15 @@
 ## 3. 현재 확인된 구조적 상태
 - 문서 저장소 구조는 `content / product / qa / seo`로 분리되어 있다.
 - AI 공동개발 시스템 v1의 운영 문서와 Issue/PR 템플릿은 `main`에 반영 완료됐다.
-- GitHub Issue 기반 작업관리를 시작했으며 초기 운영 Issue #2~#5가 등록돼 있다.
+- GitHub Issue 기반 작업관리를 시작했으며, 현재 초기 운영 Issue #2~#5 및 라이브 오류 Issue #7이 열려 있다.
 - GitHub Projects 보드는 아직 생성/설정 전이며 Issue #2에서 추적한다.
-- 현재 GitHub 저장소에는 문서가 중심이며, 운영 웹사이트의 전체 애플리케이션 소스코드는 아직 이 저장소에서 확인되지 않는다. Issue #4에서 저장소 전략을 결정한다.
+- 운영 사이트는 작품별 독립 URL과 KR/EN/JP/ZH 링크를 일부 표본에서 구현한 상태다. 상세 근거는 `docs/qa/live-site-baseline-audit-2026-08-26.md`를 참조한다.
+- `cozzyy` 계정에서 접근 가능한 저장소를 확인했으나, 운영 웹사이트 애플리케이션 코드로 보이는 별도 저장소는 확인되지 않았다. canonical repository와 배포 환경은 Issue #4에서 확정한다.
+- 홈과 영어 홈에 사용자 노출 스크립트 오류 문구가 확인되어 Issue #7로 분리했다.
 
 ## 4. 진행 중인 시스템 구축
 ### AI 공동개발 시스템 v1
+
 완료:
 - 공통 AI 규칙 `AGENTS.md`
 - Claude 시작점 `CLAUDE.md`
@@ -56,19 +60,22 @@
 - Issue Form 2종과 PR 인수인계 템플릿
 - Inbox 운영 규칙
 - 초기 운영 Issues 등록
+- 라이브 사이트 기준선 점검 및 기록
 
 남음:
 - GitHub Project 실제 생성 및 필드/View 설정 (#2)
-- 기존 문서 실행 상태 분류 및 후속 Issue 연결 (#3)
-- 운영 사이트 소스코드 Repository 전략 결정 (#4)
+- 기존 문서 실행 상태 확정 및 후속 Issue 연결 (#3)
+- 운영 사이트 소스코드 Repository·배포 전략 결정 (#4)
 - Inbox 실제 입력 파일럿 (#5)
+- 홈 화면 사용자 노출 스크립트 오류 수정 (#7)
 
 ## 5. 우선순위 높은 다음 작업
-1. #2 GitHub Projects 보드 생성 및 필드 설정
-2. #4 운영 사이트 소스코드 저장 위치 확인 및 Repository 관계 결정
-3. #3 기존 문서 6종의 실제 실행 상태 판정
-4. #5 아이디어·녹취·메일 Inbox 흐름 실제 파일럿
-5. 주간 상태보고 자동화 설계
+1. #4 운영 사이트 소스코드와 배포 환경의 canonical 위치 확정
+2. #7 홈·영어 홈 스크립트 오류 원인 파악 및 수정
+3. #2 GitHub Projects 보드 생성 및 필드 설정
+4. #3 코드 기준으로 기존 문서 6종의 실행 상태 확정 및 후속 Issue 분리
+5. #5 아이디어·녹취·메일 Inbox 흐름 실제 파일럿
+6. 주간 상태보고 자동화 설계
 
 ## 6. Project에서 추적할 핵심 정보
 - Status
@@ -90,9 +97,9 @@
 - #3 `[OPS] 기존 문서 - 실행 상태 분류 및 Issue 연결`
 - #4 `[DEV] 운영 사이트 - 소스코드 저장 위치 확인 및 Repository 전략 결정`
 - #5 `[OPS] Inbox - 아이디어·녹취·메일 입력 흐름 파일럿`
+- #7 `[BUG] 홈 화면 - 사용자에게 노출되는 스크립트 오류 점검`
 
 ## 8. 신규 에이전트 인수인계 문구
-새로운 AI 세션에서는 아래와 같이 시작하면 된다.
 
 > `cozzyy/geogotjigeum` 저장소를 이 프로젝트의 Single Source of Truth로 사용해. 먼저 `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md`와 열린 Issues를 읽고, 현재 상태를 파악한 뒤 작업을 이어가. 이미 완료된 일을 중복으로 하지 말고, 중요한 결과와 상태 변경은 다시 GitHub에 남겨.
 
