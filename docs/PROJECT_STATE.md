@@ -36,6 +36,7 @@
 - `inbox/README.md`
 - `.github/ISSUE_TEMPLATE/`
 - `.github/pull_request_template.md`
+- `docs/product/representative-approval-automation-blueprint-v1.md`
 
 ### 문서 인덱스
 - `docs/INDEX.md`
@@ -68,6 +69,7 @@
 - 운영 사이트 소스코드 Repository·배포 전략 결정 (#4)
 - Inbox 실제 입력 파일럿 (#5)
 - 홈 화면 사용자 노출 스크립트 오류 수정 (#7)
+- 대표 승인 기반 AI 운영·자동화는 설계 완료 후 Hold 상태 (#8)
 
 ## 5. 우선순위 높은 다음 작업
 1. #4 운영 사이트 소스코드와 배포 환경의 canonical 위치 확정
@@ -75,7 +77,7 @@
 3. #2 GitHub Projects 보드 생성 및 필드 설정
 4. #3 코드 기준으로 기존 문서 6종의 실행 상태 확정 및 후속 Issue 분리
 5. #5 아이디어·녹취·메일 Inbox 흐름 실제 파일럿
-6. 주간 상태보고 자동화 설계
+6. #8 대표 승인 기반 자동화: 선행 조건 충족 후 사용자의 “자동화하자” 명령으로 착수
 
 ## 6. Project에서 추적할 핵심 정보
 - Status
@@ -98,6 +100,7 @@
 - #4 `[DEV] 운영 사이트 - 소스코드 저장 위치 확인 및 Repository 전략 결정`
 - #5 `[OPS] Inbox - 아이디어·녹취·메일 입력 흐름 파일럿`
 - #7 `[BUG] 홈 화면 - 사용자에게 노출되는 스크립트 오류 점검`
+- #8 `[OPS] 대표 승인 기반 AI 운영·자동화 구축` (Hold)
 
 ## 8. 신규 에이전트 인수인계 문구
 
