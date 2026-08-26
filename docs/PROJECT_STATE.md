@@ -43,13 +43,20 @@
 - `.github/ISSUE_TEMPLATE/handoff.yml`
 - `.github/pull_request_template.md`
 
+### 공용 스킬
+- `skills/geogotjigeum-content/SKILL.md` — 신규 작품 콘텐츠 제작 기준
+- `skills/geogotjigeum-content/QUALITY_CHECKLIST.md` — 완료 전 품질 점검
+- `skills/geogotjigeum-content/CONTENT_PLAN_TEMPLATE.md` — 신규 작품 기획 표준 템플릿
+
 ### 문서 인덱스
 - `docs/INDEX.md`
 
 ## 3. 현재 확인된 구조적 상태
 - 문서 저장소 구조는 `content / product / qa / seo`로 분리되어 있다.
-- AI 공동개발 시스템 v1의 운영 문서와 Issue/PR 템플릿은 `main`에 반영 완료됐다.
-- v1.1에서 `ChatGPT 기획 → Claude 기술검토 → 사용자 승인 → Claude 개발 → PR` 인수인계 규칙을 추가하는 중이다.
+- AI 공동개발 시스템과 `ChatGPT 기획 → Claude 기술검토 → 사용자 승인 → Claude 개발 → PR` 인수인계 규칙이 `main`에 반영돼 있다.
+- 신규 주요 작품 콘텐츠에는 `skills/geogotjigeum-content/`의 공용 스킬을 사용하도록 AGENTS/CLAUDE 규칙에 연결했다.
+- 콘텐츠 스킬의 기본 규모 목표는 등장인물 100명 이상, 장소 100개 이상, 풍부한 해시태그/SEO, 충분한 본문, 숨은 이야기, 여행 확장이다.
+- 단, 목표 수치를 채우기 위한 허위 인물·허위 촬영지·중복 데이터 생성은 금지하며 검증 가능한 최대치와 부족 사유를 기록한다.
 - GitHub Issue 기반 작업관리를 시작했으며, 초기 운영 Issue와 라이브 오류/개선 Issue가 열려 있다.
 - GitHub Projects 보드는 아직 생성/설정 전이며 Issue #2에서 추적한다.
 - 운영 사이트 소스는 `site/` 하위에 반입되어 있다. 작품·장소·지역 정적 생성기와 지도 SPA가 공존한다. 배포 환경의 최종 매핑은 Issue #4에서 확정한다.
@@ -62,6 +69,7 @@
 
 핵심 원칙:
 - ChatGPT가 기획안을 GitHub에 저장하고 Handoff Issue를 만든다.
+- 신규 작품 콘텐츠라면 먼저 `skills/geogotjigeum-content/SKILL.md`를 적용한다.
 - Claude는 승인 전에 코드부터 수정하지 않고 기술검토를 먼저 한다.
 - Claude는 `READY FOR APPROVAL / NEEDS DECISION / BLOCKED` 중 하나로 검토결과를 남긴다.
 - 사용자의 `개발 승인` 또는 `APPROVED` 기록 후 실제 개발을 시작한다.
@@ -76,6 +84,8 @@
 - 일반 Issue / Inbox Issue / Handoff Issue Form
 - PR 인수인계 템플릿
 - Inbox 운영 규칙
+- ChatGPT → Claude 수동 승인 Handoff 규칙
+- 신규 작품 공용 콘텐츠 제작 스킬 v1.0
 - 라이브 사이트 기준선 점검 및 기록
 
 남음:
@@ -86,17 +96,19 @@
 - 홈 화면 사용자 노출 스크립트 오류 수정 (#7)
 - 대표 승인 기반 자동화는 수동 Handoff 검증 후 착수 (#8)
 - 다국어 언어 전환·번역 준비상태 통합 (#10)
+- 콘텐츠 스킬을 실제 신규 작품 기획에 적용해 1차 검증
 - Claude GitHub 연동/자동 호출은 수동 프로토콜 검증 후 설정
 
 ## 6. 우선순위 높은 다음 작업
-1. Handoff 방식으로 실제 기획안 1건을 Claude에게 넘겨 수동 파일럿
-2. #4 운영 사이트 소스코드와 배포 환경의 canonical 위치 확정
-3. #7 홈·영어 홈 스크립트 오류 원인 파악 및 수정
-4. #10 다국어 언어 전환·번역 준비상태 통합 설계 구현
-5. #2 GitHub Projects 보드 생성 및 v1.1 필드/상태 설정
-6. #3 기존 문서 실행 상태 확정 및 후속 Issue 분리
-7. #5 Inbox 파일럿
-8. #8 자동화는 선행 조건 충족 후 별도 착수
+1. `geogotjigeum-content` 스킬로 신규 작품 1건을 실제 기획해 품질 기준 검증
+2. Handoff 방식으로 기획안을 Claude에게 넘겨 수동 파일럿
+3. #4 운영 사이트 소스코드와 배포 환경의 canonical 위치 확정
+4. #7 홈·영어 홈 스크립트 오류 원인 파악 및 수정
+5. #10 다국어 언어 전환·번역 준비상태 통합 설계 구현
+6. #2 GitHub Projects 보드 생성 및 v1.1 필드/상태 설정
+7. #3 기존 문서 실행 상태 확정 및 후속 Issue 분리
+8. #5 Inbox 파일럿
+9. #8 자동화는 선행 조건 충족 후 별도 착수
 
 ## 7. Project에서 추적할 핵심 정보
 - Status
@@ -115,7 +127,7 @@
 
 ## 8. 신규 에이전트 인수인계 문구
 
-> `cozzyy/geogotjigeum` 저장소를 이 프로젝트의 Single Source of Truth로 사용해. 먼저 `AGENTS.md`, `CLAUDE.md`, `docs/PROJECT_STATE.md`, `docs/CHATGPT_CLAUDE_HANDOFF.md`, `docs/ROADMAP.md`와 열린 Issues를 읽고 현재 상태를 파악해. 이미 완료된 일을 중복하지 말고, 기획에서 개발로 넘어가는 작업은 승인 Gate를 지켜. 중요한 결과와 상태 변경은 다시 GitHub에 남겨.
+> `cozzyy/geogotjigeum` 저장소를 이 프로젝트의 Single Source of Truth로 사용해. 먼저 `AGENTS.md`, `CLAUDE.md`, `docs/PROJECT_STATE.md`, `docs/CHATGPT_CLAUDE_HANDOFF.md`, `docs/ROADMAP.md`와 열린 Issues를 읽고 현재 상태를 파악해. 신규 작품 콘텐츠 작업이면 `skills/geogotjigeum-content/SKILL.md`와 품질 체크리스트를 반드시 적용해. 이미 완료된 일을 중복하지 말고, 기획에서 개발로 넘어가는 작업은 승인 Gate를 지켜. 중요한 결과와 상태 변경은 다시 GitHub에 남겨.
 
 ## 9. 상태 갱신 원칙
 이 문서는 모든 세부 작업을 적는 로그가 아니다. 다음 경우에만 갱신한다.
