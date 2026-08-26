@@ -1,0 +1,65 @@
+name: 기획 → 개발 인수인계
+description: ChatGPT 기획안을 Claude가 기술 검토하고 승인 후 개발하도록 넘깁니다.
+title: "[HANDOFF] "
+body:
+  - type: input
+    id: plan_doc
+    attributes:
+      label: 기획문서 경로
+      description: 예) docs/product/example-plan-v1.md
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 목적
+      description: 왜 이 기능/변경이 필요한지 적습니다.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 개발 범위
+      value: |
+        - 
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 제외 범위
+      description: 이번 작업에서 하지 않을 것을 적습니다.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 기준
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: claude_review
+    attributes:
+      label: Claude 검토 요청
+      value: |
+        1. 구현 가능 여부
+        2. 기존 코드/기능과 충돌 여부
+        3. 권장 구현방법과 변경 영역
+        4. 사용자 결정이 필요한 항목
+        5. 테스트 계획
+    validations:
+      required: true
+  - type: dropdown
+    id: approval
+    attributes:
+      label: 개발 승인 상태
+      options:
+        - NOT APPROVED
+        - APPROVED
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 주의사항 / 관련 Issue / 링크
