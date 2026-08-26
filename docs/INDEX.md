@@ -49,6 +49,9 @@ docs/
 
 ## QA / 점검
 
+- [`qa/live-site-baseline-audit-2026-08-26.md`](qa/live-site-baseline-audit-2026-08-26.md)  
+  실제 운영 사이트 표본 점검, 기존 문서의 잠정 실행 상태, 사용자 노출 오류를 기록한 기준선 보고서.
+
 - [`qa/language-toggle-audit-2026-08-25.md`](qa/language-toggle-audit-2026-08-25.md)  
   후킹페이지 41종의 KR / EN / JP / 中文 버튼 존재 여부와 언어 전환 구조 점검 보고서.
 
