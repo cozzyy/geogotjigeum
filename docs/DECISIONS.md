@@ -63,6 +63,26 @@ GitHub Projects는 업무 추적에 적합하지만 대량의 서비스 데이�
 
 ---
 
+## 2026-08-26 — ChatGPT 기획자 / Claude 개발자 기본 역할과 승인 Gate
+
+### 결정
+ChatGPT는 기본적으로 기획자와 사용자 의사결정 지원 역할을 맡고, Claude는 기술검토자와 개발자 역할을 맡는다. 개발이 필요한 기획은 GitHub의 기획문서와 Handoff Issue로 전달하며, Claude는 구현 전에 기술검토를 수행한다. 중요한 개발은 사용자의 명시적 승인 후 시작한다.
+
+### 이유
+서로 다른 AI 채팅과 계정 사이의 기억 공유에 의존하지 않고, 기획 의도·기술 검토·사용자 결정·개발 결과를 GitHub에 일관되게 남기기 위함이다.
+
+### 영향
+- ChatGPT가 기획 완료 후 GitHub에 문서와 Handoff Issue를 남긴다.
+- Claude는 `READY FOR APPROVAL / NEEDS DECISION / BLOCKED` 중 하나로 검토 결과를 남긴다.
+- 사용자 판단이 필요한 경우 Claude가 선택지와 추천을 제시하고 개발을 멈춘다.
+- `개발 승인` 또는 `APPROVED`가 기록된 뒤 개발한다.
+- 세부 절차는 `docs/CHATGPT_CLAUDE_HANDOFF.md`를 기준으로 한다.
+
+### 재검토 조건
+수동 Handoff 2~3건을 실제 운영한 뒤 불필요한 승인 단계나 반복 질문이 많으면 규칙을 단순화하고 자동화 범위를 재설계한다.
+
+---
+
 ## 새 결정 작성 형식
 
 ```md
