@@ -81,9 +81,17 @@
 
 1. `skills/geogotjigeum-content/SKILL.md`
 2. `skills/geogotjigeum-content/QUALITY_CHECKLIST.md`
-3. 신규 기획서 작성 시 `skills/geogotjigeum-content/CONTENT_PLAN_TEMPLATE.md`
+3. `skills/geogotjigeum-content/RESEARCH_PLAYBOOK.md`
+4. `skills/geogotjigeum-content/MOBILE_UI_GUIDE.md`
+5. 신규 기획서 작성 시 `skills/geogotjigeum-content/CONTENT_PLAN_TEMPLATE.md`
 
-등장인물 100명 이상, 장소 100개 이상, 풍부한 해시태그/SEO, 충분한 본문, 숨은 이야기, 여행 확장 등 반복 기준은 위 스킬을 기준본으로 삼는다. 단, 숫자를 채우기 위한 허위 데이터 생성은 금지한다.
+등장인물 100명 이상, 장소 100개 이상, 풍부한 해시태그/SEO, 충분한 본문, 모바일 퍼스트, 경쟁/유튜브 조사, 반복 형식 탈피, 20문제 퀴즈 메뉴, 여행 확장 등 반복 기준은 위 스킬을 기준본으로 삼는다. 단, 숫자를 채우기 위한 허위 데이터 생성은 금지한다.
+
+### 콘텐츠 스킬 지속개선
+작업 중 다른 작품에도 반복 적용될 가능성이 높은 규칙·실수·QA 항목을 발견하면 `skills/geogotjigeum-content/`를 살아있는 기준으로 업데이트한다.
+- 기존 방향을 강화하는 추가 규칙/체크리스트는 에이전트가 자발적으로 갱신할 수 있다.
+- 핵심 목표치 축소, 언어 정책, 대규모 데이터 구조, 승인 Gate 등 큰 방향 변경은 사용자에게 먼저 알린다.
+- 스킬 변경 시 `CHANGELOG.md`에 이유와 변경내용을 기록한다.
 
 ## 10. AI별 기본 역할
 역할은 고정하지 않되 기본적으로 다음을 우선한다.

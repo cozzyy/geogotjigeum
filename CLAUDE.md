@@ -20,7 +20,9 @@ Claude는 이 프로젝트의 **개발자/기술검토자**를 기본 역할로 
 
 1. `skills/geogotjigeum-content/SKILL.md`
 2. `skills/geogotjigeum-content/QUALITY_CHECKLIST.md`
-3. 필요 시 `skills/geogotjigeum-content/CONTENT_PLAN_TEMPLATE.md`
+3. `skills/geogotjigeum-content/RESEARCH_PLAYBOOK.md`
+4. `skills/geogotjigeum-content/MOBILE_UI_GUIDE.md`
+5. 필요 시 `skills/geogotjigeum-content/CONTENT_PLAN_TEMPLATE.md`
 
 Claude는 기획안이 위 스킬의 핵심 기준과 명백히 충돌하면 그대로 개발하지 말고 `NEEDS DECISION` 또는 `BLOCKED`로 보고한다.
 
@@ -29,7 +31,11 @@ Claude는 기획안이 위 스킬의 핵심 기준과 명백히 충돌하면 그
 - 실제 촬영지와 극중 배경/추천 장소가 구조적으로 구분되는지
 - 해시태그/SEO가 데이터 모델에 반영 가능한지
 - 다국어와 장소/인물 관계 데이터 확장이 가능한지
-- 숨은 이야기, 지도, 여행코스, 퀴즈 등 기획 요소가 기존 구조에 어떻게 매핑되는지
+- 경쟁조사와 차별화 콘셉트가 기획에 실제 반영됐는지
+- 기존 작품과 후킹/페이지 구조가 지나치게 반복되지 않는지
+- 모바일 360/390/430px에서 100명/100장소 데이터 탐색이 가능한지
+- 기존 폭싹 속았수다 Quiz 메뉴/컴포넌트가 있으면 재사용 가능한지
+- 신규 작품의 20문제 퀴즈, `/quiz/` 메뉴/URL, 장소 연계가 구현 가능한지
 
 ## Handoff Issue를 받았을 때
 코드부터 수정하지 않는다. 먼저 Issue에 아래 셋 중 하나를 남긴다.
@@ -39,6 +45,8 @@ Claude는 기획안이 위 스킬의 핵심 기준과 명백히 충돌하면 그
 - 기존 구조와의 충돌 여부
 - 권장 구현 방법
 - 변경 예상 파일/영역
+- 모바일 구현/검증 계획
+- 퀴즈 구현 또는 기존 컴포넌트 재사용 계획
 - 테스트 계획
 
 ### NEEDS DECISION
@@ -75,6 +83,19 @@ Claude는 기획안이 위 스킬의 핵심 기준과 명백히 충돌하면 그
 - 운영 배포
 - 데이터 구조의 큰 변경
 - 유료 서비스/API 도입
+
+## 콘텐츠 개발 후 추가 검증
+콘텐츠 관련 개발은 PR에서 가능한 경우 다음을 기록한다.
+- 360 / 390 / 430px 모바일 QA 결과
+- 인물 100명/장소 100개 규모에서 검색·필터·렌더링 동작
+- 지도/목록 모바일 전환
+- Quiz 메뉴 진입과 20문제 진행·완료
+- 장소 연계 퀴즈의 상태 유지
+- 다국어 전환
+- 기획안과 다른 구현이 있다면 이유
+
+## 스킬 지속개선
+반복되는 콘텐츠 개발 문제나 공통 개선점을 발견하면 `skills/geogotjigeum-content/SKILL.md`의 지속개선 규칙을 따른다. 기존 방향을 강화하는 세부 체크리스트는 스킬 업데이트 후보로 기록하고, 큰 정책 변경은 사용자에게 먼저 알린다.
 
 ## 개발 후
 - Issue 번호와 연결된 branch를 사용한다.
