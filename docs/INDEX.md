@@ -56,7 +56,10 @@ docs/
   실제 운영 사이트 표본 점검, 기존 문서의 잠정 실행 상태, 사용자 노출 오류를 기록한 기준선 보고서.
 
 - [`qa/language-toggle-audit-2026-08-25.md`](qa/language-toggle-audit-2026-08-25.md)  
-  후킹페이지 41종의 KR / EN / JP / 中文 버튼 존재 여부와 언어 전환 구조 점검 보고서.
+  후킹페이지 41종의 KR / EN / JP / 中文 버튼 존재 여부를 기록한 외부 관찰 기준선.
+
+- [`qa/i18n-language-switcher-remediation-plan-v2.md`](qa/i18n-language-switcher-remediation-plan-v2.md)  
+  실제 `site/` 소스를 반영한 다국어 전환·번역 준비상태 통합 개발 기준본 (Issue #10).
 
 ## 콘텐츠
 
@@ -75,4 +78,4 @@ docs/
 
 ## 이관 메모
 
-현재 저장소에는 기획·SEO·콘텐츠·QA 문서가 중심으로 들어와 있다. 운영 웹사이트의 전체 애플리케이션 소스코드는 별도 확인이 필요하다. 과거 원본 중 원본 보존이 꼭 필요한 바이너리 문서는 필요 시 `archive/originals/`에 별도 보관한다.
+현재 저장소에는 기획·SEO·콘텐츠·QA 문서와 운영 웹사이트 소스가 함께 있다. 운영 소스는 `site/` 하위에 있으며, 배포 환경의 최종 매핑은 Issue #4에서 확정한다. 과거 원본 중 원본 보존이 꼭 필요한 바이너리 문서는 필요 시 `archive/originals/`에 별도 보관한다.
