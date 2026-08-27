@@ -26,6 +26,9 @@ const QUIZ_DATA = {
     title: '폭싹 속았수다 퀴즈',
     title_en: 'When Life Gives You Tangerines Quiz',
     intro: '드라마 속 인물과 장소, 얼마나 기억하세요? 10문제를 풀면서 숨겨진 비밀과 운세를 모아보세요.',
+    // 2026-08 Issue #17 파일럿: 결과화면 촬영지 카드 3곳. POKSSAK_LOCATIONS(contentmap_data.js)에
+    // 이미 있는 검증된 장소만 id로 참조 — 신규 장소/URL을 만들지 않는다.
+    resultLocations: ['seongsan_ilchulbong', 'hyeopjae_beach', 'gochang_hagwon_farm'],
     questions: [
       {
         q: '오애순의 청소년~청년 시절과 딸 양금명 역을 동시에 연기한 배우는 누구일까요?',

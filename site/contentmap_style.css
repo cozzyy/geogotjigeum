@@ -1009,8 +1009,28 @@ details.course-btn > div .course-btn{margin:0;}
 .quiz-reward-box .text{font-size:13px;line-height:1.65;color:#f3d9b8;}
 .quiz-result-score{font-size:22px;font-weight:800;color:var(--text);text-align:center;margin:8px 0 4px;}
 .quiz-result-sub{font-size:13px;color:var(--sub);text-align:center;margin-bottom:18px;}
+/* 2026-08 Issue #17 파일럿: 퀴즈 완료화면 촬영지 카드. 기존 .quiz- 스코프 안에서만 동작 —
+   다른 화면(언어 스위처 등)과 셀렉터 충돌 없음. */
+.quiz-result-locations{margin-top:16px;}
+.quiz-result-locations-label{font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+.quiz-location-card{
+  display:flex;flex-direction:column;gap:4px;
+  background:#20180f;border:1px solid #4a3620;border-radius:10px;
+  padding:12px 14px;margin-bottom:8px;
+}
+.quiz-location-name{font-size:14px;font-weight:700;color:var(--text);}
+.quiz-location-tag{font-size:12px;color:#e0a83a;}
+.quiz-location-btn{
+  align-self:flex-start;margin-top:8px;
+  background:transparent;border:1px solid #e0a83a;color:#e0a83a;
+  font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;
+  cursor:pointer;min-height:36px;
+}
+.quiz-location-btn:hover{background:rgba(224,168,58,.12);}
 @media (max-width:768px){
   .quiz-box{max-width:100%;}
+  .quiz-location-card{padding:12px;}
+  .quiz-location-btn{width:100%;min-height:44px;}
 }
 
 /* ---- 사용법 안내 모달 ---- */
