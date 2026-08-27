@@ -9,9 +9,10 @@ Claude는 작업 시작 시 반드시 다음을 읽는다.
 3. `docs/PROJECT_STATE.md`
 4. `docs/ROADMAP.md`
 5. `docs/CHATGPT_CLAUDE_HANDOFF.md`
-6. 관련 GitHub Issue
-7. 연결된 기획문서
-8. 관련 코드/최근 PR
+6. `docs/DEPLOYMENT_HANDOFF.md`
+7. 관련 GitHub Issue
+8. 연결된 기획문서
+9. 관련 코드/최근 PR
 
 새 Claude 계정/새 Claude Project/새 Claude Code 세션에서 시작할 때는 `docs/CLAUDE_SECONDARY_START_PROMPT.md`를 최초 시작 프롬프트로 사용할 수 있다.
 
@@ -111,6 +112,18 @@ Claude는 기획안이 위 스킬의 핵심 기준과 명백히 충돌하면 그
 - 장소 연계 퀴즈의 상태 유지
 - 다국어 전환
 - 기획안과 다른 구현이 있다면 이유
+
+## 배포 ZIP 인수인계
+개발·테스트가 끝난 작업은 `docs/DEPLOYMENT_HANDOFF.md`를 따른다.
+
+기본 규칙:
+- 소스 기준본은 GitHub다. ZIP만 수정하고 GitHub에 반영하지 않는다.
+- 배포 가능한 ZIP을 만든다.
+- 파일명에 날짜와 Issue 번호를 포함한다.
+- Google Drive 접근 권한이 있으면 `그곳지금/Deploy/READY`에 업로드한다.
+- Drive 업로드가 불가능하면 정확한 ZIP 파일명과 로컬 경로를 보고한다.
+- Issue/PR에 `READY TO DEPLOY`, commit/PR, ZIP 이름, Drive 링크 또는 로컬 경로, 테스트 결과, 남은 위험을 기록한다.
+- 사용자가 실제 배포하기 전에는 `DEPLOYED`라고 표시하지 않는다.
 
 ## 스킬 지속개선
 반복되는 콘텐츠 개발 문제나 공통 개선점을 발견하면 `skills/geogotjigeum-content/SKILL.md`의 지속개선 규칙을 따른다. 기존 방향을 강화하는 세부 체크리스트는 스킬 업데이트 후보로 기록하고, 큰 정책 변경은 사용자에게 먼저 알린다.

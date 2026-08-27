@@ -19,6 +19,9 @@
 - [`CLAUDE_SECONDARY_START_PROMPT.md`](CLAUDE_SECONDARY_START_PROMPT.md)  
   2차 Claude 계정·Project·Code 세션에 그대로 붙여 넣는 시작 프롬프트.
 
+- [`DEPLOYMENT_HANDOFF.md`](DEPLOYMENT_HANDOFF.md)  
+  개발 완료 후 배포 ZIP을 Google Drive `그곳지금/Deploy/READY`로 인수인계하고 Issue/PR에 `READY TO DEPLOY` 상태를 남기는 운영 규칙.
+
 - [`ROADMAP.md`](ROADMAP.md)  
   AI 공동개발 기반 구축부터 Inbox·자동보고·멀티에이전트 고도화까지의 단계별 로드맵.
 
@@ -83,10 +86,11 @@ docs/
 4. 새 Claude 계정/세션은 추가로 `CLAUDE_DEVELOPER_BOOTSTRAP.md`를 읽고 필요 시 `CLAUDE_SECONDARY_START_PROMPT.md`를 사용한다.
 5. ChatGPT 기획이 개발로 넘어갈 때는 Handoff Issue와 사용자 승인 Gate를 사용한다.
 6. 여러 Claude를 병렬로 사용할 때는 한 Issue = 한 실행 Claude, 한 작업 = 전용 branch를 기본으로 한다.
-7. Markdown을 기본 관리 포맷으로 사용한다.
-8. 문서 파일명은 영문 소문자와 하이픈을 기본으로 하며 날짜 또는 버전을 포함한다.
-9. 실제 개발에 반영된 문서는 Git commit history와 Issues/PR로 변경 이력을 남긴다.
-10. 중요한 방향 변경은 `DECISIONS.md`에 기록한다.
+7. 개발 완료 후 외부/다른 기기에서 수동 배포가 필요하면 `DEPLOYMENT_HANDOFF.md`에 따라 배포 ZIP을 Drive에 보관한다.
+8. Markdown을 기본 관리 포맷으로 사용한다.
+9. 문서 파일명은 영문 소문자와 하이픈을 기본으로 하며 날짜 또는 버전을 포함한다.
+10. 실제 개발에 반영된 문서는 Git commit history와 Issues/PR로 변경 이력을 남긴다.
+11. 중요한 방향 변경은 `DECISIONS.md`에 기록한다.
 
 ## 이관 메모
 
