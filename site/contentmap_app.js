@@ -1033,6 +1033,32 @@ function nextQuiz(){
   quizState.idx++;
   renderQuizQuestion();
 }
+/* 2026-08 Issue #17 파일럿: 퀴즈 완료화면 촬영지 카드. QUIZ_DATA[workId].resultLocations에
+   있는 id들을 DATA[workId].locations에서 찾아 그대로 사용 — 새 장소/URL을 만들지 않는다.
+   정적 /places/ 페이지가 없는 장소이므로(placeUrl() tier 필터 미해당), 기존에 이미 동작하는
+   showLocation() 인앱 네비게이션을 재사용해 지도로 바로 이동시킨다. */
+function renderQuizResultLocations(workId){
+  const quiz = window.QUIZ_DATA && window.QUIZ_DATA[workId];
+  const ids = (quiz && quiz.resultLocations) || [];
+  const data = DATA[workId];
+  if (!ids.length || !data || !data.locations) return '';
+  const cards = ids.map(function(locId){
+    const loc = data.locations.find(function(l){ return l.id === locId; });
+    if (!loc) return '';
+    return '<div class="quiz-location-card">' +
+      '<div class="quiz-location-name">' + loc.modernName + '</div>' +
+      '<div class="quiz-location-tag">' + loc.tag + '</div>' +
+      '<button class="quiz-location-btn" onclick="goToQuizResultLocation(\'' + workId + '\', \'' + locId + '\')">📍 장소 보기</button>' +
+      '</div>';
+  }).join('');
+  if (!cards) return '';
+  return '<div class="quiz-result-locations"><div class="quiz-result-locations-label">🗺️ 실제 촬영지 둘러보기</div>' + cards + '</div>';
+}
+function goToQuizResultLocation(workId, locId){
+  closeQuizModal();
+  const w = WORKS.find(function(x){ return x.id === workId; });
+  if (w && DATA[workId]) showLocation(w, DATA[workId], locId);
+}
 function renderQuizResult(){
   const quiz = window.QUIZ_DATA[quizState.workId];
   const total = quiz.questions.length;
@@ -1047,12 +1073,14 @@ function renderQuizResult(){
     '<div class="quiz-result-score">' + quizState.correctCount + ' / ' + total + '문제 정답!</div>' +
     '<div class="quiz-result-sub">비밀 ' + secretCount + '개 · 운세 ' + fortuneCount + '개를 모았어요.</div>' +
     (rewardListHtml || '<div class="empty-state">이번엔 모은 보상이 없어요 — 다시 도전해보세요!</div>') +
+    renderQuizResultLocations(quizState.workId) +
     '<button class="course-btn" style="margin-top:14px;" onclick="openQuizModal(\'' + quizState.workId + '\')">🔁 처음부터 다시 풀기</button>';
 }
 window.openQuizModal = openQuizModal;
 window.closeQuizModal = closeQuizModal;
 window.answerQuiz = answerQuiz;
 window.nextQuiz = nextQuiz;
+window.goToQuizResultLocation = goToQuizResultLocation;
 
 document.addEventListener('DOMContentLoaded', function(){
   const overlay = document.getElementById('relationsModal');
