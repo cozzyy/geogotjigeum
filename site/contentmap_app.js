@@ -244,7 +244,12 @@ const UI_STRINGS = {
     heroNearbyBtn:"내주변여행",
     heroSearchBtn:"여행지찾기",
     homeIconLabel:"홈",
-    heroTodayPickLabel:"오늘의 장소"
+    heroTodayPickLabel:"오늘의 장소",
+    // 2026-08 Issue #19 홈페이지 리디자인 A: 히어로 1차 CTA·발견 섹션 타이틀·featured scene 키커
+    heroPrimaryCta:"작품 발견하기",
+    discoverySectionTitle:"지금, 발견해보세요",
+    discoverySectionSubtitle:"이 장면을 좋아했다면, 그 장소도 좋아하게 될 거예요.",
+    heroFeatureKicker:"장면 → 실제 장소"
   },
   en: {
     headerTagline:"Real places behind the stories you love — pick a story, then click the map.",
@@ -412,7 +417,11 @@ const UI_STRINGS = {
     heroNearbyBtn:"Near me now",
     heroSearchBtn:"Find a trip",
     homeIconLabel:"Home",
-    heroTodayPickLabel:"Today's pick"
+    heroTodayPickLabel:"Today's pick",
+    heroPrimaryCta:"Discover Stories",
+    discoverySectionTitle:"Discover Now",
+    discoverySectionSubtitle:"If you loved the scene, you'll love the place.",
+    heroFeatureKicker:"Scene → Real Place"
   },
   // 2026-08 2단계 4-2: 일본어 UI 사전 — ko 사전과 1:1 동일한 키 구성.
   // 표기 원칙: 성지순례 팬덤에서 통용되는 어휘(聖地巡礼·ロケ地)를 쓰고, 존댓말(です·ます)로 통일.
@@ -582,7 +591,11 @@ const UI_STRINGS = {
     heroNearbyBtn:"近くを旅する",
     heroSearchBtn:"旅先を探す",
     homeIconLabel:"ホーム",
-    heroTodayPickLabel:"今日のおすすめ"
+    heroTodayPickLabel:"今日のおすすめ",
+    heroPrimaryCta:"作品を発見する",
+    discoverySectionTitle:"今すぐ発見",
+    discoverySectionSubtitle:"そのシーンが好きなら、その場所もきっと好きになる。",
+    heroFeatureKicker:"シーン → 実在の場所"
   },
   // 2026-08 3단계: 번체 중문(대만·홍콩 대상) UI 사전 — ko 사전과 1:1 동일한 키 구성.
   // GSC 분석 결과 구글 검색이 그대로 통하는 번체(대만·홍콩)를 먼저 서비스하기로 결정
@@ -752,7 +765,11 @@ const UI_STRINGS = {
     heroNearbyBtn:"附近旅行",
     heroSearchBtn:"尋找旅遊地",
     homeIconLabel:"首頁",
-    heroTodayPickLabel:"今日推薦地點"
+    heroTodayPickLabel:"今日推薦地點",
+    heroPrimaryCta:"探索作品",
+    discoverySectionTitle:"現在就探索",
+    discoverySectionSubtitle:"如果你喜歡這個畫面，你也會喜歡這個地方。",
+    heroFeatureKicker:"畫面 → 真實地點"
   }
 };
 function t(key){
@@ -1594,6 +1611,13 @@ function renderLandingCopy(){
   if (kicker) kicker.textContent = t('landingKicker');
   if (headline) headline.textContent = t('landingHeadline');
   if (blurb) blurb.innerHTML = t('landingBlurb');
+  // 2026-08 Issue #19 홈페이지 리디자인 A: 신규 1차 CTA·발견 섹션 타이틀도 언어 전환마다 갱신
+  const primaryCtaText = document.getElementById('heroPrimaryCtaText');
+  const discTitle = document.getElementById('discoverySectionTitle');
+  const discSub = document.getElementById('discoverySectionSubtitle');
+  if (primaryCtaText) primaryCtaText.textContent = t('heroPrimaryCta');
+  if (discTitle) discTitle.textContent = t('discoverySectionTitle');
+  if (discSub) discSub.textContent = t('discoverySectionSubtitle');
 }
 // 2026-08 UI 개편(랜딩 히어로 재설계) — "기능은 많은데 여행 욕구는 약하다"는 기획 피드백에
 // 따라, 히어로 영역 배경을 실제 작품 대표 이미지 콜라주로 채운다. 이미 카드에 쓰이고 있는
@@ -1634,6 +1658,8 @@ function renderHeroTodayPick(){
   const titleEl = document.getElementById('heroTodayPickTitle');
   const hookEl = document.getElementById('heroTodayPickHook');
   if (imgEl) imgEl.style.backgroundImage = "url('" + work.heroImage.url.replace(/'/g, "\\'") + "')";
+  const kickerEl = document.getElementById('heroFeatureKicker');
+  if (kickerEl) kickerEl.textContent = t('heroFeatureKicker');
   if (labelEl) labelEl.textContent = t('heroTodayPickLabel');
   if (titleEl) titleEl.textContent = tField(work, 'title');
   if (hookEl) hookEl.textContent = tField(work, 'hookTagline');
@@ -1643,6 +1669,15 @@ function renderHeroTodayPick(){
 }
 window.pickTodayWork = pickTodayWork;
 window.renderHeroTodayPick = renderHeroTodayPick;
+
+// 2026-08 Issue #19 홈페이지 리디자인 A: 히어로 1차 CTA — 페이지 이동 없이 발견 섹션(작품
+// 카드 목록)으로 부드럽게 스크롤한다. 이미 렌더돼 있는 기존 #landingCards를 그대로 가리킬 뿐,
+// 새 데이터/라우팅을 추가하지 않는다.
+function scrollToDiscovery(){
+  const target = document.getElementById('discoverySection') || document.getElementById('landingCards');
+  if (target && target.scrollIntoView) target.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+window.scrollToDiscovery = scrollToDiscovery;
 
 function renderLandingCards(){
   renderRegionRow();
