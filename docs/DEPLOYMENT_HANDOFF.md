@@ -1,70 +1,68 @@
 # 배포 ZIP 인수인계 규칙
 
 ## 목적
-개발이 로컬 PC 밖에서 끝나더라도 사용자가 외부/퇴근 후 다른 기기에서 배포할 수 있도록, 배포 가능한 ZIP을 Google Drive의 공용 위치에 보관한다.
+현재 그곳지금 운영 배포는 사용자가 로컬 ZIP을 직접 배포하는 방식이다. 개발자는 개발·테스트가 끝난 뒤 배포 가능한 ZIP을 로컬에 생성하고 정확한 경로를 사용자에게 전달한다.
 
-GitHub는 코드·문서·Issue·PR의 Single Source of Truth이고, Google Drive는 **배포용 완성 ZIP 전달/보관 용도**로만 사용한다.
+GitHub는 코드·문서·Issue·PR의 Single Source of Truth이고, ZIP은 **배포용 전달물**이다.
 
-## Google Drive 배포 폴더
-- 루트: `그곳지금/Deploy`
-- READY: https://drive.google.com/drive/folders/10XRQsnxTJI9DRsm5LO1G4YTWK2w684AT
-- ARCHIVE: https://drive.google.com/drive/folders/14rU_DS4amrRsrAxRfwzAgTnAL3MxK4gp
-
-### READY
-현재 배포 가능한 최신 ZIP을 둔다.
+## 현재 배포 방식
+- 기본 배포 ZIP 위치: 사용자의 로컬 지정 폴더(현재 `C:\새 폴더` 계열)
+- Google Drive 자동 업로드는 현재 사용하지 않는다.
+- Claude가 Google Drive를 직접 사용할 수 없으므로 Drive 업로드를 완료 조건으로 요구하지 않는다.
+- 사용자가 필요할 때 로컬 ZIP을 직접 배포한다.
 
 권장 파일명:
 `geugotjigeum_YYYY-MM-DD_issue-N.zip`
 
 예:
-`geugotjigeum_2026-08-27_issue-10.zip`
-
-가능하면 최신 배포본을 쉽게 찾도록 `CURRENT.zip` 이름의 복사본/최신본도 유지한다.
-
-### ARCHIVE
-이전 배포본을 보관한다. 새 ZIP이 READY에 올라가고 정상 배포가 끝나면 이전 배포본을 ARCHIVE로 이동한다.
+`geugotjigeum_2026-08-27_issue-17.zip`
 
 ## Claude 개발 완료 시 필수 인수인계
 개발·테스트가 끝나면 다음 순서로 처리한다.
 
-1. 최신 `main` 또는 승인된 branch 상태를 확인한다.
-2. 배포 가능한 사이트 디렉터리/ZIP을 생성한다.
+1. 최신 `main` 또는 작업 branch 기준을 확인한다.
+2. 배포 가능한 사이트 ZIP을 생성한다.
 3. ZIP 이름에 날짜와 Issue 번호를 포함한다.
-4. Google Drive 접근/업로드 권한이 있으면 `Deploy/READY`에 ZIP을 업로드한다.
-5. Google Drive 업로드가 불가능하면 ZIP을 생성한 로컬 경로와 정확한 파일명을 보고하고, 사용자가 업로드할 수 있도록 멈춘다.
-6. 관련 GitHub Issue 또는 PR에 아래를 기록한다.
-   - 상태: `READY TO DEPLOY`
+4. 사용자가 지정한 로컬 폴더에 저장한다.
+5. 관련 Issue/PR 또는 사용자 보고에 아래를 남긴다.
    - Issue 번호
-   - commit SHA / PR
+   - commit SHA / branch / PR
    - 배포 ZIP 파일명
-   - Drive 링크 또는 로컬 파일 경로
+   - 로컬 파일 경로
    - 테스트 결과
    - 알려진 위험/주의사항
-7. 사용자가 실제 배포를 완료하기 전에는 `DEPLOYED`로 표시하지 않는다.
+6. 사용자가 실제 운영 배포를 완료하기 전에는 `DEPLOYED`로 표시하지 않는다.
+7. 사용자가 배포 완료를 알려주면 Issue에 `DEPLOYED`를 기록한다.
 
-## Issue/PR 보고 예시
+## 보고 예시
 
 ```text
 READY TO DEPLOY
-- Issue: #10
-- Commit/PR: <sha or PR link>
-- Deploy ZIP: geugotjigeum_2026-08-27_issue-10.zip
-- Drive READY: <link>
+- Issue: #17
+- Branch/Commit: issue-17-quiz-result-location-cards / <sha>
+- Deploy ZIP: geugotjigeum_2026-08-27_issue-17.zip
+- Local path: C:\새 폴더\geugotjigeum_2026-08-27_issue-17.zip
 - Test: PASS
-- Known risks: 없음
+- Known risks: 모바일 실브라우저 QA 일부 제한
 - Production deploy: NOT YET
 ```
 
 ## 중요한 원칙
 - 배포 ZIP은 개발 소스의 기준본이 아니다. 소스의 기준본은 GitHub다.
-- ZIP만 수정하고 GitHub에 반영하지 않는 작업은 금지한다.
-- 운영 배포 전에 PR/승인 절차를 우선한다.
+- **ZIP을 먼저 배포했더라도 개발 소스는 반드시 GitHub branch/PR/main에 동기화한다.**
+- ZIP만 수정하고 GitHub에 소스가 남지 않는 상태를 완료로 간주하지 않는다.
 - 다른 Claude의 진행 중 branch를 덮어쓰지 않는다.
 - ZIP 생성 과정에서 API key, secret, 개인 로컬 설정 파일이 포함되지 않았는지 확인한다.
 
-## 향후 자동화
-수동 흐름이 안정되면 다음 순서로 자동화한다.
+## 현재 현실적인 흐름
 
-`PR merge → 배포 ZIP 자동 생성 → Drive/Artifact 저장 → 사용자 승인/배포`
+`Issue → 개발/테스트 → GitHub branch/PR → 로컬 배포 ZIP 생성 → 사용자 직접 배포 → DEPLOYED 기록`
 
-최종적으로는 `main merge → 자동 deploy`로 전환하여 ZIP 수동 배포 자체를 없애는 것을 목표로 한다.
+작은 Fast Lane 작업은 사용자 중간 승인 없이 개발/테스트/PR/ZIP 생성까지 진행할 수 있다.
+
+## 향후 개선
+소스와 배포 구조가 안정되면 다음을 검토한다.
+
+`PR merge → 배포 artifact 자동 생성 → 사용자 배포`
+
+장기적으로는 `main merge → 자동 deploy`로 전환하여 ZIP 수동 배포 자체를 없애는 것을 목표로 한다.

@@ -18,14 +18,15 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - 중요한 신규 작업은 GitHub Issue 단위로 관리한다.
 - Issue 없이 큰 기능을 바로 개발하지 않는다.
 - 기존 작업과 중복되는지 먼저 검색한다.
-- 아이디어/메모/녹취/메일은 먼저 `Inbox` 성격으로 기록한 뒤 실행 가능한 Issue로 정리한다.
 - 여러 Claude를 병렬로 사용할 때는 **한 Issue = 한 실행 Claude**, **한 작업 = 전용 branch**를 기본으로 한다.
 - 다른 Claude가 진행 중인 Issue/branch를 임의로 덮어쓰지 않는다.
 
 ## 3. 기본 상태
 일반 작업: `Inbox → Planned → Todo → In Progress → Review → Done`
 
-기획에서 개발로 넘기는 작업: `Planning → Dev Review → Needs Decision(필요 시) → Approved → In Development → PR Review → Done`
+기획에서 개발로 넘기는 작업은 위험도에 따라 나눈다.
+- Fast Lane: `Planning → In Development → PR Review → Done`
+- Approval Lane: `Planning → Dev Review → Needs Decision(필요 시) → Approved → In Development → PR Review → Done`
 
 예외 상태: `Hold`, `Cancelled`, `Blocked`
 
@@ -40,12 +41,13 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - `ops`: 운영·자동화·관리
 
 ## 5. ChatGPT → Claude 기본 협업 규칙
-- ChatGPT는 기본적으로 기획자 역할을 맡아 기획안을 GitHub 문서로 남긴다.
-- 개발이 필요한 기획은 `.github/ISSUE_TEMPLATE/handoff.yml` 형식의 Handoff Issue로 Claude에게 넘긴다.
-- Claude는 Handoff Issue를 받으면 **즉시 개발하지 않고 기술검토부터 한다.**
-- Claude 검토 결과는 `READY FOR APPROVAL / NEEDS DECISION / BLOCKED` 중 하나로 명확히 남긴다.
-- 사용자 판단이 필요한 경우 Claude는 질문을 1~3개로 줄여 A/B 선택지, 추천안, 이유를 제시하고 개발을 멈춘다.
-- 중요한 개발은 `개발 승인` 또는 `APPROVED`가 GitHub Issue에 명확히 기록되기 전 시작하지 않는다.
+- ChatGPT는 기획자/PM 역할을 맡아 요구사항과 완료기준을 정리한다.
+- 개발이 필요한 기획은 가능한 경우 Handoff Issue로 넘긴다.
+- **저위험·명확한 작업은 Fast Lane이 기본값**이다. 별도 사용자 승인 왕복 없이 Claude가 구현·테스트·PR까지 진행할 수 있다.
+- Claude는 Fast Lane에서도 개발 전 최신 `main`, 예상 변경 파일, 병렬 작업 충돌을 짧게 확인한다.
+- 사용자 결정이 필요한 문제가 생기면 그때 `NEEDS DECISION`으로 멈춘다.
+- 큰 리디자인, 유료 서비스, 개인정보/결제/인증, 대규모 데이터·URL·SEO·배포 구조 변경, 파괴적 변경은 Approval Lane으로 올린다.
+- Approval Lane에서는 `개발 승인` 또는 `APPROVED` 전 개발하지 않는다.
 - 세부 규칙은 `docs/CHATGPT_CLAUDE_HANDOFF.md`를 따른다.
 
 ## 6. Git 작업 원칙
@@ -53,7 +55,8 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - 운영에 영향이 큰 변경은 가능하면 `main`에 직접 커밋하지 않는다.
 - 기존 파일을 대량 삭제하거나 구조를 크게 바꾸기 전에는 사용자 승인을 받는다.
 - Secret/API Key/개인정보를 저장소에 커밋하지 않는다.
-- 병렬 Claude 작업 시 개발 전 예상 변경 파일을 확인하고, 같은 핵심 파일을 동시에 수정할 가능성이 높으면 먼저 사용자/ChatGPT에게 알린다.
+- 병렬 Claude 작업 시 같은 핵심 파일을 동시에 수정할 가능성이 높으면 먼저 사용자/ChatGPT에게 알린다.
+- 저위험 문서/설정/소규모 수정은 ChatGPT가 직접 처리할 수 있다.
 
 ## 7. 문서 위치
 - 현재 상태: `docs/PROJECT_STATE.md`
@@ -75,15 +78,14 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 작업 완료 시 최소한 다음을 확인한다.
 - 관련 Issue 상태 갱신
 - 결과물 경로 또는 PR 연결
-- 배포 대기 작업이면 ZIP/Drive 인수인계 정보 기록
+- 배포 대기 작업이면 ZIP/로컬 인수인계 정보 기록
 - 프로젝트 전체 상태에 영향을 주면 `docs/PROJECT_STATE.md` 갱신
 - 중요한 방향 변경이면 `docs/DECISIONS.md` 기록
 
 ## 9. 배포 인수인계 원칙
 - 개발 소스 기준본은 GitHub다.
 - 배포 ZIP은 전달/보관용이며 GitHub 상태를 대체하지 않는다.
-- 개발·테스트 완료 후 필요하면 배포 ZIP을 생성하고 `docs/DEPLOYMENT_HANDOFF.md` 규칙에 따라 Google Drive `그곳지금/Deploy/READY`에 보관한다.
-- Drive 업로드 권한이 없는 개발자는 ZIP 파일명/경로와 테스트 결과를 남기고 사용자의 업로드를 기다린다.
+- 개발·테스트 완료 후 필요하면 배포 ZIP을 생성하고 `docs/DEPLOYMENT_HANDOFF.md`를 따른다.
 - 사용자가 실제 운영 배포하기 전에는 `DEPLOYED`로 표시하지 않는다.
 
 ## 10. 그곳지금 콘텐츠 원칙
@@ -112,8 +114,8 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 
 ## 11. AI별 기본 역할
 역할은 고정하지 않되 기본적으로 다음을 우선한다.
-- ChatGPT: 기획, 조사, 콘텐츠, SEO/UX, 요구사항 정의, 프로젝트 정리, 사용자 의사결정 지원
-- Claude: 저장소 분석, 기술검토, 개발, 리팩터링, 테스트, 디버깅
+- ChatGPT: 기획, 조사, 콘텐츠, SEO/UX, 요구사항 정의, 프로젝트 정리, 사용자 의사결정 지원, 저위험 GitHub 수정
+- Claude: 저장소 분석, 개발, 리팩터링, 테스트, 디버깅
 - Manus: 웹 제작, UI 구현, 리서치, 반복형 웹 작업
 
 핵심은 역할 구분이 아니라 **모든 결과가 GitHub에 다시 남는 것**이다.
