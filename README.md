@@ -12,6 +12,8 @@
 4. [`docs/PROJECT_MANAGEMENT.md`](docs/PROJECT_MANAGEMENT.md) — Issues/Projects 운영 규칙
 5. 관련 GitHub Issues / PR / 문서
 
+신규 영화·드라마·예능·애니메이션·OTT 작품 콘텐츠를 만들 때는 추가로 [`skills/geogotjigeum-content/SKILL.md`](skills/geogotjigeum-content/SKILL.md)를 적용합니다.
+
 ## 문서 구조
 
 ```text
@@ -26,6 +28,8 @@ docs/
 ├─ product/                  # 서비스 기능·운영 기획
 ├─ qa/                       # 사이트 점검 및 QA 보고서
 └─ seo/                      # SEO·글로벌·광고·개발 요청 문서
+skills/
+└─ geogotjigeum-content/     # 신규 작품 콘텐츠 제작 공용 스킬·체크리스트·기획 템플릿
 inbox/                       # 아직 정리되지 않은 아이디어·녹취·메일·메모
 .github/                     # Issue/PR 템플릿
 ```
