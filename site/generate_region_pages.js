@@ -20,6 +20,15 @@
 // 실행: node generate_region_pages.js
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
+
+// 2026-08 Issue #10: 언어 전환/번역 준비상태 공통 헬퍼 — 다른 두 생성기(work/place)와 동일.
+const I18N = (() => {
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, 'contentmap_i18n.js'), 'utf8'), sandbox, { filename: 'contentmap_i18n.js' });
+  return vm.runInContext('({ i18nStatus: i18nStatus, i18nUrl: i18nUrl, i18nSwitcherHtml: i18nSwitcherHtml, i18nHreflangBlock: i18nHreflangBlock })', sandbox);
+})();
 
 const SITE_ORIGIN = 'https://geugotjigeum.com';
 const GA_ID = 'G-H2KNQYH97M';
@@ -59,10 +68,11 @@ function titleFor(w, locale){
   if (locale === 'zh') return w.title_zh || w.title_en || w.title;
   return w.title;
 }
+// 2026-08 Issue #10: 예전엔 이 함수 자체가 ja/zh 미번역 작품을 en 허브로 조용히 돌려보냈다.
+// 이제 이 함수는 판정 없이 순수 URL 조립만 하고, 호출부(renderDomesticPage 등)가 먼저
+// I18N.i18nStatus로 확인한 뒤에만 호출한다.
 function hubUrl(w, locale){
-  if (locale === 'ja' && !jaAvailable(w)) return `${SITE_ORIGIN}/en/works/${w.id}/`;
-  if (locale === 'zh' && !zhAvailable(w)) return `${SITE_ORIGIN}/en/works/${w.id}/`;
-  return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/works/${w.id}/`;
+  return I18N.i18nUrl('work', w.id, locale, { origin: SITE_ORIGIN });
 }
 function mapUrl(w, locale, locId){
   const base = `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/?work=${encodeURIComponent(w.id)}`;
@@ -298,7 +308,7 @@ function breadcrumbLd(locale, h1, canonicalUrl){
 function regionLangLinks(regionId, locale){
   const links = ['ko','en','ja','zh'].map(loc => {
     const url = `${SITE_ORIGIN}${LOCALES[loc].urlPrefix}/regions/${regionId}/`;
-    const label = { ko: 'KR', en: 'EN', ja: 'JP', zh: '中文' }[loc];
+    const label = { ko: 'KR', en: 'EN', ja: 'JP', zh: '繁中' }[loc];
     return `<a href="${url}"${loc === locale ? ' class="on"' : ''}>${label}</a>`;
   });
   return links.join('\n    ');
@@ -334,7 +344,8 @@ function buildCountryGroups(country){
 function renderCountryPage(country, locale){
   const L = LOCALES[locale];
   const label = regionLabel(country, locale);
-  const groups = buildCountryGroups(country);
+  // 2026-08 Issue #10: 작품 그룹 제목 링크(groupTitle)도 이 언어로 발행된 작품만 대상으로 한다.
+  const groups = buildCountryGroups(country).filter(g => I18N.i18nStatus('work', g.work, locale) === 'published');
   const totalLocs = groups.reduce((sum, g) => sum + g.locs.length, 0);
   const canonicalUrl = `${SITE_ORIGIN}${L.urlPrefix}/regions/${country.id}/`;
   const h1 = L.ui.countryHeading(label, totalLocs);
@@ -374,7 +385,10 @@ ${groupsHtml}`;
 function renderDomesticPage(region, locale, parent){
   const L = LOCALES[locale];
   const label = regionLabel(region, locale);
-  const works = WORKS.filter(w => (region.workIds || []).includes(w.id));
+  // 2026-08 Issue #10: 이 지역 페이지 언어로 발행되지 않은 작품은 목록에서 뺀다 — 예전에는
+  // 여기서도 hubUrl()의 en 폴백에 기대 링크를 만들었는데, 그러면 ja/zh 지역 페이지에서 미번역
+  // 작품 카드를 눌렀을 때 영어 페이지가 조용히 뜨는 동일한 문제가 있었다.
+  const works = WORKS.filter(w => (region.workIds || []).includes(w.id) && I18N.i18nStatus('work', w, locale) === 'published');
   const canonicalUrl = `${SITE_ORIGIN}${L.urlPrefix}/regions/${region.id}/`;
   const h1 = L.ui.domesticHeading(label, works.length);
   const description = L.ui.domesticIntro(label);
@@ -459,7 +473,7 @@ ${domesticHtml}
     hreflang: ['ko','en','ja'].map(loc => `<link rel="alternate" hreflang="${loc}" href="${SITE_ORIGIN}${LOCALES[loc].urlPrefix}/regions/">`).join('\n')
       + `\n<link rel="alternate" hreflang="zh-Hant" href="${SITE_ORIGIN}${LOCALES.zh.urlPrefix}/regions/">`
       + `\n<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/regions/">`,
-    langLinks: ['ko','en','ja','zh'].map(loc => `<a href="${SITE_ORIGIN}${LOCALES[loc].urlPrefix}/regions/"${loc === locale ? ' class="on"' : ''}>${{ko:'KR',en:'EN',ja:'JP',zh:'中文'}[loc]}</a>`).join('\n    '),
+    langLinks: ['ko','en','ja','zh'].map(loc => `<a href="${SITE_ORIGIN}${LOCALES[loc].urlPrefix}/regions/"${loc === locale ? ' class="on"' : ''}>${{ko:'KR',en:'EN',ja:'JP',zh:'繁中'}[loc]}</a>`).join('\n    '),
     jsonLd, body
   });
 }

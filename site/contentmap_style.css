@@ -318,6 +318,9 @@ html.gcjg-boot-work #app.landing #main{display:flex;}
 .landing-card-infolink{
   display:flex;flex-direction:column;flex:1;color:inherit;text-decoration:none;cursor:pointer;
 }
+/* 2026-08 Issue #10: 이 언어의 정적 소개 페이지가 없는 작품 카드 — 링크가 아니므로 클릭 커서 대신
+   살짝 흐리게 표시해 "이 부분은 눌러도 아무 일도 안 일어난다"는 걸 시각적으로 알려준다. */
+.landing-card-planned{cursor:default;opacity:.72;}
 .landing-card-img{height:140px;overflow:hidden;background:#0c1620;}
 .landing-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .landing-card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;}

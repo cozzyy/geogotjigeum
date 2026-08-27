@@ -92,7 +92,7 @@ function buildShell(lang){
   } else if (lang === 'ja'){
     html = html.replace('<button data-lang="ja">JP</button>', '<button data-lang="ja" class="active">JP</button>');
   } else if (lang === 'zh'){
-    html = html.replace('<button data-lang="zh" id="langZhBtn">中文</button>', '<button data-lang="zh" id="langZhBtn" class="active">中文</button>');
+    html = html.replace('<button data-lang="zh" id="langZhBtn">繁中</button>', '<button data-lang="zh" id="langZhBtn" class="active">繁中</button>');
   }
 
   return html;

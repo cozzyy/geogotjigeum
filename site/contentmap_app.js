@@ -232,6 +232,7 @@ const UI_STRINGS = {
     footerTerms:"이용약관",
     relationsModalSuffix:"등장인물 관계도",
     infoPageBtn:"📄 이 작품 소개 페이지 보기",
+    infoPageBtnPlanned:"📄 이 언어 소개 페이지는 준비 중",
     reportModalTitle:"📝 장소·인물 제안하기",
     reportBody:"여러분이 작품 속에서 아시는 장소나 인물이 이 사이트에 나오지 않거나, 카페·식당 등 작품과 관련된 장소를 알고 계시면 메일을 보내주세요. 장소나 인물 검색에 나오도록 하겠습니다.",
     reportEmailNote:"아래 이메일로 알려주세요",
@@ -398,6 +399,7 @@ const UI_STRINGS = {
     footerTerms:"Terms",
     relationsModalSuffix:"Character Map",
     infoPageBtn:"📄 View this story's info page",
+    infoPageBtnPlanned:"📄 Info page coming soon in this language",
     reportModalTitle:"📝 Suggest a place or character",
     reportBody:"If a place or character you recognize from a story isn't on this site yet — or if you know a related cafe, restaurant, or spot — please email us. We'll add it so others can find it too.",
     reportEmailNote:"Reach us at the email below",
@@ -568,6 +570,7 @@ const UI_STRINGS = {
     footerTerms:"利用規約",
     relationsModalSuffix:"登場人物相関図",
     infoPageBtn:"📄 この作品の紹介ページを見る",
+    infoPageBtnPlanned:"📄 この言語の紹介ページは準備中です",
     reportModalTitle:"📝 場所・人物を提案する",
     reportBody:"作品に出てくる場所や人物がこのサイトに載っていない場合や、カフェ・レストランなど作品ゆかりの場所をご存じの場合は、メールでお知らせください。検索に出るように追加します。",
     reportEmailNote:"下のメールアドレスまでどうぞ",
@@ -738,6 +741,7 @@ const UI_STRINGS = {
     footerTerms:"使用條款",
     relationsModalSuffix:"人物關係圖",
     infoPageBtn:"📄 查看這部作品的介紹頁面",
+    infoPageBtnPlanned:"📄 此語言介紹頁面準備中",
     reportModalTitle:"📝 提議地點・人物",
     reportBody:"如果您知道作品中出現、但本站尚未收錄的地點或人物，或是與作品相關的咖啡廳、餐廳等地點，歡迎來信告訴我們，我們會加入搜尋結果中。",
     reportEmailNote:"請透過以下電子郵件與我們聯絡",
@@ -783,14 +787,20 @@ function pField(obj, field){
   return obj[field] || '';
 }
 // 언어별 정적 허브 페이지(/works/, /en/works/, /ja/works/, /zh/works/) 경로.
-// ja/zh 허브 페이지는 번역이 완료된 작품(title_ja/title_zh 보유)에만 실제 파일이 존재하므로,
-// 미번역 작품은 영어 허브로 보낸다 — 존재하지 않는 링크를 만들지 않기 위함.
-// (generate_work_pages.js도 같은 조건으로 ja/zh 페이지를 생성하므로 항상 일치함)
+// 2026-08 Issue #10: 예전에는 ja/zh 번역이 없으면 영어 허브로 "조용히" 보냈다 —
+// 사용자가 JP/繁中을 선택했는데 클릭한 결과가 영어 페이지였던 게 실제 버그였다.
+// 이제는 contentmap_i18n.js(공통 registry/헬퍼)로 판정하고, 준비 안 된 언어는
+// null을 돌려준다 — 호출부가 이 경우 링크를 만들지 않고 '준비 중'으로 표시해야 한다.
+// (generate_work_pages.js의 hubUrl()도 같은 헬퍼를 쓰므로 항상 일치함)
 function workHubPath(w){
-  if (currentLang === 'ja') return (w && w.title_ja) ? '/ja/works/' + w.id + '/' : '/en/works/' + w.id + '/';
-  if (currentLang === 'zh') return (w && w.title_zh) ? '/zh/works/' + w.id + '/' : '/en/works/' + w.id + '/';
-  if (currentLang === 'en') return '/en/works/' + w.id + '/';
-  return '/works/' + w.id + '/';
+  if (!w) return null;
+  if (typeof i18nStatus === 'undefined' || typeof i18nUrl === 'undefined'){
+    // 헬퍼 스크립트가 어떤 이유로든 로드되지 않았을 때의 안전망 — 예전처럼 영어로
+    // 조용히 보내지 않고, 확실히 존재하는 한국어 페이지로만 폴백한다.
+    return '/works/' + w.id + '/';
+  }
+  if (i18nStatus('work', w, currentLang) !== 'published') return null;
+  return i18nUrl('work', w.id, currentLang);
 }
 
 /* ---------- 공통 유틸: 거리 계산, 파벌 색상, 방문기록, 토스트, 공유 ---------- */
@@ -1632,15 +1642,22 @@ function renderLandingCards(){
     // 2026-08: 카드 테두리·"둘러보기" 링크 색은 이제 작품별 pinColor가 아니라 CSS의 --card-accent
     // (밝은 오렌지) 고정값을 쓴다 — 랜딩 카드 순서가 세션마다 랜덤이라 색으로 작품을 구분하는 의미가
     // 없어졌고, 오히려 일부 pinColor가 어두운 배경과 대비가 약해 안 보이는 문제만 있었다.
+    const cardBodyHtml =
+      (img ? '<div class="landing-card-img"><img src="' + img + '" alt="' + workImgAlt(w) + '" loading="lazy"></div>' : '') +
+      '<div class="landing-card-body">' +
+        '<div class="landing-card-title">' + tField(w, 'title') + '</div>' +
+        '<div class="landing-card-sub">' + tField(w, 'author') + ' · ' + tField(w, 'era') + '</div>' +
+        '<div class="landing-card-summary">' + tField(w, 'summary') + '</div>' +
+      '</div>';
+    // 2026-08 Issue #10: 이 언어의 정적 소개 페이지가 없는 작품은 영어 페이지로 조용히
+    // 보내지 않는다 — 링크를 아예 걸지 않고(카드는 그대로 보이되 정보페이지 링크만 비활성),
+    // 지도로 들어가는 버튼(아래 mapbtn)은 어차피 workHubPath와 무관하게 항상 동작한다.
+    const hubPath = workHubPath(w);
+    const infolinkHtml = hubPath
+      ? '<a class="landing-card-infolink" href="' + hubPath + '">' + cardBodyHtml + '</a>'
+      : '<div class="landing-card-infolink landing-card-planned" aria-disabled="true">' + cardBodyHtml + '</div>';
     return '<div class="landing-card">' +
-      '<a class="landing-card-infolink" href="' + workHubPath(w) + '">' +
-        (img ? '<div class="landing-card-img"><img src="' + img + '" alt="' + workImgAlt(w) + '" loading="lazy"></div>' : '') +
-        '<div class="landing-card-body">' +
-          '<div class="landing-card-title">' + tField(w, 'title') + '</div>' +
-          '<div class="landing-card-sub">' + tField(w, 'author') + ' · ' + tField(w, 'era') + '</div>' +
-          '<div class="landing-card-summary">' + tField(w, 'summary') + '</div>' +
-        '</div>' +
-      '</a>' +
+      infolinkHtml +
       '<button type="button" class="landing-card-mapbtn" onclick="enterWork(\'' + w.id + '\')">' + t('landingCardCta') + '</button>' +
     '</div>';
   }).join('');
@@ -3388,8 +3405,12 @@ function resetSidebar(work, data){
   // 2026-08: /works/{id}/ 정적 SEO 페이지 → 지도 앱(?work=)으로 오는 링크는 있었지만 반대 방향
   // 링크가 없었다. 지도 앱에서도 이 작품의 정적 소개 페이지로 갈 수 있게 새 탭 링크를 추가 —
   // 페이지뷰(광고 노출) 확대와 검색엔진 재방문 동선 확보 목적.
-  const infoPageBtnHtml =
-    '<a class="course-btn" style="display:block;text-decoration:none;border-style:solid;border-color:var(--accent2);color:var(--accent2);" href="' + workHubPath(work) + '" target="_blank" rel="noopener">' + t('infoPageBtn') + '</a>';
+  // 2026-08 Issue #10: 이 언어의 정적 소개 페이지가 없으면(workHubPath가 null) 영어로 조용히
+  // 보내지 않고, 눌러도 아무 데도 안 가는 비활성 상태 + '준비 중' 문구로 명확히 보여준다.
+  const infoPageHubPath = workHubPath(work);
+  const infoPageBtnHtml = infoPageHubPath
+    ? '<a class="course-btn" style="display:block;text-decoration:none;border-style:solid;border-color:var(--accent2);color:var(--accent2);" href="' + infoPageHubPath + '" target="_blank" rel="noopener">' + t('infoPageBtn') + '</a>'
+    : '<span class="course-btn" style="display:block;opacity:.5;cursor:default;border-style:dashed;border-color:var(--accent2);color:var(--accent2);" aria-disabled="true">' + t('infoPageBtnPlanned') + '</span>';
   // 작품 내용 상세(개조식 줄거리) — 결말/반전은 포함하지 않으며, 클릭 시 스포일러 경고가 항상 먼저 보임
   const summaryBtnHtml = work.contentSummary ?
     '<button class="course-btn" style="border-style:solid;border-color:#5a3a1f;color:#e0a862;" onclick="openSummaryModal(\'' + work.id + '\')">' + t('summaryBtn') + '</button>' : '';
