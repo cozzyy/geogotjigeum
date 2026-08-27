@@ -1,46 +1,50 @@
 # 배포 ZIP 인수인계 규칙
 
 ## 목적
-개발이 로컬 PC 밖에서 끝나더라도 사용자가 외부/퇴근 후 다른 기기에서 배포할 수 있도록, 배포 가능한 ZIP을 Google Drive의 공용 위치에 보관한다.
+개발이 로컬 PC 밖에서 끝나더라도 사용자가 외부/퇴근 후 다른 기기에서 배포할 수 있도록, 배포 가능한 ZIP을 클라우드에서 바로 접근 가능한 위치에 둔다.
 
-GitHub는 코드·문서·Issue·PR의 Single Source of Truth이고, Google Drive는 **배포용 완성 ZIP 전달/보관 용도**로만 사용한다.
+GitHub는 코드·문서·Issue·PR의 Single Source of Truth이고, 배포 ZIP은 **배포용 완성물 전달/보관 용도**로만 사용한다.
 
-## Google Drive 배포 폴더
-- 루트: `그곳지금/Deploy`
-- READY: https://drive.google.com/drive/folders/10XRQsnxTJI9DRsm5LO1G4YTWK2w684AT
-- ARCHIVE: https://drive.google.com/drive/folders/14rU_DS4amrRsrAxRfwzAgTnAL3MxK4gp
+## 핵심 원칙 (2026-08-27 갱신)
+- Claude는 클라우드(Google Drive, OneDrive 등)에 ZIP을 **직접 업로드하지 않는다.**
+  실제로 시도해본 결과, Claude가 가진 업로드 도구는 파일을 텍스트로 인코딩해 한 번에 전송하는 방식이라
+  사이트 배포 ZIP 같은 대용량 파일(수십 MB 이상)은 안정적으로 올릴 수 없다는 게 확인됐다.
+- 대신 Claude는 ZIP을 **사용자 PC에 이미 떠 있는 로컬 동기화 폴더**(Google Drive Desktop, OneDrive 등)의
+  지정된 경로에 로컬 파일로 생성한다. 그 폴더를 감시하는 동기화 프로그램이 알아서 클라우드에 올린다 —
+  Claude는 로컬에 파일 하나 쓰는 것 이상을 할 필요가 없다.
+- 로컬 동기화 폴더가 Cowork에 연결돼 있지 않거나 아직 설정되지 않은 환경에서는,
+  기존 fallback 위치인 `C:\새 폴더`에 ZIP을 생성한다. 이 경우 클라우드 반영은 사용자가
+  파일을 동기화 폴더로 옮기는 수동 단계(로컬→로컬 이동이라 가볍다)가 한 번 필요하다.
+- **실제 동기화 폴더 경로는 아직 확정하지 않는다.** 프로젝트마다/기기마다 다를 수 있으므로,
+  작업 시작 시 사용자에게 연결된 폴더 목록을 확인하고 그중 동기화 폴더가 있으면 그걸 쓰고,
+  없으면 fallback을 쓴다. 이 문서에 특정 드라이브 문자나 절대경로를 하드코딩하지 않는다.
+- (참고: Netlify에 Claude가 직접 배포하는 방법도 검토했으나, 운영 사이트에 대한 쓰기 액션이라
+  자동 안전장치에 의해 차단되어 현재는 사용할 수 없다.)
 
-### READY
-현재 배포 가능한 최신 ZIP을 둔다.
-
-권장 파일명:
-`geugotjigeum_YYYY-MM-DD_issue-N.zip`
-
-예:
-`geugotjigeum_2026-08-27_issue-10.zip`
-
-가능하면 최신 배포본을 쉽게 찾도록 `CURRENT.zip` 이름의 복사본/최신본도 유지한다.
-
-### ARCHIVE
-이전 배포본을 보관한다. 새 ZIP이 READY에 올라가고 정상 배포가 끝나면 이전 배포본을 ARCHIVE로 이동한다.
+## ZIP 저장 위치 결정 순서
+1. Cowork에 연결된 폴더 중 로컬 동기화 폴더(Google Drive Desktop, OneDrive 등)가 있는지 확인한다.
+2. 있으면 그 폴더 아래 배포용 하위 경로(예: `그곳지금/Deploy/READY`)에 ZIP을 생성한다.
+   단, 그 폴더가 가상/스트리밍 드라이브라 Claude의 셸 환경에서 직접 쓰기가 안 될 수 있다 —
+   이 경우 일반 로컬 폴더(`C:\새 폴더`)에 생성 후, 사용자에게 동기화 폴더로 옮겨달라고 안내한다.
+3. 동기화 폴더 연결 자체가 없으면 `C:\새 폴더`에 생성한다.
+4. 어느 경우든 실제로 사용한 저장 위치와 파일명을 Issue/PR 보고에 명시한다.
 
 ## Claude 개발 완료 시 필수 인수인계
 개발·테스트가 끝나면 다음 순서로 처리한다.
 
 1. 최신 `main` 또는 승인된 branch 상태를 확인한다.
 2. 배포 가능한 사이트 디렉터리/ZIP을 생성한다.
-3. ZIP 이름에 날짜와 Issue 번호를 포함한다.
-4. Google Drive 접근/업로드 권한이 있으면 `Deploy/READY`에 ZIP을 업로드한다.
-5. Google Drive 업로드가 불가능하면 ZIP을 생성한 로컬 경로와 정확한 파일명을 보고하고, 사용자가 업로드할 수 있도록 멈춘다.
-6. 관련 GitHub Issue 또는 PR에 아래를 기록한다.
+3. ZIP 이름에 날짜와 Issue 번호를 포함한다. 권장 파일명: `geugotjigeum_YYYY-MM-DD_issue-N.zip`
+4. 위 "ZIP 저장 위치 결정 순서"에 따라 ZIP을 저장한다.
+5. 관련 GitHub Issue 또는 PR에 아래를 기록한다.
    - 상태: `READY TO DEPLOY`
    - Issue 번호
    - commit SHA / PR
    - 배포 ZIP 파일명
-   - Drive 링크 또는 로컬 파일 경로
+   - 실제 저장 위치(동기화 폴더 경로 또는 `C:\새 폴더`) 및 클라우드 반영 여부
    - 테스트 결과
    - 알려진 위험/주의사항
-7. 사용자가 실제 배포를 완료하기 전에는 `DEPLOYED`로 표시하지 않는다.
+6. 사용자가 실제 배포를 완료하기 전에는 `DEPLOYED`로 표시하지 않는다.
 
 ## Issue/PR 보고 예시
 
@@ -49,7 +53,7 @@ READY TO DEPLOY
 - Issue: #10
 - Commit/PR: <sha or PR link>
 - Deploy ZIP: geugotjigeum_2026-08-27_issue-10.zip
-- Drive READY: <link>
+- 저장 위치: C:\새 폴더 (동기화 폴더 미연결 — 사용자가 Drive로 직접 이동 필요)
 - Test: PASS
 - Known risks: 없음
 - Production deploy: NOT YET
@@ -61,10 +65,12 @@ READY TO DEPLOY
 - 운영 배포 전에 PR/승인 절차를 우선한다.
 - 다른 Claude의 진행 중 branch를 덮어쓰지 않는다.
 - ZIP 생성 과정에서 API key, secret, 개인 로컬 설정 파일이 포함되지 않았는지 확인한다.
+- Claude는 클라우드 저장소에 직접 업로드를 시도하지 않는다 (위 핵심 원칙 참고).
 
 ## 향후 자동화
 수동 흐름이 안정되면 다음 순서로 자동화한다.
 
-`PR merge → 배포 ZIP 자동 생성 → Drive/Artifact 저장 → 사용자 승인/배포`
+`PR merge → 배포 ZIP 자동 생성 → 로컬 동기화 폴더 저장 → 자동 클라우드 반영 → 사용자 승인/배포`
 
 최종적으로는 `main merge → 자동 deploy`로 전환하여 ZIP 수동 배포 자체를 없애는 것을 목표로 한다.
+Netlify 직접배포 경로가 향후 권한상 열리면 이 목표에 가장 빠르게 도달하는 방법이 될 수 있다.
