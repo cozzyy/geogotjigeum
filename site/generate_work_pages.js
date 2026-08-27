@@ -196,6 +196,8 @@ const LOCALES = {
     siteName: '그곳, 지금',
     ui: {
       backLink: '🏠 홈', adLabel: '광고',
+      sceneFallbackKicker: '대표 촬영지', featuredKicker: '이 장면 속으로', nextHeading: '이야기를 계속 만나보세요', nextSub: '지도에서 실제 장소를 하나씩 확인해보세요.',
+      storyKicker: '이야기', placesKicker: '이 장면의 실제 장소',
       top5: n => `대표 촬영지 TOP${n}`,
       allList: (t, n) => `${t}의 전체 장소 목록 (${n}곳)`,
       // 2026-08 버그 수정: <summary> 펼치기 줄이 로케일 안 가리고 한국어로 하드코딩되어 있어서
@@ -218,6 +220,8 @@ const LOCALES = {
     siteName: 'That Place, Now',
     ui: {
       backLink: '🏠 Home', adLabel: 'Ad',
+      sceneFallbackKicker: 'Featured Location', featuredKicker: 'Inside This Scene', nextHeading: 'Keep the story going', nextSub: 'Explore the real locations on the map.',
+      storyKicker: 'The Story', placesKicker: 'Where the Scene Really Happened',
       top5: n => `Top ${n} locations`,
       allList: (t, n) => `All ${t} locations (${n})`,
       related: 'Explore more stories', relatedSuffix: ' — view the map →',
@@ -234,6 +238,8 @@ const LOCALES = {
     siteName: 'あの場所、いま',
     ui: {
       backLink: '🏠 ホーム', adLabel: '広告',
+      sceneFallbackKicker: '代表ロケ地', featuredKicker: 'この場面の中へ', nextHeading: '物語をもっと楽しむ', nextSub: '地図で実際の場所をひとつずつ確認してみましょう。',
+      storyKicker: '物語', placesKicker: 'この場面の実際の場所',
       top5: n => `代表ロケ地TOP${n}`,
       allList: (t, n) => `${t}のすべての場所（${n}か所）`,
       related: 'ほかの作品も見る', relatedSuffix: ' のマップを見る →',
@@ -256,6 +262,8 @@ const LOCALES = {
     siteName: '那個地方，現在',
     ui: {
       backLink: '🏠 首頁', adLabel: '廣告',
+      sceneFallbackKicker: '代表拍攝地', featuredKicker: '走進這個畫面', nextHeading: '繼續探索這個故事', nextSub: '在地圖上逐一探索真實地點。',
+      storyKicker: '故事', placesKicker: '這個畫面的真實地點',
       top5: n => `代表拍攝地 TOP${n}`,
       allList: (t, n) => `${t}的所有地點（${n}處）`,
       moreSummary: n => `TOP5・演員陣容・${n}處地點完整清單`,
@@ -499,107 +507,115 @@ function relatedWorks(currentId){
 }
 
 const SHARED_CSS = `
-  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  :root{
+    --ink:#1B1E24; --sub:#575E6B; --line:#E1DCD2; --accent:#FF7B57; --accent2:#3a7ce0;
+    --lz-bg:#F8F5EE; --lz-bg2:#FDFBF7; --lz-card:#FFFFFF;
+    --ds-bg:#0A0B0F; --ds-bg-elevated:#141820; --ds-hero-left:#232A38; --ds-hero-right:#10141C;
+    --ds-accent:#FF7B57; --ds-accent-soft:#FF9B7D; --ds-text:#FFFFFF; --ds-text-2:#CDD2DC;
+    --ds-text-3:#9EA5B2; --ds-line:#242A34;
+  }
   *{box-sizing:border-box;}
   /* 2026-08 모바일 버그 수정: 상단 언어토글(한국어/EN/日本語) 필이 iOS Safari에서 실제 지정한
      12.5px보다 훨씬 크게 렌더링된다는 사용자 지적 — iOS Safari가 좁은 컬럼 안의 짧은 텍스트를
      "읽기 쉽게" 자동으로 확대하는 text-size-adjust 동작 때문으로 추정. 명시적으로 100%로 고정해
      브라우저가 임의로 글자 크기를 키우지 못하게 막는다. */
   html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
-  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
-  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  /* 2026-08 Issue #20: Hybrid Light Editorial — 페이지 기본 배경은 따뜻한 오프화이트(밝은 독서
+     영역)이고, 헤더/히어로/다음 행동 밴드만 홈페이지 A안과 같은 다크 시네마틱 톤을 쓴다.
+     (docs/design/WORK_DETAIL_HOOKING_V1.md 3절) */
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:var(--lz-bg);}
+  a{color:var(--accent2);}
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--ds-line);background:var(--ds-bg);position:sticky;top:0;z-index:5;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ds-text);text-decoration:none;}
   .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
   .wsHeader a.brand:hover{opacity:.85;}
-  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
-  .wsHeader a.backLink:hover{text-decoration:underline;}
-  /* 2026-08 3단계: 헤더(SPA 앱)의 .lang-toggle 알약형 그룹 버튼과 시각적으로 통일 —
-     기존에는 낱개 아웃라인 필(pill) 3~4개가 흩어져 있어 그림1(헤더)과 그림2(후킹페이지)가
-     서로 다른 컴포넌트처럼 보인다는 지적. 회색 트랙 안에 버튼이 촘촘히 붙어있고, 선택된
-     언어만 색이 채워지는 동일한 구조로 맞췄다. */
-  .wsLangs{display:flex;background:#f2f3f5;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;}
-  .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
-  .wsLangs a.on{color:#fff;background:var(--accent2);}
-  .wsLangs a:not(.on):hover{color:var(--accent2);}
-  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
-  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
-  /* 2026-08 10라운드(기획자 검토 반영): 히어로 이미지가 760px 컬럼 안에 갇혀 양옆이
-     테두리로 낭비된다는 지적 — 이미지만 화면 폭 전체로 꽉 채우고(풀블리드), 본문 텍스트는
-     기존처럼 읽기 좋은 폭을 유지한다. 그래서 히어로는 <main> 바깥, <header> 바로 아래로 옮겼다. */
-  .heroWrap{width:100%;max-height:440px;overflow:hidden;background:#eee;}
-  .heroImgFull{display:block;width:100%;height:440px;object-fit:cover;}
-  .heroCreditWrap{max-width:760px;margin:0 auto;padding:8px 20px 0;}
-  .heroCredit{font-size:11.5px;color:var(--sub);margin:0 0 22px;text-align:right;}
-  .heroCredit a{color:var(--sub);text-decoration:underline;}
-  .heroCredit a:hover{color:var(--accent2);}
-  h1{font-size:26px;line-height:1.4;margin:0 0 10px;}
-  .metaLine{color:var(--sub);font-size:14px;margin:0 0 18px;}
-  .intro{font-size:16px;margin:0 0 22px;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--ds-text-2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink:hover{color:var(--ds-accent-soft);}
+  /* 2026-08 3단계: 헤더(SPA 앱)의 .lang-toggle 알약형 그룹 버튼과 시각적으로 통일. Issue #20에서
+     헤더가 다크로 바뀌면서 트랙/글자색도 다크 배경에 맞춰 재조정. */
+  .wsLangs{display:flex;background:rgba(255,255,255,.08);border:1px solid var(--ds-line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;}
+  .wsLangs a{color:var(--ds-text-2);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
+  .wsLangs a.on{color:#fff;background:var(--ds-accent);}
+  .wsLangs a:not(.on):hover{color:#fff;}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--ds-text-3);opacity:.65;cursor:default;}
+
+  /* ===== Dark Cinematic Zone: Hero + Featured Scene ===== */
+  .wsHero{position:relative;background:linear-gradient(115deg,var(--ds-hero-left),var(--ds-hero-right));overflow:hidden;}
+  .wsHeroBg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.55;}
+  .wsHeroOverlay{position:absolute;inset:0;background:
+    linear-gradient(100deg,rgba(10,11,15,.93) 0%,rgba(10,11,15,.74) 40%,rgba(10,11,15,.5) 68%,rgba(10,11,15,.68) 100%),
+    linear-gradient(180deg,rgba(10,11,15,.15) 0%,rgba(10,11,15,.05) 35%,rgba(10,11,15,.7) 100%);}
+  .wsHeroInner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:52px 40px 44px;display:grid;grid-template-columns:1.25fr .95fr;gap:36px;align-items:end;}
+  .wsHeroKicker{display:inline-block;font-size:12.5px;font-weight:700;color:var(--ds-accent-soft);background:rgba(255,123,87,.14);border:1px solid rgba(255,123,87,.35);border-radius:999px;padding:5px 12px;margin:0 0 14px;}
+  .wsHero h1{font-size:32px;line-height:1.35;margin:0 0 10px;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.4);}
+  .wsHeroMeta{color:var(--ds-text-2);font-size:14.5px;margin:0 0 22px;}
+  .wsHero .actionBar{margin:0;}
+  .wsHero .ctaBtn{box-shadow:0 10px 24px rgba(255,123,87,.28);}
+  .wsHero .ctaBtnAlt{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);box-shadow:none;}
+  .wsHero .ctaBtnAlt:hover{background:rgba(255,255,255,.18);}
+  .wsFeatured{background:rgba(20,24,32,.72);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 22px 24px;backdrop-filter:blur(6px);}
+  .wsFeaturedKicker{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ds-accent-soft);margin-bottom:10px;}
+  .wsFeaturedText{font-size:18px;line-height:1.55;color:#fff;margin:0;font-weight:600;}
+  .heroCredit{position:relative;z-index:2;margin:0;padding:0 40px 14px;text-align:right;font-size:11.5px;color:var(--ds-text-3);}
+  .heroCredit a{color:var(--ds-text-3);text-decoration:underline;}
+  .heroCredit a:hover{color:var(--ds-text-2);}
+
+  /* ===== Bright Reading Zone ===== */
+  main{max-width:760px;margin:0 auto;padding:36px 20px 8px;}
+  .sectionKicker{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;}
   /* 2026-08 10라운드: 지도보기·전체목록 버튼 2개를 훅 본문(길면 12~18문단)보다 위, h1 바로
-     아래로 옮겨서 글이 길어져도 항상 스크롤 없이 보이게 했다. 두 버튼 모두 같은 크기의
-     컬러풀한 그라디언트 버튼으로 통일. */
+     아래로 옮겨서 글이 길어져도 항상 스크롤 없이 보이게 했다. Issue #20에서는 히어로 안으로
+     이동했지만 같은 마크업/클래스를 그대로 재사용한다. */
   .actionBar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;}
   .actionBar .ctaBtn{flex:1 1 220px;margin-bottom:0;}
-  .ctaBtn{display:inline-block;text-align:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;margin-bottom:28px;box-shadow:0 3px 10px rgba(58,124,224,.22);}
-  .ctaBtn.ctaBtnAlt{background:linear-gradient(135deg,var(--accent2),#8a4ac0);box-shadow:0 3px 10px rgba(138,74,192,.22);}
+  .ctaBtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;margin-bottom:28px;box-shadow:0 3px 10px rgba(255,123,87,.24);}
+  .ctaBtn.ctaBtnAlt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none;}
   .ctaBtn:hover{opacity:0.92;}
   .hookBadge{display:inline-block;font-size:12.5px;font-weight:700;color:var(--accent2);background:rgba(58,124,224,.1);border:1px solid rgba(58,124,224,.25);border-radius:999px;padding:5px 12px;margin:0 0 12px;}
   .hookTagline{font-size:23px;font-weight:800;line-height:1.4;margin:0 0 16px;color:var(--ink);}
+  .intro{font-size:16px;margin:0 0 20px;color:var(--ink);}
+  .metaLine{color:var(--sub);font-size:14px;margin:0 0 18px;}
   /* 2026-08 수정: 후킹페이지 글이 재미있는데 짧고 밋밋해 보인다는 피드백 — 스포일러를 과감히
      담아 더 길게 쓰는 김에, 글자 크기를 1.5배(15.5px→23px)로 키우고 가운데 정렬로 바꿔서
-     블로그 에세이처럼 한 줄 한 줄 읽히도록 했다. */
-  .hookBox{background:#fff9f2;border:1px solid #f0ddc4;border-radius:14px;padding:26px 22px;margin:0 0 18px;text-align:center;}
-  .hookBox p{margin:0 0 18px;font-size:23px;line-height:1.65;}
+     블로그 에세이처럼 한 줄 한 줄 읽히도록 했다. Issue #20: 배경을 카드형 화이트로 올려 밝은
+     독서 영역 안에서도 하나의 정지된 장면 카드처럼 보이게 했다. */
+  .hookBox{background:var(--lz-card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;margin:0 0 20px;text-align:center;box-shadow:0 1px 3px rgba(27,30,36,.04);}
+  .hookBox p{margin:0 0 18px;font-size:22px;line-height:1.65;}
   .hookBox p:last-child{margin-bottom:0;}
-  .hookBox img{max-width:100%;border-radius:10px;margin:6px 0 18px;}
+  .hookBox img{max-width:100%;border-radius:12px;margin:6px 0 18px;}
   .hookBox .hookPhotoCaption{font-size:14px;color:var(--sub);margin:-12px 0 18px;text-align:center;}
-  .hookReveals{margin:0 0 18px;}
+  .hookReveals{margin:0 0 24px;}
   .hookReveals .revealsRow{display:flex;flex-wrap:wrap;gap:8px;}
   .hookReveals a.revealChip,.hookReveals span.revealChip{display:inline-block;font-size:13px;font-weight:600;border-radius:999px;padding:7px 13px;text-decoration:none;}
   .hookReveals a.revealChip{color:var(--accent2);background:rgba(58,124,224,.08);border:1px solid rgba(58,124,224,.3);}
   .hookReveals a.revealChip:hover{background:rgba(58,124,224,.16);}
-  .hookReveals span.revealChip{color:var(--sub);background:#f2f3f5;border:1px solid var(--line);}
-  .moreDetails{margin-top:6px;}
-  .moreDetails > summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:4px;}
-  .moreDetails > summary::-webkit-details-marker{display:none;}
-  .moreDetails > summary::after{content:"펼치기 ▾";font-size:12.5px;font-weight:600;color:var(--accent2);}
-  .moreDetails[open] > summary::after{content:"접기 ▴";}
-  /* 2026-08 버그 수정: 위 펼치기/접기 텍스트가 html[lang] 상관없이 한국어로 고정 출력되던 문제.
-     en/ja 페이지는 html lang 속성으로 오버라이드한다(사용자 지적: "일본어로 번역이 됐는데도
-     버튼 내부 글자는 한글로 남아있다"). */
-  html[lang="en"] .moreDetails > summary::after{content:"Show more ▾";}
-  html[lang="en"] .moreDetails[open] > summary::after{content:"Show less ▴";}
-  html[lang="ja"] .moreDetails > summary::after{content:"開く ▾";}
-  html[lang="ja"] .moreDetails[open] > summary::after{content:"閉じる ▴";}
-  html[lang="zh-Hant"] .moreDetails > summary::after{content:"展開 ▾";}
-  html[lang="zh-Hant"] .moreDetails[open] > summary::after{content:"收合 ▴";}
-  .moreDetails > summary:hover{background:#eef0f3;}
-  .moreDetails .moreDetailsBody{padding-top:18px;}
-  h2{font-size:19px;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
-  .locCard{padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;transition:border-color .15s ease,background .15s ease;}
-  .locCard:hover{border-color:#d5d9e0;background:#fafbfc;}
+  .hookReveals span.revealChip{color:var(--sub);background:#eee9dd;border:1px solid var(--line);}
+  h2{font-size:20px;margin:40px 0 16px;padding-top:12px;border-top:1px solid var(--line);color:var(--ink);}
+  .sectionSub{font-size:14px;color:var(--sub);margin:-8px 0 18px;}
+  .locCard{background:var(--lz-card);padding:16px 18px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;transition:border-color .15s ease,box-shadow .15s ease;}
+  .locCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
-  .relatedList a{color:var(--accent2);text-decoration:none;font-size:15px;font-weight:600;}
+  .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
   .relatedList a:hover{text-decoration:underline;}
   /* 2026-08 문화 콘텐츠 크로스링크 박스 — "작품 속 진짜 한국" */
-  .cultureBox{margin:28px 0;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:#f0f7ff;}
+  .cultureBox{margin:28px 0;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--lz-bg2);}
   .cultureBox h3{margin:0 0 4px;font-size:15px;}
   .cultureBox .cbSub{margin:0 0 12px;font-size:13px;color:var(--sub);}
   .cultureBox ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
-  .cultureBox a{display:block;color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:600;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .cultureBox a{display:block;color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:600;padding:10px 12px;background:var(--lz-card);border:1px solid var(--line);border-radius:10px;}
   .cultureBox a:hover{border-color:var(--accent2);color:var(--accent2);}
-  .adSlot{margin:30px 0;padding:14px;border:1px dashed var(--line);border-radius:12px;background:#fbfbfc;text-align:center;}
+  .adSlot{margin:30px 0;padding:14px;border:1px dashed var(--line);border-radius:12px;background:var(--lz-card);text-align:center;}
   .adSlot .adLabel{display:block;font-size:11px;color:var(--sub);letter-spacing:.04em;margin-bottom:8px;}
   .adSlot .adBox{min-height:100px;display:flex;align-items:center;justify-content:center;color:#c3c8d1;font-size:12px;border-radius:6px;}
-  footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
+  footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
-  .top5Card{border:1px solid var(--line);border-radius:12px;padding:14px 14px 16px;position:relative;}
+  .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
   .top5Card h3{font-size:14.5px;margin:6px 0 4px;}
   .top5Card p{font-size:12.5px;color:#555;margin:0;}
@@ -611,31 +627,38 @@ const SHARED_CSS = `
   .castInfo .castRole{font-size:12.5px;color:var(--sub);}
   .castActorLink{flex-shrink:0;font-size:12px;font-weight:600;color:var(--accent2);text-decoration:none;white-space:nowrap;}
   .castActorLink:hover{text-decoration:underline;}
+
+  /* ===== Dark Next-Actions band (bottom) ===== */
+  .wsNext{background:var(--ds-bg);color:#fff;margin-top:44px;padding:44px 20px 40px;text-align:center;}
+  .wsNext h2{border-top:none;margin:0 0 8px;color:#fff;font-size:22px;padding-top:0;}
+  .wsNext .wsNextSub{color:var(--ds-text-2);font-size:14px;margin:0 0 22px;}
+  .wsNext .ctaBtn{margin-bottom:0;display:inline-flex;}
+  .wsNextRelated{list-style:none;margin:26px auto 0;padding:0;max-width:520px;display:flex;flex-direction:column;gap:10px;}
+  .wsNextRelated li{margin:0;}
+  .wsNextRelated a{display:block;color:var(--ds-text-2);text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 16px;border:1px solid var(--ds-line);border-radius:12px;min-height:44px;box-sizing:border-box;}
+  .wsNextRelated a:hover{border-color:var(--ds-accent-soft);color:#fff;}
+
   @media (max-width:480px){
     .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
     .wsHeader a.brand{font-size:14.5px;gap:7px;}
     .wsHeader a.brand .brand-logo{width:24px;height:24px;}
     .wsHeader a.backLink{font-size:12.5px;}
-    /* 2026-08: 모바일에서 언어토글 필이 지나치게 커 보인다는 지적 — 폰트/패딩/간격을 한 번 더
-       줄여서 작은 화면에서도 눈에 거슬리지 않는 보조 UI 크기로 확실히 고정한다. */
     .wsLangs{gap:1px;font-size:11px;padding:2px;}
     .wsLangs a{padding:5px 9px;}
-    main{padding:22px 16px 48px;}
-    .heroWrap{max-height:200px;}
-    .heroImgFull{height:200px;}
-    h1{font-size:21px;}
+    .wsHeroInner{grid-template-columns:1fr;padding:34px 16px 26px;gap:20px;}
+    .wsHero h1{font-size:23px;}
+    .wsHeroMeta{font-size:13px;margin-bottom:16px;}
+    .wsFeatured{padding:18px 18px 20px;}
+    .wsFeaturedText{font-size:16px;}
+    .heroCredit{padding:0 16px 12px;}
+    main{padding:26px 16px 4px;}
     .intro{font-size:14.5px;}
     .hookTagline{font-size:19px;}
-    .hookBox{padding:18px 16px;}
-    .hookBox p{font-size:20px;line-height:1.6;}
-    /* 2026-08 재수정: 이전 수정이 헤더 언어토글(.wsLangs)만 건드리고 실제 사용자가 지적한
-       두꺼운 버튼(본문 상단 actionBar의 .ctaBtn 2개, "지도에서 보기"/"TOP5·출연진·전체 N곳 보기")은
-       그대로 뒀던 게 원인이었다. 안드로이드(삼성)에서도 동일하게 두껍게 보였던 이유는 iOS
-       한정 버그가 아니라 이 버튼 자체의 padding(14px 16px)+기본 16px 폰트가 좁은 화면에서
-       실제로 큰 값이었기 때문 — 폰트/패딩/모서리 반경을 모바일 전용으로 한 번 더 축소한다. */
-    .actionBar{flex-direction:column;gap:8px;}
-    .ctaBtn{display:block;text-align:center;font-size:13.5px;padding:10px 14px;border-radius:8px;margin-bottom:0;}
-    h2{font-size:17px;margin:28px 0 12px;}
+    .hookBox{padding:18px 16px;border-radius:14px;}
+    .hookBox p{font-size:19px;line-height:1.6;}
+    .actionBar{flex-direction:column;gap:10px;}
+    .ctaBtn{display:flex;width:100%;text-align:center;font-size:14px;padding:12px 16px;border-radius:10px;margin-bottom:0;}
+    h2{font-size:18px;margin:32px 0 14px;}
     .locCard{padding:13px 14px;}
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
@@ -643,6 +666,8 @@ const SHARED_CSS = `
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
+    .wsNext{padding:36px 16px 32px;margin-top:32px;}
+    .wsNext h2{font-size:19px;}
   }
 `;
 
@@ -827,6 +852,15 @@ ${castList.map(p => {
     ${I18N.i18nSwitcherHtml('work', w, w.id, locale, { origin: SITE_ORIGIN })}
   </nav>`;
 
+  // 2026-08 Issue #20 Hybrid Light Editorial: 히어로 우측 Featured Scene 패널 — 훅 데이터가
+  // 있으면 기존 hookBadge/hookTagline(장면 한 줄 요약, 이미 검증된 데이터)을 그대로 재사용하고,
+  // 아직 발견형 훅을 안 쓴 작품은 대표 촬영지 1곳(top5 1위)을 "장면 → 장소" 카드로 보여준다.
+  // 새 데이터를 지어내지 않고 이미 계산된 값만 재사용한다.
+  const featuredKicker = hasHook ? L.ui.featuredKicker : L.ui.sceneFallbackKicker;
+  const featuredText = hasHook && localeTagline
+    ? localeTagline
+    : (top5[0] ? `${locName(top5[0], locale)} — ${tiers[top5[0].tier] || tiers.direct}` : (introExtra || seo.description));
+
   return `<!DOCTYPE html>
 <html lang="${L.htmlLang}">
 <head>
@@ -901,36 +935,43 @@ ${jsonLd}
   ${langLinks}
   <a class="backLink" href="${SITE_ORIGIN}${L.urlPrefix}/">${esc(L.ui.backLink)}</a>
 </header>
-${/* 2026-08 버그 수정: heroImage는 { url, credit, creditUrl } 객체인데, 이 파일(정적 SEO 페이지
-   생성기)만 w.heroImage를 문자열인 것처럼 다뤄서 String(object) → "[object Object]"가 <img src>·
-   og:image·twitter:image에 그대로 박혀 있었다. 그래서 39개 작품 SEO 페이지 전부에서 히어로 이미지가
-   깨져 있었고(파친코만이 아니라 전체), heroImageCredit/heroImageCreditUrl이라는 존재하지도 않는
-   최상위 필드를 찾다 보니 출처 표기도 항상 비어 있었다. app.js(지도 화면)는 처음부터
-   w.heroImage.url을 올바르게 썼기 때문에 지도 화면 카드에서는 이 문제가 안 보였다. */''}
-${w.heroImage ? `<div class="heroWrap"><img class="heroImgFull" src="${esc(w.heroImage.url)}" alt="${heroAlt}" loading="lazy"></div>
-${w.heroImage.credit ? `<div class="heroCreditWrap"><p class="heroCredit">${w.heroImage.creditUrl ? `<a href="${esc(w.heroImage.creditUrl)}" target="_blank" rel="noopener">${esc(w.heroImage.credit)}</a>` : esc(w.heroImage.credit)}</p></div>` : ''}` : ''}
-<main>
-  ${hookBadgeHtml}
-  <h1>${esc(h1)}</h1>
-  ${hasHook ? hookTaglineHtml : `<p class="metaLine">${esc(genreLine)}</p>`}
-  <div class="actionBar">
-    <a class="ctaBtn" href="${mapUrl}">${esc(L.ui.cta(displayTitle))}</a>
-    <a class="ctaBtn ctaBtnAlt" href="#allLocations">${esc(L.ui.ctaList(w.locations.length))}</a>
+${/* 2026-08 Issue #20 Hybrid Light Editorial: 헤더/히어로/Featured Scene/최하단 Next Actions는
+   홈페이지 A안(#19)과 같은 다크 시네마틱 톤, 본문 읽기 영역(Story/장소/문화)은 따뜻한 오프화이트
+   밝은 영역으로 나눈다. docs/design/WORK_DETAIL_HOOKING_V1.md 3~5절 기준. heroImage는 히어로의
+   배경 이미지로 재사용하고(새 이미지 소싱 없음), 위에 다크 그라디언트를 얹어 대비를 확보한다
+   (홈페이지 #19의 .landing-hero::before와 동일 기법 재사용). */''}
+<section class="wsHero">
+  ${w.heroImage ? `<div class="wsHeroBg" style="background-image:url('${esc(w.heroImage.url)}')" role="img" aria-label="${heroAlt}"></div>` : ''}
+  <div class="wsHeroOverlay"></div>
+  <div class="wsHeroInner">
+    <div class="wsHeroMain">
+      ${hasHook && localeBadge ? `<span class="wsHeroKicker">${esc(localeBadge)}</span>` : ''}
+      <h1>${esc(h1)}</h1>
+      <p class="wsHeroMeta">${esc(genreLine)}</p>
+      <div class="actionBar">
+        <a class="ctaBtn" href="${mapUrl}">${esc(L.ui.cta(displayTitle))}</a>
+        <a class="ctaBtn ctaBtnAlt" href="#allLocations">${esc(L.ui.ctaList(w.locations.length))}</a>
+      </div>
+    </div>
+    <div class="wsFeatured">
+      <span class="wsFeaturedKicker">${esc(featuredKicker)}</span>
+      <p class="wsFeaturedText">${esc(featuredText)}</p>
+    </div>
   </div>
-  <p class="intro">${esc(seo.description)}${esc(L.ui.introSuffix)}</p>
-  ${hasHook ? hookBoxHtml : (introExtra ? `<p class="intro">${introExtra}</p>` : '')}
+</section>
+${w.heroImage && w.heroImage.credit ? `<p class="heroCredit">${w.heroImage.creditUrl ? `<a href="${esc(w.heroImage.creditUrl)}" target="_blank" rel="noopener">${esc(w.heroImage.credit)}</a>` : esc(w.heroImage.credit)}</p>` : ''}
+<main>
+  ${/* Bright Story section — 훅 데이터가 있으면 스포일러 포함 멀티 문단 스토리(hookBox)를,
+     없으면 기존 요약(seo.description/summary)을 짧은 문단 리듬으로 보여준다. */''}
+  <p class="sectionKicker">${esc(L.ui.storyKicker)}</p>
+  ${hasHook ? hookBoxHtml : `<p class="intro">${esc(seo.description)}${esc(L.ui.introSuffix)}</p>${introExtra ? `<p class="intro">${introExtra}</p>` : ''}`}
   ${hasHook ? hookRevealsHtml : ''}
-  ${hasHook ? `<p class="metaLine">${esc(genreLine)}</p>` : ''}
 
-${hasHook ? `  <details class="moreDetails">
-    <summary>${esc(L.ui.moreSummary(w.locations.length))}</summary>
-    <div class="moreDetailsBody">
   <div class="adSlot">
     <span class="adLabel">${esc(L.ui.adLabel)}</span>
     <!-- 2026-08 11라운드: AdSense 승인 완료(ca-pub-6290350430336608). 기획안(SEO 성장 및 애드센스
          운영 기획안 v1.0, 5.1절)이 권장하는 "후킹 콘텐츠 중간 1개" 위치와 정확히 일치.
-         광고 유닛명: geugot_hook_middle (사용자가 2026-08-25 애드센스 대시보드에서 직접 발급받은
-         실제 슬롯ID — 지어내지 않음). -->
+         광고 유닛명: geugot_hook_middle -->
     <div class="adBox"><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-6290350430336608"
@@ -939,6 +980,12 @@ ${hasHook ? `  <details class="moreDetails">
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
   </div>
+
+  ${/* 2026-08 Issue #20: 예전에는 이 섹션 전체가 <details>로 접혀 있었다(훅이 있는 작품만).
+     승인된 Hybrid Light 구성(장면 → 스토리 → 실제 촬영지 → 지도/퀴즈 → 다른 콘텐츠)은 실제
+     장소를 접어두지 않고 바로 이어지는 다음 섹션으로 명시하므로, 훅 유무와 무관하게 항상
+     펼쳐진 상태로 보여준다. */''}
+  <p class="sectionKicker" style="margin-top:8px;">${esc(L.ui.placesKicker)}</p>
 ${top5Html}
 ${castHtml}
 
@@ -958,42 +1005,19 @@ ${cultureSectionHtml(w, locale)}
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
   </div>
-    </div>
-  </details>` : `  <div class="adSlot">
-    <span class="adLabel">${esc(L.ui.adLabel)}</span>
-    <!-- 광고 유닛명: geugot_hook_middle (후킹 콘텐츠가 없는 작품은 이 위치가 본문 상단 역할) -->
-    <div class="adBox"><ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6290350430336608"
-     data-ad-slot="1400129963"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
-  </div>
-${top5Html}
-${castHtml}
-
-  <h2 id="allLocations">${esc(L.ui.allList(displayTitle, w.locations.length))}</h2>
-${locItems}
-${cultureSectionHtml(w, locale)}
-
-  <div class="adSlot">
-    <span class="adLabel">${esc(L.ui.adLabel)}</span>
-    <!-- 광고 유닛명: geugot_before_map -->
-    <div class="adBox"><ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6290350430336608"
-     data-ad-slot="4690683888"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
-  </div>`}
-
-  <h2>${esc(L.ui.related)}</h2>
-  <ul class="relatedList">
-${related}
-  </ul>
 </main>
+${/* Dark Next Actions band — WORK_DETAIL_HOOKING_V1.md 4절 "6. Dark Next actions band:
+   map / quiz / other works". 작품별 공용 퀴즈 기능이 아직 없어(폭싹속았수다 1개 작품 전용
+   파일럿만 존재, task #503) 퀴즈 CTA는 넣지 않고 지도 CTA + 다른 작품 링크로 구성했다 —
+   PR에 명시. */''}
+<section class="wsNext">
+  <h2>${esc(L.ui.nextHeading)}</h2>
+  <p class="wsNextSub">${esc(L.ui.nextSub)}</p>
+  <a class="ctaBtn" href="${mapUrl}">${esc(L.ui.cta(displayTitle))}</a>
+  ${related ? `<ul class="wsNextRelated">
+${related}
+  </ul>` : ''}
+</section>
 <footer>
   &copy; ${esc(L.ui.footerTag)}<br>
   ${L.ui.footerLinks.map(([slug, label]) => `<a href="${SITE_ORIGIN}/${slug}/">${esc(label)}</a>`).join('\n  ')}
