@@ -36,6 +36,17 @@ CULTURE_TOPICS.forEach(topic => {
   });
 });
 
+// 2026-08 Issue #10: 언어 전환/번역 준비상태 공통 헬퍼(contentmap_i18n.js)를 불러온다.
+// 이전에는 이 파일의 hubUrl()이 자체적으로 "ja/zh 미번역이면 영어로" 폴백을 갖고 있었는데,
+// contentmap_app.js의 workHubPath()에도 똑같은 로직이 따로 있었다 — 판정이 두 곳에 중복되면
+// 반드시 어긋난다. 이제 둘 다 이 파일 하나만 본다.
+const I18N = (() => {
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, 'contentmap_i18n.js'), 'utf8'), sandbox, { filename: 'contentmap_i18n.js' });
+  return vm.runInContext('({ i18nStatus: i18nStatus, i18nUrl: i18nUrl, i18nSwitcherHtml: i18nSwitcherHtml, i18nHreflangBlock: i18nHreflangBlock })', sandbox);
+})();
+
 // 2026-08 추가: 후킹페이지 중간 삽입용 "새" 이미지(히어로 이미지 재사용이 아닌 별도 사진) —
 // 작품별로 최대 2장. 사용자가 "대문 사진과 중간 사진이 같으면 수정한 보람이 없다"고 지적한 것에 대한
 // 대응. 이 세션은 네트워크 아웃바운드가 화이트리스트로 제한돼 있어 각 URL을 curl/HTTP로 직접
@@ -380,21 +391,16 @@ function h1For(w, locale){
   if (locale === 'zh') return `${titleFor(w, 'zh')} 拍攝地・故事場景地圖`;
   return `${titleFor(w, 'ja')}のロケ地・舞台マップ`;
 }
-// 언어별 허브 URL — ja/zh 미번역 작품은 en 허브로 (app.js workHubPath()와 동일 규칙)
+// 언어별 허브 URL. 2026-08 Issue #10: 예전에는 ja/zh 미번역 작품을 이 함수 자체가 en 허브로
+// "조용히" 돌려보냈다(app.js workHubPath()의 폴백과 각자 따로 구현 — 판정이 어긋날 위험).
+// 이제 판정은 공통 헬퍼(I18N.i18nStatus)만 본다. 이 페이지 자체의 canonical로 쓸 때는 항상
+// published 상태에서만 호출되므로(생성 루프가 jaAvailable/zhAvailable로 이미 걸러줌) 문제없지만,
+// "관련 작품" 같은 다른 작품 링크에 쓸 때는 반드시 먼저 상태를 확인하고 호출부에서 처리해야 한다.
 function hubUrl(w, locale){
-  if (locale === 'ja' && !jaAvailable(w)) return `${SITE_ORIGIN}/en/works/${w.id}/`;
-  if (locale === 'zh' && !zhAvailable(w)) return `${SITE_ORIGIN}/en/works/${w.id}/`;
-  return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/works/${w.id}/`;
+  return I18N.i18nUrl('work', w.id, locale, { origin: SITE_ORIGIN });
 }
 function hreflangBlock(w){
-  const lines = [
-    `<link rel="alternate" hreflang="ko" href="${SITE_ORIGIN}/works/${w.id}/">`,
-    `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}/en/works/${w.id}/">`
-  ];
-  if (jaAvailable(w)) lines.push(`<link rel="alternate" hreflang="ja" href="${SITE_ORIGIN}/ja/works/${w.id}/">`);
-  if (zhAvailable(w)) lines.push(`<link rel="alternate" hreflang="zh-Hant" href="${SITE_ORIGIN}/zh/works/${w.id}/">`);
-  lines.push(`<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/works/${w.id}/">`);
-  return lines.join('\n');
+  return I18N.i18nHreflangBlock('work', w, w.id, { origin: SITE_ORIGIN });
 }
 // 2026-08 9라운드(기획자 검토 반영): 영문 페이지에 "킹스크로스역 (King's Cross Station)"처럼
 // 한글 지명이 영문 옆에 그대로 남아 있다는 지적 — 확인해보니 장소 데이터에 modernName_en
@@ -515,6 +521,7 @@ const SHARED_CSS = `
   .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
   .wsLangs a.on{color:#fff;background:var(--accent2);}
   .wsLangs a:not(.on):hover{color:var(--accent2);}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
   main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
   /* 2026-08 10라운드(기획자 검토 반영): 히어로 이미지가 760px 컬럼 안에 갇혀 양옆이
      테두리로 낭비된다는 지적 — 이미지만 화면 폭 전체로 꽉 채우고(풀블리드), 본문 텍스트는
@@ -738,11 +745,15 @@ ${castList.map(p => {
   <p style="font-size:12.5px;color:var(--sub);margin-top:10px;">${esc(L.ui.castNote)}</p>` : '';
   }
 
-  const related = relatedWorks(w.id).map(r => {
-    const effLocale = (locale === 'ja' && !jaAvailable(r)) ? 'en' : ((locale === 'zh' && !zhAvailable(r)) ? 'en' : locale);
-    const anchor = esc(h1For(r, effLocale));
-    return `      <li><a href="${hubUrl(r, locale)}">${anchor}${esc(L.ui.relatedSuffix)}</a></li>`;
-  }).join('\n');
+  // 2026-08 Issue #10: 관련 작품 중 이 페이지 언어로 번역되지 않은 작품은 링크를 만들지 않는다.
+  // 예전에는 이 언어 페이지가 없으면 영어 허브로 조용히 보냈는데, 사용자가 ja/zh 페이지를 보다가
+  // 관련 작품 링크를 눌렀는데 영어 페이지가 뜨는 것도 같은 종류의 "조용한 폴백" 문제였다.
+  const related = relatedWorks(w.id)
+    .filter(r => I18N.i18nStatus('work', r, locale) === 'published')
+    .map(r => {
+      const anchor = esc(h1For(r, locale));
+      return `      <li><a href="${hubUrl(r, locale)}">${anchor}${esc(L.ui.relatedSuffix)}</a></li>`;
+    }).join('\n');
 
   const summaryText = (locale === 'ja' && w.summary_ja) ? w.summary_ja
     : ((locale === 'zh' && w.summary_zh) ? w.summary_zh
@@ -809,13 +820,11 @@ ${castList.map(p => {
         }).join('')
       }</div></div>` : '';
 
-  // 언어 전환 링크(우상단): ja/zh 미번역 작품에서는 en 허브로 보냄 — 404를 만들지 않기 위해
-  // 2026-08 3단계: 헤더(SPA)의 .lang-toggle과 동일하게 짧은 코드 라벨(KR/EN/JP/中文)로 통일
+  // 2026-08 Issue #10: 예전에는 미번역 언어의 버튼을 통째로 안 보이게 했는데, 그러면 "이 작품엔
+  // 원래 4개 언어가 없나 보다"처럼 보여 다른 페이지의 스위처와 개수가 달라진다. 이제 버튼은 항상
+  // 4개 다 보이고, 번역이 없는 언어는 링크 없는 '준비 중' 배지로 표시한다(공통 헬퍼로 통일).
   const langLinks = `<nav class="wsLangs" aria-label="Languages">
-    <a href="${hubUrl(w, 'ko')}"${locale === 'ko' ? ' class="on"' : ''}>KR</a>
-    <a href="${hubUrl(w, 'en')}"${locale === 'en' ? ' class="on"' : ''}>EN</a>
-    ${jaAvailable(w) ? `<a href="${hubUrl(w, 'ja')}"${locale === 'ja' ? ' class="on"' : ''}>JP</a>` : ''}
-    ${zhAvailable(w) ? `<a href="${hubUrl(w, 'zh')}"${locale === 'zh' ? ' class="on"' : ''}>中文</a>` : ''}
+    ${I18N.i18nSwitcherHtml('work', w, w.id, locale, { origin: SITE_ORIGIN })}
   </nav>`;
 
   return `<!DOCTYPE html>

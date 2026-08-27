@@ -25,6 +25,17 @@
 // 실행: node generate_place_pages.js
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
+
+// 2026-08 Issue #10: 언어 전환/번역 준비상태 공통 헬퍼(contentmap_i18n.js). 이 파일은 원래
+// 장소 페이지에 언어 스위처가 아예 없었다 — 이번에 새로 추가하면서 다른 두 생성기와 같은
+// 헬퍼를 쓴다(판정이 세 곳에서 각자 따로면 반드시 어긋난다).
+const I18N = (() => {
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, 'contentmap_i18n.js'), 'utf8'), sandbox, { filename: 'contentmap_i18n.js' });
+  return vm.runInContext('({ i18nStatus: i18nStatus, i18nUrl: i18nUrl, i18nSwitcherHtml: i18nSwitcherHtml, i18nHreflangBlock: i18nHreflangBlock })', sandbox);
+})();
 
 const SITE_ORIGIN = 'https://geugotjigeum.com';
 const GA_ID = 'G-H2KNQYH97M';
@@ -95,6 +106,13 @@ const SHARED_CSS = `
   .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
   .breadcrumb a{color:var(--sub);text-decoration:none;}
   .breadcrumb a:hover{text-decoration:underline;}
+  /* 2026-08 Issue #10: 장소 페이지에는 원래 언어 스위처가 없었다 — 작품·지역 페이지와 동일한
+     wsLangs 스타일을 그대로 가져와 통일한다. */
+  .wsLangs{display:flex;background:#f2f3f5;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;margin:0 0 12px;width:fit-content;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
+  .wsLangs a.on{color:#fff;background:var(--accent2);}
+  .wsLangs a:not(.on):hover{color:var(--accent2);}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
   h1{font-size:23px;line-height:1.4;margin:0 0 6px;}
   .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 20px;}
   .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#3ac07c;border-radius:999px;padding:4px 12px;margin-bottom:18px;}
@@ -204,10 +222,7 @@ function workTitle(w, locale){
 }
 
 function hreflangBlock(p){
-  const langs = ['ko', 'en'].concat(jaAvailable(p.work) ? ['ja'] : []).concat(zhAvailable(p.work) ? ['zh'] : []);
-  const lines = langs.map(l => `<link rel="alternate" hreflang="${l === 'zh' ? 'zh-Hant' : l}" href="${placeUrl(p, l)}">`);
-  lines.push(`<link rel="alternate" hreflang="x-default" href="${placeUrl(p, 'ko')}">`);
-  return lines.join('\n');
+  return I18N.i18nHreflangBlock('place', p, p.slug, { origin: SITE_ORIGIN });
 }
 function hubHreflangBlock(){
   const lines = ['ko', 'en', 'ja', 'zh'].map(l => `<link rel="alternate" hreflang="${l === 'zh' ? 'zh-Hant' : l}" href="${hubUrl(l)}">`);
@@ -303,7 +318,13 @@ function renderPlacePage(p, locale){
   const rawDesc = locale === 'en' ? l.desc_en : (locale === 'ja' ? l.desc_ja : (locale === 'zh' ? (l.desc_zh || l.desc_en) : l.desc));
   const description = rawDesc ? (rawDesc.length > 150 ? rawDesc.slice(0, 148) + '…' : rawDesc) : L.ui.descFallback(wTitle, placeName);
   const canonicalUrl = placeUrl(p, locale);
-  const otherPlaces = places.filter(o => o.workId !== p.workId).slice(0, 4);
+  // 2026-08 Issue #10: "다른 장소도 보기" 추천 목록은 이 페이지 언어로 실제 발행된 장소만
+  // 담는다. 예전에는 여기서 링크만 만들고 그 언어의 장소 페이지가 실제로 생성되는지 확인하지
+  // 않아서, 예를 들어 ja 미번역 작품의 장소가 /ja/places/{slug}/에 링크되고도 정작 그 페이지는
+  // 생성되지 않아 404가 나는 경우가 있었다.
+  const otherPlaces = places
+    .filter(o => o.workId !== p.workId && I18N.i18nStatus('place', o, locale) === 'published')
+    .slice(0, 4);
 
   const jsonLdPlace = { '@context':'https://schema.org', '@type':'TouristAttraction', name: placeName, description, url: canonicalUrl };
   if (l.lat != null && l.lng != null) jsonLdPlace.geo = { '@type':'GeoCoordinates', latitude: l.lat, longitude: l.lng };
@@ -319,8 +340,14 @@ function renderPlacePage(p, locale){
   const otherHtml = otherPlaces.map(o => `    <li><a href="${placeUrl(o, locale)}">${esc(placeDisplayName(o.loc, locale))} — ${esc(workTitle(o.work, locale))}</a></li>`).join('\n');
   const wSummary = locale === 'en' ? (w.summary_en || w.summary) : (locale === 'ja' ? (w.summary_ja || w.summary) : (locale === 'zh' ? (w.summary_zh || w.summary) : w.summary));
   const wSummaryShort = (wSummary || '').length > 90 ? wSummary.slice(0, 88) + '…' : (wSummary || '');
+  // 2026-08 Issue #10: 작품·지역 페이지에는 있던 언어 스위처가 장소 페이지에만 없었다 — 세 페이지
+  // 타입이 같은 공통 헬퍼로 동일한 스위처를 갖게 통일한다.
+  const langLinksHtml = `<nav class="wsLangs" aria-label="Languages">
+    ${I18N.i18nSwitcherHtml('place', p, p.slug, locale, { origin: SITE_ORIGIN })}
+  </nav>`;
 
   const body = `  <p class="kicker">${L.ui.kicker}</p>
+  ${langLinksHtml}
   <p class="breadcrumb"><a href="${SITE_ORIGIN}${L.urlPrefix}/">${L.ui.breadcrumbHome}</a> / <a href="${hubUrl(locale)}">${L.ui.breadcrumbHub}</a> / ${esc(placeName)}</p>
   <h1>${esc(placeName)}</h1>
   <p class="subTitle">${esc(L.ui.subTitle(wTitle))}</p>
