@@ -33,6 +33,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 ## 4. 작업 유형
 - `content`: 작품·장소·퀴즈·스토리 콘텐츠
 - `product`: 기능·UX·운영 기획
+- `design`: UI/UX, 디자인 시스템, 화면 시안
 - `development`: 코드·인프라·배포
 - `qa`: 기능·언어·데이터 품질 점검
 - `seo`: 검색·메타데이터·유입 개선
@@ -67,6 +68,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - Claude 계정/세션 복원: `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`
 - 2차 Claude 시작 프롬프트: `docs/CLAUDE_SECONDARY_START_PROMPT.md`
 - 배포 ZIP 인수인계: `docs/DEPLOYMENT_HANDOFF.md`
+- 디자인 시스템/화면 사양: `docs/design/`
 - 작품 콘텐츠 기획: `docs/content/`
 - 기능 기획: `docs/product/`
 - QA: `docs/qa/`
@@ -116,6 +118,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 역할은 고정하지 않되 기본적으로 다음을 우선한다.
 - ChatGPT: 기획, 조사, 콘텐츠, SEO/UX, 요구사항 정의, 프로젝트 정리, 사용자 의사결정 지원, 저위험 GitHub 수정
 - Claude: 저장소 분석, 개발, 리팩터링, 테스트, 디버깅
+- Figma: 승인 전/후 UI 시안과 디자인 시스템 원본(편집권한이 있을 때)
 - Manus: 웹 제작, UI 구현, 리서치, 반복형 웹 작업
 
 핵심은 역할 구분이 아니라 **모든 결과가 GitHub에 다시 남는 것**이다.
