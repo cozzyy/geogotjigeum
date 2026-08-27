@@ -10,6 +10,7 @@
 5. 코드 작업이라면 관련 PR/최근 변경사항
 
 Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`를 읽고, 필요 시 `docs/CLAUDE_SECONDARY_START_PROMPT.md`를 시작 프롬프트로 사용한다.
+개발·테스트 완료 후 배포 인수인계가 필요한 작업은 `docs/DEPLOYMENT_HANDOFF.md`를 따른다.
 
 대화 기억만으로 현재 상태를 추정하지 않는다.
 
@@ -62,6 +63,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - ChatGPT→Claude 인수인계: `docs/CHATGPT_CLAUDE_HANDOFF.md`
 - Claude 계정/세션 복원: `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`
 - 2차 Claude 시작 프롬프트: `docs/CLAUDE_SECONDARY_START_PROMPT.md`
+- 배포 ZIP 인수인계: `docs/DEPLOYMENT_HANDOFF.md`
 - 작품 콘텐츠 기획: `docs/content/`
 - 기능 기획: `docs/product/`
 - QA: `docs/qa/`
@@ -73,10 +75,18 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 작업 완료 시 최소한 다음을 확인한다.
 - 관련 Issue 상태 갱신
 - 결과물 경로 또는 PR 연결
+- 배포 대기 작업이면 ZIP/Drive 인수인계 정보 기록
 - 프로젝트 전체 상태에 영향을 주면 `docs/PROJECT_STATE.md` 갱신
 - 중요한 방향 변경이면 `docs/DECISIONS.md` 기록
 
-## 9. 그곳지금 콘텐츠 원칙
+## 9. 배포 인수인계 원칙
+- 개발 소스 기준본은 GitHub다.
+- 배포 ZIP은 전달/보관용이며 GitHub 상태를 대체하지 않는다.
+- 개발·테스트 완료 후 필요하면 배포 ZIP을 생성하고 `docs/DEPLOYMENT_HANDOFF.md` 규칙에 따라 Google Drive `그곳지금/Deploy/READY`에 보관한다.
+- Drive 업로드 권한이 없는 개발자는 ZIP 파일명/경로와 테스트 결과를 남기고 사용자의 업로드를 기다린다.
+- 사용자가 실제 운영 배포하기 전에는 `DEPLOYED`로 표시하지 않는다.
+
+## 10. 그곳지금 콘텐츠 원칙
 - K-콘텐츠의 실제 장소와 여행 경험을 연결한다.
 - 일반 사용자 글은 설명서보다 친구가 알려주는 듯한 자연스러운 20~30대 톤을 우선한다.
 - 과도한 정보 나열을 피하고, 작품 속 장면·장소·숨은 이야기·의외성 있는 정보의 연결을 중시한다.
@@ -100,7 +110,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 - 핵심 목표치 축소, 언어 정책, 대규모 데이터 구조, 승인 Gate 등 큰 방향 변경은 사용자에게 먼저 알린다.
 - 스킬 변경 시 `CHANGELOG.md`에 이유와 변경내용을 기록한다.
 
-## 10. AI별 기본 역할
+## 11. AI별 기본 역할
 역할은 고정하지 않되 기본적으로 다음을 우선한다.
 - ChatGPT: 기획, 조사, 콘텐츠, SEO/UX, 요구사항 정의, 프로젝트 정리, 사용자 의사결정 지원
 - Claude: 저장소 분석, 기술검토, 개발, 리팩터링, 테스트, 디버깅
@@ -108,7 +118,7 @@ Claude 새 계정/새 세션은 추가로 `docs/CLAUDE_DEVELOPER_BOOTSTRAP.md`�
 
 핵심은 역할 구분이 아니라 **모든 결과가 GitHub에 다시 남는 것**이다.
 
-## 11. 완료 정의
+## 12. 완료 정의
 `Done`은 단순히 "작성함"이 아니다. 가능한 경우 아래를 충족해야 한다.
 - 요구사항 충족
 - 결과물 저장
