@@ -154,23 +154,35 @@
     <div class="landing-inner">
       <div class="landing-hero" id="landingHero">
         <div class="landing-hero-collage" id="landingHeroCollage" aria-hidden="true"></div>
-        <div class="landing-hero-content">
-          <h2 id="landingHeadline">대한민국 대표 콘텐츠 여행 사이트, 그곳 지금</h2>
-          <div id="landingCounterBanner" class="landing-counter-banner" aria-live="polite"></div>
-          <div id="landingFilterWrap" class="landing-filter-hero"></div>
-          <div class="landing-hero-actions" id="landingHeroActions">
-            <button type="button" class="hero-action-btn" id="heroRegionBtn" onclick="toggleHeroPanel('region')">🗺️ <span id="heroRegionBtnText">지역별 여행</span></button>
-            <button type="button" class="hero-action-btn" id="heroNearbyBtn" onclick="openNearbyModal()">📍 <span id="heroNearbyBtnText">내주변여행</span></button>
-            <button type="button" class="hero-action-btn" id="heroSearchBtn" onclick="openNearbyModal({addressMode:true})">🔍 <span id="heroSearchBtnText">여행지찾기</span></button>
-          </div>
-          <button type="button" class="hero-today-pick" id="heroTodayPick" hidden>
-            <div class="hero-today-pick-img" id="heroTodayPickImg"></div>
-            <div class="hero-today-pick-text">
-              <span class="hero-today-pick-label" id="heroTodayPickLabel">오늘의 장소</span>
-              <span class="hero-today-pick-title" id="heroTodayPickTitle"></span>
-              <span class="hero-today-pick-hook" id="heroTodayPickHook"></span>
+        <!-- 2026-08 Issue #19: 홈페이지 리디자인 A(Cinematic Content Discovery) — 히어로를
+             좌(헤드라인+CTA)/우(오늘의 장소=featured scene panel) 2열 그리드로 재구성.
+             기존 요소는 id 그대로 재사용(JS 변경 없음), 배치만 바뀐다. -->
+        <div class="landing-hero-grid">
+          <div class="landing-hero-content">
+            <div class="landing-kicker" id="landingKicker"></div>
+            <h2 id="landingHeadline">대한민국 대표 콘텐츠 여행 사이트, 그곳 지금</h2>
+            <div id="landingCounterBanner" class="landing-counter-banner" aria-live="polite"></div>
+            <div id="landingFilterWrap" class="landing-filter-hero"></div>
+            <div class="landing-hero-cta-row">
+              <button type="button" class="hero-primary-cta" id="heroPrimaryCta" onclick="scrollToDiscovery()">🎬 <span id="heroPrimaryCtaText">작품 발견하기</span></button>
             </div>
-          </button>
+            <div class="landing-hero-actions" id="landingHeroActions">
+              <button type="button" class="hero-action-btn" id="heroRegionBtn" onclick="toggleHeroPanel('region')">🗺️ <span id="heroRegionBtnText">지역별 여행</span></button>
+              <button type="button" class="hero-action-btn" id="heroNearbyBtn" onclick="openNearbyModal()">📍 <span id="heroNearbyBtnText">내주변여행</span></button>
+              <button type="button" class="hero-action-btn" id="heroSearchBtn" onclick="openNearbyModal({addressMode:true})">🔍 <span id="heroSearchBtnText">여행지찾기</span></button>
+            </div>
+          </div>
+          <div class="landing-hero-feature">
+            <button type="button" class="hero-today-pick" id="heroTodayPick" hidden>
+              <div class="hero-today-pick-img" id="heroTodayPickImg"></div>
+              <div class="hero-today-pick-text">
+                <span class="hero-today-pick-kicker" id="heroFeatureKicker"></span>
+                <span class="hero-today-pick-label" id="heroTodayPickLabel">오늘의 장소</span>
+                <span class="hero-today-pick-title" id="heroTodayPickTitle"></span>
+                <span class="hero-today-pick-hook" id="heroTodayPickHook"></span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       <div id="heroRegionPanel" class="hero-region-panel" hidden>
@@ -184,6 +196,11 @@
         </div>
       </div>
       <div id="landingResultCount" class="filter-result-count"></div>
+      <!-- 2026-08 Issue #19: 발견 섹션 타이틀 — scrollToDiscovery() CTA의 스크롤 목적지 -->
+      <div class="discovery-section-head" id="discoverySection">
+        <h3 id="discoverySectionTitle"></h3>
+        <p id="discoverySectionSubtitle"></p>
+      </div>
       <div class="landing-cards" id="landingCards"></div>
       <p class="landing-blurb landing-blurb-footer" id="landingBlurb">'그곳, 지금'은 제 개인 블로그입니다. 만화·영화·애니메이션을 보다가 문득 <b>"저 장면에 나온 곳은 지금 실제로 어떤 모습일까?"</b> 궁금해졌던, 지극히 개인적인 호기심에서 시작했어요. 이야기 속 장소가 사실은 지금도 갈 수 있는 진짜 여행지라는 걸 알게 되면, 그 작품을 더 오래 더 깊이 좋아하게 되더라고요. 그런 마음으로 하나씩 조사해서 채워가고 있는 저만의 기록입니다.</p>
       <div class="landing-footer"><a href="#" id="footerReportLink" onclick="openReportModal();return false;">📝 장소·인물 제안</a><a href="/regions/" id="footerRegionsLink">🗺️ 지역으로 찾기</a><a href="/places/" id="footerPlacesLink">📍 장소로 찾기</a><a href="/about/" id="footerAboutLink">서비스 소개</a><a href="/contact/" id="footerContactLink">문의</a><a href="/privacy/" id="footerPrivacyLink">개인정보처리방침</a><a href="/terms/" id="footerTermsLink">이용약관</a></div>
