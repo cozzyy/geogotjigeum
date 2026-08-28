@@ -1056,48 +1056,92 @@ details.course-btn > div .course-btn{margin:0;}
   .summary-box{max-width:100%;}
 }
 
-/* ---- 작품 퀴즈 모달 (2026-08 9라운드 — 폭싹속았수다 파일럿) ---- */
-.quiz-box{max-width:520px;height:auto !important;max-height:88vh;}
-.quiz-body{padding:18px 20px 22px;overflow-y:auto;}
-.quiz-progress{font-size:11.5px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;}
-.quiz-question{font-size:15.5px;font-weight:700;line-height:1.55;color:var(--text);margin-bottom:16px;}
-.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+/* ---- 작품 퀴즈 모달 — Issue #23 Quiz Experience v1: Playful Editorial ----
+   (docs/design/QUIZ_EXPERIENCE_V1.md) 모달 헤더(.modal-box-header, #12141a 하드코딩)는
+   다른 모달들과 공유하는 다크 브랜드 쉘 그대로 두고, 실제 문제/보기/피드백/결과가 있는
+   .quiz-body만 밝은 리딩 표면으로 뒤집는다. .quiz-body는 .modal-box-header의 형제
+   요소이지 조상이 아니므로, 여기서 다시 정의하는 --panel/--text/--sub/--border/--accent2가
+   헤더의 닫기 버튼(.modal-close, color:var(--text))으로 새지 않는다 — #sidebar에 썼던
+   것과 같은 스코프 지정 기법(Issue #22 커밋 참고). */
+.quiz-box{max-width:560px;height:auto !important;max-height:88vh;background:var(--ds-light-surface,#FDFBF7);}
+.quiz-body{
+  --panel:var(--ds-light-card,#fff); --panel2:var(--ds-light-card,#fff); --text:var(--ds-light-text,#1B1E24);
+  --sub:var(--ds-light-text-2,#575E6B); --border:var(--ds-light-line,#E1DCD2); --accent2:#2f5fc4;
+  padding:20px 22px 24px;overflow-y:auto;color:var(--text);
+}
+.quiz-progress-wrap{margin-bottom:16px;}
+.quiz-progress-label{
+  display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+  font-size:11.5px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px;
+}
+.quiz-progress-track{height:6px;border-radius:999px;background:var(--border);overflow:hidden;}
+.quiz-progress-fill{height:100%;border-radius:999px;background:var(--ds-accent,#FF7B57);transition:width .25s ease;}
+.quiz-question{font-size:16.5px;font-weight:800;line-height:1.5;color:var(--text);margin-bottom:16px;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;margin-bottom:4px;}
 .quiz-option-btn{
-  text-align:left;background:var(--panel2);border:1px solid var(--border);color:var(--text);
-  border-radius:10px;padding:12px 14px;font-size:13.5px;cursor:pointer;transition:border-color .15s ease,background .15s ease;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;box-sizing:border-box;
+  text-align:left;background:var(--panel2);border:1.5px solid var(--border);color:var(--text);
+  border-radius:12px;padding:14px 16px;font-size:14px;font-weight:600;line-height:1.45;
+  cursor:pointer;min-height:44px;font-family:inherit;
+  transition:border-color .15s ease,background .15s ease,transform .1s ease;
 }
-.quiz-option-btn:hover:not(:disabled){border-color:var(--accent2);}
-.quiz-option-btn:disabled{cursor:default;opacity:.85;}
-.quiz-option-btn.correct{border-color:#3ac07c;background:rgba(58,192,124,.14);color:#7fe0ab;font-weight:700;}
-.quiz-option-btn.wrong{border-color:#e0603a;background:rgba(224,96,58,.14);color:#f0a084;}
-.quiz-feedback{font-size:13.5px;font-weight:700;margin-top:14px;}
-.quiz-feedback.correct{color:#7fe0ab;}
-.quiz-feedback.wrong{color:#f0a084;}
+.quiz-option-btn:hover:not(:disabled){border-color:var(--ds-accent,#FF7B57);}
+.quiz-option-btn:focus-visible{outline:2px solid var(--ds-accent,#FF7B57);outline-offset:2px;}
+.quiz-option-btn:disabled{cursor:default;}
+/* 정답/오답은 색만이 아니라 아이콘(✓/✗, JS가 텍스트로 채움)으로도 구분한다
+   (docs/design/QUIZ_EXPERIENCE_V1.md §5, UTILITY_EDGE_STATES_V1.md §9 "not by color alone"). */
+.quiz-option-mark{font-size:15px;font-weight:900;flex-shrink:0;opacity:0;width:16px;text-align:center;}
+.quiz-option-btn.correct{border-color:#2f9e5c;background:#eafaf1;color:#1c6b3d;font-weight:800;}
+.quiz-option-btn.correct .quiz-option-mark{opacity:1;color:#2f9e5c;}
+.quiz-option-btn.wrong{border-color:var(--ds-accent,#FF7B57);background:#fff1ec;color:#b8442a;font-weight:700;}
+.quiz-option-btn.wrong .quiz-option-mark{opacity:1;color:#e0562f;}
+.quiz-feedback{font-size:13.5px;font-weight:700;margin-top:14px;padding:11px 14px;border-radius:10px;line-height:1.55;}
+.quiz-feedback.correct{color:#1c6b3d;background:#eafaf1;}
+.quiz-feedback.wrong{color:#b8442a;background:#fff1ec;}
+/* 보상 카드는 문제 카드보다 시각적으로 작아야 한다는 원칙(§6) — 다크 에디토리얼 악센트 카드로
+   유지하되(라이트 표면 위의 "발견" 포인트로 기능), 모서리 반경만 시스템 기준(14px대)에 맞춘다. */
 .quiz-reward-box{
-  background:#3a2412;border:1px solid #7a4a1f;border-radius:10px;padding:12px 14px;margin-top:10px;
+  background:#2a1c10;border:1px solid #5a3d1f;border-radius:14px;padding:13px 16px;margin-top:12px;
 }
-.quiz-reward-box .label{display:block;color:#f0b06a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
-.quiz-reward-box .text{font-size:13px;line-height:1.65;color:#f3d9b8;}
-.quiz-result-score{font-size:22px;font-weight:800;color:var(--text);text-align:center;margin:8px 0 4px;}
-.quiz-result-sub{font-size:13px;color:var(--sub);text-align:center;margin-bottom:18px;}
+.quiz-reward-box .label{display:block;color:#ffb877;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
+.quiz-reward-box .text{font-size:13px;line-height:1.65;color:#f6dfc0;}
+/* 코랄 프라이머리 액션 — "다음 문제"/"다시 풀기" (§2 "coral as primary progress / action accent") */
+.quiz-primary-btn{
+  display:block;width:100%;box-sizing:border-box;text-align:center;
+  background:var(--ds-accent,#FF7B57);color:#fff;border:none;
+  padding:13px;border-radius:12px;cursor:pointer;font-size:14.5px;font-weight:800;
+  margin:14px 0 4px;min-height:44px;font-family:inherit;
+  box-shadow:0 4px 14px rgba(255,123,87,.32);transition:transform .12s ease,filter .12s ease;
+}
+.quiz-primary-btn:hover{filter:brightness(1.06);transform:translateY(-1px);}
+.quiz-primary-btn:focus-visible{outline:2px solid var(--ds-accent,#FF7B57);outline-offset:3px;}
+.quiz-tertiary-link{
+  display:block;width:100%;box-sizing:border-box;text-align:center;background:none;border:none;
+  color:var(--sub);font-size:12.5px;text-decoration:underline;cursor:pointer;padding:8px 0 2px;
+  font-family:inherit;min-height:32px;
+}
+.quiz-tertiary-link:hover{color:var(--text);}
+.quiz-result-score{font-size:24px;font-weight:900;color:var(--text);text-align:center;margin:6px 0 3px;}
+.quiz-result-sub{font-size:13.5px;color:var(--sub);text-align:center;margin-bottom:18px;line-height:1.6;}
 /* 2026-08 Issue #17 파일럿: 퀴즈 완료화면 촬영지 카드. 기존 .quiz- 스코프 안에서만 동작 —
-   다른 화면(언어 스위처 등)과 셀렉터 충돌 없음. */
+   다른 화면(언어 스위처 등)과 셀렉터 충돌 없음. Issue #23: 결과화면의 핵심(§7 "the important
+   part")이므로 다크 액센트 박스 대신 라이트 카드 + 코랄 좌측 강조로 시각적 우선순위를 높였다. */
 .quiz-result-locations{margin-top:16px;}
 .quiz-result-locations-label{font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
 .quiz-location-card{
   display:flex;flex-direction:column;gap:4px;
-  background:#20180f;border:1px solid #4a3620;border-radius:10px;
-  padding:12px 14px;margin-bottom:8px;
+  background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--ds-accent,#FF7B57);
+  border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(27,30,36,.06);
 }
-.quiz-location-name{font-size:14px;font-weight:700;color:var(--text);}
-.quiz-location-tag{font-size:12px;color:#e0a83a;}
+.quiz-location-name{font-size:14.5px;font-weight:800;color:var(--text);}
+.quiz-location-tag{font-size:12px;color:var(--sub);}
 .quiz-location-btn{
   align-self:flex-start;margin-top:8px;
-  background:transparent;border:1px solid #e0a83a;color:#e0a83a;
-  font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;
-  cursor:pointer;min-height:36px;
+  background:transparent;border:1.5px solid var(--ds-accent,#FF7B57);color:var(--ds-accent,#FF7B57);
+  font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;
+  cursor:pointer;min-height:40px;font-family:inherit;
 }
-.quiz-location-btn:hover{background:rgba(224,168,58,.12);}
+.quiz-location-btn:hover{background:rgba(255,123,87,.1);}
 @media (max-width:768px){
   .quiz-box{max-width:100%;}
   .quiz-location-card{padding:12px;}
