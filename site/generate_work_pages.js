@@ -657,7 +657,8 @@ const SHARED_CSS = `
     .hookBox{padding:18px 16px;border-radius:14px;}
     .hookBox p{font-size:19px;line-height:1.6;}
     .actionBar{flex-direction:column;gap:10px;}
-    .ctaBtn{display:flex;width:100%;text-align:center;font-size:14px;padding:12px 16px;border-radius:10px;margin-bottom:0;}
+    .actionBar .ctaBtn{flex:0 0 auto;}
+    .ctaBtn{display:flex;width:100%;text-align:center;font-size:14px;padding:12px 16px;border-radius:10px;margin-bottom:0;min-height:44px;max-height:52px;box-sizing:border-box;}
     h2{font-size:18px;margin:32px 0 14px;}
     .locCard{padding:13px 14px;}
     .locCard h3{font-size:15px;}

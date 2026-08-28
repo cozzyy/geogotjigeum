@@ -176,6 +176,7 @@ html.gcjg-boot-work #app.landing #main{display:flex;}
 .landing-hero{position:relative;border-radius:24px;overflow:hidden;margin:4px 0 26px;isolation:isolate;color-scheme:dark;background:linear-gradient(115deg,var(--ds-hero-left,#232A38),var(--ds-hero-right,#10141C));}
 /* 좌(헤드라인+CTA) : 우(featured scene 패널) 2열 — 모바일은 아래 @media(max-width:768px)에서 1열로 스택 */
 .landing-hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:8px;}
+.landing-hero-grid > *{min-width:0;}
 .landing-hero-feature{display:flex;align-items:center;padding:24px 40px 24px 12px;min-height:1px;}
 .landing-hero-collage{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:2px;}
 /* 2026-08 재조정: "누르스름하고 빛바랜 사진 같다"는 피드백 — 기존엔 brightness(.92) saturate(1.05)로
@@ -1188,8 +1189,9 @@ details.course-btn > div .course-btn{margin:0;}
      + 32px짜리 큰 숫자는 한 줄일 때만 예쁘고, 두 줄로 꺾이면 알약이 아니라 둥근 사각형처럼 뭉개져
      보인다. 모바일에서는 글자 크기를 줄이고 모서리도 완전한 알약 대신 적당한 라운드로 낮춰서
      두 줄이 되어도 자연스럽게 보이도록 한다. */
-  .counter-banner-text{font-size:12.5px;padding:8px 14px;border-radius:14px;line-height:1.55;}
-  .counter-banner-num{font-size:22px;}
+  .landing-counter-banner{display:block;}
+  .counter-banner-text{display:block;width:100%;box-sizing:border-box;font-size:13px;padding:12px 16px;border-radius:14px;line-height:1.5;text-align:center;}
+  .counter-banner-num{font-size:26px;}
 
   /* 2026-08 UI 개편(task #431 모바일 재설계): 히어로 콜라주는 칸 수를 줄이고 안쪽 여백도
      좁혀서 헤드라인·카운터 배너·검색창이 화면에 더 빨리(스크롤 없이 가깝게) 보이도록 한다. */
@@ -1209,11 +1211,13 @@ details.course-btn > div .course-btn{margin:0;}
   }
   .hero-collage-tile{filter:brightness(1.05) saturate(1.3) contrast(1.05);}
   .landing-hero-content{padding:28px 16px 20px;}
-  .landing-hero-content h2{font-size:21px;margin:0 0 14px;}
+  .landing-hero-content h2{font-size:22px;margin:0 0 14px;}
   .landing-hero-cta-row{margin-top:16px;}
-  .hero-primary-cta{width:100%;justify-content:center;padding:14px 18px;font-size:14px;}
-  .landing-hero-actions{margin-top:10px;gap:8px;}
-  .hero-action-btn{padding:9px 15px;font-size:12.5px;min-height:44px;}
+  .hero-primary-cta{width:100%;justify-content:center;padding:13px 18px;font-size:14px;min-height:46px;max-height:50px;}
+  /* Issue #30 §4.4: 3개 버튼을 한 줄에 욱여넣지 않고 2열+마지막 버튼 전체폭으로 배치 */
+  .landing-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+  .hero-action-btn{padding:9px 10px;font-size:12.5px;min-height:44px;justify-content:center;}
+  .landing-hero-actions .hero-action-btn:last-child{grid-column:1 / -1;}
   .hero-today-pick{padding:12px;gap:8px;}
   .hero-today-pick-img{height:120px;}
   .hero-today-pick-title{font-size:14.5px;}

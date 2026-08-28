@@ -2364,6 +2364,12 @@ function buildFilterBarHtml(idPrefix){
   const genres = usedValues('genres', true);
   const q = (workFilters.query || '').replace(/"/g, '&quot;');
   const expanded = filterBarExpanded[idPrefix] ? ' expanded' : '';
+  // Issue #30 §4.2: "필터 초기화"는 실제로 적용된 필터/검색어가 있을 때만 노출 — 기본 상태에서는
+  // 검색창+필터 진입 버튼만 보이게 해서 모바일 히어로의 세로 밀도를 낮춘다.
+  const hasActiveFilter = !!(workFilters.country || workFilters.medium || (workFilters.genres && workFilters.genres.size) || (workFilters.query && workFilters.query.trim()));
+  const resetBtnHtml = hasActiveFilter
+    ? '<button type="button" class="filter-reset-btn" id="' + idPrefix + 'FilterReset">' + t('filterResetBtn') + '</button>'
+    : '';
   return '' +
     '<div class="filter-bar' + expanded + '" id="' + idPrefix + 'FilterBar">' +
       '<input type="text" class="filter-search" id="' + idPrefix + 'FilterSearch" placeholder="' + t('filterSearchPlaceholder') + '" value="' + q + '">' +
@@ -2371,7 +2377,7 @@ function buildFilterBarHtml(idPrefix){
       '<div class="filter-group"><span class="filter-group-label">' + t('filterCountryLabel') + '</span><div class="filter-chips">' + chipRowHtml('country', countries, countryLabel, false) + '</div></div>' +
       '<div class="filter-group"><span class="filter-group-label">' + t('filterMediumLabel') + '</span><div class="filter-chips">' + chipRowHtml('medium', mediums, mediumLabel, false) + '</div></div>' +
       '<div class="filter-group"><span class="filter-group-label">' + t('filterGenreLabel') + '</span><div class="filter-chips">' + chipRowHtml('genre', genres, genreLabel, true) + '</div></div>' +
-      '<button type="button" class="filter-reset-btn" id="' + idPrefix + 'FilterReset">' + t('filterResetBtn') + '</button>' +
+      resetBtnHtml +
     '</div>';
 }
 
