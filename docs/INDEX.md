@@ -37,12 +37,35 @@
 docs/
 ├─ content/     작품별 신규 콘텐츠 기획
 ├─ design/      디자인 시스템·화면별 설계·Phase 1 마감 기준
+├─ growth/      콘텐츠 진단·SEO 성장 우선순위·Location Graph·생산체계
 ├─ product/     기능·운영 기획
 ├─ qa/          사이트 점검·QA 보고서
 └─ seo/         SEO·글로벌·광고·개발 요청 문서
 ```
 
 정리 전 아이디어·녹취·메일·메모는 저장소 루트의 [`../inbox/`](../inbox/)를 사용합니다.
+
+## 성장 — 현재 실행 기준
+
+다음 성장 트랙의 마스터 Issue는 **#31 Content Growth Engine v1**이며, 첫 실행 연구 배치는 **#32 Batch 1 SEO winners**입니다.
+
+- [`growth/CONTENT_GROWTH_ENGINE_V1.md`](growth/CONTENT_GROWTH_ENGINE_V1.md)  
+  Search Console 기반 우선순위, 신규작 Research Gate, 내부링크·측정 루프를 정의한 성장 마스터 문서.
+
+- [`growth/CONTENT_INVENTORY_AUDIT_V1.md`](growth/CONTENT_INVENTORY_AUDIT_V1.md)  
+  현재 42개 작품과 데이터 구조를 기반으로 한 A/B/C/D 1차 콘텐츠 진단.
+
+- [`growth/CONTENT_PRIORITY_30_2026H2.md`](growth/CONTENT_PRIORITY_30_2026H2.md)  
+  기존 SEO 가속 15 + 2026 신규 K-content Research Gate 10 + 글로벌 장소형 에버그린 5의 우선순위 30.
+
+- [`growth/BATCH1_SEO_CONTENT_BRIEF_V1.md`](growth/BATCH1_SEO_CONTENT_BRIEF_V1.md)  
+  Breaking Bad, One Piece, Stranger Things, Harry Potter, 폭싹 속았수다, 삼체의 첫 SEO/콘텐츠 보강 브리프.
+
+- [`growth/K_CONTENT_LOCATION_GRAPH_V1.md`](growth/K_CONTENT_LOCATION_GRAPH_V1.md)  
+  작품↔장면↔인물/배우↔실제 장소↔지역 관계를 기존 데이터에서 활용하는 Location Graph 설계.
+
+- [`growth/CONTENT_PRODUCTION_PIPELINE_V1.md`](growth/CONTENT_PRODUCTION_PIPELINE_V1.md)  
+  후보→조사→검증→기획→GitHub→구현→QA→2주/4주 측정의 반복 콘텐츠 생산체계.
 
 ## 디자인 — 현재 기준
 
@@ -69,7 +92,7 @@ docs/
 - [`design/DISCOVERY_HUBS_V1.md`](design/DISCOVERY_HUBS_V1.md) — Places / Regions / Light Discovery Index
 - [`design/SHARED_SITE_SHELL_V1.md`](design/SHARED_SITE_SHELL_V1.md) — Header / Navigation / Language 공통 체계
 
-개발 추적 마스터 Issue는 **#28 Design Phase 1 Closeout**을 사용합니다.
+개발 추적 마스터 Issue는 **#28 Design Phase 1 Closeout**을 사용하며, 실제 모바일 보정은 **#30 Mobile UX Remediation**을 우선 처리합니다.
 
 ## SEO / 개발
 
@@ -101,6 +124,9 @@ docs/
 - [`qa/i18n-language-switcher-remediation-plan-v2.md`](qa/i18n-language-switcher-remediation-plan-v2.md)  
   실제 `site/` 소스를 반영한 다국어 전환·번역 준비상태 통합 개발 기준본 (Issue #10).
 
+- [`qa/MOBILE_VISUAL_QA_CHECKLIST_V1.md`](qa/MOBILE_VISUAL_QA_CHECKLIST_V1.md)  
+  실제 모바일/에뮬레이션 360·390·430 화면을 기준으로 하는 시각 QA 하드 게이트.
+
 ## 콘텐츠
 
 - [`content/pachinko-content-plan-v1.md`](content/pachinko-content-plan-v1.md)  
@@ -122,4 +148,4 @@ docs/
 
 ## 이관 메모
 
-현재 저장소에는 기획·디자인·SEO·콘텐츠·QA 문서와 운영 웹사이트 소스가 함께 있다. 운영 소스는 `site/` 하위에 있다. 디자인 Phase 1 완료 후에는 해당 디자인 시스템을 기본값으로 재사용하고, 별도의 Phase 2 결정 전까지 수시 리디자인은 하지 않는다.
+현재 저장소에는 기획·디자인·성장·SEO·콘텐츠·QA 문서와 운영 웹사이트 소스가 함께 있다. 운영 소스는 `site/` 하위에 있다. 디자인 Phase 1 완료 후에는 해당 디자인 시스템을 기본값으로 재사용하고, 별도의 Phase 2 결정 전까지 수시 리디자인은 하지 않는다. 성장 트랙은 UI 변경과 별개로 GSC/콘텐츠 연구를 병렬 진행할 수 있지만 공통 generator/CSS 충돌이 생기면 최신 main 반영 후 구현한다.
