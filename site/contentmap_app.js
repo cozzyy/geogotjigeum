@@ -76,6 +76,9 @@ let currentView = { type:'landing' };
 // 인물/장소 상세 화면의 '뒤로' 버튼이 어디로 돌아가야 하는지 기억해두는 상태.
 // (goBack/resolveReturnTarget/backBtnLabel — loadWork() 정의 바로 아래에 있음)
 let returnTarget = null;
+// Issue #22 Map Explorer v1: 현재 선택된 장소 id — 지도 위 선택 핀을 색상 외에도
+// 크기/링으로 구분하기 위해 사용 (docs/design/MAP_EXPLORER_V1.md §8, refreshLocationLayer 참고)
+let selectedLocId = null;
 
 const UI_STRINGS = {
   ko: {
@@ -1419,12 +1422,15 @@ function setupLocationLayer(){
     type:'circle',
     source:'locations',
     paint:{
-      'circle-radius':8,
+      // Issue #22 Map Explorer v1: 선택된 핀은 색만이 아니라 크기로도 구분되도록 반경을 키운다
+      // (docs/design/MAP_EXPLORER_V1.md §8 "selected pin state must be distinguishable by more
+      // than color alone"). 방문 확인(금색 테두리)과 선택 상태는 서로 다른 신호라 동시에 켜질 수 있다.
+      'circle-radius':['case', ['==', ['get','selected'], 1], 12, 8],
       'circle-color':['get','color'],
       // 방문 확인(localStorage 기반)한 장소는 금색 테두리를 더 두껍게 둘러 한눈에 구분되게 함
       // — 서버 없이도 "이미 확인한 곳/아직 안 본 곳"을 지도에서 바로 알 수 있어 완주 동기부여가 됨
-      'circle-stroke-width':['case', ['==', ['get','visited'], 1], 3, 2],
-      'circle-stroke-color':['case', ['==', ['get','visited'], 1], '#ffd23f', '#ffffff']
+      'circle-stroke-width':['case', ['==', ['get','selected'], 1], 4, ['==', ['get','visited'], 1], 3, 2],
+      'circle-stroke-color':['case', ['==', ['get','selected'], 1], '#FF7B57', ['==', ['get','visited'], 1], '#ffd23f', '#ffffff']
     }
   });
 
@@ -3220,7 +3226,8 @@ function refreshLocationLayer(work, mappableLocations){
       properties:{
         locId: loc.id, workId: work.id, color: work.pinColor,
         label: loc.nameInWork || loc.modernName,
-        visited: visited.indexOf(loc.id) !== -1 ? 1 : 0
+        visited: visited.indexOf(loc.id) !== -1 ? 1 : 0,
+        selected: loc.id === selectedLocId ? 1 : 0
       }
     };
   });
@@ -3879,6 +3886,7 @@ function showLocation(work, data, locId, isRefresh, from){
     document.getElementById('sidebar').classList.add('sidebar-detail');
     markVisited(work.id, locId);
     renderProgressBadge(work, data);
+    selectedLocId = locId;
     if (hasCoords) refreshLocationLayer(work, data.locations.filter(function(l){ return l.lat != null && l.lng != null; }));
     checkCompletion(work, data);
     if (isMobileLayout()) setMobileView('info');
