@@ -1,25 +1,35 @@
-# Geugotjigeum Design Rollout Sequence v1
+# Geugotjigeum Design Rollout Sequence v1 — Phase 1 Closeout
 
-## Current sequence
-1. Homepage — Cinematic Content Discovery — implementation completed
-2. Work Detail / Hooking — Hybrid Light Editorial — implementation completed (PR #25 / Issue #20)
-3. Map Explorer — dark brand shell + dominant map + bright info panel — design spec ready / Figma visual pending
-4. Quiz Experience — Playful Editorial — design spec ready / Figma visual pending
-5. Place Detail — Hybrid Travel Information — early design plan ready
-6. Discovery Hubs — Places / Regions — Light Discovery Index — design plan ready
-7. Shared Site Shell — Header / Navigation / Language — design plan ready
+## Status
+**DESIGN PLANNING COMPLETE — IMPLEMENTATION CLOSEOUT IN PROGRESS**
+
+## Final Phase 1 sequence
+1. Homepage — Cinematic Content Discovery — implemented (#19 / PR #21)
+2. Work Detail / Hooking — Hybrid Light Editorial — implemented (#20 / PR #25)
+3. Map Explorer — dark brand shell + dominant map + bright info panel — approved for implementation (#22)
+4. Quiz Experience — Playful Editorial — approved for implementation (#23)
+5. Place Detail — Hybrid Travel Information — approved for implementation (#24)
+6. Discovery Hubs — Places / Regions — Light Discovery Index — approved for implementation (#26)
+7. Shared Site Shell — Header / Navigation / Language — approved for implementation (#27)
+8. Utility / Edge States — final cross-screen polish and fallback rules
+9. Full regression QA / deploy package / Phase 1 design freeze
+
+## Canonical closeout document
+`docs/design/DESIGN_PHASE1_CLOSEOUT_V1.md`
 
 ## Shared principles
 Across all screens:
-- same brand accent (`#FF7B57` family)
-- dark cinematic surfaces where emotion/identity matters
-- bright warm reading surfaces where long text or practical information matters
+- same primary accent (`#FF7B57` family)
+- dark cinematic surfaces where emotion/identity/spatial immersion matters
+- bright warm reading surfaces where long text, search, or practical information matters
 - mobile-first layout
 - no unnecessary architecture rewrite for visual work
 - preserve SEO / i18n / existing data contracts
 - use verified existing content and images first
-- utility/index pages should optimize discovery and scanability rather than imitate editorial pages
-- canonical language presentation is `KR / EN / JP / 繁中`, while preserving existing locale readiness/fallback rules
+- utility/index pages optimize discovery and scanability rather than imitate editorial pages
+- canonical language presentation: `KR / EN / JP / 繁中`
+- no silent locale fallback presented as completed translation
+- image and empty states must degrade gracefully without fabricated content
 
 ## Screen roles
 - Homepage: emotional discovery / entry
@@ -29,13 +39,20 @@ Across all screens:
 - Place Detail: practical travel context
 - Places / Regions hubs: search and browse utility
 - Shared Shell: cross-screen orientation and language consistency
+- Utility / Edge States: resilience, fallback and accessibility consistency
 
-## Pipeline rule
-Design stays one or two screens ahead of development:
+## Figma rule
+Starter MCP quota may block visual-frame creation. For this Phase 1 closeout, GitHub Markdown specs are canonical and sufficient for implementation. Missing Figma frames do not block development.
 
-`ChatGPT design/spec → user approves direction → Claude implements → ChatGPT reviews → next design already waiting`
+## Implementation discipline
+Do not combine all remaining work into one giant PR.
 
-Do not start a later implementation if it risks collision with an unfinished earlier screen sharing the same core files/styles.
+Recommended order:
+`#22 → #23 → #24 → #26 → #27 → final edge/regression pass`
 
-## Figma constraint
-Starter MCP quota may temporarily block visual-frame creation. When that happens, GitHub Markdown specs remain the canonical planning source and Figma visuals are added later without changing approved product direction unless user review requires it.
+Each stage should begin from latest `main`, use a dedicated branch/PR, and preserve the prior completed screens.
+
+## Pipeline after Phase 1
+Once final QA/deployment is complete, stop opportunistic redesign work and treat this system as the baseline.
+
+Future design work becomes a deliberate Phase 2 based on actual usage, SEO/traffic, content growth and user feedback.
