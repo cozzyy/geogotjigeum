@@ -1012,12 +1012,21 @@ function renderQuizQuestion(){
   }
   const q = quiz.questions[quizState.idx];
   quizState.answered = false;
+  const total = quiz.questions.length;
+  const current = quizState.idx + 1;
+  // Issue #23 Quiz Experience v1: 텍스트만 있던 진행률을 "N / M" 숫자 + 실제 막대바로 보강.
+  // 20문항으로 늘어나도 점(dot) 20개를 그리지 않는다는 스펙(§8)을 지키기 위해 처음부터
+  // 비율 기반 막대(%)로 구현 — 문항 수가 몇 개든 리디자인 없이 그대로 동작한다.
+  const pct = Math.round(((quizState.idx) / total) * 100);
   body.innerHTML =
-    '<div class="quiz-progress">문제 ' + (quizState.idx + 1) + ' / ' + quiz.questions.length + ' · 정답 ' + quizState.correctCount + '개</div>' +
+    '<div class="quiz-progress-wrap">' +
+      '<div class="quiz-progress-label"><span>' + current + ' / ' + total + '</span><span>정답 ' + quizState.correctCount + '개</span></div>' +
+      '<div class="quiz-progress-track"><div class="quiz-progress-fill" style="width:' + pct + '%"></div></div>' +
+    '</div>' +
     '<div class="quiz-question">' + q.q + '</div>' +
     '<div class="quiz-options" id="quizOptions">' +
       q.options.map(function(opt, i){
-        return '<button class="quiz-option-btn" onclick="answerQuiz(' + i + ')">' + opt + '</button>';
+        return '<button class="quiz-option-btn" onclick="answerQuiz(' + i + ')"><span class="quiz-option-label">' + opt + '</span><span class="quiz-option-mark"></span></button>';
       }).join('') +
     '</div>' +
     '<div id="quizFeedback"></div>';
@@ -1031,22 +1040,27 @@ function answerQuiz(optIdx){
   const buttons = document.querySelectorAll('#quizOptions .quiz-option-btn');
   buttons.forEach(function(btn, i){
     btn.disabled = true;
-    if (i === q.correct) btn.classList.add('correct');
-    else if (i === optIdx) btn.classList.add('wrong');
+    const mark = btn.querySelector('.quiz-option-mark');
+    // Issue #23: 정답/오답을 버튼 배경색만이 아니라 버튼 위 아이콘(✓/✗)으로도 표시
+    // (docs/design/QUIZ_EXPERIENCE_V1.md §5, UTILITY_EDGE_STATES_V1.md §9).
+    if (i === q.correct){ btn.classList.add('correct'); if (mark) mark.textContent = '✓'; }
+    else if (i === optIdx){ btn.classList.add('wrong'); if (mark) mark.textContent = '✗'; }
   });
   const feedback = document.getElementById('quizFeedback');
   if (isCorrect){
     quizState.correctCount++;
     quizState.unlocked.push(q.reward);
-    const rewardLabel = q.reward.type === 'secret' ? '🔓 비밀 해제' : '🔮 운세 해제';
+    // Issue #23: 보상 라벨을 스펙이 제안하는 표현으로 교체(§6) — 저장 데이터(q.reward.type:
+    // 'secret'|'fortune')는 그대로 두고 화면 표기 문구만 바꾼다.
+    const rewardLabel = q.reward.type === 'secret' ? '✨ 숨은 이야기' : '🔮 오늘의 한마디';
     feedback.innerHTML =
       '<div class="quiz-feedback correct">✅ 정답이에요!</div>' +
       '<div class="quiz-reward-box"><span class="label">' + rewardLabel + '</span><div class="text">' + q.reward.text + '</div></div>' +
-      '<button class="course-btn" style="margin-top:12px;" onclick="nextQuiz()">다음 문제 →</button>';
+      '<button class="quiz-primary-btn" onclick="nextQuiz()">다음 문제 →</button>';
   } else {
     feedback.innerHTML =
       '<div class="quiz-feedback wrong">❌ 아쉬워요, 정답은 "' + q.options[q.correct] + '"였어요.</div>' +
-      '<button class="course-btn" style="margin-top:12px;" onclick="nextQuiz()">다음 문제 →</button>';
+      '<button class="quiz-primary-btn" onclick="nextQuiz()">다음 문제 →</button>';
   }
 }
 function nextQuiz(){
@@ -1086,15 +1100,18 @@ function renderQuizResult(){
   const secretCount = quizState.unlocked.filter(function(r){ return r.type === 'secret'; }).length;
   const fortuneCount = quizState.unlocked.filter(function(r){ return r.type === 'fortune'; }).length;
   const rewardListHtml = quizState.unlocked.map(function(r){
-    const label = r.type === 'secret' ? '🔓 비밀' : '🔮 운세';
+    const label = r.type === 'secret' ? '✨ 숨은 이야기' : '🔮 오늘의 한마디';
     return '<div class="quiz-reward-box"><span class="label">' + label + '</span><div class="text">' + r.text + '</div></div>';
   }).join('');
+  // Issue #23: 결과화면 우선순위(§7) — 점수 → 요약 → 검증된 실제 장소 카드 → 지도 CTA(장소카드
+  // 안에 이미 있음) → 다시풀기(코랄 프라이머리) → 작품으로 돌아가기(3차 텍스트 링크).
   body.innerHTML =
     '<div class="quiz-result-score">' + quizState.correctCount + ' / ' + total + '문제 정답!</div>' +
-    '<div class="quiz-result-sub">비밀 ' + secretCount + '개 · 운세 ' + fortuneCount + '개를 모았어요.</div>' +
+    '<div class="quiz-result-sub">숨은 이야기 ' + secretCount + '개 · 오늘의 한마디 ' + fortuneCount + '개를 모았어요.</div>' +
     (rewardListHtml || '<div class="empty-state">이번엔 모은 보상이 없어요 — 다시 도전해보세요!</div>') +
     renderQuizResultLocations(quizState.workId) +
-    '<button class="course-btn" style="margin-top:14px;" onclick="openQuizModal(\'' + quizState.workId + '\')">🔁 처음부터 다시 풀기</button>';
+    '<button class="quiz-primary-btn" onclick="openQuizModal(\'' + quizState.workId + '\')">🔁 처음부터 다시 풀기</button>' +
+    '<button class="quiz-tertiary-link" onclick="closeQuizModal()">작품으로 돌아가기</button>';
 }
 window.openQuizModal = openQuizModal;
 window.closeQuizModal = closeQuizModal;
@@ -3548,7 +3565,8 @@ function resetSidebar(work, data){
   // 노출한다 — 폭싹속았수다 하나로 먼저 검증해보자는 파일럿 범위 합의라 en/ja 번역은 아직
   // 안 했다(전체 작품으로 넓힐 때 함께 할 예정).
   const quizBtnHtml = (currentLang === 'ko' && window.QUIZ_DATA && window.QUIZ_DATA[work.id])
-    ? '<button class="course-btn" style="margin-top:10px;border-style:solid;border-color:#e0a83a;color:#8a6a1f;background:#fff8ee;" onclick="openQuizModal(\'' + work.id + '\')">🍊 이 작품 퀴즈 풀어보기</button>'
+    // Issue #23: 퀴즈 진입 CTA를 모달 내부의 새 코랄 액센트(--ds-accent)와 톤을 맞춘다.
+    ? '<button class="course-btn" style="margin-top:10px;border-style:solid;border-color:#FF7B57;color:#c8492a;background:#fff3ee;" onclick="openQuizModal(\'' + work.id + '\')">🍊 이 작품 퀴즈 풀어보기</button>'
     : '';
   const travelTabHtml =
     '<div class="tab-scenic-header"><span class="icon">🧭</span><span class="label">' + t('travelCourseLabel') + '</span></div>' +
