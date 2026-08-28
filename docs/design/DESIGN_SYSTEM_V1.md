@@ -1,109 +1,211 @@
-# Geugotjigeum Design System v1
+# Geugotjigeum Design System v1 — Phase 1 Final
 
-## 1. Purpose
-This is the minimum visual system for the approved homepage direction: **A. Cinematic Content Discovery**.
+## Status
+**PHASE 1 DESIGN SYSTEM — FINAL FOR THIS REDESIGN ROUND**
 
-Goal: make K-content scenes feel cinematic while keeping filming-location discovery and travel actions obvious.
+This is the shared visual and interaction baseline for the first completed design-redesign cycle.
 
-## 2. Visual principles
-- Dark cinematic canvas, not a flat black page.
-- Images/scenes are the visual protagonist.
-- Warm coral is the main action accent.
-- Cards and surfaces use layered dark neutrals rather than heavy borders.
-- Information hierarchy must stay clear on mobile before desktop polish.
-- Do not imitate Netflix UI literally.
-- Avoid generic tourism-board styling.
+## 1. Product idea
+The service should connect:
 
-## 3. Core color tokens
+`K-content scene → work/story → real place → travel discovery`
+
+The visual system must support both emotional discovery and practical reading. One tone is not forced everywhere.
+
+## 2. Two-surface principle
+### A. Cinematic dark
+Use where emotion, identity, imagery, or spatial immersion is primary:
+- homepage hero
+- work-detail hero / featured scene
+- map shell
+- selected editorial transitions
+
+### B. Warm light
+Use where reading, search, travel information, or scanning is primary:
+- work-detail long-form sections
+- place detail practical sections
+- Places / Regions discovery hubs
+- utility/legal/supporting pages
+- quiz question/feedback surface
+
+The user should feel one brand, not one background color.
+
+## 3. Core dark tokens
 - `--ds-bg: #0A0B0F`
 - `--ds-bg-elevated: #141820`
 - `--ds-hero-left: #232A38`
 - `--ds-hero-right: #10141C`
 - `--ds-panel: #151923`
-- `--ds-accent: #FF7B57`
-- `--ds-accent-soft: #FF9B7D`
+- `--ds-line: #242A34`
 - `--ds-text: #FFFFFF`
 - `--ds-text-2: #CDD2DC`
 - `--ds-text-3: #9EA5B2`
-- `--ds-line: #242A34`
 
-## 4. Typography
-Use the current production-safe font stack unless an existing project font already has stronger KR/EN/JP/ZH coverage.
+## 4. Core light tokens
+Recommended warm reading family:
+- `--ds-light-bg: #F8F5EE`
+- `--ds-light-surface: #FDFBF7`
+- `--ds-light-card: #FFFFFF`
+- `--ds-light-text: #1B1E24`
+- `--ds-light-text-2: #575E6B`
+- `--ds-light-line: #E1DCD2`
+
+Implementation may use very close existing production-safe values if a page already has compatible tokens; do not create needless near-duplicate variables.
+
+## 5. Brand accent
+Primary:
+- `--ds-accent: #FF7B57`
+- `--ds-accent-soft: #FF9B7D`
+
+Rules:
+- coral is the primary product action color
+- do not introduce another competing brand accent just to decorate utility pages
+- existing blue may remain only where current functional semantics or legacy links require it during migration
+- destructive/error states should use semantic styling, not coral
+
+## 6. Typography
+Use the current production-safe multilingual stack unless a verified project font already covers KR / EN / JP / zh-Hant better.
 
 Recommended scale:
 - Logo: 22px / 700
-- Desktop Hero: 44px / 700-800
-- Mobile Hero: 30px / 700-800
-- Section title: 22-24px / 700
-- Card title: 15-16px / 600-700
-- Body: 14-16px / 400
-- Meta: 11-13px / 500-600
+- Desktop Hero: 44px / 700–800
+- Mobile Hero: 30px / 700–800
+- Page title: 28–36px depending on context
+- Section title: 22–24px / 700
+- Card title: 15–18px / 600–700
+- Body: 14–16px / 400
+- Meta: 11–13px / 500–600
 
 Rules:
-- Keep Korean line-height around 1.45-1.6 for body text.
-- Avoid ultra-condensed line lengths on desktop.
-- Multilingual labels must not break layout when translated.
+- Korean body line-height roughly 1.45–1.65
+- long-form line length should remain comfortable on desktop
+- primary entity names may wrap; never shrink them aggressively to force one line
+- translated labels must not break navigation or buttons
 
-## 5. Spacing / radius
-- Main horizontal desktop padding: 40-56px
-- Mobile horizontal padding: 20-22px
-- Section gap: 40-56px desktop / 28-36px mobile
-- Card radius: 16-18px
-- Pill radius: 999px
-- Button min height: 44px mobile
+## 7. Spacing / radius
+- desktop horizontal page padding: 40–56px for wide product surfaces
+- editorial reading container may remain narrower for readability
+- mobile horizontal padding: 18–22px
+- section gap: 40–56px desktop / 28–36px mobile
+- card radius: 16–18px
+- compact utility card radius: 12–16px
+- pill radius: 999px
+- mobile interactive target: >=44px
 
-## 6. Core components
-### Header
-- Left: `그곳지금` brand
-- Middle: works / places / map / quiz entry points as supported by current app
-- Right: language switcher
-- Keep existing language behavior and i18n rules; redesign only presentation.
+## 8. Shared component language
+### Header / site shell
+Three approved variants:
+1. Cinematic shell
+2. Utility light shell
+3. Map/app shell
+
+They may differ in background/height but should share brand geometry, language anatomy, focus behavior, and stable navigation priorities.
+
+Canonical language labels:
+`KR / EN / JP / 繁中`
 
 ### Primary CTA
-- Coral fill `#FF7B57`
-- White text
-- Strong but not oversized
+- coral fill
+- readable white text
+- minimum 44px touch height mobile
+- one visually dominant action per local decision area
 
 ### Secondary CTA
-- Light or dark neutral contrast depending on background
-- Must remain visually subordinate to primary CTA
+- neutral contrast appropriate to surface
+- clearly subordinate to primary
 
-### Work card
-- Image-dominant top area
-- Title + short location metadata
-- Minimal secondary chrome
-- Hover/focus should not move layout
+### Cards
+Work / place / result cards should prioritize:
+1. entity identity
+2. relationship/context
+3. action
 
-### Featured scene panel
-- Used for one story/scene hook
-- Must connect scene → work → actual place
-- Avoid repeated “사실은…” gimmick copy as a system default
+Avoid excessive badges, borders, and metadata.
 
-## 7. Responsive rules
-Mandatory QA widths:
-- 360px
-- 390px
-- 430px
-- 1440px desktop
+### Search/filter
+- prominent only on discovery utility screens
+- active state visible by text/shape, not color alone
+- reset discoverable
+- no backend requirement unless already justified
 
-Mobile:
-- Hero copy max 2-3 lines when possible
-- CTA row may wrap but must not overflow
-- Work cards become single-column or horizontal-scroll only if clearly intentional
-- Touch targets >= 44px
-- No horizontal page scrolling
+### Featured scene / editorial panel
+- connect story/scene to a real place
+- avoid repetitive system copy such as default “사실은…” hooks
 
-## 8. Accessibility / interaction
-- Preserve visible keyboard focus
-- Text/background contrast must remain readable on dark surfaces
-- Buttons must use semantic elements where possible
-- Do not encode state by color alone
+## 9. Responsive rules
+Mandatory common widths:
+- 360
+- 390
+- 430
+- 1440
 
-## 9. Images
-- Reuse existing verified production assets first.
-- Do not add paid stock services for this implementation.
-- Use aspect-ratio placeholders if an existing content image is unavailable.
-- Keep lazy loading/performance behavior intact.
+Additional:
+- 1280 for utility/detail layouts
+- 1920 for map layout
 
-## 10. Scope
-This v1 is intentionally minimal. It covers homepage/header/cards/CTA visual language first. Map, hooking pages, quizzes and detail screens should adopt the system progressively after homepage validation.
+Rules:
+- no horizontal page scrolling
+- header must not accidentally wrap into two rows
+- CTA rows may stack
+- map controls retain usable space
+- card grids collapse intentionally, not accidentally
+
+## 10. Accessibility / interaction
+- visible keyboard focus
+- sufficient text/background contrast
+- semantic buttons/links where practical
+- state not encoded by color alone
+- hover-only content must have non-hover access
+- touch target >=44px mobile
+- long localized text must wrap safely
+
+## 11. Images
+- verified existing assets first
+- no paid stock dependency in Phase 1
+- no random stock fallback
+- image unavailable → branded neutral placeholder with stable geometry
+- preserve lazy loading / performance behavior where present
+- preserve existing credit/source policy
+
+## 12. Motion
+Phase 1 does not need a motion system.
+
+If transitions exist:
+- subtle
+- do not block reading/action
+- respect reduced-motion behavior where applicable
+- avoid gratuitous confetti/large animation in quiz or map
+
+## 13. Ads
+Design must tolerate manual AdSense without letting ads interrupt core actions.
+
+See `UTILITY_EDGE_STATES_V1.md` for placement safety rules.
+
+## 14. SEO / data boundary
+Visual redesign must preserve unless a separate approved task says otherwise:
+- URL structure
+- canonical
+- hreflang / x-default
+- structured data
+- OG/Twitter
+- GA4
+- map/deep links
+- existing verified content/data contracts
+
+Prefer generator/template source changes over hand-editing generated outputs.
+
+## 15. Phase 1 design references
+- `HOMEPAGE_REDESIGN_A_V1.md`
+- `WORK_DETAIL_HOOKING_V1.md`
+- `MAP_EXPLORER_V1.md`
+- `QUIZ_EXPERIENCE_V1.md`
+- `PLACE_DETAIL_V1.md`
+- `DISCOVERY_HUBS_V1.md`
+- `SHARED_SITE_SHELL_V1.md`
+- `UTILITY_EDGE_STATES_V1.md`
+- `DESIGN_PHASE1_CLOSEOUT_V1.md`
+
+## 16. Design freeze
+After Phase 1 implementation and regression QA, this visual system should be treated as the working baseline rather than continuously redesigned.
+
+A later redesign may reopen the system based on usage data, content growth, SEO/traffic patterns, or user feedback. Until then, new content/features should reuse these patterns rather than invent new visual systems.
