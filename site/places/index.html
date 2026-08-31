@@ -28,44 +28,68 @@
   gtag('config', 'G-H2KNQYH97M');
 </script>
 <style>
-  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  :root{
+    --ink:#1B1E24; --sub:#575E6B; --line:#E1DCD2; --accent:#FF7B57; --accent2:#FF9B7D;
+    --card:#FFFFFF; --pagebg:#F8F5EE;
+    --dh-bg:#0A0B0F; --dh-text:#FFFFFF; --dh-text-2:#CDD2DC; --dh-line:#242A34;
+  }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
-  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
-  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:var(--pagebg);}
+  /* 컴팩트 다크 헤더 — Issue #24: 장소마다 실사진이 없으므로(허위 이미지 금지 원칙) 큰 히어로
+     대신, 나머지 Phase 1 화면(홈/작품상세/지도/퀴즈)과 같은 다크 브랜드 톤의 컴팩트 헤더로
+     "이 장소가 실화 기반 여행 정보다"라는 정체성을 즉시 전달한다. */
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--dh-line);background:var(--dh-bg);position:sticky;top:0;z-index:5;flex-wrap:wrap;gap:8px;min-width:0;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--dh-text);text-decoration:none;min-width:0;}
+  .wsHeader a.brand span{overflow:hidden;text-overflow:ellipsis;}
   .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
-  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--accent);text-decoration:none;font-weight:600;flex-shrink:0;min-height:44px;display:inline-flex;align-items:center;}
   .wsHeader a.backLink:hover{text-decoration:underline;}
-  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
-  .kicker{font-size:12.5px;font-weight:700;color:var(--accent2);letter-spacing:.02em;margin:0 0 8px;}
-  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
+  main{max-width:760px;margin:0 auto;padding:28px 20px 60px;width:100%;}
+  .kicker{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.02em;margin:0 0 8px;}
+  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;overflow-wrap:break-word;}
   .breadcrumb a{color:var(--sub);text-decoration:none;}
   .breadcrumb a:hover{text-decoration:underline;}
-  h1{font-size:23px;line-height:1.4;margin:0 0 6px;}
-  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 20px;}
-  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#3ac07c;border-radius:999px;padding:4px 12px;margin-bottom:18px;}
-  .intro{font-size:15.5px;color:#333;margin:0 0 20px;}
-  .noteBox{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 26px;}
-  h2{font-size:18px;margin:30px 0 12px;padding-top:8px;border-top:1px solid var(--line);}
-  .tipBox{background:#fff8ee;border:1px solid #f0deb8;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#6b5324;margin:0 0 20px;}
-  .tipBox b{color:#8a6a1f;}
-  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease;}
-  .workCard:hover{border-color:#d5d9e0;background:#fafbfc;}
-  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);}
-  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;}
-  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent2);}
-  .mapCta{display:inline-block;background:var(--accent2);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;margin:6px 0 8px;}
+  .wsLangs{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;margin:0 0 14px;width:fit-content;max-width:100%;flex-wrap:wrap;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
+  .wsLangs a.on{color:#fff;background:var(--accent);}
+  .wsLangs a:not(.on):hover{color:var(--accent);}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
+  /* 정체성 블록 — 장소명(h1) + 출처 작품 + "실제로 가볼 수 있는 곳" 배지를 한 덩어리로 */
+  .phIdentity{margin:0 0 18px;}
+  h1{font-size:24px;line-height:1.35;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 12px;overflow-wrap:break-word;}
+  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#2E9E5B;border-radius:999px;padding:5px 12px;}
+  /* 지도 CTA — Issue #24: 예전엔 본문 중간에 있었지만, "이 장소가 어디인지" 확인하려는
+     방문형 검색 의도가 강하므로 정체성 블록 바로 아래(스크롤 없이 보이는 영역)로 끌어올린다. */
+  .mapCtaWrap{margin:16px 0 22px;}
+  .mapCta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;min-height:44px;box-sizing:border-box;width:100%;max-width:420px;text-align:center;}
   .mapCta:hover{opacity:.9;}
-  .otherList{list-style:none;padding:0;margin:0;}
-  .otherList li{margin-bottom:8px;}
-  .otherList a{color:var(--accent2);text-decoration:none;font-size:14px;font-weight:600;}
-  .otherList a:hover{text-decoration:underline;}
+  .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
+  .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .tipBox b{color:var(--accent);}
+  .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
+  h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
+  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
+  .workCard:hover{border-color:var(--accent2);}
+  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;overflow-wrap:break-word;}
+  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent);}
+  .otherList{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+  .otherList li{margin:0;min-width:0;}
+  .otherList a{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;overflow-wrap:break-word;box-sizing:border-box;}
+  .otherList a:hover{border-color:var(--accent2);color:var(--accent);}
+  .finalCtaWrap{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
   footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
-  footer a:hover{color:var(--accent2);}
+  footer a:hover{color:var(--accent);}
   .placeGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:8px;}
+  @media (max-width:768px){
+    .wsHeader{padding:11px 16px;}
+    main{padding:24px 16px 52px;}
+    .mapCta{max-width:100%;}
+    h1{font-size:20px;}
+  }
   @media (max-width:480px){
-    .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
     main{padding:22px 16px 48px;}
     h1{font-size:19px;}
   }
@@ -96,7 +120,7 @@
   <p class="kicker">장소로 찾기</p>
   <p class="breadcrumb"><a href="https://geugotjigeum.com/">홈</a> / 장소로 찾기</p>
   <h1>이름으로 실제 장소 찾기</h1>
-  <p class="intro">영화·드라마·소설에 나온 곳을 장소 이름으로 검색해서 찾아보세요. 검증된 대표 장소 492곳을 모았습니다.</p>
+  <p class="intro">영화·드라마·소설에 나온 곳을 장소 이름으로 검색해서 찾아보세요. 검증된 대표 장소 308곳을 모았습니다.</p>
   <h2>전체 장소 목록</h2>
   <div class="placeGrid">
     <a class="workCard" href="https://geugotjigeum.com/places/harrypotter-kingscross/">
@@ -159,11 +183,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hanseong_city/">
-      <h3>한성</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-taejongdae/">
       <h3>태종대</h3>
       <p>파친코 (Pachinko)</p>
@@ -172,11 +191,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/namiya-bungotakada_showamachi/">
       <h3>오이타현 분고타카다시 쇼와노마치</h3>
       <p>나미야 잡화점의 기적 (ナミヤ雑貨店の奇蹟)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/gwandong-uisangdae/">
-      <h3>의상대</h3>
-      <p>관동별곡 (關東別曲)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/wangsanam-seondolmaeul/">
@@ -267,11 +281,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/taebaek-taebaeksanmaek_museum/">
       <h3>태백산맥문학관</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gwanghwamun/">
-      <h3>광화문</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-gamji_beach/">
@@ -369,11 +378,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-geunjeongjeon/">
-      <h3>근정전</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-jagalchi_market/">
       <h3>자갈치시장</h3>
       <p>파친코 (Pachinko)</p>
@@ -467,11 +471,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_hongyo/">
       <h3>벌교 홍교</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gyeonghoeru/">
-      <h3>경회루</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-maechukji_village/">
@@ -569,11 +568,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-geoncheonggung/">
-      <h3>건청궁</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-beomil_bridge/">
       <h3>범일동 구름다리</h3>
       <p>파친코 (Pachinko)</p>
@@ -662,11 +656,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_station/">
       <h3>벌교역</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gyeongungung_deoksugung/">
-      <h3>경운궁</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-dongnae_villa/">
@@ -759,11 +748,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daehanmun/">
-      <h3>대한문</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-yeongdo_office/">
       <h3>영도구청</h3>
       <p>파친코 (Pachinko)</p>
@@ -842,11 +826,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jungdo_embankment/">
       <h3>중도방죽</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-junghwajeon/">
-      <h3>중화전</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-centum_station/">
@@ -929,11 +908,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hamnyeongjeon/">
-      <h3>함녕전</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-bexco/">
       <h3>벡스코</h3>
       <p>파친코 (Pachinko)</p>
@@ -1009,11 +983,6 @@
       <p>태백산맥</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeukjodang/">
-      <h3>즉조당</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-busan_yeongnak_park/">
       <h3>부산영락공원</h3>
       <p>파친코 (Pachinko)</p>
@@ -1084,14 +1053,9 @@
       <p>직지: 아모르 마네트</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hoejeongri_church/">
-      <h3>회정리교회</h3>
+    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-old_financial_coop/">
+      <h3>옛 벌교금융조합 터</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seogeodang/">
-      <h3>석어당</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-yangdong_village/">
@@ -1154,14 +1118,9 @@
       <p>직지: 아모르 마네트</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gugeumyungjohap/">
-      <h3>구금융조합</h3>
+    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jogyesan/">
+      <h3>조계산</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeonggwanheon/">
-      <h3>정관헌</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-suncheon_studio/">
@@ -1199,14 +1158,9 @@
       <p>반지의 제왕 (The Lord of the Rings)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_elementary/">
-      <h3>벌교초등학교</h3>
+    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jirisan/">
+      <h3>지리산</h3>
       <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jumyeongdang/">
-      <h3>준명당</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-nonsan_sunshine_studio/">
@@ -1239,16 +1193,6 @@
       <p>반지의 제왕 (The Lord of the Rings)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jinteujae/">
-      <h3>진트재</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gwangmyeongmun/">
-      <h3>광명문</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-mokpo_region/">
       <h3>목포 로케이션 권역</h3>
       <p>파친코 (Pachinko)</p>
@@ -1272,16 +1216,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/gameofthrones-gaztelugatxe/">
       <h3>가스텔루가체</h3>
       <p>왕좌의 게임 (Game of Thrones)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheon_station/">
-      <h3>순천역</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-deokdanjeon/">
-      <h3>돈덕전</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-hapcheon_region/">
@@ -1309,16 +1243,6 @@
       <p>왕좌의 게임 (Game of Thrones)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-maesan_school/">
-      <h3>순천 매산중학교</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seokjojeon/">
-      <h3>석조전</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-andong_region/">
       <h3>안동 로케이션 권역</h3>
       <p>파친코 (Pachinko)</p>
@@ -1344,16 +1268,6 @@
       <p>왕좌의 게임 (Game of Thrones)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-seonamsa/">
-      <h3>선암사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jungmyeongjeon/">
-      <h3>중명전</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-daejeon_region/">
       <h3>대전 로케이션 권역</h3>
       <p>파친코 (Pachinko)</p>
@@ -1372,16 +1286,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/harrypotter-steallfalls/">
       <h3>스틸 폭포</h3>
       <p>해리 포터 (Harry Potter)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-songgwangsa/">
-      <h3>송광사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-russianlegation/">
-      <h3>구 러시아공사관터</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/pachinko-vancouver_region/">
@@ -1404,16 +1308,6 @@
       <p>해리 포터 (Harry Potter)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_station/">
-      <h3>여수역</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sontaghotel/">
-      <h3>손탁호텔터</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-thirtyfirststreet/">
       <h3>31st Street &amp; Ditmars Blvd, 아스토리아</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
@@ -1422,16 +1316,6 @@
     <a class="workCard" href="https://geugotjigeum.com/places/harrypotter-swinleyforest/">
       <h3>스윈리 숲</h3>
       <p>해리 포터 (Harry Potter)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_sinwoldong/">
-      <h3>여수 신월동</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeongdongchurch/">
-      <h3>정동제일교회</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-kingsfriedchicken/">
@@ -1444,29 +1328,9 @@
       <p>해리 포터 (Harry Potter)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jeonnam_dochung_old/">
-      <h3>옛 전남도청</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-baejaehakdang/">
-      <h3>배재학당역사박물관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-statenislandferry/">
       <h3>스태튼아일랜드 페리, 화이트홀 터미널</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-geoje_pow_camp/">
-      <h3>거제도 포로수용소 유적공원</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ewhahakdang/">
-      <h3>이화학당 심슨기념관</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-governorsislandvent/">
@@ -1474,29 +1338,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gangjin_dasan/">
-      <h3>다산초당</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-us_legation/">
-      <h3>구 미국공사관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-coneyislandboardwalk/">
       <h3>코니아일랜드 보드워크 &amp; 루나파크</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gwangju_prison_old/">
-      <h3>옛 광주교도소 터</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-uk_legation/">
-      <h3>구 영국공사관</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-washingtonmonument/">
@@ -1504,29 +1348,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-panmunjeom/">
-      <h3>판문점</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-unhyeongung/">
-      <h3>운현궁</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-tegelbrandenburg/">
       <h3>테겔 공항 &amp; 브란덴부르크 문, 베를린</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-seoul_gyeongmudae/">
-      <h3>경무대 옛터</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jongno_street/">
-      <h3>종로</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-georgiaaquarium/">
@@ -1534,29 +1358,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-geochang_massacre/">
-      <h3>거창사건추모공원</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-bosingak/">
-      <h3>보신각</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-worldofcocacola/">
       <h3>월드 오브 코카콜라</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-incheon_landing_memorial/">
-      <h3>인천상륙작전기념관</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-tapgolpark/">
-      <h3>탑골공원</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-cnncenter/">
@@ -1564,29 +1368,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_jinnamgwan/">
-      <h3>진남관</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-namdaemun/">
-      <h3>숭례문</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-centennialolympicpark/">
       <h3>센테니얼 올림픽 파크</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_manseongri/">
-      <h3>여수 만성리 형제묘</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-dongdaemun/">
-      <h3>흥인지문</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-atlantabeltline/">
@@ -1594,29 +1378,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheon_maesandeung/">
-      <h3>순천 매산등 추모 공간</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hansungjeongi/">
-      <h3>한성전기회사터</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-poncecitymarket/">
       <h3>폰스 시티 마켓</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-un_memorial_busan/">
-      <h3>유엔기념공원</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-myeongdongcathedral/">
-      <h3>명동성당</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-foxtheatreatlanta/">
@@ -1624,29 +1388,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-old_financial_coop/">
-      <h3>옛 벌교금융조합 터</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gyeonghuigung/">
-      <h3>경희궁</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-atlantahistorycenter/">
       <h3>애틀랜타 역사센터</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jogyesan/">
-      <h3>조계산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seoulstationold/">
-      <h3>구 서울역사</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-piedmontparkatl/">
@@ -1654,29 +1398,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jirisan/">
-      <h3>지리산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hwangudan/">
-      <h3>환구단</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-mercedesbenzstadium/">
       <h3>메르세데스-벤츠 스타디움</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-buyongsan_park/">
-      <h3>부용산공원</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seodaemunprison/">
-      <h3>서대문형무소역사관</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-highmuseumart/">
@@ -1684,29 +1408,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_bus_terminal/">
-      <h3>벌교시외버스터미널</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-independencegate/">
-      <h3>독립문</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-stonemountainpark/">
       <h3>스톤 마운틴 파크</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_5iljang/">
-      <h3>벌교 오일장</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sungkyunkwan/">
-      <h3>성균관</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-zooatlanta/">
@@ -1714,29 +1418,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hongyo_village/">
-      <h3>홍교마을</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jongmyo/">
-      <h3>종묘</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-mlkhistoricsite/">
       <h3>마틴 루터 킹 주니어 국립역사공원</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jeseoksan/">
-      <h3>제석산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sajikdan/">
-      <h3>사직단</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-krogstreetmarket/">
@@ -1744,29 +1428,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-boseong_gunchung/">
-      <h3>보성군청</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-namsan_japaneselegacy/">
-      <h3>남산 왜성대</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-timessquarenyc/">
       <h3>타임스스퀘어</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yuleomyeon/">
-      <h3>보성군 율어면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jemulpo_road/">
-      <h3>제물포로</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-empirestatebuilding/">
@@ -1774,29 +1438,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-joseongmyeon/">
-      <h3>보성군 조성면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_gaehanggi/">
-      <h3>인천 개항장 거리</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-topoftherocknyc/">
       <h3>탑 오브 더 록</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-daewonsa_boseong/">
-      <h3>대원사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_japaneseconcession/">
-      <h3>인천 舊 일본 제1은행지점</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-centralparknyc/">
@@ -1804,29 +1448,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jonjesan/">
-      <h3>존제산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_daebul_hotel/">
-      <h3>대불호텔 전시관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-brooklynbridgenyc/">
       <h3>브루클린 다리</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gyeombaekmyeon/">
-      <h3>보성군 겸백면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_customs_pier/">
-      <h3>인천항 세관부두터</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-rockefellercenternyc/">
@@ -1834,29 +1458,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-boseong_daehandawon/">
-      <h3>대한다원 보성녹차밭</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_jayu_park/">
-      <h3>자유공원</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-statueoflibertynyc/">
       <h3>자유의 여신상</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-naganeupseong/">
-      <h3>낙안읍성</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_gaehang_museum/">
-      <h3>인천개항박물관 일대 근대건축거리</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-grandcentralfoodhall/">
@@ -1864,29 +1468,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheonman_wetland/">
-      <h3>순천만습지·순천만국가정원</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_chojijin/">
-      <h3>강화 초지진</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-chryslerbuildingnyc/">
       <h3>크라이슬러 빌딩</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_port/">
-      <h3>여수항</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_gwangseongbo/">
-      <h3>강화 광성보</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-oneworldobservatory/">
@@ -1894,29 +1478,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-odongdo/">
-      <h3>오동도</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_yeonmudang/">
-      <h3>강화 연무당 옛터</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-queensmuseumny/">
       <h3>퀸즈 미술관</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeja_bay/">
-      <h3>여자만</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_deokjinjin/">
-      <h3>강화 덕진진</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-momaps1queens/">
@@ -1924,29 +1488,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-deukryang_bay/">
-      <h3>득량만</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sunshinestudio_main/">
-      <h3>논산 탑정호 미스터션샤인 촬영세트</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-queensnightmarket/">
       <h3>퀸즈 나이트 마켓</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gwangju_station/">
-      <h3>광주역</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gosahong_house_set/">
-      <h3>고사홍 대감댁 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-astoriaparknyc/">
@@ -1954,29 +1498,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-mudeungsan/">
-      <h3>무등산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeojatgeori_set/">
-      <h3>저잣거리 세트</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-highlinenyc/">
       <h3>하이라인</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hwaeomsa/">
-      <h3>화엄사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-gloryhotel_set/">
-      <h3>글로리호텔 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-brooklynmuseumny/">
@@ -1984,29 +1508,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-piagol/">
-      <h3>피아골</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hansungjeongi_set/">
-      <h3>한성전기회사 세트</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-wallstreetbullny/">
       <h3>월가 황소상</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-baemsagol/">
-      <h3>뱀사골</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-tramtrack_set/">
-      <h3>전차 선로 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-unionsquareny/">
@@ -2014,29 +1518,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-banyabong/">
-      <h3>반야봉</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hongyo_bridge_set/">
-      <h3>붉은 아치다리 세트</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-nationalmalldc/">
       <h3>내셔널 몰</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-nogodan/">
-      <h3>노고단</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-japanesehouse_zone/">
-      <h3>일본식 가옥 구역</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-lincolnmemorialdc/">
@@ -2044,29 +1528,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-seongsamjae/">
-      <h3>성삼재</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-thatchedhouse_zone/">
-      <h3>초가 구역</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-airandspacemuseumdc/">
       <h3>스미스소니언 국립 항공우주박물관</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jungsanri/">
-      <h3>중산리</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-photostudio_set/">
-      <h3>사진관 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-uscapitoldc/">
@@ -2074,29 +1538,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-daewonsa_sancheong/">
-      <h3>대원사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-customhouse_set/">
-      <h3>해관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-whitehouseviewdc/">
       <h3>백악관 조망</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-cheoneunsa/">
-      <h3>천은사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-medicalclinic_set/">
-      <h3>양의원 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-jeffersonmemorialdc/">
@@ -2104,29 +1548,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-baengmudong/">
-      <h3>백무동</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-telegraphoffice_set/">
-      <h3>전보국 세트</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-libraryofcongressdc/">
       <h3>미국 의회도서관</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-baegasan/">
-      <h3>백아산</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-churchset/">
-      <h3>서양식 예배당 세트</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-naturalhistorymuseumdc/">
@@ -2134,29 +1558,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gurye_town/">
-      <h3>구례군 읍내</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sanfrancisco_port/">
-      <h3>샌프란시스코 항</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-nationalarchivesdc/">
       <h3>국립문서기록관리청</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gokseong_town/">
-      <h3>곡성군</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_sungnyeol/">
-      <h3>강화 갑곶돈대</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-georgetownwaterfrontdc/">
@@ -2164,29 +1568,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hadong_hwagae/">
-      <h3>화개장터</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-deoksugung_stonewall/">
-      <h3>덕수궁 돌담길</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-reichstagberlin/">
       <h3>독일 연방의회 의사당</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hamyang_town/">
-      <h3>함양군</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seoulmuseumofart/">
-      <h3>서울시립미술관 서소문본관</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-eastsidegalleryberlin/">
@@ -2194,29 +1578,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-sancheong_town/">
-      <h3>산청군</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-salvationarmy_hq/">
-      <h3>구세군중앙회관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-tvtowerberlin/">
       <h3>베를린 TV 타워</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-silsangsa/">
-      <h3>실상사</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeongdongtheater/">
-      <h3>정동극장</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-checkpointcharlieberlin/">
@@ -2224,29 +1588,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-jinju_city/">
-      <h3>진주시</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hanseongbu/">
-      <h3>한성부 관아터</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-museumislandberlin/">
       <h3>박물관 섬</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-damyang_town/">
-      <h3>담양군</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seosomun_history_park/">
-      <h3>서소문역사공원</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-tegelparknow/">
@@ -2254,29 +1598,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-goheung_town/">
-      <h3>고흥군</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-hanyangdoseong/">
-      <h3>한양도성</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-kudammberlin/">
       <h3>쿠담 거리</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-mokpo_city/">
-      <h3>목포시</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-bukchonhanok/">
-      <h3>북촌한옥마을</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-kaufmanastoriastudios/">
@@ -2284,29 +1608,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-hawaii_honolulu/">
-      <h3>호놀룰루</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-namsangolhanok/">
-      <h3>남산골한옥마을</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-movingimagemuseum/">
       <h3>움직이는 이미지 박물관</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-burma_front/">
-      <h3>미얀마</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sogongdong/">
-      <h3>소공동</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-bryantparknyc/">
@@ -2314,29 +1618,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_stream/">
-      <h3>벌교천</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-euljiro/">
-      <h3>을지로</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-nyplmain/">
       <h3>뉴욕 공립도서관 본관</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_girlsmiddle/">
-      <h3>벌교여자중학교</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sangdongchurch/">
-      <h3>상동교회</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-madisonsquaregardenny/">
@@ -2344,29 +1628,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-nodongmyeon/">
-      <h3>보성군 노동면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-yukjogeori/">
-      <h3>육조거리</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-flushingchinatownqueens/">
       <h3>플러싱 차이나타운, 퀸즈</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-ungchimyeon/">
-      <h3>보성군 웅치면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seoullibrary_oldcityhall/">
-      <h3>구 경성부청사터</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-batteryatlantadistrict/">
@@ -2374,29 +1638,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-boknaemyeon/">
-      <h3>보성군 복내면</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-seoulplaza/">
-      <h3>서울광장</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-freedomparkatlanta/">
       <h3>프리덤 파크</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-mundeokmyeon/">
-      <h3>보성군 문덕면 소재지</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-jeongdong_theater_district/">
-      <h3>정동 근대역사거리</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-eastpotomacparkdc/">
@@ -2404,29 +1648,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheon_jogokdong/">
-      <h3>순천 조곡동 원도심</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_chinatown/">
-      <h3>인천 차이나타운</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-potsdamerplatzberlin/">
       <h3>포츠다머 플라츠</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheon_utjang/">
-      <h3>순천 웃장</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_wolmido/">
-      <h3>월미도</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-gantryplazastatepark/">
@@ -2434,129 +1658,9 @@
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
       <span class="cta">자세히 보기 →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-seungjueup/">
-      <h3>순천 승주읍</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-incheon_hongyemun/">
-      <h3>인천 홍예문</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/places/spiderman-citifieldqueens/">
       <h3>시티필드</h3>
       <p>스파이더맨: 홈커밍 (Spider-Man: Homecoming)</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-dolsando/">
-      <h3>돌산도</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_jeondeungsa/">
-      <h3>전등사</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-gyeongdo_island/">
-      <h3>경도</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_goindol/">
-      <h3>강화 고인돌 유적</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-songgwangmyeon/">
-      <h3>순천 송광면 소재지</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-tapjeonglake_view/">
-      <h3>탑정호 출렁다리 전망</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-beolgyo_tidalflat/">
-      <h3>벌교 갯벌</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-sunshinestudio_visitorcenter/">
-      <h3>션샤인 스튜디오 방문자센터</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-mokpo_port/">
-      <h3>목포항</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daejeon_stationold/">
-      <h3>대전 근대 철도 역사거리</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-suncheon_hyanggyo/">
-      <h3>순천향교</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daejeon_yuseong_hanok/">
-      <h3>대전 뿌리공원·족보박물관 인근 전통마을</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-baemsagol_shelter/">
-      <h3>뱀사골대피소</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daejeon_confucian_school/">
-      <h3>대전 도산서원</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/taebaek-yeosu_isunsin_square/">
-      <h3>이순신광장</h3>
-      <p>태백산맥</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daejeon_railroad_museum/">
-      <h3>대전 한국철도문화관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-daejeon_expo_park/">
-      <h3>대전 엑스포과학공원</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-us_koreanimmigrant_museum/">
-      <h3>미주 한인 이민사 박물관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-us_militaryacademy_context/">
-      <h3>미국 해군·해병 관련 역사 전시관</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-japan_yokohama_port/">
-      <h3>요코하마 항</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-japan_tokyo_legation_context/">
-      <h3>주일본 대한제국공사관 관련 역사 공간</h3>
-      <p>미스터 션샤인</p>
-      <span class="cta">자세히 보기 →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/places/sunshine-ganghwa_yongheunggung/">
-      <h3>강화 용흥궁</h3>
-      <p>미스터 션샤인</p>
       <span class="cta">자세히 보기 →</span>
     </a>
   </div>

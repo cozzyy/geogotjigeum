@@ -28,44 +28,68 @@
   gtag('config', 'G-H2KNQYH97M');
 </script>
 <style>
-  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  :root{
+    --ink:#1B1E24; --sub:#575E6B; --line:#E1DCD2; --accent:#FF7B57; --accent2:#FF9B7D;
+    --card:#FFFFFF; --pagebg:#F8F5EE;
+    --dh-bg:#0A0B0F; --dh-text:#FFFFFF; --dh-text-2:#CDD2DC; --dh-line:#242A34;
+  }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
-  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
-  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:var(--pagebg);}
+  /* 컴팩트 다크 헤더 — Issue #24: 장소마다 실사진이 없으므로(허위 이미지 금지 원칙) 큰 히어로
+     대신, 나머지 Phase 1 화면(홈/작품상세/지도/퀴즈)과 같은 다크 브랜드 톤의 컴팩트 헤더로
+     "이 장소가 실화 기반 여행 정보다"라는 정체성을 즉시 전달한다. */
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--dh-line);background:var(--dh-bg);position:sticky;top:0;z-index:5;flex-wrap:wrap;gap:8px;min-width:0;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--dh-text);text-decoration:none;min-width:0;}
+  .wsHeader a.brand span{overflow:hidden;text-overflow:ellipsis;}
   .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
-  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--accent);text-decoration:none;font-weight:600;flex-shrink:0;min-height:44px;display:inline-flex;align-items:center;}
   .wsHeader a.backLink:hover{text-decoration:underline;}
-  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
-  .kicker{font-size:12.5px;font-weight:700;color:var(--accent2);letter-spacing:.02em;margin:0 0 8px;}
-  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
+  main{max-width:760px;margin:0 auto;padding:28px 20px 60px;width:100%;}
+  .kicker{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.02em;margin:0 0 8px;}
+  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;overflow-wrap:break-word;}
   .breadcrumb a{color:var(--sub);text-decoration:none;}
   .breadcrumb a:hover{text-decoration:underline;}
-  h1{font-size:23px;line-height:1.4;margin:0 0 6px;}
-  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 20px;}
-  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#3ac07c;border-radius:999px;padding:4px 12px;margin-bottom:18px;}
-  .intro{font-size:15.5px;color:#333;margin:0 0 20px;}
-  .noteBox{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 26px;}
-  h2{font-size:18px;margin:30px 0 12px;padding-top:8px;border-top:1px solid var(--line);}
-  .tipBox{background:#fff8ee;border:1px solid #f0deb8;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#6b5324;margin:0 0 20px;}
-  .tipBox b{color:#8a6a1f;}
-  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease;}
-  .workCard:hover{border-color:#d5d9e0;background:#fafbfc;}
-  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);}
-  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;}
-  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent2);}
-  .mapCta{display:inline-block;background:var(--accent2);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;margin:6px 0 8px;}
+  .wsLangs{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;margin:0 0 14px;width:fit-content;max-width:100%;flex-wrap:wrap;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
+  .wsLangs a.on{color:#fff;background:var(--accent);}
+  .wsLangs a:not(.on):hover{color:var(--accent);}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
+  /* 정체성 블록 — 장소명(h1) + 출처 작품 + "실제로 가볼 수 있는 곳" 배지를 한 덩어리로 */
+  .phIdentity{margin:0 0 18px;}
+  h1{font-size:24px;line-height:1.35;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 12px;overflow-wrap:break-word;}
+  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#2E9E5B;border-radius:999px;padding:5px 12px;}
+  /* 지도 CTA — Issue #24: 예전엔 본문 중간에 있었지만, "이 장소가 어디인지" 확인하려는
+     방문형 검색 의도가 강하므로 정체성 블록 바로 아래(스크롤 없이 보이는 영역)로 끌어올린다. */
+  .mapCtaWrap{margin:16px 0 22px;}
+  .mapCta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;min-height:44px;box-sizing:border-box;width:100%;max-width:420px;text-align:center;}
   .mapCta:hover{opacity:.9;}
-  .otherList{list-style:none;padding:0;margin:0;}
-  .otherList li{margin-bottom:8px;}
-  .otherList a{color:var(--accent2);text-decoration:none;font-size:14px;font-weight:600;}
-  .otherList a:hover{text-decoration:underline;}
+  .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
+  .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .tipBox b{color:var(--accent);}
+  .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
+  h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
+  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
+  .workCard:hover{border-color:var(--accent2);}
+  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;overflow-wrap:break-word;}
+  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent);}
+  .otherList{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+  .otherList li{margin:0;min-width:0;}
+  .otherList a{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;overflow-wrap:break-word;box-sizing:border-box;}
+  .otherList a:hover{border-color:var(--accent2);color:var(--accent);}
+  .finalCtaWrap{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
   footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
-  footer a:hover{color:var(--accent2);}
+  footer a:hover{color:var(--accent);}
   .placeGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:8px;}
+  @media (max-width:768px){
+    .wsHeader{padding:11px 16px;}
+    main{padding:24px 16px 52px;}
+    .mapCta{max-width:100%;}
+    h1{font-size:20px;}
+  }
   @media (max-width:480px){
-    .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
     main{padding:22px 16px 48px;}
     h1{font-size:19px;}
   }
@@ -96,7 +120,7 @@
   <p class="kicker">Find by place</p>
   <p class="breadcrumb"><a href="https://geugotjigeum.com/en/">Home</a> / Find by place</p>
   <h1>Find a Real Place by Name</h1>
-  <p class="intro">Search for places from movies, dramas, and novels by name. We've gathered 492 verified places so far.</p>
+  <p class="intro">Search for places from movies, dramas, and novels by name. We've gathered 308 verified places so far.</p>
   <h2>All places</h2>
   <div class="placeGrid">
     <a class="workCard" href="https://geugotjigeum.com/en/places/harrypotter-kingscross/">
@@ -159,11 +183,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hanseong_city/">
-      <h3>한성 (현재 서울)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-taejongdae/">
       <h3>태종대 (부산 영도구)</h3>
       <p>Pachinko</p>
@@ -172,11 +191,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/namiya-bungotakada_showamachi/">
       <h3>오이타현 분고타카다시 쇼와노마치(昭和の町) 상점가</h3>
       <p>The Miracles of the Namiya General Store</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/gwandong-uisangdae/">
-      <h3>의상대 (양양 낙산사 경내)</h3>
-      <p>Gwandong Byeolgok (Song of the Gwandong Region)</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/wangsanam-seondolmaeul/">
@@ -267,11 +281,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-taebaeksanmaek_museum/">
       <h3>태백산맥문학관 (전남 보성군 벌교읍 홍암로 89-19)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gwanghwamun/">
-      <h3>광화문 (경복궁 정문, 서울 종로구 사직로 161)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-gamji_beach/">
@@ -369,11 +378,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-geunjeongjeon/">
-      <h3>근정전 (경복궁 정전)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-jagalchi_market/">
       <h3>자갈치시장 (부산 중구)</h3>
       <p>Pachinko</p>
@@ -467,11 +471,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_hongyo/">
       <h3>벌교 홍교 (보물 제304호, 보성군 벌교읍 벌교리 154-1)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gyeonghoeru/">
-      <h3>경회루 (경복궁 내 누각)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-maechukji_village/">
@@ -569,11 +568,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-geoncheonggung/">
-      <h3>건청궁 (경복궁 내, 을미사변 현장)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-beomil_bridge/">
       <h3>범일동 구름다리 (부산 동구)</h3>
       <p>Pachinko</p>
@@ -662,11 +656,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_station/">
       <h3>벌교역 (전남 보성군 벌교읍)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gyeongungung_deoksugung/">
-      <h3>경운궁 (현 덕수궁, 서울 중구 세종대로 99)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-dongnae_villa/">
@@ -759,11 +748,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daehanmun/">
-      <h3>대한문 (경운궁·덕수궁 정문)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-yeongdo_office/">
       <h3>영도구청 (부산 영도구)</h3>
       <p>Pachinko</p>
@@ -842,11 +826,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jungdo_embankment/">
       <h3>중도방죽 (벌교읍 남쪽 간척지)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-junghwajeon/">
-      <h3>중화전 (덕수궁 정전)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-centum_station/">
@@ -929,11 +908,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hamnyeongjeon/">
-      <h3>함녕전 (덕수궁 내, 고종의 침전)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-bexco/">
       <h3>벡스코 (부산 해운대구)</h3>
       <p>Pachinko</p>
@@ -1009,11 +983,6 @@
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeukjodang/">
-      <h3>즉조당 (덕수궁 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-busan_yeongnak_park/">
       <h3>부산영락공원 (부산 금정구)</h3>
       <p>Pachinko</p>
@@ -1084,14 +1053,9 @@
       <p>Jikji: Amor Manet</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hoejeongri_church/">
-      <h3>회정리교회 (보성군 벌교읍 회정리)</h3>
+    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-old_financial_coop/">
+      <h3>옛 벌교금융조합 터 (벌교 홍교 인근)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seogeodang/">
-      <h3>석어당 (덕수궁 내, 2층 목조 건물)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-yangdong_village/">
@@ -1154,14 +1118,9 @@
       <p>Jikji: Amor Manet</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gugeumyungjohap/">
-      <h3>구금융조합 (벌교읍 문학기행 코스)</h3>
+    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jogyesan/">
+      <h3>조계산 (전남 순천시·보성군 접경)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeonggwanheon/">
-      <h3>정관헌 (덕수궁 내, 서양식 정자)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-suncheon_studio/">
@@ -1199,14 +1158,9 @@
       <p>The Lord of the Rings</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_elementary/">
-      <h3>벌교초등학교 (보성군 벌교읍)</h3>
+    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jirisan/">
+      <h3>지리산 (경남·전남·전북 접경, 천왕봉 기준)</h3>
       <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jumyeongdang/">
-      <h3>준명당 (덕수궁 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-nonsan_sunshine_studio/">
@@ -1239,16 +1193,6 @@
       <p>The Lord of the Rings</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jinteujae/">
-      <h3>진트재 (벌교읍-순천 방면 고갯길)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gwangmyeongmun/">
-      <h3>광명문 (덕수궁 내 문)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-mokpo_region/">
       <h3>목포 로케이션 권역 (전남 목포시)</h3>
       <p>Pachinko</p>
@@ -1272,16 +1216,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/gameofthrones-gaztelugatxe/">
       <h3>Gaztelugatxe, Spain</h3>
       <p>Game of Thrones</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheon_station/">
-      <h3>순천역 (전남 순천시 역전길)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-deokdanjeon/">
-      <h3>돈덕전 (덕수궁 내, 2023년 복원)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-hapcheon_region/">
@@ -1309,16 +1243,6 @@
       <p>Game of Thrones</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-maesan_school/">
-      <h3>순천 매산중학교 (전남 순천시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seokjojeon/">
-      <h3>석조전 (덕수궁 내, 서양식 석조 건물)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-andong_region/">
       <h3>안동 로케이션 권역 (경북 안동시)</h3>
       <p>Pachinko</p>
@@ -1344,16 +1268,6 @@
       <p>Game of Thrones</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-seonamsa/">
-      <h3>선암사 (전남 순천시 승주읍, 조계산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jungmyeongjeon/">
-      <h3>중명전 (서울 중구 정동)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-daejeon_region/">
       <h3>대전 로케이션 권역</h3>
       <p>Pachinko</p>
@@ -1372,16 +1286,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/harrypotter-steallfalls/">
       <h3>Steall Falls</h3>
       <p>Harry Potter</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-songgwangsa/">
-      <h3>송광사 (전남 순천시 송광면, 조계산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-russianlegation/">
-      <h3>구 러시아공사관터 (서울 중구 정동, 탑만 현존)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/pachinko-vancouver_region/">
@@ -1404,16 +1308,6 @@
       <p>Harry Potter</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_station/">
-      <h3>여수역 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sontaghotel/">
-      <h3>손탁호텔터 (현 이화여자고등학교 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-thirtyfirststreet/">
       <h3>31st Street &amp; Ditmars Blvd, 아스토리아</h3>
       <p>Spider-Man: Homecoming</p>
@@ -1422,16 +1316,6 @@
     <a class="workCard" href="https://geugotjigeum.com/en/places/harrypotter-swinleyforest/">
       <h3>Swinley Forest</h3>
       <p>Harry Potter</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_sinwoldong/">
-      <h3>여수 신월동 (옛 14연대 주둔지 일대)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeongdongchurch/">
-      <h3>정동제일교회 (서울 중구 정동)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-kingsfriedchicken/">
@@ -1444,29 +1328,9 @@
       <p>Harry Potter</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jeonnam_dochung_old/">
-      <h3>옛 전남도청 (현 국립아시아문화전당, 광주 동구)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-baejaehakdang/">
-      <h3>배재학당역사박물관 (서울 중구 정동)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-statenislandferry/">
       <h3>스태튼아일랜드 페리, 화이트홀 터미널</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-geoje_pow_camp/">
-      <h3>거제도 포로수용소 유적공원 (경남 거제시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ewhahakdang/">
-      <h3>이화학당 심슨기념관 (이화여자고등학교 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-governorsislandvent/">
@@ -1474,29 +1338,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gangjin_dasan/">
-      <h3>다산초당 (전남 강진군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-us_legation/">
-      <h3>구 미국공사관 (현 주한미국대사관저·하비브하우스)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-coneyislandboardwalk/">
       <h3>코니아일랜드 보드워크 &amp; 루나파크</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gwangju_prison_old/">
-      <h3>옛 광주교도소 터 (광주광역시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-uk_legation/">
-      <h3>구 영국공사관 (현 주한영국대사관)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-washingtonmonument/">
@@ -1504,29 +1348,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-panmunjeom/">
-      <h3>판문점 (경기도 파주시, 공동경비구역)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-unhyeongung/">
-      <h3>운현궁 (서울 종로구 삼일대로30길 45)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-tegelbrandenburg/">
       <h3>테겔 공항 &amp; 브란덴부르크 문, 베를린</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-seoul_gyeongmudae/">
-      <h3>경무대 옛터 (현 청와대 일대, 서울 종로구)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jongno_street/">
-      <h3>종로 (서울 종로구)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-georgiaaquarium/">
@@ -1534,29 +1358,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-geochang_massacre/">
-      <h3>거창사건추모공원 (경남 거창군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-bosingak/">
-      <h3>보신각 (서울 종로구 종로2가)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-worldofcocacola/">
       <h3>World of Coca-Cola</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-incheon_landing_memorial/">
-      <h3>인천상륙작전기념관 (인천광역시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-tapgolpark/">
-      <h3>탑골공원 (서울 종로구 종로 99)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-cnncenter/">
@@ -1564,29 +1368,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_jinnamgwan/">
-      <h3>진남관 (국보 제304호, 전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-namdaemun/">
-      <h3>숭례문 (남대문, 서울 중구 세종대로 40)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-centennialolympicpark/">
       <h3>Centennial Olympic Park</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_manseongri/">
-      <h3>여수 만성리 형제묘 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-dongdaemun/">
-      <h3>흥인지문 (동대문, 서울 종로구 종로 288)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-atlantabeltline/">
@@ -1594,29 +1378,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheon_maesandeung/">
-      <h3>순천 매산등 추모 공간 (전남 순천시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hansungjeongi/">
-      <h3>한성전기회사터 (옛 동대문 발전소 부지 일대)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-poncecitymarket/">
       <h3>Ponce City Market</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-un_memorial_busan/">
-      <h3>유엔기념공원 (부산광역시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-myeongdongcathedral/">
-      <h3>명동성당 (서울 중구 명동길 74)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-foxtheatreatlanta/">
@@ -1624,29 +1388,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-old_financial_coop/">
-      <h3>옛 벌교금융조합 터 (벌교 홍교 인근)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gyeonghuigung/">
-      <h3>경희궁 (서울 종로구 새문안로 45)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-atlantahistorycenter/">
       <h3>Atlanta History Center</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jogyesan/">
-      <h3>조계산 (전남 순천시·보성군 접경)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seoulstationold/">
-      <h3>구 서울역사 (당시 남대문정거장, 서울 용산구)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-piedmontparkatl/">
@@ -1654,29 +1398,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jirisan/">
-      <h3>지리산 (경남·전남·전북 접경, 천왕봉 기준)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hwangudan/">
-      <h3>환구단 (원구단, 현 웨스틴조선호텔 자리)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-mercedesbenzstadium/">
       <h3>메르세데스-벤츠 스타디움</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-buyongsan_park/">
-      <h3>부용산공원 (보성군 벌교읍)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seodaemunprison/">
-      <h3>서대문형무소역사관 (서울 서대문구 통일로 251)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-highmuseumart/">
@@ -1684,29 +1408,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_bus_terminal/">
-      <h3>벌교시외버스터미널 (보성군 벌교읍)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-independencegate/">
-      <h3>독립문 (서울 서대문구)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-stonemountainpark/">
       <h3>Stone Mountain Park</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_5iljang/">
-      <h3>벌교 오일장 (2일·7일장, 벌교읍 장터)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sungkyunkwan/">
-      <h3>성균관 (서울 종로구 성균관로 25-2)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-zooatlanta/">
@@ -1714,29 +1418,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hongyo_village/">
-      <h3>홍교마을 (벌교 홍교 인근 마을)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jongmyo/">
-      <h3>종묘 (서울 종로구 종로 157)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-mlkhistoricsite/">
       <h3>마틴 루터 킹 주니어 국립역사공원</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jeseoksan/">
-      <h3>제석산 (보성군 벌교읍, 문학관 뒷산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sajikdan/">
-      <h3>사직단 (서울 종로구 사직로 89)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-krogstreetmarket/">
@@ -1744,29 +1428,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-boseong_gunchung/">
-      <h3>보성군청 (전남 보성군 보성읍)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-namsan_japaneselegacy/">
-      <h3>남산 왜성대 (옛 일본공사관터, 현 서울애니메이션센터 일대)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-timessquarenyc/">
       <h3>Times Square</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yuleomyeon/">
-      <h3>보성군 율어면 (실제 행정구역)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jemulpo_road/">
-      <h3>제물포로 (경인가도, 한성-제물포 연결로)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-empirestatebuilding/">
@@ -1774,29 +1438,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-joseongmyeon/">
-      <h3>보성군 조성면</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_gaehanggi/">
-      <h3>인천 개항장 거리 (인천 중구 신포로)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-topoftherocknyc/">
       <h3>Top of the Rock</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-daewonsa_boseong/">
-      <h3>대원사 (보성군 문덕면, 티벳박물관 겸설)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_japaneseconcession/">
-      <h3>인천 舊 일본 제1은행지점 (현 인천개항박물관)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-centralparknyc/">
@@ -1804,29 +1448,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jonjesan/">
-      <h3>존제산 (보성군 조성면·순천시 접경)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_daebul_hotel/">
-      <h3>대불호텔 전시관 (인천 중구)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-brooklynbridgenyc/">
       <h3>Brooklyn Bridge</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gyeombaekmyeon/">
-      <h3>보성군 겸백면</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_customs_pier/">
-      <h3>인천항 세관부두터 (인천 중구 항동)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-rockefellercenternyc/">
@@ -1834,29 +1458,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-boseong_daehandawon/">
-      <h3>대한다원 보성녹차밭 (보성군 보성읍 봉산리)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_jayu_park/">
-      <h3>자유공원 (인천 중구, 옛 각국공원)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-statueoflibertynyc/">
       <h3>Statue of Liberty</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-naganeupseong/">
-      <h3>낙안읍성 (전남 순천시 낙안면)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_gaehang_museum/">
-      <h3>인천개항박물관 일대 근대건축거리</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-grandcentralfoodhall/">
@@ -1864,29 +1468,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheonman_wetland/">
-      <h3>순천만습지·순천만국가정원 (전남 순천시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_chojijin/">
-      <h3>강화 초지진 (인천 강화군 길상면)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-chryslerbuildingnyc/">
       <h3>Chrysler Building</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_port/">
-      <h3>여수항 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_gwangseongbo/">
-      <h3>강화 광성보 (인천 강화군 불은면)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-oneworldobservatory/">
@@ -1894,29 +1478,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-odongdo/">
-      <h3>오동도 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_yeonmudang/">
-      <h3>강화 연무당 옛터 (인천 강화군 강화읍)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-queensmuseumny/">
       <h3>Queens Museum</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeja_bay/">
-      <h3>여자만 (보성·순천·여수 접경 갯벌 바다)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_deokjinjin/">
-      <h3>강화 덕진진 (인천 강화군 불은면)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-momaps1queens/">
@@ -1924,29 +1488,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-deukryang_bay/">
-      <h3>득량만 (보성군 남쪽 바다)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sunshinestudio_main/">
-      <h3>논산 탑정호 미스터션샤인 촬영세트 (충남 논산시 상월면 지경리)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-queensnightmarket/">
       <h3>Queens Night Market</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gwangju_station/">
-      <h3>광주역 (광주광역시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gosahong_house_set/">
-      <h3>고사홍 대감댁 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-astoriaparknyc/">
@@ -1954,29 +1498,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-mudeungsan/">
-      <h3>무등산 (광주광역시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeojatgeori_set/">
-      <h3>저잣거리 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-highlinenyc/">
       <h3>The High Line</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hwaeomsa/">
-      <h3>화엄사 (전남 구례군 마산면, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-gloryhotel_set/">
-      <h3>글로리호텔 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-brooklynmuseumny/">
@@ -1984,29 +1508,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-piagol/">
-      <h3>피아골 (전남 구례군, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hansungjeongi_set/">
-      <h3>한성전기회사 세트 (논산 션샤인 스튜디오 내, 종탑 건물)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-wallstreetbullny/">
       <h3>Charging Bull</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-baemsagol/">
-      <h3>뱀사골 (전북 남원시, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-tramtrack_set/">
-      <h3>전차 선로 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-unionsquareny/">
@@ -2014,29 +1518,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-banyabong/">
-      <h3>반야봉 (지리산, 전남·전북 접경)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hongyo_bridge_set/">
-      <h3>붉은 아치다리 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-nationalmalldc/">
       <h3>National Mall</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-nogodan/">
-      <h3>노고단 (지리산, 전남 구례군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-japanesehouse_zone/">
-      <h3>일본식 가옥 구역 (논산 션샤인 스튜디오 내, 9채)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-lincolnmemorialdc/">
@@ -2044,29 +1528,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-seongsamjae/">
-      <h3>성삼재 (지리산, 전남 구례군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-thatchedhouse_zone/">
-      <h3>초가 구역 (논산 션샤인 스튜디오 내, 4채)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-airandspacemuseumdc/">
       <h3>스미스소니언 국립 항공우주박물관</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jungsanri/">
-      <h3>중산리 (지리산, 경남 산청군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-photostudio_set/">
-      <h3>사진관 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-uscapitoldc/">
@@ -2074,29 +1538,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-daewonsa_sancheong/">
-      <h3>대원사 (경남 산청군 삼장면, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-customhouse_set/">
-      <h3>해관(세관) 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-whitehouseviewdc/">
       <h3>White House View</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-cheoneunsa/">
-      <h3>천은사 (전남 구례군, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-medicalclinic_set/">
-      <h3>양의원 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-jeffersonmemorialdc/">
@@ -2104,29 +1548,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-baengmudong/">
-      <h3>백무동 (지리산, 경남 함양군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-telegraphoffice_set/">
-      <h3>전보국 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-libraryofcongressdc/">
       <h3>Library of Congress</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-baegasan/">
-      <h3>백아산 (전남 화순군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-churchset/">
-      <h3>서양식 예배당 세트 (논산 션샤인 스튜디오 내)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-naturalhistorymuseumdc/">
@@ -2134,29 +1558,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gurye_town/">
-      <h3>구례군 읍내 (전남 구례군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sanfrancisco_port/">
-      <h3>샌프란시스코 항 (미국, 실제 이민 관문)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-nationalarchivesdc/">
       <h3>National Archives</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gokseong_town/">
-      <h3>곡성군 (전남 곡성군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_sungnyeol/">
-      <h3>강화 갑곶돈대 (인천 강화군 강화읍)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-georgetownwaterfrontdc/">
@@ -2164,29 +1568,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hadong_hwagae/">
-      <h3>화개장터 (경남 하동군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-deoksugung_stonewall/">
-      <h3>덕수궁 돌담길</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-reichstagberlin/">
       <h3>Reichstag Building</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hamyang_town/">
-      <h3>함양군 (경남 함양군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seoulmuseumofart/">
-      <h3>서울시립미술관 서소문본관 (옛 대법원 건물)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-eastsidegalleryberlin/">
@@ -2194,29 +1578,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-sancheong_town/">
-      <h3>산청군 (경남 산청군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-salvationarmy_hq/">
-      <h3>구세군중앙회관 (서울 중구 덕수궁길)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-tvtowerberlin/">
       <h3>Fernsehturm</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-silsangsa/">
-      <h3>실상사 (전북 남원시, 지리산)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeongdongtheater/">
-      <h3>정동극장 (서울 중구 정동)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-checkpointcharlieberlin/">
@@ -2224,29 +1588,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-jinju_city/">
-      <h3>진주시 (경남 진주시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hanseongbu/">
-      <h3>한성부 관아터 (현 서울시청 인근)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-museumislandberlin/">
       <h3>Museum Island</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-damyang_town/">
-      <h3>담양군 (전남 담양군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seosomun_history_park/">
-      <h3>서소문역사공원 (서울 중구 칠패로)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-tegelparknow/">
@@ -2254,29 +1598,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-goheung_town/">
-      <h3>고흥군 (전남 고흥군)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-hanyangdoseong/">
-      <h3>한양도성 (낙산 구간)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-kudammberlin/">
       <h3>Kurfürstendamm</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-mokpo_city/">
-      <h3>목포시 (전남 목포시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-bukchonhanok/">
-      <h3>북촌한옥마을 (서울 종로구)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-kaufmanastoriastudios/">
@@ -2284,29 +1608,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-hawaii_honolulu/">
-      <h3>호놀룰루 (미국 하와이주)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-namsangolhanok/">
-      <h3>남산골한옥마을 (서울 중구 퇴계로34길 28)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-movingimagemuseum/">
       <h3>Museum of the Moving Image</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-burma_front/">
-      <h3>미얀마(옛 버마) 전선 일대</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sogongdong/">
-      <h3>소공동 (남별궁터, 서울 중구)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-bryantparknyc/">
@@ -2314,29 +1618,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_stream/">
-      <h3>벌교천 (보성군 벌교읍을 가로지르는 하천)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-euljiro/">
-      <h3>을지로 (옛 황금정)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-nyplmain/">
       <h3>NYPL</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_girlsmiddle/">
-      <h3>벌교여자중학교 (보성군 벌교읍)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sangdongchurch/">
-      <h3>상동교회 (서울 중구 소공로)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-madisonsquaregardenny/">
@@ -2344,29 +1628,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-nodongmyeon/">
-      <h3>보성군 노동면</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-yukjogeori/">
-      <h3>육조거리 (현 세종대로, 정부서울청사 앞)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-flushingchinatownqueens/">
       <h3>플러싱 차이나타운, 퀸즈</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-ungchimyeon/">
-      <h3>보성군 웅치면</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seoullibrary_oldcityhall/">
-      <h3>구 경성부청사터 (현 서울도서관)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-batteryatlantadistrict/">
@@ -2374,29 +1638,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-boknaemyeon/">
-      <h3>보성군 복내면</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-seoulplaza/">
-      <h3>서울광장 (서울시청 앞)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-freedomparkatlanta/">
       <h3>Freedom Park</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-mundeokmyeon/">
-      <h3>보성군 문덕면 소재지</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-jeongdong_theater_district/">
-      <h3>정동 근대역사거리 (통합 도보 구간)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-eastpotomacparkdc/">
@@ -2404,29 +1648,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheon_jogokdong/">
-      <h3>순천 조곡동 원도심 (전남 순천시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_chinatown/">
-      <h3>인천 차이나타운</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-potsdamerplatzberlin/">
       <h3>Potsdamer Platz</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheon_utjang/">
-      <h3>순천 웃장 (순천아랫장 인근 전통시장)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_wolmido/">
-      <h3>월미도 (인천 중구)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-gantryplazastatepark/">
@@ -2434,129 +1658,9 @@
       <p>Spider-Man: Homecoming</p>
       <span class="cta">See details →</span>
     </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-seungjueup/">
-      <h3>순천 승주읍 (조계산 인근 마을)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-incheon_hongyemun/">
-      <h3>인천 홍예문 (인천 중구 송학동)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
     <a class="workCard" href="https://geugotjigeum.com/en/places/spiderman-citifieldqueens/">
       <h3>Citi Field</h3>
       <p>Spider-Man: Homecoming</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-dolsando/">
-      <h3>돌산도 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_jeondeungsa/">
-      <h3>전등사 (인천 강화군 길상면)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-gyeongdo_island/">
-      <h3>경도 (전남 여수시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_goindol/">
-      <h3>강화 고인돌 유적 (인천 강화군 하점면)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-songgwangmyeon/">
-      <h3>순천 송광면 소재지 (송광사 인근 마을)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-tapjeonglake_view/">
-      <h3>탑정호 출렁다리 전망 (논산 션샤인 스튜디오 인근)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-beolgyo_tidalflat/">
-      <h3>벌교 갯벌 (꼬막양식장 일대)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-sunshinestudio_visitorcenter/">
-      <h3>션샤인 스튜디오 방문자센터</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-mokpo_port/">
-      <h3>목포항 (전남 목포시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daejeon_stationold/">
-      <h3>대전 근대 철도 역사거리 (대전 동구 소제동)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-suncheon_hyanggyo/">
-      <h3>순천향교 (전남 순천시)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daejeon_yuseong_hanok/">
-      <h3>대전 뿌리공원·족보박물관 인근 전통마을</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-baemsagol_shelter/">
-      <h3>뱀사골대피소 (지리산 국립공원)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daejeon_confucian_school/">
-      <h3>대전 도산서원 (대전 동구)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/taebaek-yeosu_isunsin_square/">
-      <h3>이순신광장 (전남 여수시, 진남관 인근)</h3>
-      <p>Taebaeksanmaek (The Taebaek Mountains)</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daejeon_railroad_museum/">
-      <h3>대전 한국철도문화관</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-daejeon_expo_park/">
-      <h3>대전 엑스포과학공원 (근대-현대 연결 상징 공간)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-us_koreanimmigrant_museum/">
-      <h3>미주 한인 이민사 박물관 (미국 하와이 등)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-us_militaryacademy_context/">
-      <h3>미국 해군·해병 관련 역사 전시관 (미 동부 등)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-japan_yokohama_port/">
-      <h3>요코하마 항 (일본, 근대 개항장)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-japan_tokyo_legation_context/">
-      <h3>주일본 대한제국공사관 관련 역사 공간 (일본 도쿄)</h3>
-      <p>Mr. Sunshine</p>
-      <span class="cta">See details →</span>
-    </a>
-    <a class="workCard" href="https://geugotjigeum.com/en/places/sunshine-ganghwa_yongheunggung/">
-      <h3>강화 용흥궁 (인천 강화군 강화읍)</h3>
-      <p>Mr. Sunshine</p>
       <span class="cta">See details →</span>
     </a>
   </div>
