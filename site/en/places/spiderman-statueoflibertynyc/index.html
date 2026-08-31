@@ -27,44 +27,68 @@
   gtag('config', 'G-H2KNQYH97M');
 </script>
 <style>
-  :root{ --ink:#1c1f26; --sub:#5b6270; --line:#e4e6eb; --accent:#e0603a; --accent2:#3a7ce0; }
+  :root{
+    --ink:#1B1E24; --sub:#575E6B; --line:#E1DCD2; --accent:#FF7B57; --accent2:#FF9B7D;
+    --card:#FFFFFF; --pagebg:#F8F5EE;
+    --dh-bg:#0A0B0F; --dh-text:#FFFFFF; --dh-text-2:#CDD2DC; --dh-line:#242A34;
+  }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
-  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
-  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.7;background:var(--pagebg);}
+  /* 컴팩트 다크 헤더 — Issue #24: 장소마다 실사진이 없으므로(허위 이미지 금지 원칙) 큰 히어로
+     대신, 나머지 Phase 1 화면(홈/작품상세/지도/퀴즈)과 같은 다크 브랜드 톤의 컴팩트 헤더로
+     "이 장소가 실화 기반 여행 정보다"라는 정체성을 즉시 전달한다. */
+  .wsHeader{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--dh-line);background:var(--dh-bg);position:sticky;top:0;z-index:5;flex-wrap:wrap;gap:8px;min-width:0;}
+  .wsHeader a.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--dh-text);text-decoration:none;min-width:0;}
+  .wsHeader a.brand span{overflow:hidden;text-overflow:ellipsis;}
   .wsHeader a.brand .brand-logo{width:28px;height:28px;flex-shrink:0;}
-  .wsHeader a.backLink{font-size:13.5px;color:var(--accent2);text-decoration:none;font-weight:600;}
+  .wsHeader a.backLink{font-size:13.5px;color:var(--accent);text-decoration:none;font-weight:600;flex-shrink:0;min-height:44px;display:inline-flex;align-items:center;}
   .wsHeader a.backLink:hover{text-decoration:underline;}
-  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
-  .kicker{font-size:12.5px;font-weight:700;color:var(--accent2);letter-spacing:.02em;margin:0 0 8px;}
-  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;}
+  main{max-width:760px;margin:0 auto;padding:28px 20px 60px;width:100%;}
+  .kicker{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.02em;margin:0 0 8px;}
+  .breadcrumb{font-size:12.5px;color:var(--sub);margin:0 0 10px;overflow-wrap:break-word;}
   .breadcrumb a{color:var(--sub);text-decoration:none;}
   .breadcrumb a:hover{text-decoration:underline;}
-  h1{font-size:23px;line-height:1.4;margin:0 0 6px;}
-  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 20px;}
-  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#3ac07c;border-radius:999px;padding:4px 12px;margin-bottom:18px;}
-  .intro{font-size:15.5px;color:#333;margin:0 0 20px;}
-  .noteBox{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 26px;}
-  h2{font-size:18px;margin:30px 0 12px;padding-top:8px;border-top:1px solid var(--line);}
-  .tipBox{background:#fff8ee;border:1px solid #f0deb8;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#6b5324;margin:0 0 20px;}
-  .tipBox b{color:#8a6a1f;}
-  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease;}
-  .workCard:hover{border-color:#d5d9e0;background:#fafbfc;}
-  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);}
-  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;}
-  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent2);}
-  .mapCta{display:inline-block;background:var(--accent2);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;margin:6px 0 8px;}
+  .wsLangs{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:11.5px;margin:0 0 14px;width:fit-content;max-width:100%;flex-wrap:wrap;}
+  .wsLangs a{color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:999px;font-weight:700;}
+  .wsLangs a.on{color:#fff;background:var(--accent);}
+  .wsLangs a:not(.on):hover{color:var(--accent);}
+  .wsLangs-planned{padding:6px 11px;border-radius:999px;font-weight:700;color:var(--sub);opacity:.55;cursor:default;}
+  /* 정체성 블록 — 장소명(h1) + 출처 작품 + "실제로 가볼 수 있는 곳" 배지를 한 덩어리로 */
+  .phIdentity{margin:0 0 18px;}
+  h1{font-size:24px;line-height:1.35;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .subTitle{font-size:14.5px;color:var(--sub);margin:0 0 12px;overflow-wrap:break-word;}
+  .tierBadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#2E9E5B;border-radius:999px;padding:5px 12px;}
+  /* 지도 CTA — Issue #24: 예전엔 본문 중간에 있었지만, "이 장소가 어디인지" 확인하려는
+     방문형 검색 의도가 강하므로 정체성 블록 바로 아래(스크롤 없이 보이는 영역)로 끌어올린다. */
+  .mapCtaWrap{margin:16px 0 22px;}
+  .mapCta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;min-height:44px;box-sizing:border-box;width:100%;max-width:420px;text-align:center;}
   .mapCta:hover{opacity:.9;}
-  .otherList{list-style:none;padding:0;margin:0;}
-  .otherList li{margin-bottom:8px;}
-  .otherList a{color:var(--accent2);text-decoration:none;font-size:14px;font-weight:600;}
-  .otherList a:hover{text-decoration:underline;}
+  .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
+  .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .tipBox b{color:var(--accent);}
+  .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
+  h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
+  .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
+  .workCard:hover{border-color:var(--accent2);}
+  .workCard h3{font-size:16px;margin:0 0 6px;color:var(--ink);overflow-wrap:break-word;}
+  .workCard p{font-size:13.5px;color:var(--sub);margin:0 0 8px;overflow-wrap:break-word;}
+  .workCard .cta{font-size:13px;font-weight:600;color:var(--accent);}
+  .otherList{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+  .otherList li{margin:0;min-width:0;}
+  .otherList a{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;overflow-wrap:break-word;box-sizing:border-box;}
+  .otherList a:hover{border-color:var(--accent2);color:var(--accent);}
+  .finalCtaWrap{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
   footer{max-width:760px;margin:0 auto;padding:20px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
-  footer a:hover{color:var(--accent2);}
+  footer a:hover{color:var(--accent);}
   .placeGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:8px;}
+  @media (max-width:768px){
+    .wsHeader{padding:11px 16px;}
+    main{padding:24px 16px 52px;}
+    .mapCta{max-width:100%;}
+    h1{font-size:20px;}
+  }
   @media (max-width:480px){
-    .wsHeader{padding:11px 16px;flex-wrap:wrap;gap:6px;}
     main{padding:22px 16px 48px;}
     h1{font-size:19px;}
   }
@@ -94,13 +118,26 @@
 </header>
 <main>
   <p class="kicker">Find by place</p>
+  <nav class="wsLangs" aria-label="Languages">
+    <a href="https://geugotjigeum.com/places/spiderman-statueoflibertynyc/">KR</a>
+    <a href="https://geugotjigeum.com/en/places/spiderman-statueoflibertynyc/" class="on" aria-current="page">EN</a>
+    <a href="https://geugotjigeum.com/ja/places/spiderman-statueoflibertynyc/">JP</a>
+    <span class="wsLangs-planned" aria-disabled="true" title="Coming soon">繁中</span>
+  </nav>
   <p class="breadcrumb"><a href="https://geugotjigeum.com/en/">Home</a> / <a href="https://geugotjigeum.com/en/places/">Find by place</a> / Statue of Liberty</p>
-  <h1>Statue of Liberty</h1>
-  <p class="subTitle">A real place from Spider-Man: Homecoming</p>
-  <span class="tierBadge">✅ A real place you can visit</span>
+
+  <div class="phIdentity">
+    <h1>Statue of Liberty</h1>
+    <p class="subTitle">A real place from Spider-Man: Homecoming</p>
+    <span class="tierBadge">✅ A real place you can visit</span>
+  </div>
+
+  <div class="mapCtaWrap">
+    <a class="mapCta" href="https://geugotjigeum.com/?work=spiderman&loc=statueoflibertynyc">🗺️ See the exact location on the map →</a>
+  </div>
+
   <p class="intro">The iconic statue standing in New York Harbor, reachable by ferry.</p>
   <div class="tipBox"><b>💡 Visit tip</b><br>The free Staten Island Ferry is the cheapest way to see the statue from a distance.</div>
-  <a class="mapCta" href="https://geugotjigeum.com/?work=spiderman&loc=statueoflibertynyc">🗺️ See the exact location on the map →</a>
   <div class="noteBox">You can also see other real filming locations and settings from &quot;Spider-Man: Homecoming&quot; here.</div>
 
   <h2>The story behind this place</h2>
@@ -117,6 +154,10 @@
     <li><a href="https://geugotjigeum.com/en/places/wednesday-cantacuzino/">Cantacuzino Castle, Romania — Wednesday</a></li>
     <li><a href="https://geugotjigeum.com/en/places/strangerthings-jacksonga/">Jackson, Georgia — Stranger Things</a></li>
   </ul>
+
+  <div class="finalCtaWrap">
+    <a class="mapCta" href="https://geugotjigeum.com/?work=spiderman&loc=statueoflibertynyc">🗺️ See the exact location on the map →</a>
+  </div>
 </main>
 <footer>
   &copy; That Place, Now — A personal travel-map blog for visiting real places from stories<br>
