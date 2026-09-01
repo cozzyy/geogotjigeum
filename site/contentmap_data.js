@@ -528,10 +528,10 @@ const WORKS = [
       "그러니까 이 드라마, 정말로 한 도시를 통째로 무대 삼아 찍은 몇 안 되는 작품이다. 나는 아직 앨버커키에 안 가봤지만, 언젠가 가면 그 세차장에서 세차 한번 맡기고 Twisters에서 치킨도 한 접시 먹어보고 싶다."
     ],
     hookReveals:[
-      { label:"로스 포요스 에르마노스 → 실제 영업 중인 식당 Twisters", label_en:"Los Pollos Hermanos → an actual working restaurant, Twisters", locId:"lospollos" },
-      { label:"투코의 은신처 → 지금은 실제 카페 Java Joe's", label_en:"Tuco's hideout → now a real café, Java Joe's", locId:"tuco_office" },
-      { label:"월터의 세차장 → 지금도 실제로 영업 중", label_en:"Walter's car wash → still a real, working car wash", locId:"carwash" },
-      { label:"오지만디아스 총격전지 → 나바호 네이션 영내, 실제 촬영지", label_en:"The Ozymandias shootout site → real location on Navajo Nation land", locId:"tohajiilee" }
+      { label:"로스 포요스 에르마노스 → 실제 영업 중인 식당 Twisters", label_en:"Los Pollos Hermanos → an actual working restaurant, Twisters", label_ja:"ロス・ポヨス・エルマノス → 現在も営業中の実在のレストラン「Twisters」", locId:"lospollos" },
+      { label:"투코의 은신처 → 지금은 실제 카페 Java Joe's", label_en:"Tuco's hideout → now a real café, Java Joe's", label_ja:"トゥコの隠れ家 → 現在は実在のカフェ「Java Joe's」", locId:"tuco_office" },
+      { label:"월터의 세차장 → 지금도 실제로 영업 중", label_en:"Walter's car wash → still a real, working car wash", label_ja:"ウォルターの洗車場 → 現在も実際に営業中", locId:"carwash" },
+      { label:"오지만디아스 총격전지 → 나바호 네이션 영내, 실제 촬영지", label_en:"The Ozymandias shootout site → real location on Navajo Nation land", label_ja:"「オジマンディアス」銃撃戦の地 → ナバホ・ネイション領内、実際の撮影地", locId:"tohajiilee" }
     ],
     hookBadge_en:"AMC · Real Albuquerque filming locations · Still open for business",
     hookTagline_en:"After Breaking Bad, Albuquerque just kept nagging at me",
@@ -2650,10 +2650,10 @@ const WORKS = [
       "그러니까 이 영화는 촬영지 따로, 신화 속 진짜 장소 따로, 결말까지 원작과 다르게 두 겹 세 겹의 지도를 갖고 있는 셈이다. 어느 쪽을 따라가도 여행이 될 것 같다."
     ],
     hookReveals:[
-      { label:"이타카 왕궁 → 실제 촬영은 시칠리아 파비냐나 섬", label_en:"Ithaca's palace → actually filmed on Sicily's Favignana", locId:"favignana_castle" },
-      { label:"진짜 이타카 → 그리스 이오니아해의 섬(영화엔 안 나옴)", label_en:"The real Ithaca → an island in the Greek Ionian Sea (not seen in the film)", locId:"real_ithaca" },
-      { label:"트로이 성 → 모로코 아이트 벤하두, 진짜 트로이는 튀르키예 히사를리크", label_en:"'Troy' → Morocco's Aït Ben Haddou; the real Troy is Hisarlik, Turkey", locId:"ait_ben_haddou" },
-      { label:"폴리페무스의 동굴 → CG 없이, 기원전 6000년부터 사람이 산 진짜 동굴", label_en:"Polyphemus's cave → a real cave inhabited since 6000 BC, filmed without CG", locId:"nestors_cave" }
+      { label:"이타카 왕궁 → 실제 촬영은 시칠리아 파비냐나 섬", label_en:"Ithaca's palace → actually filmed on Sicily's Favignana", label_ja:"イタケの王宮 → 実際の撮影地はシチリアのファヴィニャーナ島", locId:"favignana_castle" },
+      { label:"진짜 이타카 → 그리스 이오니아해의 섬(영화엔 안 나옴)", label_en:"The real Ithaca → an island in the Greek Ionian Sea (not seen in the film)", label_ja:"本物のイタケ → ギリシャのイオニア海に浮かぶ島(映画には登場しない)", locId:"real_ithaca" },
+      { label:"트로이 성 → 모로코 아이트 벤하두, 진짜 트로이는 튀르키예 히사를리크", label_en:"'Troy' → Morocco's Aït Ben Haddou; the real Troy is Hisarlik, Turkey", label_ja:"「トロイ」 → モロッコのアイト・ベン・ハドゥ、本物のトロイはトルコのヒサルリク", locId:"ait_ben_haddou" },
+      { label:"폴리페무스의 동굴 → CG 없이, 기원전 6000년부터 사람이 산 진짜 동굴", label_en:"Polyphemus's cave → a real cave inhabited since 6000 BC, filmed without CG", label_ja:"ポリュペモスの洞窟 → CGなし、紀元前6000年から人が住んでいた実在の洞窟", locId:"nestors_cave" }
     ],
     hookBadge_en:"Directed by Christopher Nolan · Filmed across 6 countries · Where the myth actually happened",
     hookTagline_en:"The Ithaca on screen isn't the real Ithaca",
