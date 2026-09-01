@@ -1,0 +1,320 @@
+version: 2
+status: planner_ready_for_development
+updated_at: 2026-09-01
+planner_contract:
+  render_only_from_this_file: true
+  supersedes: docs/growth/story-scene/SCENE_PACKAGES_DRAFT_V1.yaml
+  developer_must_not_source_images: true
+  developer_must_not_invent_places: true
+
+packages:
+  - scene_id: odyssey-scene-01
+    work_id: odyssey
+    context_type: SCREEN_SCENE
+    source_location_id: nestors_cave
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "동굴 안에서 마주친 신화"
+    scene_description_ko: "네스토르 동굴과 보이도킬리아 일대가 《The Odyssey》의 메세니아 촬영 축으로 쓰였다. 화면 속 신화의 동굴이 실제 절벽과 바다 위에 놓여 있다는 게 이 장면의 포인트다."
+    relationship: FILMED
+    image_path: /assets/scenes/odyssey/odyssey-scene-01.svg
+    image_type: original_illustration
+    alt_ko: "그리스 메세니아의 네스토르 동굴과 보이도킬리아 해안을 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+      - "site/contentmap_odyssey_locations.js#nestors_cave"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "영화 장면 하나 보고 찾아갔다가 풍경에 한 번 더 놀라는 곳이다. 동굴 자체뿐 아니라 입구에서 내려다보는 보이도킬리아의 곡선까지 한 장면처럼 이어진다. ‘세트겠지’ 싶었던 공간이 실제 지형이라는 게 재미다."
+    status: PLANNER_READY
+
+  - scene_id: odyssey-scene-02
+    work_id: odyssey
+    context_type: SCREEN_SCENE
+    source_location_id: voidokilia_beach
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "신화의 바다가 현실이 되는 보이도킬리아"
+    scene_description_ko: "거의 완벽한 초승달 모양의 보이도킬리아 해변은 《The Odyssey》의 메세니아 촬영지 중 하나다. 바다와 모래의 형태 자체가 거대한 세트처럼 보인다."
+    relationship: FILMED
+    image_path: /assets/scenes/odyssey/odyssey-scene-02.svg
+    image_type: original_illustration
+    alt_ko: "초승달 모양의 보이도킬리아 해변을 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+      - "site/contentmap_odyssey_locations.js#voidokilia_beach"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "위에서 보면 해변이 거의 기호처럼 휘어 있다. 네스토르 동굴과 같은 동선으로 이어져서 장소 하나를 보는 것보다 영화 속 공간 전체를 걷는 느낌을 만들기 좋다."
+    status: PLANNER_READY
+
+  - scene_id: odyssey-scene-03
+    work_id: odyssey
+    context_type: SCREEN_SCENE
+    source_location_id: favignana_castle
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "이타카의 왕궁처럼 변한 섬 정상의 성채"
+    scene_description_ko: "파비냐나 섬의 산타 카테리나 성채는 영화 속 고대 세계를 만드는 실제 로케이션으로 쓰였다. 화면의 왕궁과 현실의 오래된 요새가 겹치는 장소다."
+    relationship: FILMED
+    image_path: /assets/scenes/odyssey/odyssey-scene-03.svg
+    image_type: original_illustration
+    alt_ko: "이탈리아 파비냐나 섬 정상의 산타 카테리나 성채를 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+      - "site/contentmap_odyssey_locations.js#favignana_castle"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "화면에서는 고대의 공간처럼 보이지만 실제로 가면 바다 한가운데 산 정상의 오래된 성채다. 영화가 장소의 시대를 완전히 바꿔버리는 순간을 확인할 수 있다."
+    status: PLANNER_READY
+
+  - scene_id: breakingbad-scene-01
+    work_id: breakingbad
+    context_type: SCREEN_SCENE
+    source_location_id: lospollos
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "구스의 치킨집, 현실에서는 Twisters"
+    scene_description_ko: "Los Pollos Hermanos의 외관과 식당 장면은 앨버커키의 실제 Twisters에서 촬영됐다. 가상의 범죄 세계와 지금도 영업하는 식당이 가장 자연스럽게 겹치는 장소다."
+    relationship: FILMED
+    image_path: /assets/scenes/breakingbad/breakingbad-scene-01.svg
+    image_type: original_illustration
+    alt_ko: "앨버커키 Twisters 식당 외관 분위기를 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_breakingbad_locations.js#lospollos"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "간판은 현실의 식당인데 팬 눈에는 바로 Los Pollos Hermanos로 보인다. 세트가 철거된 곳이 아니라 실제 일상이 계속된다는 점 때문에 더 이상하다."
+    status: PLANNER_READY
+
+  - scene_id: breakingbad-scene-02
+    work_id: breakingbad
+    context_type: SCREEN_SCENE
+    source_location_id: carwash
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "돈세탁 사업장이 된 평범한 세차장"
+    scene_description_ko: "월터와 스카일러의 A1A 세차장으로 등장한 실제 앨버커키 세차장은 범죄의 돈이 일상적인 사업장에 숨어드는 설정을 현실 공간으로 만든다."
+    relationship: FILMED
+    image_path: /assets/scenes/breakingbad/breakingbad-scene-02.svg
+    image_type: original_illustration
+    alt_ko: "브레이킹 배드의 A1A 세차장 촬영지를 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_breakingbad_locations.js#carwash"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "엄청난 사건 현장보다 오히려 평범해서 더 《Breaking Bad》답다. 차를 타고 지나가다 보면 ‘저기가 그곳이라고?’ 싶은 현실감이 있다."
+    status: PLANNER_READY
+
+  - scene_id: breakingbad-scene-03
+    work_id: breakingbad
+    context_type: SCREEN_SCENE
+    source_location_id: tuco_office
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "월터가 돌아갈 수 없는 선을 넘은 건물"
+    scene_description_ko: "투코의 본거지로 등장한 건물은 실제 Java Joe's다. 시리즈 초반 월터의 변화가 한 번에 드러나는 강렬한 장면과 평범한 현재의 카페가 대비된다."
+    relationship: FILMED
+    image_path: /assets/scenes/breakingbad/breakingbad-scene-03.svg
+    image_type: original_illustration
+    alt_ko: "투코의 사무실 촬영지로 쓰인 Java Joe's 건물을 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_breakingbad_locations.js#tuco_office"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "화면의 기억은 폭발적인데 지금의 건물은 놀랄 만큼 평범하다. 그 간극 때문에 장면을 알고 찾아가면 오히려 더 선명하게 기억난다."
+    status: PLANNER_READY
+
+  - scene_id: byakuya-scene-01
+    work_id: byakuya
+    context_type: STORY_SETTING
+    source_location_id: by_fuse_station
+    link_mode: MAP_STATE
+    scene_title_ko: "백야행의 무대, 후세에서 시작하기"
+    scene_description_ko: "오사카 후세는 소설 《백야행》의 실제 도시 배경을 이해하는 출발점이다. 영상 촬영지와 혼동하지 않고 원작의 무대로 소개한다."
+    relationship: STORY-RELATED
+    image_path: /assets/scenes/byakuya/byakuya-scene-01.svg
+    image_type: original_illustration
+    alt_ko: "오사카 후세역과 철길 분위기를 표현한 백야행 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_byakuya_locations.js#by_fuse_station"
+      - "docs/growth/batch2/BYAKUYA_RESEARCH_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "여긴 드라마 촬영지라고 부르면 틀린다. 대신 작품 속 긴 시간을 현실의 도시 위에 겹쳐 보게 해주는 장소라서 촬영지와는 다른 종류의 성지순례가 된다."
+    status: PLANNER_READY
+
+  - scene_id: byakuya-scene-02
+    work_id: byakuya
+    context_type: STORY_SETTING
+    source_location_id: by_fuse_honodori
+    link_mode: MAP_STATE
+    scene_title_ko: "평범한 상점가가 백야행의 공기가 되는 곳"
+    scene_description_ko: "후세의 생활 상권은 작품의 오사카 생활권을 상상하게 해주는 실제 공간이다. 특정 영상 장면의 촬영지가 아니라 소설 무대의 질감을 걷는 콘텐츠다."
+    relationship: STORY-RELATED
+    image_path: /assets/scenes/byakuya/byakuya-scene-02.svg
+    image_type: original_illustration
+    alt_ko: "후세 혼마치 상점가의 아케이드 분위기를 표현한 백야행 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_byakuya_locations.js#by_fuse_honodori"
+      - "docs/growth/batch2/BYAKUYA_RESEARCH_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "백야행은 거대한 랜드마크보다 이런 평범한 생활 공간에서 더 잘 떠오른다. 실제 촬영지라고 과장하지 않는 게 오히려 이 장소를 더 재미있게 만든다."
+    status: PLANNER_READY
+
+  - scene_id: byakuya-scene-03
+    work_id: byakuya
+    context_type: ADAPTATION_FILMING
+    source_location_id: by_mitsukaido_station
+    link_mode: ADD_LOCATION_THEN_MAP_OR_PLACE
+    developer_source_action:
+      file: site/contentmap_byakuya_locations.js
+      action: ADD_PLANNER_APPROVED_LOCATION
+      id: by_mitsukaido_station
+      modern_name: "미쓰카이도역 (水海道駅), 이바라키현 조소시"
+      lat: 36.01782
+      lng: 139.991395
+      address: "〒303-0023 茨城県常総市水海道宝町2861-2"
+      tier: official
+      fact_source: "https://www.ibarakiguide.jp/ibaraki-fc/support.php?code=406&mode=detail"
+    scene_title_ko: "영상판은 여기서 실제로 찍혔다"
+    scene_description_ko: "원작의 오사카 무대와 별개로 2006년 TBS 드라마 《白夜行》는 이바라키현 조소시의 미쓰카이도역·기타미쓰카이도역에서 촬영됐다. v1은 미쓰카이도역을 대표 노드로 보여준다."
+    relationship: FILMED
+    image_path: /assets/scenes/byakuya/byakuya-scene-03.svg
+    image_type: original_illustration
+    alt_ko: "2006년 TBS 백야행 촬영지인 이바라키현 미쓰카이도역을 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "https://www.ibarakiguide.jp/ibaraki-fc/support.php?code=406&mode=detail"
+      - "https://www.kantetsu.co.jp/train/mitsukaido"
+      - "docs/growth/batch2/BYAKUYA_RESEARCH_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "‘소설의 무대’를 찾는 사람과 ‘드라마 촬영지’를 찾는 사람은 사실 다른 질문을 하고 있다. 이 역을 별도 영상판 로케이션으로 보여주면 두 여행법을 정확하게 나눌 수 있다."
+    status: PLANNER_READY
+
+  - scene_id: strangerthings-scene-01
+    work_id: strangerthings
+    context_type: SCREEN_SCENE
+    source_location_id: creelhouse
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "Creel House, 공포가 집 한 채에 모이는 곳"
+    scene_description_ko: "Rome, Georgia의 실제 저택은 시즌4 Creel House의 핵심 외관으로 쓰였다. 집의 높은 실루엣과 다락 구조 자체가 Vecna 서사의 분위기를 만든다."
+    relationship: FILMED
+    image_path: /assets/scenes/strangerthings/strangerthings-scene-01.svg
+    image_type: original_illustration
+    alt_ko: "조지아 로마의 Creel House 분위기를 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_strangerthings_locations.js#creelhouse"
+      - "https://www.netflix.com/tudum/articles/stranger-things-season-4-easter-eggs"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "제작진은 그냥 낡은 집이 아니라 멀리서도 불길하게 보이는 수직 실루엣을 가진 저택을 찾았다. 실제 건물의 생김새가 세계관 설명의 일부가 된 셈이다."
+    status: PLANNER_READY
+
+  - scene_id: strangerthings-scene-02
+    work_id: strangerthings
+    context_type: SCREEN_SCENE
+    source_location_id: hawkinslab
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "Eleven의 기억이 시작되는 Hawkins Lab"
+    scene_description_ko: "호킨스 연구소 외관은 애틀랜타의 옛 정신의료시설을 활용했다. 무거운 대칭과 창문이 잘 보이지 않는 외관이 연구소의 불길한 인상을 만든다."
+    relationship: FILMED
+    image_path: /assets/scenes/strangerthings/strangerthings-scene-02.svg
+    image_type: original_illustration
+    alt_ko: "호킨스 연구소 촬영지의 무거운 건축을 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_strangerthings_locations.js#hawkinslab"
+      - "https://www.netflix.com/tudum/articles/the-secrets-behind-designing-the-multiverse-of-stranger-things"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "호킨스 연구소의 기묘함은 CG만으로 만든 게 아니다. 실제 건축의 대칭과 폐쇄감이 제작진에게 영감을 줬고, 그 분위기가 화면에 들어갔다."
+    status: PLANNER_READY
+
+  - scene_id: strangerthings-scene-03
+    work_id: strangerthings
+    context_type: SCREEN_SCENE
+    source_location_id: gwinnettmall
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "1985년 Starcourt로 되돌아간 쇼핑몰"
+    scene_description_ko: "시즌3의 Starcourt Mall은 조지아의 Gwinnett Place Mall을 1980년대 쇼핑몰로 되살려 촬영한 공간이다. 현실의 몰과 극중 시대감이 겹친다."
+    relationship: FILMED
+    image_path: /assets/scenes/strangerthings/strangerthings-scene-03.svg
+    image_type: original_illustration
+    alt_ko: "Starcourt Mall 촬영지인 Gwinnett Place Mall을 1980년대 분위기로 표현한 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_strangerthings_locations.js#gwinnettmall"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "장소의 건물만 빌린 게 아니라 실제 1980년대 상업공간을 다시 조립한 프로젝트에 가깝다. 그래서 Starcourt는 세트처럼 보이면서도 묘하게 현실적인 질감이 있다."
+    status: PLANNER_READY
+
+  - scene_id: poksshak-scene-01
+    work_id: poksshak
+    context_type: SCREEN_SCENE
+    source_location_id: seongsan_ilchulbong
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "성산일출봉에 남은 애순의 시간"
+    scene_description_ko: "성산일출봉은 《폭싹 속았수다》의 제주 삶과 감정을 연결하는 핵심 장소 중 하나다. 드라마의 서사와 실제 제주의 거대한 지형이 겹친다."
+    relationship: FILMED
+    image_path: /assets/scenes/poksshak/poksshak-scene-01.svg
+    image_type: original_illustration
+    alt_ko: "성산일출봉과 제주 바다를 표현한 폭싹 속았수다 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_data.js#seongsan_ilchulbong"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "드라마를 모르고 가도 압도적인 곳인데, 애순의 시간을 알고 보면 풍경이 조금 다르게 보인다. 작품과 제주 여행을 가장 쉽게 이어주는 장소다."
+    status: PLANNER_READY
+
+  - scene_id: poksshak-scene-02
+    work_id: poksshak
+    context_type: SCREEN_SCENE
+    source_location_id: gimnyeong_beach
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "김녕의 바다와 해녀의 시간"
+    scene_description_ko: "김녕해수욕장은 애순과 관식의 어린 시절, 그리고 어머니 세대 해녀의 삶을 비추는 장면들과 연결된 제주 촬영지다."
+    relationship: FILMED
+    image_path: /assets/scenes/poksshak/poksshak-scene-02.svg
+    image_type: original_illustration
+    alt_ko: "김녕해수욕장과 제주 해녀의 바다를 표현한 폭싹 속았수다 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_data.js#gimnyeong_beach"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "예쁜 바다만 보는 장소가 아니라 작품 속 세대의 삶을 함께 떠올릴 수 있다는 게 다르다. 파란 바다와 드라마의 거친 생활감이 한 장소에 같이 남는다."
+    status: PLANNER_READY
+
+  - scene_id: poksshak-scene-03
+    work_id: poksshak
+    context_type: SCREEN_SCENE
+    source_location_id: hyeopjae_beach
+    link_mode: MAP_OR_PLACE
+    scene_title_ko: "둘이 가장 다정했던 바다"
+    scene_description_ko: "협재해수욕장은 애순과 관식이 파도를 뛰놀고 노을을 바라보는 따뜻한 장면들과 연결된 실제 제주 촬영지다."
+    relationship: FILMED
+    image_path: /assets/scenes/poksshak/poksshak-scene-03.svg
+    image_type: original_illustration
+    alt_ko: "협재해수욕장과 비양도 풍경을 표현한 폭싹 속았수다 에디토리얼 일러스트"
+    fact_sources:
+      - "site/contentmap_data.js#hyeopjae_beach"
+      - "docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md"
+    image_source_url: internal
+    license: original
+    attribution: "그곳지금 기획"
+    why_this_place_ko: "드라마의 힘든 시간들 사이에서 잠깐 숨을 돌리는 느낌을 주는 곳이다. 실제 협재의 밝은 바다와 작품의 다정한 기억이 잘 붙는다."
+    status: PLANNER_READY
