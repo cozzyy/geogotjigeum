@@ -162,4 +162,57 @@ const regionsDump = {
 fs.writeFileSync(path.join(OUT_DIR, 'regions_dump.json'), JSON.stringify(regionsDump), 'utf8');
 console.log('[build_dump] wrote regions_dump.json');
 
+
+// ---------- 3. Guide Package manifest 병합 (Issue #41 Phase F v1) ----------
+// 입력: docs/growth/guides/GUIDE_PACKAGES_READY_V1.yaml (기획 측 planner_ready 산출물,
+// planner_contract.render_only_from_this_file: true). Scene Package와 동일한 이유로
+// (npm 의존성 없음 + 네트워크 차단) python3 + PyYAML을 1회성 변환기로 재사용한다.
+// Guide는 works_dump.json에 병합하지 않고 별도 guides_dump.json으로 분리한다 — Work
+// 데이터와는 다른 콘텐츠 타입(여러 Stop을 묶은 라우트/순례 콘텐츠)이라 WORKS[].guides
+// 같은 형태로 억지로 끼워넣지 않는다(스키마 문서 "공용 Guide renderer 1개"와 별개로,
+// 데이터 레벨에서도 WORKS 구조를 건드리지 않는 게 가장 작은 변경).
+const GUIDE_MANIFEST_PATH = path.join(SITE_DIR, '..', 'docs', 'growth', 'guides', 'GUIDE_PACKAGES_READY_V1.yaml');
+if (fs.existsSync(GUIDE_MANIFEST_PATH)) {
+  const rawGuide = execFileSync('python3', ['-c', PY_YAML_TO_JSON, GUIDE_MANIFEST_PATH], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
+  const guideManifest = JSON.parse(rawGuide);
+  if (!guideManifest.planner_contract || guideManifest.planner_contract.render_only_from_this_file !== true) {
+    throw new Error('[build_dump] GUIDE_PACKAGES_READY_V1.yaml의 planner_contract.render_only_from_this_file이 true가 아닙니다 — 구현 입력 파일이 맞는지 확인 필요.');
+  }
+  const guidePackages = guideManifest.packages || [];
+  let guideOk = 0, guideSkipped = 0;
+  const readyGuides = [];
+  guidePackages.forEach(g => {
+    if (g.status !== 'PLANNER_READY') {
+      console.warn(`[build_dump] guide package ${g.guide_id} status=${g.status} — PLANNER_READY가 아니라 건너뜁니다.`);
+      guideSkipped++;
+      return;
+    }
+    const w = WORKS.find(x => x.id === g.work_id);
+    if (!w) { console.warn(`[build_dump] guide package ${g.guide_id}: work_id "${g.work_id}"를 WORKS에서 찾지 못했습니다.`); guideSkipped++; return; }
+    // Guide의 각 stop이 가리키는 canonical_location_id가 실제로 그 작품의 locations에 있는지
+    // 여기서 한 번 검증한다 — Scene Package와 동일하게 "canonical source에 없는 stop"을
+    // 조용히 넘기지 않고 build 실패로 드러낸다.
+    let stopsMissing = 0;
+    (g.segments || []).forEach(seg => {
+      (seg.stops || []).forEach(stop => {
+        const loc = (w.locations || []).find(l => l.id === stop.canonical_location_id);
+        if (!loc) {
+          console.warn(`[build_dump] guide ${g.guide_id} stop ${stop.stop_id}: canonical_location_id "${stop.canonical_location_id}"를 ${g.work_id}의 locations에서 찾지 못했습니다.`);
+          stopsMissing++;
+        }
+      });
+    });
+    if (stopsMissing > 0) { guideSkipped++; return; }
+    readyGuides.push(g);
+    guideOk++;
+  });
+  fs.writeFileSync(path.join(OUT_DIR, 'guides_dump.json'), JSON.stringify(readyGuides), 'utf8');
+  console.log(`[build_dump] guide packages: ${guideOk} resolved, ${guideSkipped} skipped — wrote guides_dump.json`);
+  if (guideSkipped > 0) {
+    throw new Error(`[build_dump] guide package ${guideSkipped}건이 검증 실패했습니다 — 위 경고 확인 필요.`);
+  }
+} else {
+  console.warn('[build_dump] GUIDE_PACKAGES_READY_V1.yaml이 없어 guide package 병합을 건너뜁니다 (Issue #41 미착수 상태).');
+}
+
 console.log('[build_dump] done.');
