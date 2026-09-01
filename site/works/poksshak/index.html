@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -299,6 +311,37 @@
 <p>이 드라마, 공개 당시 IMDb·왓챠피디아 같은 곳에서 역대 한국 드라마 중 손꼽히는 평점을 받았다고 한다. 아이유가 직접 부른 OST '밤 산책'도 방영 후 큰 화제를 모았다고.</p>
 <p>그러니까 제주 가게 되면 그냥 유명 관광지만 돌지 말고, &quot;여기 혹시 그 장면 아니야?&quot; 하면서 한두 군데 찾아가 보는 것도 꽤 재밌을 듯. 다만 정작 그 마음을 흔든 장면들 상당수는 제주가 아니라 안동과 고창에 있다는 게 이 드라마의 제일 큰 반전인지도 모르겠다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gochang_hagwon_farm">유채꽃밭 → 전북 고창</a><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=andong_set">제주 마을 세트 → 경북 안동</a><span class="revealChip">'도동리' → 가상의 지명(실존 안 함)</span><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gimnyeong_beach">김녕 바다 → 진짜 촬영지</a></div></div>
+  
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=seongsan_ilchulbong">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-01.svg" alt="성산일출봉과 제주 바다를 표현한 폭싹 속았수다 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>성산일출봉에 남은 애순의 시간</h3>
+        <p>성산일출봉은 《폭싹 속았수다》의 제주 삶과 감정을 연결하는 핵심 장소 중 하나다. 드라마의 서사와 실제 제주의 거대한 지형이 겹친다.</p>
+        <span class="sceneLinkLabel">제주 서귀포시 — 성산일출봉 →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gimnyeong_beach">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-02.svg" alt="김녕해수욕장과 제주 해녀의 바다를 표현한 폭싹 속았수다 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>김녕의 바다와 해녀의 시간</h3>
+        <p>김녕해수욕장은 애순과 관식의 어린 시절, 그리고 어머니 세대 해녀의 삶을 비추는 장면들과 연결된 제주 촬영지다.</p>
+        <span class="sceneLinkLabel">제주 제주시 — 김녕해수욕장 →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=hyeopjae_beach">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-03.svg" alt="협재해수욕장과 비양도 풍경을 표현한 폭싹 속았수다 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>둘이 가장 다정했던 바다</h3>
+        <p>협재해수욕장은 애순과 관식이 파도를 뛰놀고 노을을 바라보는 따뜻한 장면들과 연결된 실제 제주 촬영지다.</p>
+        <span class="sceneLinkLabel">제주 제주시 — 협재해수욕장 →</span>
+      </div>
+    </a>
+  </div>
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

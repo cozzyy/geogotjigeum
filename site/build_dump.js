@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { execFileSync } = require('child_process');
 
 const SITE_DIR = __dirname;
 const OUT_DIR = '/tmp/seowork';
@@ -79,6 +80,51 @@ WORKS.forEach(w => {
   });
 });
 console.log('[build_dump] tier distribution across all locations:', tierCounts);
+
+// ---------- 1-8. Scene Package manifest 병합 (Issue #40 Phase E v1) ----------
+// 입력: docs/growth/story-scene/SCENE_PACKAGES_READY_V1.yaml (기획 측 planner_ready 산출물,
+// planner_contract.render_only_from_this_file: true — 구 SCENE_PACKAGES_DRAFT_V1.yaml은 사용하지 않는다).
+// 이 저장소는 npm 의존성이 전혀 없고(node_modules 없음) 이 빌드 환경은 npm/GitHub 네트워크가
+// 막혀 있어 js-yaml 설치가 불가능하다. 대신 이미 설치돼 있는 python3 + PyYAML을 child_process로
+// 1회 호출해 YAML -> JSON 변환만 위임한다. 매 빌드마다 YAML 원본을 그대로 다시 읽으므로 중간 JSON을
+// repo에 커밋하지 않고 YAML 파일 자체가 유일한 source of truth로 유지된다.
+const READY_MANIFEST_PATH = path.join(SITE_DIR, '..', 'docs', 'growth', 'story-scene', 'SCENE_PACKAGES_READY_V1.yaml');
+const PY_YAML_TO_JSON = "import sys, json, yaml, datetime\nwith open(sys.argv[1], encoding='utf-8') as f:\n    data = yaml.safe_load(f)\ndef _default(o):\n    if isinstance(o, (datetime.date, datetime.datetime)):\n        return o.isoformat()\n    raise TypeError(repr(o) + ' is not JSON serializable')\njson.dump(data, sys.stdout, ensure_ascii=False, default=_default)\n";
+if (fs.existsSync(READY_MANIFEST_PATH)) {
+  const raw = execFileSync('python3', ['-c', PY_YAML_TO_JSON, READY_MANIFEST_PATH], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
+  const sceneManifest = JSON.parse(raw);
+  if (!sceneManifest.planner_contract || sceneManifest.planner_contract.render_only_from_this_file !== true) {
+    throw new Error('[build_dump] SCENE_PACKAGES_READY_V1.yaml의 planner_contract.render_only_from_this_file이 true가 아닙니다 — 구현 입력 파일이 맞는지 확인 필요.');
+  }
+  const packages = sceneManifest.packages || [];
+  const byWork = {};
+  let resolved = 0, unresolved = 0, withPlace = 0, mapOnly = 0;
+  packages.forEach(pkg => {
+    if (pkg.status !== 'PLANNER_READY') {
+      console.warn(`[build_dump] scene package ${pkg.scene_id} status=${pkg.status} — PLANNER_READY가 아니라 건너뜁니다.`);
+      return;
+    }
+    const w = WORKS.find(x => x.id === pkg.work_id);
+    if (!w) { console.warn(`[build_dump] scene package ${pkg.scene_id}: work_id "${pkg.work_id}"를 WORKS에서 찾지 못했습니다.`); unresolved++; return; }
+    const loc = (w.locations || []).find(l => l.id === pkg.source_location_id);
+    if (!loc) { console.warn(`[build_dump] scene package ${pkg.scene_id}: source_location_id "${pkg.source_location_id}"를 ${pkg.work_id}의 locations에서 찾지 못했습니다.`); unresolved++; return; }
+    const hasPlacePage = pkg.link_mode !== 'MAP_STATE' && (loc.tier === 'official' || loc.tier === 'experience') && loc.lat != null && loc.lng != null;
+    if (hasPlacePage) withPlace++; else mapOnly++;
+    resolved++;
+    if (!byWork[pkg.work_id]) byWork[pkg.work_id] = [];
+    byWork[pkg.work_id].push(Object.assign({}, pkg, {
+      _locModernName: loc.modernName || null,
+      _hasPlacePage: hasPlacePage,
+    }));
+  });
+  WORKS.forEach(w => { if (byWork[w.id]) w.scenePackages = byWork[w.id]; });
+  console.log(`[build_dump] scene packages: ${resolved} resolved (${withPlace} Place-linked, ${mapOnly} Map-state-only), ${unresolved} unresolved`);
+  if (unresolved > 0) {
+    throw new Error(`[build_dump] scene package ${unresolved}건이 canonical source에서 해석되지 않았습니다 — 위 경고 확인 필요.`);
+  }
+} else {
+  console.warn('[build_dump] SCENE_PACKAGES_READY_V1.yaml이 없어 scene package 병합을 건너뜁니다 (Issue #40 미착수 상태).');
+}
 
 const worksJson = JSON.stringify(WORKS);
 fs.writeFileSync(path.join(OUT_DIR, 'works_dump.json'), worksJson, 'utf8');

@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -299,6 +311,7 @@
 <p>마지막 무대가 있던 남산서울타워도 실제로 갈 수 있다. 물론 타워 아래 영화 속 거대한 공연장은 없다. 그래도 케데헌 보고 남산에 올라가면 예전이랑은 좀 다를 것 같다. &quot;루미가 정말로 인간과 악마, 두 본성을 다 끌어안게 됐을까&quot; 하는 생각을 하면서.</p>
 <p>&quot;지누는 구원받을 자격이 있는가&quot; 하는 질문도 팬들 사이에서 여전히 뜨거운 논쟁거리라고 한다. 케데헌 보고 서울에 간다면 굳이 새로운 관광지를 찾을 필요는 없을지도 모른다. 원래 알던 서울에서 영화 속 서울을 하나씩 찾아보는 것, 그게 더 재밌을 것 같다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=kdemonhunters&amp;loc=myeongdong">명동예술극장 앞 바닥 무늬 → 'Soda Pop' 무대 장면에 그대로 반영</a><a class="revealChip" href="https://geugotjigeum.com/?work=kdemonhunters&amp;loc=bukchon">루미·진우가 만나는 한옥 지붕 → 북촌한옥마을이 모델</a><a class="revealChip" href="https://geugotjigeum.com/?work=kdemonhunters&amp;loc=gyeongbokgung">진우의 과거 궁궐 장면 → 경복궁이 모델</a><a class="revealChip" href="https://geugotjigeum.com/?work=kdemonhunters&amp;loc=jamsil">헌트릭스 빌딩 → 롯데월드타워 자리, 실제보다 더 높게 새로 디자인</a><a class="revealChip" href="https://geugotjigeum.com/?work=kdemonhunters&amp;loc=nseoultower">마지막 무대 남산서울타워 → 지금도 실제로 갈 수 있는 곳</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

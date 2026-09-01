@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Journey Under the Midnight Sun (Byakuyako)","url":"https://geugotjigeum.com/en/works/byakuya/","description":"In 1973 Osaka, a pawnshop owner is found murdered. The case goes unsolved, but over the following nineteen years, two people — Yukiho Nishimoto (later K…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Osaka Fuse Station South View.jpg","author":{"@type":"Person","name":"Novel by Keigo Higashino"},"genre":["mystery","drama","thriller"],"locationCreated":[{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6493,"longitude":135.5985}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6499,"longitude":135.5978}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6873,"longitude":135.5262}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6687,"longitude":135.5013}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Journey Under the Midnight Sun (Byakuyako)","url":"https://geugotjigeum.com/en/works/byakuya/","description":"In 1973 Osaka, a pawnshop owner is found murdered. The case goes unsolved, but over the following nineteen years, two people — Yukiho Nishimoto (later K…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Osaka Fuse Station South View.jpg","author":{"@type":"Person","name":"Novel by Keigo Higashino"},"genre":["mystery","drama","thriller"],"locationCreated":[{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6493,"longitude":135.5985}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6499,"longitude":135.5978}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6873,"longitude":135.5262}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6687,"longitude":135.5013}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":36.01782,"longitude":139.991395}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Journey Under the Midnight Sun (Byakuyako) — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/byakuya/"}]}</script>
 </head>
 <body>
@@ -268,7 +280,7 @@
       <p class="wsHeroMeta">Novel by Keigo Higashino · 1973–1992 (published 1999)</p>
       <div class="actionBar">
         <a class="ctaBtn" href="https://geugotjigeum.com/en/?work=byakuya">See every Journey Under the Midnight Sun (Byakuyako) location on the map →</a>
-        <a class="ctaBtn ctaBtnAlt" href="#allLocations">Top 5 · Cast · All 7 locations</a>
+        <a class="ctaBtn ctaBtnAlt" href="#allLocations">Top 5 · Cast · All 8 locations</a>
       </div>
     </div>
     <div class="wsFeatured">
@@ -297,6 +309,7 @@
 <p>It was adapted into a film in 2011, starring Maki Horikita and Kengo Kora. Following Higashino's death in July 2026, this novel — perhaps the one most steeped in the Osaka of his own hometown — is being revisited again.</p>
 <p>Visit Fuse, and you can walk the actual street where these two lives began to split apart. Wandering the shopping street, you'll probably keep imagining the two of them watching each other from somewhere, always just out of sight.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -317,10 +330,10 @@
 
   <h2>Top 5 locations</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #c9a227">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
       <h3></h3>
-      <p>THEMED</p>
+      <p>FILMED HERE</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
@@ -332,10 +345,10 @@
       <h3></h3>
       <p>THEMED</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">4</span>
       <h3></h3>
-      <p>RELATED</p>
+      <p>THEMED</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
@@ -345,7 +358,7 @@
   </div>
 
 
-  <h2 id="allLocations">All Journey Under the Midnight Sun (Byakuyako) locations (7)</h2>
+  <h2 id="allLocations">All Journey Under the Midnight Sun (Byakuyako) locations (8)</h2>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3></h3>
@@ -378,6 +391,11 @@
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="locCard">
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3></h3>
         <p></p>
       </div>

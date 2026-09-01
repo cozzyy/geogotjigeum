@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -294,6 +306,7 @@
 <p>Oedo Island in Geoje, where the finale was filmed, is apparently still there. I looked up the ending clips too — everyone already knows how it goes by now, but I think that last scene is something worth watching for yourself, so I'll leave it there.</p>
 <p>Digging into a drama from my mom's generation through nothing but clips, it still hit me: these aren't just old stories. They're real places that existed somewhere in her twenties — not scenery on a screen, but actual coordinates you can stand on.</p>
 <p>Next time I'm at Namiseom, I want to take a photo at the exact same angle as her profile picture. This time, after actually watching the whole thing myself.</p></div>
+  
   
 
   <div class="adSlot">

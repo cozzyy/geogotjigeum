@@ -132,6 +132,17 @@ const SHARED_CSS = `
   .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
   .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
   .tipBox b{color:var(--accent);}
+  /* Issue #40 Phase E v1 — Place Detail Scene/Why This Place 블록 */
+  .sceneBlock{margin:0 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);}
+  .sceneBlock .sceneImgWrap{aspect-ratio:16/9;background:var(--pagebg);overflow:hidden;}
+  .sceneBlock .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneBlock .sceneBlockBody{padding:14px 16px 16px;}
+  .sceneBadge{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
+  .sceneBlockBody p{font-size:14.5px;color:var(--ink);margin:0 0 10px;overflow-wrap:break-word;}
+  .sceneBlockBody a.sceneWorkLink{font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;}
+  .sceneBlockBody a.sceneWorkLink:hover{text-decoration:underline;}
+  .whyBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .whyBox h2{margin:0 0 8px;padding-top:0;border-top:none;font-size:15.5px;}
   .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
   h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
   .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
@@ -231,6 +242,10 @@ function placeUrl(p, locale){ return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}
 function hubUrl(locale){ return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/places/`; }
 function workUrl(w, locale){ return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/works/${w.id}/`; }
 function mapUrl(w, locId){ return `${SITE_ORIGIN}/?work=${encodeURIComponent(w.id)}&loc=${encodeURIComponent(locId)}`; }
+// Issue #40 Phase E v1 — Scene Package 관계 배지/컨텍스트 헤딩 (generate_work_pages.js와 동일 값 유지)
+const SCENE_REL_LABEL_KO = { FILMED:'실제 촬영지', 'STORY-RELATED':'작품 속 배경', EXPERIENCE:'공식 체험', INSPIRATION:'모티프·영감' };
+const SCENE_REL_COLOR = { FILMED:'#3ac07c', 'STORY-RELATED':'#c9a227', EXPERIENCE:'#3a7ce0', INSPIRATION:'#8a8fa3' };
+const SCENE_CONTEXT_HEADING_KO = { SCREEN_SCENE:'이곳에서 나온 장면', STORY_SETTING:'이곳과 연결된 이야기', ADAPTATION_FILMING:'영상판은 여기서 찍혔다' };
 function workTitle(w, locale){
   if (locale === 'en') return w.title_en || w.title;
   if (locale === 'ja') return w.title_ja || w.title;
@@ -326,6 +341,22 @@ while (places.length < TARGET_COUNT){
 }
 console.log('선정된 장소:', places.length, '/ 목표', TARGET_COUNT, '(후보 총', queues.reduce((s,q)=>s+q.items.length,0), '곳,', queues.length, '개 작품에서)');
 
+function renderSceneBlockHtml(scenePkg, w, wTitle, locale){
+  const relColor = SCENE_REL_COLOR[scenePkg.relationship] || SCENE_REL_COLOR.FILMED;
+  const badgeStyle = `background:${relColor}22;color:${relColor};border:1px solid ${relColor}59`;
+  const relLabel = SCENE_REL_LABEL_KO[scenePkg.relationship] || scenePkg.relationship;
+  const heading = SCENE_CONTEXT_HEADING_KO[scenePkg.context_type] || SCENE_CONTEXT_HEADING_KO.SCREEN_SCENE;
+  return `  <h2>${esc(heading)}</h2>
+  <div class="sceneBlock">
+    <div class="sceneImgWrap"><img src="${esc(SITE_ORIGIN + scenePkg.image_path)}" alt="${esc(scenePkg.alt_ko || '')}" loading="lazy" width="1600" height="900"></div>
+    <div class="sceneBlockBody">
+      <span class="sceneBadge" style="${badgeStyle}">${esc(relLabel)}</span>
+      <p>${esc(scenePkg.scene_description_ko || '')}</p>
+      <a class="sceneWorkLink" href="${esc(workUrl(w, locale))}">${esc(wTitle)} 자세히 보기 →</a>
+    </div>
+  </div>`;
+}
+
 function renderPlacePage(p, locale){
   const L = LOCALES[locale];
   const { work: w, loc: l } = p;
@@ -342,6 +373,14 @@ function renderPlacePage(p, locale){
   const otherPlaces = places
     .filter(o => o.workId !== p.workId && I18N.i18nStatus('place', o, locale) === 'published')
     .slice(0, 4);
+
+  // Issue #40 Phase E v1 — Place Detail Scene/Why This Place 블록.
+  // 기획 매니페스트가 _ko 필드만 제공하므로 v1은 한국어 페이지에만 렌더링한다(조용한 fallback 금지).
+  const scenePkg = (locale === 'ko' && Array.isArray(w.scenePackages))
+    ? w.scenePackages.find(sp => sp._hasPlacePage && sp.source_location_id === l.id)
+    : null;
+  const sceneBlockHtml = scenePkg ? renderSceneBlockHtml(scenePkg, w, wTitle, locale) : '';
+  const whyBoxHtml = scenePkg && scenePkg.why_this_place_ko ? `  <div class="whyBox"><h2>여기, 왜 가볼 만해?</h2><p style="margin:0;">${esc(scenePkg.why_this_place_ko)}</p></div>` : '';
 
   const jsonLdPlace = { '@context':'https://schema.org', '@type':'TouristAttraction', name: placeName, description, url: canonicalUrl };
   if (l.lat != null && l.lng != null) jsonLdPlace.geo = { '@type':'GeoCoordinates', latitude: l.lat, longitude: l.lng };
@@ -376,7 +415,8 @@ function renderPlacePage(p, locale){
   <div class="mapCtaWrap">
     <a class="mapCta" href="${mapUrl(w, l.id)}">${L.ui.mapCta}</a>
   </div>
-
+${sceneBlockHtml}
+${whyBoxHtml}
   <p class="intro">${esc(rawDesc || '')}</p>
 ${tipHtml}
   <div class="noteBox">${esc(L.ui.note(wTitle))}</div>

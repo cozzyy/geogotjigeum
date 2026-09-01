@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -297,6 +309,7 @@
 <p>나는 아직 분고타카다에 가본 적은 없지만, 언젠가 가게 된다면 영화 세트가 없다는 게 그렇게 아쉽지는 않을 것 같다. 오래된 골목 좀 걷다가 나미야 잡화점이 있던 자리에 한번 서보고, 마지막에는 마타마 해안에서 해 지는 걸 보고 싶다.</p>
 <p>그러다 골목 어딘가에서 오래된 우편함 하나 발견하면, 아마 잠깐은 이런 생각도 할 것 같다. &quot;여기에 편지 넣으면 답장 오려나.&quot;</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=namiya&amp;loc=bungotakada_showamachi">영화 속 나미야 잡화점 → 오이타현 분고타카다 미야마치 상점가 세트(촬영 후 철거)</a><span class="revealChip">영화에 쓰인 간판 → 인근 쇼와로망창고에 보관</span><span class="revealChip">세리가 'Reborn'에 맞춰 춤추던 마지막 장면 → 마타마 해안</span><a class="revealChip" href="https://geugotjigeum.com/?work=namiya&amp;loc=bungotakada_showamachi">한때 사람이 찾지 않던 상점가 → '쇼와의 마을'로 되살아나 지금은 관광지</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

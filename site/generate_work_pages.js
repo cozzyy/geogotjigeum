@@ -70,6 +70,11 @@ function esc(s){
 }
 
 const TIER_COLOR = { official:'#3ac07c', experience:'#3a7ce0', theme:'#c9a227', direct:'#8a8fa3' };
+// Issue #40 Phase E v1 — Scene Package 관계(relationship) 배지. 장소 tier와는 별개 축(장면과
+// 실제 장소의 관계 유형)이라 TIER_COLOR와 분리하되 같은 팔레트를 재사용해 시각적 일관성을 맞춘다.
+const SCENE_REL_LABEL_KO = { FILMED:'실제 촬영지', 'STORY-RELATED':'작품 속 배경', EXPERIENCE:'공식 체험', INSPIRATION:'모티프·영감' };
+const SCENE_REL_COLOR = { FILMED:'#3ac07c', 'STORY-RELATED':'#c9a227', EXPERIENCE:'#3a7ce0', INSPIRATION:'#8a8fa3' };
+function scenePlaceUrl(workId, locId, locale){ return `${SITE_ORIGIN}${LOCALES[locale].urlPrefix}/places/${workId}-${locId}/`; }
 function hexToRgba(hex, a){
   const h = hex.replace('#', '');
   return `rgba(${parseInt(h.substring(0,2),16)},${parseInt(h.substring(2,4),16)},${parseInt(h.substring(4,6),16)},${a})`;
@@ -614,6 +619,17 @@ const SHARED_CSS = `
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -664,6 +680,7 @@ const SHARED_CSS = `
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -846,6 +863,33 @@ ${castList.map(p => {
         }).join('')
       }</div></div>` : '';
 
+  // Issue #40 Phase E v1 — Scene Package: Work Detail Scene Card 섹션.
+  // 기획 매니페스트(SCENE_PACKAGES_READY_V1.yaml)가 _ko 필드만 제공하므로 v1은 한국어 페이지에만
+  // 렌더링한다. 번역이 없는 로케일에 한국어를 그대로 fallback하지 않는다는 원칙(Phase E 7절/
+  // 스키마 14절)에 따라 ko 외 로케일은 이 섹션 자체를 만들지 않는다(조용한 폴백 금지).
+  const scenePackages = (locale === 'ko' && Array.isArray(w.scenePackages)) ? w.scenePackages : [];
+  const sceneCardsHtml = scenePackages.length ? `
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+${scenePackages.map(pkg => {
+    const relColor = SCENE_REL_COLOR[pkg.relationship] || SCENE_REL_COLOR.FILMED;
+    const badgeStyle = `background:${hexToRgba(relColor, 0.12)};color:${relColor};border:1px solid ${hexToRgba(relColor, 0.35)}`;
+    const relLabel = SCENE_REL_LABEL_KO[pkg.relationship] || pkg.relationship;
+    const href = pkg._hasPlacePage
+      ? scenePlaceUrl(w.id, pkg.source_location_id, locale)
+      : `${mapUrl}&loc=${encodeURIComponent(pkg.source_location_id)}`;
+    return `    <a class="sceneCard" href="${esc(href)}">
+      <div class="sceneImgWrap"><img src="${esc(SITE_ORIGIN + pkg.image_path)}" alt="${esc(pkg.alt_ko || '')}" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="${badgeStyle}">${esc(relLabel)}</span>
+        <h3>${esc(pkg.scene_title_ko || '')}</h3>
+        <p>${esc(pkg.scene_description_ko || '')}</p>
+        <span class="sceneLinkLabel">${esc(pkg._locModernName || '')} →</span>
+      </div>
+    </a>`;
+  }).join('\n')}
+  </div>` : '';
+
   // 2026-08 Issue #10: 예전에는 미번역 언어의 버튼을 통째로 안 보이게 했는데, 그러면 "이 작품엔
   // 원래 4개 언어가 없나 보다"처럼 보여 다른 페이지의 스위처와 개수가 달라진다. 이제 버튼은 항상
   // 4개 다 보이고, 번역이 없는 언어는 링크 없는 '준비 중' 배지로 표시한다(공통 헬퍼로 통일).
@@ -967,6 +1011,7 @@ ${w.heroImage && w.heroImage.credit ? `<p class="heroCredit">${w.heroImage.credi
   <p class="sectionKicker">${esc(L.ui.storyKicker)}</p>
   ${hasHook ? hookBoxHtml : `<p class="intro">${esc(seo.description)}${esc(L.ui.introSuffix)}</p>${introExtra ? `<p class="intro">${introExtra}</p>` : ''}`}
   ${hasHook ? hookRevealsHtml : ''}
+  ${sceneCardsHtml}
 
   <div class="adSlot">
     <span class="adLabel">${esc(L.ui.adLabel)}</span>

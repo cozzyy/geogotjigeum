@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"백야행 (白夜行)","url":"https://geugotjigeum.com/works/byakuya/","description":"백야행의 실제 배경인 오사카 후세 상점가와 19년에 걸친 두 사람의 이야기를 지도에서 확인하세요. 히가시노 게이고 추모 특집.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Osaka Fuse Station South View.jpg","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["mystery","drama","thriller"],"locationCreated":[{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6493,"longitude":135.5985}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6499,"longitude":135.5978}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6873,"longitude":135.5262}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6687,"longitude":135.5013}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"백야행 (白夜行)","url":"https://geugotjigeum.com/works/byakuya/","description":"백야행의 실제 배경인 오사카 후세 상점가와 19년에 걸친 두 사람의 이야기를 지도에서 확인하세요. 히가시노 게이고 추모 특집.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Osaka Fuse Station South View.jpg","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["mystery","drama","thriller"],"locationCreated":[{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6493,"longitude":135.5985}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6499,"longitude":135.5978}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6873,"longitude":135.5262}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":34.6687,"longitude":135.5013}},{"@type":"Place","geo":{"@type":"GeoCoordinates","latitude":36.01782,"longitude":139.991395}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"히가시노 게이고 추모 특집 — 백야행 오사카 실제 장소 지도","item":"https://geugotjigeum.com/works/byakuya/"}]}</script>
 </head>
 <body>
@@ -268,7 +280,7 @@
       <p class="wsHeroMeta">히가시노 게이고 장편소설 · 1973년~1992년(발표 1999년)</p>
       <div class="actionBar">
         <a class="ctaBtn" href="https://geugotjigeum.com/?work=byakuya">백야행 (白夜行) 장소 전체 보기 →</a>
-        <a class="ctaBtn ctaBtnAlt" href="#allLocations">TOP5·출연진·전체 장소 7곳 보기</a>
+        <a class="ctaBtn ctaBtnAlt" href="#allLocations">TOP5·출연진·전체 장소 8곳 보기</a>
       </div>
     </div>
     <div class="wsFeatured">
@@ -297,6 +309,37 @@
 <p>2011년에는 호리키타 마키·코라 켄고 주연으로 영화화됐다. 2026년 7월, 작가가 세상을 떠난 뒤 그의 고향 오사카의 정서가 가장 짙게 밴 이 작품이 다시 조명받고 있다.</p>
 <p>후세에 가보면, 두 사람의 삶이 갈라지기 시작한 그 거리를 실제로 걸어볼 수 있다. 상점가를 걷다 보면, 어디선가 서로를 지켜보고 있었을 두 사람의 시선이 자꾸 떠오를 것 같다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_station">긴테쓰 후세역 → 히가시노가 실명 그대로 쓴 몇 안 되는 배경</a><a class="revealChip" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_honodori">후세 혼도리 상점가 → 지금도 남아있는 쇼와시대 거리</a><span class="revealChip">전당포 '기리하라' → 정확한 주소는 밝히지 않은 가공의 공간</span><span class="revealChip">사사가키 형사의 19년 추적 → 장소가 아니라 시간 그 자체</span></div></div>
+  
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_station">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/byakuya/byakuya-scene-01.svg" alt="오사카 후세역과 철길 분위기를 표현한 백야행 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">작품 속 배경</span>
+        <h3>백야행의 무대, 후세에서 시작하기</h3>
+        <p>오사카 후세는 소설 《백야행》의 실제 도시 배경을 이해하는 출발점이다. 영상 촬영지와 혼동하지 않고 원작의 무대로 소개한다.</p>
+        <span class="sceneLinkLabel">긴테쓰 후세역(近鉄布施駅) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_honodori">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/byakuya/byakuya-scene-02.svg" alt="후세 혼마치 상점가의 아케이드 분위기를 표현한 백야행 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">작품 속 배경</span>
+        <h3>평범한 상점가가 백야행의 공기가 되는 곳</h3>
+        <p>후세의 생활 상권은 작품의 오사카 생활권을 상상하게 해주는 실제 공간이다. 특정 영상 장면의 촬영지가 아니라 소설 무대의 질감을 걷는 콘텐츠다.</p>
+        <span class="sceneLinkLabel">후세 혼도리 상점가(布施本通商店街) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/places/byakuya-by_mitsukaido_station/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/byakuya/byakuya-scene-03.svg" alt="2006년 TBS 백야행 촬영지인 이바라키현 미쓰카이도역을 표현한 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>영상판은 여기서 실제로 찍혔다</h3>
+        <p>원작의 오사카 무대와 별개로 2006년 TBS 드라마 《白夜行》는 이바라키현 조소시의 미쓰카이도역·기타미쓰카이도역에서 촬영됐다. v1은 미쓰카이도역을 대표 노드로 보여준다.</p>
+        <span class="sceneLinkLabel">미쓰카이도역 (水海道駅), 이바라키현 조소시 →</span>
+      </div>
+    </a>
+  </div>
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -317,10 +360,10 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #c9a227">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
       <h3></h3>
-      <p>테마 연계</p>
+      <p>공식·직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
@@ -332,10 +375,10 @@
       <h3></h3>
       <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">4</span>
       <h3></h3>
-      <p>직접</p>
+      <p>테마 연계</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
@@ -405,7 +448,7 @@
   </div>
   <p style="font-size:12.5px;color:var(--sub);margin-top:10px;">전체 인물 관계와 이야기는 지도 화면에서 확인할 수 있어요.</p>
 
-  <h2 id="allLocations">백야행 (白夜行)의 전체 장소 목록 (7곳)</h2>
+  <h2 id="allLocations">백야행 (白夜行)의 전체 장소 목록 (8곳)</h2>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3></h3>
@@ -438,6 +481,11 @@
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="locCard">
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3></h3>
         <p></p>
       </div>

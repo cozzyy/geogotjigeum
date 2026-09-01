@@ -66,6 +66,17 @@
   .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
   .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
   .tipBox b{color:var(--accent);}
+  /* Issue #40 Phase E v1 — Place Detail Scene/Why This Place 블록 */
+  .sceneBlock{margin:0 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);}
+  .sceneBlock .sceneImgWrap{aspect-ratio:16/9;background:var(--pagebg);overflow:hidden;}
+  .sceneBlock .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneBlock .sceneBlockBody{padding:14px 16px 16px;}
+  .sceneBadge{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
+  .sceneBlockBody p{font-size:14.5px;color:var(--ink);margin:0 0 10px;overflow-wrap:break-word;}
+  .sceneBlockBody a.sceneWorkLink{font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;}
+  .sceneBlockBody a.sceneWorkLink:hover{text-decoration:underline;}
+  .whyBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .whyBox h2{margin:0 0 8px;padding-top:0;border-top:none;font-size:15.5px;}
   .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
   h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
   .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
@@ -135,7 +146,16 @@
   <div class="mapCtaWrap">
     <a class="mapCta" href="https://geugotjigeum.com/?work=strangerthings&loc=gwinnettmall">🗺️ 지도에서 정확한 위치 보기 →</a>
   </div>
-
+  <h2>이곳에서 나온 장면</h2>
+  <div class="sceneBlock">
+    <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/strangerthings/strangerthings-scene-03.svg" alt="Starcourt Mall 촬영지인 Gwinnett Place Mall을 1980년대 분위기로 표현한 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+    <div class="sceneBlockBody">
+      <span class="sceneBadge" style="background:#3ac07c22;color:#3ac07c;border:1px solid #3ac07c59">실제 촬영지</span>
+      <p>시즌3의 Starcourt Mall은 조지아의 Gwinnett Place Mall을 1980년대 쇼핑몰로 되살려 촬영한 공간이다. 현실의 몰과 극중 시대감이 겹친다.</p>
+      <a class="sceneWorkLink" href="https://geugotjigeum.com/works/strangerthings/">기묘한 이야기 (Stranger Things) 자세히 보기 →</a>
+    </div>
+  </div>
+  <div class="whyBox"><h2>여기, 왜 가볼 만해?</h2><p style="margin:0;">장소의 건물만 빌린 게 아니라 실제 1980년대 상업공간을 다시 조립한 프로젝트에 가깝다. 그래서 Starcourt는 세트처럼 보이면서도 묘하게 현실적인 질감이 있다.</p></div>
   <p class="intro"></p>
   <div class="tipBox"><b>💡 방문 팁</b><br>현재는 상권이 축소돼 방문 전 운영 여부를 확인하세요.</div>
   <div class="noteBox">이 장소가 나온 작품 &quot;기묘한 이야기 (Stranger Things)&quot;의 다른 실제 촬영지·배경 장소들도 함께 볼 수 있어요.</div>

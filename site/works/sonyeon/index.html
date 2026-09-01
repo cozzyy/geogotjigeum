@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -296,6 +308,7 @@
 <p>이 사이트는 이 여정을 성지순례나 포토존으로 소개하지 않는다. 실제로 학살과 항쟁이 있었던 자리를 걷는 일이기 때문이다.</p>
 <p>소설을 읽고 광주를 걷는다는 것은, 그 자리에서 있었던 일과 그 이후 오랫동안 이어진 침묵, 그리고 지금 남아 있는 기록을 함께 마주하는 일에 가깝다. 마지막 책장을 덮고도 동호 어머니가 끝내 놓지 못한 것이 무엇인지는, 이 소설을 직접 읽는 사람만이 알 수 있을 것 같다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=sonyeon&amp;loc=sangmugwan">상무관 → 지금의 5·18민주화운동기록관 5관</a><a class="revealChip" href="https://geugotjigeum.com/?work=sonyeon&amp;loc=oldprovincialoffice">동호 → 실존 인물 문재학(당시 16세)을 모티브로 함</a><a class="revealChip" href="https://geugotjigeum.com/?work=sonyeon&amp;loc=jeonil245">전일빌딩245 → 이름의 유래가 된 245개의 총탄 흔적</a><a class="revealChip" href="https://geugotjigeum.com/?work=sonyeon&amp;loc=oldmangwoldong">국립5·18민주묘지 ≠ 옛 망월동 묘지 — 서로 다른 곳</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

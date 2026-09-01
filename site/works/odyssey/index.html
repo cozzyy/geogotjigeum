@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -298,6 +310,37 @@
 <p>맷 데이먼·톰 홀랜드·앤 해서웨이·로버트 패틴슨·젠데이아·샤를리즈 테론까지, 초호화 캐스팅에 IMAX 필름으로 6개국을 오가며 찍었다는 스케일도 스케일이지만, 결국 남는 건 '집에 돌아온 왕이 왕좌 대신 선택한 것'이라는 이 결말이었다.</p>
 <p>그러니까 이 영화는 촬영지 따로, 신화 속 진짜 장소 따로, 결말까지 원작과 다르게 두 겹 세 겹의 지도를 갖고 있는 셈이다. 어느 쪽을 따라가도 여행이 될 것 같다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=odyssey&amp;loc=favignana_castle">이타카 왕궁 → 실제 촬영은 시칠리아 파비냐나 섬</a><a class="revealChip" href="https://geugotjigeum.com/?work=odyssey&amp;loc=real_ithaca">진짜 이타카 → 그리스 이오니아해의 섬(영화엔 안 나옴)</a><a class="revealChip" href="https://geugotjigeum.com/?work=odyssey&amp;loc=ait_ben_haddou">트로이 성 → 모로코 아이트 벤하두, 진짜 트로이는 튀르키예 히사를리크</a><a class="revealChip" href="https://geugotjigeum.com/?work=odyssey&amp;loc=nestors_cave">폴리페무스의 동굴 → CG 없이, 기원전 6000년부터 사람이 산 진짜 동굴</a></div></div>
+  
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+    <a class="sceneCard" href="https://geugotjigeum.com/places/odyssey-nestors_cave/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/odyssey/odyssey-scene-01.svg" alt="그리스 메세니아의 네스토르 동굴과 보이도킬리아 해안을 표현한 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>동굴 안에서 마주친 신화</h3>
+        <p>네스토르 동굴과 보이도킬리아 일대가 《The Odyssey》의 메세니아 촬영 축으로 쓰였다. 화면 속 신화의 동굴이 실제 절벽과 바다 위에 놓여 있다는 게 이 장면의 포인트다.</p>
+        <span class="sceneLinkLabel">네스토르의 동굴 (보이도킬리아 해변 위, 그리스) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/places/odyssey-voidokilia_beach/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/odyssey/odyssey-scene-02.svg" alt="초승달 모양의 보이도킬리아 해변을 표현한 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>신화의 바다가 현실이 되는 보이도킬리아</h3>
+        <p>거의 완벽한 초승달 모양의 보이도킬리아 해변은 《The Odyssey》의 메세니아 촬영지 중 하나다. 바다와 모래의 형태 자체가 거대한 세트처럼 보인다.</p>
+        <span class="sceneLinkLabel">보이도킬리아 해변 (그리스 펠로폰네소스 메세니아) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/places/odyssey-favignana_castle/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/odyssey/odyssey-scene-03.svg" alt="이탈리아 파비냐나 섬 정상의 산타 카테리나 성채를 표현한 에디토리얼 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>이타카의 왕궁처럼 변한 섬 정상의 성채</h3>
+        <p>파비냐나 섬의 산타 카테리나 성채는 영화 속 고대 세계를 만드는 실제 로케이션으로 쓰였다. 화면의 왕궁과 현실의 오래된 요새가 겹치는 장소다.</p>
+        <span class="sceneLinkLabel">카스텔로 디 산타 카테리나 (파비냐나 섬, 이탈리아 시칠리아) →</span>
+      </div>
+    </a>
+  </div>
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

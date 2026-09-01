@@ -66,6 +66,17 @@
   .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
   .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
   .tipBox b{color:var(--accent);}
+  /* Issue #40 Phase E v1 — Place Detail Scene/Why This Place 블록 */
+  .sceneBlock{margin:0 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);}
+  .sceneBlock .sceneImgWrap{aspect-ratio:16/9;background:var(--pagebg);overflow:hidden;}
+  .sceneBlock .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneBlock .sceneBlockBody{padding:14px 16px 16px;}
+  .sceneBadge{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
+  .sceneBlockBody p{font-size:14.5px;color:var(--ink);margin:0 0 10px;overflow-wrap:break-word;}
+  .sceneBlockBody a.sceneWorkLink{font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;}
+  .sceneBlockBody a.sceneWorkLink:hover{text-decoration:underline;}
+  .whyBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
+  .whyBox h2{margin:0 0 8px;padding-top:0;border-top:none;font-size:15.5px;}
   .noteBox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin:0 0 4px;overflow-wrap:break-word;}
   h2{font-size:17.5px;margin:32px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink);}
   .workCard{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;text-decoration:none;color:inherit;background:var(--card);transition:border-color .15s ease,background .15s ease;min-width:0;}
@@ -135,6 +146,7 @@
   <div class="mapCtaWrap">
     <a class="mapCta" href="https://geugotjigeum.com/?work=taebaek&loc=suncheon_maesandeung">🗺️ 地図で正確な位置を見る →</a>
   </div>
+
 
   <p class="intro"></p>
   <div class="tipBox"><b>💡 訪問のヒント</b><br>Visit quietly alongside Maesan School, with an understanding of its historical context.</div>

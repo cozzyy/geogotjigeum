@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -297,6 +309,7 @@
 <p>가족애, 상실, 속죄라는 보편적인 정서를 정교한 액션이랑 같이 담아낸 게 이렇게까지 폭넓은 사랑을 받은 이유라고들 하는데, 다 보고 나니까 그 말이 맞다는 생각이 든다.</p>
 <p>그러니까 이 작품, 이름이 겹치는 신사부터 증기기관차, 료칸까지 따라가다 보면 완전히 허구만은 아니라는 느낌이 든다. 다자이후에서 시작해서 규슈 온천 마을까지 이어보는 코스, 한번 해보고 싶다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_kamado_shrine">카마도 신사 → 탄지로 성씨와 같은 이름의 진짜 신사(다자이후)</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_kyoto_railway_museum">무한열차 → 교토 철도박물관의 증기기관차 '시고사이'가 유력한 모티브</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_chichibu_sl">'진짜 무한열차' → 사이타마 치치부 철도 파레오익스프레스</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_okawaso">무한성 내부 → 효고현 키노사키온천 오카와소 료칸이 모티브로 거론</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
