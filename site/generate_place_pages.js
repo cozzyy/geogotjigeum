@@ -444,7 +444,15 @@ function renderHubPage(locale){
   const L = LOCALES[locale];
   const canonicalUrl = hubUrl(locale);
   const jsonLd = jsonLdScript({ '@context':'https://schema.org', '@type':'CollectionPage', name: L.ui.hubTitle, url: canonicalUrl });
-  const cardsHtml = places.map(p => `    <a class="workCard" href="${placeUrl(p, locale)}">
+  // RC QA fix (2026-09): 이 허브 페이지는 zh/ja에서도 필터 없이 전체 places를 나열하고
+  // 있었다 — 개별 장소 페이지 생성 루프(아래 파일 쓰기 섹션)는 jaAvailable/zhAvailable로
+  // 걸러서 실제로 존재하는 페이지만 만드는데, 허브 카드 목록은 그 필터를 안 타서 아직
+  // 생성되지 않은 언어의 장소로 링크된 깨진 링크(404)가 다수 발생했다. 개별 장소 페이지
+  // 생성 루프와 동일한 가용성 기준을 여기서도 적용한다.
+  const hubPlaces = locale === 'zh' ? places.filter(p => zhAvailable(p.work))
+    : locale === 'ja' ? places.filter(p => jaAvailable(p.work))
+    : places;
+  const cardsHtml = hubPlaces.map(p => `    <a class="workCard" href="${placeUrl(p, locale)}">
       <h3>${esc(placeDisplayName(p.loc, locale))}</h3>
       <p>${esc(workTitle(p.work, locale))}</p>
       <span class="cta">${L.ui.cardCta}</span>
@@ -452,7 +460,7 @@ function renderHubPage(locale){
   const body = `  <p class="kicker">${L.ui.kicker}</p>
   <p class="breadcrumb"><a href="${SITE_ORIGIN}${L.urlPrefix}/">${L.ui.breadcrumbHome}</a> / ${L.ui.breadcrumbHub}</p>
   <h1>${L.ui.hubH1}</h1>
-  <p class="intro">${esc(L.ui.hubIntro(places.length))}</p>
+  <p class="intro">${esc(L.ui.hubIntro(hubPlaces.length))}</p>
   <h2>${L.ui.hubListHeading}</h2>
   <div class="placeGrid">
 ${cardsHtml}
