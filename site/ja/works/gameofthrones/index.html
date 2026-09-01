@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ゲーム・オブ・スローンズ","url":"https://geugotjigeum.com/ja/works/gameofthrones/","description":"鉄の玉座を巡って幾つもの名家が同盟と裏切りを繰り返す一方、北方では人類全体を脅かす存在が迫りつつある。政治劇と家族劇、戦争とファンタジーがひとつの世界地図の上で同時に動いていく物語だ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_the_Old_Town_of_Dubrovnik_-_Croatia.jpg","genre":["fantasy","drama","war"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ゲーム・オブ・スローンズ","url":"https://geugotjigeum.com/ja/works/gameofthrones/","description":"鉄の玉座を巡って幾つもの名家が同盟と裏切りを繰り返す一方、北方では人類全体を脅かす存在が迫りつつある。政治劇と家族劇、戦争とファンタジーがひとつの世界地図の上で同時に動いていく物語だ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_the_Old_Town_of_Dubrovnik_-_Croatia.jpg","genre":["fantasy","drama","war"],"locationCreated":[{"@type":"Place","name":"두브로브니크 구시가 (Dubrovnik Old Town, Croatia)","geo":{"@type":"GeoCoordinates","latitude":42.6507,"longitude":18.0944}},{"@type":"Place","name":"로브리예나츠 요새 (Fort Lovrijenac, Dubrovnik)","geo":{"@type":"GeoCoordinates","latitude":42.6402,"longitude":18.1058}},{"@type":"Place","name":"로크룸 섬 (Lokrum Island)","geo":{"@type":"GeoCoordinates","latitude":42.6186,"longitude":18.1233}},{"@type":"Place","name":"스플리트 (Split, Croatia)","geo":{"@type":"GeoCoordinates","latitude":43.5081,"longitude":16.4402}},{"@type":"Place","name":"트르스테노 수목원 (Trsteno Arboretum)","geo":{"@type":"GeoCoordinates","latitude":42.7186,"longitude":17.9967}},{"@type":"Place","name":"다크 헤지스 (Dark Hedges, Northern Ireland)","geo":{"@type":"GeoCoordinates","latitude":55.1739,"longitude":-6.39}},{"@type":"Place","name":"캐슬 워드 (Castle Ward)","geo":{"@type":"GeoCoordinates","latitude":54.3639,"longitude":-5.5941}},{"@type":"Place","name":"발린토이 항구 (Ballintoy Harbour)","geo":{"@type":"GeoCoordinates","latitude":55.2434,"longitude":-6.3781}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"ゲーム・オブ・スローンズのロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/gameofthrones/"}]}</script>
 </head>
 <body>
@@ -296,6 +308,7 @@
 <p>最終的に鉄の玉座はブラン・スタークのもとに渡るのだが、これも「なぜよりによってブランなのか」という声がファンの間で今も絶えないらしい。</p>
 <p>ブラーヴォスの迷路のような路地もスペインのジローナという街で、大聖堂の階段はセットではなく劇中そのままの階段だという。</p>
 <p>結局このドラマは、CGで世界を作ったのではなく、実在する世界のあちこちを繋ぎ合わせてウェスタロスを作り上げていたわけだ。私はまだこれらの国のどこにも行ったことがないけれど、いつかクロアチアからスペイン、アイスランドへと順番に巡る旅を、本気で計画してみたくなった。</p></div>
+  
   
 
   <div class="adSlot">

@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"폭싹 속았수다 (When Life Gives You Tangerines)","url":"https://geugotjigeum.com/works/poksshak/","description":"폭싹 속았수다 촬영지 제주 성산일출봉, 협재해수욕장, 새별오름 등 실제 위치와 가는 법을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong.jpg","genre":["drama","romance"],"actor":[{"@type":"Person","name":"오애순","sameAs":"https://ko.wikipedia.org/wiki/%EC%95%84%EC%9D%B4%EC%9C%A0"},{"@type":"Person","name":"양관식","sameAs":"https://ko.wikipedia.org/wiki/%EB%B0%95%EB%B3%B4%EA%B2%80"},{"@type":"Person","name":"전광례","sameAs":"https://ko.wikipedia.org/wiki/%EC%97%BC%ED%98%9C%EB%9E%80"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"폭싹 속았수다 (When Life Gives You Tangerines)","url":"https://geugotjigeum.com/works/poksshak/","description":"폭싹 속았수다 촬영지 제주 성산일출봉, 협재해수욕장, 새별오름 등 실제 위치와 가는 법을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong.jpg","genre":["drama","romance"],"actor":[{"@type":"Person","name":"오애순","sameAs":"https://ko.wikipedia.org/wiki/%EC%95%84%EC%9D%B4%EC%9C%A0"},{"@type":"Person","name":"양관식","sameAs":"https://ko.wikipedia.org/wiki/%EB%B0%95%EB%B3%B4%EA%B2%80"},{"@type":"Person","name":"전광례","sameAs":"https://ko.wikipedia.org/wiki/%EC%97%BC%ED%98%9C%EB%9E%80"}],"locationCreated":[{"@type":"Place","name":"제주 서귀포시 — 성산일출봉","geo":{"@type":"GeoCoordinates","latitude":33.4587,"longitude":126.9425}},{"@type":"Place","name":"제주 제주시 — 김녕해수욕장","geo":{"@type":"GeoCoordinates","latitude":33.5566,"longitude":126.7561}},{"@type":"Place","name":"제주 제주시 — 협재해수욕장","geo":{"@type":"GeoCoordinates","latitude":33.3939,"longitude":126.2394}},{"@type":"Place","name":"제주 서귀포시 — 섭지코지","geo":{"@type":"GeoCoordinates","latitude":33.4237,"longitude":126.9269}},{"@type":"Place","name":"제주 제주시 오라동 — 메밀꽃밭","geo":{"@type":"GeoCoordinates","latitude":33.478,"longitude":126.5219}},{"@type":"Place","name":"제주 서귀포시 표선면 가시리 — 유채꽃밭","geo":{"@type":"GeoCoordinates","latitude":33.3925,"longitude":126.7925}},{"@type":"Place","name":"제주 제주시 — 제주목 관아","geo":{"@type":"GeoCoordinates","latitude":33.5135,"longitude":126.5219}},{"@type":"Place","name":"경북 안동시 풍천면 — 도동리 세트장 부지(경북도청신도시)","geo":{"@type":"GeoCoordinates","latitude":36.5745,"longitude":128.497}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"폭싹 속았수다 제주 촬영지 실제 위치와 가는 법","item":"https://geugotjigeum.com/works/poksshak/"}]}</script>
 </head>
 <body>
@@ -299,6 +311,37 @@
 <p>이 드라마, 공개 당시 IMDb·왓챠피디아 같은 곳에서 역대 한국 드라마 중 손꼽히는 평점을 받았다고 한다. 아이유가 직접 부른 OST '밤 산책'도 방영 후 큰 화제를 모았다고.</p>
 <p>그러니까 제주 가게 되면 그냥 유명 관광지만 돌지 말고, &quot;여기 혹시 그 장면 아니야?&quot; 하면서 한두 군데 찾아가 보는 것도 꽤 재밌을 듯. 다만 정작 그 마음을 흔든 장면들 상당수는 제주가 아니라 안동과 고창에 있다는 게 이 드라마의 제일 큰 반전인지도 모르겠다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gochang_hagwon_farm">유채꽃밭 → 전북 고창</a><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=andong_set">제주 마을 세트 → 경북 안동</a><span class="revealChip">'도동리' → 가상의 지명(실존 안 함)</span><a class="revealChip" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gimnyeong_beach">김녕 바다 → 진짜 촬영지</a></div></div>
+  
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=seongsan_ilchulbong">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-01.webp" alt="성산일출봉과 제주 바다를 바라보는 두 사람의 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>성산일출봉에 남은 애순의 시간</h3>
+        <p>성산일출봉은 《폭싹 속았수다》의 제주 삶과 감정을 연결하는 핵심 장소 중 하나다. 드라마의 서사와 실제 제주의 거대한 지형이 겹친다.</p>
+        <span class="sceneLinkLabel">제주 서귀포시 — 성산일출봉 →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=gimnyeong_beach">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-02.webp" alt="김녕 바다와 해녀의 시간을 떠올리게 하는 제주 해안 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>김녕의 바다와 해녀의 시간</h3>
+        <p>김녕해수욕장은 애순과 관식의 어린 시절, 그리고 어머니 세대 해녀의 삶을 비추는 장면들과 연결된 제주 촬영지다.</p>
+        <span class="sceneLinkLabel">제주 제주시 — 김녕해수욕장 →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/?work=poksshak&amp;loc=hyeopjae_beach">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/poksshak/poksshak-scene-03.webp" alt="노을 진 협재 해변을 함께 걷는 두 사람의 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>둘이 가장 다정했던 바다</h3>
+        <p>협재해수욕장은 애순과 관식이 파도를 뛰놀고 노을을 바라보는 따뜻한 장면들과 연결된 실제 제주 촬영지다.</p>
+        <span class="sceneLinkLabel">제주 제주시 — 협재해수욕장 →</span>
+      </div>
+    </a>
+  </div>
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -319,29 +362,29 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
+      <h3>전북 고창군 — 학원농장(보리나라 학원농장) 유채꽃밭</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">2</span>
+      <h3>전남 여수시</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">3</span>
       <h3>제주 서귀포시 — 성산일출봉</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
+      <span class="top5Rank">4</span>
       <h3>제주 제주시 — 김녕해수욕장</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
-      <h3>제주 제주시 — 협재해수욕장</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>제주 서귀포시 — 섭지코지</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>제주 제주시 오라동 — 메밀꽃밭</h3>
+      <h3>제주 제주시 — 협재해수욕장</h3>
       <p>직접</p>
     </div>
   </div>
@@ -467,7 +510,7 @@
         <p>1960년대부터 2025년 현재까지 60년에 걸쳐 변화하는 거리와 건물을 재현하기 위해 조성된 대규모 야외 세트. 안동 세트장과 함께 촬영 종료 후 철거됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>전북 고창군 — 학원농장(보리나라 학원농장) 유채꽃밭</h3>
         <p>많은 시청자가 제주 유채꽃밭일 거라 짐작했던 애순과 관식의 첫 입맞춤 장면, 실제로는 이곳 고창 학원농장의 유채꽃밭에서 촬영됐다. 농장 입구 왼쪽엔 유채꽃밭, 오른쪽 언덕엔 청보리밭이 함께 펼쳐져 있어 두 풍경을 한 번에 볼 수 있다.</p>
       </div>
@@ -522,7 +565,7 @@
         <p>한국전쟁 피란민들이 정착해 만든, 좁은 골목과 판잣집이 남아있는 동네. 19살 관식과 18살 애순이 함께 도피하는 장면이 이곳에서 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>전남 여수시</h3>
         <p>드라마의 첫 장면, 즉 오프닝 시퀀스가 실제로는 제주가 아니라 이곳 여수에서 촬영됐다는 사실이 방영 후 화제가 됐다.</p>
       </div>

@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"관동별곡 (關東別曲)","url":"https://geugotjigeum.com/works/gwandong/","description":"정철의 관동별곡에 나오는 관동팔경(경포대·낙산사 의상대·죽서루·청간정·망양정·월송정)과 금강산 내금강 명소의 실제 위치를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Gyeongpodae Pavilion Gangneung.JPG","author":{"@type":"Person","name":"정철(鄭澈)"},"genre":["historical","drama","adventure"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"관동별곡 (關東別曲)","url":"https://geugotjigeum.com/works/gwandong/","description":"정철의 관동별곡에 나오는 관동팔경(경포대·낙산사 의상대·죽서루·청간정·망양정·월송정)과 금강산 내금강 명소의 실제 위치를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Gyeongpodae Pavilion Gangneung.JPG","author":{"@type":"Person","name":"정철(鄭澈)"},"genre":["historical","drama","adventure"],"locationCreated":[{"@type":"Place","name":"강원감영 (강원 원주시 일산동)","geo":{"@type":"GeoCoordinates","latitude":37.3422,"longitude":127.942}},{"@type":"Place","name":"만폭동 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.782,"longitude":127.87}},{"@type":"Place","name":"금강대 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.78,"longitude":127.865}},{"@type":"Place","name":"진헐대 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.777,"longitude":127.858}},{"@type":"Place","name":"개심대 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.783,"longitude":127.862}},{"@type":"Place","name":"화룡연 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.786,"longitude":127.875}},{"@type":"Place","name":"십이폭포 (내금강, 북한)","geo":{"@type":"GeoCoordinates","latitude":38.79,"longitude":127.885}},{"@type":"Place","name":"총석정 (관동팔경, 강원 통천군, 북한)","geo":{"@type":"GeoCoordinates","latitude":39.135,"longitude":127.913}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"관동별곡 관동팔경 실제 위치 지도 — 경포대·낙산사·죽서루","item":"https://geugotjigeum.com/works/gwandong/"}]}</script>
 </head>
 <body>
@@ -298,6 +310,7 @@
 <p>그리고 김만중이 서포만필에서 이 작품을 '동방의 이소'라고까지 극찬했다는 걸 알고 나니, 그냥 옛날 교과서 시가 아니라 진짜 대단한 작품이었구나 싶어졌다.</p>
 <p>이 시 한 편이 440년 전 실제 여행 코스였다는 걸 알고 나면, 동해안 여행이 완전히 다르게 보인다. 나도 다음에 강릉 갈 일 있으면 경포대에서 저 '세 개의 달' 한번 찾아보고 싶다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=gwandong&amp;loc=wonju_gamyeong">원주 강원감영 → 정철이 실제로 부임한 곳</a><a class="revealChip" href="https://geugotjigeum.com/?work=gwandong&amp;loc=chongseokjeong">총석정·삼일포 → 지금은 북한 땅, 방문 불가</a><a class="revealChip" href="https://geugotjigeum.com/?work=gwandong&amp;loc=gyeongpodae">경포대의 '세 개의 달' → 지금도 볼 수 있다</a><a class="revealChip" href="https://geugotjigeum.com/?work=gwandong&amp;loc=mangyangjeong">망양정 → 조선시대 이후 여러 번 자리 옮겨 재건</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -318,29 +331,29 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
+      <h3>의상대 (양양 낙산사 경내)</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">2</span>
       <h3>강원감영 (강원 원주시 일산동)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
+      <span class="top5Rank">3</span>
       <h3>만폭동 (내금강, 북한)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
+      <span class="top5Rank">4</span>
       <h3>금강대 (내금강, 북한)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>진헐대 (내금강, 북한)</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>개심대 (내금강, 북한)</h3>
+      <h3>진헐대 (내금강, 북한)</h3>
       <p>직접</p>
     </div>
   </div>
@@ -413,7 +426,7 @@
         <p>신라 시대 화랑들이 사흘을 머물렀다는 전설에서 이름 붙은 호수. 관동팔경 중 하나로, 관동별곡에서 신비로운 호수의 풍경으로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>의상대 (양양 낙산사 경내)</h3>
         <p>신라 승려 의상대사가 좌선했다는 전설이 깃든 정자로, 낙산사 경내 해안 절벽 위에 있다. 관동별곡에서 정철이 동해의 일출을 바라보며 감격을 노래한 장소로 유명하다.</p>
       </div>

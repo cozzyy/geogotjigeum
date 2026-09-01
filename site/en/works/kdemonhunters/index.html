@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"KPop Demon Hunters","url":"https://geugotjigeum.com/en/works/kdemonhunters/","description":"K-pop girl group HUNTR/X — Rumi, Mira, and Zoey — are global superstars on stage, but off stage they're demon hunters protecting their fans from an ever…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/N_Seoul_Tower_Panorama_001.jpg","genre":["fantasy","action","musical"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"KPop Demon Hunters","url":"https://geugotjigeum.com/en/works/kdemonhunters/","description":"K-pop girl group HUNTR/X — Rumi, Mira, and Zoey — are global superstars on stage, but off stage they're demon hunters protecting their fans from an ever…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/N_Seoul_Tower_Panorama_001.jpg","genre":["fantasy","action","musical"],"locationCreated":[{"@type":"Place","name":"N서울타워","geo":{"@type":"GeoCoordinates","latitude":37.5512,"longitude":126.9882}},{"@type":"Place","name":"북촌한옥마을","geo":{"@type":"GeoCoordinates","latitude":37.5826,"longitude":126.9831}},{"@type":"Place","name":"청담대교","geo":{"@type":"GeoCoordinates","latitude":37.5202,"longitude":127.0508}},{"@type":"Place","name":"한강(잠실 인근)","geo":{"@type":"GeoCoordinates","latitude":37.5126,"longitude":126.997}},{"@type":"Place","name":"경복궁","geo":{"@type":"GeoCoordinates","latitude":37.5796,"longitude":126.977}},{"@type":"Place","name":"낙산공원","geo":{"@type":"GeoCoordinates","latitude":37.5806,"longitude":127.0069}},{"@type":"Place","name":"서울올림픽주경기장","geo":{"@type":"GeoCoordinates","latitude":37.515,"longitude":127.073}},{"@type":"Place","name":"명동","geo":{"@type":"GeoCoordinates","latitude":37.5636,"longitude":126.9834}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"KPop Demon Hunters — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/kdemonhunters/"}]}</script>
 </head>
 <body>
@@ -299,6 +311,7 @@
 <p>The final stage at N Seoul Tower is also somewhere you can actually go. Obviously there's no giant concert venue underneath it in real life. But climbing Namsan after watching this hits differently — I'd probably find myself wondering, 'did Rumi really manage to hold onto both sides of herself, human and demon?'</p>
 <p>Whether Jinu deserves redemption is still one of the hottest ongoing debates among fans, apparently. If you're in Seoul after watching this, you don't necessarily need to hunt down new attractions. Just take the Seoul you already know and try spotting the movie's Seoul inside it, one place at a time. That sounds like more fun.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -319,29 +332,29 @@
 
   <h2>Top 5 locations</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3a7ce0">
       <span class="top5Rank">1</span>
+      <h3>COEX K-POP Square</h3>
+      <p>HANDS-ON</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3a7ce0">
+      <span class="top5Rank">2</span>
+      <h3>K-Medi Center</h3>
+      <p>HANDS-ON</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">3</span>
       <h3>N서울타워</h3>
       <p>RELATED</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
+      <span class="top5Rank">4</span>
       <h3>북촌한옥마을</h3>
       <p>RELATED</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
-      <h3>청담대교</h3>
-      <p>RELATED</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>한강(잠실 인근)</h3>
-      <p>RELATED</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>경복궁</h3>
+      <h3>청담대교</h3>
       <p>RELATED</p>
     </div>
   </div>
@@ -389,7 +402,7 @@
         <p>One of Seoul's busiest shopping districts, the inspiration for the film's K-pop, shopping, and street-energy scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>COEX K-POP Square</h3>
         <p>A commercial space in Gangnam known for its giant media wall and K-pop fan events, the model for the film's fandom-experience content.</p>
       </div>
@@ -399,7 +412,7 @@
         <p>Korea's largest museum, a source for the film's traditional artifact and cultural motifs.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>K-Medi Center</h3>
         <p>A traditional herbal medicine market, the backdrop model for the film's traditional-culture experience content.</p>
       </div>

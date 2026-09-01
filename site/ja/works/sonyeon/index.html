@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"少年が来る（ソニョニ オンダ）","url":"https://geugotjigeum.com/ja/works/sonyeon/","description":"1980年5月、光州。友人ジョンデを失った中学生トンホが尚武館に残り遺体の収容を手伝った末に命を落とすまでと、生き残った人々がその後数十年をどう耐えてきたかを描いた小説。2024年ノーベル文学賞を受賞したハン・ガンの代表作で、全日ビルディング245・旧全羅南道庁・尚武館など光州旧市街の実際の5・18史跡…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Gwangju-The_former_South_Jeolla_provincial_office_building-01.jpg","author":{"@type":"Person","name":"ハン・ガン著 · チャンビ（創批）"},"genre":["drama","historical"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"少年が来る（ソニョニ オンダ）","url":"https://geugotjigeum.com/ja/works/sonyeon/","description":"1980年5月、光州。友人ジョンデを失った中学生トンホが尚武館に残り遺体の収容を手伝った末に命を落とすまでと、生き残った人々がその後数十年をどう耐えてきたかを描いた小説。2024年ノーベル文学賞を受賞したハン・ガンの代表作で、全日ビルディング245・旧全羅南道庁・尚武館など光州旧市街の実際の5・18史跡…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Gwangju-The_former_South_Jeolla_provincial_office_building-01.jpg","author":{"@type":"Person","name":"ハン・ガン著 · チャンビ（創批）"},"genre":["drama","historical"],"locationCreated":[{"@type":"Place","name":"尚武館（5・18民主化運動記録館 旧全羅南道庁別館）","geo":{"@type":"GeoCoordinates","latitude":35.1466,"longitude":126.9178}},{"@type":"Place","name":"旧全羅南道庁（国立アジア文化殿堂内）","geo":{"@type":"GeoCoordinates","latitude":35.1468,"longitude":126.9172}},{"@type":"Place","name":"5·18민주광장 (광주 동구, 옛 전남도청 앞)","geo":{"@type":"GeoCoordinates","latitude":35.1472,"longitude":126.9163}},{"@type":"Place","name":"금남로 (광주 동구, 옛 전남도청~광주역 방면)","geo":{"@type":"GeoCoordinates","latitude":35.15,"longitude":126.916}},{"@type":"Place","name":"全日ビルディング245","geo":{"@type":"GeoCoordinates","latitude":35.1494,"longitude":126.9166}},{"@type":"Place","name":"5·18민주화운동기록관 (광주 동구 금남로 221)","geo":{"@type":"GeoCoordinates","latitude":35.1489,"longitude":126.9163}},{"@type":"Place","name":"전남대학교 정문 (광주 북구 용봉로 77)","geo":{"@type":"GeoCoordinates","latitude":35.1761,"longitude":126.9092}},{"@type":"Place","name":"옛 광주적십자병원 (광주 동구 제봉로 42)","geo":{"@type":"GeoCoordinates","latitude":35.1493,"longitude":126.9219}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"少年が来る（ソニョニ オンダ）のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/sonyeon/"}]}</script>
 </head>
 <body>
@@ -295,6 +307,7 @@
 <p>2024年にハン・ガンがノーベル文学賞を受賞した後、文在鶴の母が息子とこの小説について語ったインタビューも、その頃再び話題になった。</p>
 <p>このサイトは、この旅を聖地巡礼やフォトスポットとしては紹介しない。実際に虐殺と抗争があった場所を歩くことだからだ。</p>
 <p>小説を読んで光州を歩くということは、その場所であったことと、その後長く続いた沈黙と、そして今残されている記録を、共に見つめることに近い。最後のページを閉じてもなお、ドンホの母が手放せずにいるものが何なのか — それはこの小説を実際に読んだ人だけが知ることができるのだと思う。</p></div>
+  
   
 
   <div class="adSlot">

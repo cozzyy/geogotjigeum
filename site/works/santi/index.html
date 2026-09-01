@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"삼체 (三体)","url":"https://geugotjigeum.com/works/santi/","description":"삼체에 등장하는 실제 촬영지와 배경 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Best_image_of_Alpha_Centauri_A_and_B.jpg","genre":["scifi","mystery"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"삼체 (三体)","url":"https://geugotjigeum.com/works/santi/","description":"삼체에 등장하는 실제 촬영지와 배경 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Best_image_of_Alpha_Centauri_A_and_B.jpg","genre":["scifi","mystery"],"locationCreated":[{"@type":"Place","name":"중국 베이징 — 칭화대학교(清华大学)","geo":{"@type":"GeoCoordinates","latitude":40,"longitude":116.3227}},{"@type":"Place","name":"중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)","geo":{"@type":"GeoCoordinates","latitude":40.0081,"longitude":116.3141}},{"@type":"Place","name":"중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥","geo":{"@type":"GeoCoordinates","latitude":52.972,"longitude":122.539}},{"@type":"Place","name":"중국 베이징 미윈구 — 미윈 관측소(密云观测站)","geo":{"@type":"GeoCoordinates","latitude":40.5664,"longitude":116.9703}},{"@type":"Place","name":"중국 허베이성 — 싱룽 관측소(兴隆观测站)","geo":{"@type":"GeoCoordinates","latitude":40.3933,"longitude":117.5772}},{"@type":"Place","name":"중국 구이저우성 핑탕현 — 톈옌(天眼) FAST 전파망원경","geo":{"@type":"GeoCoordinates","latitude":25.6531,"longitude":106.8567}},{"@type":"Place","name":"미국령 푸에르토리코 — 아레시보 천문대(Arecibo Observatory)","geo":{"@type":"GeoCoordinates","latitude":18.3441,"longitude":-66.7528}},{"@type":"Place","name":"중국 베이징 — 현재의 베이징 시내","geo":{"@type":"GeoCoordinates","latitude":39.9042,"longitude":116.4074}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"삼체 촬영지와 실제 배경 지도","item":"https://geugotjigeum.com/works/santi/"}]}</script>
 </head>
 <body>
@@ -298,6 +310,7 @@
 <p>근데 제일 신기했던 건 따로 있다. 트리솔라리스 문명이 산다는 그 '삼체 항성계', 즉 알파 센타우리는 상상 속 이름이 아니라 지구에서 가장 가까운 실제 항성계다. 지구에서 4.37광년 떨어져 있는데, 남반구에서 맑은 밤하늘을 만나면 육안으로도 보인다고 한다. 소설 속 물리학 개념들 — 양자얽힘, 중력파 같은 것도 다 실제 과학에 기반한다. 특히 중력파는 2015년 실제로 인류가 처음 검출해서 2017년 노벨물리학상까지 받았다.</p>
 <p>그러니까 이 소설, 400년에 걸친 우주 전쟁 이야기이면서 동시에 진짜 과학과 진짜 역사 위에 지어 올린 이야기다. 나는 요즘도 맑은 밤에 남쪽 하늘 보면 알파 센타우리 어디쯤일까 괜히 한번 찾아보게 된다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=santi&amp;loc=miyun_station">레드코스트 기지 → 완전 허구지만 실제 후보지로 꼽히는 미윈 관측소</a><a class="revealChip" href="https://geugotjigeum.com/?work=santi&amp;loc=fast_telescope">톈옌 FAST 전파망원경 → 세계 최대, 실제 SETI 프로젝트에 쓰임</a><a class="revealChip" href="https://geugotjigeum.com/?work=santi&amp;loc=arecibo_observatory">예원제의 신호 발신 → 1974년 실제 '아레시보 메시지'와 겹치는 사건</a><a class="revealChip" href="https://geugotjigeum.com/?work=santi&amp;loc=alpha_centauri">삼체 항성계 → 지구에서 가장 가까운 실제 항성계, 알파 센타우리</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -318,19 +331,19 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">1</span>
+      <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
+      <p>테마 연계</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">2</span>
       <h3>중국 베이징 — 칭화대학교(清华大学)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
-      <h3>중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">3</span>
-      <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
+      <h3>중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
@@ -426,7 +439,7 @@
         <p>문화대혁명 당시 물리학 교수였던 예저타이(예 원제의 아버지)가 홍위병의 비판투쟁대회에서 맞아 죽는, 소설 전체를 여는 비극의 배경. 이 사건은 예 원제가 인류 전체에 대한 신뢰를 완전히 버리고, 훗날 외계 문명에 지구의 좌표를 보내는 결정으로 이어진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
         <p>소설 속 레드코스트 기지(紅岸基地)가 위치한 것으로 설정된 대흥안령 산맥 일대. 실제로 이 산맥은 중국 최북단에 걸친 광대한 원시림 지대이며, 레드코스트 기지 자체는 완전한 허구다 — 정확한 위치나 시설은 소설에서도 극비로만 그려질 뿐 실존하지 않는다.</p>
       </div>

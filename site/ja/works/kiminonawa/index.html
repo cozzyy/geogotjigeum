@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"君の名は。","url":"https://geugotjigeum.com/ja/works/kiminonawa/","description":"顔も名前も知らない二人が、ある日から互いの体で目を覚ます。東京の男子高校生と、山あいの町の女子高校生 — はじめは戸惑うだけの入れ替わりが、いつしか取り返しのつかない何かへと変わっていく。「たそがれ時」と呼ばれる黄昏の瞬間、二人はついに互いを見つけられるのか。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Suga_Shrine_stairs_high-angle_20161113-073454.jpg","genre":["romance","fantasy","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"君の名は。","url":"https://geugotjigeum.com/ja/works/kiminonawa/","description":"顔も名前も知らない二人が、ある日から互いの体で目を覚ます。東京の男子高校生と、山あいの町の女子高校生 — はじめは戸惑うだけの入れ替わりが、いつしか取り返しのつかない何かへと変わっていく。「たそがれ時」と呼ばれる黄昏の瞬間、二人はついに互いを見つけられるのか。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Suga_Shrine_stairs_high-angle_20161113-073454.jpg","genre":["romance","fantasy","drama"],"locationCreated":[{"@type":"Place","name":"岐阜県飛騨市古川町 — 飛騨古川駅","geo":{"@type":"GeoCoordinates","latitude":36.2394,"longitude":137.1936}},{"@type":"Place","name":"岐阜県飛騨市古川町 — 気多若宮神社","geo":{"@type":"GeoCoordinates","latitude":36.2439,"longitude":137.1897}},{"@type":"Place","name":"岐阜県飛騨市古川町 — 飛騨市図書館","geo":{"@type":"GeoCoordinates","latitude":36.2361,"longitude":137.1917}},{"@type":"Place","name":"岐阜県飛騨市古川町・駅前 — なかや","geo":{"@type":"GeoCoordinates","latitude":36.2394,"longitude":137.1939}},{"@type":"Place","name":"岐阜県飛騨市古川町 — 味処古川","geo":{"@type":"GeoCoordinates","latitude":36.2367,"longitude":137.1917}},{"@type":"Place","name":"長野県諏訪市・岡谷市一帯 — 諏訪湖","geo":{"@type":"GeoCoordinates","latitude":36.0422,"longitude":138.1092}},{"@type":"Place","name":"岐阜県高山市～長野県方面 — 国道361号一帯","geo":{"@type":"GeoCoordinates","latitude":36.1408,"longitude":137.2528}},{"@type":"Place","name":"東京都渋谷区/新宿区の境 — 新宿駅南口","geo":{"@type":"GeoCoordinates","latitude":35.6896,"longitude":139.7006}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"君の名は。のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/kiminonawa/"}]}</script>
 </head>
 <body>
@@ -295,6 +307,7 @@
 <p>そして映画の最後、お互いの名前も顔も忘れたまま、東京のどこかですれ違うチャンスを得る二人。本当にもう一度お互いを見つけられるのか。この一つの問いを、映画は最後の最後まで抱えたまま終わる。もしかしたらこれこそが、この物語全体を動かしていた力なのかもしれない。</p>
 <p>私はまだ飛騨古川までは行けていないけれど、東京に行ったときは四ツ谷のあの階段だけはわざわざ探して上ってみた。何の変哲もない普通の階段なのに、知って上ると不思議と感慨が違う。</p>
 <p>今度日本に行ったら、飛騨古川まで足を伸ばして本物の「糸守」を歩いてみたい。</p></div>
+  
   
 
   <div class="adSlot">

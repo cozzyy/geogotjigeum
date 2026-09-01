@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/glory/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/glory/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/glory/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/glory/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/glory/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ザ・グローリー ～輝かしき復讐～ (The Glory)","url":"https://geugotjigeum.com/ja/works/glory/","description":"学校暴力の被害者ムン・ドンウンが、長い年月をかけて準備し、加害者たちに近づいていく復讐劇。忠北・清州の中央公園や龍華寺など、実在の場所が物語の重要な瞬間を完成させる。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cheongju Sangdangsangseong.jpg","genre":["thriller","drama","crime"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ザ・グローリー ～輝かしき復讐～ (The Glory)","url":"https://geugotjigeum.com/ja/works/glory/","description":"学校暴力の被害者ムン・ドンウンが、長い年月をかけて準備し、加害者たちに近づいていく復讐劇。忠北・清州の中央公園や龍華寺など、実在の場所が物語の重要な瞬間を完成させる。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cheongju Sangdangsangseong.jpg","genre":["thriller","drama","crime"],"locationCreated":[{"@type":"Place","name":"清州中央公園（忠北 清州市上党区）","geo":{"@type":"GeoCoordinates","latitude":36.639,"longitude":127.4838}},{"@type":"Place","name":"龍華寺（忠北 清州市西原区）","geo":{"@type":"GeoCoordinates","latitude":36.6262,"longitude":127.4759}},{"@type":"Place","name":"城安通り・清州旧市街（忠北 清州市上党区）","geo":{"@type":"GeoCoordinates","latitude":36.6335,"longitude":127.4873}},{"@type":"Place","name":"青羅湖水公園の囲碁公園（仁川 西区）","geo":{"@type":"GeoCoordinates","latitude":37.5386,"longitude":126.6389}},{"@type":"Place","name":"鍾路3街の碁会所通り（ソウル 鍾路区）","geo":{"@type":"GeoCoordinates","latitude":37.5711,"longitude":126.9895}},{"@type":"Place","name":"世宗市盤谷洞の新都市一帯","geo":{"@type":"GeoCoordinates","latitude":36.4801,"longitude":127.2926}},{"@type":"Place","name":"ソドル防波堤（江原 江陵市注文津邑）","geo":{"@type":"GeoCoordinates","latitude":37.9115,"longitude":128.8264}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"ザ・グローリー ～輝かしき復讐～ (The Glory)のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/glory/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/glory/">KR</a>
     <a href="https://geugotjigeum.com/en/works/glory/">EN</a>
     <a href="https://geugotjigeum.com/ja/works/glory/" class="on" aria-current="page">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="準備中">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/glory/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/ja/">🏠 ホーム</a>
 </header>
@@ -294,6 +307,7 @@
 <p>何年もの準備を経て、ドンウンが最終的にヨンジンの前に再び姿を現すあの瞬間、そしてその後に続く5人の結末が正確にどう終わるのかは、ここでは全部言わないでおく。ただ、この復讐劇が痛快さだけでは終わらないということだけは、あらかじめ言っておきたい。</p>
 <p>清州に行くなら、セミョン市を探そうとするよりも、実際に確認された撮影地 ― 中央公園、龍華寺 ― をたどってみる方が意味があると思う。</p>
 <p>そしてもし江陵に行く機会があれば、所乭港の灯台の前に立って「ドンウンがここまで来るのに何年かかったんだろう」と振り返ってみるのも悪くないと思う。</p></div>
+  
   
 
   <div class="adSlot">
@@ -443,7 +457,7 @@
         <p>世宗市に新しく造成された新都市地域で、劇中の学校・住居のシーンの一部がこの一帯で撮影されたとされる。ただし学校暴力が起きる具体的な建物（学校・講堂など）は、実際の生徒と施設を守るため、このサイトでは場所を特定しない。計画都市の風景そのものを確かめる程度の紹介にとどめる。</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>架空都市「セミョン市」（劇中設定・実在しない）</h3>
         <p>劇中、ドンウンと加害者たちが大人になって暮らす舞台の都市。放送後「セミョン市は清州では」という推測がネットで広がったが、制作陣がセミョン市を特定の都市のモデルだと公式に認めたことはない。清州はあくまで公式に確認されたロケ地であり、架空都市セミョンの実際のモデルと断定する根拠はない — このサイトはこの二つを分けて扱う。</p>
       </div>

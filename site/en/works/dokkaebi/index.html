@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Guardian: The Lonely and Great God (Goblin)","url":"https://geugotjigeum.com/en/works/dokkaebi/","description":"A timeless romance between Kim Shin, an immortal Goblin who needs a human bride to end his curse, and Ji Eun-tak, the girl who claims to be that bride. …","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Chateau Frontenac, Quebec City.jpg","genre":["fantasy","romance","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Guardian: The Lonely and Great God (Goblin)","url":"https://geugotjigeum.com/en/works/dokkaebi/","description":"A timeless romance between Kim Shin, an immortal Goblin who needs a human bride to end his curse, and Ji Eun-tak, the girl who claims to be that bride. …","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Chateau Frontenac, Quebec City.jpg","genre":["fantasy","romance","drama"],"locationCreated":[{"@type":"Place","name":"주문진 해변·방사제 (강원 강릉)","geo":{"@type":"GeoCoordinates","latitude":37.8998,"longitude":128.8256}},{"@type":"Place","name":"평창 월정사 전나무 숲길","geo":{"@type":"GeoCoordinates","latitude":37.7139,"longitude":128.5934}},{"@type":"Place","name":"고창 학원농장 메밀밭 (전북 고창)","geo":{"@type":"GeoCoordinates","latitude":35.4361,"longitude":126.5586}},{"@type":"Place","name":"평창 용평리조트 (드래곤피크)","geo":{"@type":"GeoCoordinates","latitude":37.6389,"longitude":128.6772}},{"@type":"Place","name":"평창 삼양목장","geo":{"@type":"GeoCoordinates","latitude":37.6244,"longitude":128.6631}},{"@type":"Place","name":"강릉 정동진리 라라무리(폐업)","geo":{"@type":"GeoCoordinates","latitude":37.691,"longitude":129.042}},{"@type":"Place","name":"페어몬트 르 샤토 프롱트낙 호텔 (캐나다 퀘벡)","geo":{"@type":"GeoCoordinates","latitude":46.8123,"longitude":-71.2048}},{"@type":"Place","name":"도깨비 언덕 Parc du Bastion-de-la-Reine (캐나다 퀘벡)","geo":{"@type":"GeoCoordinates","latitude":46.8113,"longitude":-71.2072}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Guardian: The Lonely and Great God (Goblin) — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/dokkaebi/"}]}</script>
 </head>
 <body>
@@ -298,6 +310,7 @@
 <p>It's a story about gods and mortals, life and death — but the real twist is that its backdrop is somewhere you can pull up on a map right now. That's exactly what makes you want to go stand in front of a handle-less door.</p>
 <p>It's Kim Eun-sook and Lee Eung-bok's 2016–2017 tvN Friday-Saturday drama, and it apparently became the network's highest-rated series ever. Revisiting it, I get why the Gong Yoo, Kim Go-eun, Lee Dong-wook, Yoo In-na, Yook Sung-jae lineup is still being talked about.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -318,57 +331,57 @@
 
   <h2>Top 5 locations</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
       <h3>주문진 해변·방사제 (강원 강릉)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">2</span>
       <h3>평창 월정사 전나무 숲길</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">3</span>
       <h3>고창 학원농장 메밀밭 (전북 고창)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">4</span>
       <h3>평창 용평리조트 (드래곤피크)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">5</span>
       <h3>평창 삼양목장</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
   </div>
 
 
   <h2 id="allLocations">All Guardian: The Lonely and Great God (Goblin) locations (71)</h2>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>주문진 해변·방사제 (강원 강릉)</h3>
         <p>Where Eun-tak, alone on her 19th birthday, blows out her cake candle and summons Kim Shin for the first time — one of the drama's most iconic scenes, famous for her red scarf against the crashing waves of this breakwater.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>평창 월정사 전나무 숲길</h3>
         <p>The romantic fir-tree forest path, blanketed in snow, where Kim Shin and Eun-tak confirm their feelings for one another.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>고창 학원농장 메밀밭 (전북 고창)</h3>
         <p>A vast buckwheat field that served as Kim Shin's secret sanctuary and the backdrop for romantic strolls — its blooming white flowers capture both the Goblin's loneliness and mystique.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>평창 용평리조트 (드래곤피크)</h3>
         <p>The real ski resort that appears in the drama as 'Dragon Peak', including the Balwangsan cable car and Yongpyong condo area.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>평창 삼양목장</h3>
         <p>A ranch with sweeping green pastures used as the backdrop for several scenes.</p>
       </div>
@@ -378,227 +391,227 @@
         <p>A now-closed café near Jeongdongjin used in filming.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>페어몬트 르 샤토 프롱트낙 호텔 (캐나다 퀘벡)</h3>
         <p>Québec City's landmark hotel where Eun-tak first marvels at Canada — portrayed as Kim Shin's own hotel, its lobby mailbox famous as where Eun-tak drops her letter.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>도깨비 언덕 Parc du Bastion-de-la-Reine (캐나다 퀘벡)</h3>
         <p>The gentle hill overlooking the Frontenac, known to fans as 'Goblin Hill' — where Kim Shin sits among gravestones in thought or admires the view beside Eun-tak.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>쁘띠 샹플랭 거리 (캐나다 퀘벡)</h3>
         <p>One of North America's oldest commercial streets, lined with charming shops — a beloved dating spot for Kim Shin and Eun-tak.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>도깨비 빨간문 La Porte Rouge (캐나다 퀘벡)</h3>
         <p>A red, handle-less door in the Petit Champlain district — the drama's magical portal linking Seoul and Canada, and now Québec's top photo spot.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>부티크 드 노엘 (캐나다 퀘벡)</h3>
         <p>A shop selling Christmas decorations year-round, heightening the romantic Québec atmosphere.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>뒤프랭 테라스 &amp; 총독의 정원 (캐나다 퀘벡)</h3>
         <p>A promenade terrace and garden overlooking the St. Lawrence River.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>몽모랑시 공원 &amp; 프레스콧 게이트 (캐나다 퀘벡)</h3>
         <p>A park alongside remnants of the old city walls.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>투르니 분수 (캐나다 퀘벡)</h3>
         <p>An ornate fountain in the square in front of Québec's National Assembly.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>생 피에르 거리 일대 (캐나다 퀘벡)</h3>
         <p>A row of classic old-town shopfronts.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>사무엘 홀랜드 파크 (캐나다 퀘벡)</h3>
         <p>A quiet park slightly outside the old town, part of the fan pilgrimage route.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>라 메종 드메르 (캐나다 퀘벡)</h3>
         <p>A filming location on a classic residential lane in the old town.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>기타 퀘벡 거리 — Boutique Jourdain (캐나다 퀘벡)</h3>
         <p>Another filming alley near the Christmas-shop district.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>사근용답간인도교 (서울 성동구, 용답역 2번 출구)</h3>
         <p>The pedestrian bridge where Sunny and the Grim Reaper first meet and feel an inexplicable connection — also where the Samshin Grandmother sold accessories.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>덕수궁 돌담길 (서울 중구, 돈덕전 앞)</h3>
         <p>The atmospheric stone-wall path where Kim Shin and the Grim Reaper often walk while bickering, showcasing their unique friendship.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>중앙고등학교 (서울 종로구)</h3>
         <p>The historic campus that served as Eun-tak's high school, a must-visit for fans thanks to its classic exterior. Also used as a filming location for [Lovely Runner] and [Our Beloved Summer].</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>운현궁 양관 (서울 종로구)</h3>
         <p>The grand, classical building whose exterior served as the 'Goblin House' where Kim Shin and the Grim Reaper live together.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>조선어학회터 (서울 종로구)</h3>
         <p>A historic marker site in the Bukchon Hanok Village area, used as a backdrop for several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>광화문 &amp; 일민미술관 (서울 종로구)</h3>
         <p>An iconic central-Seoul landmark used as the backdrop for several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>인사동 전통문화의 거리 &amp; 쌈지길 (서울 종로구)</h3>
         <p>A street of traditional crafts and alley shops that appears in several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>윤보선길 &amp; 북촌사진관 (서울 종로구)</h3>
         <p>A quiet alley in the Bukchon Hanok Village.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>삼청동 앞터 골목 (서울 종로구)</h3>
         <p>A quiet alley in Samcheong-dong near the old Seoul District Army Hospital entrance, used in filming.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>낙산공원 개뿔 앞 (서울 종로구)</h3>
         <p>A hilltop park with sweeping views of the Seoul city wall and skyline at night.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>대학로 거리 (서울 종로구)</h3>
         <p>A scene backdrop on Daehangno, Seoul's famous theater-district street.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>건국대학교 일대 (서울 광진구)</h3>
         <p>The museum, Cheongsimdae, and student union areas of the campus feature in several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>워커힐 서울 (비스타워커힐)</h3>
         <p>The hotel's presidential suite and grounds served as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>그랜드 하얏트 서울 (서울 용산구 한남동)</h3>
         <p>The hotel's presidential suite was used for upscale hotel scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>반포한강공원 (서울 서초구)</h3>
         <p>A Han River park with views of Sebitseom and Jamsu Bridge, used in several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>서대문형무소 (서울 서대문구)</h3>
         <p>The historic former prison building used as the backdrop for a flashback scene.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>신촌 토끼굴 (서울 서대문구)</h3>
         <p>A neighborhood alley near Sinchon Tunnel, affectionately nicknamed the 'rabbit hole' by fans.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>상암동 일대 (서울 마포구)</h3>
         <p>The S-Plex Center and Guryong neighbourhood park in the Digital Media City area were used as backdrops.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>여의도 일대 (서울 영등포구)</h3>
         <p>Several downtown scenes were filmed against Yeouido's financial-district skyline.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>삼성동 일대 (서울 강남구)</h3>
         <p>Downtown street scenes near COEX were filmed here.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>청담동 벨뷰 (서울 강남구)</h3>
         <p>The upscale streets of Cheongdam-dong were used as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>성수동 일대 (서울 성동구)</h3>
         <p>A café-lined neighbourhood used in filming (site of the former Mocha Bookstore).</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>간데메공원 놀이터 (서울 동대문구)</h3>
         <p>A neighbourhood playground that appears as part of Eun-tak's everyday surroundings.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>덕성여대 쌍문캠퍼스 (서울 도봉구, 시반거리)</h3>
         <p>The campus's 'Siban-gil' street, near the central library and Cha Mi-ri-sa Memorial Hall, was used for filming.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>송도 센트럴파크 (인천 연수구)</h3>
         <p>A modern urban park landscape used as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>송도 지식정보단지 일대 (인천 연수구)</h3>
         <p>Incheon National University Station and the Posco Tower skyline served as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>인천 아트플랫폼 &amp; 하버파크호텔 (인천 중구)</h3>
         <p>An arts space set among preserved early-modern-era buildings, used in numerous scenes — also the spot where Ko Moon-young follows Moon Kang-tae in [It's Okay to Not Be Okay].</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>자유공원 &amp; 제물포구락부 (인천 중구)</h3>
         <p>A park and early-modern building retaining the atmosphere of Incheon's port-opening era.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>신포동 일대 (인천 중구)</h3>
         <p>The alleys and old shopfronts of Sinpo-dong, retaining the flavor of Incheon's port-opening era.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>영종도 (인천 중구)</h3>
         <p>The Wangsan Beach batting cages and Incheon International Airport Terminal 1 area were used as backdrops.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>청라호수공원 (인천 서구)</h3>
         <p>The hilltop and lakeside views of this new-town park were used in filming.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>배다리 헌책방 거리 &amp; 한미서점 (인천 동구)</h3>
         <p>A street of old secondhand bookshops used as a backdrop for several scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>송림동 일대 (인천 동구)</h3>
         <p>A neighbourhood filmed around Songhyeon Neighbourhood Park and the Seoheung Elementary bus stop.</p>
       </div>
@@ -608,97 +621,97 @@
         <p>A major studio complex where many Korean dramas and films have been shot.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>안성 미리내성지 (경기 안성)</h3>
         <p>A memorial church for Korea's 103 canonized martyrs, used for scenes with a solemn, sacred atmosphere — also the church visited by Jin-woo in [Memories of the Alhambra].</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>안성 석남사 (경기 안성)</h3>
         <p>A quiet temple setting used as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>파주 지노(카페) &amp; 원방스튜디오 (경기 파주)</h3>
         <p>A café and nearby studio used for several dialogue scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>고양 일산동구 일대 (경기 고양)</h3>
         <p>Multiple points across the Ilsan new town were used as backdrops for city scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>부천 경인문고 중동점 (경기 부천)</h3>
         <p>A large bookstore that appears as a filming location.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>안양 관양동 일대 (경기 안양)</h3>
         <p>A neighbourhood shopping street used as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>하남 신안인스빌아스트로 아파트 (경기 하남)</h3>
         <p>An apartment complex that appears as part of Eun-tak's everyday residential surroundings.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>성남 분당 일대 (경기 성남)</h3>
         <p>The Seongnam bus terminal and Bundang-gu cityscape were used as a backdrop.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>나주영상테마파크 고구려궁 (전남 나주)</h3>
         <p>A historical drama set where the Goryeo-era palace scenes were filmed, including the wooden-shingle marketplace area.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>고려 전장 (김신의 전공)</h3>
         <p>The battlefields where General Kim Shin, undefeated in countless wars, protected the kingdom — earning the people's reverence and the king's fear alike.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>고려 왕궁 — 김신의 마지막 길</h3>
         <p>Framed as a traitor by Park Joong-heon, Kim Shin marches to surrender his sword to the king — only to be killed by royal soldiers, the tragic origin of the Goblin.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>김선이 화살에 맞아 죽는 곳</h3>
         <p>Where Queen Kim Sun, crying 'Don't stop — go to His Majesty', deliberately takes an arrow meant to stop her brother.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>김신이 도깨비로 부활하는 들판</h3>
         <p>The field where, as retainers mourn Kim Shin's discarded body, a god answers and revives him as an immortal Goblin.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>지연희의 교통사고 현장 (은탁의 탄생)</h3>
         <p>Where the pregnant Ji Yeon-hee, dying in a hit-and-run, begs for her unborn child's life to be saved — and Kim Shin, moved, saves them both.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>은탁 이모네 집 (구박받던 시절)</h3>
         <p>The home where the orphaned Eun-tak, taken in by her aunt's family, is treated as an unpaid servant.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>은탁이 도깨비 신부임을 고백하는 곳</h3>
         <p>Where Eun-tak convinces Kim Shin she is truly his Goblin Bride by describing, in exact detail, the sword hilt buried in his chest.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>천우그룹 본사 (유씨 가문의 기업)</h3>
         <p>Headquarters of the conglomerate the Yoo family built over generations from gold Kim Shin created — the stage for Chairman Yoo Shin-woo, heir Yoo Deok-hwa, and Secretary Kim's story.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>저승사자의 정체가 밝혀지는 곳</h3>
         <p>Where the shocking truth emerges: the amnesiac Grim Reaper is actually King Wang Yeo, the very king whose betrayal led to Kim Shin's death.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>유신우 회장의 임종 자리</h3>
         <p>Where Chairman Yoo Shin-woo, asking Kim Shin to write his epitaph, quietly passes away — Kim Shin later inscribes his gravestone with 'One who was good in every moment of this life.'</p>
       </div>

@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"三体","url":"https://geugotjigeum.com/ja/works/santi/","description":"文化大革命の狂気の中で父を失った天体物理学者イエ・ウェンジエは、絶望の果てに宇宙へ向けて信号を送る。その信号に応えたのは、自分たちの恒星系がまもなく崩壊することを知る地球外文明「三体」だった。地球対三体文明の対立は400年にわたって太陽系全体を、そして最終的には宇宙の根本法則そのものを賭けた戦いへと広が…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Best_image_of_Alpha_Centauri_A_and_B.jpg","genre":["scifi","mystery"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"三体","url":"https://geugotjigeum.com/ja/works/santi/","description":"文化大革命の狂気の中で父を失った天体物理学者イエ・ウェンジエは、絶望の果てに宇宙へ向けて信号を送る。その信号に応えたのは、自分たちの恒星系がまもなく崩壊することを知る地球外文明「三体」だった。地球対三体文明の対立は400年にわたって太陽系全体を、そして最終的には宇宙の根本法則そのものを賭けた戦いへと広が…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Best_image_of_Alpha_Centauri_A_and_B.jpg","genre":["scifi","mystery"],"locationCreated":[{"@type":"Place","name":"중국 베이징 — 칭화대학교(清华大学)","geo":{"@type":"GeoCoordinates","latitude":40,"longitude":116.3227}},{"@type":"Place","name":"중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)","geo":{"@type":"GeoCoordinates","latitude":40.0081,"longitude":116.3141}},{"@type":"Place","name":"중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥","geo":{"@type":"GeoCoordinates","latitude":52.972,"longitude":122.539}},{"@type":"Place","name":"중국 베이징 미윈구 — 미윈 관측소(密云观测站)","geo":{"@type":"GeoCoordinates","latitude":40.5664,"longitude":116.9703}},{"@type":"Place","name":"중국 허베이성 — 싱룽 관측소(兴隆观测站)","geo":{"@type":"GeoCoordinates","latitude":40.3933,"longitude":117.5772}},{"@type":"Place","name":"중국 구이저우성 핑탕현 — 톈옌(天眼) FAST 전파망원경","geo":{"@type":"GeoCoordinates","latitude":25.6531,"longitude":106.8567}},{"@type":"Place","name":"미국령 푸에르토리코 — 아레시보 천문대(Arecibo Observatory)","geo":{"@type":"GeoCoordinates","latitude":18.3441,"longitude":-66.7528}},{"@type":"Place","name":"중국 베이징 — 현재의 베이징 시내","geo":{"@type":"GeoCoordinates","latitude":39.9042,"longitude":116.4074}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"三体のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/santi/"}]}</script>
 </head>
 <body>
@@ -273,7 +285,7 @@
     </div>
     <div class="wsFeatured">
       <span class="wsFeaturedKicker">この場面の中へ</span>
-      <p class="wsFeaturedText">중국 베이징 — 칭화대학교(清华大学) — 関連</p>
+      <p class="wsFeaturedText">중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥 — テーマ関連</p>
     </div>
   </div>
 </section>
@@ -298,6 +310,7 @@
 <p>でも一番驚いたのは別のところだった。トリソラリス文明が住むという「三体星系」、つまりケンタウルス座アルファ星は、想像上の名前じゃなくて地球から一番近い実在の恒星系だ。地球から4.37光年離れているけれど、南半球で晴れた夜空に出会えば肉眼でも見えるという。小説に出てくる物理学の概念——量子もつれや重力波なども、すべて実際の科学に基づいている。特に重力波は2015年に人類が実際に初めて検出し、2017年のノーベル物理学賞まで受賞している。</p>
 <p>つまりこの小説、400年に及ぶ宇宙戦争の物語でありながら、同時に本物の科学と本物の歴史の上に築かれた物語でもあるわけだ。私は最近も、晴れた夜に南の空を見ると、ついケンタウルス座アルファ星がどのあたりにあるのか探してしまう。</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">広告</span>
@@ -318,19 +331,19 @@
 
   <h2>代表ロケ地TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">1</span>
+      <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
+      <p>テーマ関連</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">2</span>
       <h3>중국 베이징 — 칭화대학교(清华大学)</h3>
       <p>関連</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
-      <h3>중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)</h3>
-      <p>関連</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">3</span>
-      <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
+      <h3>중국 베이징 — 칭화대학교 부속중학교(清华大学附属中学)</h3>
       <p>関連</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
@@ -426,7 +439,7 @@
         <p>The site of the novel's opening tragedy: during the Cultural Revolution, physics professor Ye Zhetai (Ye Wenjie's father) is beaten to death by Red Guards at a public struggle session here. This event drives Ye Wenjie to abandon all faith in humanity, eventually leading her to transmit Earth's coordinates to an alien civilization.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>중국 헤이룽장성 — 모허(漠河)·대흥안령(大兴安岭) 산맥</h3>
         <p>The real mountain range where the novel sites its fictional Red Coast Base. In reality this is a vast, remote old-growth forest region spanning China's northernmost reaches; the base itself is entirely fictional and, even within the novel, is described only as a top-secret facility with no findable real location.</p>
       </div>

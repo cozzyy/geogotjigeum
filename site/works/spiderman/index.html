@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"스파이더맨: 홈커밍 (Spider-Man: Homecoming)","url":"https://geugotjigeum.com/works/spiderman/","description":"스파이더맨: 홈커밍의 실제 촬영지 애틀랜타·뉴욕·워싱턴DC·베를린 102곳을 지도에서 확인하세요. 진짜 뉴욕 장면과 뉴욕으로 꾸며진 애틀랜타 장면을 비교해보세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Porsche North America, Atlanta.JPG","genre":["action","adventure","scifi"],"actor":[{"@type":"Person","name":"피터 파커 / 스파이더맨 (Peter Parker / Spider-Man)","sameAs":"https://en.wikipedia.org/wiki/Tom_Holland"},{"@type":"Person","name":"네드 리즈 (Ned Leeds)","sameAs":"https://en.wikipedia.org/wiki/Jacob_Batalon"},{"@type":"Person","name":"미셸 \"MJ\" 존스 (Michelle Jones)","sameAs":"https://en.wikipedia.org/wiki/Zendaya"},{"@type":"Person","name":"리즈 앨런 (Liz Allan)","sameAs":"https://en.wikipedia.org/wiki/Laura_Harrier"},{"@type":"Person","name":"유진 \"플래시\" 톰슨 (Flash Thompson)","sameAs":"https://en.wikipedia.org/wiki/Tony_Revolori"},{"@type":"Person","name":"베티 브랜트 (Betty Brant)","sameAs":"https://en.wikipedia.org/wiki/Angourie_Rice"},{"@type":"Person","name":"에이브러햄 (Abraham)","sameAs":"https://en.wikipedia.org/wiki/Abraham_Attah"},{"@type":"Person","name":"모리타 교장 (Principal Morita)","sameAs":"https://en.wikipedia.org/wiki/Kenneth_Choi"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"스파이더맨: 홈커밍 (Spider-Man: Homecoming)","url":"https://geugotjigeum.com/works/spiderman/","description":"스파이더맨: 홈커밍의 실제 촬영지 애틀랜타·뉴욕·워싱턴DC·베를린 102곳을 지도에서 확인하세요. 진짜 뉴욕 장면과 뉴욕으로 꾸며진 애틀랜타 장면을 비교해보세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Porsche North America, Atlanta.JPG","genre":["action","adventure","scifi"],"actor":[{"@type":"Person","name":"피터 파커 / 스파이더맨 (Peter Parker / Spider-Man)","sameAs":"https://en.wikipedia.org/wiki/Tom_Holland"},{"@type":"Person","name":"네드 리즈 (Ned Leeds)","sameAs":"https://en.wikipedia.org/wiki/Jacob_Batalon"},{"@type":"Person","name":"미셸 \"MJ\" 존스 (Michelle Jones)","sameAs":"https://en.wikipedia.org/wiki/Zendaya"},{"@type":"Person","name":"리즈 앨런 (Liz Allan)","sameAs":"https://en.wikipedia.org/wiki/Laura_Harrier"},{"@type":"Person","name":"유진 \"플래시\" 톰슨 (Flash Thompson)","sameAs":"https://en.wikipedia.org/wiki/Tony_Revolori"},{"@type":"Person","name":"베티 브랜트 (Betty Brant)","sameAs":"https://en.wikipedia.org/wiki/Angourie_Rice"},{"@type":"Person","name":"에이브러햄 (Abraham)","sameAs":"https://en.wikipedia.org/wiki/Abraham_Attah"},{"@type":"Person","name":"모리타 교장 (Principal Morita)","sameAs":"https://en.wikipedia.org/wiki/Kenneth_Choi"}],"locationCreated":[{"@type":"Place","name":"파인우드 애틀랜타 스튜디오 (Pinewood Atlanta Studios), 페이엇빌","geo":{"@type":"GeoCoordinates","latitude":33.4478,"longitude":-84.4553}},{"@type":"Place","name":"만다린 오리엔탈 애틀랜타 (Mandarin Oriental Hotel), 벅헤드","geo":{"@type":"GeoCoordinates","latitude":33.8484,"longitude":-84.3781}},{"@type":"Place","name":"헨리 W. 그레이디 고등학교 (Henry W. Grady High School)","geo":{"@type":"GeoCoordinates","latitude":33.7767,"longitude":-84.3736}},{"@type":"Place","name":"델마스 델리 촬영지, 92 Peachtree St SW, 애틀랜타","geo":{"@type":"GeoCoordinates","latitude":33.7537,"longitude":-84.3919}},{"@type":"Place","name":"러너 숍스 빌딩 (Lerner Shops Building), 62 Peachtree St SW","geo":{"@type":"GeoCoordinates","latitude":33.7534,"longitude":-84.3918}},{"@type":"Place","name":"오리지널 네일스 (Original Nails), 85 Peachtree Street SW","geo":{"@type":"GeoCoordinates","latitude":33.7538,"longitude":-84.3921}},{"@type":"Place","name":"99 Peachtree St SW, 애틀랜타","geo":{"@type":"GeoCoordinates","latitude":33.754,"longitude":-84.3922}},{"@type":"Place","name":"실번 빌딩 (Sylvan Building), 233 Mitchell Street","geo":{"@type":"GeoCoordinates","latitude":33.7488,"longitude":-84.3949}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"스파이더맨: 홈커밍 촬영지 — 뉴욕인 줄 알았는데 애틀랜타였던 곳들","item":"https://geugotjigeum.com/works/spiderman/"}]}</script>
 </head>
 <body>
@@ -298,6 +310,7 @@
 <p>그러니까 이 영화, 뉴욕 이야기인 척하면서 사실은 애틀랜타·뉴욕·워싱턴 DC·베를린까지 걸친 여행기였던 셈. 뉴욕 가면 퀸즈보로 다리부터, 애틀랜타 가면 저 학교 앞부터 서보고 싶어진다.</p>
 <p>그리고 코니아일랜드 가면 저 낙하산 타워도 한번 올려다보고 싶다. 영화 속에선 박살 나지만, 실제로는 지금도 멀쩡히 돌아가고 있으니까.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=spiderman&amp;loc=franklinlanehigh">학교 외관 → 브루클린, 내부 → 애틀랜타</a><a class="revealChip" href="https://geugotjigeum.com/?work=spiderman&amp;loc=delmarsdeli">델리 '델마스' → 애틀랜타 다운타운 실존 건물</a><a class="revealChip" href="https://geugotjigeum.com/?work=spiderman&amp;loc=porschecenter">어벤져스 신본부 → 실제 포르쉐 익스피리언스 센터</a><a class="revealChip" href="https://geugotjigeum.com/?work=spiderman&amp;loc=coneyislandboardwalk">낙하산 타워 격추 장면 → 진짜 코니아일랜드에서 촬영</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ONE PIECE","url":"https://geugotjigeum.com/en/works/onepiece/","description":"Netflix's One Piece live-action series was largely shot at Cape Town Film Studios in South Africa. See the real filming locations on an interactive map.","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_Table_Mountain.jpg","genre":["adventure","fantasy","comedy"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ONE PIECE","url":"https://geugotjigeum.com/en/works/onepiece/","description":"Netflix's One Piece live-action series was largely shot at Cape Town Film Studios in South Africa. See the real filming locations on an interactive map.","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_Table_Mountain.jpg","genre":["adventure","fantasy","comedy"],"locationCreated":[{"@type":"Place","name":"Cape Town Film Studios","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"웨스턴케이프 해안","geo":{"@type":"GeoCoordinates","latitude":-34.0555,"longitude":18.4645}},{"@type":"Place","name":"남아프리카공화국 촬영 권역","geo":{"@type":"GeoCoordinates","latitude":-33.9249,"longitude":18.4241}},{"@type":"Place","name":"Canary Islands, Spain","geo":{"@type":"GeoCoordinates","latitude":28.2916,"longitude":-16.6291}},{"@type":"Place","name":"Cape Town Film Studios 내","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"바라티에 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"로그타운 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"드럼 아일랜드 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"ONE PIECE — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/onepiece/"}]}</script>
 </head>
 <body>
@@ -296,6 +308,7 @@
 <p>Filming has continued at the same Cape Town studio through Season 3, so it seems like this city is only going to matter more to One Piece fans going forward.</p>
 <p>So instead of assuming it's all just a set built somewhere and moving on, it's worth knowing that places like Table Mountain in Cape Town or the statues in Kumamoto are real places you can actually go.</p>
 <p>Whether Luffy actually becomes Pirate King, what One Piece even is — I won't spoil that here. It's a story that's still going, so follow it yourself and find out.</p></div>
+  
   
 
   <div class="adSlot">

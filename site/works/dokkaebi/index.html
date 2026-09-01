@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"쓸쓸하고 찬란하神 — 도깨비 (Guardian: The Lonely and Great God)","url":"https://geugotjigeum.com/works/dokkaebi/","description":"tvN 드라마 도깨비의 실제 촬영지 강릉 주문진 해변·방사제, 캐나다 퀘벡시티 도깨비 빨간문·페어몬트 프롱트낙 호텔, 서울 덕수궁 돌담길·중앙고등학교까지 71곳을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Chateau Frontenac, Quebec City.jpg","genre":["fantasy","romance","drama"],"actor":[{"@type":"Person","name":"김신 (도깨비)","sameAs":"https://namu.wiki/w/공유(배우)"},{"@type":"Person","name":"지은탁","sameAs":"https://namu.wiki/w/김고은"},{"@type":"Person","name":"저승사자 (왕여)","sameAs":"https://namu.wiki/w/이동욱"},{"@type":"Person","name":"김선 (써니)","sameAs":"https://namu.wiki/w/유인나"},{"@type":"Person","name":"유덕화","sameAs":"https://namu.wiki/w/육성재"},{"@type":"Person","name":"삼신할매","sameAs":"https://namu.wiki/w/이엘"},{"@type":"Person","name":"박중헌","sameAs":"https://namu.wiki/w/김병철"},{"@type":"Person","name":"유신우 회장","sameAs":"https://namu.wiki/w/김성겸"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"쓸쓸하고 찬란하神 — 도깨비 (Guardian: The Lonely and Great God)","url":"https://geugotjigeum.com/works/dokkaebi/","description":"tvN 드라마 도깨비의 실제 촬영지 강릉 주문진 해변·방사제, 캐나다 퀘벡시티 도깨비 빨간문·페어몬트 프롱트낙 호텔, 서울 덕수궁 돌담길·중앙고등학교까지 71곳을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Chateau Frontenac, Quebec City.jpg","genre":["fantasy","romance","drama"],"actor":[{"@type":"Person","name":"김신 (도깨비)","sameAs":"https://namu.wiki/w/공유(배우)"},{"@type":"Person","name":"지은탁","sameAs":"https://namu.wiki/w/김고은"},{"@type":"Person","name":"저승사자 (왕여)","sameAs":"https://namu.wiki/w/이동욱"},{"@type":"Person","name":"김선 (써니)","sameAs":"https://namu.wiki/w/유인나"},{"@type":"Person","name":"유덕화","sameAs":"https://namu.wiki/w/육성재"},{"@type":"Person","name":"삼신할매","sameAs":"https://namu.wiki/w/이엘"},{"@type":"Person","name":"박중헌","sameAs":"https://namu.wiki/w/김병철"},{"@type":"Person","name":"유신우 회장","sameAs":"https://namu.wiki/w/김성겸"}],"locationCreated":[{"@type":"Place","name":"주문진 해변·방사제 (강원 강릉)","geo":{"@type":"GeoCoordinates","latitude":37.8998,"longitude":128.8256}},{"@type":"Place","name":"평창 월정사 전나무 숲길","geo":{"@type":"GeoCoordinates","latitude":37.7139,"longitude":128.5934}},{"@type":"Place","name":"고창 학원농장 메밀밭 (전북 고창)","geo":{"@type":"GeoCoordinates","latitude":35.4361,"longitude":126.5586}},{"@type":"Place","name":"평창 용평리조트 (드래곤피크)","geo":{"@type":"GeoCoordinates","latitude":37.6389,"longitude":128.6772}},{"@type":"Place","name":"평창 삼양목장","geo":{"@type":"GeoCoordinates","latitude":37.6244,"longitude":128.6631}},{"@type":"Place","name":"강릉 정동진리 라라무리(폐업)","geo":{"@type":"GeoCoordinates","latitude":37.691,"longitude":129.042}},{"@type":"Place","name":"페어몬트 르 샤토 프롱트낙 호텔 (캐나다 퀘벡)","geo":{"@type":"GeoCoordinates","latitude":46.8123,"longitude":-71.2048}},{"@type":"Place","name":"도깨비 언덕 Parc du Bastion-de-la-Reine (캐나다 퀘벡)","geo":{"@type":"GeoCoordinates","latitude":46.8113,"longitude":-71.2072}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"드라마 도깨비 실제 촬영지 지도 — 강릉 주문진·캐나다 퀘벡","item":"https://geugotjigeum.com/works/dokkaebi/"}]}</script>
 </head>
 <body>
@@ -298,6 +310,7 @@
 <p>결국 신과 인간, 삶과 죽음 사이의 이야기인데 정작 배경은 지도만 켜면 다 찾아갈 수 있는 곳들이라는 게 이 드라마의 진짜 반전이다. 손잡이 없는 문 앞에 서보고 싶어지는 이유다.</p>
 <p>김은숙 작가·이응복 감독의 2016~2017년 tvN 금토드라마인데, tvN 개국 이래 최고 시청률을 기록했다고 한다. 공유·김고은·이동욱·유인나·육성재 조합이 왜 아직도 회자되는지, 다시 보니 알 것 같았다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=dokkaebi&amp;loc=quebec_red_door">빨간 문 → 퀘벡 쁘띠 샹플랭 거리에 실존</a><a class="revealChip" href="https://geugotjigeum.com/?work=dokkaebi&amp;loc=quebec_frontenac">김신의 호텔 → 실제 프론트낙 호텔</a><a class="revealChip" href="https://geugotjigeum.com/?work=dokkaebi&amp;loc=pyeongchang_yongpyong">드래곤피크 스키장 → 실제 평창 용평리조트</a><a class="revealChip" href="https://geugotjigeum.com/?work=dokkaebi&amp;loc=jungang_high">은탁의 고등학교 → 선재 업고 튀어·그해 우리는과 같은 촬영지</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -318,30 +331,30 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
       <h3>주문진 해변·방사제 (강원 강릉)</h3>
-      <p>직접</p>
+      <p>공식·직접</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">2</span>
       <h3>평창 월정사 전나무 숲길</h3>
-      <p>직접</p>
+      <p>공식·직접</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">3</span>
       <h3>고창 학원농장 메밀밭 (전북 고창)</h3>
-      <p>직접</p>
+      <p>공식·직접</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">4</span>
       <h3>평창 용평리조트 (드래곤피크)</h3>
-      <p>직접</p>
+      <p>공식·직접</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">5</span>
       <h3>평창 삼양목장</h3>
-      <p>직접</p>
+      <p>공식·직접</p>
     </div>
   </div>
 
@@ -416,27 +429,27 @@
 
   <h2 id="allLocations">쓸쓸하고 찬란하神 — 도깨비 (Guardian: The Lonely and Great God)의 전체 장소 목록 (71곳)</h2>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>주문진 해변·방사제 (강원 강릉)</h3>
         <p>은탁이 열아홉 살 생일날 홀로 케이크 촛불을 불며 소원을 빌다 김신을 처음 소환한, 드라마 최고의 명장면 촬영지. 붉은 목도리를 두른 은탁과 거센 파도가 부딪히는 방사제가 어우러진 풍경으로 유명하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>평창 월정사 전나무 숲길</h3>
         <p>하얀 눈이 소복이 쌓인 겨울, 김신과 지은탁이 서로의 마음을 확인하며 걷던 낭만적인 전나무 숲길.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>고창 학원농장 메밀밭 (전북 고창)</h3>
         <p>김신의 비밀스러운 공간이자 도깨비 부부가 거니는 장면이 촬영된 드넓은 메밀밭. 하얀 메밀꽃이 만발한 풍경이 도깨비의 고독함과 신비로움을 동시에 담아낸다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>평창 용평리조트 (드래곤피크)</h3>
         <p>극중 스키장 '드래곤피크'로 등장한 실제 리조트. 발왕산 케이블카와 용평콘도 일대도 함께 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>평창 삼양목장</h3>
         <p>탁 트인 초원 지형이 여러 장면의 배경으로 쓰인 목장.</p>
       </div>
@@ -446,227 +459,227 @@
         <p>정동진 인근에서 촬영된 카페(현재는 폐업).</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>페어몬트 르 샤토 프롱트낙 호텔 (캐나다 퀘벡)</h3>
         <p>은탁이 캐나다에서 처음 감탄했던 퀘벡시티의 랜드마크. 극 중 김신 소유의 호텔로 등장하며, 로비의 우체통은 은탁이 편지를 넣었던 곳으로 유명하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>도깨비 언덕 Parc du Bastion-de-la-Reine (캐나다 퀘벡)</h3>
         <p>프롱트낙 호텔이 내려다보이는 완만한 언덕. 김신이 묘비들 사이에서 상념에 잠기거나 은탁과 나란히 앉아 퀘벡 풍경을 감상하던 장소로, 팬들 사이에서 '도깨비 언덕'으로 불린다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>쁘띠 샹플랭 거리 (캐나다 퀘벡)</h3>
         <p>북미에서 가장 오래된 번화가로, 아기자기한 상점들이 늘어선 동화 같은 거리. 김신과 은탁의 데이트 코스로 사랑받았다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>도깨비 빨간문 La Porte Rouge (캐나다 퀘벡)</h3>
         <p>쁘띠 샹플랭 거리의 문고리 없는 붉은 문. 극 중 서울과 캐나다를 잇는 마법의 문으로 등장해, 퀘벡 최고의 포토 스폿이 되었다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>부티크 드 노엘 (캐나다 퀘벡)</h3>
         <p>일 년 내내 크리스마스 장식을 파는 상점으로 퀘벡의 로맨틱한 분위기를 극대화한 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>뒤프랭 테라스 &amp; 총독의 정원 (캐나다 퀘벡)</h3>
         <p>세인트로렌스강이 내려다보이는 산책 테라스와 정원.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>몽모랑시 공원 &amp; 프레스콧 게이트 (캐나다 퀘벡)</h3>
         <p>구 시가지 성벽 유적과 함께 있는 공원.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>투르니 분수 (캐나다 퀘벡)</h3>
         <p>퀘벡 국회의사당 앞 광장의 화려한 분수.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>생 피에르 거리 일대 (캐나다 퀘벡)</h3>
         <p>구시가지의 고풍스러운 상점가 골목.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>사무엘 홀랜드 파크 (캐나다 퀘벡)</h3>
         <p>구시가지에서 조금 떨어진 조용한 공원으로, 촬영지 성지순례 코스 중 하나.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>라 메종 드메르 (캐나다 퀘벡)</h3>
         <p>구시가지의 고풍스러운 주택가 골목에 위치한 촬영지.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>기타 퀘벡 거리 — Boutique Jourdain (캐나다 퀘벡)</h3>
         <p>크리스마스 상점가 인근의 또 다른 촬영 골목.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>사근용답간인도교 (서울 성동구, 용답역 2번 출구)</h3>
         <p>써니와 저승사자가 처음 만나 운명적으로 얽히게 된 육교. 삼신할매가 이 다리 위에서 액세서리를 팔던 상징적인 장소이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>덕수궁 돌담길 (서울 중구, 돈덕전 앞)</h3>
         <p>김신과 저승사자가 티격태격하며 함께 걷던 분위기 있는 돌담길. 두 사람의 특별한 우정을 보여주는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>중앙고등학교 (서울 종로구)</h3>
         <p>지은탁이 다니던 고등학교로 등장한 곳. 역사적이고 고풍스러운 외관으로 팬들의 필수 방문 코스다. [선재 업고 튀어], [그해 우리는] 촬영지이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>운현궁 양관 (서울 종로구)</h3>
         <p>웅장하고 고풍스러운 외관이 김신과 저승사자가 함께 살던 '도깨비 하우스'로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>조선어학회터 (서울 종로구)</h3>
         <p>북촌 한옥마을에 위치한 역사적인 표지석 터로, 여러 장면의 배경이 됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>광화문 &amp; 일민미술관 (서울 종로구)</h3>
         <p>서울 도심을 배경으로 여러 장면이 촬영된 상징적인 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>인사동 전통문화의 거리 &amp; 쌈지길 (서울 종로구)</h3>
         <p>전통 공예품과 골목 상점이 늘어선 거리로 여러 장면에 등장했다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>윤보선길 &amp; 북촌사진관 (서울 종로구)</h3>
         <p>북촌 한옥마을의 고즈넉한 골목길.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>삼청동 앞터 골목 (서울 종로구)</h3>
         <p>고즈넉한 삼청동 골목길로, 국군서울지구병원 입구 인근 장면이 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>낙산공원 개뿔 앞 (서울 종로구)</h3>
         <p>서울 성곽길과 도심 야경이 한눈에 보이는 언덕 공원.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>대학로 거리 (서울 종로구)</h3>
         <p>공연예술의 거리로 유명한 대학로의 한 장면 배경.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>건국대학교 일대 (서울 광진구)</h3>
         <p>박물관 앞·청심대·학생회관 등 캠퍼스 곳곳이 여러 장면에 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>워커힐 서울 (비스타워커힐)</h3>
         <p>고급 호텔의 프레지덴셜 스위트 등이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>그랜드 하얏트 서울 (서울 용산구 한남동)</h3>
         <p>프레지덴셜 스위트룸 등이 극 중 고급 호텔 장면으로 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>반포한강공원 (서울 서초구)</h3>
         <p>세빛섬과 잠수교가 보이는 한강공원으로 여러 장면의 배경이 됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>서대문형무소 (서울 서대문구)</h3>
         <p>역사적인 옛 형무소 건물이 특정 회상 장면의 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>신촌 토끼굴 (서울 서대문구)</h3>
         <p>신촌터널 인근, 팬들 사이 '토끼굴'로 불리는 정겨운 골목.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>상암동 일대 (서울 마포구)</h3>
         <p>에스플렉스센터, 구룡 근린공원 등 미디어시티 일대가 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>여의도 일대 (서울 영등포구)</h3>
         <p>금융가 빌딩숲을 배경으로 여러 도심 장면이 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>삼성동 일대 (서울 강남구)</h3>
         <p>코엑스 인근 도심 거리 장면이 촬영된 곳.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>청담동 벨뷰 (서울 강남구)</h3>
         <p>고급스러운 청담동 거리 풍경이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>성수동 일대 (서울 성동구)</h3>
         <p>카페 골목 등이 촬영된 곳(舊 모카책방 등).</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>간데메공원 놀이터 (서울 동대문구)</h3>
         <p>은탁의 일상적인 동네 풍경으로 등장한 놀이터.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>덕성여대 쌍문캠퍼스 (서울 도봉구, 시반거리)</h3>
         <p>중앙도서관과 차미리사 기념관 등이 자리한 캠퍼스 일대의 '시반거리'가 촬영지로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>송도 센트럴파크 (인천 연수구)</h3>
         <p>현대적인 도심 공원 풍경이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>송도 지식정보단지 일대 (인천 연수구)</h3>
         <p>인천대입구역과 포스코타워 등 신도시 스카이라인이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>인천 아트플랫폼 &amp; 하버파크호텔 (인천 중구)</h3>
         <p>근대 개항기 건축물이 남아있는 예술 공간으로, 다수의 장면이 촬영됐다. [사이코지만 괜찮아]에서 고문영이 문강태를 따라다니던 장소이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>자유공원 &amp; 제물포구락부 (인천 중구)</h3>
         <p>인천 개항기의 정취가 남은 공원과 근대 건축물.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>신포동 일대 (인천 중구)</h3>
         <p>옛 개항기 정취가 남은 신포동 골목과 상점가.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>영종도 (인천 중구)</h3>
         <p>왕산해수욕장 야구연습장과 인천국제공항 제1여객터미널 일대가 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>청라호수공원 (인천 서구)</h3>
         <p>언덕 마루 등 신도시 공원 풍경이 촬영지로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>배다리 헌책방 거리 &amp; 한미서점 (인천 동구)</h3>
         <p>오래된 헌책방 거리가 여러 장면의 배경이 됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>송림동 일대 (인천 동구)</h3>
         <p>송현근린공원 앞과 서흥초 정류장 등이 촬영된 정겨운 동네.</p>
       </div>
@@ -676,97 +689,97 @@
         <p>다수의 한국 드라마·영화가 촬영된 대형 스튜디오 단지.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>안성 미리내성지 (경기 안성)</h3>
         <p>한국 순교자 103위 시성기념성당으로, 종교적 분위기의 장면에 쓰였다. [알함브라 궁전의 추억]에서 차형석 1주년에 유진우가 찾아간 성당이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>안성 석남사 (경기 안성)</h3>
         <p>고즈넉한 사찰 풍경이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>파주 지노(카페) &amp; 원방스튜디오 (경기 파주)</h3>
         <p>여러 대화 장면이 촬영된 카페와 인근 스튜디오.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>고양 일산동구 일대 (경기 고양)</h3>
         <p>일산 신도시의 여러 지점이 도심 장면 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>부천 경인문고 중동점 (경기 부천)</h3>
         <p>대형 서점이 등장한 촬영지.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>안양 관양동 일대 (경기 안양)</h3>
         <p>동네 상점가 골목이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>하남 신안인스빌아스트로 아파트 (경기 하남)</h3>
         <p>은탁의 일상적인 주거지 풍경으로 등장한 아파트 단지.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>성남 분당 일대 (경기 성남)</h3>
         <p>종합버스터미널 등 성남 분당구의 도심 풍경이 배경으로 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>나주영상테마파크 고구려궁 (전남 나주)</h3>
         <p>고려 시대 배경의 궁궐 장면이 촬영된 사극 세트장. 너와저잣거리 일대도 함께 쓰였다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>고려 전장 (김신의 전공)</h3>
         <p>상장군 김신이 수많은 전쟁에서 단 한 번도 패하지 않고 나라를 지켜낸 전장. 백성들의 존경과 왕의 두려움을 동시에 산 시작점이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>고려 왕궁 — 김신의 마지막 길</h3>
         <p>박중헌의 모함으로 역적으로 몰린 김신이 검을 왕에게 바치러 가다 왕의 군사들에게 목숨을 잃는, 도깨비 탄생의 비극적 발단.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>김선이 화살에 맞아 죽는 곳</h3>
         <p>왕비 김선이 오라버니 김신을 향해 '멈추지 말고 폐하께 가세요'라 외치며 스스로 화살을 맞는 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>김신이 도깨비로 부활하는 들판</h3>
         <p>역적으로 몰려 버려진 김신의 시신 앞에서 가신들이 애도하자, 신이 응답해 그를 불멸의 도깨비로 되살리는 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>지연희의 교통사고 현장 (은탁의 탄생)</h3>
         <p>임신부 지연희가 뺑소니 사고를 당해 죽어가며 뱃속의 아이를 살려달라 빌고, 김신이 그 모성에 응답해 두 사람 모두를 살려주는 곳.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>은탁 이모네 집 (구박받던 시절)</h3>
         <p>어머니를 잃은 은탁이 이모 가족에게 맡겨져 식모처럼 부려지며 구박받던 집.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>은탁이 도깨비 신부임을 고백하는 곳</h3>
         <p>김신의 가슴에 꽂힌 검의 손잡이 형태와 문양까지 구체적으로 증명하며, 은탁이 자신이 진짜 도깨비 신부임을 확신시키는 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>천우그룹 본사 (유씨 가문의 기업)</h3>
         <p>김신이 만들어낸 금을 바탕으로 유씨 가문이 대대로 키워온 기업의 본사. 유신우 회장과 후계자 유덕화, 김비서를 둘러싼 이야기가 펼쳐진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>저승사자의 정체가 밝혀지는 곳</h3>
         <p>기억을 잃은 저승사자가 실은 김신을 죽음으로 몬 고려의 왕 '왕여'였다는 충격적 진실이 드러나는 장소.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>유신우 회장의 임종 자리</h3>
         <p>김신에게 자신의 묘비명을 부탁하며 조용히 눈을 감는 유신우 회장의 마지막 장소. 김신은 훗날 그의 비석에 '이 생에서의 모든 순간이 선했던 자'라고 새긴다.</p>
       </div>

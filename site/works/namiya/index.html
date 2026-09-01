@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"나미야 잡화점의 기적 (ナミヤ雑貨店の奇蹟)","url":"https://geugotjigeum.com/works/namiya/","description":"2026년 별세한 히가시노 게이고를 추모하며, 나미야 잡화점의 기적 영화 촬영지와 작가의 실제 발자취를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Bungotakada showa no machi.JPG","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["drama","mystery","fantasy"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"나미야 잡화점의 기적 (ナミヤ雑貨店の奇蹟)","url":"https://geugotjigeum.com/works/namiya/","description":"2026년 별세한 히가시노 게이고를 추모하며, 나미야 잡화점의 기적 영화 촬영지와 작가의 실제 발자취를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Bungotakada showa no machi.JPG","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["drama","mystery","fantasy"],"locationCreated":[{"@type":"Place","name":"오이타현 분고타카다시 쇼와노마치(昭和の町) 상점가","geo":{"@type":"GeoCoordinates","latitude":33.5644,"longitude":131.4487}},{"@type":"Place","name":"벳푸 온천(오이타현)","geo":{"@type":"GeoCoordinates","latitude":33.2846,"longitude":131.4913}},{"@type":"Place","name":"우사신궁(宇佐神宮)","geo":{"@type":"GeoCoordinates","latitude":33.5237,"longitude":131.3719}},{"@type":"Place","name":"오사카시 이쿠노구(오사카부)","geo":{"@type":"GeoCoordinates","latitude":34.6553,"longitude":135.5443}},{"@type":"Place","name":"오사카공립대학 나카모즈캠퍼스(옛 오사카부립대학)","geo":{"@type":"GeoCoordinates","latitude":34.5372,"longitude":135.5011}},{"@type":"Place","name":"주식회사 덴소 본사(아이치현 가리야시)","geo":{"@type":"GeoCoordinates","latitude":34.9885,"longitude":137.0021}},{"@type":"Place","name":"츠키지 신키라쿠(도쿄 주오구)","geo":{"@type":"GeoCoordinates","latitude":35.6654,"longitude":139.771}},{"@type":"Place","name":"고단샤 본사(도쿄 분쿄구 오토와)","geo":{"@type":"GeoCoordinates","latitude":35.7208,"longitude":139.7217}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"히가시노 게이고 추모 특집 — 나미야 잡화점의 기적 실제 장소 지도","item":"https://geugotjigeum.com/works/namiya/"}]}</script>
 </head>
 <body>
@@ -297,6 +309,7 @@
 <p>나는 아직 분고타카다에 가본 적은 없지만, 언젠가 가게 된다면 영화 세트가 없다는 게 그렇게 아쉽지는 않을 것 같다. 오래된 골목 좀 걷다가 나미야 잡화점이 있던 자리에 한번 서보고, 마지막에는 마타마 해안에서 해 지는 걸 보고 싶다.</p>
 <p>그러다 골목 어딘가에서 오래된 우편함 하나 발견하면, 아마 잠깐은 이런 생각도 할 것 같다. &quot;여기에 편지 넣으면 답장 오려나.&quot;</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=namiya&amp;loc=bungotakada_showamachi">영화 속 나미야 잡화점 → 오이타현 분고타카다 미야마치 상점가 세트(촬영 후 철거)</a><span class="revealChip">영화에 쓰인 간판 → 인근 쇼와로망창고에 보관</span><span class="revealChip">세리가 'Reborn'에 맞춰 춤추던 마지막 장면 → 마타마 해안</span><a class="revealChip" href="https://geugotjigeum.com/?work=namiya&amp;loc=bungotakada_showamachi">한때 사람이 찾지 않던 상점가 → '쇼와의 마을'로 되살아나 지금은 관광지</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -322,15 +335,15 @@
       <h3>오이타현 분고타카다시 쇼와노마치(昭和の町) 상점가</h3>
       <p>공식·직접</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
       <h3>나미야 잡화점(가공의 공간)</h3>
-      <p>직접</p>
+      <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">3</span>
       <h3>환광원(丸光園, 가공의 시설)</h3>
-      <p>직접</p>
+      <p>테마 연계</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">4</span>
@@ -415,12 +428,12 @@
 
   <h2 id="allLocations">나미야 잡화점의 기적 (ナミヤ雑貨店の奇蹟)의 전체 장소 목록 (13곳)</h2>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나미야 잡화점(가공의 공간)</h3>
         <p>소설 속 핵심 무대. 30년 넘게 문을 닫은 채 방치된 잡화점으로, 우연히 숨어든 좀도둑 3인방이 셔터 우유 상자에 꽂힌 편지 한 장을 발견하며 이야기가 시작된다. 과거와 현재가 시간을 넘어 편지로 이어지는 이 작품의 상징적 공간이지만, 작가는 실제 지명을 밝히지 않았다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>환광원(丸光園, 가공의 시설)</h3>
         <p>대지주 가문의 딸 미나즈키 아키코가 사재를 들여 세운 보육원. &quot;하늘 위에서 모두를 위해 기도하겠다&quot;는 그녀의 유언이 작품 전체를 관통하는 정서가 된다. 무토 하루미, 미즈히라 세리·다쓰 남매 등 여러 인물의 삶이 이곳을 거쳐간다. 소설 속 가공의 시설로, 실존하는 특정 보육원을 가리키지 않는다.</p>
       </div>

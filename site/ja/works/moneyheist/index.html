@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/moneyheist/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/moneyheist/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/moneyheist/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/moneyheist/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/moneyheist/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"紙の家(ラ・カサ・デ・パペル / ペーパー・ハウス)","url":"https://geugotjigeum.com/ja/works/moneyheist/","description":"「教授」と呼ばれる首謀者が、都市の名前を持つメンバーを集め、スペインの造幣局と中央銀行を狙った壮大な強盗作戦を繰り広げる。銃撃よりも重要なのは、時間、世論、信頼、そして内部の対立だ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Calle_Gran_Via.001_-_Madrid.JPG","genre":["crime","thriller","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"紙の家(ラ・カサ・デ・パペル / ペーパー・ハウス)","url":"https://geugotjigeum.com/ja/works/moneyheist/","description":"「教授」と呼ばれる首謀者が、都市の名前を持つメンバーを集め、スペインの造幣局と中央銀行を狙った壮大な強盗作戦を繰り広げる。銃撃よりも重要なのは、時間、世論、信頼、そして内部の対立だ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Calle_Gran_Via.001_-_Madrid.JPG","genre":["crime","thriller","drama"],"locationCreated":[{"@type":"Place","name":"CSIC 본부 (Madrid)","geo":{"@type":"GeoCoordinates","latitude":40.4433,"longitude":-3.6883}},{"@type":"Place","name":"누에보스 미니스테리오스 (Nuevos Ministerios)","geo":{"@type":"GeoCoordinates","latitude":40.4459,"longitude":-3.6928}},{"@type":"Place","name":"포멘토 궁전 (Ministerio de Fomento)","geo":{"@type":"GeoCoordinates","latitude":40.4378,"longitude":-3.6889}},{"@type":"Place","name":"칼라오 광장 (Plaza del Callao)","geo":{"@type":"GeoCoordinates","latitude":40.42,"longitude":-3.7053}},{"@type":"Place","name":"그란 비아 (Gran Vía)","geo":{"@type":"GeoCoordinates","latitude":40.42,"longitude":-3.7038}},{"@type":"Place","name":"산 프루토스 은자원 (San Frutos Hermitage, Segovia)","geo":{"@type":"GeoCoordinates","latitude":41.2211,"longitude":-4.0492}},{"@type":"Place","name":"토레로도네스 (Torrelodones)","geo":{"@type":"GeoCoordinates","latitude":40.5822,"longitude":-3.9308}},{"@type":"Place","name":"파나마·태국 설정 장면","geo":{"@type":"GeoCoordinates","latitude":8.9824,"longitude":-79.5199}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"紙の家(ラ・カサ・デ・パペル / ペーパー・ハウス)のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/moneyheist/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/moneyheist/">KR</a>
     <a href="https://geugotjigeum.com/en/works/moneyheist/">EN</a>
     <a href="https://geugotjigeum.com/ja/works/moneyheist/" class="on" aria-current="page">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="準備中">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/moneyheist/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/ja/">🏠 ホーム</a>
 </header>
@@ -296,6 +309,7 @@
 <p>終盤に出てくるパナマ・タイの逃亡先は逆に、実際の撮影地ではなく設定上の場所らしい。実在する国ではあるけれど、この作品がそこで撮影したわけではないということだ。</p>
 <p>このチームが最終的にどんな代償を払って物語を終えるのかは、ここでは全部言わないでおこうと思う。ただ確かなのは、最後まで見終えると「完璧な強盗」という言葉自体がどれほど矛盾しているかがわかるということだ。</p>
 <p>マドリードに行くと、グランビアやカリャオ広場はつい通り過ぎてしまいがちな観光地だけど、「ここがあの紙幣が舞ったシーンだったんだ」ともう一度見てみると、印象がかなり違って見えてくる。</p></div>
+  
   
 
   <div class="adSlot">
@@ -450,7 +464,7 @@
         <p>A town near Madrid used as the setting for The Professor's hideout.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>파나마·태국 설정 장면</h3>
         <p>Locations depicted as characters' hideouts in later seasons.</p>
       </div>
@@ -460,7 +474,7 @@
         <p>An Italian city used for flashback scenes related to Berlín.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>코펜하겐 설정</h3>
         <p>Denmark's capital, referenced as part of the story's international expansion.</p>
       </div>

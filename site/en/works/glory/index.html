@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/glory/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/glory/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/glory/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/glory/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/glory/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"The Glory","url":"https://geugotjigeum.com/en/works/glory/","description":"A revenge drama in which school-violence survivor Moon Dong-eun spends years preparing to confront her tormentors. Real locations in Cheongju — includin…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cheongju Sangdangsangseong.jpg","genre":["thriller","drama","crime"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"The Glory","url":"https://geugotjigeum.com/en/works/glory/","description":"A revenge drama in which school-violence survivor Moon Dong-eun spends years preparing to confront her tormentors. Real locations in Cheongju — includin…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cheongju Sangdangsangseong.jpg","genre":["thriller","drama","crime"],"locationCreated":[{"@type":"Place","name":"청주 중앙공원 (충북 청주시 상당구 남사로 117)","geo":{"@type":"GeoCoordinates","latitude":36.639,"longitude":127.4838}},{"@type":"Place","name":"용화사 (충북 청주시 서원구 무심서로 565)","geo":{"@type":"GeoCoordinates","latitude":36.6262,"longitude":127.4759}},{"@type":"Place","name":"성안길·청주 원도심 (충북 청주시 상당구 성안로)","geo":{"@type":"GeoCoordinates","latitude":36.6335,"longitude":127.4873}},{"@type":"Place","name":"청라호수공원 바둑공원 (인천 서구 청라호수로)","geo":{"@type":"GeoCoordinates","latitude":37.5386,"longitude":126.6389}},{"@type":"Place","name":"종로3가 기원 거리 (서울 종로구 돈화문로 일대)","geo":{"@type":"GeoCoordinates","latitude":37.5711,"longitude":126.9895}},{"@type":"Place","name":"세종시 반곡동 신도시 일대","geo":{"@type":"GeoCoordinates","latitude":36.4801,"longitude":127.2926}},{"@type":"Place","name":"소돌방파제 (강원 강릉시 주문진읍 주문리 791-47)","geo":{"@type":"GeoCoordinates","latitude":37.9115,"longitude":128.8264}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"The Glory — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/glory/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/glory/">KR</a>
     <a href="https://geugotjigeum.com/en/works/glory/" class="on" aria-current="page">EN</a>
     <a href="https://geugotjigeum.com/ja/works/glory/">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="Coming soon">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/glory/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/en/">🏠 Home</a>
 </header>
@@ -294,6 +307,7 @@
 <p>Exactly what happens in the moment Dong-eun finally reappears in front of Yeon-jin after years of preparation, and how the five perpetrators' stories end afterward — I won't spell all of that out here. But it's worth saying up front: this revenge story doesn't end in pure satisfaction alone.</p>
 <p>If you go to Cheongju, chasing down Semyeong might be less rewarding than simply following the filming locations that are actually confirmed — Jungang Park, Yonghwasa.</p>
 <p>And if you ever find yourself in Gangneung, standing in front of the lighthouse at Sodol Port and thinking, 'it took her years to get here,' isn't a bad way to spend a moment either.</p></div>
+  
   
 
   <div class="adSlot">
@@ -375,7 +389,7 @@
         <p>A newly built new-town district in Sejong City where some school and residential scenes are reported to have been filmed. Out of respect for real students and facilities, this site deliberately does not pinpoint the specific building where the school-violence scenes were shot — this entry simply introduces the planned townscape itself.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>가상 도시 &quot;세명시&quot; (극 중 설정, 실존 도시 아님)</h3>
         <p>The fictional city where Dong-eun and her tormentors live as adults. After the show aired, online speculation suggested Semyeong might be based on Cheongju, but the production has never officially confirmed any specific real city as its model. Cheongju is confirmed only as an official filming location — there is no basis for treating it as the real-world model for the fictional Semyeong. This site keeps the two clearly separate.</p>
       </div>

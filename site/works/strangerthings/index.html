@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"기묘한 이야기 (Stranger Things)","url":"https://geugotjigeum.com/works/strangerthings/","description":"기묘한 이야기의 실제 촬영지와 작품 속 배경 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"],"actor":[{"@type":"Person","name":"일레븐 (Eleven)","sameAs":"https://en.wikipedia.org/wiki/Millie_Bobby_Brown"},{"@type":"Person","name":"마이크 휠러 (Mike Wheeler)","sameAs":"https://en.wikipedia.org/wiki/Finn_Wolfhard"},{"@type":"Person","name":"윌 바이어스 (Will Byers)","sameAs":"https://en.wikipedia.org/wiki/Noah_Schnapp"},{"@type":"Person","name":"더스틴 헨더슨 (Dustin Henderson)","sameAs":"https://en.wikipedia.org/wiki/Gaten_Matarazzo"},{"@type":"Person","name":"루카스 싱클레어 (Lucas Sinclair)","sameAs":"https://en.wikipedia.org/wiki/Caleb_McLaughlin"},{"@type":"Person","name":"맥스 메이필드 (Max Mayfield)","sameAs":"https://en.wikipedia.org/wiki/Sadie_Sink"},{"@type":"Person","name":"짐 호퍼 (Jim Hopper)","sameAs":"https://en.wikipedia.org/wiki/David_Harbour"},{"@type":"Person","name":"조이스 바이어스 (Joyce Byers)","sameAs":"https://en.wikipedia.org/wiki/Winona_Ryder"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"기묘한 이야기 (Stranger Things)","url":"https://geugotjigeum.com/works/strangerthings/","description":"기묘한 이야기의 실제 촬영지와 작품 속 배경 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"],"actor":[{"@type":"Person","name":"일레븐 (Eleven)","sameAs":"https://en.wikipedia.org/wiki/Millie_Bobby_Brown"},{"@type":"Person","name":"마이크 휠러 (Mike Wheeler)","sameAs":"https://en.wikipedia.org/wiki/Finn_Wolfhard"},{"@type":"Person","name":"윌 바이어스 (Will Byers)","sameAs":"https://en.wikipedia.org/wiki/Noah_Schnapp"},{"@type":"Person","name":"더스틴 헨더슨 (Dustin Henderson)","sameAs":"https://en.wikipedia.org/wiki/Gaten_Matarazzo"},{"@type":"Person","name":"루카스 싱클레어 (Lucas Sinclair)","sameAs":"https://en.wikipedia.org/wiki/Caleb_McLaughlin"},{"@type":"Person","name":"맥스 메이필드 (Max Mayfield)","sameAs":"https://en.wikipedia.org/wiki/Sadie_Sink"},{"@type":"Person","name":"짐 호퍼 (Jim Hopper)","sameAs":"https://en.wikipedia.org/wiki/David_Harbour"},{"@type":"Person","name":"조이스 바이어스 (Joyce Byers)","sameAs":"https://en.wikipedia.org/wiki/Winona_Ryder"}],"locationCreated":[{"@type":"Place","name":"잭슨 (Jackson, Georgia)","geo":{"@type":"GeoCoordinates","latitude":33.2946,"longitude":-83.9666}},{"@type":"Place","name":"호킨스 국립연구소 배경지 (Atlanta 권역)","geo":{"@type":"GeoCoordinates","latitude":33.7756,"longitude":-84.3963}},{"@type":"Place","name":"그위넷 플레이스 몰 (Gwinnett Place Mall, Duluth, GA)","geo":{"@type":"GeoCoordinates","latitude":33.9614,"longitude":-84.0223}},{"@type":"Place","name":"호킨스 고등학교 배경지 (Patrick Henry High School)","geo":{"@type":"GeoCoordinates","latitude":33.749,"longitude":-84.388}},{"@type":"Place","name":"스톤 마운틴 파크 (Stone Mountain Park)","geo":{"@type":"GeoCoordinates","latitude":33.805,"longitude":-84.145}},{"@type":"Place","name":"이스트포인트 (East Point)","geo":{"@type":"GeoCoordinates","latitude":33.6795,"longitude":-84.4394}},{"@type":"Place","name":"로마 (Rome, Georgia)","geo":{"@type":"GeoCoordinates","latitude":34.257,"longitude":-85.1647}},{"@type":"Place","name":"크릴 하우스 (Creel House, Rome 인근)","geo":{"@type":"GeoCoordinates","latitude":34.26,"longitude":-85.17}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"기묘한 이야기 촬영지와 실제 장소 지도","item":"https://geugotjigeum.com/works/strangerthings/"}]}</script>
 </head>
 <body>
@@ -295,6 +307,37 @@
 <p>시즌이 거듭될수록 배우들이 실제 나이를 먹으며 캐릭터와 함께 자라는 걸 보는 것도 이 드라마만의 재미다. 시즌1의 꼬마들이 이제는 진짜 고등학생, 성인의 얼굴로 마지막 시즌을 향해 가고 있다.</p>
 <p>호킨스라는 마을은 지도에 없지만, 이 드라마 덕분에 조지아라는 주는 이제 나한테 완전히 다른 의미로 다가온다. 언젠가 가면 그위넷 플레이스 몰 자리부터 들러보고 싶다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=strangerthings&amp;loc=gwinnettmall">스타코트몰 → 그위넷 플레이스 몰(1984년 개장, 지금은 쇠퇴)</a><a class="revealChip" href="https://geugotjigeum.com/?work=strangerthings&amp;loc=kamchatkaset">시즌4 '러시아' → 사실은 애틀랜타 스튜디오 세트</a><a class="revealChip" href="https://geugotjigeum.com/?work=strangerthings&amp;loc=jacksonga">호킨스 중심가 → 조지아주 잭슨</a><a class="revealChip" href="https://geugotjigeum.com/?work=strangerthings&amp;loc=stonemountain">숲·철길 장면 → 스톤 마운틴 파크</a></div></div>
+  
+  <p class="sectionKicker" style="margin-top:8px;">장면으로 다시 보기</p>
+  <div class="sceneGrid">
+    <a class="sceneCard" href="https://geugotjigeum.com/places/strangerthings-creelhouse/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/strangerthings/strangerthings-scene-01.webp" alt="붉은 하늘 아래 크릴 하우스를 향하는 자전거 무리를 표현한 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>Creel House, 공포가 집 한 채에 모이는 곳</h3>
+        <p>Rome, Georgia의 실제 저택은 시즌4 Creel House의 핵심 외관으로 쓰였다. 집의 높은 실루엣과 다락 구조 자체가 Vecna 서사의 분위기를 만든다.</p>
+        <span class="sceneLinkLabel">크릴 하우스 (Creel House, Rome 인근) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/places/strangerthings-hawkinslab/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/strangerthings/strangerthings-scene-02.webp" alt="호킨스 연구소의 어두운 비밀 실험실 분위기를 표현한 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>Eleven의 기억이 시작되는 Hawkins Lab</h3>
+        <p>호킨스 연구소 외관은 애틀랜타의 옛 정신의료시설을 활용했다. 무거운 대칭과 창문이 잘 보이지 않는 외관이 연구소의 불길한 인상을 만든다.</p>
+        <span class="sceneLinkLabel">호킨스 국립연구소 배경지 (Atlanta 권역) →</span>
+      </div>
+    </a>
+    <a class="sceneCard" href="https://geugotjigeum.com/places/strangerthings-gwinnettmall/">
+      <div class="sceneImgWrap"><img src="https://geugotjigeum.com/assets/scenes/strangerthings/strangerthings-scene-03.webp" alt="스타코트 몰로 등장한 쇼핑몰의 네온빛 내부를 표현한 장면 일러스트" loading="lazy" width="1600" height="900"></div>
+      <div class="sceneCardBody">
+        <span class="sceneBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">실제 촬영지</span>
+        <h3>1985년 Starcourt로 되돌아간 쇼핑몰</h3>
+        <p>시즌3의 Starcourt Mall은 조지아의 Gwinnett Place Mall을 1980년대 쇼핑몰로 되살려 촬영한 공간이다. 현실의 몰과 극중 시대감이 겹친다.</p>
+        <span class="sceneLinkLabel">그위넷 플레이스 몰 (Gwinnett Place Mall, Duluth, GA) →</span>
+      </div>
+    </a>
+  </div>
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

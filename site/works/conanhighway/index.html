@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"명탐정 코난: 하이웨이의 타천사 (名探偵コナン ハイウェイの堕天使)","url":"https://geugotjigeum.com/works/conanhighway/","description":"극장판 명탐정 코난 29탄 하이웨이의 타천사의 실제 배경인 요코하마 미나토미라이와 하코네 턴파이크를 지도와 결말 스포일러 정리로 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Yokohama Red Brick Warehouse 2012.JPG","genre":["mystery","action","thriller"],"actor":[{"@type":"Person","name":"에도가와 코난 / 쿠도 신이치","sameAs":"https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E3%81%BF%E3%81%AA%E3%81%BF"},{"@type":"Person","name":"모리 란","sameAs":"https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9D%91%E3%81%82%E3%82%86%E3%81%BF"},{"@type":"Person","name":"모리 코고로","sameAs":"https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E3%81%95%E3%82%84%E3%81%8B"},{"@type":"Person","name":"스즈키 소노코","sameAs":"https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%89%98%E3%81%8D%E3%81%8B"},{"@type":"Person","name":"세라 마스미","sameAs":"https://ja.wikipedia.org/wiki/%E3%81%84%E3%81%8D%E3%81%98%E3%81%BF%E3%82%86%E3%81%A9%E3%81%8B"},{"@type":"Person","name":"하기와라 치하야(萩原千速)","sameAs":"https://ja.wikipedia.org/wiki/%E6%B2%A2%E5%9F%8E%E3%81%BF%E3%82%86%E3%81%8D"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"명탐정 코난: 하이웨이의 타천사 (名探偵コナン ハイウェイの堕天使)","url":"https://geugotjigeum.com/works/conanhighway/","description":"극장판 명탐정 코난 29탄 하이웨이의 타천사의 실제 배경인 요코하마 미나토미라이와 하코네 턴파이크를 지도와 결말 스포일러 정리로 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Yokohama Red Brick Warehouse 2012.JPG","genre":["mystery","action","thriller"],"actor":[{"@type":"Person","name":"에도가와 코난 / 쿠도 신이치","sameAs":"https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E3%81%BF%E3%81%AA%E3%81%BF"},{"@type":"Person","name":"모리 란","sameAs":"https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9D%91%E3%81%82%E3%82%86%E3%81%BF"},{"@type":"Person","name":"모리 코고로","sameAs":"https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E3%81%95%E3%82%84%E3%81%8B"},{"@type":"Person","name":"스즈키 소노코","sameAs":"https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%89%98%E3%81%8D%E3%81%8B"},{"@type":"Person","name":"세라 마스미","sameAs":"https://ja.wikipedia.org/wiki/%E3%81%84%E3%81%8D%E3%81%98%E3%81%BF%E3%82%86%E3%81%A9%E3%81%8B"},{"@type":"Person","name":"하기와라 치하야(萩原千速)","sameAs":"https://ja.wikipedia.org/wiki/%E6%B2%A2%E5%9F%8E%E3%81%BF%E3%82%86%E3%81%8D"}],"locationCreated":[{"@type":"Place","name":"요코하마 아카렌가 창고(横浜赤レンガ倉庫)","geo":{"@type":"GeoCoordinates","latitude":35.4514,"longitude":139.6425}},{"@type":"Place","name":"아네스토 이와타 턴파이크 하코네 · 오칸잔 전망대(アネスト岩田ターンパイク箱根 · 大観山)","geo":{"@type":"GeoCoordinates","latitude":35.2153,"longitude":139.0347}},{"@type":"Place","name":"수도고속도로 가나가와1호 요코하네선(首都高速神奈川1号横羽線)","geo":{"@type":"GeoCoordinates","latitude":35.4636,"longitude":139.6503}},{"@type":"Place","name":"요코하마 베이브리지(横浜ベイブリッジ)","geo":{"@type":"GeoCoordinates","latitude":35.455,"longitude":139.6717}},{"@type":"Place","name":"탄자와호(丹沢湖)","geo":{"@type":"GeoCoordinates","latitude":35.4033,"longitude":139.0356}},{"@type":"Place","name":"가나가와현경찰본부(神奈川県警察本部)","geo":{"@type":"GeoCoordinates","latitude":35.4468,"longitude":139.6438}},{"@type":"Place","name":"요코하마 마린타워(横浜マリンタワー)","geo":{"@type":"GeoCoordinates","latitude":35.4444,"longitude":139.6489}},{"@type":"Place","name":"요코하마 중화가(横浜中華街)","geo":{"@type":"GeoCoordinates","latitude":35.4437,"longitude":139.6459}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"명탐정 코난: 하이웨이의 타천사 실제 배경 지도 — 요코하마·하코네","item":"https://geugotjigeum.com/works/conanhighway/"}]}</script>
 </head>
 <body>
@@ -290,6 +302,7 @@
 <p>결국 코난이 설계한 자리 바꿔치기 트릭으로 오오마에가 직접 자백하는 장면, 그리고 동시에 벌어지는 저격 저지 장면이 클라이맥스다.</p>
 <p>제목 '타천사'가 두 가지 뜻이더라 — 경찰 바이크 '엔젤'의 타락한 쌍둥이 '루시퍼', 그리고 한때 경찰이었다가 복수심에 타락한 아사기. 같은 상처를 갖고도 안 무너진 치하야랑 대비되는 구조였다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=conanhighway&amp;loc=turnpikehakone">검은 오토바이 '루시퍼' → 경찰 AI바이크 '엔젤'의 해킹 개조판</a><a class="revealChip" href="https://geugotjigeum.com/?work=conanhighway&amp;loc=kanagawapolicehq">루시퍼의 실제 탑승자 → 전직 백주 대원 아사기 이치카</a><a class="revealChip" href="https://geugotjigeum.com/?work=conanhighway&amp;loc=yokohamabaybridge">진짜 배후 → '엔젤' 개발자 오오마에 카즈아키(데이터 밀매)</a><a class="revealChip" href="https://geugotjigeum.com/?work=conanhighway&amp;loc=yokohamabaybridge">최종 반전 → 사사키의 누나 류우리의 헬기 저격 복수극</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

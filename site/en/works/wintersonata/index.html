@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Winter Sonata","url":"https://geugotjigeum.com/en/works/wintersonata/","description":"A 2002 KBS2 melodrama widely credited as a starting point of the Korean Wave. Jun-sang, Yu-jin, and Sang-hyuk's high-school love triangle resurfaces ten…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Winter Sonata Nami Island.jpg","genre":["romance","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Winter Sonata","url":"https://geugotjigeum.com/en/works/wintersonata/","description":"A 2002 KBS2 melodrama widely credited as a starting point of the Korean Wave. Jun-sang, Yu-jin, and Sang-hyuk's high-school love triangle resurfaces ten…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Winter Sonata Nami Island.jpg","genre":["romance","drama"],"locationCreated":[{"@type":"Place","name":"춘천고등학교 돌담길 (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.8823,"longitude":127.7286}},{"@type":"Place","name":"남이섬 메타세쿼이아 가로수길 — '연인의 숲' (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.7906,"longitude":127.5259}},{"@type":"Place","name":"남이섬 자전거길 (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.7891,"longitude":127.5271}},{"@type":"Place","name":"남이섬 조각공원 — 연인상 (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.7913,"longitude":127.5241}},{"@type":"Place","name":"중도유원지 (강원 춘천, 현재 레고랜드 코리아 부지)","geo":{"@type":"GeoCoordinates","latitude":37.8236,"longitude":127.6841}},{"@type":"Place","name":"준상이네 집 터 (강원 춘천 소양로, 철거됨)","geo":{"@type":"GeoCoordinates","latitude":37.8894,"longitude":127.7286}},{"@type":"Place","name":"춘천역 (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.8813,"longitude":127.7196}},{"@type":"Place","name":"춘천 명동거리·중앙로터리 (강원 춘천)","geo":{"@type":"GeoCoordinates","latitude":37.8757,"longitude":127.7278}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Winter Sonata — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/wintersonata/"}]}</script>
 </head>
 <body>
@@ -295,6 +307,7 @@
 <p>Digging into a drama from my mom's generation through nothing but clips, it still hit me: these aren't just old stories. They're real places that existed somewhere in her twenties — not scenery on a screen, but actual coordinates you can stand on.</p>
 <p>Next time I'm at Namiseom, I want to take a photo at the exact same angle as her profile picture. This time, after actually watching the whole thing myself.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -315,30 +328,30 @@
 
   <h2>Top 5 locations</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
-      <h3>춘천고등학교 돌담길 (강원 춘천)</h3>
-      <p>RELATED</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
       <h3>남이섬 메타세쿼이아 가로수길 — '연인의 숲' (강원 춘천)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">2</span>
       <h3>남이섬 자전거길 (강원 춘천)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">3</span>
       <h3>남이섬 조각공원 — 연인상 (강원 춘천)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">5</span>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">4</span>
       <h3>중도유원지 (강원 춘천, 현재 레고랜드 코리아 부지)</h3>
-      <p>RELATED</p>
+      <p>FILMED HERE</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">5</span>
+      <h3>준상이네 집 터 (강원 춘천 소양로, 철거됨)</h3>
+      <p>FILMED HERE</p>
     </div>
   </div>
 
@@ -350,27 +363,27 @@
         <p>The real high school used as the backdrop for Jun-sang, Yu-jin, and Sang-hyuk's school days. Since it's an active school, filming focused on the exterior stone-wall path; Chuncheon City included it among the 12 filming-location signboards it installed around the city.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 메타세쿼이아 가로수길 — '연인의 숲' (강원 춘천)</h3>
         <p>The tree-lined path Jun-sang and Yu-jin walk down after skipping study hall — the towering metasequoia tunnel is often cited as the drama's single most iconic shot. It's since been nicknamed 'Winter Sonata Road,' and a filming-location signboard still marks the spot.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 자전거길 (강원 춘천)</h3>
         <p>The island's circular path where the two ride bicycles side by side. Rentals are still available on the same route today.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 조각공원 — 연인상 (강원 춘천)</h3>
         <p>The sculpture garden area associated with the drama's first-kiss scene. A statue of the two leads now stands here, making it a popular photo spot for fans.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>중도유원지 (강원 춘천, 현재 레고랜드 코리아 부지)</h3>
         <p>The lakeside spot where Jun-sang and Yu-jin confirm their feelings for one another. It was a modest recreational island when the drama aired, but Legoland Korea Resort opened on this site in 2022, and the original scenery no longer exists.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>준상이네 집 터 (강원 춘천 소양로, 철거됨)</h3>
         <p>The actual house used as Jun-sang's family home in Chuncheon. It remained a pilgrimage site for fans for nearly two decades, but was sold to a redevelopment association and demolished in 2021. Reports at the time said props like the piano would be displayed in a park within the new apartment complex, but it's unconfirmed whether this was carried out.</p>
       </div>
@@ -380,7 +393,7 @@
         <p>The station seen on the day the friends leave for their school trip. The line was electrified and a new station building opened in 2010, so today's station looks different from the one seen in the drama.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>춘천 명동거리·중앙로터리 (강원 춘천)</h3>
         <p>The downtown Chuncheon street where, among other scenes, Yu-jin learns of Jun-sang's accident. It remains one of Chuncheon's main commercial districts today.</p>
       </div>
@@ -390,7 +403,7 @@
         <p>Where Yu-jin and Min-hyung (Jun-sang) reunite ten years later over a ski resort renovation project. It's Korea's first full-scale ski resort in real life and remains in operation today.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>외도 (외도보타니아, 경남 거제)</h3>
         <p>The finale's setting, where a nearly-blind Jun-sang and Yu-jin reunite and confirm their feelings one last time. The island's exotic clifftop garden closes out the story.</p>
       </div>

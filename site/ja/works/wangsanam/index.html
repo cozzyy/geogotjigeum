@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"王と暮らす男","url":"https://geugotjigeum.com/ja/works/wangsanam/","description":"1457年、叔父の世祖(セジョ)に王位を奪われ、江原道・寧越(ヨンウォル)に流刑となった17歳の廃位王・端宗(タンジョン)と、その最期を見守った実在の人物エム・フンドの物語。2026年2月に公開され、1691万人の観客を動員して歴代興行成績歴代2位となった実話ベースの時代劇。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/CheongRyeongpo Eoso.JPG","genre":["historical","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"王と暮らす男","url":"https://geugotjigeum.com/ja/works/wangsanam/","description":"1457年、叔父の世祖(セジョ)に王位を奪われ、江原道・寧越(ヨンウォル)に流刑となった17歳の廃位王・端宗(タンジョン)と、その最期を見守った実在の人物エム・フンドの物語。2026年2月に公開され、1691万人の観客を動員して歴代興行成績歴代2位となった実話ベースの時代劇。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/CheongRyeongpo Eoso.JPG","genre":["historical","drama"],"locationCreated":[{"@type":"Place","name":"청령포 (강원 영월군 남면 광천리)","geo":{"@type":"GeoCoordinates","latitude":37.1826,"longitude":128.4654}},{"@type":"Place","name":"단종어소 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1828,"longitude":128.4652}},{"@type":"Place","name":"관음송 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1825,"longitude":128.465}},{"@type":"Place","name":"엄흥도 소나무 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1827,"longitude":128.4653}},{"@type":"Place","name":"망향탑 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1815,"longitude":128.466}},{"@type":"Place","name":"단묘유지비 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1826,"longitude":128.4655}},{"@type":"Place","name":"금표비 (청령포 내)","geo":{"@type":"GeoCoordinates","latitude":37.1824,"longitude":128.4648}},{"@type":"Place","name":"장릉 (강원 영월군 영월읍 영흥리, 유네스코 세계유산)","geo":{"@type":"GeoCoordinates","latitude":37.1972,"longitude":128.4726}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"王と暮らす男のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/wangsanam/"}]}</script>
 </head>
 <body>
@@ -299,6 +311,7 @@
 <p>そしてここが本当にぞっとする部分なのだが、エム・フンドが密かに埋めたその場所が、約240年後の粛宗の時代に端宗が復位したことで、正式な王陵「荘陵」になる。一人の人間が命を懸けて守った場所が、時を経て正式に認められたということだ。</p>
 <p>私はまだ寧越に行ったことはないけれど、映画を見た後は一度行ってみたくなった。撮影地の記念写真を撮りに行くというより、端宗が実際に見つめていたというあの川を一度見てみたくて。</p>
 <p>映画のセットはなくなったけれど、その物語が始まった場所も、そしてその物語が遅れて認められた場所(荘陵)も、まだそこにあるから。</p></div>
+  
   
 
   <div class="adSlot">

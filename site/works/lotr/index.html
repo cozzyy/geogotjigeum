@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"반지의 제왕 (The Lord of the Rings)","url":"https://geugotjigeum.com/works/lotr/","description":"반지의 제왕의 실제 촬영지인 뉴질랜드의 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hobbiton,_New_Zealand.jpg","genre":["fantasy","adventure","war"],"actor":[{"@type":"Person","name":"프로도 배긴스 (Frodo Baggins)","sameAs":"https://en.wikipedia.org/wiki/Elijah_Wood"},{"@type":"Person","name":"샘와이즈 갬지 (Samwise Gamgee)","sameAs":"https://en.wikipedia.org/wiki/Sean_Astin"},{"@type":"Person","name":"간달프 (Gandalf)","sameAs":"https://en.wikipedia.org/wiki/Ian_McKellen"},{"@type":"Person","name":"아라곤 (Aragorn)","sameAs":"https://en.wikipedia.org/wiki/Viggo_Mortensen"},{"@type":"Person","name":"레골라스 (Legolas)","sameAs":"https://en.wikipedia.org/wiki/Orlando_Bloom"},{"@type":"Person","name":"김리 (Gimli)","sameAs":"https://en.wikipedia.org/wiki/John_Rhys-Davies"},{"@type":"Person","name":"보로미르 (Boromir)","sameAs":"https://en.wikipedia.org/wiki/Sean_Bean"},{"@type":"Person","name":"메리 브랜디벅 (Merry)","sameAs":"https://en.wikipedia.org/wiki/Dominic_Monaghan"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"반지의 제왕 (The Lord of the Rings)","url":"https://geugotjigeum.com/works/lotr/","description":"반지의 제왕의 실제 촬영지인 뉴질랜드의 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hobbiton,_New_Zealand.jpg","genre":["fantasy","adventure","war"],"actor":[{"@type":"Person","name":"프로도 배긴스 (Frodo Baggins)","sameAs":"https://en.wikipedia.org/wiki/Elijah_Wood"},{"@type":"Person","name":"샘와이즈 갬지 (Samwise Gamgee)","sameAs":"https://en.wikipedia.org/wiki/Sean_Astin"},{"@type":"Person","name":"간달프 (Gandalf)","sameAs":"https://en.wikipedia.org/wiki/Ian_McKellen"},{"@type":"Person","name":"아라곤 (Aragorn)","sameAs":"https://en.wikipedia.org/wiki/Viggo_Mortensen"},{"@type":"Person","name":"레골라스 (Legolas)","sameAs":"https://en.wikipedia.org/wiki/Orlando_Bloom"},{"@type":"Person","name":"김리 (Gimli)","sameAs":"https://en.wikipedia.org/wiki/John_Rhys-Davies"},{"@type":"Person","name":"보로미르 (Boromir)","sameAs":"https://en.wikipedia.org/wiki/Sean_Bean"},{"@type":"Person","name":"메리 브랜디벅 (Merry)","sameAs":"https://en.wikipedia.org/wiki/Dominic_Monaghan"}],"locationCreated":[{"@type":"Place","name":"호비튼 (Hobbiton, Matamata)","geo":{"@type":"GeoCoordinates","latitude":-37.8722,"longitude":175.6816}},{"@type":"Place","name":"통가리로 국립공원 (Tongariro National Park)","geo":{"@type":"GeoCoordinates","latitude":-39.1333,"longitude":175.65}},{"@type":"Place","name":"나우루호에 산 (Mount Ngauruhoe)","geo":{"@type":"GeoCoordinates","latitude":-39.1564,"longitude":175.6322}},{"@type":"Place","name":"카이토케 지역공원 (Kaitoke Regional Park)","geo":{"@type":"GeoCoordinates","latitude":-41.0761,"longitude":175.1414}},{"@type":"Place","name":"마운트 선데이 (Mount Sunday)","geo":{"@type":"GeoCoordinates","latitude":-43.4667,"longitude":170.9833}},{"@type":"Place","name":"푸탕이루아 피너클스 (Putangirua Pinnacles)","geo":{"@type":"GeoCoordinates","latitude":-41.4667,"longitude":175.2333}},{"@type":"Place","name":"허트강 (Hutt River)","geo":{"@type":"GeoCoordinates","latitude":-41.1833,"longitude":175.0667}},{"@type":"Place","name":"글레노키 (Glenorchy)","geo":{"@type":"GeoCoordinates","latitude":-44.8508,"longitude":168.6858}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"반지의 제왕 뉴질랜드 촬영지 지도","item":"https://geugotjigeum.com/works/lotr/"}]}</script>
 </head>
 <body>
@@ -296,6 +308,7 @@
 <p>그러니까 중간계는 상상 속 어딘가가 아니라, 뉴질랜드 남북섬 곳곳에 이미 흩어져 있던 진짜 풍경이다.</p>
 <p>나는 아직 뉴질랜드에 가본 적 없지만, 언젠가 그 150곳을 하나씩 밟아보는 여행을 진지하게 계획해보고 싶다. 특히 호비튼에서 시작해서 나우루호에 화산까지 이어지는 코스로.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=lotr&amp;loc=hobbiton">호비튼 → 원래 양·소 목장, 2009년 영구 시설로 재건된 실제 관광지</a><a class="revealChip" href="https://geugotjigeum.com/?work=lotr&amp;loc=tongariro">모르도르 → 뉴질랜드 통가리로 국립공원 실제 화산 지형</a><a class="revealChip" href="https://geugotjigeum.com/?work=lotr&amp;loc=kaitoke">리븐델 세트 → 지금은 철거, 카이토케 공원에 표지판만 남음</a><a class="revealChip" href="https://geugotjigeum.com/?work=lotr&amp;loc=ngauruhoe">운명의 산 외형 → 지금도 활동 중인 나우루호에 화산</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

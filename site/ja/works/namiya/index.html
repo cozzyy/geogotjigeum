@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"ナミヤ雑貨店の奇蹟","url":"https://geugotjigeum.com/ja/works/namiya/","description":"30年以上シャッターを閉ざしたままのナミヤ雑貨店に、こそ泥3人組が偶然身を隠し、シャッターの牛乳箱に差し込まれた見知らぬ手紙を見つける。悪ふざけで書いた返事が32年前の過去へ届き、そうしてつながった手紙が、異なる時代を生きる人々の人生を静かに変えていく。2026年7月に亡くなった東野圭吾の代表作の一つを…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Bungotakada showa no machi.JPG","author":{"@type":"Person","name":"東野圭吾 長編小説"},"genre":["drama","mystery","fantasy"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"ナミヤ雑貨店の奇蹟","url":"https://geugotjigeum.com/ja/works/namiya/","description":"30年以上シャッターを閉ざしたままのナミヤ雑貨店に、こそ泥3人組が偶然身を隠し、シャッターの牛乳箱に差し込まれた見知らぬ手紙を見つける。悪ふざけで書いた返事が32年前の過去へ届き、そうしてつながった手紙が、異なる時代を生きる人々の人生を静かに変えていく。2026年7月に亡くなった東野圭吾の代表作の一つを…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Bungotakada showa no machi.JPG","author":{"@type":"Person","name":"東野圭吾 長編小説"},"genre":["drama","mystery","fantasy"],"locationCreated":[{"@type":"Place","name":"오이타현 분고타카다시 쇼와노마치(昭和の町) 상점가","geo":{"@type":"GeoCoordinates","latitude":33.5644,"longitude":131.4487}},{"@type":"Place","name":"벳푸 온천(오이타현)","geo":{"@type":"GeoCoordinates","latitude":33.2846,"longitude":131.4913}},{"@type":"Place","name":"우사신궁(宇佐神宮)","geo":{"@type":"GeoCoordinates","latitude":33.5237,"longitude":131.3719}},{"@type":"Place","name":"오사카시 이쿠노구(오사카부)","geo":{"@type":"GeoCoordinates","latitude":34.6553,"longitude":135.5443}},{"@type":"Place","name":"오사카공립대학 나카모즈캠퍼스(옛 오사카부립대학)","geo":{"@type":"GeoCoordinates","latitude":34.5372,"longitude":135.5011}},{"@type":"Place","name":"주식회사 덴소 본사(아이치현 가리야시)","geo":{"@type":"GeoCoordinates","latitude":34.9885,"longitude":137.0021}},{"@type":"Place","name":"츠키지 신키라쿠(도쿄 주오구)","geo":{"@type":"GeoCoordinates","latitude":35.6654,"longitude":139.771}},{"@type":"Place","name":"고단샤 본사(도쿄 분쿄구 오토와)","geo":{"@type":"GeoCoordinates","latitude":35.7208,"longitude":139.7217}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"ナミヤ雑貨店の奇蹟のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/namiya/"}]}</script>
 </head>
 <body>
@@ -299,6 +311,7 @@
 <p>私はまだ豊後高田に行ったことはないけれど、いつか行くことになったら、映画のセットが残っていないことはそれほど気にならないと思う。古い路地を少し歩いて、ナミヤ雑貨店があった場所に立ってみて、最後はマタマ海岸で夕日が沈むのを見たい。</p>
 <p>そうしているうちに路地のどこかで古い郵便受けをひとつ見つけたら、きっとまたこう思うはずだ。「ここに手紙を入れたら、返事が来るのかな」って。</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">広告</span>
@@ -324,15 +337,15 @@
       <h3>오이타현 분고타카다시 쇼와노마치(昭和の町) 상점가</h3>
       <p>公式・直接</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
       <h3>나미야 잡화점(가공의 공간)</h3>
-      <p>関連</p>
+      <p>テーマ関連</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">3</span>
       <h3>환광원(丸光園, 가공의 시설)</h3>
-      <p>関連</p>
+      <p>テーマ関連</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">4</span>
@@ -417,12 +430,12 @@
 
   <h2 id="allLocations">ナミヤ雑貨店の奇蹟のすべての場所（13か所）</h2>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>나미야 잡화점(가공의 공간)</h3>
         <p>The story's central stage: a general store shuttered for over thirty years. Three small-time thieves hiding inside discover a letter tucked into the milk box on the shutter, setting the story in motion. It is the symbolic space where past and present connect across time through letters — but the author never named a real location for it.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>환광원(丸光園, 가공의 시설)</h3>
         <p>An orphanage founded by Akiko Minazuki, daughter of a wealthy landowning family, using her own inheritance. Her dying words — &quot;don't worry, I'll pray for everyone from up in heaven&quot; — become the emotional thread running through the entire novel. It is a fictional facility and does not refer to any specific real orphanage.</p>
       </div>

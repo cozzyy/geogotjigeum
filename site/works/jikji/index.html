@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"직지: 아모르 마네트","url":"https://geugotjigeum.com/works/jikji/","description":"소설 직지의 배경이 된 청주와 유럽의 실제 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korean book-Jikji-Selected Teachings of Buddhist Sages and Seon Masters-1377.jpg","author":{"@type":"Person","name":"김진명 장편소설"},"genre":["historical","mystery","crime","thriller","adventure"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"직지: 아모르 마네트","url":"https://geugotjigeum.com/works/jikji/","description":"소설 직지의 배경이 된 청주와 유럽의 실제 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korean book-Jikji-Selected Teachings of Buddhist Sages and Seon Masters-1377.jpg","author":{"@type":"Person","name":"김진명 장편소설"},"genre":["historical","mystery","crime","thriller","adventure"],"locationCreated":[{"@type":"Place","name":"흥덕사지 (충북 청주시 흥덕구 직지대로 713)","geo":{"@type":"GeoCoordinates","latitude":36.6153,"longitude":127.4577}},{"@type":"Place","name":"청주고인쇄박물관 (흥덕사지 옆)","geo":{"@type":"GeoCoordinates","latitude":36.6156,"longitude":127.458}},{"@type":"Place","name":"운리단길 (청주시 흥덕구 운천동)","geo":{"@type":"GeoCoordinates","latitude":36.618,"longitude":127.46}},{"@type":"Place","name":"직지문화특구·직지문화축제 개최지 (청주 흥덕구 일대)","geo":{"@type":"GeoCoordinates","latitude":36.6165,"longitude":127.459}},{"@type":"Place","name":"청주 문화제조창 (청주시 청원구, 옛 연초제조창)","geo":{"@type":"GeoCoordinates","latitude":36.6423,"longitude":127.4406}},{"@type":"Place","name":"상당산성 (청주시 상당구)","geo":{"@type":"GeoCoordinates","latitude":36.6317,"longitude":127.5064}},{"@type":"Place","name":"고려대학교 (서울 성북구)","geo":{"@type":"GeoCoordinates","latitude":37.5895,"longitude":127.0323}},{"@type":"Place","name":"국립중앙박물관 (서울 용산구)","geo":{"@type":"GeoCoordinates","latitude":37.524,"longitude":126.9803}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"직지 청주 배경지와 유럽 여행 지도","item":"https://geugotjigeum.com/works/jikji/"}]}</script>
 </head>
 <body>
@@ -296,6 +308,7 @@
 <p>그래서 이 소설을 따라 청주에서 파리, 아비뇽, 스트라스부르, 마인츠까지 걸어본다면, 어디까지가 실제로 확인된 역사이고 어디부터가 소설의 상상력인지 하나씩 구분해가며 걷는 게 이 여행을 더 깊게 만들어줄 것 같다.</p>
 <p>특히 청주 흥덕사지에 직접 서보면, 이곳이 그냥 소설의 배경이 아니라 실제로 세계 인쇄 역사가 시작된 자리라는 게 실감 난다. 그 사실 하나만으로도 이 여행은 이미 충분한 의미가 있다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=jikji&amp;loc=heungdeoksaji">흥덕사지 위치 → 1985년 발굴로 실제 확인됨</a><a class="revealChip" href="https://geugotjigeum.com/?work=jikji&amp;loc=bnfrichelieu">직지 실물 → 프랑스국립도서관, 1972년 박병선 박사가 발견</a><a class="revealChip" href="https://geugotjigeum.com/?work=jikji&amp;loc=vaticanlibrary">바티칸 편지·구텐베르크 연결 → 작가의 완전한 창작</a><a class="revealChip" href="https://geugotjigeum.com/?work=jikji&amp;loc=strasbourg">구텐베르크 초기 실험 → 마인츠 아닌 스트라스부르</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -444,7 +457,7 @@
         <p>조선시대에 축조된 청주의 대표 산성으로, 성벽을 따라 걷는 둘레길과 청주 시내를 내려다보는 전망으로 사랑받는 곳이다. 직지가 청주의 지적·문화적 자부심이라면, 상당산성은 청주의 오랜 방어 역사를 보여주는 또 다른 얼굴이다. 소설과 직접 관련은 없지만, 청주를 하루 이상 머무를 여행지로 추천할 때 빠지지 않는 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>고려대학교 (서울 성북구)</h3>
         <p>라틴어 교수 전형우가 재직하며 직지와 구텐베르크 금속활자의 관계, 바티칸의 오래된 편지를 연구하던 곳으로 그려진다. 그의 죽음으로 시작되는 현재 시점 사건의 실질적 출발점이며, 사회부 기자 김기연의 취재가 여기서부터 뻗어나간다.</p>
       </div>
@@ -464,7 +477,7 @@
         <p>직지 하권 1책이 실제로 소장되어 있는 곳(도서번호 109번). 1943년 소장자 앙리 베베르가 세상을 뜨며 남긴 유언에 따라 1952년 이 도서관에 기증됐고, 1972년 사서로 근무하던 박병선 박사가 이곳에서 직지의 정체를 처음 밝혀내 구텐베르크의 42행 성서보다 78년 앞선 금속활자본임을 입증했다. 소설에서 기연이 전형우의 단서를 따라가는 유럽 여정의 실질적 목적지 중 하나다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>아비뇽 교황청 (Palais des Papes, Avignon)</h3>
         <p>14세기 로마 교황청이 옮겨와 있던 &quot;아비뇽 유수&quot;의 무대. 소설에서는 은수(카레나)의 유럽 서사와 바티칸의 오래된 편지를 둘러싼 단서가 이어지는 공간으로 그려진다. 실제로 유럽에서 가장 큰 고딕 양식 궁전 중 하나로, 중세 교황권의 위세를 지금도 실감할 수 있다.</p>
       </div>
@@ -484,7 +497,7 @@
         <p>구텐베르크 박물관 바로 옆에 있는 1000년 이상 된 대성당으로, 구텐베르크가 세례를 받은 곳으로 알려져 있다. 소설의 특정 장면은 아니지만, 구텐베르크 박물관을 방문한다면 도보로 바로 이어지는 곳이라 함께 둘러보기 좋은 실제 명소로 소개한다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>바티칸 사도 도서관·문서고 (Vatican Apostolic Library and Archives)</h3>
         <p>소설의 핵심 미스터리인 &quot;교황의 오래된 편지&quot;와 관련된 상상의 단서가 향하는 곳. 실제로 세계에서 가장 오래되고 방대한 문서 소장 기관 중 하나이며, 중세 유럽과 아시아 사이의 교류 기록도 다수 보관돼 있어 소설적 상상력이 자리 잡기 좋은 실존 무대다. 다만 이 소설 속 편지의 수신인과 해석은 어디까지나 창작이며, 실제 확인된 사실이 아니라는 점을 분명히 해둔다.</p>
       </div>

@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/priests/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/priests/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/priests/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/priests/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/priests/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"コクマ ～黒い司祭たち～（検은 사제들）","url":"https://geugotjigeum.com/ja/works/priests/","description":"昏睡状態の少女ヨンシンに悪霊が取り憑いていると確信したキム・ボムシン神父が、神学生チェ・ブジェを助手に非公式の悪魔祓いを行うオカルトスリラー。大邱の桂山聖堂・東城路など近代路地一帯が実際のロケ地。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/%EB%8C%80%EA%B5%AC_%EA%B3%84%EC%82%B0%EC%84%B1%EB%8B%B9.jpg","genre":["thriller","horror"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"コクマ ～黒い司祭たち～（検은 사제들）","url":"https://geugotjigeum.com/ja/works/priests/","description":"昏睡状態の少女ヨンシンに悪霊が取り憑いていると確信したキム・ボムシン神父が、神学生チェ・ブジェを助手に非公式の悪魔祓いを行うオカルトスリラー。大邱の桂山聖堂・東城路など近代路地一帯が実際のロケ地。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/%EB%8C%80%EA%B5%AC_%EA%B3%84%EC%82%B0%EC%84%B1%EB%8B%B9.jpg","genre":["thriller","horror"],"locationCreated":[{"@type":"Place","name":"桂山聖堂（大邱広域市中区西城路10）","geo":{"@type":"GeoCoordinates","latitude":35.8717,"longitude":128.5934}},{"@type":"Place","name":"月背聖堂（大邱広域市達西区）","geo":{"@type":"GeoCoordinates","latitude":35.8021,"longitude":128.549}},{"@type":"Place","name":"東城路（大邱広域市中区）","geo":{"@type":"GeoCoordinates","latitude":35.8688,"longitude":128.594}},{"@type":"Place","name":"계명대학교 대명캠퍼스 (대구 남구 명덕로 104)","geo":{"@type":"GeoCoordinates","latitude":35.8395,"longitude":128.5766}},{"@type":"Place","name":"대구가톨릭대학교 유스티노캠퍼스 (대구 남구 앞산순환로 393)","geo":{"@type":"GeoCoordinates","latitude":35.8355,"longitude":128.578}},{"@type":"Place","name":"신나무골 (칠곡군 지천면, 대구 근교)","geo":{"@type":"GeoCoordinates","latitude":35.97,"longitude":128.44}},{"@type":"Place","name":"앞산 일대 (대구 남구)","geo":{"@type":"GeoCoordinates","latitude":35.818,"longitude":128.572}},{"@type":"Place","name":"반월당역 일대 (대구 중구)","geo":{"@type":"GeoCoordinates","latitude":35.8654,"longitude":128.594}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"コクマ ～黒い司祭たち～（検은 사제들）のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/priests/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/priests/">KR</a>
     <a href="https://geugotjigeum.com/en/works/priests/">EN</a>
     <a href="https://geugotjigeum.com/ja/works/priests/" class="on" aria-current="page">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="準備中">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/priests/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/ja/">🏠 ホーム</a>
 </header>
@@ -295,6 +308,7 @@
 <p>暗い悪魔祓いの背景が、実は百年以上前に建てられた本物の聖堂だと知ると、見返したときの空気が少し違って感じられる。</p>
 <p>大邱の桂山聖堂、日が沈んだ後にライトアップされた尖塔を見に行くだけでも、この映画の雰囲気を実際に感じることができる。</p>
 <p>チェ・ジュノが最後にどんな選択をするのかは、ここでは全部明かさないでおく — ただ、その選択が行われる場所がセットではなく、本物の百年前の聖堂だったと知っているだけで、映画の見え方はまったく変わってくる。</p></div>
+  
   
 
   <div class="adSlot">

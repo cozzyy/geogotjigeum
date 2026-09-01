@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/littleforest/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/littleforest/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/littleforest/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/littleforest/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/littleforest/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"리틀 포레스트 (Little Forest)","url":"https://geugotjigeum.com/works/littleforest/","description":"영화 리틀 포레스트의 실제 촬영지 대구 군위군 혜원의 집, 화본역, 의성 산수유마을을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hwabon_Station%2C_Gunwi_on_March_17th%2C_2019.jpg","genre":["drama"],"actor":[{"@type":"Person","name":"송혜원","sameAs":"https://en.wikipedia.org/wiki/Kim_Tae-ri"},{"@type":"Person","name":"이재하","sameAs":"https://en.wikipedia.org/wiki/Ryu_Jun-yeol"},{"@type":"Person","name":"혜원 엄마","sameAs":"https://en.wikipedia.org/wiki/Moon_So-ri"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"리틀 포레스트 (Little Forest)","url":"https://geugotjigeum.com/works/littleforest/","description":"영화 리틀 포레스트의 실제 촬영지 대구 군위군 혜원의 집, 화본역, 의성 산수유마을을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hwabon_Station%2C_Gunwi_on_March_17th%2C_2019.jpg","genre":["drama"],"actor":[{"@type":"Person","name":"송혜원","sameAs":"https://en.wikipedia.org/wiki/Kim_Tae-ri"},{"@type":"Person","name":"이재하","sameAs":"https://en.wikipedia.org/wiki/Ryu_Jun-yeol"},{"@type":"Person","name":"혜원 엄마","sameAs":"https://en.wikipedia.org/wiki/Moon_So-ri"}],"locationCreated":[{"@type":"Place","name":"혜원의 집 (대구 군위군 우보면 미성5길 58-1)","geo":{"@type":"GeoCoordinates","latitude":36.1968,"longitude":128.5735}},{"@type":"Place","name":"화본역 (경북 군위군 산성면 산성가음로 711-9)","geo":{"@type":"GeoCoordinates","latitude":36.254,"longitude":128.531}},{"@type":"Place","name":"역전상회 (화본역 앞, 군위군 산성면)","geo":{"@type":"GeoCoordinates","latitude":36.2542,"longitude":128.5312}},{"@type":"Place","name":"한밤마을 돌담길 (군위군 부계면)","geo":{"@type":"GeoCoordinates","latitude":36.287,"longitude":128.596}},{"@type":"Place","name":"일연공원 (군위군 고로면)","geo":{"@type":"GeoCoordinates","latitude":36.265,"longitude":128.68}},{"@type":"Place","name":"의흥전통시장 (군위군 의흥면)","geo":{"@type":"GeoCoordinates","latitude":36.173,"longitude":128.628}},{"@type":"Place","name":"조문국사적지 (경북 의성군 금성면)","geo":{"@type":"GeoCoordinates","latitude":36.296,"longitude":128.652}},{"@type":"Place","name":"의성 사곡면 산수유마을 (경북 의성군 사곡면)","geo":{"@type":"GeoCoordinates","latitude":36.25,"longitude":128.696}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"리틀 포레스트 촬영지 지도 — 대구 군위 혜원의 집","item":"https://geugotjigeum.com/works/littleforest/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/littleforest/" class="on" aria-current="page">KR</a>
     <a href="https://geugotjigeum.com/en/works/littleforest/">EN</a>
     <a href="https://geugotjigeum.com/ja/works/littleforest/">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="준비 중">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/littleforest/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/">🏠 홈</a>
 </header>
@@ -296,6 +309,7 @@
 <p>혜원이 마지막에 도시로 돌아갈지, 고향에 완전히 남을지는 여기서 스포일러하지 않으려 한다. 다만 확실한 건, 그 선택을 하기까지 혜원이 지나온 사계절이 지금 실제로 군위에 가면 똑같이 지나가고 있다는 것.</p>
 <p>그러니까 이 영화를 보고 대구, 정확히는 군위로 내려간다면 사진만 찍고 오지 말고 화본역 앞 가게에서 아이스크림 하나 사 먹어보길.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=littleforest&amp;loc=hyewonhouse">혜원의 집 → 촬영 후 철거 안 하고 지금도 상설 개방</a><a class="revealChip" href="https://geugotjigeum.com/?work=littleforest&amp;loc=yeokjeonstore">화본역 앞 가게 → 50년 넘은 진짜 가게, 지금도 영업 중</a><span class="revealChip">리틀 포레스트(2018) → 2015년 일본판의 속편 아닌 한국 리메이크</span><a class="revealChip" href="https://geugotjigeum.com/?work=littleforest&amp;loc=hanbamvillage">감 따던 돌담마을 → 군위 한밤마을, 지금도 그 담장 그대로</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

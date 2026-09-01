@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"宮廷女官チャングムの誓い","url":"https://geugotjigeum.com/ja/works/daejanggeum/","description":"2003~2004年にMBCで放送され、91カ国に輸出された時代劇。水刺間(スラッカン)の宮女出身のチャングムが朝鮮初の女性御医になるまでの道のりを描く。『朝鮮王朝実録』に実際に登場する医女「大長今」がモチーフ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Naganeupseong Folk Village MS3656.JPG","genre":["historical","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"宮廷女官チャングムの誓い","url":"https://geugotjigeum.com/ja/works/daejanggeum/","description":"2003~2004年にMBCで放送され、91カ国に輸出された時代劇。水刺間(スラッカン)の宮女出身のチャングムが朝鮮初の女性御医になるまでの道のりを描く。『朝鮮王朝実録』に実際に登場する医女「大長今」がモチーフ。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Naganeupseong Folk Village MS3656.JPG","genre":["historical","drama"],"locationCreated":[{"@type":"Place","name":"楊州 チャングムテーマパーク跡地（京畿 楊州、閉園）","geo":{"@type":"GeoCoordinates","latitude":37.7853,"longitude":127.0453}},{"@type":"Place","name":"龍仁チャングムパーク（京畿 龍仁、オリジナルセットの後身）","geo":{"@type":"GeoCoordinates","latitude":37.1128,"longitude":127.2864}},{"@type":"Place","name":"済州民俗村博物館（済州 西帰浦市表善面）","geo":{"@type":"GeoCoordinates","latitude":33.3169,"longitude":126.8367}},{"@type":"Place","name":"挟才海水浴場（済州 済州市）","geo":{"@type":"GeoCoordinates","latitude":33.3941,"longitude":126.2397}},{"@type":"Place","name":"楽安邑城（全南 順天）","geo":{"@type":"GeoCoordinates","latitude":34.9539,"longitude":127.3467}},{"@type":"Place","name":"景福宮 焼酒房（ソウル 鍾路区）","geo":{"@type":"GeoCoordinates","latitude":37.5788,"longitude":126.977}},{"@type":"Place","name":"華城行宮（京畿 水原）","geo":{"@type":"GeoCoordinates","latitude":37.2807,"longitude":127.0107}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"宮廷女官チャングムの誓いのロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/daejanggeum/"}]}</script>
 </head>
 <body>
@@ -294,6 +306,7 @@
 <p>母世代にとって「国民的ドラマ」だったというのがどんな感覚なのか、正確には分からない。でも手帳を一冊、20年以上捨てずに持っているのを見ると、なんとなく分かる気もする。私にとってのチャングムはYouTubeのアルゴリズムが勧めてきた数本のクリップだけど、母にとってはあの手帳を買った二十代のある日のことなんだろう。</p>
 <p>今度済州島に行くことがあれば、民俗村に寄ってみようと思う。今回はクリップじゃなくて、ちゃんと最初から見てから。</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">広告</span>
@@ -314,29 +327,29 @@
 
   <h2>代表ロケ地TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
+      <h3>済州民俗村博物館（済州 西帰浦市表善面）</h3>
+      <p>公式・直接</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">2</span>
+      <h3>挟才海水浴場（済州 済州市）</h3>
+      <p>公式・直接</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">3</span>
+      <h3>楽安邑城（全南 順天）</h3>
+      <p>公式・直接</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">4</span>
       <h3>楊州 チャングムテーマパーク跡地（京畿 楊州、閉園）</h3>
       <p>関連</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
-      <h3>龍仁チャングムパーク（京畿 龍仁、オリジナルセットの後身）</h3>
-      <p>関連</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
-      <h3>済州民俗村博物館（済州 西帰浦市表善面）</h3>
-      <p>関連</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>挟才海水浴場（済州 済州市）</h3>
-      <p>関連</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>楽安邑城（全南 順天）</h3>
+      <h3>龍仁チャングムパーク（京畿 龍仁、オリジナルセットの後身）</h3>
       <p>関連</p>
     </div>
   </div>
@@ -422,17 +435,17 @@
         <p>今「チャングムパーク」と呼ばれるこの場所は、実は2003年のチャングム放送当時の実際の撮影地ではない。もともとは「MBCドラミア」という別の時代劇総合セット場で、2011年に楊州のセットが閉園した後、2015年8月にチャングムのIPを活かして「チャングムパーク」に改称し、楊州のセットの一部を移設・復元した場所である。他の時代劇もここで撮影された。</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>済州民俗村博物館（済州 西帰浦市表善面）</h3>
         <p>チャングムが済州に流刑になった時期の官衙・小屋のシーンが撮影された場所。2003年12月に17日間撮影が行われた。今も撮影案内板とフォトゾーン、衣装・台本・薬草・医療器具を展示するミニテーマパークが残っている。</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>挟才海水浴場（済州 済州市）</h3>
         <p>チャングムとミン・ジョンホが一緒に散歩し、船に乗るシーンが撮影された海辺。済州西海岸を代表する海水浴場で、今も観光客に人気。</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>楽安邑城（全南 順天）</h3>
         <p>市場や白丁村のシーンが撮影された朝鮮時代の邑城。今も実際の住民が暮らす民俗村として常時開放されている。</p>
       </div>

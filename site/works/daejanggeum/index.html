@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"대장금","url":"https://geugotjigeum.com/works/daejanggeum/","description":"91개국에 수출된 대장금의 실제 촬영지 용인대장금파크, 제주민속촌, 낙안읍성을 지도에서 확인하세요. 폐장한 양주 원조 세트 이야기도 함께.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Naganeupseong Folk Village MS3656.JPG","genre":["historical","drama"],"actor":[{"@type":"Person","name":"서장금","sameAs":"https://namu.wiki/w/이영애"},{"@type":"Person","name":"민정호","sameAs":"https://namu.wiki/w/지진희"},{"@type":"Person","name":"중종","sameAs":"https://namu.wiki/w/임호(배우)"},{"@type":"Person","name":"박원종","sameAs":"https://namu.wiki/w/이창환"},{"@type":"Person","name":"성희안","sameAs":"https://namu.wiki/w/홍민우"},{"@type":"Person","name":"최성금(최상궁)","sameAs":"https://namu.wiki/w/견미리"},{"@type":"Person","name":"최금영","sameAs":"https://namu.wiki/w/홍리나"},{"@type":"Person","name":"한백영(한상궁)","sameAs":"https://namu.wiki/w/양미경"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"대장금","url":"https://geugotjigeum.com/works/daejanggeum/","description":"91개국에 수출된 대장금의 실제 촬영지 용인대장금파크, 제주민속촌, 낙안읍성을 지도에서 확인하세요. 폐장한 양주 원조 세트 이야기도 함께.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Naganeupseong Folk Village MS3656.JPG","genre":["historical","drama"],"actor":[{"@type":"Person","name":"서장금","sameAs":"https://namu.wiki/w/이영애"},{"@type":"Person","name":"민정호","sameAs":"https://namu.wiki/w/지진희"},{"@type":"Person","name":"중종","sameAs":"https://namu.wiki/w/임호(배우)"},{"@type":"Person","name":"박원종","sameAs":"https://namu.wiki/w/이창환"},{"@type":"Person","name":"성희안","sameAs":"https://namu.wiki/w/홍민우"},{"@type":"Person","name":"최성금(최상궁)","sameAs":"https://namu.wiki/w/견미리"},{"@type":"Person","name":"최금영","sameAs":"https://namu.wiki/w/홍리나"},{"@type":"Person","name":"한백영(한상궁)","sameAs":"https://namu.wiki/w/양미경"}],"locationCreated":[{"@type":"Place","name":"양주 대장금 테마파크 터 (경기 양주, 폐장)","geo":{"@type":"GeoCoordinates","latitude":37.7853,"longitude":127.0453}},{"@type":"Place","name":"용인대장금파크 (경기 용인, 원조 세트의 후신)","geo":{"@type":"GeoCoordinates","latitude":37.1128,"longitude":127.2864}},{"@type":"Place","name":"제주민속촌박물관 (제주 서귀포 표선면)","geo":{"@type":"GeoCoordinates","latitude":33.3169,"longitude":126.8367}},{"@type":"Place","name":"협재해수욕장 (제주 제주시)","geo":{"@type":"GeoCoordinates","latitude":33.3941,"longitude":126.2397}},{"@type":"Place","name":"낙안읍성 (전남 순천)","geo":{"@type":"GeoCoordinates","latitude":34.9539,"longitude":127.3467}},{"@type":"Place","name":"경복궁 소주방 (서울 종로구)","geo":{"@type":"GeoCoordinates","latitude":37.5788,"longitude":126.977}},{"@type":"Place","name":"화성행궁 (경기 수원)","geo":{"@type":"GeoCoordinates","latitude":37.2807,"longitude":127.0107}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"대장금 실제 촬영지 지도 — 용인대장금파크·제주민속촌·낙안읍성","item":"https://geugotjigeum.com/works/daejanggeum/"}]}</script>
 </head>
 <body>
@@ -294,6 +306,7 @@
 <p>엄마 세대한테 '국민 드라마'였다는 게 정확히 어떤 느낌인지는 모르겠지만, 다이어리 한 권을 20년 넘게 안 버리고 갖고 있는 걸 보면 뭔가 알 것도 같다. 나한테 대장금은 유튜브 알고리즘이 띄워준 몇 개 클립이지만, 엄마한테는 그 다이어리를 사던 스물몇 살의 어느 하루였을 거다.</p>
 <p>다음에 제주 갈 일 있으면 민속촌에 한번 들러야겠다. 이번엔 클립 말고 정주행부터 해보고.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=daejanggeum&amp;loc=jeju_folk_village">'대장금' → 조선왕조실록에 실제로 기록된 의녀</a><a class="revealChip" href="https://geugotjigeum.com/?work=daejanggeum&amp;loc=yangju_theme_park">양주 원본 세트장 → 2011년 폐장</a><a class="revealChip" href="https://geugotjigeum.com/?work=daejanggeum&amp;loc=yongin_daejanggeum_park">'대장금파크'(용인) → 원본이 아닌 2015년 개칭 후신</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -314,29 +327,29 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
+      <h3>제주민속촌박물관 (제주 서귀포 표선면)</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">2</span>
+      <h3>협재해수욕장 (제주 제주시)</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">3</span>
+      <h3>낙안읍성 (전남 순천)</h3>
+      <p>공식·직접</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">4</span>
       <h3>양주 대장금 테마파크 터 (경기 양주, 폐장)</h3>
       <p>직접</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
-      <h3>용인대장금파크 (경기 용인, 원조 세트의 후신)</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
-      <h3>제주민속촌박물관 (제주 서귀포 표선면)</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>협재해수욕장 (제주 제주시)</h3>
-      <p>직접</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>낙안읍성 (전남 순천)</h3>
+      <h3>용인대장금파크 (경기 용인, 원조 세트의 후신)</h3>
       <p>직접</p>
     </div>
   </div>
@@ -422,17 +435,17 @@
         <p>지금 '대장금파크'로 불리는 이곳은 사실 2003년 대장금 방영 당시 실제 촬영지가 아니다. 원래는 'MBC 드라미아'라는 별도의 사극 종합 세트장으로, 2011년 양주 세트가 폐장한 뒤 2015년 8월 대장금 IP를 살려 '대장금파크'로 개칭하며 양주의 세트 일부를 이전·복원한 곳이다. 태종 이방원·슈룹·옷소매 붉은 끝동 등 다른 사극도 이곳에서 촬영됐다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>제주민속촌박물관 (제주 서귀포 표선면)</h3>
         <p>장금이 제주로 유배된 시기의 관아·움막 장면이 촬영된 곳. 2003년 12월 17일간 촬영이 진행됐다. 지금도 촬영 안내판과 포토존, 의상·대본·약초·의료기구를 전시한 미니 테마파크가 남아있다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>협재해수욕장 (제주 제주시)</h3>
         <p>장금과 민정호가 함께 산책하고 배를 타러 가는 장면이 촬영된 해변. 제주 서쪽 해안의 대표적인 해수욕장으로 지금도 관광객이 즐겨 찾는다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>낙안읍성 (전남 순천)</h3>
         <p>장터와 백정마을 장면이 촬영된 조선시대 읍성. 지금도 실제 주민이 거주하는 민속마을로 상시 개방돼 있다.</p>
       </div>

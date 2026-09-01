@@ -168,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -218,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -229,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"When Life Gives You Tangerines","url":"https://geugotjigeum.com/en/works/poksshak/","description":"In 1950s Jeju, sixteen-year-old Ae-sun would rather write poems than study — a sharp, defiant girl in a place that doesn't quite know what to do with he…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong.jpg","genre":["drama","romance"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"When Life Gives You Tangerines","url":"https://geugotjigeum.com/en/works/poksshak/","description":"In 1950s Jeju, sixteen-year-old Ae-sun would rather write poems than study — a sharp, defiant girl in a place that doesn't quite know what to do with he…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong.jpg","genre":["drama","romance"],"locationCreated":[{"@type":"Place","name":"제주 서귀포시 — 성산일출봉","geo":{"@type":"GeoCoordinates","latitude":33.4587,"longitude":126.9425}},{"@type":"Place","name":"제주 제주시 — 김녕해수욕장","geo":{"@type":"GeoCoordinates","latitude":33.5566,"longitude":126.7561}},{"@type":"Place","name":"제주 제주시 — 협재해수욕장","geo":{"@type":"GeoCoordinates","latitude":33.3939,"longitude":126.2394}},{"@type":"Place","name":"제주 서귀포시 — 섭지코지","geo":{"@type":"GeoCoordinates","latitude":33.4237,"longitude":126.9269}},{"@type":"Place","name":"제주 제주시 오라동 — 메밀꽃밭","geo":{"@type":"GeoCoordinates","latitude":33.478,"longitude":126.5219}},{"@type":"Place","name":"제주 서귀포시 표선면 가시리 — 유채꽃밭","geo":{"@type":"GeoCoordinates","latitude":33.3925,"longitude":126.7925}},{"@type":"Place","name":"제주 제주시 — 제주목 관아","geo":{"@type":"GeoCoordinates","latitude":33.5135,"longitude":126.5219}},{"@type":"Place","name":"경북 안동시 풍천면 — 도동리 세트장 부지(경북도청신도시)","geo":{"@type":"GeoCoordinates","latitude":36.5745,"longitude":128.497}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"When Life Gives You Tangerines — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/poksshak/"}]}</script>
 </head>
 <body>
@@ -299,6 +311,7 @@
 <p>At release, the show reportedly earned some of the highest ratings ever recorded for a Korean drama on sites like IMDb and Watcha Pedia. IU's own vocals on the OST track 'Midnight Walk' also drew significant attention after it aired.</p>
 <p>So if you do make it to Jeju, maybe don't just hit the famous spots — try tracking down one or two of these and asking yourself, 'wait, was this the scene?' Though maybe the biggest twist of all is that most of the scenes that hit you hardest weren't shot in Jeju at all — they were shot in Andong and Gochang.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -319,29 +332,29 @@
 
   <h2>Top 5 locations</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
+      <h3>전북 고창군 — 학원농장(보리나라 학원농장) 유채꽃밭</h3>
+      <p>FILMED HERE</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #3ac07c">
+      <span class="top5Rank">2</span>
+      <h3>전남 여수시</h3>
+      <p>FILMED HERE</p>
+    </div>
+    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+      <span class="top5Rank">3</span>
       <h3>제주 서귀포시 — 성산일출봉</h3>
       <p>RELATED</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">2</span>
+      <span class="top5Rank">4</span>
       <h3>제주 제주시 — 김녕해수욕장</h3>
       <p>RELATED</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">3</span>
-      <h3>제주 제주시 — 협재해수욕장</h3>
-      <p>RELATED</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
-      <span class="top5Rank">4</span>
-      <h3>제주 서귀포시 — 섭지코지</h3>
-      <p>RELATED</p>
-    </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
       <span class="top5Rank">5</span>
-      <h3>제주 제주시 오라동 — 메밀꽃밭</h3>
+      <h3>제주 제주시 — 협재해수욕장</h3>
       <p>RELATED</p>
     </div>
   </div>
@@ -399,7 +412,7 @@
         <p>A large outdoor set built to recreate a street and its buildings changing over 60 years, from the 1960s to present-day 2025. Like the Andong set, it was dismantled after filming wrapped.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>전북 고창군 — 학원농장(보리나라 학원농장) 유채꽃밭</h3>
         <p>The scene many viewers assumed was filmed in a Jeju canola field — Ae-sun and Gwan-sik's first kiss — was actually shot here, in the canola field at Gochang's Hagwon Farm. The farm's entrance has canola on one side and green barley on the hillside opposite, so both can be seen in the same visit.</p>
       </div>
@@ -454,7 +467,7 @@
         <p>A neighborhood of narrow alleys and makeshift housing built by Korean War refugees. The scene of 19-year-old Gwan-sik and 18-year-old Ae-sun running away together was filmed here.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>전남 여수시</h3>
         <p>It became a notable trivia point after the show aired that the drama's very first scene — its opening sequence — was actually filmed not in Jeju but here in Yeosu.</p>
       </div>

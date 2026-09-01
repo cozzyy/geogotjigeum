@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Taebaeksanmaek (The Taebaek Mountains)","url":"https://geugotjigeum.com/en/works/taebaek/","description":"A four-part, ten-volume epic novel spanning Korea's liberation period and the Korean War. Set in Beolgyo just after the Yeosu-Suncheon October 19 Incide…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Beolgyo Arch Bridge 13-09910.JPG","author":{"@type":"Person","name":"Novel by Jo Jung-rae"},"genre":["historical","war","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Taebaeksanmaek (The Taebaek Mountains)","url":"https://geugotjigeum.com/en/works/taebaek/","description":"A four-part, ten-volume epic novel spanning Korea's liberation period and the Korean War. Set in Beolgyo just after the Yeosu-Suncheon October 19 Incide…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Beolgyo Arch Bridge 13-09910.JPG","author":{"@type":"Person","name":"Novel by Jo Jung-rae"},"genre":["historical","war","drama"],"locationCreated":[{"@type":"Place","name":"벌교읍 (전남 보성군 벌교읍)","geo":{"@type":"GeoCoordinates","latitude":34.8447,"longitude":127.3508}},{"@type":"Place","name":"태백산맥문학관 (전남 보성군 벌교읍 홍암로 89-19)","geo":{"@type":"GeoCoordinates","latitude":34.8475,"longitude":127.3487}},{"@type":"Place","name":"현부자네 집 (태백산맥문학관 인근, 제석산 자락)","geo":{"@type":"GeoCoordinates","latitude":34.8472,"longitude":127.3485}},{"@type":"Place","name":"소화의 집 (태백산맥문학관 경내, 제석산 자락)","geo":{"@type":"GeoCoordinates","latitude":34.8477,"longitude":127.3489}},{"@type":"Place","name":"김범우의 집 (벌교읍 시내)","geo":{"@type":"GeoCoordinates","latitude":34.8459,"longitude":127.3502}},{"@type":"Place","name":"소화다리 (정식명 부용교, 보성군 벌교읍 회정리)","geo":{"@type":"GeoCoordinates","latitude":34.8453,"longitude":127.3511}},{"@type":"Place","name":"벌교 홍교 (보물 제304호, 보성군 벌교읍 벌교리 154-1)","geo":{"@type":"GeoCoordinates","latitude":34.8441,"longitude":127.3527}},{"@type":"Place","name":"보성여관 (등록문화재 제132호, 벌교초등학교 옆)","geo":{"@type":"GeoCoordinates","latitude":34.8438,"longitude":127.3479}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Taebaeksanmaek (The Taebaek Mountains) — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/taebaek/"}]}</script>
 </head>
 <body>
@@ -297,6 +309,7 @@
 <p>Actually walking through Beolgyo feels like more than a casual literary stroll. Starting at the Taebaeksanmaek Literature Museum and continuing through the Hyeon family house, Sohwa's house, Sohwa Bridge, Beolgyo's Hongyo Bridge, and Boseong Inn — walking this route, you feel in your body how literary imagination and real history are woven together like warp and weft.</p>
 <p>Standing on Hongyo Bridge myself, it hit me how much weight a single bridge name can carry from one novel. If you go to Beolgyo, I'd recommend tracing the origin of each bridge's name, one by one, as you walk.</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">Ad</span>
@@ -357,17 +370,17 @@
         <p>The largest literary-tourism museum of its kind in Korea, opened on November 21, 2008. It sits at the foot of Jeseoksan Mountain, right beside the sites recreating the Hyeon family house and Sohwa's house from the novel's opening chapters. The museum displays a portion of author Jo Jung-rae's handwritten manuscript — roughly 16,500 pages in total — along with research materials, character guides, and the historical context of the Yeosu-Suncheon Incident and the Korean War, helping first-time visitors get their bearings before diving into the ten-volume novel. As a real, operating museum, it's also the practical starting point for every other location on this map.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>현부자네 집 (태백산맥문학관 인근, 제석산 자락)</h3>
         <p>A recreation of the house belonging to the fictional Hyeon family, local landlords in Beolgyo who appear in the novel's opening chapters. Built in a hanok style with Japanese-influenced garden elements, it overlooks the Jungdo embankment below. While the Hyeon family itself is fictional, the house's architecture is a real, physical record of how colonial-era landlord power actually lived — the unresolved postwar land problem and the shadow of collaboration are, in a sense, compressed into this single building.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>소화의 집 (태백산맥문학관 경내, 제석산 자락)</h3>
         <p>A recreation of the house where the shaman Sohwa lived — the key location where she hides the fugitive Hyeop Ha-seop. The relationship between Sohwa and Ha-seop, where ideology, social status, faith, and survival all intersect, is often cited as the novel's most personal and symbolic thread. Since Sohwa is a fictional character, this house was likewise restored and recreated as part of the museum complex, not preserved in its original form.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>김범우의 집 (벌교읍 시내)</h3>
         <p>Depicted as the home of Kim Beom-u, the moderate intellectual who refuses to judge people by either side's slogans alone, viewing the era instead through the lens of nation, humanity, and daily life — a contrast to his own brother Kim Beom-jun, who joins the leftist cause. The house also stands for how political choices can split even within one family. Public accessibility and the exact location vary between sources, so it's worth checking the latest information before visiting.</p>
       </div>
@@ -437,7 +450,7 @@
         <p>A real church included on the official Beolgyo literary-tourism route, showing how modern Protestant Christianity took root early in this small town. Apart from the novel's left-right ideological conflict, it's a real reminder that Beolgyo residents of this era had an actual, ongoing religious life.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>자애병원 (벌교읍, 문학기행 재현 지점)</h3>
         <p>The hospital where Dr. Jeon Myeong-hwan, in the novel, treats the poor for little to no cost, portrayed as a model of the story's idea of a 'true intellectual' — charging wealthy patients properly while accepting crops or pottery from poor ones. The hospital is also the backdrop for how helping the wounded Ahn Chang-min later forces Dr. Jeon into the Bodo League.</p>
       </div>

@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"귀멸의 칼날 (鬼滅の刃)","url":"https://geugotjigeum.com/works/kimetsu/","description":"귀멸의 칼날 속 다이쇼시대 배경과 이름이 겹치는 실존 명소(다자이후 카마도 신사), 제작진이 참고한 실제 모티브(치치부 철도, 교토 철도박물관)를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Kamado shrine 01.JPG","genre":["action","drama","fantasy"],"actor":[{"@type":"Person","name":"카마도 탄지로","sameAs":"https://ja.wikipedia.org/wiki/%E7%AB%88%E7%81%AB%E7%B7%9A%E4%B9%8B%E5%8A%87%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9%E4%B8%80%E8%A6%A7"},{"@type":"Person","name":"카마도 네즈코","sameAs":"https://ja.wikipedia.org/wiki/%E7%AB%88%E7%81%AB%E7%B7%9A%E4%B9%8B%E5%8A%87%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9%E4%B8%80%E8%A6%A7"},{"@type":"Person","name":"토미오카 기유","sameAs":"https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%8A%9B%E6%A2%A8%E4%B8%80%E5%8B%9F"},{"@type":"Person","name":"코쵸 시노부","sameAs":"https://ja.wikipedia.org/wiki/%E8%83%A1%E8%9D%B6%E3%81%97%E3%81%AE%E3%81%B6"},{"@type":"Person","name":"우즈이 텐겐","sameAs":"https://ja.wikipedia.org/wiki/%E5%AE%87%E7%A0%A7%E5%A4%A9%E5%85%83"},{"@type":"Person","name":"칸로지 미츠리","sameAs":"https://ja.wikipedia.org/wiki/%E7%94%98%E9%9C%B2%E5%AF%BA%E8%9C%9C%E6%A2%A8"},{"@type":"Person","name":"이구로 오바나이","sameAs":"https://ja.wikipedia.org/wiki/%E4%BC%8A%E9%BB%92%E5%B0%8F%E8%8F%9C%E4%B8%B8"},{"@type":"Person","name":"시나즈가와 사네미","sameAs":"https://ja.wikipedia.org/wiki/%E7%A2%A2%E9%80%9A%E5%AE%9F%E5%85%89"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"귀멸의 칼날 (鬼滅の刃)","url":"https://geugotjigeum.com/works/kimetsu/","description":"귀멸의 칼날 속 다이쇼시대 배경과 이름이 겹치는 실존 명소(다자이후 카마도 신사), 제작진이 참고한 실제 모티브(치치부 철도, 교토 철도박물관)를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Kamado shrine 01.JPG","genre":["action","drama","fantasy"],"actor":[{"@type":"Person","name":"카마도 탄지로","sameAs":"https://ja.wikipedia.org/wiki/%E7%AB%88%E7%81%AB%E7%B7%9A%E4%B9%8B%E5%8A%87%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9%E4%B8%80%E8%A6%A7"},{"@type":"Person","name":"카마도 네즈코","sameAs":"https://ja.wikipedia.org/wiki/%E7%AB%88%E7%81%AB%E7%B7%9A%E4%B9%8B%E5%8A%87%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9%E4%B8%80%E8%A6%A7"},{"@type":"Person","name":"토미오카 기유","sameAs":"https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%8A%9B%E6%A2%A8%E4%B8%80%E5%8B%9F"},{"@type":"Person","name":"코쵸 시노부","sameAs":"https://ja.wikipedia.org/wiki/%E8%83%A1%E8%9D%B6%E3%81%97%E3%81%AE%E3%81%B6"},{"@type":"Person","name":"우즈이 텐겐","sameAs":"https://ja.wikipedia.org/wiki/%E5%AE%87%E7%A0%A7%E5%A4%A9%E5%85%83"},{"@type":"Person","name":"칸로지 미츠리","sameAs":"https://ja.wikipedia.org/wiki/%E7%94%98%E9%9C%B2%E5%AF%BA%E8%9C%9C%E6%A2%A8"},{"@type":"Person","name":"이구로 오바나이","sameAs":"https://ja.wikipedia.org/wiki/%E4%BC%8A%E9%BB%92%E5%B0%8F%E8%8F%9C%E4%B8%B8"},{"@type":"Person","name":"시나즈가와 사네미","sameAs":"https://ja.wikipedia.org/wiki/%E7%A2%A2%E9%80%9A%E5%AE%9F%E5%85%89"}],"locationCreated":[{"@type":"Place","name":"다자이후 카마도 신사(寶満宮 竈門神社)","geo":{"@type":"GeoCoordinates","latitude":33.5348,"longitude":130.5347}},{"@type":"Place","name":"벳푸 카마도 지옥(かまど地獄)","geo":{"@type":"GeoCoordinates","latitude":33.2937,"longitude":131.4931}},{"@type":"Place","name":"교토 철도박물관(京都鉄道博物館)","geo":{"@type":"GeoCoordinates","latitude":34.9855,"longitude":135.7412}},{"@type":"Place","name":"쿠모토리산(雲取山)","geo":{"@type":"GeoCoordinates","latitude":35.8547,"longitude":138.9358}},{"@type":"Place","name":"키노사키 오카와소 료칸(城崎温泉 木屋町通り 大川荘)","geo":{"@type":"GeoCoordinates","latitude":35.6252,"longitude":134.8113}},{"@type":"Place","name":"와카야마 칸로지(甘露寺, 미츠리 성씨 유래 추정)","geo":{"@type":"GeoCoordinates","latitude":34.2306,"longitude":135.1708}},{"@type":"Place","name":"아사쿠사(浅草)","geo":{"@type":"GeoCoordinates","latitude":35.7148,"longitude":139.7967}},{"@type":"Place","name":"요시와라 유적지(吉原, 현 다이토구 센조쿠)","geo":{"@type":"GeoCoordinates","latitude":35.7217,"longitude":139.8005}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"귀멸의 칼날 실제 성지순례지 지도 — 카마도 신사·치치부 철도","item":"https://geugotjigeum.com/works/kimetsu/"}]}</script>
 </head>
 <body>
@@ -297,6 +309,7 @@
 <p>가족애, 상실, 속죄라는 보편적인 정서를 정교한 액션이랑 같이 담아낸 게 이렇게까지 폭넓은 사랑을 받은 이유라고들 하는데, 다 보고 나니까 그 말이 맞다는 생각이 든다.</p>
 <p>그러니까 이 작품, 이름이 겹치는 신사부터 증기기관차, 료칸까지 따라가다 보면 완전히 허구만은 아니라는 느낌이 든다. 다자이후에서 시작해서 규슈 온천 마을까지 이어보는 코스, 한번 해보고 싶다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_kamado_shrine">카마도 신사 → 탄지로 성씨와 같은 이름의 진짜 신사(다자이후)</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_kyoto_railway_museum">무한열차 → 교토 철도박물관의 증기기관차 '시고사이'가 유력한 모티브</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_chichibu_sl">'진짜 무한열차' → 사이타마 치치부 철도 파레오익스프레스</a><a class="revealChip" href="https://geugotjigeum.com/?work=kimetsu&amp;loc=kimetsu_okawaso">무한성 내부 → 효고현 키노사키온천 오카와소 료칸이 모티브로 거론</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -317,30 +330,30 @@
 
   <h2>대표 촬영지 TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">1</span>
-      <h3>다자이후 카마도 신사(寶満宮 竈門神社)</h3>
-      <p>직접</p>
+      <h3>카마도가 오두막(가공의 공간)</h3>
+      <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
-      <h3>벳푸 카마도 지옥(かまど地獄)</h3>
-      <p>직접</p>
+      <h3>산기슭 마을(가공의 공간)</h3>
+      <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">3</span>
-      <h3>교토 철도박물관(京都鉄道博物館)</h3>
-      <p>직접</p>
+      <h3>우로코다키 사콘지의 집(가공의 공간)</h3>
+      <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">4</span>
-      <h3>쿠모토리산(雲取山)</h3>
-      <p>직접</p>
+      <h3>최종선별의 산(가공의 공간)</h3>
+      <p>테마 연계</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">5</span>
-      <h3>키노사키 오카와소 료칸(城崎温泉 木屋町通り 大川荘)</h3>
-      <p>직접</p>
+      <h3>등나무꽃 저택(가공의 공간)</h3>
+      <p>테마 연계</p>
     </div>
   </div>
 
@@ -500,237 +513,237 @@
         <p>카마도 신사·다자이후 순례와 함께 묶어 방문하기 좋은 규슈 관문 도시. 팬들이 흔히 '카마도 신사 성지순례'의 베이스캠프로 삼는 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>카마도가 오두막(가공의 공간)</h3>
         <p>탄지로 일행이 숯을 구우며 살아가던 산속 오두막. 정확한 실존 위치는 밝혀지지 않았지만, 작중 묘사로 미루어 도쿄에서 멀지 않은 산간 지역으로 추정된다. 이야기 전체의 출발점이 되는 공간이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>산기슭 마을(가공의 공간)</h3>
         <p>탄지로가 매달 숯을 짊어지고 내려가 팔던 산기슭의 마을. 가족을 잃은 날, 그가 숯을 팔러 마을에 다녀온 사이 비극이 벌어진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>우로코다키 사콘지의 집(가공의 공간)</h3>
         <p>전직 물의 호흡 사용자 사콘지가 은둔하며 사는 산속 집. 탄지로와 네즈코를 거두어 최종선별까지 훈련시킨 곳으로, 사비토·마코모를 비롯한 수많은 제자들의 기억이 서린 공간이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>최종선별의 산(가공의 공간)</h3>
         <p>귀살대 입대를 위한 마지막 관문인 산. 오니만이 서식하도록 결계가 쳐진 이 산에서 7일간 살아남아야 정식 대원이 될 수 있으며, 탄지로는 이곳에서 사비토·마코모와 만나고 네즈코와 함께 인정을 받는다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>등나무꽃 저택(가공의 공간)</h3>
         <p>최종선별 참가자들이 시험 전후 머무는, 등나무 문양이 걸려 오니가 접근하지 못하는 안전 가옥. 오니가 등나무 꽃의 독을 두려워한다는 설정의 근거가 되는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>우부야시키 저택(가공의 공간)</h3>
         <p>귀살대 96대 당주 우부야시키 카가야와 그 가족이 사는 저택이자 사실상의 귀살대 본부. 대원들이 임무를 보고하고 새로운 지시를 받는 곳으로, 이야기 후반 무잔의 습격으로 큰 희생을 치른다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나비저택(가공의 공간)</h3>
         <p>코쵸 시노부가 운영하는 회복 전문 시설. 부상당한 대원들이 치료와 재활 훈련을 받는 공간으로, 탄지로·이노스케·젠이츠도 이곳에서 몸을 추스르며 다음 임무를 준비한다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나타구모산(那田蜘蛛山, 가공의 공간)</h3>
         <p>오니 루이가 가짜 '가족'을 만들어 지배하던 산. 산 전체가 거대한 거미줄로 뒤덮여 있으며, 이곳에서 탄지로 일행은 처음으로 하시라(토미오카 기유)와 조우하고 처음으로 상급 오니와 맞선다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나타구모산 아랫마을(가공의 공간)</h3>
         <p>나타구모산 인근, 오니에게 계속 실종자가 발생하던 마을. 귀살대가 이 마을의 피해 조사를 계기로 나타구모산에 파견된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>아사쿠사 뒷골목(가공의 공간)</h3>
         <p>스사마루와 야하바가 인간을 습격하던 아사쿠사의 뒷골목. 실제 아사쿠사 번화가의 화려함 이면에 숨은 오니의 사냥터로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>쿄가이의 북의 집(가공의 공간)</h3>
         <p>오니 쿄가이가 북을 두드려 공간을 뒤틀어버리는 혈귀술을 펼치던 저택. 안과 밖의 방향 감각이 뒤틀리는 미로 같은 구조로 묘사된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>무한열차 내부(가공의 공간)</h3>
         <p>200명이 넘는 승객이 탑승한 채 하현의 일 엔무에게 통째로 장악당하는 열차. 승객들의 정신을 꿈속에 가두려는 엔무와, 이를 저지하려는 탄지로·젠이츠·이노스케·렌고쿠 쿄쥬로의 사투가 펼쳐지는 무대다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>탄지로의 꿈 속 오두막(가공의 공간)</h3>
         <p>엔무가 탄지로의 정신을 가둔 꿈속에서, 이미 죽은 가족과 재회하는 것처럼 보이는 환상의 오두막. 탄지로는 이 꿈이 가짜임을 스스로 깨닫고 벗어난다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>요시와라 유곽(가공의 공간, 실제 지명 기반)</h3>
         <p>우즈이 텐겐과 세 아내가 잠입해 실종 사건을 조사하던 유곽. 실제 도쿄의 요시와라를 배경으로 삼되, 구체적인 건물과 사건은 소설적으로 재구성된 공간이다. 상현의 육 기부타로·다키가 이곳에서 정체를 드러낸다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>교고쿠야(京極屋, 가공의 공간)</h3>
         <p>텐겐의 아내 마키오가 오이란으로 잠입해 있던 유곽집. 요시와라 임무의 주요 잠입처 중 하나로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>토키토야(가공의 공간)</h3>
         <p>텐겐의 아내 스마가 잠입해 있던 또 다른 유곽집. 다키의 혈귀술에 의해 위기에 처하는 장소로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>오와리자키(尾張崎屋, 가공의 공간)</h3>
         <p>텐겐의 아내 히나츠루가 잠입해 있던 유곽집. 세 아내가 각기 다른 건물에서 동시에 조사를 벌이는 요시와라 잠입 작전의 구조를 보여주는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>다키의 오비 결계(가공의 공간)</h3>
         <p>오니 다키가 허리띠(오비)를 이용해 만들어내는 독자적인 결계 공간. 목이 잘려도 죽지 않는 특수한 신체 구조와 함께, 이 작품 최고 난이도 전투 중 하나가 펼쳐지는 무대다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>대장장이 마을(가공의 공간)</h3>
         <p>귀살대의 검을 만드는 대장장이들이 모여 사는 비밀 마을. 위치가 철저히 비밀에 부쳐져 있으며, 검을 받으러 온 탄지로 일행이 오니의 습격(교코·한텐구)을 받으면서 전투 무대가 된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>대장장이 마을 온천(가공의 공간)</h3>
         <p>대장장이 마을 안에 마련된 휴식용 온천. 전투 사이 대원들이 잠시 몸을 녹이는 공간으로 등장한다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>교코의 항아리 결계(가공의 공간)</h3>
         <p>오니 교코가 항아리 속으로 상대를 빨아들여 만들어내는 독자적인 결계 공간. 무이치로와 겐야가 이 결계 안에서 사투를 벌인다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>한텐구의 분신 결계(가공의 공간)</h3>
         <p>오니 한텐구가 여러 분신으로 갈라지며 만들어내는 넓은 결계 공간. 각기 다른 인격의 분신들이 흩어져 있어, 대원들이 각개격파해야 하는 구조로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>주(하시라) 훈련장(가공의 공간)</h3>
         <p>무잔과의 최종전을 앞두고 대원들의 전투력을 끌어올리기 위해 9명의 하시라가 각자 특훈을 진행하는 합동 훈련 시설. 대원 전원이 이 훈련을 거치며 실전 감각을 극한까지 끌어올린다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>렌고쿠 저택(가공의 공간)</h3>
         <p>전직 염주 렌고쿠 신쥬로와 차남 센쥬로가 사는 집. 쿄쥬로의 죽음 이후 아버지와 아들의 관계가 회복되는 계기가 되는 공간이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>무한성(가공의 공간)</h3>
         <p>무잔이 만들어낸, 내부 구조를 자유자재로 뒤바꿀 수 있는 초자연적인 성. 최종장 전체의 무대로, 귀살대 전원과 상현 오니들, 그리고 무잔 본인이 격돌하는 이야기의 클라이맥스가 펼쳐진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>코쿠시보 대전 구역(가공의 공간)</h3>
         <p>무한성 내에서 코쿠시보가 여러 명의 하시라를 상대로 홀로 맞서 싸우는 구역. 작품 내 최강급 전투 중 하나가 펼쳐진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>도우마 대전 구역(가공의 공간)</h3>
         <p>시노부의 희생과 카나오·이노스케의 협공으로 도우마가 쓰러지는 무한성 내 전투 구역.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>아카자 대전 구역(가공의 공간)</h3>
         <p>기유와 탄지로가 아카자와 맞서는 무한성 내 전투 구역. 무한열차에서의 인연이 다시 얽히는 무대다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>한텐구·교코 최종 결전지(가공의 공간)</h3>
         <p>대장장이 마을에서 이어진 한텐구·교코와의 싸움이 최종적으로 마무리되는 무한성 내 구역.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나키메의 비파 결계(가공의 공간)</h3>
         <p>나키메가 비파를 연주해 무한성 전체를 뒤바꾸는 핵심 공간. 이곳을 파괴해야 성의 구조가 무너지고 대원들이 흩어졌던 서로를 다시 찾을 수 있다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>무잔 최종 결전지(가공의 공간)</h3>
         <p>살아남은 대원들과 카가야의 유지를 이어받은 우부야시키 일가가 총력을 다해 무잔과 맞서는 무한성의 마지막 격전지.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>후지카사네산(藤襲山, 가공의 공간)</h3>
         <p>무잔과의 싸움 끝에 동이 트며, 마침내 태양 아래서 무잔이 소멸하는 산. 탄지로 일행이 백여 년에 걸친 싸움의 마지막 순간을 맞이하는 상징적인 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>현대의 학교(에필로그, 가공의 공간)</h3>
         <p>최종화 에필로그에서 등장인물들의 후손·환생이 함께 다니는 것으로 그려지는 현대 도쿄의 학교. 100년 넘게 이어진 인연이 평화로운 현재로 이어졌음을 보여주는 상징적 공간이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>기유의 고향 어촌(가공의 공간)</h3>
         <p>토미오카 기유와 누나 츠유코, 그리고 사비토가 어린 시절을 보낸 것으로 그려지는 바닷가 마을. 오니에게 습격당해 누나를 잃은 기억이 서린 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>코쵸 자매의 도장(가공의 공간)</h3>
         <p>코쵸 카나에·시노부 자매가 자란 것으로 그려지는 도장. 벌레의 호흡이 처음 만들어진 곳으로 암시된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>우즈이 텐겐의 닌자 마을(가공의 공간)</h3>
         <p>텐겐이 태어나 자란 닌자 일족의 마을. 아버지의 명으로 형제들을 자기 손으로 죽여야 했던 비극이 벌어진 곳으로, 그가 귀살대에 몸담아 속죄하려는 동기가 된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>칸로지 미츠리의 고향집(가공의 공간)</h3>
         <p>미츠리가 남다른 완력과 큰 체구 때문에 좀처럼 신붓감으로 인정받지 못했던 고향집. 수십 번의 맞선이 실패로 돌아가던 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>이구로 일족의 은신처(가공의 공간)</h3>
         <p>여성으로만 이루어진 도적 일족이 대대로 오니에게 남자아이를 제물로 바쳐 온 은신처. 오바나이가 유일한 남자아이로 태어나 학대받으며 자란 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>시나즈가와 형제의 고향집(가공의 공간)</h3>
         <p>사네미와 겐야를 비롯한 형제자매가 자란 집. 어머니가 오니가 되어버린 비극의 밤, 사네미가 동생들을 지키지 못했다는 죄책감을 짊어지게 되는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>토키토 형제의 고향집(가공의 공간)</h3>
         <p>무이치로와 유이치로 쌍둥이 형제가 자란 집. 형을 잃은 기억을 스스로 봉인한 무이치로에게 훗날까지 영향을 미치는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>히메지마 교메이가 자란 고아원(가공의 공간)</h3>
         <p>교메이가 어린 시절을 보내고, 훗날 자신이 돌보던 아이들과 함께 지냈던 고아원. 그가 지키지 못한 아이들에 대한 속죄의 마음이 시작된 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>히노카미카구라 봉납 터(가공의 공간)</h3>
         <p>탄지로의 아버지 탄주로가 매년 신에게 바치는 춤으로 여기고 밤새 히노카미카구라를 추던 장소. 실은 대대로 전해진 일륜도 호흡이었음이 훗날 밝혀진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>무잔의 인간 위장 저택(가공의 공간)</h3>
         <p>무잔이 인간 사회에 완벽히 녹아들어 가족을 이루고 살아가는 위장용 저택. 태양 아래를 걷기 위한 연구를 은밀히 계속하는 근거지이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>영원한 낙원교 본당(가공의 공간)</h3>
         <p>오니 도우마가 교주로 위장해 신도들을 끌어모으던 사이비 종교 시설. 코쵸 카나에가 이곳에서 목숨을 잃는다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>루이의 실 결계(가공의 공간)</h3>
         <p>오니 루이가 실을 이용해 만들어내는 독자적인 결계 공간. 나타구모산 전투의 클라이맥스가 펼쳐지는 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>카가야의 마지막 방(가공의 공간)</h3>
         <p>우부야시키 카가야가 저택이 습격당하자 스스로 목숨을 태워 마지막 힘을 대원들에게 전하는 방. 그의 유지가 최종장 승리의 결정적 계기가 된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>요리이치의 무덤(가공의 공간, 시대 미상)</h3>
         <p>전설의 검사 요리이치가 잠든 곳으로 전해지는 무덤. 정확한 실존 위치는 작중 밝혀지지 않는다.</p>
       </div>
@@ -765,37 +778,37 @@
         <p>아사쿠사·요시와라 인근을 흐르는 실존 강. 다이쇼시대 도쿄 서민들의 삶과 맞닿아 있던 물길로, 작품의 지리적 배경을 이해하는 데 도움이 된다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>타마요의 은신처(가공의 공간)</h3>
         <p>무잔에게서 벗어난 타마요와 유시로가 숨어 지내며 오니를 인간으로 되돌리는 연구를 계속하는 곳. 네즈코를 인간으로 되돌릴 실마리가 이곳에서 조금씩 밝혀진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>헤이안시대 진료소(가공의 공간, 시대 미상)</h3>
         <p>병약했던 인간 시절의 무잔이 치료를 받다가 인체 실험으로 최초의 오니가 된 것으로 전해지는 곳. 모든 사건의 천 년 전 뿌리가 되는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>최종선별 산 정상의 사당(가공의 공간)</h3>
         <p>최종선별의 산 정상에 자리한 작은 사당. 결계의 중심으로 그려지며, 시험을 통과한 이들이 마지막으로 모이는 상징적 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>카나오의 동전 던지기 골목(가공의 공간)</h3>
         <p>감정을 느끼지 못하던 시절의 카나오가 동전을 던져 매사를 결정하던 나비저택 인근 골목. 탄지로와의 대화 이후 그녀가 스스로 선택하는 법을 배우기 시작하는 상징적 공간이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>시나즈가와·기유 협공 구역(가공의 공간)</h3>
         <p>사네미와 기유가 코쿠시보를 상대로 협공을 펼치는 무한성 내 격전지. 두 하시라의 상반된 성격이 전투 중에도 대비를 이루는 장면이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>미츠리·오바나이 대 나키메 구역(가공의 공간)</h3>
         <p>미츠리와 오바나이가 나키메와 맞서 싸우는 구역. 두 사람이 서로에 대한 마음을 고백하며 최후를 맞는 장소이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>시노부의 희생 구역(가공의 공간)</h3>
         <p>시노부가 스스로 독을 삼킨 몸으로 도우마에게 잡아먹혀, 그 독으로 그를 안에서부터 무너뜨리는 결정적인 장소.</p>
       </div>
@@ -830,57 +843,57 @@
         <p>에도~다이쇼시대의 거리 풍경을 잘 보존한 실존 마을. 옛 일본 마을의 정취를 느끼며 작품의 시대 배경을 상상해보기 좋은 테마 코스다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>우부야시키가 접견실(가공의 공간)</h3>
         <p>카가야가 대원들을 직접 만나 격려하고 지시를 내리는 저택 내 접견실. 대원 모두가 절대적인 존경을 표하는 공간으로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>미츠리의 맞선 자리(가공의 공간)</h3>
         <p>칸로지 미츠리가 수십 차례 나섰지만 매번 파혼으로 끝난 맞선 자리. 그녀가 스스로를 있는 그대로 받아들이기까지의 배경이 되는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>겐야가 오니의 살을 구한 장소(가공의 공간)</h3>
         <p>겐야가 자신의 약점을 극복하기 위해 위험을 무릅쓰고 오니의 살을 구해 먹은 것으로 암시되는 장소. 구체적인 위치는 작중 명확히 그려지지 않는다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>카이가쿠가 오니가 된 곳(가공의 공간)</h3>
         <p>젠이츠의 형제제자 카이가쿠가 절망 끝에 오니가 되기를 택한 장소. 그가 마지막까지 인간으로 남을 기회를 스스로 저버린 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>츠기쿠니 저택(가공의 공간, 시대 미상)</h3>
         <p>요리이치·미치카츠 형제가 자란 것으로 그려지는 저택. 동생이자 훗날 코쿠시보가 되는 미치카츠가 형에 대한 열등감을 키워가던 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>한텐구 본체 결전지(가공의 공간)</h3>
         <p>여러 분신을 모두 쓰러뜨린 뒤에야 비로소 모습을 드러내는 한텐구의 본체와 맞서는 곳. 겁 많은 본모습과 흉포한 분신들 사이의 간극이 드러나는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>텐겐과 세 아내의 재회 장소(가공의 공간)</h3>
         <p>요시와라 임무를 마친 뒤, 텐겐과 세 아내가 다시 모여 서로의 무사함을 확인하는 곳으로 그려진다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>카나에가 카나오를 거둔 곳(가공의 공간)</h3>
         <p>코쵸 카나에가 학대받던 어린 카나오를 처음 만나 거두어들인 곳. 카나오가 새로운 삶을 시작하는 출발점이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>나타구모산 거미줄 숲(가공의 공간)</h3>
         <p>나타구모산 전체를 뒤덮은 거대한 거미줄 숲. 오니로 변한 인간들이 산 곳곳에 흩어져 지나가는 이들을 습격하던 곳이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>기유 누나의 최후(가공의 공간)</h3>
         <p>기유의 누나 츠유코가 오니에게 목숨을 잃는 곳. 기유가 평생 짊어지는 상실감의 시작점이다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>연의 호흡 창시지(가공의 공간)</h3>
         <p>칸로지 미츠리가 독자적으로 연(사랑)의 호흡을 창안해낸 것으로 그려지는 수련 장소.</p>
       </div>
@@ -900,17 +913,17 @@
         <p>다이쇼시대 서양 문물이 활발히 들어오던 실존 항구 도시의 흔적이 남은 거리. 근대화하는 다이쇼시대 일본의 또 다른 얼굴을 보여준다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>무한성 붕괴 직전 마지막 순간(가공의 공간)</h3>
         <p>무잔이 소멸한 뒤 서서히 무너져 내리는 무한성 안에서, 살아남은 대원들이 서로를 부축하며 탈출하는 마지막 장면의 무대.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>신쥬로가 검을 놓은 이유(가공의 공간)</h3>
         <p>아내를 잃은 뒤 렌고쿠 신쥬로가 검을 놓고 방황하던 시기의 배경. 쿄쥬로의 죽음을 계기로 그가 다시 일어서는 서사의 전제가 되는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>미츠리와 쿄쥬로의 첫 만남(가공의 공간)</h3>
         <p>칸로지 미츠리가 렌고쿠 쿄쥬로 밑에서 잠시 수련했던 것으로 그려지는 곳. 두 하시라 가문 사이의 인연을 보여준다.</p>
       </div>

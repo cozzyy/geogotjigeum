@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"ホープ","url":"https://geugotjigeum.com/ja/works/hope/","description":"小さな漁村ホポ港に正体不明の存在が現れたことで始まる惨劇。駐在所長ポムソク、猟師ソンギ、警察官ソンエが得体の知れない地球外生命体と死闘を繰り広げる、ナ・ホンジン監督が『哭声/コクソン』以来10年ぶりに送り出す新作にして、第79回カンヌ国際映画祭コンペティション部門正式出品作。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Jindo Bridge.jpg","genre":["scifi","thriller","horror"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Movie","name":"ホープ","url":"https://geugotjigeum.com/ja/works/hope/","description":"小さな漁村ホポ港に正体不明の存在が現れたことで始まる惨劇。駐在所長ポムソク、猟師ソンギ、警察官ソンエが得体の知れない地球外生命体と死闘を繰り広げる、ナ・ホンジン監督が『哭声/コクソン』以来10年ぶりに送り出す新作にして、第79回カンヌ国際映画祭コンペティション部門正式出品作。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Jindo Bridge.jpg","genre":["scifi","thriller","horror"],"locationCreated":[{"@type":"Place","name":"해남 남창리 '호프 영화의 거리'","geo":{"@type":"GeoCoordinates","latitude":34.551,"longitude":126.7475}},{"@type":"Place","name":"옛 북평 버스터미널(극중 호포출장소)","geo":{"@type":"GeoCoordinates","latitude":34.5508,"longitude":126.7478}},{"@type":"Place","name":"배우 벽화 거리","geo":{"@type":"GeoCoordinates","latitude":34.5512,"longitude":126.7472}},{"@type":"Place","name":"외계 생명체 조형물","geo":{"@type":"GeoCoordinates","latitude":34.5514,"longitude":126.747}},{"@type":"Place","name":"북평면사무소","geo":{"@type":"GeoCoordinates","latitude":34.5505,"longitude":126.748}},{"@type":"Place","name":"이진항","geo":{"@type":"GeoCoordinates","latitude":34.5163,"longitude":126.7842}},{"@type":"Place","name":"해남 우수영관광지·울돌목(명량대첩 현장)","geo":{"@type":"GeoCoordinates","latitude":34.5975,"longitude":126.3042}},{"@type":"Place","name":"땅끝마을(해남 땅끝전망대)","geo":{"@type":"GeoCoordinates","latitude":34.3167,"longitude":126.5578}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"ホープのロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/hope/"}]}</script>
 </head>
 <body>
@@ -273,7 +285,7 @@
     </div>
     <div class="wsFeatured">
       <span class="wsFeaturedKicker">この場面の中へ</span>
-      <p class="wsFeaturedText">해남 남창리 '호프 영화의 거리' — 関連</p>
+      <p class="wsFeaturedText">다리 밑(가공의 공간) — テーマ関連</p>
     </div>
   </div>
 </section>
@@ -296,6 +308,7 @@
 <p>2026年5月、第79回カンヌ国際映画祭のコンペティション部門で初公開され、世界中の映画ファンの注目を集めた。韓国国内では7月15日に公開。上映時間は156分と長いが、見終えるとその長さにも納得がいく。</p>
 <p>海南に行く機会があれば、まず南倉里に立ち寄ってみたい。旧バスターミナルの前に立って、あの実際のパトカーを目にすれば、映画がまた違って感じられそうだ。</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">広告</span>
@@ -316,30 +329,30 @@
 
   <h2>代表ロケ地TOP5</h2>
   <div class="top5Grid">
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">1</span>
-      <h3>해남 남창리 '호프 영화의 거리'</h3>
-      <p>関連</p>
+      <h3>다리 밑(가공의 공간)</h3>
+      <p>テーマ関連</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">2</span>
-      <h3>옛 북평 버스터미널(극중 호포출장소)</h3>
-      <p>関連</p>
+      <h3>정육점(가공의 공간)</h3>
+      <p>テーマ関連</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">3</span>
-      <h3>배우 벽화 거리</h3>
-      <p>関連</p>
+      <h3>양배의 폐가(가공의 공간)</h3>
+      <p>テーマ関連</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">4</span>
-      <h3>외계 생명체 조형물</h3>
-      <p>関連</p>
+      <h3>건어물 시장(가공의 공간)</h3>
+      <p>テーマ関連</p>
     </div>
-    <div class="top5Card" style="border-top:3px solid #8a8fa3">
+    <div class="top5Card" style="border-top:3px solid #c9a227">
       <span class="top5Rank">5</span>
-      <h3>북평면사무소</h3>
-      <p>関連</p>
+      <h3>보건소(가공의 공간)</h3>
+      <p>テーマ関連</p>
     </div>
   </div>
 
@@ -459,72 +472,72 @@
         <p>The real location where the film's forest scenes were shot. Korean forests have too many small branches to get the look the filmmakers wanted, so production chose the old-growth forest of Romania's Carpathian Mountains instead. Though the story presents it as a Korean mountainside, the footage was actually shot on the other side of the world.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>다리 밑(가공의 공간)</h3>
         <p>The spot where Nak-yeon hides while the creature rampages through the village — the place where he and Beom-seok first cross paths, when Beom-seok's mistaken shot nearly hits him.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>정육점(가공의 공간)</h3>
         <p>The butcher shop run by Beom-seok's friend Gyeong-seok. A key turning point occurs here when Beom-seok and Nak-yeon, chasing the creature, mistake his silhouette for it and shoot him.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>양배의 폐가(가공의 공간)</h3>
         <p>The abandoned house near a reservoir on the village outskirts where Yang-bae lives alone. Filled from yard to interior with mannequins and animal remains, it's also where he hides the body of the young alien Kali in a freezer after killing it.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>건어물 시장(가공의 공간)</h3>
         <p>The market where Chun-ho and Beom-seok search for the missing Deok-gi. Inside one of the shops, Deok-gi is killed by Va'migere, and moments later Chun-ho himself is fatally struck by the creature — one of the film's most brutal late scenes.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>보건소(가공의 공간)</h3>
         <p>The clinic where Va'migere's body is brought for autopsy. The clinic director resorts to a chainsaw to determine the creature belongs to no known species — a scene that shifts the film's tone.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>학교 임시 구호소(가공의 공간)</h3>
         <p>A makeshift relief shelter set up at the local school after the town is devastated, where the wounded are treated.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>숲속 우주선 추락 현장(가공의 공간)</h3>
         <p>The forest crash site where Seong-gi's hunting party discovers the crashed spaceship. Here they first witness the aliens' existence, and are soon lured by Ai'dovor into an ambush by Ma'veyyo and J'aur.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>외계 우주선 내부(가공의 공간)</h3>
         <p>The lower section of the crashed ship that Seong-gi's group enters after finding the wreck — where they first glimpse a small alien creature, setting up the ambush that follows.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>고속도로 추격전 현장(가공의 공간)</h3>
         <p>The site of the elderly militia's truck attack by Ma'veyyo, and later the climactic highway chase where Beom-seok's group makes their final stand against the creature.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>야산 우주 함선 추락지(가공의 공간)</h3>
         <p>The hillside where an alien mothership in orbit (linked to Kueol) crashes and explodes near Hopo Port — an event hinted to be unrelated to what happened in the village itself, left as one of the film's open threads.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>저수지(가공의 공간)</h3>
         <p>The reservoir near Yang-bae's house, part of the eerie backdrop of the village's outskirts.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>마을회관(가공의 공간)</h3>
         <p>The village hall, briefly shown as a gathering place where residents discuss the unfolding crisis.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>출장소 총기함(가공의 공간)</h3>
         <p>The Hopo Police Box's gun locker, suspected of being opened without authorization by Officer An — the origin point of hunters obtaining heavy weapons.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>소 사체 발견 현장(가공의 공간)</h3>
         <p>The site early in the film where Beom-seok, investigating a mutilated cow carcass, first senses that something is deeply wrong.</p>
       </div>
@@ -554,37 +567,37 @@
         <p>The real venue where Hope had its official competition screening at the 79th Cannes Film Festival — where Na Hong-jin's first new film in ten years since The Wailing premiered to the world.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>최후의 결전지(가공의 공간)</h3>
         <p>The site of the final showdown, where Beom-seok, Seong-ae, and Nak-yeon bring down Ma'veyyo after the highway chase — their brief celebration cut short by the shocking accident that flings Seong-gi from the vehicle.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>숲길 매복 지점(가공의 공간)</h3>
         <p>The ambush site where J'aur's thrown spear kills Cheong-san and the leaping Ma'veyyo crushes Heung-sik — the turning point where most of the hunting party is wiped out.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>백마 구출 장면 현장(가공의 공간)</h3>
         <p>The site of the film's poster-defining moment, where Hyun-ho on horseback rescues Seong-gi from a Ma'veyyo attack.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>트럭 부대 이동로(가공의 공간)</h3>
         <p>The road where the elderly militia's white truck moves out to confront the aliens — the site of the tragedy where Ma'veyyo hurls the truck into the air.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>면장 자택(가공의 공간, 편집분)</h3>
         <p>The setting of the myeon chief's residence, appearing only in the director's cut — the related scenes were entirely removed from the theatrical release.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>우주선 하부 해치(가공의 공간)</h3>
         <p>The specific point where Seong-gi's group enters the ship and first glimpses a small alien creature — the moment that leads to their discovery by Ai'dovor.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>총격 골목(가공의 공간)</h3>
         <p>The alley behind the butcher shop where Beom-seok and Nak-yeon fire at a silhouette, wounding Gyeong-seok.</p>
       </div>
@@ -599,17 +612,17 @@
         <p>A real Romanian city commonly used as a base for accessing the Carpathian filming area — offers medieval Transylvanian architecture alongside the surrounding nature.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>구호소 운동장(가공의 공간)</h3>
         <p>The schoolyard beside the makeshift relief center, shown crowded with the wounded and evacuated villagers.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>우주선 추락지 능선(가공의 공간)</h3>
         <p>The ridge near the forest crash site, shown as the route the hunting party takes before first discovering the wreck.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>고속도로 표지판 충돌 지점(가공의 공간)</h3>
         <p>The specific spot where Yang-bae suddenly swerves and Seong-gi is thrown from the vehicle — the setting for the film's late twist.</p>
       </div>

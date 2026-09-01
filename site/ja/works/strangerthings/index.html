@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ストレンジャー・シングス 未知の世界","url":"https://geugotjigeum.com/ja/works/strangerthings/","description":"インディアナ州の小さな町ホーキンスで少年が姿を消した後、彼の友人たちと超能力を持つ少女イレブンが異次元からの脅威に気づく。子どもたちが成長するにつれて、町に隠された秘密と敵の規模も大きくなっていく。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"ストレンジャー・シングス 未知の世界","url":"https://geugotjigeum.com/ja/works/strangerthings/","description":"インディアナ州の小さな町ホーキンスで少年が姿を消した後、彼の友人たちと超能力を持つ少女イレブンが異次元からの脅威に気づく。子どもたちが成長するにつれて、町に隠された秘密と敵の規模も大きくなっていく。","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"],"locationCreated":[{"@type":"Place","name":"잭슨 (Jackson, Georgia)","geo":{"@type":"GeoCoordinates","latitude":33.2946,"longitude":-83.9666}},{"@type":"Place","name":"호킨스 국립연구소 배경지 (Atlanta 권역)","geo":{"@type":"GeoCoordinates","latitude":33.7756,"longitude":-84.3963}},{"@type":"Place","name":"그위넷 플레이스 몰 (Gwinnett Place Mall, Duluth, GA)","geo":{"@type":"GeoCoordinates","latitude":33.9614,"longitude":-84.0223}},{"@type":"Place","name":"호킨스 고등학교 배경지 (Patrick Henry High School)","geo":{"@type":"GeoCoordinates","latitude":33.749,"longitude":-84.388}},{"@type":"Place","name":"스톤 마운틴 파크 (Stone Mountain Park)","geo":{"@type":"GeoCoordinates","latitude":33.805,"longitude":-84.145}},{"@type":"Place","name":"이스트포인트 (East Point)","geo":{"@type":"GeoCoordinates","latitude":33.6795,"longitude":-84.4394}},{"@type":"Place","name":"로마 (Rome, Georgia)","geo":{"@type":"GeoCoordinates","latitude":34.257,"longitude":-85.1647}},{"@type":"Place","name":"크릴 하우스 (Creel House, Rome 인근)","geo":{"@type":"GeoCoordinates","latitude":34.26,"longitude":-85.17}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"ストレンジャー・シングス 未知の世界のロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/strangerthings/"}]}</script>
 </head>
 <body>
@@ -294,6 +306,7 @@
 <p>森と線路のシーンが撮影されたストーン・マウンテン・パークも、実際に訪れることができる場所だという。</p>
 <p>シーズンを重ねるごとに、俳優たちが実際に年齢を重ねながらキャラクターと一緒に成長していくのを見られるのも、このドラマならではの魅力だ。シーズン1では小さな子どもだった彼らが、今はすっかり高校生や大人の顔つきで最終シーズンへと向かっている。</p>
 <p>ホーキンスという町は地図には存在しないけれど、このドラマのおかげでジョージア州は私にとってまったく違う意味を持つ場所になった。いつか行けたら、まずはグウィネット・プレイス・モール、かつてのスターコートがあった場所から訪れてみたい。</p></div>
+  
   
 
   <div class="adSlot">

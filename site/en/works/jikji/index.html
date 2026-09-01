@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Jikji: Amor Manet","url":"https://geugotjigeum.com/en/works/jikji/","description":"Journalist Kim Ki-yeon, investigating the death of Korea University Latin professor Jeon Hyeong-woo, uncovers a secret connecting the world's first meta…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korean book-Jikji-Selected Teachings of Buddhist Sages and Seon Masters-1377.jpg","author":{"@type":"Person","name":"Novel by Kim Jin-myung"},"genre":["historical","mystery","crime","thriller","adventure"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Jikji: Amor Manet","url":"https://geugotjigeum.com/en/works/jikji/","description":"Journalist Kim Ki-yeon, investigating the death of Korea University Latin professor Jeon Hyeong-woo, uncovers a secret connecting the world's first meta…","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Korean book-Jikji-Selected Teachings of Buddhist Sages and Seon Masters-1377.jpg","author":{"@type":"Person","name":"Novel by Kim Jin-myung"},"genre":["historical","mystery","crime","thriller","adventure"],"locationCreated":[{"@type":"Place","name":"흥덕사지 (충북 청주시 흥덕구 직지대로 713)","geo":{"@type":"GeoCoordinates","latitude":36.6153,"longitude":127.4577}},{"@type":"Place","name":"청주고인쇄박물관 (흥덕사지 옆)","geo":{"@type":"GeoCoordinates","latitude":36.6156,"longitude":127.458}},{"@type":"Place","name":"운리단길 (청주시 흥덕구 운천동)","geo":{"@type":"GeoCoordinates","latitude":36.618,"longitude":127.46}},{"@type":"Place","name":"직지문화특구·직지문화축제 개최지 (청주 흥덕구 일대)","geo":{"@type":"GeoCoordinates","latitude":36.6165,"longitude":127.459}},{"@type":"Place","name":"청주 문화제조창 (청주시 청원구, 옛 연초제조창)","geo":{"@type":"GeoCoordinates","latitude":36.6423,"longitude":127.4406}},{"@type":"Place","name":"상당산성 (청주시 상당구)","geo":{"@type":"GeoCoordinates","latitude":36.6317,"longitude":127.5064}},{"@type":"Place","name":"고려대학교 (서울 성북구)","geo":{"@type":"GeoCoordinates","latitude":37.5895,"longitude":127.0323}},{"@type":"Place","name":"국립중앙박물관 (서울 용산구)","geo":{"@type":"GeoCoordinates","latitude":37.524,"longitude":126.9803}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Jikji: Amor Manet — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/jikji/"}]}</script>
 </head>
 <body>
@@ -295,6 +307,7 @@
 <p>But what stays with you after closing the book isn't so much who the culprit was, as the sense of how a single book, made by unnamed monks at Heungdeoksa, ended up standing alongside the history of human printing itself, 78 years ahead of its time.</p>
 <p>So if you trace this novel's route from Cheongju to Paris, Avignon, Strasbourg, and Mainz, sorting out what's confirmed history and what's the novel's imagination as you go will make the trip feel a lot deeper.</p>
 <p>Standing at the Heungdeoksa site in Cheongju in particular, it hits you that this isn't just a novel's backdrop — it's the actual spot where the history of printing, for the whole world, began. That fact alone is enough to make the trip worthwhile.</p></div>
+  
   
 
   <div class="adSlot">
@@ -376,7 +389,7 @@
         <p>A well-known mountain fortress from the Joseon dynasty, popular for its walking trail along the walls and views over Cheongju. If Jikji represents Cheongju's intellectual and cultural pride, Sangdangsanseong shows another side of the city's long defensive history. Not related to the novel directly, but a staple recommendation for anyone spending more than a day in Cheongju.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>고려대학교 (서울 성북구)</h3>
         <p>Depicted as the university where Latin professor Jeon Hyeong-woo taught while researching the connection between Jikji and Gutenberg's metal type, along with an old letter from the Vatican. His death here is the real starting point of the present-day storyline, from which journalist Kim Ki-yeon's investigation unfolds.</p>
       </div>
@@ -396,7 +409,7 @@
         <p>The real home of the surviving second volume of Jikji (catalogue number 109). Donated to the library in 1952 per the will of its owner Henri Vever, who died in 1943, it was here in 1972 that librarian Dr. Park Byeong-seon first identified Jikji and proved it predated Gutenberg's 42-line Bible by 78 years. One of the real destinations on Ki-yeon's European trail following Jeon Hyeong-woo's clues.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>Palais des Papes, Avignon</h3>
         <p>The site of the 14th-century &quot;Avignon Papacy,&quot; when the Roman papacy relocated here. In the novel, it's woven into Eunsu (Karena)'s European storyline and the trail of clues surrounding an old Vatican letter. One of the largest Gothic palaces in Europe, still conveying the scale of medieval papal power today.</p>
       </div>
@@ -416,7 +429,7 @@
         <p>A cathedral more than a thousand years old, right next to the Gutenberg Museum, where Gutenberg is believed to have been baptized. Not a specific scene from the novel, but a natural stop right next door if you're visiting the Gutenberg Museum.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>Vatican Apostolic Library and Archives</h3>
         <p>Where the novel's central mystery — an old papal letter — points to. In reality one of the world's oldest and most extensive document collections, holding many records of medieval contact between Europe and Asia, making it fertile ground for the novel's imagination. To be clear, though: the letter's recipient and interpretation in the story are entirely fictional, not a confirmed historical fact.</p>
       </div>

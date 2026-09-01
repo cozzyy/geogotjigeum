@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"パチンコ","url":"https://geugotjigeum.com/ja/works/pachinko/","description":"釜山の影島(ヨンド)で生まれたソンジャが大阪へ移住し、四代にわたる在日コリアンの家族史をつないでいく物語。愛と生存、移住と差別、そして東京の1989年の金融の世界にまで続く家族の選択を描く。Apple TV+オリジナルシリーズ(Netflixではない)であり、ミン・ジン・リーの2017年の同名小説が原作…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Yeongdodaegyo(Yeongdo Bridge).jpg","genre":["historical","drama","family"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"パチンコ","url":"https://geugotjigeum.com/ja/works/pachinko/","description":"釜山の影島(ヨンド)で生まれたソンジャが大阪へ移住し、四代にわたる在日コリアンの家族史をつないでいく物語。愛と生存、移住と差別、そして東京の1989年の金融の世界にまで続く家族の選択を描く。Apple TV+オリジナルシリーズ(Netflixではない)であり、ミン・ジン・リーの2017年の同名小説が原作…","inLanguage":"ja","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Yeongdodaegyo(Yeongdo Bridge).jpg","genre":["historical","drama","family"],"locationCreated":[{"@type":"Place","name":"영도 (부산광역시 영도구)","geo":{"@type":"GeoCoordinates","latitude":35.0813,"longitude":129.057}},{"@type":"Place","name":"영도 앞바다","geo":{"@type":"GeoCoordinates","latitude":35.0757,"longitude":129.0763}},{"@type":"Place","name":"부산항","geo":{"@type":"GeoCoordinates","latitude":35.1019,"longitude":129.0403}},{"@type":"Place","name":"영도 해안 절벽길","geo":{"@type":"GeoCoordinates","latitude":35.0679,"longitude":129.0793}},{"@type":"Place","name":"오사카 (일본 오사카부)","geo":{"@type":"GeoCoordinates","latitude":34.6937,"longitude":135.5023}},{"@type":"Place","name":"이카이노 조선인 마을","geo":{"@type":"GeoCoordinates","latitude":34.6472,"longitude":135.5325}},{"@type":"Place","name":"오사카 기차역","geo":{"@type":"GeoCoordinates","latitude":34.7024,"longitude":135.4959}},{"@type":"Place","name":"나가노 농촌 피난지","geo":{"@type":"GeoCoordinates","latitude":36.6513,"longitude":138.181}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"パチンコのロケ地・舞台マップ","item":"https://geugotjigeum.com/ja/works/pachinko/"}]}</script>
 </head>
 <body>
@@ -273,7 +285,7 @@
     </div>
     <div class="wsFeatured">
       <span class="wsFeaturedKicker">この場面の中へ</span>
-      <p class="wsFeaturedText">태종대 (부산 영도구) — 公式・直接</p>
+      <p class="wsFeaturedText">부산 어시장 — 公式・直接</p>
     </div>
   </div>
 </section>
@@ -299,6 +311,7 @@
 <p>釜山に行ったら、まずは太宗台の海岸を歩いてみたい。ソンジャが実際に歩いた、その海だから。</p>
 <p>大阪に行ったら、生野コリアタウンで猪飼野の名残も探してみたい。地図に載っていない町を歩くということが、このドラマを見た後だとまた違う意味を持つ気がする。</p></div>
   
+  
 
   <div class="adSlot">
     <span class="adLabel">広告</span>
@@ -321,27 +334,27 @@
   <div class="top5Grid">
     <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">1</span>
-      <h3>태종대 (부산 영도구)</h3>
+      <h3>부산 어시장</h3>
       <p>公式・直接</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">2</span>
-      <h3>감지해변 (부산 영도구)</h3>
+      <h3>태종대 (부산 영도구)</h3>
       <p>公式・直接</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">3</span>
-      <h3>자갈치시장 (부산 중구)</h3>
+      <h3>감지해변 (부산 영도구)</h3>
       <p>公式・直接</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">4</span>
-      <h3>좌천동 매축지마을 (부산 동구)</h3>
+      <h3>자갈치시장 (부산 중구)</h3>
       <p>公式・直接</p>
     </div>
     <div class="top5Card" style="border-top:3px solid #3ac07c">
       <span class="top5Rank">5</span>
-      <h3>범일동 구름다리 (부산 동구)</h3>
+      <h3>좌천동 매축지마을 (부산 동구)</h3>
       <p>公式・直接</p>
     </div>
   </div>
@@ -417,202 +430,202 @@
 
   <h2 id="allLocations">パチンコのすべての場所（204か所）</h2>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>영도 (부산광역시 영도구)</h3>
         <p>Sunja's hometown, and the place the entire series ultimately returns to in memory. Connected to the mainland by bridges, Yeongdo has long been home to shipbuilding and fishing workers — the backdrop for Hoonie and Yangjin's boarding house, and for young Sunja moving between the sea, the market, and her neighbors. It is also where elderly Sunja returns in 1989. The show treats Yeongdo not as a simple nostalgia backdrop but as a place that keeps asking who truly belongs here.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>영도 하숙집 (작품 속 설정 공간)</h3>
         <p>The boarding house Hoonie and Yangjin run on income from sea work and market labor. It's where they raise Sunja, the one child who survived after several losses, and where the comings and goings of lodgers bring the gossip and mobility typical of a port town. It's also where the ailing pastor Baek Isak later stays on his way to Osaka — the meeting that changes the course of Sunja's life.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>영도 앞바다</h3>
         <p>The sea where young Sunja learns to dive for shellfish, and where elderly Sunja stands again in 1989. One of the series' most symbolic natural spaces, where the beginning of a life and its return overlap on the same tide.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>부산 어시장</h3>
         <p>Where Sunja and Hansu first meet. Hansu, who dominates the market as a fish broker, shows Sunja an unfamiliar world through his sharp clothes, wide connections, and money and power. Small daily events — fish prices, taxes, checkpoints — quietly carry the weight of colonial rule and discrimination.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>부산항</h3>
         <p>The threshold of migration from colonial Korea to Japan. The point of departure where Sunja and Isak board the ferry for Osaka, and a symbol of migration, borders, and farewell that runs through the entire series.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>부산 장터 골목</h3>
         <p>A market-alley scene of daily economic life in colonial Busan, where rice-cake sellers, fish merchants, and newspaper boys pass through. The market setting reveals how information, class, and gendered labor divisions moved through a colonial city.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>하숙집 부엌</h3>
         <p>The interior space where Yangjin and Sunja's labor and care accumulate. It foreshadows the kimchi-selling scenes Sunja and Kyunghee later run in Osaka — an origin point for the show's portrayal of women's labor.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>하숙집 마당</h3>
         <p>A communal space where the daily lives of lodgers and family intersect. Through the friction of transient port-town guests living alongside the family, it shows a sense of temporary community distinct from a settled extended-family narrative.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>영도 해안 절벽길</h3>
         <p>A coastal-cliff space that visually condenses the sea, poverty, and isolation. Since exact scene-by-scene matching hasn't been completed, this site introduces it only as a candidate location.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>조선–일본 연락선</h3>
         <p>The ferry symbolizing Sunja and Isak's migration, the turning point where the family crosses a national border. Portrayed as the threshold where they leave behind a familiar language, sea, and family to become migrants with a new status.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 (일본 오사카부)</h3>
         <p>The key city where Sunja's family settles and continues life as ethnic Koreans in Japan. Centered on Ikaino (today's Ikuno), a living community forms around church, market, factory, and school, and it's also the stage for the later generations, Mozasu and Solomon.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>이카이노 조선인 마을</h3>
         <p>The living community where the family's housing, labor, church, and discrimination all concentrate. The name &quot;Ikaino&quot; disappeared from official maps after an administrative reorganization in 1973, but today's Ikuno-ku carries on the same community. This site distinguishes &quot;old Ikaino&quot; and &quot;today's Ikuno&quot; as the same place at different points in time.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>요셉·경희의 집</h3>
         <p>Where Sunja and Isak first take shelter after arriving in Osaka. In a cramped, poor Korean neighborhood, the four of them share one house, splitting money, food, faith, and housework — a microcosm of the early settlement community of ethnic Koreans in Japan.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 조선인 교회</h3>
         <p>Where Isak's ministry intersects with both community relief and colonial surveillance. Colonial authority suspects and watches even the gatherings, language, and religion of the Korean community — setting up the moment Isak is arrested for his activities here.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>김치 장사터</h3>
         <p>Where Sunja and Kyunghee rebuild the family's collapsing livelihood after Isak's arrest. Choosing survival over social propriety, this labor is portrayed not as mere money-making but as the turning point where the women become the family's economic agents.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 시장</h3>
         <p>A space where food supplies, rationing, and the survival economy of the ethnic community intersect. As the war deepens, food shortages worsen and the market's scenery changes along with it.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 공장</h3>
         <p>The dangerous working environment where Yoseb and Korean laborers work — a space revealing the reality of migrant labor that propped up the bottom rung of Osaka's industrialization.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 학교</h3>
         <p>The educational space where Noa and Mozasu experience discrimination and pressure to assimilate. Facing the same discrimination, this is where the fork in the road begins — Noa choosing perfect assimilation, Mozasu choosing to fight back directly.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 구치소</h3>
         <p>A space where Isak's arrest and the violence of colonial power are concentrated. This is where the colonial logic that treats faith and community activity as political suspicion appears most starkly.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 병원</h3>
         <p>A space where illness, childbirth, injury, and family caregiving intersect, showing what the family had to endure to protect one another amid postwar healthcare disparities.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 기차역</h3>
         <p>A transit node for evacuation, return, and family separation. As the war deepens, the expressions and purposes of those passing through this station keep changing.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>오사카 방공호</h3>
         <p>A collective space of air-raid and wartime survival, appearing prominently in Season 2 as the backdrop for scenes where the terror of the Osaka air raids seeps into the family's daily life.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>나가노 농촌 피난지</h3>
         <p>Where the family relocates to escape air raids and encounters new labor and new forms of discrimination. The exact place name still needs verification, but it's set in the countryside of Nagano Prefecture.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>피난지 농가</h3>
         <p>A living space where Sunja's family and farmers exchange food and labor. Here we see that evacuation doesn't guarantee safety — met with the wary looks of unfamiliar residents.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>피난지 학교</h3>
         <p>Where Noa and Mozasu's wartime education and peer relationships unfold — a different kind of exclusion and adaptation among children than what they faced in the city.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>도쿄 (일본 도쿄도)</h3>
         <p>The center of Solomon's 1989 finance, real-estate, and identity storyline. After returning from his education in America, this is where Solomon experiences a different kind of exclusion from the family's older survival economy.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>도쿄 금융회사</h3>
         <p>Where the competition and organizational power dynamics between Solomon, Naomi, and Tom intersect. It's where the racial and national hierarchies operating even within international financial elites become most visible.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>한금자 소유 토지</h3>
         <p>A piece of real estate where development profit and lived memory collide. The company sees only price and performance, but for Han Geumja, this land is proof of a life spent enduring discrimination and labor in Japan.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>솔로몬의 아파트</h3>
         <p>A space showing the isolation of a successful third-generation migrant and his distance from family. Glamorous yet empty, this apartment shows what Solomon has gained and lost at the same time.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>도쿄 호텔·회의실</h3>
         <p>The stage for international financial deals and power negotiations, where calculation and exclusion pass back and forth beneath a veneer of smiles and courtesy.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>도쿄 식당</h3>
         <p>A space where company, family, and romantic relationships shift into private conversation, mixing the language of public negotiation with private emotion at the same table.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>요시이 사업장</h3>
         <p>A connecting point of the postwar pachinko, real-estate, and organized economy. The point where Solomon, trying to escape his family's old survival economy, ends up drawn into an even larger structure of capital and violence.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>파친코장</h3>
         <p>Where Mozasu's livelihood and the show's title metaphor of probability and control come together. One of the few industries open to ethnic Koreans in Japan, and a metaphor for a life where the player believes they're choosing, but the machine's structure decides the outcome.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>파친코 기계실</h3>
         <p>A space that visualizes the adjustment of the machine's pins and the &quot;unfair game&quot; beneath the surface — concretely showing that the odds in pachinko are never purely random.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>요코하마 (일본 가나가와현)</h3>
         <p>Where Noa's new life, anonymity, and a cemetery of memory come together. In the novel, this is the city where Noa leaves Osaka to try to live an entirely new identity.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>이삭의 묘지</h3>
         <p>Where the memories of Sunja, Noa, and Uchida, and the family's secrets, all meet. Some of the novel's quietest yet heaviest scenes unfold here.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>와세다대학 (작품 속 노아의 학업 공간)</h3>
         <p>A symbol of Noa's academic pursuit and his desire to assimilate into Japanese society. Noa's wish to be accepted through flawless achievement takes its most concentrated form on this campus.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>뉴욕 (미국)</h3>
         <p>The city that shapes Solomon's education, international outlook, and his history before returning to Japan. It hints at the backstory behind Solomon, who learned American financial language, becoming a &quot;tool&quot; for the company once he returns to Tokyo.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>제주 (한수의 원작 배경)</h3>
         <p>The roots of Hansu's background and the migration/power narrative in the novel. Not given much weight in the TV series, but for novel readers it's a clue to understanding how Hansu's character was formed.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>평양 (한반도 북부)</h3>
         <p>Explains the family and Christian background of Isak and Yoseb. The Baek family's roots in faith begin here, later carrying through to their church activities in Osaka.</p>
       </div>

@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"원피스 (ONE PIECE)","url":"https://geugotjigeum.com/works/onepiece/","description":"원피스 세계관에 영감을 준 실제 장소와 배경을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_Table_Mountain.jpg","genre":["adventure","fantasy","comedy"],"actor":[{"@type":"Person","name":"몽키 D. 루피 (Monkey D. Luffy)","sameAs":"https://en.wikipedia.org/wiki/Mayumi_Tanaka"},{"@type":"Person","name":"롤로노아 조로 (Roronoa Zoro)","sameAs":"https://en.wikipedia.org/wiki/Kazuya_Nakai"},{"@type":"Person","name":"나미 (Nami)","sameAs":"https://en.wikipedia.org/wiki/Akemi_Okamura"},{"@type":"Person","name":"우솝 (Usopp)","sameAs":"https://en.wikipedia.org/wiki/Kappei_Yamaguchi"},{"@type":"Person","name":"상디 (Sanji)","sameAs":"https://en.wikipedia.org/wiki/Hiroaki_Hirata"},{"@type":"Person","name":"토니토니 쵸파 (Tony Tony Chopper)","sameAs":"https://en.wikipedia.org/wiki/Ikue_%C5%8Ctani"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"원피스 (ONE PIECE)","url":"https://geugotjigeum.com/works/onepiece/","description":"원피스 세계관에 영감을 준 실제 장소와 배경을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_Table_Mountain.jpg","genre":["adventure","fantasy","comedy"],"actor":[{"@type":"Person","name":"몽키 D. 루피 (Monkey D. Luffy)","sameAs":"https://en.wikipedia.org/wiki/Mayumi_Tanaka"},{"@type":"Person","name":"롤로노아 조로 (Roronoa Zoro)","sameAs":"https://en.wikipedia.org/wiki/Kazuya_Nakai"},{"@type":"Person","name":"나미 (Nami)","sameAs":"https://en.wikipedia.org/wiki/Akemi_Okamura"},{"@type":"Person","name":"우솝 (Usopp)","sameAs":"https://en.wikipedia.org/wiki/Kappei_Yamaguchi"},{"@type":"Person","name":"상디 (Sanji)","sameAs":"https://en.wikipedia.org/wiki/Hiroaki_Hirata"},{"@type":"Person","name":"토니토니 쵸파 (Tony Tony Chopper)","sameAs":"https://en.wikipedia.org/wiki/Ikue_%C5%8Ctani"}],"locationCreated":[{"@type":"Place","name":"케이프타운 필름 스튜디오 (Cape Town Film Studios)","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"웨스턴케이프 해안","geo":{"@type":"GeoCoordinates","latitude":-34.0555,"longitude":18.4645}},{"@type":"Place","name":"남아프리카공화국 촬영 권역","geo":{"@type":"GeoCoordinates","latitude":-33.9249,"longitude":18.4241}},{"@type":"Place","name":"카나리아 제도 (Canary Islands, Spain)","geo":{"@type":"GeoCoordinates","latitude":28.2916,"longitude":-16.6291}},{"@type":"Place","name":"고잉 메리호 세트 (Cape Town Film Studios 내)","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"바라티에 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"로그타운 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}},{"@type":"Place","name":"드럼 아일랜드 세트","geo":{"@type":"GeoCoordinates","latitude":-33.9421,"longitude":18.5069}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"원피스 실제 모티브 장소 지도","item":"https://geugotjigeum.com/works/onepiece/"}]}</script>
 </head>
 <body>
@@ -297,6 +309,7 @@
 <p>그러니까 실사판만 보고 '이거 다 세트장이겠지' 하고 넘기기보다, 케이프타운 테이블마운틴이나 구마모토 동상처럼 진짜로 갈 수 있는 곳도 있다는 걸 알아두면 여행이 더 재밌어진다.</p>
 <p>원피스가 진짜로 뭔지, 루피가 정말 해적왕이 되는지는 여기서 말하지 않으련다. 그건 아직도 계속되고 있는 이야기니까, 각자 직접 따라가면서 확인하시길.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=onepiece&amp;loc=southafricaregion">이스트 블루 → 실제로는 케이프타운</a><a class="revealChip" href="https://geugotjigeum.com/?work=onepiece&amp;loc=goingmerryset">고잉 메리호 → 실물 크기로 만든 세트</a><a class="revealChip" href="https://geugotjigeum.com/?work=onepiece&amp;loc=kumamotostatues">구마모토 동상 → 지진 부흥 프로젝트로 세워짐</a><a class="revealChip" href="https://geugotjigeum.com/?work=onepiece&amp;loc=animeislandmap">원피스 세계지도 → 실제 지구 어디에도 없는 가상 지도</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

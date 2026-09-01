@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"태백산맥","url":"https://geugotjigeum.com/works/taebaek/","description":"소설 태백산맥의 무대인 벌교와 여수·순천의 실제 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Beolgyo Arch Bridge 13-09910.JPG","author":{"@type":"Person","name":"조정래 장편소설"},"genre":["historical","war","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"태백산맥","url":"https://geugotjigeum.com/works/taebaek/","description":"소설 태백산맥의 무대인 벌교와 여수·순천의 실제 장소를 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Beolgyo Arch Bridge 13-09910.JPG","author":{"@type":"Person","name":"조정래 장편소설"},"genre":["historical","war","drama"],"locationCreated":[{"@type":"Place","name":"벌교읍 (전남 보성군 벌교읍)","geo":{"@type":"GeoCoordinates","latitude":34.8447,"longitude":127.3508}},{"@type":"Place","name":"태백산맥문학관 (전남 보성군 벌교읍 홍암로 89-19)","geo":{"@type":"GeoCoordinates","latitude":34.8475,"longitude":127.3487}},{"@type":"Place","name":"현부자네 집 (태백산맥문학관 인근, 제석산 자락)","geo":{"@type":"GeoCoordinates","latitude":34.8472,"longitude":127.3485}},{"@type":"Place","name":"소화의 집 (태백산맥문학관 경내, 제석산 자락)","geo":{"@type":"GeoCoordinates","latitude":34.8477,"longitude":127.3489}},{"@type":"Place","name":"김범우의 집 (벌교읍 시내)","geo":{"@type":"GeoCoordinates","latitude":34.8459,"longitude":127.3502}},{"@type":"Place","name":"소화다리 (정식명 부용교, 보성군 벌교읍 회정리)","geo":{"@type":"GeoCoordinates","latitude":34.8453,"longitude":127.3511}},{"@type":"Place","name":"벌교 홍교 (보물 제304호, 보성군 벌교읍 벌교리 154-1)","geo":{"@type":"GeoCoordinates","latitude":34.8441,"longitude":127.3527}},{"@type":"Place","name":"보성여관 (등록문화재 제132호, 벌교초등학교 옆)","geo":{"@type":"GeoCoordinates","latitude":34.8438,"longitude":127.3479}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"태백산맥 벌교 배경지와 역사 여행 지도","item":"https://geugotjigeum.com/works/taebaek/"}]}</script>
 </head>
 <body>
@@ -297,6 +309,7 @@
 <p>실제로 벌교를 걷는다는 건 가벼운 문학기행 이상의 일인 것 같다. 태백산맥문학관에서 시작해 현부자네 집, 소화의 집, 소화다리, 벌교 홍교, 보성여관까지 — 이 길을 걷다 보면 문학적 상상력과 실제 역사가 씨줄과 날줄처럼 엮여 있다는 걸 몸으로 느끼게 된다.</p>
 <p>홍교 위에 서서 다리 이름 하나에 소설 한 편의 무게가 얹혀 있다는 걸 새삼 실감했던 기억이 있다. 벌교에 간다면, 이 다리들 이름의 유래부터 하나씩 짚어가며 걸어보시길 권하고 싶다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=taebaek&amp;loc=sohwa_bridge">소화다리 → 정식 이름은 부용교, 소설 속 이름으로 굳어짐</a><a class="revealChip" href="https://geugotjigeum.com/?work=taebaek&amp;loc=beolgyo_hongyo">벌교 홍교 → 보물 제304호, 지명 '벌교' 자체의 유래</a><a class="revealChip" href="https://geugotjigeum.com/?work=taebaek&amp;loc=hyeonbuja_house">현부자네 집·소화의 집 → 2008년 문학관 조성 때 복원된 공간</a><a class="revealChip" href="https://geugotjigeum.com/?work=taebaek&amp;loc=yureo">해방구 '율어' → 실제 좌표는 공개하지 않음</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
@@ -425,17 +438,17 @@
         <p>2008년 11월 21일 개관한 국내 최대 규모의 문학기행 명소. 소설의 첫 대목에 등장하는 현부자네 집과 소화의 집이 있는 제석산 끝자락에 자리 잡고 있다. 원고지 1만 6500장에 이르는 조정래 작가의 친필 원고 일부와 취재 자료, 등장인물 소개, 여순사건·한국전쟁의 역사적 맥락을 함께 전시해, 이 작품을 처음 만나는 방문객이 &quot;어디서부터 읽어야 할지&quot; 감을 잡을 수 있게 돕는다. 실제 존재하는 문학관이라는 점에서, 이 사이트가 소개하는 다른 장소들의 실질적 출발점이기도 하다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>현부자네 집 (태백산맥문학관 인근, 제석산 자락)</h3>
         <p>소설 첫 대목에 등장하는, 벌교의 토착 지주 현부자 일가의 집을 재현한 공간. 한옥을 기본으로 일본식 정원 요소가 더해진 독특한 양식으로, 중도방죽이 내려다보이는 자리에 서 있다. 현부자와 그 일가는 소설 속 가공의 인물이지만, 이 집의 건축 양식 자체는 식민지기 토착 지주권력이 실제로 어떻게 살았는지를 보여주는 실물 자료로 기능한다. 친일 경력과 지주권력, 해방 후 청산되지 않은 토지 문제가 이 집 한 채에 압축돼 있다고 봐도 좋다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>소화의 집 (태백산맥문학관 경내, 제석산 자락)</h3>
         <p>무당 소화가 살던 집을 재현한 공간으로, 정하섭이 몸을 숨기는 소설 속 핵심 장소다. 이념·신분·신앙·생존이 겹쳐지는 소화와 정하섭의 관계는 태백산맥 전체에서 가장 개인적이면서도 상징적인 서사로 꼽힌다. 소화라는 인물이 가공의 존재이므로 이 집 역시 원형 그대로 남아있던 건물이 아니라 문학관 조성 과정에서 복원·재현된 공간이라는 점을 밝혀둔다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>김범우의 집 (벌교읍 시내)</h3>
         <p>좌우 어느 한쪽의 구호로도 인간을 재단하지 않으려는 중도적 지식인 김범우의 집으로 그려지는 곳. 김범우는 민족·인간·생활의 관점에서 시대를 바라보려 하며, 형 김범준이 좌익 계열에 몸담은 것과 대비되는 인물이다. 같은 가족 안에서도 정치적 선택이 갈라지는 모습을 보여주는 공간이기도 하다. 실제 공개 여부와 정확한 위치는 자료마다 차이가 있어, 방문 전 최신 정보를 확인하는 것이 좋다.</p>
       </div>
@@ -505,7 +518,7 @@
         <p>벌교 태백산맥 문학기행 공식 코스에 포함된 실제 교회로, 근대 개신교가 이 작은 읍내에도 일찍이 뿌리내렸음을 보여준다. 소설이 다루는 좌우 이념 대립과는 별개로, 이 시기 벌교 주민들의 신앙생활이 실제로 존재했다는 사실을 확인할 수 있는 장소다.</p>
       </div>
       <div class="locCard">
-        <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
+        <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>자애병원 (벌교읍, 문학기행 재현 지점)</h3>
         <p>소설 속 전명환 원장이 가난한 이들에게 사실상 무료로 진료해주던 병원으로 그려지는 공간. 부유한 환자에게는 정당한 치료비를 받고 가난한 환자에게는 농작물이나 도자기로 대신 받는 그의 방식은, 이 소설이 그리는 &quot;참 지식인&quot;의 한 모델이다. 훗날 안창민을 도운 일로 전명환 원장이 보도연맹에 강제 가입되는 과정도 이 병원을 배경으로 전개된다.</p>
       </div>

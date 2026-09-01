@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"용의자 X의 헌신 (容疑者Xの献身)","url":"https://geugotjigeum.com/works/suspectx/","description":"용의자 X의 헌신의 실제 배경인 도쿄 고토구 신오하시·청주교·기요스미 정원을 지도에서 확인하세요. 히가시노 게이고 추모 특집.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Kiyosumi-1.JPG","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["mystery","thriller","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"용의자 X의 헌신 (容疑者Xの献身)","url":"https://geugotjigeum.com/works/suspectx/","description":"용의자 X의 헌신의 실제 배경인 도쿄 고토구 신오하시·청주교·기요스미 정원을 지도에서 확인하세요. 히가시노 게이고 추모 특집.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Kiyosumi-1.JPG","author":{"@type":"Person","name":"히가시노 게이고 장편소설"},"genre":["mystery","thriller","drama"],"locationCreated":[{"@type":"Place","name":"신오하시(新大橋)","geo":{"@type":"GeoCoordinates","latitude":35.6875,"longitude":139.7919}},{"@type":"Place","name":"청주교(清洲橋)","geo":{"@type":"GeoCoordinates","latitude":35.681,"longitude":139.793}},{"@type":"Place","name":"기요스미 정원(清澄庭園)","geo":{"@type":"GeoCoordinates","latitude":35.6807,"longitude":139.7965}},{"@type":"Place","name":"몬젠나카초(門前仲町)","geo":{"@type":"GeoCoordinates","latitude":35.672,"longitude":139.7935}},{"@type":"Place","name":"도미오카하치만구(富岡八幡宮)","geo":{"@type":"GeoCoordinates","latitude":35.6725,"longitude":139.7967}},{"@type":"Place","name":"니혼바시(日本橋)","geo":{"@type":"GeoCoordinates","latitude":35.6835,"longitude":139.7739}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"히가시노 게이고 추모 특집 — 용의자 X의 헌신 도쿄 실제 장소 지도","item":"https://geugotjigeum.com/works/suspectx/"}]}</script>
 </head>
 <body>
@@ -296,6 +308,7 @@
 <p>2026년 7월, 이 작품을 쓴 히가시노 게이고가 세상을 떠났다는 소식을 들었다. 106권을 남긴 사람인데, 그중에서도 유독 이 작품이 다시 회자되고 있는 이유를 알 것 같았다.</p>
 <p>신오하시부터 기요스미 정원까지 실제로 걸어보면, 이시가미가 매일 그 다리를 건너면서 무슨 생각을 하고 있었을지 조금은 알 것 같은 기분이 든다. 결말을 알고 걸으면 그 길이 완전히 다르게 느껴질 거다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=suspectx&amp;loc=sx_shinohashi">신오하시 → 이시가미가 매일 건너던 실존 다리</a><a class="revealChip" href="https://geugotjigeum.com/?work=suspectx&amp;loc=sx_kiyosumi_garden">기요스미 정원 → 이시가미가 근무하는 학교 바로 앞, 지금도 그대로</a><a class="revealChip" href="https://geugotjigeum.com/?work=suspectx&amp;loc=sx_kiyosu">청주교 → 이시가미의 산책길, 실제로 걸어볼 수 있음</a><span class="revealChip">나오키상 → 5수 끝에 받은 상(2006, 제134회)</span></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>

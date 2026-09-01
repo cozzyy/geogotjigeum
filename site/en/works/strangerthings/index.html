@@ -167,6 +167,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +228,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +240,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Stranger Things","url":"https://geugotjigeum.com/en/works/strangerthings/","description":"Hawkins isn't real, but the small Georgia town used to film it is. Explore the real Jackson, Georgia filming locations from Stranger Things on an interactive map.","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"Stranger Things","url":"https://geugotjigeum.com/en/works/strangerthings/","description":"Hawkins isn't real, but the small Georgia town used to film it is. Explore the real Jackson, Georgia filming locations from Stranger Things on an interactive map.","inLanguage":"en","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Stone_Mountain_Park,_DeKalb_County,_Georgia.jpg","genre":["scifi","horror","drama"],"locationCreated":[{"@type":"Place","name":"Jackson, Georgia","geo":{"@type":"GeoCoordinates","latitude":33.2946,"longitude":-83.9666}},{"@type":"Place","name":"Atlanta 권역","geo":{"@type":"GeoCoordinates","latitude":33.7756,"longitude":-84.3963}},{"@type":"Place","name":"Gwinnett Place Mall, Duluth, GA","geo":{"@type":"GeoCoordinates","latitude":33.9614,"longitude":-84.0223}},{"@type":"Place","name":"Patrick Henry High School","geo":{"@type":"GeoCoordinates","latitude":33.749,"longitude":-84.388}},{"@type":"Place","name":"Stone Mountain Park","geo":{"@type":"GeoCoordinates","latitude":33.805,"longitude":-84.145}},{"@type":"Place","name":"East Point","geo":{"@type":"GeoCoordinates","latitude":33.6795,"longitude":-84.4394}},{"@type":"Place","name":"Rome, Georgia","geo":{"@type":"GeoCoordinates","latitude":34.257,"longitude":-85.1647}},{"@type":"Place","name":"Creel House, Rome 인근","geo":{"@type":"GeoCoordinates","latitude":34.26,"longitude":-85.17}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"That Place, Now","item":"https://geugotjigeum.com/en/"},{"@type":"ListItem","position":2,"name":"Stranger Things — Filming Locations & Real Places","item":"https://geugotjigeum.com/en/works/strangerthings/"}]}</script>
 </head>
 <body>
@@ -294,6 +306,7 @@
 <p>Stone Mountain Park, where the woods and railway scenes were shot, is also apparently open to visitors.</p>
 <p>Watching the cast actually age alongside their characters, season after season, is another pleasure unique to this show. The little kids from Season 1 are heading into the final season with the faces of real high schoolers and young adults now.</p>
 <p>Hawkins isn't on any map, but thanks to this show, Georgia now means something completely different to me. If I ever get there, I want to start by stopping where Gwinnett Place Mall used to be Starcourt.</p></div>
+  
   
 
   <div class="adSlot">

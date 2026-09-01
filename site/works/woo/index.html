@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ko" href="https://geugotjigeum.com/works/woo/">
 <link rel="alternate" hreflang="en" href="https://geugotjigeum.com/en/works/woo/">
 <link rel="alternate" hreflang="ja" href="https://geugotjigeum.com/ja/works/woo/">
+<link rel="alternate" hreflang="zh-Hant" href="https://geugotjigeum.com/zh/works/woo/">
 <link rel="alternate" hreflang="x-default" href="https://geugotjigeum.com/works/woo/">
 
 <meta property="og:type" content="article">
@@ -167,6 +168,17 @@
   footer{max-width:760px;margin:0 auto;padding:24px 20px 32px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);}
   footer a{color:var(--sub);text-decoration:underline;margin-right:14px;}
   footer a:hover{color:var(--accent2);}
+  /* Issue #40 Phase E v1 — Work Detail Scene Card (기획 제공 SVG 일러스트 + 장면/관계/연결장소) */
+  .sceneGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:8px;}
+  .sceneCard{display:flex;flex-direction:column;background:var(--lz-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease;}
+  .sceneCard:hover{border-color:#cfc8b7;box-shadow:0 2px 8px rgba(27,30,36,.06);}
+  .sceneImgWrap{aspect-ratio:16/9;background:var(--lz-bg2);overflow:hidden;}
+  .sceneImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sceneCardBody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sceneBadge{display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;}
+  .sceneCardBody h3{font-size:15.5px;margin:2px 0 0;line-height:1.4;}
+  .sceneCardBody p{font-size:13.5px;color:#444;margin:0;flex:1;}
+  .sceneLinkLabel{font-size:13px;font-weight:600;color:var(--accent2);margin-top:2px;}
   .top5Grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
   .top5Card{background:var(--lz-card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;position:relative;box-shadow:0 1px 3px rgba(27,30,36,.04);}
   .top5Rank{position:absolute;top:-9px;left:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;}
@@ -217,6 +229,7 @@
     .locCard h3{font-size:15px;}
     .locCard p{font-size:13.5px;}
     .adSlot .adBox{min-height:80px;}
+    .sceneGrid{grid-template-columns:1fr;gap:12px;}
     .top5Grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;}
     .castRow{padding:9px 2px;gap:9px;}
     .castAvatar{width:32px;height:32px;font-size:13px;}
@@ -228,7 +241,7 @@
      crossorigin="anonymous"></script>
 
 <!-- 2026-08 SEO 1단계: 구조화 데이터 (CreativeWork + BreadcrumbList) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"이상한 변호사 우영우 (Extraordinary Attorney Woo)","url":"https://geugotjigeum.com/works/woo/","description":"이상한 변호사 우영우 촬영지 수원 행궁동, 카자구루마 등 실제 위치와 가는 법을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hwaseong Fortress Entrance.jpg","genre":["drama","comedy"],"actor":[{"@type":"Person","name":"우영우","sameAs":"https://en.wikipedia.org/wiki/Park_Eun-bin"},{"@type":"Person","name":"이준호","sameAs":"https://en.wikipedia.org/wiki/Kang_Tae-oh"},{"@type":"Person","name":"정명석","sameAs":"https://en.wikipedia.org/wiki/Kang_Ki-young"},{"@type":"Person","name":"동그라미","sameAs":"https://en.wikipedia.org/wiki/Joo_Hyun-young"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TVSeries","name":"이상한 변호사 우영우 (Extraordinary Attorney Woo)","url":"https://geugotjigeum.com/works/woo/","description":"이상한 변호사 우영우 촬영지 수원 행궁동, 카자구루마 등 실제 위치와 가는 법을 지도에서 확인하세요.","inLanguage":"ko","image":"https://commons.wikimedia.org/wiki/Special:FilePath/Hwaseong Fortress Entrance.jpg","genre":["drama","comedy"],"actor":[{"@type":"Person","name":"우영우","sameAs":"https://en.wikipedia.org/wiki/Park_Eun-bin"},{"@type":"Person","name":"이준호","sameAs":"https://en.wikipedia.org/wiki/Kang_Tae-oh"},{"@type":"Person","name":"정명석","sameAs":"https://en.wikipedia.org/wiki/Kang_Ki-young"},{"@type":"Person","name":"동그라미","sameAs":"https://en.wikipedia.org/wiki/Joo_Hyun-young"}],"locationCreated":[{"@type":"Place","name":"센터필드 웨스트 (서울 강남구 테헤란로 231)","geo":{"@type":"GeoCoordinates","latitude":37.5006,"longitude":127.0364}},{"@type":"Place","name":"카자구루마 (수원시 팔달구 신풍로23번길 61)","geo":{"@type":"GeoCoordinates","latitude":37.2836,"longitude":127.0187}},{"@type":"Place","name":"수원 행궁동 행리단길 (경기 수원시 팔달구)","geo":{"@type":"GeoCoordinates","latitude":37.2845,"longitude":127.0172}},{"@type":"Place","name":"충청북도청 본관·정원 (충북 청주시 상당구 상당로 82)","geo":{"@type":"GeoCoordinates","latitude":36.6359,"longitude":127.49}},{"@type":"Place","name":"충청북도의회 (충북도청 신관 내)","geo":{"@type":"GeoCoordinates","latitude":36.6365,"longitude":127.4904}},{"@type":"Place","name":"창원 동부마을 (경남 창원시 의창구 대산면 북부리)","geo":{"@type":"GeoCoordinates","latitude":35.315,"longitude":128.545}},{"@type":"Place","name":"청주 중앙공원·성안길 권역 (더 글로리 촬영지 연계)","geo":{"@type":"GeoCoordinates","latitude":36.6362,"longitude":127.4855}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"그곳, 지금","item":"https://geugotjigeum.com/"},{"@type":"ListItem","position":2,"name":"이상한 변호사 우영우 촬영지 수원 행궁동 실제 위치","item":"https://geugotjigeum.com/works/woo/"}]}</script>
 </head>
 <body>
@@ -253,7 +266,7 @@
     <a href="https://geugotjigeum.com/works/woo/" class="on" aria-current="page">KR</a>
     <a href="https://geugotjigeum.com/en/works/woo/">EN</a>
     <a href="https://geugotjigeum.com/ja/works/woo/">JP</a>
-    <span class="wsLangs-planned" aria-disabled="true" title="준비 중">繁中</span>
+    <a href="https://geugotjigeum.com/zh/works/woo/">繁中</a>
   </nav>
   <a class="backLink" href="https://geugotjigeum.com/">🏠 홈</a>
 </header>
@@ -294,6 +307,7 @@
 <p>영우가 자기 직업과 사랑, 그리고 독립을 두고 최종적으로 어떤 결론에 도달하는지는 여기서 다 말하지 않으려 한다. 다만 그 결론이 단순히 '해피엔딩'이라는 말 한마디로 정리되지는 않는다는 것 정도만 말해두고 싶다.</p>
 <p>강남 센터필드 로비를 지날 일이 있다면 회전문 한 번 통과해보고, 수원 행궁동에 가면 김밥집에 가서 김밥을 안 판다고 당황하지 말고 우동 한 그릇 먹으면서 '여기가 그 촬영지구나' 하고 느껴보는 것도 나쁘지 않을 것 같다.</p></div>
   <div class="hookReveals"><div class="revealsRow"><a class="revealChip" href="https://geugotjigeum.com/?work=woo&amp;loc=hanbadabuilding">회전문 왈츠 장면 → 강남 센터필드, 실제 로비</a><a class="revealChip" href="https://geugotjigeum.com/?work=woo&amp;loc=gimbapplace">우영우 김밥집 → 실제론 김밥 없는 일식당</a><a class="revealChip" href="https://geugotjigeum.com/?work=woo&amp;loc=chungbukprovoffice">8회 소덕동 관공서 → 충북도청, 근데 전체 배경 아님</a><a class="revealChip" href="https://geugotjigeum.com/?work=woo&amp;loc=changwondongbu">소덕동 마을 → 창원 동부마을, 고래 벽화 지금도 있음</a></div></div>
+  
 
   <div class="adSlot">
     <span class="adLabel">광고</span>
