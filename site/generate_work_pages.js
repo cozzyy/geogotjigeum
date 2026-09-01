@@ -437,17 +437,25 @@ function extractEnglishName(name){
   if (anywhere && /[A-Za-z]/.test(anywhere[1])) return anywhere[1].trim();
   return name;
 }
+// Issue #42 P0 fix (2026-09): 이 두 함수가 l.name/l.desc를 참조하고 있었으나, 실제 장소
+// 데이터 스키마(contentmap_*_locations.js 전체, contentmap_app.js의 tField()/live 앱과 동일)는
+// modernName/description/description_en/description_ja를 쓴다. l.name/l.desc는 어느 위치
+//데이터에도 존재한 적 없는 필드 — extractEnglishName() 바로 위 주석에 이미 "modernName_en
+// 필드가 없다"고 명시돼 있어 원래 의도된 필드가 modernName이었음이 분명하다. 이 오타로 인해
+// TOP5 카드/전체 장소 목록 카드의 제목·설명이 전부 공란으로 렌더링되는 P0 회귀가 발생했다
+// (Issue #42). 아래는 필드명만 올바르게 고친 것 — fallback 순서·extractEnglishName 로직은
+// 기존 그대로 유지한다.
 function locName(l, locale){
-  if (locale === 'ja' && l.name_ja) return l.name_ja;
-  if (locale === 'zh' && l.name_zh) return l.name_zh;
-  if (locale === 'en' || locale === 'zh') return l.name_en || extractEnglishName(l.name);
-  return l.name;
+  if (locale === 'ja' && l.modernName_ja) return l.modernName_ja;
+  if (locale === 'zh' && l.modernName_zh) return l.modernName_zh;
+  if (locale === 'en' || locale === 'zh') return l.modernName_en || extractEnglishName(l.modernName);
+  return l.modernName;
 }
 function locDesc(l, locale){
-  if (locale === 'ja') return l.desc_ja || l.desc_en || l.desc;
-  if (locale === 'zh') return l.desc_zh || l.desc_en || l.desc;
-  if (locale === 'en') return l.desc_en || l.desc;
-  return l.desc;
+  if (locale === 'ja') return l.description_ja || l.description_en || l.description;
+  if (locale === 'zh') return l.description_zh || l.description_en || l.description;
+  if (locale === 'en') return l.description_en || l.description;
+  return l.description;
 }
 
 /* ---------- 인물 아바타 (앱과 동일 규칙) ---------- */
@@ -767,7 +775,7 @@ ${top5.map((l, i) => {
     const pYears = p => (locale === 'ja' && p.years_ja) ? p.years_ja : ((locale === 'zh' && p.years_zh) ? p.years_zh : p.years);
     const pRole = p => (locale === 'ja' && p.role_ja) ? p.role_ja : ((locale === 'zh' && p.role_zh) ? p.role_zh : p.role);
     castHtml = castList.length ? `
-  <h2>${esc(L.ui.castHeading(w.peopleCount, castList.length, hasCast))}</h2>
+  <h2>${esc(L.ui.castHeading((w.people || []).length, castList.length, hasCast))}</h2>
   <div class="castGrid">
 ${castList.map(p => {
       const avatarColor = p.symbolColor || factionColorStatic(p.faction);
