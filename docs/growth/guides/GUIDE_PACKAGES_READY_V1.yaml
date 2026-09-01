@@ -1,0 +1,257 @@
+version: 1
+status: planner_ready_for_development_after_issue_40
+updated_at: 2026-09-01
+planner_contract:
+  render_only_from_this_file: true
+  developer_must_not_invent_stops: true
+  developer_must_not_source_images: true
+  no_realtime_routing_api: true
+  no_private_residence_promotion: true
+
+packages:
+  - guide_id: breakingbad-albuquerque-v1
+    status: PLANNER_READY
+    primary_locale: ko
+    work_id: breakingbad
+    guide_type: LINEAR_ROUTE
+    slug_candidate: /guides/breaking-bad-albuquerque/
+    seo:
+      title: "브레이킹 배드 앨버커키 촬영지 하루 코스 | 그곳지금"
+      meta_description: "Twisters, Java Joe's, A1A 세차장을 잇는 브레이킹 배드 앨버커키 셀프 가이드. 개인 주택 방문 없이 핵심 촬영지 3곳을 따라간다."
+      target_queries: ["브레이킹 배드 앨버커키 촬영지", "breaking bad filming locations albuquerque", "breaking bad self guided tour"]
+    hero:
+      eyebrow: "Breaking Bad · Albuquerque"
+      heading: "브레이킹 배드, 사유지 말고 실제 들어가 볼 수 있는 3곳"
+      summary: "월터의 집은 뺐다. 지금도 운영되는 식당·카페·세차장을 남쪽에서 북동쪽으로 이어 보는 셀프 가이드다."
+      time_label: "하루 여유 있게"
+      transport_label: "자동차 권장 · 당일 교통 확인"
+      hero_asset: /assets/scenes/breakingbad/breakingbad-scene-01.svg
+    before_you_go:
+      - "실시간 최적 경로가 아니다. 출발 전 지도에서 당일 교통과 영업 상태를 확인한다."
+      - "개인 주택은 v1 핵심 Stop에서 제외한다."
+      - "영업 중인 업장의 일반 고객과 직원 이용을 방해하지 않는다."
+    segments:
+      - segment_id: abq-core
+        title: "앨버커키 핵심 촬영지 3곳"
+        summary: "South Valley → Downtown → Snow Heights 흐름으로 이동한다."
+        stops:
+          - order: 1
+            stop_id: bb-lospollos
+            canonical_location_id: lospollos
+            canonical_source: site/contentmap_breakingbad_locations.js
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: breakingbad-scene-01
+            asset_path: /assets/scenes/breakingbad/breakingbad-scene-01.svg
+            heading: "Los Pollos Hermanos, 현실에서는 Twisters"
+            body: "구스 프링의 치킨집에 쓰인 실제 Twisters 지점. 세트가 아니라 지금도 운영되는 식당이다."
+            why_this_stop: "작품 속 장소를 가장 쉽게 알아볼 수 있고 개인 주택이 아니라는 점에서 출발점으로 좋다."
+            visit_note: "방문 직전 공식 매장 정보에서 운영 여부를 확인하고 일반 고객처럼 이용한다."
+            next_hint: "다음은 Downtown의 Java Joe's."
+            current_status_source: "https://www.mytwisters.com/locations/"
+            verified_at: 2026-09-01
+          - order: 2
+            stop_id: bb-tuco
+            canonical_location_id: tuco_office
+            canonical_source: site/contentmap_breakingbad_locations.js
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: breakingbad-scene-03
+            asset_path: /assets/scenes/breakingbad/breakingbad-scene-03.svg
+            heading: "투코의 본거지, 지금은 Java Joe's"
+            body: "투코의 본거지로 등장한 건물은 현재 실제 카페로 운영된다. 화면의 긴장감과 평범한 현재가 강하게 대비된다."
+            why_this_stop: "강렬한 장면의 기억과 동네 카페의 현재 모습이 겹치는 게 재미다."
+            visit_note: "영업시간은 변동될 수 있으므로 방문 당일 확인한다."
+            next_hint: "마지막은 Snow Heights의 A1A 세차장 촬영지."
+            current_status_source: "https://joe.coffee/locations/nm/albuquerque/java-joe-s-albuquerque/"
+            verified_at: 2026-09-01
+          - order: 3
+            stop_id: bb-carwash
+            canonical_location_id: carwash
+            canonical_source: site/contentmap_breakingbad_locations.js
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: breakingbad-scene-02
+            asset_path: /assets/scenes/breakingbad/breakingbad-scene-02.svg
+            heading: "A1A 세차장, 지금도 실제 세차장"
+            body: "월터의 직장과 돈세탁 사업장으로 반복 등장한 장소. 현재도 실제 세차장으로 운영된다."
+            why_this_stop: "범죄 드라마의 상징적인 공간이 지금도 평범한 생활시설이라는 점이 작품답다."
+            visit_note: "시설 이용객과 직원 동선을 방해하지 않는다."
+            next_hint: "코스 종료. 개인 주택을 추가 방문지로 자동 추천하지 않는다."
+            current_status_source: "https://albuquerque.com/explore-albuquerque-the-breaking-bad-way/"
+            verified_at: 2026-09-01
+    related:
+      work_id: breakingbad
+      suggested_links: [WORK, PLACE, MAP]
+
+  - guide_id: poksshak-jeju-v1
+    status: PLANNER_READY
+    primary_locale: ko
+    work_id: poksshak
+    guide_type: LINEAR_ROUTE
+    slug_candidate: /guides/poksshak-jeju/
+    seo:
+      title: "폭싹 속았수다 제주 촬영지 하루 코스 | 그곳지금"
+      meta_description: "성산일출봉에서 김녕을 거쳐 협재까지, 폭싹 속았수다의 제주 촬영지를 동쪽에서 서쪽으로 따라가는 팬 여행 코스."
+      target_queries: ["폭싹 속았수다 제주 촬영지", "폭싹 속았수다 촬영지 코스", "제주 드라마 촬영지 하루 코스"]
+    hero:
+      eyebrow: "폭싹 속았수다 · Jeju"
+      heading: "애순과 관식의 제주를 동쪽에서 서쪽까지"
+      summary: "성산에서 시작해 김녕을 지나 협재로 끝나는 제주 동→서 팬 코스. 하루 종일 천천히 움직일 사람에게 맞다."
+      time_label: "하루 · 동→서 장거리 이동"
+      transport_label: "자동차 권장 · 빠듯하면 협재 생략"
+      hero_asset: /assets/scenes/poksshak/poksshak-scene-01.svg
+    before_you_go:
+      - "짧은 반나절 코스가 아니다. 일정이 빠듯하면 성산+김녕만 묶고 협재는 별도 일정으로 둔다."
+      - "성산일출봉 관람정보 등 변동 정보는 방문 당일 공식 관광정보에서 확인한다."
+      - "바다·어촌의 주민 생활과 자연환경을 방해하지 않는다."
+    segments:
+      - segment_id: jeju-east-to-west
+        title: "성산 → 김녕 → 협재"
+        summary: "최단거리보다 작품의 서로 다른 제주 풍경을 동쪽에서 서쪽으로 연결하는 데 목적이 있다."
+        stops:
+          - order: 1
+            stop_id: pok-seongsan
+            canonical_location_id: seongsan_ilchulbong
+            canonical_source: site/contentmap_data.js#POKSSAK_LOCATIONS
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: poksshak-scene-01
+            asset_path: /assets/scenes/poksshak/poksshak-scene-01.svg
+            heading: "성산일출봉, 작품과 제주 풍경이 한 번에 겹치는 곳"
+            body: "드라마의 제주 삶과 감정을 연결하는 대표 촬영 축. 작품을 몰라도 풍경 자체가 강한 장소다."
+            why_this_stop: "팬과 일반 여행자 모두에게 시작점 역할을 할 수 있다."
+            visit_note: "현재 관람정보는 방문 당일 공식 관광정보에서 확인한다."
+            next_hint: "북서 방향으로 김녕 바다로 이동."
+            current_status_source: "https://www.visitjeju.net/"
+            verified_at: 2026-09-01
+          - order: 2
+            stop_id: pok-gimnyeong
+            canonical_location_id: gimnyeong_beach
+            canonical_source: site/contentmap_data.js#POKSSAK_LOCATIONS
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: poksshak-scene-02
+            asset_path: /assets/scenes/poksshak/poksshak-scene-02.svg
+            heading: "김녕 바다, 해녀의 시간까지 같이 보는 촬영지"
+            body: "애순과 관식의 어린 시절과 어머니 세대 해녀의 삶을 떠올리게 하는 바다."
+            why_this_stop: "제주가 단순 배경이 아니라 세대의 생활 공간이라는 작품의 성격을 느끼기 좋다."
+            visit_note: "주민 생활을 존중하고 사유 공간이나 작업구역에 들어가지 않는다."
+            next_hint: "시간이 충분하면 서쪽 협재까지 연장. 빠듯하면 여기서 East Core 종료."
+            current_status_source: "https://www.visitjeju.net/"
+            verified_at: 2026-09-01
+          - order: 3
+            stop_id: pok-hyeopjae
+            canonical_location_id: hyeopjae_beach
+            canonical_source: site/contentmap_data.js#POKSSAK_LOCATIONS
+            relationship: FILMED
+            context_type: SCREEN_SCENE
+            link_mode: MAP_OR_PLACE
+            role: OPTIONAL_EXTENSION
+            scene_id: poksshak-scene-03
+            asset_path: /assets/scenes/poksshak/poksshak-scene-03.svg
+            heading: "협재, 하루의 마지막을 다정한 바다로"
+            body: "애순과 관식의 따뜻한 기억과 연결되는 서쪽 바다. 김녕에서 거리가 있어 optional extension으로 둔다."
+            why_this_stop: "작품의 거친 시간 뒤 잠깐 숨을 돌리는 감정과 밝은 바다가 잘 맞는다."
+            visit_note: "당일 교통·일몰·체력에 따라 생략할 수 있다."
+            next_hint: "Guide 종료. 숙소 위치에 따라 역순 진행도 허용한다."
+            current_status_source: "https://www.visitjeju.net/"
+            verified_at: 2026-09-01
+    related:
+      work_id: poksshak
+      suggested_links: [WORK, PLACE, MAP]
+
+  - guide_id: byakuya-pilgrimage-v1
+    status: PLANNER_READY
+    primary_locale: ja
+    work_id: byakuya
+    guide_type: LAYERED_PILGRIMAGE
+    slug_candidate: /ja/guides/byakuya-pilgrimage/
+    seo:
+      title: "『白夜行』聖地巡礼ガイド｜布施の物語舞台と2006年TBS版ロケ地"
+      meta_description: "『白夜行』の聖地巡礼を、原作の物語舞台・大阪の布施と、2006年TBSドラマ版の実際のロケ地・水海道駅に分けて案内。『舞台』と『撮影地』を混同しないガイド。"
+      target_queries: ["白夜行 聖地巡礼", "白夜行 ロケ地", "白夜行 水海道駅"]
+    hero:
+      eyebrow: "白夜行 · 聖地巡礼"
+      heading: "原作の『舞台』とドラマの『ロケ地』は、別々に歩こう"
+      summary: "布施は原作の物語を感じる大阪の舞台。水海道駅は2006年TBS版の撮影地。遠く離れた二つを無理に1日コースにせず、2つの巡礼レイヤーとして分ける。"
+      time_label: "大阪・布施は半日／茨城ロケ地は別日程"
+      transport_label: "2地域を同日に移動するコースではない"
+      hero_asset: /assets/scenes/byakuya/byakuya-scene-01.svg
+    before_you_go:
+      - "布施駅・布施本通商店街は原作の STORY SETTING。ドラマ撮影地とは表記しない。"
+      - "水海道駅は2006年TBS版の ADAPTATION_FILMING。Issue #40で planner-approved canonical row が追加された後に使用する。"
+      - "北水海道駅も公式資料で撮影利用が確認できるが、v1では新しい canonical stop を増やさず補足情報に留める。"
+    segments:
+      - segment_id: osaka-story-setting
+        title: "A. 原作の舞台を歩く — 大阪・布施"
+        summary: "撮影地探しではなく、小説の生活圏を歩く半日パート。"
+        stops:
+          - order: 1
+            stop_id: bya-fuse-station
+            canonical_location_id: by_fuse_station
+            canonical_source: site/contentmap_byakuya_locations.js
+            relationship: STORY-RELATED
+            context_type: STORY_SETTING
+            link_mode: MAP_STATE
+            role: CORE
+            scene_id: byakuya-scene-01
+            asset_path: /assets/scenes/byakuya/byakuya-scene-01.svg
+            heading: "布施駅 — 物語の空気に入る入口"
+            body: "『白夜行』の大阪・布施という実在の生活圏を理解する出発点。ここをドラマの撮影地とは呼ばない。"
+            why_this_stop: "作品の長い時間を、実際の街のスケールに重ねて想像できる。"
+            visit_note: "通常の鉄道駅。通行や乗降の妨げにならないようにする。"
+            next_hint: "駅前から布施本通商店街へ徒歩でつなぐ。"
+            current_status_source: "https://www.kintetsu.co.jp/station/"
+            verified_at: 2026-09-01
+          - order: 2
+            stop_id: bya-fuse-hondori
+            canonical_location_id: by_fuse_honodori
+            canonical_source: site/contentmap_byakuya_locations.js
+            relationship: STORY-RELATED
+            context_type: STORY_SETTING
+            link_mode: MAP_STATE
+            role: CORE
+            scene_id: byakuya-scene-02
+            asset_path: /assets/scenes/byakuya/byakuya-scene-02.svg
+            heading: "布施本通商店街 — 『白夜行』の生活感を歩く"
+            body: "特定の映像シーンを探す場所ではなく、1970〜90年代の大阪の生活感を想像するための実在空間として紹介する。"
+            why_this_stop: "普通の商店街だからこそ、作品の空気を日常の街に重ねられる。"
+            visit_note: "営業中の店舗や地域住民の通行を妨げない。"
+            next_hint: "大阪編はここで終了。茨城のロケ地編は別日程として扱う。"
+            current_status_source: null
+            verified_at: 2026-09-01
+      - segment_id: ibaraki-adaptation-filming
+        title: "B. 2006年TBS版のロケ地 — 茨城・水海道"
+        summary: "原作舞台とは別の旅。公式フィルムコミッションが撮影利用を確認した駅を代表ノードにする。"
+        stops:
+          - order: 1
+            stop_id: bya-mitsukaido
+            canonical_location_id: by_mitsukaido_station
+            canonical_source: site/contentmap_byakuya_locations.js
+            relationship: FILMED
+            context_type: ADAPTATION_FILMING
+            link_mode: MAP_OR_PLACE
+            role: CORE
+            scene_id: byakuya-scene-03
+            asset_path: /assets/scenes/byakuya/byakuya-scene-03.svg
+            heading: "水海道駅 — 2006年TBS版はここで撮った"
+            body: "原作の大阪・布施とは別に、2006年TBSドラマ版では茨城県常総市の水海道駅周辺が撮影に使われた。"
+            why_this_stop: "『原作の舞台』と『映像版のロケ地』を正確に分けて楽しめる代表Stop。"
+            visit_note: "通常の鉄道駅。利用者や鉄道運行を妨げない。"
+            next_hint: "北水海道駅も撮影利用が確認されるが、v1では補足のみ。canonical stopは追加しない。"
+            current_status_source: "https://www.kantetsu.co.jp/train/mitsukaido"
+            verified_at: 2026-09-01
+    related:
+      work_id: byakuya
+      suggested_links: [WORK, MAP]
