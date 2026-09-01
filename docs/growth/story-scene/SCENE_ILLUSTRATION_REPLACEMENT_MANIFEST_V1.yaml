@@ -1,0 +1,136 @@
+version: 1
+status: PLANNER_ASSET_READY_15_OF_15
+updated_at: '2026-09-01'
+purpose: Replace all 15 Phase E placeholder SVG scene illustrations with approved 1안 raster illustrations.
+planner_contract:
+  replace_all_15: true
+  preserve_existing_scene_copy: true
+  preserve_existing_relationship: true
+  preserve_existing_source_location_id: true
+  developer_must_not_source_images: true
+  developer_must_not_reinterpret_scene_mapping: true
+  image_source_url: internal
+  license: original
+  format: webp
+  render_aspect_ratio: '16:9'
+assets:
+- scene_id: poksshak-scene-01
+  work_id: poksshak
+  source_location_id: seongsan_ilchulbong
+  image_path: /assets/scenes/poksshak/poksshak-scene-01.webp
+  alt_ko: 성산일출봉과 제주 바다를 바라보는 두 사람의 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: poksshak-scene-02
+  work_id: poksshak
+  source_location_id: gimnyeong_beach
+  image_path: /assets/scenes/poksshak/poksshak-scene-02.webp
+  alt_ko: 김녕 바다와 해녀의 시간을 떠올리게 하는 제주 해안 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: poksshak-scene-03
+  work_id: poksshak
+  source_location_id: hyeopjae_beach
+  image_path: /assets/scenes/poksshak/poksshak-scene-03.webp
+  alt_ko: 노을 진 협재 해변을 함께 걷는 두 사람의 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: odyssey-scene-01
+  work_id: odyssey
+  source_location_id: nestors_cave
+  image_path: /assets/scenes/odyssey/odyssey-scene-01.webp
+  alt_ko: 네스토르 동굴 입구에서 메세니아 해안을 바라보는 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: odyssey-scene-02
+  work_id: odyssey
+  source_location_id: voidokilia_beach
+  image_path: /assets/scenes/odyssey/odyssey-scene-02.webp
+  alt_ko: 초승달 모양의 보이도킬리아 해변을 내려다보는 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: odyssey-scene-03
+  work_id: odyssey
+  source_location_id: favignana_castle
+  image_path: /assets/scenes/odyssey/odyssey-scene-03.webp
+  alt_ko: 파비냐나 섬의 산타 카테리나 성채와 바다를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: breakingbad-scene-01
+  work_id: breakingbad
+  source_location_id: lospollos
+  image_path: /assets/scenes/breakingbad/breakingbad-scene-01.webp
+  alt_ko: Los Pollos Hermanos 촬영지로 쓰인 앨버커키 Twisters 외관 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: breakingbad-scene-02
+  work_id: breakingbad
+  source_location_id: carwash
+  image_path: /assets/scenes/breakingbad/breakingbad-scene-02.webp
+  alt_ko: 브레이킹 배드의 A1A 세차장 촬영지를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: breakingbad-scene-03
+  work_id: breakingbad
+  source_location_id: tuco_office
+  image_path: /assets/scenes/breakingbad/breakingbad-scene-03.webp
+  alt_ko: 투코의 사무실 촬영지로 쓰인 Java Joe's 분위기를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: byakuya-scene-01
+  work_id: byakuya
+  source_location_id: by_fuse_station
+  image_path: /assets/scenes/byakuya/byakuya-scene-01.webp
+  alt_ko: 오사카 후세역과 철길 주변의 저녁 분위기를 표현한 백야행 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: byakuya-scene-02
+  work_id: byakuya
+  source_location_id: by_fuse_honodori
+  image_path: /assets/scenes/byakuya/byakuya-scene-02.webp
+  alt_ko: 후세 혼도리 상점가의 밤거리 분위기를 표현한 백야행 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: byakuya-scene-03
+  work_id: byakuya
+  source_location_id: by_mitsukaido_station
+  image_path: /assets/scenes/byakuya/byakuya-scene-03.webp
+  alt_ko: 비 내리는 미쓰카이도역 플랫폼을 표현한 백야행 촬영지 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: strangerthings-scene-01
+  work_id: strangerthings
+  source_location_id: creelhouse
+  image_path: /assets/scenes/strangerthings/strangerthings-scene-01.webp
+  alt_ko: 붉은 하늘 아래 크릴 하우스를 향하는 자전거 무리를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: strangerthings-scene-02
+  work_id: strangerthings
+  source_location_id: hawkinslab
+  image_path: /assets/scenes/strangerthings/strangerthings-scene-02.webp
+  alt_ko: 호킨스 연구소의 어두운 비밀 실험실 분위기를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
+- scene_id: strangerthings-scene-03
+  work_id: strangerthings
+  source_location_id: gwinnettmall
+  image_path: /assets/scenes/strangerthings/strangerthings-scene-03.webp
+  alt_ko: 스타코트 몰로 등장한 쇼핑몰의 네온빛 내부를 표현한 장면 일러스트
+  image_source_url: internal
+  license: original
+  attribution: 그곳지금 기획
