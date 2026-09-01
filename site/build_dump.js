@@ -126,6 +126,44 @@ if (fs.existsSync(READY_MANIFEST_PATH)) {
   console.warn('[build_dump] SCENE_PACKAGES_READY_V1.yaml이 없어 scene package 병합을 건너뜁니다 (Issue #40 미착수 상태).');
 }
 
+// ---------- 1-9. Scene Illustration Replacement manifest 병합 (Phase E Illustration Refresh v1) ----------
+// 입력: docs/growth/story-scene/SCENE_ILLUSTRATION_REPLACEMENT_MANIFEST_V1.yaml
+// 이 매니페스트는 scene_id별 새 WebP image_path와 alt_ko만 소유한다. scene_id/source_location_id/
+// relationship/copy 등 기존 메타데이터는 SCENE_PACKAGES_READY_V1.yaml이 계속 canonical이므로,
+// 여기서는 image_path/alt_ko만 override하고 나머지 필드는 절대 건드리지 않는다 (mapping guardrail).
+const ILLUSTRATION_MANIFEST_PATH = path.join(SITE_DIR, '..', 'docs', 'growth', 'story-scene', 'SCENE_ILLUSTRATION_REPLACEMENT_MANIFEST_V1.yaml');
+if (fs.existsSync(ILLUSTRATION_MANIFEST_PATH)) {
+  const rawIllust = execFileSync('python3', ['-c', PY_YAML_TO_JSON, ILLUSTRATION_MANIFEST_PATH], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
+  const illustManifest = JSON.parse(rawIllust);
+  if (!illustManifest.planner_contract || illustManifest.planner_contract.replace_all_15 !== true) {
+    throw new Error('[build_dump] SCENE_ILLUSTRATION_REPLACEMENT_MANIFEST_V1.yaml의 planner_contract.replace_all_15가 true가 아닙니다 — 구현 입력 파일이 맞는지 확인 필요.');
+  }
+  const illustAssets = illustManifest.assets || [];
+  const byScene = {};
+  illustAssets.forEach(a => { byScene[a.scene_id] = a; });
+  let illustApplied = 0, illustMismatch = 0;
+  WORKS.forEach(w => {
+    (w.scenePackages || []).forEach(pkg => {
+      const ill = byScene[pkg.scene_id];
+      if (!ill) return;
+      if (ill.work_id !== pkg.work_id || ill.source_location_id !== pkg.source_location_id) {
+        console.warn(`[build_dump] illustration replacement ${pkg.scene_id}: work_id/source_location_id가 기존 scene package와 일치하지 않아 건너뜁니다 (mapping guardrail).`);
+        illustMismatch++;
+        return;
+      }
+      pkg.image_path = ill.image_path;
+      pkg.alt_ko = ill.alt_ko;
+      illustApplied++;
+    });
+  });
+  console.log(`[build_dump] scene illustration replacement: ${illustApplied}/${illustAssets.length} applied, ${illustMismatch} mismatched`);
+  if (illustApplied !== illustAssets.length) {
+    throw new Error(`[build_dump] illustration replacement ${illustAssets.length - illustApplied}건이 적용되지 않았습니다 — 15/15 replace_all_15 조건 미충족.`);
+  }
+} else {
+  console.warn('[build_dump] SCENE_ILLUSTRATION_REPLACEMENT_MANIFEST_V1.yaml이 없어 illustration 교체를 건너뜁니다.');
+}
+
 const worksJson = JSON.stringify(WORKS);
 fs.writeFileSync(path.join(OUT_DIR, 'works_dump.json'), worksJson, 'utf8');
 console.log(`[build_dump] wrote works_dump.json (${WORKS.length} works, ${(worksJson.length/1024).toFixed(0)} KB)`);
