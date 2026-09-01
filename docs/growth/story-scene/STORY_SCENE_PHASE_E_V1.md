@@ -1,41 +1,58 @@
 # 그곳지금 Phase E — Story & Scene Pilot v1
 
-Date: 2026-08-31
-Status: **PLANNED / DEVELOPER HANDOFF PREPARED / DO NOT START UNTIL RELEASED**
-Parent: Issue #31 Content Growth Engine v1
+Date: 2026-09-01
+Status: **PLANNER GATE CLEARED / READY FOR DEVELOPMENT WHEN SEQUENCE RELEASES IT**
+Parent: Issue #31 / Implementation Issue #40
 
 ## 0. 목적
 
-Phase E의 목표는 그곳지금을 단순한 `작품 → 촬영지 목록`에서 한 단계 확장해,
+Phase E는 그곳지금을 단순한 `작품 → 촬영지 목록`에서 한 단계 확장해,
 
-`작품 → 기억나는 장면 → 실제 장소 → 왜 가볼 만한지 → 지도/다음 장소`
+`작품 → 기억나는 장면/이야기 → 실제 location → 왜 가볼 만한지 → Place 또는 Map`
 
-로 이어지는 미디어 경험으로 만드는 것이다.
+으로 이어지는 미디어 경험을 만든다.
 
-이번 파일럿에서는 새로운 대형 기능을 만들지 않는다. 기존 Work/Place 페이지에 다음 두 블록만 추가한다.
+v1은 새 Scene URL이나 대형 기능을 만들지 않는다. 기존 Work/Place/Map 안에 다음을 추가한다.
 
-1. **Scene Context v1 — 이곳에서 나온 장면**
-2. **Why This Place? — 여기, 왜 가볼 만해?**
+1. **Scene Context v1**
+2. **Why This Place?**
 
-핵심 원칙은 **콘텐츠/이미지 선택은 기획자가 책임지고, 개발자는 GitHub에 준비된 scene package를 정확히 렌더링하는 역할만 맡는 것**이다.
+## 1. 2026-09-01 Planner Gate 완료
 
----
+기획 측 준비는 완료됐다.
 
-## 1. 실행 시점
+- 5작품 × 3 package = **15/15 PLANNER_READY**
+- 15/15 original SVG editorial image asset repo 반영
+- 15/15 image path / alt / source / license / attribution 완료
+- canonical source location mapping 재검증 완료
+- STORY SETTING과 FILMED 분류 재검증
+- 개발자가 새로 판단해야 할 Place/이미지 없음
+- Byakuyako 2006 TBS 촬영지 `by_mitsukaido_station`은 exact planner-approved source action까지 제공
 
-Phase E 코딩은 아래가 모두 충족된 뒤 시작한다.
+최종 구현 기준은 반드시 아래 순서로 읽는다.
 
-1. Stage C Existing Winner Growth Sprint 완료
-2. Issue #37 `繁中 Pilot v1` 완료 또는 PM/사용자가 Phase E 선행을 명시적으로 승인
-3. 최신 `main` 기준 shared generator / Work / Place 충돌 확인
-4. 기획자가 아래 5개 작품의 **15개 Scene Package**를 GitHub에 모두 추가
-5. 이미지 source/license/alt/Place 연결 검수 완료
+1. `docs/growth/story-scene/SCENE_PACKAGES_READY_V1.yaml`
+2. `docs/growth/story-scene/SCENE_PLACE_MAPPING_V1.md`
+3. `docs/growth/story-scene/SCENE_PACKAGE_SCHEMA_V1.md`
+4. 본 문서
+5. `docs/growth/story-scene/STORY_SCENE_CONTENT_GUIDE_V1.md`
+6. `docs/growth/story-scene/SCENE_PACKAGE_RESEARCH_15_V1.md` — 근거 참고용
 
-기획 패키지가 완성되기 전에는 개발자가 이미지나 장면을 임의로 찾거나 생성하지 않는다.
+`SCENE_PACKAGES_DRAFT_V1.yaml`은 구현 입력이 아니다.
 
----
+## 2. 실행 순서
 
-## 2. 파일럿 대상 5작품
+현재 전체 Growth 순서는:
+
+1. Stage C closeout
+2. Issue #37 `繁中 Pilot v1`
+3. Issue #40 Phase E
+
+이다. PM/사용자가 명시적으로 병렬화하거나 순서를 바꾸지 않는 한 이 순서를 따른다.
+
+Phase E 자체는 더 이상 Planner Prep 때문에 막혀 있지 않다.
+
+## 3. 파일럿 대상
 
 - `odyssey`
 - `breakingbad`
@@ -43,230 +60,195 @@ Phase E 코딩은 아래가 모두 충족된 뒤 시작한다.
 - `strangerthings`
 - `poksshak`
 
-작품당 대표 장면 3개, 총 **15개 Scene Package**를 만든다.
+작품당 3개, 총 15 Scene/Story Package.
 
-선정 이유:
-- GSC 또는 기존 성장 트랙에서 중요도가 높은 작품
-- 실제 장소/장면 연결을 설명하기 좋음
-- 한국/일본/글로벌 작품을 섞어 UI/콘텐츠 범용성 검증 가능
-
----
-
-## 3. Scene Context v1
+## 4. Scene Context v1
 
 ### Work Detail
-Work 페이지에 `장면으로 다시 보기` 또는 이에 준하는 섹션을 추가한다.
+Hero/intro 이후, 전체 장소 목록보다 앞에 `장면으로 다시 보기` 또는 context에 맞는 섹션을 둔다.
 
-각 작품당 3개의 Scene Card를 보여준다.
-
-카드 최소 정보:
-- 대표 장면 이미지 1장
-- 짧은 장면 제목
-- 1~3문장의 장면 설명
-- 관계 배지: `FILMED` 또는 `STORY-RELATED` 등
-- 연결 Place 이름
-- Place Detail로 가는 crawlable HTML 링크
-
-권장 위치:
-- Hero/intro 이후
-- 전체 장소 목록보다 앞
+카드 정보:
+- 기획 제공 이미지
+- 짧은 장면/이야기 제목
+- 1~3문장 설명
+- 관계 배지
+- 연결 location 이름
+- Place 또는 Map으로 가는 crawlable `<a href>`
 
 ### Place Detail
-연결된 핵심 Place에는 다음 블록을 추가한다.
+실제 generated Place page가 존재하는 linked location에만 다음을 추가한다.
 
-**이곳에서 나온 장면**
-- 대표 이미지
-- 장면 설명
-- 작품명/관계 배지
-- Work Detail 링크
+- `SCREEN_SCENE`: `이곳에서 나온 장면`
+- `ADAPTATION_FILMING`: `영상판은 여기서 찍혔다`
+- `여기, 왜 가볼 만해?`
 
-권장 위치:
-- 장소 정체성 + 지도 CTA 이후
-- 긴 여행정보/팁보다 앞
+`STORY_SETTING`은 Phase E 때문에 촬영지 Place page를 억지로 만들지 않는다.
 
-### Phase E v1에서 하지 않는 것
-- Scene 전용 URL 생성
+## 5. Place와 Map 링크 규칙
+
+canonical location과 SEO Place page는 다른 개념이다.
+
+상세 기준:
+`docs/growth/story-scene/SCENE_PLACE_MAPPING_V1.md`
+
+### `MAP_OR_PLACE`
+canonical source location이 있는 실제 촬영/체험 장소.
+- Place page가 있으면 Place로 연결 가능
+- 없으면 기존 Map state `?work=<work>&loc=<id>`로 연결
+- Phase E만을 위해 tier/URL 변경 금지
+
+### `MAP_STATE`
+STORY SETTING.
+- Map으로만 연결
+- 촬영지 Place SEO page로 승격 금지
+
+### `ADD_LOCATION_THEN_MAP_OR_PLACE`
+planner가 검증한 실제 촬영지지만 canonical source row만 없는 경우.
+- final manifest의 exact `developer_source_action`을 적용
+- 그 다음 기존 generator 정책 사용
+
+## 6. Byakuyako 특별 규칙
+
+백야행은 세 종류를 섞지 않는다.
+
+- 원작 실제 무대 → `STORY_SETTING / STORY-RELATED`
+- 영상판 실제 촬영 → `ADAPTATION_FILMING / FILMED`
+- fictional/theme/non-place → Scene package 대상 아님
+
+v1의 원작 무대:
+- `by_fuse_station`
+- `by_fuse_honodori`
+
+영상판 대표 촬영지:
+- `by_mitsukaido_station`
+
+`by_mitsukaido_station`의 좌표/주소/source patch는 final manifest에 확정돼 있다.
+
+## 7. 기획자 / 개발자 역할
+
+### 기획자 — 완료
+- 대표 scene/story 선정
+- 사실 검증
+- source location 확정
+- relationship/context 확정
+- 이미지 제작
+- source/license/attribution
+- alt
+- Scene copy
+- Why This Place copy
+
+### 개발자
+- final manifest를 현재 generator/source flow에 통합
+- Work Scene UI
+- 유효한 Place Detail의 Scene/Why UI
+- `link_mode` 해석
+- SVG responsive rendering
+- accessibility/performance
+- mobile QA
+- SEO/i18n/GA4 regression
+
+### 개발자가 하지 않는 것
+- 이미지 검색/대체
+- 장면 재선정
+- Place ID 추정
+- STORY SETTING을 FILMED로 변경
+- Scene URL 생성
+- 빈칸을 임의 콘텐츠로 채움
+
+## 8. 이미지 정책
+
+Phase E v1 asset은 이미 제공돼 있다.
+
+경로:
+`site/assets/scenes/<work_id>/<scene_id>.svg`
+
+15개 모두:
+- original editorial illustration
+- 16:9 `viewBox 1600×900`
+- `license: original`
+- `image_source_url: internal`
+- 배우 얼굴 복제 없음
+- 영화/Netflix/방송사 스틸 무단 사용 없음
+
+실제 장소 사진으로 교체하는 것은 v1 이후 별도 콘텐츠 개선이다.
+
+## 9. 언어 전략
+
+Phase E v1은 KO-first.
+
+- KO: 15 package 구현
+- EN/JA/ZH: 해당 언어 Scene copy가 없으면 block 숨김
+- 한국어를 다른 locale에 silent fallback 금지
+- image asset은 공용 사용 가능하지만 alt/text는 locale별 준비 필요
+
+## 10. SEO / 내부링크
+
+- Scene URL 생성 금지
+- 기존 Work/Place canonical 유지
+- hreflang/x-default 유지
+- sitemap URL 수 확대 목적 아님
+- Scene copy는 visible/crawlable HTML
+- 내부링크는 일반 `<a href>`
+- title/H1을 Scene 키워드 때문에 전면 변경하지 않음
+- Region/Place URL 대량 생성 금지
+
+## 11. UI / Mobile
+
+현재 Design System과 Work/Place 스타일을 재사용한다.
+
+Desktop:
+- Work: 3개 Scene Card grid
+- Place: 기존 Place 정보 흐름에 Scene/Why block
+
+Mobile 360/390/430:
+- 1열
+- 가로 overflow 0
+- SVG가 비율 유지
+- tap target 44px 이상
+- fold 아래 image lazy load 가능
+- image 실패 시 layout 붕괴 금지
+
+## 12. Phase E에서 하지 않는 것
+
+- Scene 전용 URL
 - Scene 검색/필터
 - 방문 인증
 - 배지/포인트
-- ShotSync/카메라 기능
+- ShotSync 카메라
 - 로그인/컬렉션
+- full scene database migration
 
-Scene은 기존 Work/Place SEO를 강화하는 **본문 콘텐츠 단위**이며 별도 URL을 만들지 않는다.
+## 13. 성공 판단
 
----
-
-## 4. Why This Place?
-
-15개 대표 장면과 연결된 핵심 Place를 우선 대상으로 한다.
-
-각 대상 Place에 다음을 추가한다.
-
-### 제목
-`여기, 왜 가볼 만해?`
-
-### 본문
-- 2~4문장
-- 친구에게 이야기하듯 자연스럽게
-- 주소/교통정보 반복이 아니라 **왜 기억할 만한 장소인지** 설명
-- 과장/허위 금지
-
-가능하면 아래 중 1~2개를 함께 제공한다.
-- `작품 속 이야기`
-- `실제 장소의 숨은 이야기`
-
-이 두 항목은 필수 숫자 채우기가 아니다. 검증 가능한 내용이 있을 때만 노출한다.
-
----
-
-## 5. 기획자와 개발자 역할 분리
-
-### 기획자 책임
-- 대표 장면 15개 선정
-- 장면 설명 작성
-- 연결 Place 확정
-- 관계 분류 확정
-- 이미지 선정/제작
-- 이미지 source/license/attribution 기록
-- alt text 작성
-- `Why This Place?` 작성
-- story/hidden note 검증
-- manifest 작성 및 GitHub 반영
-
-### 개발자 책임
-- scene package를 읽는 canonical source/generator 연결
-- Work/Place UI 구현
-- 이미지 반응형/성능/접근성 처리
-- 내부링크 구현
-- mobile QA
-- 기존 SEO/i18n/GA4 무결성 보존
-
-### 개발자가 하지 않는 것
-- 인터넷에서 임의로 영화 스크린샷 수집
-- 장면 선정
-- 관계 유형 판단
-- 사실/라이선스가 불명확한 이미지를 임의 채택
-- 콘텐츠 빈칸을 임의 문구로 채움
-
----
-
-## 6. 이미지 원칙
-
-권장 우선순위:
-1. 사용권리가 명확한 실제 장소 사진
-2. 기획자가 직접 만든 원본 일러스트
-3. 저작권 침해 위험이 낮은 생성형 일러스트
-
-피해야 할 것:
-- Netflix/방송사/영화의 캡처 화면을 무단 저장해 GitHub에 업로드
-- 워터마크 이미지
-- 출처/라이선스 불명 이미지
-- 배우 얼굴이나 원본 프레임을 그대로 복제하는 목적의 생성 이미지
-
-파일 권장:
-- WebP
-- 16:9 기본
-- 권장 1600×900 이하
-- 1장 약 100~300KB 목표
-- 초고해상도 원본은 repo에 넣지 않음
-
-예상 경로:
-`site/assets/scenes/<work_id>/<scene_id>.webp`
-
-경로는 개발 시작 전 repo audit에서 충돌 여부를 확인하고 확정한다.
-
----
-
-## 7. 언어 전략
-
-Phase E v1 콘텐츠 원본은 **KR 우선**이다.
-
-- KO 페이지: 15개 package 전체 노출
-- EN/JA/ZH: 해당 locale의 scene text가 준비된 경우만 노출
-- 번역이 없으면 한국어를 그대로 fallback해서 보여주지 말고 block을 숨긴다
-
-이미지는 locale 공용 사용 가능하지만 alt/scene text는 언어별 준비가 필요하다.
-
----
-
-## 8. SEO / 내부링크 원칙
-
-- 새 Scene URL 생성 금지
-- 기존 Work/Place canonical 유지
-- hreflang/x-default 유지
-- sitemap URL 수를 늘리기 위한 작업이 아님
-- Scene 설명은 검색엔진이 읽을 수 있는 visible HTML이어야 함
-- Work → Scene → Place 링크는 `<a href>` 기반 crawlable link
-- Place → Scene → Work 역시 동일
-- title/H1을 Scene 때문에 전면 재작성하지 않음
-
-목적은 **검색 중인 기존 페이지의 콘텐츠 깊이와 사용자 만족도를 높이는 것**이다.
-
----
-
-## 9. UI 원칙
-
-새로운 디자인 시스템을 만들지 않는다. 현재 DS/Work Detail/Place Detail 스타일을 따른다.
-
-### Desktop
-- Work: 3개 Scene Card를 3열 또는 기존 카드 폭에 맞는 안정적 grid
-- Place: 이미지 + 텍스트 한 블록
-
-### Mobile
-- 360/390/430px 기준 1열
-- 이미지 잘림/가로 overflow 금지
-- 텍스트가 이미지 위에 과도하게 겹치지 않음
-- tap target 44px 이상
-
-### 성능
-- width/height 또는 aspect-ratio 명시
-- fold 아래 이미지는 `loading="lazy"`
-- WebP 사용
-- 이미지 실패 시 레이아웃 붕괴 금지
-
----
-
-## 10. 성공 판단
-
-파일럿 배포 후 14일/28일 기준으로 본다.
-
-SEO:
-- 대상 Work/Place impressions
-- clicks
-- CTR
-- average position
-
-행동:
-- Scene → Place 클릭
+배포 후 14/28일:
+- 대상 Work/Place impressions/clicks/CTR/position
+- Scene → Place/Map 클릭
 - Place → Work 클릭
-- Map CTA 이동
-- 대상 페이지 체류/연속 탐색 신호(수집 가능 범위)
+- Map CTA
 
-v1의 목적은 Scene 자체 트래픽이 아니라 **기존 검색 유입이 더 깊게 탐색하는지** 확인하는 것이다.
+측정 대기 때문에 다음 개발을 중단하지 않는다. 결과는 이후 우선순위 조정에 사용한다.
 
----
+## 14. 완료 조건
 
-## 11. 완료 조건
-
-- 5작품 × 3장면 = 15 Scene Package 렌더링
-- 각 package에 이미지/설명/Place/관계/alt/source/license 존재
-- 연결 핵심 Place에 `Why This Place?` 존재
-- 잘못된 FILMED 표기 없음
+- final manifest 15/15 integration
+- image asset 15/15 load
+- wrong FILMED 0
 - broken image/link 0
-- KO에서 완전한 경험
-- 미번역 locale에서 한국어 fallback 0
-- canonical/hreflang/sitemap/GA4 회귀 없음
-- 360/390/430 QA 완료
-- PR + QA report + local deployment ZIP 준비
-- 운영 배포는 사용자 승인 전 금지
+- STORY_SETTING을 촬영지로 오표기 0
+- `by_mitsukaido_station` exact source action 반영
+- KO experience 완결
+- untranslated locale Korean fallback 0
+- 360/390/430 QA
+- canonical/hreflang/sitemap/GA4 regression 0
+- PR + QA report + local deployment ZIP
+- production deploy는 사용자 승인 전 금지
 
-## 12. NEEDS DECISION 조건
+## 15. NEEDS DECISION
 
-아래는 개발자가 임의 결정하지 않는다.
-- 새로운 URL architecture가 필요함
-- Scene 도입 때문에 shared data-model 대규모 migration 필요
-- 사용 이미지의 저작권/라이선스 판단이 불명확함
-- 기존 검색 상위 URL의 구조 변경 필요
-- Scene과 Place 관계가 사실상 검증되지 않음
+다음만 멈추고 보고한다.
+- 새로운 URL architecture 필요
+- shared data-model 대규모 migration 필요
+- 기존 고순위 URL 변경 필요
+- #37 또는 현재 shared generator와 실질적 충돌
 
-그 외의 작은 template/CSS/generator 연결은 Fast Lane으로 처리한다.
+final manifest integration과 지정된 `by_mitsukaido_station` source-row 추가는 승인 범위다.

@@ -1,112 +1,83 @@
 # Phase E — Scene Asset Production Queue v1
 
-Date: 2026-08-31
-Status: **PLANNER ASSET WORK QUEUED**
+Date: 2026-09-01
+Status: **COMPLETE — SUPERSEDED BY READY MANIFEST**
 Parent: Issue #40
 
-## 목적
-15개 Scene Package의 이미지 자산을 개발자에게 넘기기 전에 기획 측에서 완성한다.
+## 결론
 
-## Asset 원칙
-우선순위:
-1. 공공기관/공공관광기관이 명시적으로 재사용 가능한 이미지
-2. Wikimedia Commons 등 라이선스가 명확한 실제 장소 사진
-3. 직접 제작한 original graphic
-4. generated illustration
+기획 측 이미지 제작/권리 검토 작업은 완료됐다.
 
-금지:
-- 영화/Netflix/방송사 화면 캡처의 무단 저장
-- Pinterest/블로그/SNS에서 출처 불명 이미지 다운로드
-- 워터마크 이미지
-- 라이선스가 불분명한 Google Images 결과
-- 배우 얼굴을 사실적으로 재현한 generated image
-- 영화의 특정 프레임 구도/캐릭터 외형을 그대로 복제한 illustration
+Phase E v1은 외부 영화/방송 스틸을 사용하지 않고 **기획 측이 직접 만든 original SVG editorial illustration 15개**를 사용한다.
 
-## 공통 스펙
-- `webp` 우선
-- 16:9
-- 최대 1600×900
-- 목표 100–300KB, 특별한 이유 없으면 500KB 초과 금지
-- 파일명: `scene-01.webp`, `scene-02.webp`, `scene-03.webp`
-- 경로: `site/assets/scenes/<work-id>/`
-- 각 asset에 source/license/author/source_url/attribution 기록
+최종 구현 입력은 아래 두 파일을 따른다.
 
-## 제작 큐
+1. `docs/growth/story-scene/SCENE_PACKAGES_READY_V1.yaml`
+2. `docs/growth/story-scene/SCENE_PLACE_MAPPING_V1.md`
+
+이 문서는 과거 제작 큐의 기록이며 더 이상 개발 blocker가 아니다.
+
+## 완료 자산
 
 ### Odyssey
-- `odyssey/scene-01.webp` — Voidokilia + Nestor’s Cave 실제 풍경
-  - 1순위: Greek public tourism / licensed Commons photo
-  - 대안: cave + crescent beach를 주제로 한 original editorial illustration
-- `odyssey/scene-02.webp` — Methoni Castle + sea
-  - 1순위: public tourism / Commons
-- `odyssey/scene-03.webp` — Palace of Nestor / Pylos-Messinia
-  - 1순위: archaeological/public tourism image
+- `/assets/scenes/odyssey/odyssey-scene-01.svg`
+- `/assets/scenes/odyssey/odyssey-scene-02.svg`
+- `/assets/scenes/odyssey/odyssey-scene-03.svg`
 
 ### Breaking Bad
-- `breakingbad/scene-01.webp` — Walter White house
-  - 사유지 이슈 때문에 원본 장소 사진 사용 시 촬영/배포 라이선스와 사생활 맥락 재검토
-  - 안전 대안: Albuquerque suburban house + desert light의 non-identical editorial illustration
-- `breakingbad/scene-02.webp` — Twisters / Los Pollos exterior context
-  - 상표권보다 저작권/사진 라이선스가 우선. 실제 매장 사진은 사용권 확인.
-  - 안전 대안: Southwest fast-food exterior editorial illustration, 극중 로고 복제 금지
-- `breakingbad/scene-03.webp` — To’hajiilee desert
-  - 실제 landscape licensed photo 우선
-  - 방문 유도 이미지는 아니며 접근 규정 경고와 함께 사용
+- `/assets/scenes/breakingbad/breakingbad-scene-01.svg`
+- `/assets/scenes/breakingbad/breakingbad-scene-02.svg`
+- `/assets/scenes/breakingbad/breakingbad-scene-03.svg`
 
 ### Byakuyako
-- `byakuya/scene-01.webp` — Kintetsu Fuse Station
-- `byakuya/scene-02.webp` — Fuse Hondori shopping street
-- `byakuya/scene-03.webp` — Mitsukaido/Kita-Mitsukaido station
-  - 3개 모두 실제 거리/역 사진 우선
-  - 일본 철도/상가 브랜드 로고는 이미지 자체의 부수 요소로만 사용하고 기획 그래픽에서 로고를 확대 재현하지 않는다.
+- `/assets/scenes/byakuya/byakuya-scene-01.svg`
+- `/assets/scenes/byakuya/byakuya-scene-02.svg`
+- `/assets/scenes/byakuya/byakuya-scene-03.svg`
 
 ### Stranger Things
-- `strangerthings/scene-01.webp` — Rome, Georgia / Creel House
-  - private property라면 licensed exterior photo 또는 house-specific imitation을 피한 gothic-house editorial illustration
-- `strangerthings/scene-02.webp` — Emory at Briarcliff / Hawkins Lab exterior
-  - 현황과 사용권 확인 후 actual photo
-- `strangerthings/scene-03.webp` — Gwinnett Place Mall
-  - current/redevelopment status와 photo license 확인
-  - Starcourt 로고/Netflix set 이미지는 사용하지 않는다.
+- `/assets/scenes/strangerthings/strangerthings-scene-01.svg`
+- `/assets/scenes/strangerthings/strangerthings-scene-02.svg`
+- `/assets/scenes/strangerthings/strangerthings-scene-03.svg`
 
 ### Poksshak
-- `poksshak/scene-01.webp` — Seongsan Ilchulbong + canola
-  - 공공관광/Commons actual photo 최우선
-- `poksshak/scene-02.webp` — Gimnyeong Fishing Village / coast
-  - 주민 얼굴·사유지보다 풍경 중심
-- `poksshak/scene-03.webp` — Gwandeokjeong
-  - 문화유산 전경 actual photo 최우선
+- `/assets/scenes/poksshak/poksshak-scene-01.svg`
+- `/assets/scenes/poksshak/poksshak-scene-02.svg`
+- `/assets/scenes/poksshak/poksshak-scene-03.svg`
 
-## Manifest-ready asset metadata
-각 이미지가 repo에 들어가기 전 다음 필드를 채운다.
+## Asset metadata
+
+모든 v1 asset은:
 
 ```yaml
-asset_id: odyssey-scene-01
-path: /assets/scenes/odyssey/scene-01.webp
-type: photo # photo | illustration | generated
-source_name: "..."
-source_url: "..."
-author: "..."
-license: "CC BY-SA 4.0"
-attribution: "Photo by ... / CC BY-SA 4.0"
-verified_at: 2026-08-31
+image_type: original_illustration
+image_source_url: internal
+license: original
+attribution: "그곳지금 기획"
 ```
 
-## READY 판정
-다음 7개가 모두 있어야 Scene Package를 `READY`로 올린다.
-1. scene copy
-2. canonical Place link
-3. relation classification
-4. image file in repo
-5. source/license metadata
-6. alt text
-7. Why This Place copy
+으로 관리한다.
 
-## 개발자에게 넘기지 말아야 할 상태
-- `ASSET_PENDING`
-- `LICENSE_UNCLEAR`
-- `PLACE_ID_TRACE`
-- `RELATION_NEEDS_FINAL_CHECK`
-- `CURRENT_STATUS_VERIFY`
+각 Scene별 alt text와 실제 `image_path`는 `SCENE_PACKAGES_READY_V1.yaml`에 이미 채워져 있다.
 
-개발자는 파일을 임의로 채우거나 대체 이미지를 찾지 않는다.
+## 왜 SVG를 썼는가
+
+- 개발자에게 이미지 탐색/저작권 판단을 넘기지 않기 위해서
+- 영화/Netflix/방송사 screenshot 무단 저장을 피하기 위해서
+- repo에서 가볍고 선명하게 관리하기 위해서
+- 16:9 `viewBox="0 0 1600 900"`으로 반응형 렌더링하기 위해서
+
+실제 장소 사진으로 교체하는 것은 이후 별도 콘텐츠 개선 작업이다. Phase E v1 개발 착수 조건은 아니다.
+
+## 개발자 규칙
+
+- 위 15개 asset을 그대로 사용한다.
+- 인터넷에서 더 좋은 이미지를 임의로 찾지 않는다.
+- 배우 얼굴/원작 프레임 유사 이미지를 생성하지 않는다.
+- 파일이 실제 로드되지 않으면 broken path로 보고하고 임의 대체하지 않는다.
+
+## 완료 판정
+
+- asset files: **15/15 repo 반영 완료**
+- source/license policy: **15/15 완료**
+- alt text: **15/15 READY manifest에 완료**
+- developer asset sourcing: **불필요**
