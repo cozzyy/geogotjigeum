@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,51 +436,81 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>춘천고등학교 돌담길 (강원 춘천)</h3>
         <p>준상과 유진, 상혁이 함께 다니던 고등학교의 배경으로 등장한 실제 학교. 지금도 재학 중인 학교라 외부 담장·돌담길 위주로 촬영됐다. 춘천시가 시내 촬영지 12곳에 안내판을 설치할 때 이곳도 포함됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_high_school" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>남이섬 메타세쿼이아 가로수길 — '연인의 숲' (강원 춘천)</h3>
         <p>준상과 유진이 자율학습을 빼먹고 함께 걷던 그 길. 하늘을 찌를 듯 뻗은 메타세쿼이아 나무들이 만드는 터널이 겨울연가 최고의 명장면 배경으로 꼽힌다. 방영 이후 '겨울연가길'이라는 별칭이 붙었고, 지금도 촬영지 안내표지판이 설치돼 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_treelined" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>남이섬 자전거길 (강원 춘천)</h3>
         <p>두 사람이 나란히 자전거를 타고 달리던 남이섬 순환로. 지금도 같은 길에서 자전거를 빌려 탈 수 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_bike" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>남이섬 조각공원 — 연인상 (강원 춘천)</h3>
         <p>극중 두 사람의 첫키스 장면이 촬영된 곳으로 알려진 조각공원 일대. 지금은 배용준·최지우를 형상화한 연인 동상이 세워져 팬들의 기념촬영 명소가 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_sculpture" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>중도유원지 (강원 춘천, 현재 레고랜드 코리아 부지)</h3>
         <p>준상과 유진이 호숫가를 거닐며 서로의 마음을 확인하던 곳. 방영 당시엔 소박한 유원지였지만, 2022년 이 부지에 레고랜드 코리아 리조트가 들어서면서 옛 풍경은 남아있지 않다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="joongdo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>준상이네 집 터 (강원 춘천 소양로, 철거됨)</h3>
         <p>강준상의 춘천 시절 집으로 등장한 실제 가옥. 방영 후 20년 가까이 팬들의 성지순례지로 남아있었으나, 2021년 재건축조합에 매각돼 철거됐다. 집 안 피아노 등 소품은 인근 재건축 아파트 단지 공원에 전시될 예정이라는 보도가 있었지만, 실제 이행 여부는 확인되지 않는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="junsang_house" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>춘천역 (강원 춘천)</h3>
         <p>친구들과 MT를 떠나던 날 등장하는 역. 2010년 경춘선 복선전철화로 신역사가 들어서 드라마 당시의 구역사와는 모습이 다르다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_station" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>춘천 명동거리·중앙로터리 (강원 춘천)</h3>
         <p>유진이 준상의 사고 소식을 전해듣는 장면 등에 등장한 춘천 시내 번화가. 지금도 춘천의 대표적인 도심 상권으로 남아있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="myeongdong_chuncheon" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>용평리조트 (강원 평창, 극중 '화이트 스키장')</h3>
         <p>10년 뒤 유진과 이민형(준상)이 스키장 리노베이션 프로젝트로 다시 만나는 곳. 실제로도 국내 최초의 종합 스키 리조트로, 지금도 운영 중이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="yongpyeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>외도 (외도보타니아, 경남 거제)</h3>
         <p>드라마 최종화, 실명 위기의 준상과 유진이 재회해 서로를 확인하는 결말부 촬영지. 절벽 위 이국적인 정원 풍경이 두 사람의 이야기를 마무리짓는 배경이 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="oedo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

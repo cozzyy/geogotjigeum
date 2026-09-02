@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -362,156 +369,249 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>고쿠라쿠지역 (에노시마 전철, 가마쿠라)</h3>
         <p>Where Ho-jin and Mu-hee silently pass each other early in Episode 1, neither yet aware the other exists. A wooden station house built in 1904, also featured in Hirokazu Kore-eda's Our Little Sister.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="gokurakuji_station" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>텐잔랩 (에노시마 골목, 극중 라멘집 '모모짱 라멘')</h3>
         <p>Where Mu-hee bursts in to confront her ex's new girlfriend, freezes because she can't speak Japanese, and Ho-jin — who happens to be there — steps in as her interpreter. This is where their story truly begins. In reality it's a café serving shaved ice and Japanese sweets; only its exterior plays the ramen shop.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="tenzan_lab_ramen" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>벤자이텐 나카미세 거리 (에노시마)</h3>
         <p>The pilgrimage path from Enoshima Station to Enoshima Shrine, lined with shops. The backdrop for the scene where the two explore the island together, sharing street food.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="benzaiten_nakamise" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>에노시마 우체국 앞</h3>
         <p>Where Mu-hee waits for Ho-jin while holding his bag. A quiet Japanese-style public building tucked between shops — easy to miss if you're not looking for it.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="enoshima_post_office" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>오이와야미치 거리 (에노시마)</h3>
         <p>The stone-paved path where Mu-hee, realizing she still has Ho-jin's phone, rushes to find him. It runs from Enoshima Shrine's Okutsumiya to the Iwaya Caves.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="oiwayamichi_street" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>고료 신사 (가마쿠라 하세)</h3>
         <p>Where Mu-hee catches up to Ho-jin to return his phone — set against the series' most iconic shot, an Enoden train crossing in front of the shrine's white torii gate. Confirmed as a filming location by Asahi Shimbun.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="goryo_shrine" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>가타세 어항 흰 등대</h3>
         <p>Where the two sit side by side at sunset — the photo Mu-hee secretly takes of Ho-jin's profile here later becomes the thread that reunites them. One of the rare spots where Enoshima and Mount Fuji align in a single frame.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="katase_lighthouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>하세역 인근 건널목</h3>
         <p>Episode 1's climax — as the two look for somewhere to eat, Mu-hee tells him to go ahead, an Enoden train passes between them, and Ho-jin vanishes. So many fans now visit that Kamakura City installed multilingual notice signs.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="hase_crossing" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>에노시마 씨캔들 (전망 등대)</h3>
         <p>The observation tower where, from Episode 2 onward, Ho-jin searches for his first love Shin Ji-seon. A 360-degree panorama from 100 meters up, taking in Mount Fuji, Yokohama, and the Izu Peninsula.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="enoshima_sea_candle" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>이나무라가사키 (가마쿠라 해변공원)</h3>
         <p>The origin point of Ho-jin's long unrequited love — the flashback scene where Ji-seon hands him a protective charm before their trip. A cape offering a rare joint view of Mount Fuji and Enoshima.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="inamuragasaki_park" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>캘거리 (앨버타주 최대 도시)</h3>
         <p>The city where formal filming of 'Romantic Trip' begins, and the gateway to the Canadian Rockies — the base for the entire Canada leg.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="calgary_downtown" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>밴프 애비뉴 (밴프 국립공원)</h3>
         <p>Banff's main street, where you can actually walk the same charming shops and cafés the two characters stroll past on screen — a townsite within Canada's very first national park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="banff_avenue" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>캔모어 (밴프 인근 산악 마을)</h3>
         <p>A mountain town bordering Banff National Park, used as the backdrop for several Canada-leg scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="canmore_town" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>카나나스키스 컨트리</h3>
         <p>Where, in the story, Mu-hee first spots Hiro. A protected wilderness area surrounding Canmore, bordering Banff National Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="kananaskis_area" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>쿼리 호수 (캔모어 인근)</h3>
         <p>The lake where the two share their first kiss, with the seven-peaked, 12km-long Rundle Range rising behind it like a wall. It's since become a pilgrimage stop for Korean-drama fans.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="quarry_lake_canmore" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>로열 티렐 박물관 (드럼헬러)</h3>
         <p>A dinosaur and paleontology museum that appears during the 'Romantic Trip' filming. One of the world's largest, holding some 160,000 fossils — including the Albertosaurus, first discovered in and named for Alberta.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="royal_tyrrell_museum" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>캐네디언 로키 (밴프 국립공원 일대)</h3>
         <p>The Rockies backdrop for the scene where Mu-hee and Ho-jin watch the aurora together. Reports vary slightly on the exact spot, but it's confirmed to be within Banff National Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="canadian_rockies_aurora" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>피아차 델 캄포 (시에나, 토스카나)</h3>
         <p>Siena's signature shell-shaped square, where the two share an embrace — one of the moments in the back half of the story where their relationship deepens decisively.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="siena_piazza_del_campo" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>비아 아피아 (페루자 구시가)</h3>
         <p>A narrow, sloping stone alley in Perugia's old town, walls close on either side — the setting for the two characters' kiss.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="perugia_via_appia" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>치비타 디 바뇨레조</h3>
         <p>The medieval hilltop town where 'Romantic Trip's' final confession scene was filmed — perched alone atop an eroding cliff, sometimes nicknamed 'the dying town.'</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="civita_di_bagnoregio" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>휘우커피 (경기 고양)</h3>
         <p>The restaurant in Italy where Ho-jin and Mu-hee visit together every night — actually a café in Goyang, Gyeonggi-do. Known for its exotic exterior and interior, right next to a railway.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="hwiwoo_coffee_goyang" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>라움아트센터 (서울 강남)</h3>
         <p>Portrayed on screen as a Japanese film festival afterparty hall — actually a performance and wedding venue in Gangnam, Seoul, styled like a European castle interior.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="raum_art_center" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>유니버설 아트센터 (서울 광진)</h3>
         <p>Where Mu-hee steps out mid-opera with Hiro and walks down a medieval-looking corridor, chandeliers and all — easy to assume it's overseas, but it's actually in Gwangjin-gu, Seoul.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="universal_art_center" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>피노디아 엑스포 타워 (강원 속초)</h3>
         <p>The Japanese observation tower Ho-jin rushes to in Episode 1 to meet his first love — the exterior is the real Enoshima Sea Candle, but the interior was filmed at this tower in Sokcho.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="pinnodia_expo_tower" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>산머루농원 (경기 파주)</h3>
         <p>Portrayed as an Italian winery — actually a wine-experience farm in Paju, Gyeonggi-do.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="sanmeoru_winery" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>그랜드 머큐어 임페리얼 팰리스 서울 강남</h3>
         <p>The upscale restaurant Hiro first visits in Canada — actually the banquet hall (Selena Hall) of a 5-star hotel in front of Hakdong Station, Seoul.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="grand_mercure_gangnam" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>캐슬아씨시 (경기 양평)</h3>
         <p>Portrayed as the Italian crew's lodging — a former pension/hotel in Yangpyeong, Gyeonggi-do. Its name is itself a playful nod to the Italian town of Assisi.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="castle_assisi_yangpyeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>포옹남 당산점 (서울 영등포)</h3>
         <p>The Vietnamese restaurant scene featuring Mu-hee's Vietnamese fans — actually a Vietnamese restaurant in Dangsan, Seoul, already well known for recreating an authentic atmosphere in both decor and menu.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="poohoongnam_dangsan" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>국립부여박물관</h3>
         <p>Where Mu-hee and Ho-jin reunite in the final episode — filmed in the museum's digital immersive exhibition hall.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="buyeo_national_museum" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>해방촌 신흥시장 (서울 용산)</h3>
         <p>Where Ho-jin walks with a foreign friend near the drama's end.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="haebangchon_sinheung_market" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>성수 무비랜드 (서울 성동)</h3>
         <p>A tiny 30-seat cinema where Mu-hee and Hiro watch a rough cut of 'Romantic Trip' together.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="isatong" data-location-id="seongsu_movieland" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

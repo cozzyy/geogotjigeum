@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,61 +425,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>CSIC總部（馬德里）</h3>
         <p>劇中作為西班牙皇家鑄幣廠外觀出現的馬德里國家研究委員會（CSIC）建築。真正的皇家鑄幣廠（Fábrica Nacional de Moneda y Timbre）位於薩拉曼卡區狹窄且車流量大的街道上，實際上難以拍攝動作場面，加上是實際印製紙幣、鑄造硬幣的保安設施，內部拍攝也不被允許。相較之下，CSIC建築位於車輛通行受管制的區域，拍攝條件更加便利。鑄幣廠與銀行內部場景則另於科爾梅納爾別霍的攝影棚搭建。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="csicmadrid" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>新部會大樓（Nuevos Ministerios）</h3>
         <p>用於部分中央銀行外觀場景拍攝的馬德里政府辦公建築群。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="nuevosministerios" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>發展部大樓（Ministerio de Fomento）</h3>
         <p>作為劇中搶劫行動相關背景使用的馬德里歷史官署建築。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="ministeriofomento" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>卡亞俄廣場（Plaza del Callao）</h3>
         <p>劇中群眾與示威場景的實際拍攝地，位於馬德里市中心的代表性廣場，也是飛船在城市上空撒下鈔票這一經典畫面的真實背景地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="plazacallao" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>格蘭大道（Gran Vía）</h3>
         <p>馬德里代表性的鬧區大道，出現在劇中多處城市背景場景中。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="granvia" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>聖弗魯托斯隱修院（San Frutos Hermitage，塞哥維亞）</h3>
         <p>劇中作為團隊訓練場地出現的塞哥維亞近郊廢棄修道院。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="sanfrutos" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>托雷洛多內斯（Torrelodones）</h3>
         <p>設定為「教授」藏身處的馬德里近郊小鎮。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="torrelodones" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">主題關聯</span>
         <h3>파나마·태국 설정 장면</h3>
         <p>Locations depicted as characters' hideouts in later seasons.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="panamathailand" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>佛羅倫斯（義大利）</h3>
         <p>用於拍攝柏林相關回憶場景的義大利城市。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="florence" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">主題關聯</span>
         <h3>코펜하겐 설정</h3>
         <p>Denmark's capital, referenced as part of the story's international expansion.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="copenhagen" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>馬德里攝影棚場景</h3>
         <p>鑄幣廠與銀行內部場景搭建拍攝的馬德里攝影棚。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="madridstudio" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>스페인 도시명·캐릭터명 지도</h3>
         <p>A concept map, centered on Madrid, introducing the world cities the team's codenames are drawn from.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="madridcitymap" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -430,71 +437,113 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>레인저스 하우스 (Ranger's House, London)</h3>
         <p>그리니치에 있는 저택으로, 브리저튼 가족 저택의 실내 장면 다수가 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="rangershouse" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로열 크레센트 (Royal Crescent, Bath)</h3>
         <p>1767~1775년에 지어진 조지 왕조풍 초승달 모양 건축물로, 30채의 1등급(Grade I) 리스티드 건물이 로열 빅토리아 파크를 향해 둥글게 늘어선 영국의 대표적인 거리 중 하나다. 그중 &quot;No.1 Royal Crescent&quot;가 페더링턴 가문 저택의 외관으로 등장했는데, 제작진이 사자 석상과 페디먼트, 로제트 장식을 추가해 이 가문 특유의 화려하고 과시적인 취향을 표현했다. 실제로는 CGI로 런던의 조지 왕조풍 광장 건너편에 브리저튼가 저택(그리니치 레인저스 하우스)이 있는 것처럼 합성됐다. 시즌1 촬영은 2019년 8월과 11월 두 차례 진행됐고, 시즌3 촬영을 위해 제작진이 다시 돌아왔다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="royalcrescent" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>홀번 박물관 (Holburne Museum)</h3>
         <p>댄버리 저택으로 등장한 바스의 미술관이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="holburnemuseum" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>바스 어셈블리 룸 (Bath Assembly Rooms)</h3>
         <p>화려한 무도회 장면들이 촬영된 18세기 사교 공간이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bathassembly" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>캐슬 하워드 (Castle Howard)</h3>
         <p>요크셔의 웅장한 대저택으로, 헤이스팅스 공작 저택으로 등장했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="castlehoward" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>햄튼 코트 궁전 (Hampton Court Palace)</h3>
         <p>튜더 왕조의 궁전으로, 왕실 장면들의 배경이 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="hamptoncourt" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>올드 로열 네이벌 칼리지 (Old Royal Naval College)</h3>
         <p>그리니치의 웅장한 건축물로, 여러 사교 장면들이 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="oldrnc" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>윌턴 하우스 (Wilton House)</h3>
         <p>여러 궁전 내부 장면이 촬영된 윌트셔의 대저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="wiltonhouse" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>바실던 파크 (Basildon Park)</h3>
         <p>파티와 저택 장면들이 촬영된 버크셔의 내셔널트러스트 저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="basildonpark" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>페인즈힐 파크 (Painshill Park)</h3>
         <p>정원 장면들이 촬영된 18세기 풍경 정원이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="painshillpark" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로담 파크 (Wrotham Park)</h3>
         <p>오브리 홀로 등장한 하트퍼드셔의 대저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="wrothampark" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>랭커스터 하우스 (Lancaster House, London)</h3>
         <p>왕궁 장면들이 촬영된 런던 중심부의 화려한 저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="lancasterhouse" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>바스 시내 (Bath City Centre)</h3>
         <p>브리저튼 촬영지가 밀집한 영국 서부의 대표 도시다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bathcitycenter" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>브리저튼 체험 행사 (기간 한정)</h3>
         <p>무도회 체험 등 브리저튼 테마의 기간 한정 이벤트가 열리는 런던의 행사 공간이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bridgertonexperience" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

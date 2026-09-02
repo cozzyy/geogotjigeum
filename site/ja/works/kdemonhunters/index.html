@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -433,61 +440,97 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>Nソウルタワー</h3>
         <p>南山の頂にそびえる展望タワー。サジャ・ボーイズが「Your Idol」を歌う架空のスタジアムが、まさにこのタワーの下に設定されている。監督自身が「ハーメルンの笛吹きが地獄へ導くような場面」と表現した、作品でもっとも象徴的なシーンの背景。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="nseoultower" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>北村韓屋村</h3>
         <p>伝統韓屋が密集する路地で、劇中のルーフトップ（屋上）デュエットシーンの背景モデルとしてよく挙げられる場所。韓国的な伝統美とハンターの系譜を表現したシーンの原型になった。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="bukchon" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>清潭大橋</h3>
         <p>漢江に架かる橋で、列車の上で繰り広げられる「Takedown」の戦闘シーンのモデルになった場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="cheongdambridge" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>漢江（蚕室周辺）</h3>
         <p>ソウルを横切る大河で、特に蚕室区間は、スーパースターとしての重圧と悪魔狩りという二重生活からひととき解放されるキャラクターたちの静かなシーンのモデルになった。広い散策路と自転車道、川面に映る夜景が特徴。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="hangang" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>景福宮</h3>
         <p>朝鮮王朝の正宮で、宮殿と伝統美を強調したシーンのモデルになったソウルを代表する古宮。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="gyeongbokgung" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>駱山公園</h3>
         <p>旧漢陽都城の城郭が残る公園で、夜景と城郭をつなぐ動線シーンの背景モデルになった。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="naksanpark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>ソウルオリンピック主競技場</h3>
         <p>大型コンサートがよく開かれる総合競技場で、劇中の大規模ライブのイメージのモデルになった場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="olympicstadium" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>明洞</h3>
         <p>ソウルを代表する繁華街で、K-popとショッピング、ストリートのエネルギーを表現したシーンの背景モデル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="myeongdong" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>COEX K-POPスクエア</h3>
         <p>巨大メディアウォールとK-popファンイベントが開かれる江南の商業空間で、ファンダム体験コンテンツのモデルになった。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="coexkpop" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>国立中央博物館</h3>
         <p>韓国最大規模の博物館で、伝統遺物と文化モチーフの拡張の素材になった場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="nationalmuseum" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>ソウル薬令市（K-Medi Center）</h3>
         <p>伝統的な韓方薬材の市場で、伝統文化体験コンテンツの背景モデルになった場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="yangnyeongsi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>蚕室・江南</h3>
         <p>大型公演場とファン向け商圏が密集する地域で、公演・ファンダム消費の動線のモデルになった場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="jamsil" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

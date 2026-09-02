@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -422,36 +429,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>신오하시(新大橋)</h3>
         <p>스미다강을 가로지르는 다리로, 소설 속 신오하시 도로가 서쪽으로는 니혼바시, 동쪽으로는 에도가와 방면으로 뻗어나가는 기준점이다. 이시가미가 도시락가게에서 아파트로, 혹은 직장인 사립고교로 향할 때 지나치는 실제 동선의 중심에 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_shinohashi" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>청주교(清洲橋)</h3>
         <p>신오하시보다 하류에 놓인 다리로, 아르데코풍 현수교 디자인으로 유명한 실존 명소다. 소설 속에서 이시가미가 산책 삼아 즐겨 건너던 다리 중 하나로 언급되며, 스미다강변을 따라 걷는 그의 동선이 신오하시 한 곳에만 머물지 않았음을 보여준다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_kiyosu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>기요스미 정원(清澄庭園)</h3>
         <p>이시가미가 근무하는 사립 고등학교 바로 앞에 있는 실존 회유식 정원. 소설은 이시가미의 출퇴근길이 이 정원 앞 사립고교에서 남쪽으로 신오하시 도로를 따라 이어진다고 구체적으로 묘사한다 — 그가 매일 지나쳤을 풍경이 지금도 거의 그대로 남아 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_kiyosumi_garden" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>몬젠나카초(門前仲町)</h3>
         <p>후카가와 지역을 대표하는 실존 번화가. 이시가미와 야스코 모녀가 사는 동네에서 가까운 실제 생활권으로, 소박한 상점가와 오래된 골목이 남아 있는 도쿄 시타마치(下町) 정서를 잘 보여준다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_monzennakacho" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도미오카하치만구(富岡八幡宮)</h3>
         <p>몬젠나카초 인근에 있는 실존 신사로, 후카가와 지역을 대표하는 랜드마크다. 이시가미가 살아가는 동네의 실제 지리적 배경을 보여주는 장소로, 도쿄 3대 축제 중 하나인 후카가와 마쓰리가 열리는 곳으로도 유명하다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_tomiokahachimangu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>니혼바시(日本橋)</h3>
         <p>신오하시 도로가 서쪽 끝에서 만나는 실존 지명이자 다리. 소설은 신오하시 교차로에서 도로가 동쪽으로는 에도가와, 서쪽으로는 니혼바시로 뻗어 있다고 명시하며, 이 지리적 축을 이시가미의 동선을 설명하는 기준으로 삼는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_nihonbashi" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>나오키상(제134회, 2006년)</h3>
         <p>히가시노 게이고가 이 작품으로 수상한 상. 다섯 차례나 최종 후보에 올랐지만 번번이 고배를 마신 끝에, 2006년 『용의자 X의 헌신』으로 마침내 제134회 나오키상을 거머쥐었다 — 그의 작가 인생에서 손꼽히는 전환점이다. 특정 건물이 아닌 수상 자체를 기리는 항목이라 좌표를 표시하지 않는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_naoki_prize_2006" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

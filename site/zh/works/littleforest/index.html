@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,56 +425,89 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>惠媛之家（大邱軍威郡友保面美城5街58-1號）</h3>
         <p>原本是空置的農家住宅，改造成拍攝場景後歷經一年拍攝。殺青後並未拆除，大廳、廚房、壁爐、醬缸台、菜園、腳踏車等劇中格局完整保留，常態對外開放。2023年5～6月經大邱市・大邱文化藝術振興院「I♥軍威」巡迴之旅試營運後，同年7月正式納入「軍威市區觀光」路線。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hyewonhouse" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>花本站（慶北軍威郡山城面山城佳陰路711-9號）</h3>
         <p>1936年通車的中央線近代小型車站。劇中載夏為前女友送行的月台場景在此拍攝，同時也兼作近代歷史展示館。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hwabonstation" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>驛前商會（花本站前，軍威郡山城面）</h3>
         <p>在花本站前經營超過50年的老雜貨店，惠媛與恩淑吃冰淇淋、懷舊零食的場景在此拍攝。至今仍實際營業，掛有「小森林拍攝地」的招牌。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="yeokjeonstore" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>韓密村石牆巷（軍威郡缶溪面）</h3>
         <p>惠媛摘柿子（紅柿）的場景實際拍攝地，是一座保留傳統石牆的村莊，以舊時石牆完整留存的靜謐風景聞名。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hanbamvillage" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>一然公園（軍威郡孤老面）</h3>
         <p>為紀念《三國遺事》作者一然禪師而建的公園，曾作為電影中的場景背景出現。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="ilyeonpark" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>義興傳統市場（軍威郡義興面）</h3>
         <p>惠媛一行人買菜的市場場景實際拍攝的真實傳統市場。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="uiheungmarket" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>召文國史蹟地（慶北義城郡金城面）</h3>
         <p>保留古代召文國古墳群的史蹟地，也以油菜花田聞名，曾作為電影中春季場景的背景出現。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="jomunguksite" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>義城沙谷面山茱萸村（慶北義城郡沙谷面）</h3>
         <p>惠媛騎腳踏車散步的場景實際拍攝地，是以早春黃色山茱萸花聞名的村莊。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="sagokssansuyu" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>義城沙谷面吾上里蒜田（慶北義城郡沙谷面）</h3>
         <p>2017年5月經媒體公開的春季場景拍攝地，是全國品牌價值數一數二的義城大蒜實際栽種地之一。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="osangligarlic" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>軍威傳統市場（軍威郡軍威邑）</h3>
         <p>納入軍威市區觀光午餐行程的真實傳統市場，是造訪惠媛之家之餘，品嚐當地美食的好去處。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="gunwimarket" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>軍威棗子產地一帶（軍威郡全境）</h3>
         <p>軍威郡是全國名列前茅的紅棗產地，每年都會舉辦紅棗節。雖非劇中直接提及的題材，但作為惠媛之家所在地區的真實特產，值得一併介紹。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="gunwijujube" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

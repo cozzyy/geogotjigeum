@@ -49,6 +49,22 @@ header p{margin:2px 0 0;color:var(--sub);font-size:12.5px;}
 }
 .home-icon-btn:hover{border-color:var(--accent2);background:rgba(58,124,224,.15);color:var(--accent2);}
 .home-icon-btn:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+
+/* ---- Phase G (Issue #43): 저장한 장소 — 헤더의 전역 "♥ 저장 N" 진입점 ---- */
+.saved-count-btn{
+  flex-shrink:0;display:flex;align-items:center;gap:6px;height:38px;padding:0 14px;
+  border-radius:999px;background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  font-size:14px;font-weight:700;cursor:pointer;transition:.12s;
+}
+.saved-count-btn:hover{border-color:var(--accent);background:rgba(224,96,58,.15);color:var(--accent);}
+.saved-count-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.saved-count-badge{
+  display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;
+  padding:0 5px;border-radius:999px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;
+}
+@media (max-width:768px){
+  .saved-count-btn{height:32px;padding:0 10px;font-size:12.5px;gap:4px;}
+}
 .brand{display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:10px;padding:2px 6px;margin:-2px -6px;}
 .brand:hover{background:rgba(255,255,255,.05);}
 .brand:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
@@ -535,6 +551,64 @@ html.gcjg-boot-work #app.landing #main{display:flex;}
 
 /* ---- 내 주변 콘텐츠 투어 (2026-08 신규, 진입은 이제 히어로의 "내주변여행"/"여행지찾기" 버튼) ---- */
 .nearby-box{max-width:640px;height:min(760px,90vh);}
+
+/* ---- Phase G (Issue #43): 저장한 장소 패널 (nearby-box와 동일한 모달 규격 재사용) ---- */
+.saved-places-header-actions{display:flex;align-items:center;gap:8px;}
+.saved-mymap-btn{
+  background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;
+}
+.saved-mymap-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+.saved-places-empty{padding:40px 20px;text-align:center;color:var(--sub);font-size:13px;line-height:1.8;}
+.saved-work-group{padding:14px 18px;border-bottom:1px solid var(--border);}
+.saved-work-group:last-child{border-bottom:0;}
+.saved-work-group-title{font-size:12.5px;font-weight:800;color:var(--sub);margin-bottom:10px;}
+.saved-place-card{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--panel2);border:1px solid var(--border);border-radius:10px;
+  padding:10px 12px;margin-bottom:8px;
+}
+.saved-place-card:last-child{margin-bottom:0;}
+.saved-place-card-main{min-width:0;}
+.saved-place-card-name{font-size:13px;font-weight:700;color:var(--text);}
+.saved-place-card-relationship{font-size:11px;color:var(--sub);margin-top:2px;}
+.saved-place-card-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.saved-place-card-link{
+  background:var(--accent2);border:0;color:#fff;font-weight:700;font-size:11.5px;
+  padding:7px 11px;border-radius:8px;cursor:pointer;white-space:nowrap;min-height:32px;
+}
+.saved-place-card-remove{
+  background:transparent;border:1px solid var(--border);color:var(--sub);font-size:11.5px;
+  padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;min-height:32px;
+}
+.saved-place-card-remove:hover{border-color:#e0603a;color:#e0603a;}
+
+/* ---- Phase G: 장소 상세의 저장 버튼(♡/♥ 저장) — showLocation() travel-box 아래 ---- */
+.save-place-row{margin-top:10px;}
+.save-place-btn{
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;
+  border-radius:999px;background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  font-size:13.5px;font-weight:700;cursor:pointer;transition:.12s;
+}
+.save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+.save-place-btn:hover{border-color:var(--accent);}
+.save-place-btn.is-saved{background:rgba(224,96,58,.18);border-color:var(--accent);color:var(--accent);}
+.save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+/* ---- Phase G: My Map 모드 — 저장한 장소만 지도에 표시 중일 때 뜨는 "돌아가기" 바 ---- */
+.my-map-bar{
+  position:fixed;top:84px;left:50%;transform:translateX(-50%);z-index:1500;
+  background:#1e222b;border:1px solid var(--border);border-radius:999px;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+.my-map-back-btn{
+  background:transparent;border:0;color:var(--text);font-weight:700;font-size:12.5px;
+  padding:9px 16px;border-radius:999px;cursor:pointer;min-height:44px;
+}
+.my-map-back-btn:hover{color:var(--accent2);}
+@media (max-width:768px){
+  .my-map-bar{top:auto;bottom:74px;}
+}
 .nearby-modal-body{flex:1;overflow-y:auto;padding:16px 18px 20px;display:flex;flex-direction:column;gap:14px;}
 .nearby-intro{font-size:12.8px;line-height:1.7;color:var(--sub);margin:0;}
 .nearby-loc-controls{display:flex;flex-direction:column;gap:8px;}

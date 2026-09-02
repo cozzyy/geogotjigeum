@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,51 +436,81 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>春川高中石牆路（江原春川）</h3>
         <p>俊相、有真、相赫就讀的高中，是真實存在的學校。因為至今仍是有學生上課的現役學校，拍攝主要集中在外牆與石牆路一帶。春川市在市內12處設立說明看板時，這裡也被列入其中。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_high_school" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>南怡島水杉林蔭道 —「戀人之森」（江原春川）</h3>
         <p>俊相與有真翹掉自習課、一起漫步的道路。高聳入雲的水杉樹林形成的隧道，是《冬季戀歌》最經典場面的背景。播出後獲得「冬季戀歌之路」的暱稱，至今仍立有拍攝地指示牌。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_treelined" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>南怡島自行車道（江原春川）</h3>
         <p>兩人並肩騎自行車奔馳而過的南怡島環狀道路，現在同一條路上仍可租借自行車。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_bike" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>南怡島雕塑公園 — 戀人雕像（江原春川）</h3>
         <p>劇中兩人初吻場景據信在這座雕塑公園一帶拍攝。如今立有以裴勇俊、崔智友為原型的戀人雕像，是粉絲的紀念拍照地標。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_sculpture" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>中島樂園（江原春川，現為樂高樂園韓國園區）</h3>
         <p>俊相與有真沿著湖邊散步、確認彼此心意的地方。播出當時是一座樸素的遊樂園，2022年這片土地上開幕了樂高樂園韓國度假村，當年的風景已不復見。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="joongdo" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>俊相的家 舊址（江原春川昭陽路，已拆除）</h3>
         <p>作為姜俊相春川時期住家登場的真實房屋。播出後近20年間一直是粉絲朝聖地，2021年被出售給重建組合後遭到拆除。據報導家中的鋼琴等道具原訂展示於鄰近重建公寓社區的公園內，但實際是否執行尚未確認。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="junsang_house" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>春川站（江原春川）</h3>
         <p>與朋友們一同出發畢業旅行那天登場的車站。2010年京春線電氣化複線後新建了站舍，與劇中當年的舊站舍外觀不同。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_station" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>春川明洞街・中央圓環（江原春川）</h3>
         <p>有真得知俊相發生意外消息等場景登場的春川市區商圈，至今仍是春川代表性的市中心商業區。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="myeongdong_chuncheon" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>龍平度假村（江原平昌，劇中「White滑雪場」）</h3>
         <p>十年後，有真與李珉亨（俊相）因滑雪場整修計畫而重逢的地方。現實中也是韓國第一座綜合滑雪度假村，至今仍在營業。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="yongpyeong" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>外島（外島Botania，慶南巨濟）</h3>
         <p>劇集最終回，面臨失明危機的俊相與有真重逢、確認彼此心意的結局拍攝地。懸崖上異國風情的庭園景致，為兩人的故事畫下句點。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="oedo" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

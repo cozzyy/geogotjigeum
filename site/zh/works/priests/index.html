@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,61 +425,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>桂山聖堂（大邱中區西城路10號）</h3>
         <p>建於1902～1903年、韓國第三座哥德式聖堂（史蹟第290號）。劇中崔副祭進入聖堂取驅魔道具的空拍鏡頭、蒙席看電視的場景等皆在此拍攝。因外觀與首爾明洞聖堂相似，電影中將兩座聖堂的畫面交叉剪輯成同一座「明洞聖堂」。導演張宰賢曾在SBS新聞專訪中親自證實此拍攝協力事實。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="gyesancathedral" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>月背聖堂（大邱達西區月背路131-5號）</h3>
         <p>英信在唱詩班試唱時走音、明亮溫暖的過去回憶場景實際拍攝地。教堂內古老的尖塔與櫸樹庭院，與電影整體陰暗沉重的基調形成對比色彩。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="wolbaechurch" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>東城路（大邱中區，舊大邱邑城原址）</h3>
         <p>有「大邱明洞」之稱的大邱最大鬧區。英信家附近的巷弄、崔副祭邊禱告邊走入的窄巷等場景皆在此一帶拍攝（與首爾明洞8街巷弄畫面交叉剪輯）。因曾是舊大邱邑城內的主要道路而得名。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="dongseongro" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>啟明大學大明校區（大邱南區明德路104號）</h3>
         <p>劇中崔副祭就讀的虛構「首爾天主教大學聖神校區」實際拍攝地。院長神父約談崔副祭與金範信神父的場景等皆在此拍攝。是一座擁有老建築、常被用作電影拍攝地的校園。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="keimyungdaemyeong" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>大邱天主教大學儒斯定校區（大邱南區前山循環路393號）</h3>
         <p>與啟明大學大明校區一同交替用於「首爾天主教大學」神學院場景的實際校園。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="catholicujustino" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">主題關聯</span>
         <h3>신나무골 (칠곡군 지천면, 대구 근교)</h3>
         <p>Not a film location, but a real pilgrimage site essential to understanding the roots of Daegu Catholicism. Bishop Daveluy and Fr. Choi Yang-eop secretly ministered here during the 1840s-60s persecutions; roughly 37 Catholics were martyred here in the 1868 persecution. This is the real historical root of the &quot;hidden faith to visible cathedral&quot; arc that Gyesan Cathedral later embodies.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="sinnamugol" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>前山一帶（大邱南區）</h3>
         <p>環繞大邱市中心南側的山，啟明大學、天主教大學儒斯定校區等多處大邱拍攝地都聚集在其山腳一帶。雖非電影特定場景的拍攝地，卻是把大邱拍攝地以步行、開車方式串聯起來的地理基準點。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="apsangolf" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>半月堂站一帶（大邱中區）</h3>
         <p>連接桂山聖堂、東城路、明德站的大邱舊市中心交通樞紐，是電影拍攝地巡禮實質上的轉乘據點。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="banwoldang" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>李相和故居（大邱中區西城路）</h3>
         <p>位於桂山聖堂附近，包含在大邱近代小巷之旅第2路線內的真實文化遺產。是日治時期抵抗詩人李相和曾居住的房子，雖非電影場景，卻是與桂山聖堂拍攝地一同完成近代小巷路線的實際名勝。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="yisanghwahouse" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>徐相敦故居（大邱中區桂山洞）</h3>
         <p>主導國債報償運動的徐相敦曾居住的房子。與桂山聖堂、李相和故居一同構成近代小巷之旅第2路線的真實名勝。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="seosangdonhouse" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>桂山聖堂一帶夜景觀賞點</h3>
         <p>以桂山聖堂哥德式尖塔在燈光照射下格外動人的夜間景色聞名的地點。粉絲間常提及這裡是能親身感受電影中陰暗宗教氛圍的地方。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="daegunight" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">主題關聯</span>
         <h3>후속작 《검은 수녀들》(2025) 연결 — 최부제의 이후 이야기 (실존 좌표 없음)</h3>
         <p>In the official sequel Dark Nuns (2025), made by the same production company (Zip Cinema), Kang Dong-won's Deacon Choi reappears in a cameo, continuing the &quot;12 Shapes&quot; mythology with a new exorcist nun. No confirmed Daegu filming locations for the sequel were found in available sources, so this site maps only the verified locations from the first film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="darknunsgrave" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

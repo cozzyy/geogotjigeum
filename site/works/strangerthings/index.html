@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -459,61 +466,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>잭슨 (Jackson, Georgia)</h3>
         <p>호킨스 마을 중심가의 배경이 된 조지아주의 소도시다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="jacksonga" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>호킨스 국립연구소 배경지 (Atlanta 권역)</h3>
         <p>실험실 외관 촬영에 쓰인 애틀랜타 권역의 시설이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="hawkinslab" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>그위넷 플레이스 몰 (Gwinnett Place Mall, Duluth, GA)</h3>
         <p>시즌3 무대인 스타코트몰로 재현된 실제 쇼핑몰. 1984년 개장해 극중 시대(1985년)와 거의 겹치는 곳으로, 라디오섁·스펜서스 기프트 같은 실제 80년대 브랜드로 세트를 채웠다. 현재는 상권이 크게 쇠퇴해 그위넷 카운티가 소유하며 재개발이 논의되고 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="gwinnettmall" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>호킨스 고등학교 배경지 (Patrick Henry High School)</h3>
         <p>학교 장면들이 촬영된 조지아주의 실제 고등학교다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="patrickhenryhs" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>스톤 마운틴 파크 (Stone Mountain Park)</h3>
         <p>숲과 철길 장면들이 촬영된 조지아주의 대표 공원이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="stonemountain" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>이스트포인트 (East Point)</h3>
         <p>주거지 장면들이 촬영된 애틀랜타 인근의 지역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="eastpoint" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로마 (Rome, Georgia)</h3>
         <p>시즌4 촬영의 핵심 무대가 된 조지아주의 도시다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="romega" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>크릴 하우스 (Creel House, Rome 인근)</h3>
         <p>베크나의 정체와 관련된 저택 장면이 촬영된 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="creelhouse" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>스크린 젬스 스튜디오 (Screen Gems Studios, Atlanta)</h3>
         <p>세트 촬영이 이뤄진 애틀랜타의 대형 영화 스튜디오다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="screengems" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>애틀랜타 (Atlanta)</h3>
         <p>시리즈 전체의 주요 촬영 거점이 된 조지아주의 주도다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="atlantabase" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>레노라 힐스 촬영지 (Fayetteville, Georgia)</h3>
         <p>시즌4 캘리포니아 설정 장면이 실제로 촬영된 조지아주의 지역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="lenorahills" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>캄차카 세트 (애틀랜타 스튜디오)</h3>
         <p>러시아 설정 장면이 세트로 촬영된 애틀랜타의 스튜디오다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="kamchatkaset" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

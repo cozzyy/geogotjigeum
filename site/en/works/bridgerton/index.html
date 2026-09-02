@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -362,71 +369,113 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Ranger's House, London</h3>
         <p>A mansion in Greenwich used for many Bridgerton family house interior scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="rangershouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Royal Crescent, Bath</h3>
         <p>A Georgian crescent-shaped terrace built 1767–1775, with 30 Grade I listed buildings sweeping around Royal Victoria Park — one of Britain's most iconic streets. &quot;No. 1 Royal Crescent&quot; specifically served as the Featherington family home's exterior; the production added stone lions, pediments, and rosettes to reflect the family's ostentatious taste. Through CGI, it was made to appear directly across a Georgian London square from the Bridgerton family home (actually Ranger's House in Greenwich). Season 1 filmed here across two shoots in August and November 2019, and the crew returned for Season 3.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="royalcrescent" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Holburne Museum</h3>
         <p>Bath's art museum, used as Lady Danbury's residence.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="holburnemuseum" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Bath Assembly Rooms</h3>
         <p>An 18th-century social venue used for the extravagant ball scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bathassembly" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Castle Howard</h3>
         <p>A grand Yorkshire estate used as the Duke of Hastings' residence.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="castlehoward" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Hampton Court Palace</h3>
         <p>A Tudor-era royal palace used for the royal court scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="hamptoncourt" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Old Royal Naval College</h3>
         <p>A grand Greenwich building used for various social-scene filming.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="oldrnc" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Wilton House</h3>
         <p>A Wiltshire estate used for various interior palace scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="wiltonhouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Basildon Park</h3>
         <p>A National Trust estate in Berkshire used for party and household scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="basildonpark" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Painshill Park</h3>
         <p>An 18th-century landscape garden used for garden scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="painshillpark" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Wrotham Park</h3>
         <p>A Hertfordshire estate used as Aubrey Hall.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="wrothampark" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Lancaster House, London</h3>
         <p>A lavish central London mansion used for royal-palace scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="lancasterhouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Bath City Centre</h3>
         <p>A major western English city with a dense concentration of Bridgerton filming locations.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bathcitycenter" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>브리저튼 체험 행사 (기간 한정)</h3>
         <p>A London event space hosting limited-run Bridgerton-themed experiences like ball simulations.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="bridgerton" data-location-id="bridgertonexperience" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -432,166 +439,265 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>아이치현 오카자키시</h3>
         <p>도쿠가와 이에야스 출생지. 미카와 마쓰다이라 가문의 거성.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="okazaki" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>아이치현 도요타시 마쓰다이라초</h3>
         <p>마쓰다이라 가문의 발상지. 마쓰다이라 도쇼구와 산유의 우물이 있음.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="matsudairago" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 시즈오카시 아오이구</h3>
         <p>소년기 이마가와 가문의 인질로 지낸 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="sunpu_imagawa" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>아이치현 기요스시</h3>
         <p>오다 노부나가와 '기요스 동맹'을 체결한 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kiyosu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시가현 오미하치만시</h3>
         <p>오다 노부나가의 거성. 이에야스가 방문한 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="azuchi" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 하마마츠시 나카구</h3>
         <p>도토미 통치 거성. '출세성(出世城)'으로 불림.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="hamamatsu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 하마마츠시 나카구 미카타하라초</h3>
         <p>다케다 신겐에게 대패한 전투지. 이에야스 생애 최대 위기 중 하나.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="mikatagahara" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>아이치현 신시로시 나가시노</h3>
         <p>오다·도쿠가와 연합군이 다케다군을 조총 전술로 격파한 전투지.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="nagashino" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>가나가와현 오다와라시</h3>
         <p>도요토미의 호조씨 정벌에 종군, 이후 관동으로 이봉되는 계기.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="odawara" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도쿄도 지요다구 (현 고쿄/황거)</h3>
         <p>관동 이봉 후 거성으로 삼은 곳. 훗날 에도 막부의 중심.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="edo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도치기현 오야마시</h3>
         <p>세키가하라 전투 직전, 동군 진영의 방침을 정한 회의 개최지.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="oyama" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>기후현 후와군 세키가하라초</h3>
         <p>천하를 결정지은 세키가하라 전투가 벌어진 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="sekigahara" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>교토부 교토시 후시미구</h3>
         <p>정이대장군 선하 및 상경 시 거점으로 사용한 성.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="fushimi" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>교토부 교토시 나카교구</h3>
         <p>쇼군 취임 의식 및 상경 시 숙소로 축성. 세계문화유산.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="nijo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>오사카부 오사카시 주오구</h3>
         <p>오사카 전투(겨울의 진·여름의 진)로 도요토미 가문이 멸망한 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="osaka" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 시즈오카시 아오이구</h3>
         <p>쇼군직을 히데타다에게 물려준 뒤 오고쇼(大御所)로 머문 은퇴 후 거성.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="sunpu_castle" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 시즈오카시 스루가구</h3>
         <p>이에야스 사후 유언에 따라 첫 안장된 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kunozan" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도치기현 닛코시</h3>
         <p>이장 후 '동조대권현(東照大権現)'으로 신격화되어 안치된 세계문화유산.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="nikko" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>아이치현 가리야시</h3>
         <p>이에야스의 외가 미즈노 가문의 거성. 어머니 오다이노카타가 태어난 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kariya" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>시즈오카현 가케가와시</h3>
         <p>이마가와 잔존 세력의 마지막 거점. 이에야스가 무력이 아닌 협상으로 항복시켰다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kakegawa" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>후쿠이현 후쿠이시</h3>
         <p>시바타 가쓰이에와 오이치노카타 부부가 함께 최후를 맞은 성터.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kitanosho" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>교토부 교토시 나카교구</h3>
         <p>오다 노부나가가 아케치 미쓰히데의 습격으로 죽은 사건의 현장. 이에야스는 이 소식에 사카이에서 목숨을 건 탈출을 감행했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="honnoji" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>니가타현 조에쓰시</h3>
         <p>우에스기 가문의 본거지. 노부나가와 다케다를 동시에 견제한 동국 최대 세력 중 하나였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kasugayama" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>후쿠시마현 아이즈와카마쓰시</h3>
         <p>우에스기 가게카쓰의 아이즈 정벌이 세키가하라 전투의 도화선이 된 곳.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="aizuwakamatsu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>와카야마현 이토군 고야초</h3>
         <p>불안정했던 도요토미 후계 구도 속에서 도요토미 히데쓰구가 할복을 명받은 영지.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="koyasan" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>구마모토현 구마모토시</h3>
         <p>가토 기요마사가 규슈에서 쌓아올린 거성. 세키가하라 이후 도쿠가와 편에 서서 규슈를 안정시켰다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="kumamoto" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>후쿠오카현 후쿠오카시 주오구</h3>
         <p>구로다 부자가 세키가하라의 공으로 받은 규슈 영지. 부친 간베에는 혼란을 틈타 독자적 규슈 장악을 노리기도 했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="fukuoka" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>미야기현 센다이시 아오바구</h3>
         <p>다테 마사무네가 쌓은 오슈 최대 거성. 이에야스와 협력하면서도 독자적 세력 확장을 꾀했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="sendai" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>나가노현 우에다시</h3>
         <p>사나다 부자가 소수 병력으로 히데타다의 대군을 묶어 세키가하라 본전 지각을 유발한 성.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="ueda" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도쿄도 주오구 니혼바시</h3>
         <p>1603년 막부가 가설한 다리로, 도카이도를 포함한 오가도(五街道)의 기점(이정표 0km 지점)이 된 곳. 에도가 전국과 연결되는 상징적 출발점.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="nihonbashi" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도쿄도 지요다구 히비야공원 일대</h3>
         <p>원래 에도만의 일부였던 히비야이리에를 매립해 만든 땅. 지금의 마루노우치·긴자 일대가 모두 이 매립지 위에 서 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="hibiya_reclamation" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도쿄도 분쿄구 고라쿠엔</h3>
         <p>미토 도쿠가와 가문의 저택 정원으로 조성된 곳. 이에야스가 다진 에도 통치의 기틀 위에서, 그 후손들이 학문과 풍류를 즐기던 공간이 지금은 도쿄를 대표하는 정원 중 하나가 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="korakuen" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도쿄도 주오구 하마리큐테이엔</h3>
         <p>원래 도쿠가와 쇼군가의 별저이자 오리 사냥터였던 곳. 에도만의 바닷물을 그대로 끌어들인 조수 정원이 지금도 남아있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daemang" data-location-id="hamarikyu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

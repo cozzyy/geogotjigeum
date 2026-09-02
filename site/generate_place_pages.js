@@ -129,6 +129,12 @@ const SHARED_CSS = `
   .mapCtaWrap{margin:16px 0 22px;}
   .mapCta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;min-height:44px;box-sizing:border-box;width:100%;max-width:420px;text-align:center;}
   .mapCta:hover{opacity:.9;}
+  .save-place-row{margin:0 0 18px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13.5px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
   .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
   .tipBox b{color:var(--accent);}
@@ -174,7 +180,7 @@ const SHARED_CSS = `
 const LOCALES = {
   ko: { htmlLang:'ko', ogLocale:'ko_KR', urlPrefix:'', outDir:'places', siteName:'그곳, 지금',
     ui:{ home:'🏠 홈', kicker:'장소로 찾기', breadcrumbHome:'홈', breadcrumbHub:'장소로 찾기',
-      subTitle:(t)=>`${t}에 나온 실제 장소`, tierBadge:'✅ 실제로 가볼 수 있는 곳',
+      subTitle:(t)=>`${t}에 나온 실제 장소`, tierBadge:'✅ 실제로 가볼 수 있는 곳', saveBtnLabelSave:'저장', saveBtnLabelSaved:'저장됨',
       note:(t)=>`이 장소가 나온 작품 "${t}"의 다른 실제 촬영지·배경 장소들도 함께 볼 수 있어요.`,
       mapCta:'🗺️ 지도에서 정확한 위치 보기 →', tipLabel:'💡 방문 팁',
       workHeading:'이 장소가 나온 작품', workCardCta:(t)=>`지도에서 ${t} 장소 전체 보기 →`,
@@ -190,7 +196,7 @@ const LOCALES = {
       footerTag:'이야기 속 장소를 실제로 가볼 수 있는 개인 여행지도 블로그' } },
   en: { htmlLang:'en', ogLocale:'en_US', urlPrefix:'/en', outDir:'en/places', siteName:'That Place, Now',
     ui:{ home:'🏠 Home', kicker:'Find by place', breadcrumbHome:'Home', breadcrumbHub:'Find by place',
-      subTitle:(t)=>`A real place from ${t}`, tierBadge:'✅ A real place you can visit',
+      subTitle:(t)=>`A real place from ${t}`, tierBadge:'✅ A real place you can visit', saveBtnLabelSave:'Save', saveBtnLabelSaved:'Saved',
       note:(t)=>`You can also see other real filming locations and settings from "${t}" here.`,
       mapCta:'🗺️ See the exact location on the map →', tipLabel:'💡 Visit tip',
       workHeading:'The story behind this place', workCardCta:(t)=>`See all ${t} locations on the map →`,
@@ -206,7 +212,7 @@ const LOCALES = {
       footerTag:'A personal travel-map blog for visiting real places from stories' } },
   ja: { htmlLang:'ja', ogLocale:'ja_JP', urlPrefix:'/ja', outDir:'ja/places', siteName:'あの場所、いま',
     ui:{ home:'🏠 ホーム', kicker:'場所で探す', breadcrumbHome:'ホーム', breadcrumbHub:'場所で探す',
-      subTitle:(t)=>`${t}に登場する実際の場所`, tierBadge:'✅ 実際に訪れられる場所',
+      subTitle:(t)=>`${t}に登場する実際の場所`, tierBadge:'✅ 実際に訪れられる場所', saveBtnLabelSave:'保存', saveBtnLabelSaved:'保存済み',
       note:(t)=>`この場所が登場する作品「${t}」の他の実際のロケ地・舞台もあわせてご覧いただけます。`,
       mapCta:'🗺️ 地図で正確な位置を見る →', tipLabel:'💡 訪問のヒント',
       workHeading:'この場所が登場する作品', workCardCta:(t)=>`地図で${t}の場所をすべて見る →`,
@@ -222,7 +228,7 @@ const LOCALES = {
       footerTag:'物語の中の場所を実際に訪れられる個人旅行地図ブログ' } },
   zh: { htmlLang:'zh-Hant', ogLocale:'zh_TW', urlPrefix:'/zh', outDir:'zh/places', siteName:'那個地方，現在',
     ui:{ home:'🏠 首頁', kicker:'依地點尋找', breadcrumbHome:'首頁', breadcrumbHub:'依地點尋找',
-      subTitle:(t)=>`${t}中出現的實際地點`, tierBadge:'✅ 實際可以造訪的地方',
+      subTitle:(t)=>`${t}中出現的實際地點`, tierBadge:'✅ 實際可以造訪的地方', saveBtnLabelSave:'收藏', saveBtnLabelSaved:'已收藏',
       note:(t)=>`您也可以一起查看「${t}」中其他實際拍攝地與故事背景地點。`,
       mapCta:'🗺️ 在地圖上查看確切位置 →', tipLabel:'💡 造訪小提示',
       workHeading:'出現這個地點的作品', workCardCta:(t)=>`在地圖上查看${t}的所有地點 →`,
@@ -290,6 +296,7 @@ ${opts.hreflang || ''}
   gtag('config', '${GA_ID}');
 </script>
 <style>${SHARED_CSS}</style>
+<script src="/saved_places.js"></script>
 ${opts.jsonLd || ''}
 </head>
 <body>
@@ -414,6 +421,9 @@ function renderPlacePage(p, locale){
 
   <div class="mapCtaWrap">
     <a class="mapCta" href="${mapUrl(w, l.id)}">${L.ui.mapCta}</a>
+  </div>
+  <div class="save-place-row">
+    <button type="button" class="save-place-btn" data-work-id="${esc(w.id)}" data-location-id="${esc(l.id)}" data-surface="place" data-label-save="${esc(L.ui.saveBtnLabelSave)}" data-label-saved="${esc(L.ui.saveBtnLabelSaved)}" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">${esc(L.ui.saveBtnLabelSave)}</span></button>
   </div>
 ${sceneBlockHtml}
 ${whyBoxHtml}

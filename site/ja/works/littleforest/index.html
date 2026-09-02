@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,56 +438,89 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ヘウォンの家（大邱広域市軍威郡于輔面）</h3>
         <p>もともと空き家だった農家を1年間セットとして使用した場所。撮影終了後も取り壊されず、板の間・台所・暖炉・畑・自転車など劇中の姿をそのまま保存し、無料で常設公開されている。2023年に軍威郡が大邱広域市へ編入されて以降、公式「軍威シティツアー」の正式コースに含まれている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hyewonhouse" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>花本駅（慶尚北道軍威郡山城面）</h3>
         <p>1936年開通の中央線の古い駅。劇中ジェハが元恋人を見送るプラットホームのシーンが撮影された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hwabonstation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>역전상회 (화본역 앞, 군위군 산성면)</h3>
         <p>A general store in front of Hwabon Station that has been operating for over 50 years — the scene of Hye-won and Eun-sook eating ice cream and old-fashioned snacks was filmed here. Still open for business today, with a banner marking it as a filming location.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="yeokjeonstore" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>한밤마을 돌담길 (군위군 부계면)</h3>
         <p>A traditional stone-walled village where the scene of Hye-won picking persimmons was filmed. Known for its well-preserved old stone walls.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="hanbamvillage" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>일연공원 (군위군 고로면)</h3>
         <p>A park commemorating Buddhist monk Il-yeon, author of the Samguk Yusa — used as a scenic backdrop in the film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="ilyeonpark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>의흥전통시장 (군위군 의흥면)</h3>
         <p>A real traditional market where the film's marketplace scenes were shot.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="uiheungmarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>조문국사적지 (경북 의성군 금성면)</h3>
         <p>A historic site with ancient Jomunguk-kingdom tombs, also known for its canola fields — used as a spring-scene backdrop in the film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="jomunguksite" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>의성 사곡면 산수유마을 (경북 의성군 사곡면)</h3>
         <p>Where the scene of Hye-won taking a bicycle ride was filmed. A village famous for its yellow cornelian cherry blossoms in early spring.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="sagokssansuyu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>의성 사곡면 오상리 마늘밭 (경북 의성군 사곡면)</h3>
         <p>A spring-scene filming location revealed to the press in May 2017. One of the actual growing fields for Uiseong garlic, a nationally renowned brand.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="osangligarlic" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>군위전통시장 (군위군 군위읍)</h3>
         <p>A real traditional market included as the lunch stop on the Gunwi City Tour — a good place to try local food alongside a visit to Hye-won's House.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="gunwimarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>군위 대추 산지 일대 (군위군 전역)</h3>
         <p>Gunwi is one of Korea's top jujube-growing regions, with an annual jujube festival. Not directly referenced in the film, but a genuine local specialty of the area where Hye-won's House is located.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="littleforest" data-location-id="gunwijujube" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

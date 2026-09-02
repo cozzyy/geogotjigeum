@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -430,76 +437,121 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>흥덕사지 (충북 청주시 흥덕구 직지대로 713)</h3>
         <p>The site of the temple where the world's first metal-type printed book, Jikji, was actually published in 1377. A 1985 excavation confirmed the location after uncovering building foundations and a bronze gong inscribed with the temple's name, &quot;Heungdeoksa.&quot; In the novel, this is where researcher Kim Jeong-jin explains Jikji's history to journalist Kim Ki-yeon — the story's real starting point. The boulevard running past the site is literally named &quot;Jikji-daero,&quot; a sign of how central Jikji is to Cheongju's identity.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="heungdeoksaji" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>청주고인쇄박물관 (흥덕사지 옆)</h3>
         <p>A museum opened in 1992 right next to the Heungdeoksa site, presenting Jikji and Goryeo-era metal-type printing through artifacts, replicas, and digital immersive exhibits. In the novel, this is where Cheongju-based Jikji researcher Kim Jeong-jin is depicted working, complete with AR interactive displays. The most direct place to see where the world's oldest metal-type printing technology actually originated.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="cheongjumuseum" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>운리단길 (청주시 흥덕구 운천동)</h3>
         <p>A trendy alley district in Uncheon-dong near the Heungdeoksa site and the printing museum, where dozens of cafés, restaurants, and craft shops take part in a street festival during the Jikji Culture Festival. It doesn't appear directly in the novel, but it's a great way to experience everyday Cheongju life after exploring Jikji's history.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="unlidangil" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>직지문화특구·직지문화축제 개최지 (청주 흥덕구 일대)</h3>
         <p>A cultural district designated by Cheongju around the Heungdeoksa site and printing museum, home to the annual Jikji Culture Festival held each autumn under the theme &quot;Jikji, the Spark of Civilization.&quot; Programs include hands-on metal-type printing and a night exhibition at the temple's main hall site. Separate from the novel's plot, it's where visitors today can feel that Jikji is still a living civic festival, not just history.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="jikjifestival" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>청주 문화제조창 (청주시 청원구, 옛 연초제조창)</h3>
         <p>A former tobacco factory remodeled into a cultural complex, home to the Cheongju branch of the National Museum of Modern and Contemporary Art. If Jikji represents old printing technology, this is another example of Cheongju turning old industrial heritage into today's cultural content. It doesn't appear in the novel, but makes a great bonus stop for feeling both old and new Cheongju in one visit.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="culturefactory" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>상당산성 (청주시 상당구)</h3>
         <p>A well-known mountain fortress from the Joseon dynasty, popular for its walking trail along the walls and views over Cheongju. If Jikji represents Cheongju's intellectual and cultural pride, Sangdangsanseong shows another side of the city's long defensive history. Not related to the novel directly, but a staple recommendation for anyone spending more than a day in Cheongju.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="sangdangsanseong" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>고려대학교 (서울 성북구)</h3>
         <p>Depicted as the university where Latin professor Jeon Hyeong-woo taught while researching the connection between Jikji and Gutenberg's metal type, along with an old letter from the Vatican. His death here is the real starting point of the present-day storyline, from which journalist Kim Ki-yeon's investigation unfolds.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="koreauniv" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>국립중앙박물관 (서울 용산구)</h3>
         <p>Home to a permanent exhibition on Goryeo and Joseon metal-type printing, where visitors can see the real technology behind Jikji's story. It isn't a confirmed scene from the novel, but it's the most reliable place in Seoul to see the subject Kim Ki-yeon and Kim Jeong-jin are chasing — Goryeo-era metal-type printing — in person.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="museumkorea" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>주한프랑스대사관 (서울 서초구)</h3>
         <p>The fact that the original Jikji is held at the National Library of France is also tied to an ongoing conversation between Korea and France about cultural property repatriation. Not a confirmed scene from the novel, but this embassy is included as a real symbol of the kind of steps (visas, requests for cooperation) Ki-yeon would plausibly have gone through before heading to Paris.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="frenchembassy" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>프랑스국립도서관 리슐리외관 (Bibliothèque nationale de France, Site Richelieu)</h3>
         <p>The real home of the surviving second volume of Jikji (catalogue number 109). Donated to the library in 1952 per the will of its owner Henri Vever, who died in 1943, it was here in 1972 that librarian Dr. Park Byeong-seon first identified Jikji and proved it predated Gutenberg's 42-line Bible by 78 years. One of the real destinations on Ki-yeon's European trail following Jeon Hyeong-woo's clues.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="bnfrichelieu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>아비뇽 교황청 (Palais des Papes, Avignon)</h3>
         <p>The site of the 14th-century &quot;Avignon Papacy,&quot; when the Roman papacy relocated here. In the novel, it's woven into Eunsu (Karena)'s European storyline and the trail of clues surrounding an old Vatican letter. One of the largest Gothic palaces in Europe, still conveying the scale of medieval papal power today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="avignon" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스트라스부르 (Strasbourg, France)</h3>
         <p>Where Gutenberg is believed to have secretly begun his movable-type printing experiments from around 1434 to 1444 — he reportedly called the venture &quot;Art and Enterprise&quot; with his business partners. He later returned to his hometown of Mainz to complete the 42-line Bible. In the novel, this is where researcher Professor Fischer provides clues linking Karena to European printing.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="strasbourg" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>구텐베르크 박물관 (Gutenberg-Museum, Mainz)</h3>
         <p>One of the oldest printing museums in the world, holding two of the surviving 49 original copies of the 42-line Bible that Gutenberg completed in Mainz between 1452 and 1455 after returning home in 1448. Live printing demonstrations are held on reconstructed Gutenberg presses. The novel never claims Jikji's technology was directly transmitted to Gutenberg — but the fact that two printing revolutions happened 78 years apart at opposite ends of Eurasia makes this the essential counterpart stop on Jikji's journey.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="gutenbergmuseum" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>마인츠 대성당 (Mainzer Dom, Mainz)</h3>
         <p>A cathedral more than a thousand years old, right next to the Gutenberg Museum, where Gutenberg is believed to have been baptized. Not a specific scene from the novel, but a natural stop right next door if you're visiting the Gutenberg Museum.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="mainzcathedral" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>바티칸 사도 도서관·문서고 (Vatican Apostolic Library and Archives)</h3>
         <p>Where the novel's central mystery — an old papal letter — points to. In reality one of the world's oldest and most extensive document collections, holding many records of medieval contact between Europe and Asia, making it fertile ground for the novel's imagination. To be clear, though: the letter's recipient and interpretation in the story are entirely fictional, not a confirmed historical fact.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="jikji" data-location-id="vaticanlibrary" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

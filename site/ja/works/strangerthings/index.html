@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,61 +436,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>잭슨 (Jackson, Georgia)</h3>
         <p>A small Georgia town used as the backdrop for downtown Hawkins.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="jacksonga" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>호킨스 국립연구소 배경지 (Atlanta 권역)</h3>
         <p>A facility in the Atlanta area used for the Hawkins National Laboratory exterior.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="hawkinslab" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>그위넷 플레이스 몰 (Gwinnett Place Mall, Duluth, GA)</h3>
         <p>The real mall recreated as Starcourt Mall for Season 3. It opened in 1984, almost exactly matching the show's 1985 setting, and the set was dressed with real '80s brands like RadioShack and Spencer's Gifts. Now largely vacant, it's owned by Gwinnett County, which has floated redevelopment plans.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="gwinnettmall" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>호킨스 고등학교 배경지 (Patrick Henry High School)</h3>
         <p>A real Georgia high school used for the school scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="patrickhenryhs" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스톤 마운틴 파크 (Stone Mountain Park)</h3>
         <p>A major Georgia park used for woods and railway-track scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="stonemountain" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>이스트포인트 (East Point)</h3>
         <p>An area near Atlanta used for residential scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="eastpoint" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>로마 (Rome, Georgia)</h3>
         <p>A Georgia city that served as a key filming location for Season 4.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="romega" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>크릴 하우스 (Creel House, Rome 인근)</h3>
         <p>The house used for scenes tied to Vecna's true identity.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="creelhouse" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스크린 젬스 스튜디오 (Screen Gems Studios, Atlanta)</h3>
         <p>A major Atlanta film studio used for set filming.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="screengems" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>애틀랜타 (Atlanta)</h3>
         <p>Georgia's capital, the main production base for the entire series.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="atlantabase" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>레노라 힐스 촬영지 (Fayetteville, Georgia)</h3>
         <p>A Georgia area used for the Season 4 scenes set in California.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="lenorahills" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>캄차카 세트 (애틀랜타 스튜디오)</h3>
         <p>An Atlanta studio where the scenes set in Russia were filmed on a soundstage.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="kamchatkaset" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

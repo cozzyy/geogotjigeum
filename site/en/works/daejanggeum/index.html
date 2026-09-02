@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -358,36 +365,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>양주 대장금 테마파크 터 (경기 양주, 폐장)</h3>
         <p>The original set built specifically to film Dae Jang Geum — reconstructed palace exteriors, the royal kitchen, and government offices — which opened to the public in 2004 but closed in late 2011 due to safety concerns and deterioration. Some of the sets were later moved to and restored at Yongin Daejanggeum Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yangju_theme_park" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>용인대장금파크 (경기 용인, 원조 세트의 후신)</h3>
         <p>Despite the name, this park was not the actual 2003 filming location. It began as 'MBC Dramia,' a separate historical-drama backlot, and was only renamed 'Daejanggeum Park' in August 2015 — after the original Yangju set closed in 2011 — with some Yangju structures relocated and restored here. Other sageuk dramas have also been filmed here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yongin_daejanggeum_park" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>제주민속촌박물관 (제주 서귀포 표선면)</h3>
         <p>Where the scenes of Jang-geum's exile to Jeju — including the government office and her hut — were filmed, over 17 days in December 2003. A filming-location sign, photo zone, and a small exhibit of costumes, scripts, herbs, and medical instruments remain today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="jeju_folk_village" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>협재해수욕장 (제주 제주시)</h3>
         <p>The beach where Jang-geum and Min Jeong-ho walk together and head out by boat. It's one of the most popular beaches on Jeju's west coast and remains a major tourist draw today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hyeopjae_beach" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>낙안읍성 (전남 순천)</h3>
         <p>The Joseon-era walled town where market and butcher-village scenes were filmed. It remains an inhabited folk village open to visitors today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="naganeupseong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경복궁 소주방 (서울 종로구)</h3>
         <p>Frequently mentioned in travel guides as a backdrop for the drama's royal-kitchen scenes, though which specific episode or scene has not been confirmed against a primary source. Included here for reference only.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="gyeongbokgung_sojubang" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>화성행궁 (경기 수원)</h3>
         <p>Often cited as a filming location for palace-drama scenes in general, but Dae Jang Geum's specific use of this site is not confirmed against a primary source. Included here for reference only.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hwaseong_haenggung" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
     <div class="cultureBox">

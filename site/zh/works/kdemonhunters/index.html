@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,61 +425,97 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>N首爾塔</h3>
         <p>聳立在南山山頂的展望塔。Saja Boys演唱《Your Idol》的虛構體育場就設定在這座塔下方，是全片最具象徵性的場景背景。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="nseoultower" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>北村韓屋村</h3>
         <p>傳統韓屋密集的巷弄，常被認為是劇中屋頂合唱場景的背景原型，表現出韓國傳統美與獵人血脈的意象。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="bukchon" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>清潭大橋</h3>
         <p>橫跨漢江的橋樑，是列車上展開的「Takedown」戰鬥場景的原型地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="cheongdambridge" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>漢江（蠶室一帶）</h3>
         <p>貫穿首爾的大河，蠶室段尤其被視為角色們暫時卸下巨星壓力與獵魔雙重生活重擔的寧靜場景原型。寬闊的步道與自行車道、映在江面上的夜景是其特色。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="hangang" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>景福宮</h3>
         <p>朝鮮王朝正宮，是強調宮殿與傳統美場景的原型，也是首爾代表性古宮。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="gyeongbokgung" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>駱山公園</h3>
         <p>保留舊漢陽都城城郭的公園，是連結夜景與城郭動線場景的背景原型。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="naksanpark" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>首爾奧林匹克主競技場</h3>
         <p>經常舉辦大型演唱會的綜合競技場，是劇中大規模演出畫面的原型地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="olympicstadium" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>明洞</h3>
         <p>首爾代表性商圈，是表現K-pop、購物與街頭能量場景的背景原型。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="myeongdong" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>COEX K-POP廣場</h3>
         <p>設有巨大媒體牆並舉辦K-pop粉絲活動的江南商業空間，是粉絲文化體驗內容的原型。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="coexkpop" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>國立中央博物館</h3>
         <p>韓國規模最大的博物館，是傳統文物與文化元素延伸的素材來源。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="nationalmuseum" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>首爾藥令市（K-Medi Center）</h3>
         <p>傳統韓方藥材市場，是傳統文化體驗內容的背景原型。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="yangnyeongsi" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>蠶室・江南</h3>
         <p>大型演出場館與粉絲商圈密集的地區，是演唱會與粉絲消費動線的原型地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kdemonhunters" data-location-id="jamsil" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

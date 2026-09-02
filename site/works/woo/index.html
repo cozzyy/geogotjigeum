@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,36 +436,57 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>센터필드 웨스트 (서울 강남구 테헤란로 231)</h3>
         <p>극 중 법무법인 한바다의 사무실 회전문 촬영지. 회전문을 무서워하는 영우가 동료 이준호의 도움을 받아 왈츠를 추듯 통과하는 장면이 실제로 이 건물 로비에서 촬영됐다. 실제로는 국내 게임업체 등이 입주한 오피스 빌딩으로, 극 중 설정처럼 역삼역 인근에 자리해 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="hanbadabuilding" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>카자구루마 (수원시 팔달구 신풍로23번길 61)</h3>
         <p>극 중 영우의 아버지 우광호가 운영하는 &quot;우영우 김밥&quot;의 실제 촬영지. 수원 행궁동 카페거리(행리단길)에 있는 실제 일식당으로, 극과 달리 메뉴에 김밥은 없고 우동·덮밥을 판매한다. 외관과 내부 다수 장면이 이 식당에서 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="gimbapplace" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>수원 행궁동 행리단길 (경기 수원시 팔달구)</h3>
         <p>우영우 김밥집 촬영지가 있는 카페거리 일대로, 수원화성 행궁 인근의 골목 상권이다. 극에 직접 등장하는 장면은 김밥집 촬영지에 국한되지만, 방문객들 사이에서는 우영우 촬영지 투어의 자연스러운 확장 코스로 자리 잡았다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="suwonhaenggung" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>충청북도청 본관·정원 (충북 청주시 상당구 상당로 82)</h3>
         <p>8회 극 중 &quot;경해도청&quot; 장면이 실제로 촬영된 곳. 직원이 도주하는 실내 장면은 도의회가 있는 신관에서, 건물 밖으로 나오는 장면은 본관 입구에서 촬영됐고, 이후 도청 정원과 정자까지 등장한다. 이 사이트는 충북을 작품 전체의 배경이 아니라, 8회 소덕동 관련 장면의 공식 촬영지로만 표기한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukprovoffice" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>충청북도의회 (충북도청 신관 내)</h3>
         <p>충북도청 본관과 붙어 있는 신관 건물로, 8회 극 중 직원이 실내에서 도주하는 장면이 촬영된 곳이다. 실제로는 충청북도의회가 사용하는 공간으로, 청주영상위원회 자료로 촬영 사실이 확인됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukassembly" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>창원 동부마을 (경남 창원시 의창구 대산면 북부리)</h3>
         <p>극 중 가상의 마을 &quot;소덕동&quot;으로 등장한 실제 마을. 7~8회 촬영 이후 극에 등장했던 고래 벽화가 마을 입구 주택 벽에 그려져 지금도 남아있고, 마을의 상징이었던 팽나무도 실제로 이곳에 서 있다. 낙동강을 배경으로 한 대산평야를 마주한 조용한 농촌 마을로, 실제 주민들이 거주하는 공간이라는 점을 유념해야 한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="changwondongbu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>청주 중앙공원·성안길 권역 (더 글로리 촬영지 연계)</h3>
         <p>충북도청에서 도보로 이동 가능한 청주 원도심 권역으로, 같은 청주 소재의 다른 콘텐츠 「더 글로리」의 실제 촬영지(청주 중앙공원·용화사)와 묶어 &quot;청주 K-드라마 도보 통합코스&quot;를 만들 수 있는 지점이다. 극에 직접 등장하는 장면은 아니지만, 충북도청 방문 뒤 자연스럽게 이어갈 수 있는 실제 동선이라 소개한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="cheongjuoldtownlink" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

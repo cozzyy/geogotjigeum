@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -364,81 +371,129 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>강원감영 (강원 원주시 일산동)</h3>
         <p>The provincial government office in Wonju where the 45-year-old Jeong Cheol arrived after being appointed governor of Gangwon-do in the first month of 1580. Gwandong Byeolgok opens with the scene of him receiving the king's summons and setting out for this post.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="wonju_gamyeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>만폭동 (내금강, 북한)</h3>
         <p>Considered the finest valley in Inner Kumgang. In the poem's second section, Jeong Cheol marvels at this valley as he begins his tour of the Diamond Mountains.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="manpokdong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>금강대 (내금강, 북한)</h3>
         <p>One of the peaks of Inner Kumgang, described in the poem as a place so sublime that immortals are said to ride cranes there.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="geumgangdae" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>진헐대 (내금강, 북한)</h3>
         <p>One of the scenic overlooks of Inner Kumgang, where Jeong Cheol takes in the view of the Diamond Mountains' peaks and expresses his admiration.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="jinheoldae" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>개심대 (내금강, 북한)</h3>
         <p>A scenic overlook whose name means 'the terrace that opens the mind' — where the poem describes gazing out over all twelve thousand peaks of the Diamond Mountains at once.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="gaesimdae" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>화룡연 (내금강, 북한)</h3>
         <p>A pool linked to a legend of a dragon ascending to heaven — one of the mystical waterfall-and-pool scenes described in the poem.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="hwaryongyeon" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>십이폭포 (내금강, 북한)</h3>
         <p>A waterfall said to cascade in twelve bends, described in the poem's second section as one of its most dramatic sights.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="sibipokpo" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>총석정 (관동팔경, 강원 통천군, 북한)</h3>
         <p>One of the Eight Views of Gwandong — a pavilion surrounded by hexagonal stone pillars rising from the sea. Jeong Cheol describes watching the sunrise here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="chongseokjeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>삼일포 (관동팔경, 강원 고성군, 북한)</h3>
         <p>A lake named for a legend that Silla-era hwarang warriors stayed here for three days. One of the Eight Views of Gwandong, painted in the poem as a mystical lakeside scene.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="samilpo" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>의상대 (양양 낙산사 경내)</h3>
         <p>A pavilion on a coastal cliff within Naksansa Temple, linked to the legend that the Silla monk Uisang meditated here. Famous as the spot where Jeong Cheol describes his awe at watching the sunrise over the East Sea.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="uisangdae" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>청간정 (관동팔경, 강원 고성군 간성)</h3>
         <p>One of the Eight Views of Gwandong — a pavilion where Jeong Cheol describes the meeting of a clear stream and the sea.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="cheongganjeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>낙산사 (관동팔경, 강원 양양)</h3>
         <p>A temple founded by the monk Uisang during the reign of Silla's King Munmu — one of the Eight Views of Gwandong. Jeong Cheol visits and describes its scenery in the poem.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="naksansa" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경포대 (관동팔경, 강원 강릉)</h3>
         <p>One of the Eight Views of Gwandong — a pavilion overlooking both Gyeongpo Lake and the East Sea. Jeong Cheol is famous for describing three moons here: one in the sky, one on the lake, and one on the sea.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="gyeongpodae" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>죽서루 (관동팔경, 강원 삼척)</h3>
         <p>A pavilion built atop a cliff over the Osip Stream, using the natural bedrock as part of its foundation — one of the Eight Views of Gwandong, praised in the poem for its striking setting.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="jukseoru" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>망양정 (관동팔경, 경북 울진)</h3>
         <p>One of the Eight Views of Gwandong, sometimes called the finest pavilion in the region. One of the last stops on the poem's journey, where Jeong Cheol sings of the vastness of the East Sea.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="mangyangjeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>월송정 (관동팔경, 경북 울진 평해)</h3>
         <p>A pavilion surrounded by a dense pine grove and white sand beach — one of the Eight Views of Gwandong, mentioned near the end of the poem's journey.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="wolsongjeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

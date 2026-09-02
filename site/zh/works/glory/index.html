@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,41 +425,65 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>清州中央公園（忠北清州市上黨區南寺路117）</h3>
         <p>東恩與汝正相對而坐下圍棋的場景實際拍攝地。公園中央樹齡900年的銀杏樹下，東恩混在老人們之中學習圍棋的畫面就在此取景。清州映像委員會官方確認的拍攝地——直指之城清州，這次成了復仇劇真正的舞台。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="cheongjujungangpark" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>龍華寺（忠北清州市西院區無心西路565）</h3>
         <p>位於無心川畔的大韓佛教曹溪宗寺院，劇中宗教與階級、加害者家族偽善交織的場景就在此實際拍攝，經清州映像委員會資料確認。目前仍是正常運作的寺院，參觀時請尊重這裡作為禮佛、修行空間的性質。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="yonghwasa" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>聖安街・清州舊市中心（忠北清州市上黨區聖安路）</h3>
         <p>與清州中央公園、龍華寺相連的清州舊市中心商圈，因曾是朝鮮時代清州邑城內的主要道路而得名。雖非劇中特定場景，卻是從中央公園步行可達、能完成「黑暗榮耀拍攝地巡禮」的實際據點，也是與《非常律師禹英禑》（忠北道廳）串聯成清州K劇整合路線的核心連接點。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="seongangil" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>青蘿湖水公園圍棋公園（仁川西區青蘿湖水路）</h3>
         <p>兩座258平方公尺的大型圍棋盤與石雕造景，實際搭建於這座公園並在此取景，是有別於清州中央公園銀杏樹場景的另一處真實圍棋相關拍攝地。劇集播出後成為粉絲熱門造訪地，就位於青蘿樓涼亭旁。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="cheongnabadukpark" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>鍾路3街圍棋街（首爾鍾路區敦化門路一帶）</h3>
         <p>塔谷公園附近，聚集著首爾多間老字號圍棋院的街區。據悉劇中東恩初次見到延鎮丈夫道英的圍棋院場景就在此一帶拍攝。是首爾市中心至今仍保留舊式圍棋文化的實際場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="jongno_pagoda" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">體驗設施</span>
         <h3>世宗市盤谷洞新都市一帶</h3>
         <p>世宗市新開發的新都市地區，據悉劇中部分學校、住宅場景在此一帶拍攝。惟為保護真實學生與設施，本站不特定標示校園暴力場景發生的具體建築（如學校、禮堂等），僅介紹新都市規劃街景本身。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="sejongbangok" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">主題關聯</span>
         <h3>가상 도시 &quot;세명시&quot; (극 중 설정, 실존 도시 아님)</h3>
         <p>The fictional city where Dong-eun and her tormentors live as adults. After the show aired, online speculation suggested Semyeong might be based on Cheongju, but the production has never officially confirmed any specific real city as its model. Cheongju is confirmed only as an official filming location — there is no basis for treating it as the real-world model for the fictional Semyeong. This site keeps the two clearly separate.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="semyeong" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>所乭防波堤（江原道江陵市注文津邑注文里791-47）</h3>
         <p>第二季最終回，飄雪的夜晚東恩與汝正倚著紅色燈塔喝啤酒、重新確認彼此心意的場景實際拍攝地。故鄉在江陵的編劇金銀淑，向來以把家鄉真實景點融入作品聞名，這座防波堤正是其中之一。就在連接兒岩公園的所乭海岸散步道旁。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="glory" data-location-id="sodolbangpaje" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

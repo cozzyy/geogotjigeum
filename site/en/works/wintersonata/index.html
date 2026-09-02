@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -361,51 +368,81 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>춘천고등학교 돌담길 (강원 춘천)</h3>
         <p>The real high school used as the backdrop for Jun-sang, Yu-jin, and Sang-hyuk's school days. Since it's an active school, filming focused on the exterior stone-wall path; Chuncheon City included it among the 12 filming-location signboards it installed around the city.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_high_school" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 메타세쿼이아 가로수길 — '연인의 숲' (강원 춘천)</h3>
         <p>The tree-lined path Jun-sang and Yu-jin walk down after skipping study hall — the towering metasequoia tunnel is often cited as the drama's single most iconic shot. It's since been nicknamed 'Winter Sonata Road,' and a filming-location signboard still marks the spot.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_treelined" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 자전거길 (강원 춘천)</h3>
         <p>The island's circular path where the two ride bicycles side by side. Rentals are still available on the same route today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_bike" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남이섬 조각공원 — 연인상 (강원 춘천)</h3>
         <p>The sculpture garden area associated with the drama's first-kiss scene. A statue of the two leads now stands here, making it a popular photo spot for fans.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_sculpture" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>중도유원지 (강원 춘천, 현재 레고랜드 코리아 부지)</h3>
         <p>The lakeside spot where Jun-sang and Yu-jin confirm their feelings for one another. It was a modest recreational island when the drama aired, but Legoland Korea Resort opened on this site in 2022, and the original scenery no longer exists.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="joongdo" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>준상이네 집 터 (강원 춘천 소양로, 철거됨)</h3>
         <p>The actual house used as Jun-sang's family home in Chuncheon. It remained a pilgrimage site for fans for nearly two decades, but was sold to a redevelopment association and demolished in 2021. Reports at the time said props like the piano would be displayed in a park within the new apartment complex, but it's unconfirmed whether this was carried out.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="junsang_house" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>춘천역 (강원 춘천)</h3>
         <p>The station seen on the day the friends leave for their school trip. The line was electrified and a new station building opened in 2010, so today's station looks different from the one seen in the drama.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_station" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>춘천 명동거리·중앙로터리 (강원 춘천)</h3>
         <p>The downtown Chuncheon street where, among other scenes, Yu-jin learns of Jun-sang's accident. It remains one of Chuncheon's main commercial districts today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="myeongdong_chuncheon" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>용평리조트 (강원 평창, 극중 '화이트 스키장')</h3>
         <p>Where Yu-jin and Min-hyung (Jun-sang) reunite ten years later over a ski resort renovation project. It's Korea's first full-scale ski resort in real life and remains in operation today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="yongpyeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>외도 (외도보타니아, 경남 거제)</h3>
         <p>The finale's setting, where a nearly-blind Jun-sang and Yu-jin reunite and confirm their feelings one last time. The island's exotic clifftop garden closes out the story.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="oedo" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

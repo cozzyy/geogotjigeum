@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -424,111 +431,177 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>横浜赤レンガ倉庫</h3>
         <p>映画序盤のティザー予告編に登場する横浜を代表する夜景スポット。1911〜1913年に建てられた旧保税倉庫2棟をリノベーションした施設で、劇中「ルシファー」が都心を疾走するシーンの背景イメージとして使われた。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="akarengasoko" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>アネスト岩田ターンパイク箱根・大観山</h3>
         <p>箱根・芦ノ湖を見下ろす実在の有料ドライブコースであり、本作最大のアクションであるバイク追跡劇の実際の舞台。神奈川県警交通機動隊の萩原千速が黒いバイク「ルシファー」を追うシーンが、このコースの急カーブ区間を舞台に描かれる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="turnpikehakone" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>首都高速神奈川1号横羽線</h3>
         <p>映画クライマックスに登場する高架追跡劇の実際の舞台。横浜都心と首都圏を結ぶ実在の高速道路で、劇中では黒幕・龍里希莉子が大前一暁を横浜ベイブリッジへおびき出す場面と重なり、緊張が最高潮に達する区間として描かれる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="shutokanagawa1" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>横浜ベイブリッジ</h3>
         <p>映画後半の最終どんでん返しが起きる舞台。佐々木直之の実姉と判明する龍里希莉子が、大前一暁への復讐のためヘリコプター狙撃手（ジョン・パウダー）を配置する場所がこの橋の上だ。コナン一行が狙撃を阻止するのと同時に、萩原千速が浅葱一華と入れ替わって大前の自白を引き出す場面が交錯して展開する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="yokohamabaybridge" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>丹沢湖</h3>
         <p>違法路上レース組織と関わりのあった元プロレーサー・青木雄一郎が水死体で発見される事件現場。実際は大前の指示を受けた浅葱（ルシファー）が彼を殺害し事故に見せかけたことが後に判明する。神奈川県山北町にある実在の人造湖。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="tanzawako" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>神奈川県警察本部</h3>
         <p>萩原千速が所属する神奈川県警交通機動隊と、龍里希莉子が開発した次世代AI支援警察バイク「エンジェル」が配備される実在組織の本部庁舎。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="kanagawapolicehq" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>横浜マリンタワー</h3>
         <p>1961年開業の横浜を象徴する展望タワー。劇中みなとみらい一帯を背景にした複数のシーンでスカイライン要素として登場する実在のランドマーク。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="marinetower" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>横浜中華街</h3>
         <p>日本最大規模の中華街。フェスティバル取材で横浜を訪れたコナン一行が立ち寄る繁華街として描かれる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="chinatownyokohama" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>クイーンズスクエア横浜</h3>
         <p>みなとみらい地区を代表する複合商業施設。劇中神奈川バイクフェスティバル近くの都心シーンの背景要素として登場する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="queenssquareyokohama" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>元町ショッピングストリート</h3>
         <p>山手の異国情緒漂う雰囲気に続く横浜の歴史あるショッピングストリート。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="motomachi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>大さん橋国際客船ターミナル</h3>
         <p>ウッドデッキの屋上が特徴的な横浜の玄関口ターミナル。劇中横浜港一帯の全景シーンにシルエットとして登場する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="osanbashi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>横浜ハンマーヘッド</h3>
         <p>2019年に再開業した新港埠頭の複合施設。名前は埠頭に残る100年以上前の実在の荷役クレーン「ハンマーヘッドクレーン」に由来する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="hammerhead" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>横浜ワールドポーターズ</h3>
         <p>みなとみらいを代表するショッピングモールの一つ。劇中フェスティバル関連シーンの人波の背景として言及される実在施設。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="worldporters" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>BASEGATE 요코하마 간나이(BASEGATE横浜関内)</h3>
         <p>A mixed-use building in Yokohama's Kannai district, referenced as a backdrop for scenes of the characters moving through downtown. Kannai itself developed as an administrative hub of government offices after the port's opening.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="basegateyokohama" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>コレットマーレ</h3>
         <p>横浜駅近くのファッション専門ショッピングモールで、横浜市が実施した劇場版公式コラボ・スタンプラリー参加店の一つ。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="colettemare" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>미나토미라이 도큐스퀘어(みなとみらい東急スクエア)</h3>
         <p>A mixed-use shopping complex sitting right above Minatomirai Station, another participant in the city's official tie-in stamp rally. A real commercial facility naturally along the route of a Yokohama sightseeing day.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="minatomiraitokyu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>小田原駅</h3>
         <p>横浜から箱根へ向かう道のりの実在の玄関駅。劇中の舞台である箱根地域へ向かう実際の旅程で必ず通ることになる交通の要所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="odawarastation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>箱根湯本駅</h3>
         <p>箱根温泉地域の玄関駅で、大観山ターンパイクへ向かう実際の旅程の経由地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="hakoneyumotostation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>오다와라시 관광교류센터(小田原市観光交流センター)</h3>
         <p>A tourist information hub near Odawara Station that ran local tie-in promotion during the film's release. A good one-stop source for Hakone and Odawara area travel information.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="odawaratourism" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>만요공원 유가와라 소잔(万葉公園 湯河原惣湯)</h3>
         <p>The signature park of the Yugawara hot-spring district, home to a recently renovated bathing facility. Included in the Hakone/Odawara tie-in course, a good hot-spring stop for travelers extending their trip beyond Hakone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="manyoparkyugawara" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>箱根関所</h3>
         <p>江戸時代の関所を復元した実在の史跡。箱根地域を代表する歴史観光地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="hakonesekisho" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>強羅駅</h3>
         <p>箱根登山鉄道の終点でありケーブルカー乗換駅。箱根全域を巡る実際の旅程で欠かせない拠点。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="conanhighway" data-location-id="gorastation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

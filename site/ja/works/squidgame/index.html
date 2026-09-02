@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,61 +438,97 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>双門洞（ソウル 道峰区）</h3>
         <p>主人公ソン・ギフンの生活圏として登場するソウル道峰区の町。イカゲームのロケ地の多くが実際に道峰区一帯に集まっているのは、ファン・ドンヒョク監督自身がこの地域で暮らした経験が反映されたためと言われる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="ssangmundong" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>白雲市場一帯</h3>
         <p>庶民的な日常の背景として登場する昔ながらの市場。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="baegunmarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>道峰区の路地</h3>
         <p>ソウルの暮らしの情緒を映した道峰区一帯の路地の風景。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="dobonggolmok" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>汝矣島</h3>
         <p>ゲーム場の中の世界と対比される都会的な背景として登場するソウルの金融街。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="yeouido" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>仁川 月尾島</h3>
         <p>ギフンの子ども時代の記憶と遊びを映す背景として登場する仁川の遊園地エリア。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="wolmido" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>ソンガプ島の設定・島の撮影圏域（仁川 舞衣島周辺）</h3>
         <p>劇中でゲーム場のある島として設定された場所。実際には仁川近郊の島々で撮影された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="seongapdo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>大田スタジオ（Daejeon Studio Cube）</h3>
         <p>大型のゲームセットが建てられた大田のスタジオ。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="daejeonstudio" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>仙甲島・仁川の島々</h3>
         <p>ファンの間で話題になった、実際の撮影候補とされる島の圏域。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="incheonislands" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>ソウル地下鉄（乙支路3街駅一帯）</h3>
         <p>参加者の勧誘シーンが撮影されたソウルの地下鉄駅。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="seoulsubway" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>薬水駅・新設洞など</h3>
         <p>都市の移動シーンが撮影されたソウルの各地域。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="yaksuseoksin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>仁川空港</h3>
         <p>結末部の移動シーンが撮影された韓国の玄関口となる空港。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="incheonairport" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>セット展示・体験スペース（期間限定ポップアップ）</h3>
         <p>ゲームのセットを再現した期間限定の体験展示が開かれるソウルのスペース。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="squidgameexhibit" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

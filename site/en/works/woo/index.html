@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -361,36 +368,57 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>센터필드 웨스트 (서울 강남구 테헤란로 231)</h3>
         <p>The real filming location for the revolving-door lobby of the fictional law firm Hanbada. This is where Young-woo, who is afraid of revolving doors, is shown waltzing through with the help of her colleague Jun-ho — actually filmed in this building's lobby. In reality it's an office building near Yeoksam Station (as in the show's own setting), home to Korean game companies and other tenants.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="hanbadabuilding" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>카자구루마 (수원시 팔달구 신풍로23번길 61)</h3>
         <p>The real filming location for 'Woo Young-woo Gimbap,' the restaurant Young-woo's father Gwang-ho runs in the show. It's an actual Japanese restaurant in Suwon's Haenggung-dong café district (Haengridan-gil) — unlike the show, there's no gimbap on the real menu, just udon and rice bowls. Many exterior and interior scenes were filmed here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="gimbapplace" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>수원 행궁동 행리단길 (경기 수원시 팔달구)</h3>
         <p>The café-lined alley district around the gimbap-shop filming location, near Suwon Hwaseong Haenggung Palace. Only the gimbap shop itself is a confirmed filming location, but the surrounding alleys have become a natural extension of the Extraordinary Attorney Woo filming tour for visitors.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="suwonhaenggung" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>충청북도청 본관·정원 (충북 청주시 상당구 상당로 82)</h3>
         <p>The real filming location for the fictional &quot;Gyeonghae Provincial Office&quot; in episode 8. The interior scene of a staff member fleeing was filmed in the annex building (home to the provincial assembly), while the exterior scene was shot at the main building's entrance, continuing on to the office's garden and pavilion. This site treats Chungbuk not as the show's overall setting, but specifically as the official filming location for the episode-8 Sodeok-dong scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukprovoffice" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>충청북도의회 (충북도청 신관 내)</h3>
         <p>The annex building attached to the main Chungbuk Provincial Office building, where the episode-8 interior chase scene was filmed. In reality it houses the Chungbuk Provincial Council — confirmed as a filming location by the Cheongju Film Commission.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukassembly" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>창원 동부마을 (경남 창원시 의창구 대산면 북부리)</h3>
         <p>The real village that appears in the show as the fictional &quot;Sodeok-dong.&quot; Since filming episodes 7 and 8, a whale mural from the show has remained painted on a house wall at the village entrance, and the hackberry tree that symbolized the village still stands here too. A quiet farming village facing the Daesan plain along the Nakdong River — visitors should remember this is a real community where people live.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="changwondongbu" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>청주 중앙공원·성안길 권역 (더 글로리 촬영지 연계)</h3>
         <p>The old downtown area of Cheongju, walkable from the Chungbuk Provincial Office, which can be combined with the real filming locations of another Cheongju-based title on this site, The Glory (Jungang Park and Yonghwasa Temple), to form a walkable &quot;Cheongju K-drama route.&quot; Not a scene from this show itself, but a natural real-world route to continue after visiting the Provincial Office.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="cheongjuoldtownlink" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,51 +436,81 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>春川高等学校の石垣道（江原 春川）</h3>
         <p>ジュンサン、ユジン、サンヒョクが通っていた高校として登場した実在の学校。今も生徒が通う現役校のため、外壁・石垣道を中心に撮影された。春川市が市内12カ所に案内板を設置した際、ここも含まれた。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_high_school" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>南怡島 メタセコイア並木道 —「恋人の森」（江原 春川）</h3>
         <p>ジュンサンとユジンが自習をサボって一緒に歩いた道。空高くそびえるメタセコイアが作るトンネルが、冬のソナタ最高の名場面の背景として知られる。放送後「冬のソナタ通り」という愛称がつき、今も撮影地の案内標識が立っている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_treelined" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>南怡島 自転車道（江原 春川）</h3>
         <p>二人が並んで自転車に乗って走った南怡島の環状路。今も同じ道で自転車をレンタルできる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_bike" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>南怡島 彫刻公園 — 恋人像（江原 春川）</h3>
         <p>劇中二人のファーストキスシーンが撮影されたとされる彫刻公園一帯。今はペ・ヨンジュンとチェ・ジウをかたどった恋人の像が建てられ、ファンの記念撮影スポットになっている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="namiseom_sculpture" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>中島遊園地（江原 春川、現在はレゴランド・コリア敷地）</h3>
         <p>ジュンサンとユジンが湖畔を歩きながらお互いの気持ちを確かめ合った場所。放送当時は素朴な遊園地だったが、2022年にこの敷地にレゴランド・コリア・リゾートが開業し、当時の風景は残っていない。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="joongdo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ジュンサンの家 跡地（江原 春川 昭陽路、取り壊し済み）</h3>
         <p>カン・ジュンサンの春川時代の家として登場した実在の家屋。放送後20年近くファンの聖地として残っていたが、2021年に再建築組合に売却され取り壊された。家の中のピアノなどの小道具は近隣の再建築マンション団地の公園に展示される予定と報じられたが、実際に行われたかは確認されていない。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="junsang_house" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>春川駅（江原 春川）</h3>
         <p>友人たちと修学旅行に出発する日に登場する駅。2010年の京春線複線電鉄化で新駅舎が建てられ、ドラマ当時の旧駅舎とは姿が異なる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="chuncheon_station" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>春川 明洞通り・中央ロータリー（江原 春川）</h3>
         <p>ユジンがジュンサンの事故の知らせを聞くシーンなどに登場した春川市内の繁華街。今も春川を代表する都心商業地区として残っている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="myeongdong_chuncheon" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>龍平リゾート（江原 平昌、劇中「ホワイトスキー場」）</h3>
         <p>10年後、ユジンとイ・ミンヒョン(ジュンサン)がスキー場のリノベーションプロジェクトで再会する場所。実際にも韓国初の総合スキーリゾートで、今も営業中。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="yongpyeong" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>外島（外島ボタニア、慶南 巨済）</h3>
         <p>ドラマ最終回、失明の危機にあったジュンサンとユジンが再会し、互いを確かめ合う結末部の撮影地。崖の上の異国的な庭園風景が二人の物語を締めくくる背景になった。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wintersonata" data-location-id="oedo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

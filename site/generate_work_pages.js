@@ -216,6 +216,7 @@ const LOCALES = {
       castHeading: (total, shown, hasCast) => hasCast ? `등장인물과 배우 (${total}명 중 ${shown}명)` : `등장인물 (${total}명 중 ${shown}명)`,
       castNote: '전체 인물 관계와 이야기는 지도 화면에서 확인할 수 있어요.',
       actorLink: '🎭 배우 프로필',
+      saveBtnLabelSave: '저장', saveBtnLabelSaved: '저장됨',
       footerTag: '그곳, 지금 — 이야기 속 장소를 실제로 가볼 수 있는 개인 여행지도 블로그',
       footerLinks: [['about','서비스 소개'],['places','장소로 찾기'],['contact','문의'],['privacy','개인정보처리방침'],['terms','이용약관']]
     }
@@ -234,6 +235,7 @@ const LOCALES = {
       cta: t => `See every ${t} location on the map →`,
       ctaList: n => `Top 5 · Cast · All ${n} locations`,
       introSuffix: ' Real filming spots, story settings and nearby travel ideas — clearly labeled.',
+      saveBtnLabelSave: 'Save', saveBtnLabelSaved: 'Saved',
       footerTag: 'That Place, Now — a personal travel-map blog connecting stories to the real places behind them',
       footerLinks: [['about','About'],['contact','Contact'],['privacy','Privacy'],['terms','Terms']]
     }
@@ -257,6 +259,7 @@ const LOCALES = {
       castHeading: (total, shown, hasCast) => hasCast ? `登場人物とキャスト（${total}名中${shown}名）` : `登場人物（${total}名中${shown}名）`,
       castNote: '人物の関係や物語の詳細は地図画面で確認できます。',
       actorLink: '🎭 俳優プロフィール',
+      saveBtnLabelSave: '保存', saveBtnLabelSaved: '保存済み',
       footerTag: 'あの場所、いま — 物語と現実の場所をつなぐ個人の旅行マップブログ',
       footerLinks: [['about','サービス紹介'],['contact','お問い合わせ'],['privacy','プライバシーポリシー'],['terms','利用規約']]
     }
@@ -279,6 +282,7 @@ const LOCALES = {
       castHeading: (total, shown, hasCast) => hasCast ? `主要人物與演員（共${total}位中${shown}位）` : `主要人物（共${total}位中${shown}位）`,
       castNote: '完整的人物關係與故事內容可以在地圖畫面查看。',
       actorLink: '🎭 演員檔案',
+      saveBtnLabelSave: '收藏', saveBtnLabelSaved: '已收藏',
       footerTag: '那個地方，現在 — 連結故事與現實地點的個人旅遊地圖部落格',
       footerLinks: [['about','關於本站'],['contact','聯絡我們'],['privacy','隱私權政策'],['terms','使用條款']]
     }
@@ -610,6 +614,12 @@ const SHARED_CSS = `
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -747,6 +757,9 @@ function renderPage(w, locale){
         <span class="tierBadge" style="${badgeStyle}">${esc(tiers[l.tier] || tiers.direct)}</span>
         <h3>${esc(locName(l, locale))}</h3>
         <p>${esc(locDesc(l, locale))}</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="${esc(w.id)}" data-location-id="${esc(l.id)}" data-surface="work" data-label-save="${esc(L.ui.saveBtnLabelSave)}" data-label-saved="${esc(L.ui.saveBtnLabelSaved)}" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">${esc(L.ui.saveBtnLabelSave)}</span></button>
+        </div>
       </div>`;
   }).join('\n');
 
@@ -973,6 +986,7 @@ ${w.heroImage ? `<meta name="twitter:image" content="${esc(w.heroImage.url)}">
   gtag('config', '${GA_ID}');
 </script>
 <style>${SHARED_CSS}</style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 

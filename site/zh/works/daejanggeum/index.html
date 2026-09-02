@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -418,36 +425,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>楊州大長今主題公園舊址（京畿楊州，已關閉）</h3>
         <p>為拍攝《大長今》實際搭建的原始場景，重現了宮殿露天場景、水刺間、燒酒房、東軒等空間，2004年對外開放，但因安全問題與設施老化於2011年底關閉。部分場景其後遷移、復原至龍仁大長今公園。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yangju_theme_park" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>龍仁大長今公園（京畿龍仁，原始場景的後繼地）</h3>
         <p>如今被稱為「大長今公園」的這個地方，其實並非2003年《大長今》播出當時的實際拍攝地。這裡原本是另一座時代劇綜合場景「MBC Dramia」，2011年楊州場景關閉後，於2015年8月借用大長今IP更名為「大長今公園」，並遷移、復原了部分楊州場景。其他時代劇也曾在此拍攝。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yongin_daejanggeum_park" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>濟州民俗村博物館（濟州西歸浦市表善面）</h3>
         <p>拍攝長今被流放濟州時期官衙、茅屋場景的地方。2003年12月曾在此拍攝17天，至今仍保留拍攝說明看板、拍照區，以及展示戲服、劇本、藥草、醫療器具的小型主題公園。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="jeju_folk_village" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>挾才海水浴場（濟州濟州市）</h3>
         <p>拍攝長今與閔政浩一同散步、乘船場景的海邊，是濟州西海岸代表性海水浴場，至今仍深受遊客喜愛。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hyeopjae_beach" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>樂安邑城（全南順天）</h3>
         <p>拍攝市場與白丁村場景的朝鮮時代邑城，如今仍是有居民實際生活的民俗村，全年開放參觀。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="naganeupseong" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>景福宮 燒酒房（首爾鍾路區）</h3>
         <p>多篇旅遊資訊將此地列為宮中水刺間相關場景的背景，但確切是哪一集哪個場景，尚未經一手資料證實，僅作參考資訊列出。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="gyeongbokgung_sojubang" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>華城行宮（京畿水原）</h3>
         <p>常被提及為宮廷時代劇拍攝地的行宮，但《大長今》具體拍攝場景尚未經一手資料證實，僅作參考資訊列出。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hwaseong_haenggung" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,61 +438,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>케이프타운 필름 스튜디오 (Cape Town Film Studios)</h3>
         <p>넷플릭스 실사판의 주요 세트가 지어진 남아프리카공화국의 대형 스튜디오로, 아프리카 대륙 최대 규모의 영화 제작 시설 중 하나다. 시즌1은 2022년, 시즌2는 2024년 7월부터 2025년 2월까지 이곳에서 촬영됐으며, 원작자 오다 에이이치로가 직접 촬영장을 방문해 세트와 소품의 세부 디테일을 검수한 것으로 알려져 있다. 시즌3는 2025년 말부터 2026년 6월까지 같은 스튜디오에서 촬영이 진행 중이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="capetownstudios" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>웨스턴케이프 해안</h3>
         <p>바다와 항구 장면 다수가 촬영된 남아공의 대서양 연안으로, 하우트 베이(Hout Bay)와 테이블마운틴 인근 지역이 실제 로케이션으로 활용됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="westerncapecoast" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>남아프리카공화국 촬영 권역</h3>
         <p>이스트 블루 전반의 배경으로 쓰인 케이프타운 일대다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="southafricaregion" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>카나리아 제도 (Canary Islands, Spain)</h3>
         <p>추가 촬영 후보지로 거론된 스페인령 섬으로, 시즌별로 활용 여부가 확인된다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="canaryislands" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>고잉 메리호 세트 (Cape Town Film Studios 내)</h3>
         <p>루피 일당의 첫 배, 고잉 메리호가 실물 크기로 제작된 세트다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="goingmerryset" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>바라티에 세트</h3>
         <p>상디가 요리사로 일하던 바다 위 레스토랑 바라티에가 재현된 세트다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="baratieset" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로그타운 세트</h3>
         <p>해적왕 골 D. 로저가 처형된 곳으로 설정된 로그타운의 세트다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="loguetownset" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>드럼 아일랜드 세트</h3>
         <p>쵸파의 고향으로 등장하는 눈 덮인 드럼 아일랜드의 시즌2 세트다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="drumislandset" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>구마모토 원피스 동상 (Kumamoto)</h3>
         <p>원작자 오다 에이이치로의 고향으로, 루피 일행의 동상이 세워진 일본 규슈의 도시다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="kumamotostatues" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>도쿄 원피스 관련 전시 (기간 갱신)</h3>
         <p>원피스 관련 기간 한정 전시·팝업이 자주 열리는 도쿄의 명소다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="tokyoexhibit" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>유니버설 스튜디오 재팬 (Osaka)</h3>
         <p>원피스 테마 시즌 이벤트가 정기적으로 열리는 오사카의 테마파크다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="usjosaka" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>애니메이션 섬 지도 (가상)</h3>
         <p>실제 장소가 아닌, 원작·애니메이션 속 세계지도를 보여주는 가상 레이어다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="animeislandmap" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

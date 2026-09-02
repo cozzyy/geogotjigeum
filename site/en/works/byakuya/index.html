@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -363,41 +370,65 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>긴테쓰 후세역(近鉄布施駅)</h3>
         <p>The gateway station to Fuse, a district of Higashiosaka City, Osaka, where the story begins. A pawnshop owner's murder here in 1973 sets in motion a story that unfolds over the next nineteen years. It's one of the few real place names Higashino named directly in his fiction.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_station" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>후세 혼도리 상점가(布施本通商店街)</h3>
         <p>A real shopping street that carries fond memories for older generations of Osaka. It offers a glimpse of the working-class Osaka life the novel depicts across the 1970s–90s — the era in which Yukiho and Ryoji each go on to build very different lives.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_honodori" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>전당포 「기리하라」(가공의 공간, 극중 배경)</h3>
         <p>The fictional pawnshop where the 1973 case unfolds. While Higashino named the real district of Fuse, he never specified an exact real address for the pawnshop itself, so this particular space remains a fictional setting within the story.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_pawnshop_1973" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>유키호의 부티크(가공의 공간, 극중 배경)</h3>
         <p>The space that an adult Yukiho eventually comes to run under her own name, years later. It symbolizes how far her life has traveled from her impoverished childhood, but does not refer to any specific real storefront.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_yukiho_boutique" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>사사가키 형사의 19년 추적(사건 기록)</h3>
         <p>The unfinished investigation that Detective Junzo Sasagaki refuses to let go of even after retirement. This entry marks not a single place but the nineteen years he spends tracing the paths of two people, so no coordinates are shown.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_sasagaki_pursuit" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>오사카성(테마 추천)</h3>
         <p>One of Osaka's signature landmarks, an easy subway ride from Fuse. It isn't the setting of a specific scene, but as a real, iconic Osaka site it's offered here as a natural addition to a trip through the novel's home city.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_osaka_castle" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>도톤보리(테마 추천)</h3>
         <p>Osaka's best-known entertainment district. Paired with Fuse, it offers a contrast between the city's quieter working-class neighborhoods and its glittering downtown — a real landmark offered here with no direct story connection.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_dotonbori" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>미쓰카이도역 (水海道駅), 이바라키현 조소시</h3>
         <p>The real station where the 2006 TBS drama adaptation of White Nights (Byakuyako) was filmed. While the novel's setting is Fuse, Osaka, this TV adaptation was filmed separately around Mitsukaido Station in Joso, Ibaraki — introduced here as a distinct node so it isn't confused with the novel's real-world setting.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_mitsukaido_station" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

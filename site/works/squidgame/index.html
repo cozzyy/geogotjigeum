@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,61 +438,97 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>쌍문동</h3>
         <p>주인공 성기훈의 생활권으로 등장하는 서울 도봉구의 동네다. 오징어 게임 촬영지 대부분이 실제로 도봉구 일대에 몰려 있는데, 이는 황동혁 감독 본인이 실제로 이 지역에서 생활했던 경험이 반영된 것으로 알려져 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="ssangmundong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>백운시장 일대</h3>
         <p>서민적인 일상 배경으로 등장하는 재래시장이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="baegunmarket" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도봉구 골목</h3>
         <p>서울 생활의 정서를 담은 도봉구 일대의 골목 풍경이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="dobonggolmok" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>여의도</h3>
         <p>게임장 안 세계와 대비되는 도시적 배경으로 등장하는 서울의 금융가다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="yeouido" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>인천 월미도</h3>
         <p>기훈의 어린 시절 기억과 놀이를 담은 배경으로 등장하는 인천의 유원지다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="wolmido" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>성갑도 설정·섬 촬영 권역 (인천 무의도 인근)</h3>
         <p>극중 게임장이 있는 섬으로 설정된 곳으로, 실제로는 제주가 아닌 인천 인근 섬들에서 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="seongapdo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>대전 스튜디오 (Daejeon Studio Cube)</h3>
         <p>대형 게임 세트가 지어진 대전의 스튜디오다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="daejeonstudio" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>선갑도·인천 섬 권역</h3>
         <p>팬들 사이에서 화제가 된 실제 촬영 후보 섬 권역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="incheonislands" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>서울 지하철 (을지로3가역 일대)</h3>
         <p>참가자 모집 장면이 촬영된 서울의 지하철역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="seoulsubway" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>약수역·신설동 등</h3>
         <p>도시 이동 장면들이 촬영된 서울의 여러 지역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="yaksuseoksin" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>인천공항</h3>
         <p>결말부 이동 장면이 촬영된 대한민국의 관문 공항이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="incheonairport" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>세트 전시·체험 공간 (기간별 팝업)</h3>
         <p>게임 세트를 재현한 기간 한정 체험 전시가 열리는 서울의 공간이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="squidgame" data-location-id="squidgameexhibit" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
     <div class="cultureBox">

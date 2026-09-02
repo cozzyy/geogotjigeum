@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -362,76 +369,121 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Place de l'Estrapade</h3>
         <p>A small square in Paris's 5th arrondissement, the fictional setting for Emily's apartment.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="placeestrapade" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Terra Nera, 라탱지구 포세생자크 거리 18번지</h3>
         <p>Gabriel's restaurant is a real Italian ristorante in the Latin Quarter (5th arrondissement), at 18 Rue des Fossés Saint-Jacques. Since the show's success, it has reportedly leaned into the fame with occasional themed menus.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="terranera" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Place de Valois</h3>
         <p>A square in Paris's 1st arrondissement, the setting for Emily's marketing firm.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="placedevalois" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Palais Royal Garden</h3>
         <p>An elegant Parisian garden used for Emily's meetings with Mindy.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="palaisroyalgarden" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Pont Alexandre III</h3>
         <p>An ornately decorated bridge used as the backdrop for advertising-shoot scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="pontalexandre3" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>팔레 가르니에 (오페라 극장)</h3>
         <p>Paris's ornate opera house, used for the opera-attending scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="palaisgarnier" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>몽마르트르</h3>
         <p>A hilltop artists' neighborhood used for many of the Paris strolling scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="montmartre" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Musée des Arts Forains</h3>
         <p>A vintage fairground-attraction museum used for party scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="museearts" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Café de Flore</h3>
         <p>A historic café on the corner of Boulevard Saint-Germain, used for Emily's meeting with her intellectual love interest Thomas. It was a real haunt of Jean-Paul Sartre and Simone de Beauvoir — a landmark in Parisian intellectual history.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="cafedeflore" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>프로방스·프렌치 리비에라</h3>
         <p>France's southern Mediterranean coast, the backdrop for vacation-episode scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="provence" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Megève</h3>
         <p>An upscale ski resort town in the French Alps.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="megeve" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Piazza Costaguti, Rome</h3>
         <p>A square near Rome's Jewish Ghetto, the base for the Season 5 Rome storyline.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="piazzacostaguti" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>Spanish Steps·Fendi Rome</h3>
         <p>Rome's iconic steps, used for the fashion-focused scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="spanishsteps" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>베네치아</h3>
         <p>The city of canals, added as a new setting in Season 5.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="venice" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>실제 식당·호텔 (파리 대표 지점)</h3>
         <p>The real restaurants and hotels featured in the show, with booking info updated periodically.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="emilyinparis" data-location-id="realrestaurants" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

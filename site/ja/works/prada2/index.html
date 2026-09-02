@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -424,91 +431,145 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>マグロウヒル・ビルディング ロビー、マンハッタン</h3>
         <p>劇中ファッション誌『ランウェイ』と親会社『イライアス・クラーク』の社屋ロビーのモチーフとして使われた実在のオフィスビル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="mcgrawhillbuilding" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>アメリカ自然史博物館 外観</h3>
         <p>アーヴ・ラヴィッツの75歳誕生パーティー兼ガラが開かれるシーンの実際の撮影地。劇中このパーティーの最中にアーヴが急死し、『ランウェイ』の存続をかけた後継争いが本格的に始まる。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="amnh" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>어퍼이스트사이드 타운하우스</h3>
         <p>A real Upper East Side townhouse used in the original film, reused in the sequel for scenes tied to the New York upper-crust world of Miranda and Andy. The exact address hasn't been publicly disclosed.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="uestownhouse" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>빌리 조엘의 롱아일랜드 저택 인근, 센터아일랜드</h3>
         <p>The real filming location for Sasha Barnes's 'Vermont vacation home' in the film — a waterfront estate on Centre Island, Oyster Bay, Long Island, reportedly owned by musician Billy Joel.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="centreislandestate1" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>센터아일랜드 로드 워터프론트 자택</h3>
         <p>Another Long Island waterfront estate, used as Miranda's 'Hamptons house' in the film. The exact address hasn't been made public; it's known to be private property along Centre Island Road.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="centreislandestate2" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>울워스 맨션(Woolworth Mansion), 어퍼이스트사이드</h3>
         <p>A real historic mansion, operated today as an event venue, used for the film's New York hotel interior scenes. Its ornate decor provides the backdrop for the on-screen hotel lobby and banquet scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="woolworthmansion" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ブレラ美術学院、ミラノ</h3>
         <p>劇中『ランウェイ』ミラノファッションショーのシーンが撮影された実在の美術学院。1776年創立のイタリアの名門美術学校の中庭が、華やかなファッションショー会場に変貌した。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="breraacademy" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>팔라초 파리지(Palazzo Parigi), 밀라노</h3>
         <p>A real five-star hotel used for the film's Milan hotel exterior and lobby scenes, appearing repeatedly as the backdrop for Miranda's group during their Milan stay.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="palazzoparigi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>갈레리아 비토리오 에마누엘레 2세(Galleria Vittorio Emanuele II)</h3>
         <p>Italy's oldest active shopping arcade, opened in 1877. A real landmark that appears in the film's Milan cityscape scenes, connecting Piazza del Duomo to La Scala opera house.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="galleriavittorioemanuele" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>팔라초 클레리치(Palazzo Clerici), 밀라노</h3>
         <p>A historic Milan palazzo famous for its 18th-century frescoes, used as the filming location for the film's Milan high-society gathering scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="palazzoclerici" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>빌라 아르코나티(Villa Arconati), 카스텔라초 디 볼라테</h3>
         <p>A grand Baroque-era villa just outside Milan, confirmed as a filming location for part of the film's Italian sequences. Also known for its extensive gardens.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="villaarconati" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ヴィラ・バルビアーノ、コモ湖オッスッチョ</h3>
         <p>劇中人物ベンジー・バーンズのコモ湖別荘として登場する実在の大邸宅。実際は個人所有の超高級レンタル別荘で、2025年10月にはレディー・ガガがここで撮影する姿が目撃され話題になった。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="villabalbiano" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>ミラノ大聖堂（ドゥオーモ）</h3>
         <p>企画段階で撮影候補に検討されたが、実際にはスタジオセットに置き換えられ劇中には直接登場しないことが確認された。それでもミラノ旅行に欠かせない象徴的ランドマークとして紹介する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="milanduomo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>산타 마리아 델레 그라치에 · 최후의 만찬 박물관</h3>
         <p>A real church and museum famous for Leonardo da Vinci's mural The Last Supper. Considered during pre-production but confirmed to have been replaced by a studio set rather than filmed here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="santamariadellegrazie" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>센트럴파크(Central Park), 뉴욕</h3>
         <p>NYC's signature park, right next to the American Museum of Natural History gala filming location. Doesn't appear directly on screen, but pairs naturally with a museum visit.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="centralpark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>5번가(Fifth Avenue) 명품거리, 뉴욕</h3>
         <p>The real heart of the New York fashion world that Runway magazine represents. Not a direct filming location, but the genuine real-world stage for the fashion industry the series portrays.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="fifthavenue" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>벨라조(Bellagio), 코모 호수</h3>
         <p>One of Lake Como's most popular towns, a short boat ride from Villa Balbiano. Doesn't appear directly on screen, but a key base for any Lake Como trip.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="bellagio" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>코모(Como) 시내 · 푸니콜라레</h3>
         <p>The gateway city for a Lake Como trip. Doesn't appear directly on screen, but most travelers pass through here on the way to Villa Balbiano and the other Lake Como locations.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="prada2" data-location-id="comotown" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

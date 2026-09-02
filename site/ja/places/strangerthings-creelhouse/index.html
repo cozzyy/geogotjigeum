@@ -63,6 +63,12 @@
   .mapCtaWrap{margin:16px 0 22px;}
   .mapCta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:12px;min-height:44px;box-sizing:border-box;width:100%;max-width:420px;text-align:center;}
   .mapCta:hover{opacity:.9;}
+  .save-place-row{margin:0 0 18px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13.5px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .intro{font-size:15.5px;color:var(--ink);margin:0 0 18px;overflow-wrap:break-word;}
   .tipBox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink);margin:0 0 22px;overflow-wrap:break-word;}
   .tipBox b{color:var(--accent);}
@@ -104,6 +110,7 @@
     h1{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"","description":"ストレンジャー・シングス 未知の世界に登場するの実際の場所と訪問情報。","url":"https://geugotjigeum.com/ja/places/strangerthings-creelhouse/","geo":{"@type":"GeoCoordinates","latitude":34.26,"longitude":-85.17}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"場所で探す","item":"https://geugotjigeum.com/ja/places/"},{"@type":"ListItem","position":3,"name":"","item":"https://geugotjigeum.com/ja/places/strangerthings-creelhouse/"}]}</script>
 </head>
@@ -145,6 +152,9 @@
 
   <div class="mapCtaWrap">
     <a class="mapCta" href="https://geugotjigeum.com/?work=strangerthings&loc=creelhouse">🗺️ 地図で正確な位置を見る →</a>
+  </div>
+  <div class="save-place-row">
+    <button type="button" class="save-place-btn" data-work-id="strangerthings" data-location-id="creelhouse" data-surface="place" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
   </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -422,36 +429,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>신오하시(新大橋)</h3>
         <p>A bridge crossing the Sumida River — the point where Shin-Ohashi Road, the novel's geographic spine, runs west to Nihonbashi and east toward Edogawa. It sits at the center of Ishigami's real daily route between the bento shop, his apartment, and the private high school where he teaches.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_shinohashi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>청주교(清洲橋)</h3>
         <p>Downstream from Shin-Ohashi, this real suspension bridge is known for its Art Deco design. The novel mentions it as one of the bridges Ishigami liked to cross on his walks, showing that his riverside route extended beyond Shin-Ohashi alone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_kiyosu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>기요스미 정원(清澄庭園)</h3>
         <p>A real Japanese stroll garden located right in front of the private high school where Ishigami teaches. The novel describes his commute running south from this garden along Shin-Ohashi Road — the scenery he passed every day still largely survives.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_kiyosumi_garden" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>몬젠나카초(門前仲町)</h3>
         <p>A real commercial district that anchors the Fukagawa area. It sits close to the neighborhood where Ishigami and the Hanaoka family live, and preserves the modest, old-town shitamachi atmosphere of working-class Tokyo.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_monzennakacho" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>도미오카하치만구(富岡八幡宮)</h3>
         <p>A real Shinto shrine near Monzen-Nakacho and a landmark of the Fukagawa district. It grounds the neighborhood where Ishigami lives in real geography, and is also famous as the site of the Fukagawa Festival, one of Tokyo's three major festivals.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_tomiokahachimangu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>니혼바시(日本橋)</h3>
         <p>The real bridge and district where Shin-Ohashi Road meets its western end. The novel explicitly states that from the Shin-Ohashi intersection the road runs east to Edogawa and west to Nihonbashi, using this geographic axis to anchor Ishigami's movements.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_nihonbashi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>나오키상(제134회, 2006년)</h3>
         <p>The award Higashino won for this novel. After five previous nominations without a win, he finally took the 134th Naoki Prize in 2006 for The Devotion of Suspect X — one of the defining turning points of his career. This entry commemorates the award itself rather than a specific building, so no coordinates are shown.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suspectx" data-location-id="sx_naoki_prize_2006" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

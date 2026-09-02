@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -363,61 +370,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>계산성당 (대구 중구 서성로 10)</h3>
         <p>A Gothic cathedral built 1902-1903, Korea's third of its kind (Historic Site No. 290). The aerial shot of Deacon Choi entering to retrieve exorcism items, and the scene of the Monsignor watching TV, were filmed here. Because its exterior resembles Seoul's Myeongdong Cathedral, footage from both was intercut on screen as a single &quot;Myeongdong Cathedral.&quot; Director Jang Jae-hyun confirmed the filming cooperation directly in an SBS News interview.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="gyesancathedral" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>월배성당 (대구 달서구 월배로 131-5)</h3>
         <p>The real church where the warm flashback scene of Young-shin's off-key choir audition was filmed. Its old pagoda and zelkova-tree courtyard were used to create a color contrast with the film's otherwise dark, heavy tone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="wolbaechurch" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>동성로 (대구 중구, 옛 대구읍성 자리)</h3>
         <p>Daegu's largest downtown district, nicknamed &quot;Daegu's Myeongdong.&quot; The alley near Young-shin's house and the narrow street where Deacon Choi walks in prayer were filmed here (intercut with footage from a Myeongdong-8-gil alley in Seoul). Its name derives from being the main road inside the old Daegu fortress walls.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="dongseongro" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>계명대학교 대명캠퍼스 (대구 남구 명덕로 104)</h3>
         <p>The real filming location for the fictional &quot;Seoul Catholic University Seongsin Campus&quot; that Deacon Choi attends. Scenes of the Dean interviewing Choi and Father Kim were filmed here — a campus with older architecture frequently used for film shoots.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="keimyungdaemyeong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>대구가톨릭대학교 유스티노캠퍼스 (대구 남구 앞산순환로 393)</h3>
         <p>Along with Keimyung's Daemyeong campus, this real campus was used interchangeably for the fictional seminary scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="catholicujustino" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>신나무골 (칠곡군 지천면, 대구 근교)</h3>
         <p>Not a film location, but a real pilgrimage site essential to understanding the roots of Daegu Catholicism. Bishop Daveluy and Fr. Choi Yang-eop secretly ministered here during the 1840s-60s persecutions; roughly 37 Catholics were martyred here in the 1868 persecution. This is the real historical root of the &quot;hidden faith to visible cathedral&quot; arc that Gyesan Cathedral later embodies.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="sinnamugol" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>앞산 일대 (대구 남구)</h3>
         <p>A mountain ringing southern downtown Daegu, at whose foot cluster many of the film's Daegu locations (Keimyung, Catholic University Justino Campus). Not itself a specific scene location, but a useful geographic anchor for combining the Daegu filming sites into one route.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="apsangolf" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>반월당역 일대 (대구 중구)</h3>
         <p>The transit hub connecting Gyesan Cathedral, Dongseong-ro, and Myeongdeok Station in downtown Daegu — a practical transfer point for a filming-location pilgrimage.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="banwoldang" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>이상화 고택 (대구 중구 서성로)</h3>
         <p>A real heritage site near Gyesan Cathedral, part of Daegu's official Modern Culture Alley Tour (Course 2). The former home of resistance poet Yi Sang-hwa — not a film scene, but a real landmark that rounds out the walking tour alongside the Gyesan Cathedral filming site.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="yisanghwahouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>서상돈 고택 (대구 중구 계산동)</h3>
         <p>The former home of Seo Sang-don, leader of the National Debt Redemption Movement. Together with Gyesan Cathedral and Yi Sang-hwa's house, it forms part of the Modern Culture Alley Tour (Course 2).</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="seosangdonhouse" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>계산성당 일대 야경 포인트</h3>
         <p>Known for its especially striking illuminated Gothic spires at night. A spot fans mention as a place to genuinely feel the film's dark, religious atmosphere in person.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="daegunight" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">THEMED</span>
         <h3>후속작 《검은 수녀들》(2025) 연결 — 최부제의 이후 이야기 (실존 좌표 없음)</h3>
         <p>In the official sequel Dark Nuns (2025), made by the same production company (Zip Cinema), Kang Dong-won's Deacon Choi reappears in a cameo, continuing the &quot;12 Shapes&quot; mythology with a new exorcist nun. No confirmed Daegu filming locations for the sequel were found in available sources, so this site maps only the verified locations from the first film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="priests" data-location-id="darknunsgrave" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

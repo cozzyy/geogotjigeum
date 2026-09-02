@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -362,41 +369,65 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>미야자키현 니치난시 — 아부라쓰항(油津港)</h3>
         <p>스즈메가 나고 자란 규슈 항구 마을. 등굣길에 낯선 여행자 소타와 마주치며 이야기가 시작되는 장면의 모델로 알려짐.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="aburatsu" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>에히메현 야와타하마시 — 야와타하마항·역(八幡浜港・駅)</h3>
         <p>말하는 고양이 다이진을 쫓아 규슈에서 시코쿠로 건너가는 페리 장면의 모델. 세토내해를 오가는 실제 항구 도시.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="yawatahama" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>효고현 고베시 기타구 — 고베 후르츠·플라워 파크(神戸フルーツ・フラワーパーク)</h3>
         <p>산속 폐유원지로 등장하는 '두 번째 문' 장면의 모델로 추정되는 곳. 실제로는 지금도 운영 중인 도로휴게소 겸 놀이공원이라 폐허는 아니다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="kobe_fruit_flower_park" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>효고현 고베시 주오구 — 니노미야 상점가(二宮商店街)</h3>
         <p>스낵바를 운영하는 루미와 며칠을 함께 지내는 고베 파트의 배경 모델. 산노미야역 인근의 소박한 서민 상점가.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="ninomiya_shopping_street" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>효고현 고베시~아와지시마 — 아카시해협대교(明石海峡大橋)</h3>
         <p>세계 최장급 현수교. 고베를 지나는 여정 중 배경으로 등장하는 실존 랜드마크.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="akashi_kaikyo_bridge" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>도쿄도 지요다구 — 오차노미즈 히지리바시(お茶の水 聖橋)</h3>
         <p>간다강을 가로지르는 다리로, 도쿄 파트에서 스즈메 일행이 지나는 상징적인 장면의 배경.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="hijiribashi_ochanomizu" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>도쿄도 지요다구 — 기타노마루공원·우시가후치(北の丸公園・牛ヶ淵)</h3>
         <p>도쿄의 '뒷문'이 있던 곳으로 팬들 사이에 지목되는 고쿄(皇居) 외곽 해자. 영화 후반 도쿄 파트의 핵심 무대다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="ushigafuchi" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>미야기현 게센누마시 모토요시초 — 미치노에키 오야카이간(道の駅大谷海岸)</h3>
         <p>동일본대지진 이후 복구된 해안 도로휴게소. 영화 후반 도호쿠 파트에서 등장하며, 이 작품이 재난의 기억과 회복을 함께 이야기하는 지점이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="suzume" data-location-id="ooya_kaigan" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

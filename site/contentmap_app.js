@@ -252,7 +252,17 @@ const UI_STRINGS = {
     heroPrimaryCta:"작품 발견하기",
     discoverySectionTitle:"지금, 발견해보세요",
     discoverySectionSubtitle:"이 장면을 좋아했다면, 그 장소도 좋아하게 될 거예요.",
-    heroFeatureKicker:"장면 → 실제 장소"
+    heroFeatureKicker:"장면 → 실제 장소",
+    savedCountLabel:"저장",
+    saveBtnLabelSave:"저장",
+    saveBtnLabelSaved:"저장됨",
+    savedPlacesModalTitle:"♥ 저장한 장소",
+    savedPlacesEmptyTitle:"아직 저장한 장소가 없어요.",
+    savedPlacesEmptyBody:"작품 속 장소에서 ♡ 저장을 눌러 나만의 여행 지도를 만들어보세요.",
+    savedPlaceViewOnMap:"지도에서 보기",
+    savedPlaceRemove:"삭제",
+    myMapBtnLabel:"내 지도",
+    myMapBackLabel:"저장한 장소"
   },
   en: {
     headerTagline:"Real places behind the stories you love — pick a story, then click the map.",
@@ -424,7 +434,17 @@ const UI_STRINGS = {
     heroPrimaryCta:"Discover Stories",
     discoverySectionTitle:"Discover Now",
     discoverySectionSubtitle:"If you loved the scene, you'll love the place.",
-    heroFeatureKicker:"Scene → Real Place"
+    heroFeatureKicker:"Scene → Real Place",
+    savedCountLabel:"Saved",
+    saveBtnLabelSave:"Save",
+    saveBtnLabelSaved:"Saved",
+    savedPlacesModalTitle:"♥ Saved Places",
+    savedPlacesEmptyTitle:"No saved places yet.",
+    savedPlacesEmptyBody:"Tap ♡ Save on any place to build your own travel map.",
+    savedPlaceViewOnMap:"View on map",
+    savedPlaceRemove:"Remove",
+    myMapBtnLabel:"My Map",
+    myMapBackLabel:"Saved Places"
   },
   // 2026-08 2단계 4-2: 일본어 UI 사전 — ko 사전과 1:1 동일한 키 구성.
   // 표기 원칙: 성지순례 팬덤에서 통용되는 어휘(聖地巡礼·ロケ地)를 쓰고, 존댓말(です·ます)로 통일.
@@ -598,7 +618,17 @@ const UI_STRINGS = {
     heroPrimaryCta:"作品を発見する",
     discoverySectionTitle:"今すぐ発見",
     discoverySectionSubtitle:"そのシーンが好きなら、その場所もきっと好きになる。",
-    heroFeatureKicker:"シーン → 実在の場所"
+    heroFeatureKicker:"シーン → 実在の場所",
+    savedCountLabel:"保存",
+    saveBtnLabelSave:"保存",
+    saveBtnLabelSaved:"保存済み",
+    savedPlacesModalTitle:"♥ 保存した場所",
+    savedPlacesEmptyTitle:"まだ保存した場所がありません。",
+    savedPlacesEmptyBody:"作品内の場所で♡保存を押して、自分だけの旅の地図を作りましょう。",
+    savedPlaceViewOnMap:"地図で見る",
+    savedPlaceRemove:"削除",
+    myMapBtnLabel:"マイマップ",
+    myMapBackLabel:"保存した場所"
   },
   // 2026-08 3단계: 번체 중문(대만·홍콩 대상) UI 사전 — ko 사전과 1:1 동일한 키 구성.
   // GSC 분석 결과 구글 검색이 그대로 통하는 번체(대만·홍콩)를 먼저 서비스하기로 결정
@@ -772,7 +802,17 @@ const UI_STRINGS = {
     heroPrimaryCta:"探索作品",
     discoverySectionTitle:"現在就探索",
     discoverySectionSubtitle:"如果你喜歡這個畫面，你也會喜歡這個地方。",
-    heroFeatureKicker:"畫面 → 真實地點"
+    heroFeatureKicker:"畫面 → 真實地點",
+    savedCountLabel:"收藏",
+    saveBtnLabelSave:"收藏",
+    saveBtnLabelSaved:"已收藏",
+    savedPlacesModalTitle:"♥ 收藏地點",
+    savedPlacesEmptyTitle:"還沒有收藏的地點。",
+    savedPlacesEmptyBody:"在作品中的地點按下♡收藏，打造專屬於你的旅行地圖。",
+    savedPlaceViewOnMap:"在地圖上查看",
+    savedPlaceRemove:"移除",
+    myMapBtnLabel:"我的地圖",
+    myMapBackLabel:"收藏地點"
   }
 };
 function t(key){
@@ -2545,6 +2585,12 @@ window.updateCanonicalUrl = updateCanonicalUrl;
 function closeAllModals(){
   document.querySelectorAll('.modal-overlay.show').forEach(function(m){ m.classList.remove('show'); });
   closeWorkPicker();
+  const myMapBarEl = document.getElementById('myMapBar');
+  if (myMapBarEl && !myMapBarEl.hidden){
+    myMapBarEl.hidden = true;
+    const source = map.getSource('locations');
+    if (source) source.setData({ type:'FeatureCollection', features:[] });
+  }
 }
 window.closeAllModals = closeAllModals;
 
@@ -2801,6 +2847,181 @@ function closeNearbyModal(){
   document.getElementById('nearbyModal').classList.remove('show');
 }
 window.closeNearbyModal = closeNearbyModal;
+
+/* ============================================================
+   Phase G (Issue #43) — Saved Places 패널 & My Map
+   저장 상태 자체는 site/saved_places.js(SavedPlaces 전역)가 갖고 있다. 여기서는 그 위에
+   (1) 저장한 장소 목록 패널 렌더링/작품별 그룹핑, (2) 기존 MapLibre 'locations' 소스를
+   재사용한 전 작품 저장 장소 지도(My Map)만 얹는다 — 새 지도 인스턴스·새 데이터 소스를
+   만들지 않는다(위치 사실의 중복 소스 금지 원칙, PHASE_G_SAVED_PLACES_MY_MAP_V1.md §6.4).
+   ============================================================ */
+function savedPlacesEscHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+function openSavedPlacesModal(){
+  document.getElementById('savedPlacesModal').classList.add('show');
+  renderSavedPlacesPanel();
+  // 4-6 지연 로딩 대응: 저장 항목이 아직 안 받아온 작품을 가리킬 수 있으므로, 패널을 여는
+  // 순간 전 작품 데이터를 마저 받아온 뒤(이미 다 받아왔다면 사실상 비용 없음) 다시 그린다.
+  ensureAllData(function(){
+    if (document.getElementById('savedPlacesModal').classList.contains('show')) renderSavedPlacesPanel();
+  });
+  if (typeof SavedPlaces !== 'undefined'){
+    SavedPlaces.gaEvent('open_saved_places', { locale: currentLang, saved_count: SavedPlaces.count() });
+  }
+}
+window.openSavedPlacesModal = openSavedPlacesModal;
+
+function closeSavedPlacesModal(){
+  document.getElementById('savedPlacesModal').classList.remove('show');
+}
+window.closeSavedPlacesModal = closeSavedPlacesModal;
+
+function renderSavedPlacesPanel(){
+  const body = document.getElementById('savedPlacesModalBody');
+  if (!body) return;
+  const myMapBtn = document.getElementById('savedMyMapBtn');
+  if (typeof SavedPlaces === 'undefined'){
+    body.innerHTML = '';
+    if (myMapBtn) myMapBtn.hidden = true;
+    return;
+  }
+  const items = SavedPlaces.read().items;
+  const groups = {}; // workId -> { work, cards:[] }
+  const order = [];
+  let hasGeoAny = false;
+  items.forEach(function(it){
+    // resolve()는 WORKS/DATA가 로드된 경우에만 동작 — 아직 안 받아온 작품의 저장 항목은
+    // ensureAllData() 완료 후 재렌더 시 정상적으로 나타난다(위 openSavedPlacesModal 참고).
+    const r = SavedPlaces.resolve(it.workId, it.locationId);
+    if (!r) return;
+    if (r.hasCoords) hasGeoAny = true;
+    if (!groups[it.workId]){ groups[it.workId] = { work:r.work, cards:[] }; order.push(it.workId); }
+    // 기존 '내 주변 투어'·국가별 장소 모달과 동일한 관계 등급 판정(연결등급) 로직을 그대로 재사용한다.
+    const tier = deriveConnectionTier(r.location);
+    const relationshipLabel = t(TIER_LABEL_KEY[tier]);
+    groups[it.workId].cards.push(
+      '<div class="saved-place-card">' +
+        '<div class="saved-place-card-main">' +
+          '<div class="saved-place-card-name">' + savedPlacesEscHtml(r.location.nameInWork || r.location.modernName || '') + '</div>' +
+          '<div class="saved-place-card-relationship">' + savedPlacesEscHtml(relationshipLabel) + '</div>' +
+        '</div>' +
+        '<div class="saved-place-card-actions">' +
+          '<button type="button" class="saved-place-card-link" onclick="openSavedPlaceFromPanel(\'' + it.workId + '\',\'' + it.locationId + '\')">' + t('savedPlaceViewOnMap') + '</button>' +
+          '<button type="button" class="saved-place-card-remove" onclick="removeSavedPlaceFromPanel(\'' + it.workId + '\',\'' + it.locationId + '\')" aria-label="' + t('savedPlaceRemove') + '">' + t('savedPlaceRemove') + '</button>' +
+        '</div>' +
+      '</div>'
+    );
+  });
+  if (myMapBtn) myMapBtn.hidden = !hasGeoAny;
+  if (!order.length){
+    body.innerHTML =
+      '<div class="empty-state saved-places-empty">' +
+        '<p>' + t('savedPlacesEmptyTitle') + '</p>' +
+        '<p>' + t('savedPlacesEmptyBody') + '</p>' +
+      '</div>';
+    return;
+  }
+  body.innerHTML = order.map(function(workId){
+    const g = groups[workId];
+    return '<div class="saved-work-group">' +
+      '<div class="saved-work-group-title">' + savedPlacesEscHtml(tField(g.work, 'title')) + '</div>' +
+      g.cards.join('') +
+    '</div>';
+  }).join('');
+}
+window.renderSavedPlacesPanel = renderSavedPlacesPanel;
+
+function openSavedPlaceFromPanel(workId, locId){
+  closeSavedPlacesModal();
+  const appEl = document.getElementById('app');
+  if (appEl) appEl.classList.remove('landing');
+  loadWork(workId, {skipAutoSelect:true});
+  history.replaceState(null, '', '?work=' + encodeURIComponent(workId));
+  if (typeof SavedPlaces !== 'undefined'){
+    SavedPlaces.gaEvent('open_saved_place', { work_id:workId, location_id:locId, surface:'map', locale:currentLang });
+  }
+  setTimeout(function(){ map.resize(); showLocation(WORKS.find(function(w){ return w.id === workId; }), DATA[workId], locId); }, 60);
+}
+window.openSavedPlaceFromPanel = openSavedPlaceFromPanel;
+
+function removeSavedPlaceFromPanel(workId, locId){
+  if (typeof SavedPlaces === 'undefined') return;
+  const result = SavedPlaces.remove(workId, locId);
+  if (result.ok){
+    SavedPlaces.gaEvent('unsave_place', { work_id:workId, location_id:locId, surface:'map', locale:currentLang, saved_count:result.count });
+  }
+  renderSavedPlacesPanel();
+}
+window.removeSavedPlaceFromPanel = removeSavedPlaceFromPanel;
+
+// My Map: 새 지도 인스턴스를 만들지 않고, 기존 'locations' 소스(setupLocationLayer()가 이미
+// 만들어둔 GeoJSON 소스·히트박스/원 레이어·클릭 핸들러)를 저장한 장소로만 채운 데이터로
+// 바꿔치기한다. 클릭 핸들러가 feature.properties.workId/locId만 보고 동작하므로(showLocation
+// 호출 지점 참고) 이 레이어를 위한 별도 클릭 로직도 필요 없다.
+function buildSavedMapFeatures(){
+  if (typeof SavedPlaces === 'undefined') return [];
+  const items = SavedPlaces.read().items;
+  const features = [];
+  items.forEach(function(it){
+    const r = SavedPlaces.resolve(it.workId, it.locationId);
+    if (!r || !r.hasCoords) return;
+    const visited = getVisited(it.workId);
+    features.push({
+      type:'Feature',
+      geometry:{ type:'Point', coordinates:[r.lng, r.lat] },
+      properties:{
+        locId: it.locationId, workId: it.workId, color: r.work.pinColor,
+        label: r.location.nameInWork || r.location.modernName,
+        visited: visited.indexOf(it.locationId) !== -1 ? 1 : 0,
+        selected: 0
+      }
+    });
+  });
+  return features;
+}
+
+function openMyMap(){
+  ensureAllData(function(){
+    const features = buildSavedMapFeatures();
+    const source = map.getSource('locations');
+    if (source) source.setData({ type:'FeatureCollection', features:features });
+    if (features.length){
+      const bounds = new maplibregl.LngLatBounds();
+      features.forEach(function(f){ bounds.extend(f.geometry.coordinates); });
+      map.fitBounds(bounds, { padding:60, maxZoom:9, duration:600 });
+    }
+    closeSavedPlacesModal();
+    const appEl = document.getElementById('app');
+    if (appEl) appEl.classList.remove('landing');
+    if (isMobileLayout()) setMobileView('map');
+    const bar = document.getElementById('myMapBar');
+    if (bar) bar.hidden = false;
+    setTimeout(function(){ map.resize(); }, 60);
+    if (typeof SavedPlaces !== 'undefined'){
+      SavedPlaces.gaEvent('open_saved_map', { locale:currentLang, saved_count:features.length });
+    }
+  });
+}
+window.openMyMap = openMyMap;
+
+function closeMyMap(){
+  const bar = document.getElementById('myMapBar');
+  if (bar) bar.hidden = true;
+  // 이전에 보고 있던 작품이 있으면 그 작품의 지도 레이어로 복원, 없으면(=랜딩) 빈 상태로.
+  if (currentWorkId && DATA[currentWorkId]){
+    const work = WORKS.find(function(w){ return w.id === currentWorkId; });
+    if (work) refreshLocationLayer(work, DATA[currentWorkId].locations.filter(function(l){ return l.lat != null && l.lng != null; }));
+  } else {
+    const source = map.getSource('locations');
+    if (source) source.setData({ type:'FeatureCollection', features:[] });
+  }
+  openSavedPlacesModal();
+}
+window.closeMyMap = closeMyMap;
 
 function useMyLocationForNearby(){
   const statusEl = document.getElementById('nearbyLocStatus');
@@ -3060,6 +3281,17 @@ function setLang(lang){
   renderHeroTodayPick();
   const homeIconBtnText = document.getElementById('homeIconBtnText');
   if (homeIconBtnText) homeIconBtnText.textContent = t('homeIconLabel');
+  const savedCountBtnText = document.getElementById('savedCountBtnText');
+  if (savedCountBtnText) savedCountBtnText.textContent = t('savedCountLabel');
+  document.getElementById('savedCountBtn') && document.getElementById('savedCountBtn').setAttribute('title', t('savedPlacesModalTitle'));
+  const savedPlacesModalTitleEl = document.getElementById('savedPlacesModalTitleText');
+  if (savedPlacesModalTitleEl) savedPlacesModalTitleEl.textContent = t('savedPlacesModalTitle');
+  const savedMyMapBtnText = document.getElementById('savedMyMapBtnText');
+  if (savedMyMapBtnText) savedMyMapBtnText.textContent = t('myMapBtnLabel');
+  const myMapBackBtnText = document.getElementById('myMapBackBtnText');
+  if (myMapBackBtnText) myMapBackBtnText.textContent = t('myMapBackLabel');
+  const savedPlacesModalEl = document.getElementById('savedPlacesModal');
+  if (savedPlacesModalEl && savedPlacesModalEl.classList.contains('show')) renderSavedPlacesPanel();
   const footerReportLink = document.getElementById('footerReportLink');
   if (footerReportLink) footerReportLink.textContent = t('footerReportLink');
   const regionScrollLeftBtn = document.getElementById('regionScrollLeft');
@@ -4202,6 +4434,20 @@ function showLocation(work, data, locId, isRefresh, from){
               : (universeMapUrl ? '<a class="travel-btn" style="background:#5b3ea6;" href="' + universeMapUrl + '" target="_blank" rel="noopener">' + t('universeMapBtn') + '</a><br>' : '')) +
             '<a class="travel-btn" style="background:#2b6cb0;" href="' + wikiUrl + '" target="_blank" rel="noopener">' + t('wikiBtn') + '</a>' +
           '</div>' +
+          // Phase G (Issue #43): 저장 버튼 — SavedPlaces(saved_places.js)가 아직 로드 전이거나
+          // 실패한 극단적 경우에도 페이지가 죽지 않도록 존재 여부를 방어적으로 확인한다.
+          (typeof SavedPlaces !== 'undefined' ? (function(){
+            const savedNow = SavedPlaces.isSaved(work.id, locId);
+            return '<div class="save-place-row">' +
+              '<button type="button" class="save-place-btn' + (savedNow ? ' is-saved' : '') + '" ' +
+                'data-work-id="' + work.id + '" data-location-id="' + locId + '" data-surface="map" ' +
+                'data-label-save="' + t('saveBtnLabelSave') + '" data-label-saved="' + t('saveBtnLabelSaved') + '" ' +
+                'aria-pressed="' + (savedNow ? 'true' : 'false') + '">' +
+                '<span class="save-place-btn-icon" aria-hidden="true">' + (savedNow ? '♥' : '♡') + '</span>' +
+                '<span class="save-place-btn-label">' + t(savedNow ? 'saveBtnLabelSaved' : 'saveBtnLabelSave') + '</span>' +
+              '</button>' +
+            '</div>';
+          })() : '') +
           socialHtml +
           peopleBlock +
         '</div>' +

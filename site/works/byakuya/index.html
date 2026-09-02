@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -453,41 +460,65 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>긴테쓰 후세역(近鉄布施駅)</h3>
         <p>이야기가 시작되는 오사카부 히가시오사카시 후세 지역의 관문역. 1973년, 이 일대에서 벌어진 전당포 주인 살해 사건이 19년에 걸친 이야기의 발단이 된다. 작가 히가시노 게이고가 실제 지명을 밝히며 쓴 몇 안 되는 배경 중 하나다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_station" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>후세 혼도리 상점가(布施本通商店街)</h3>
         <p>쇼와시대 오사카 중년층에게 추억이 깃든 실존 상점가로, 소설이 그리는 1970~90년대 오사카 서민의 삶을 지금도 짐작하게 해주는 공간이다. 유키호와 료지 두 사람이 각자 다른 방식으로 살아가게 되는 시대적 배경이 이 거리의 풍경에 녹아 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_honodori" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>전당포 「기리하라」(가공의 공간, 극중 배경)</h3>
         <p>1973년 사건이 벌어진 극중 전당포. 작가는 후세라는 실제 지명은 밝혔지만, 전당포의 구체적인 실존 주소까지는 밝히지 않아 이 공간 자체는 소설 속 설정으로 남아 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_pawnshop_1973" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>유키호의 부티크(가공의 공간, 극중 배경)</h3>
         <p>세월이 흘러 어른이 된 유키호가 자신의 이름을 걸고 운영하게 되는 공간. 가난했던 어린 시절과는 전혀 다른 삶을 살아가는 그녀의 궤적을 보여주는 상징적 장소이지만, 실존하는 특정 매장을 가리키지 않는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_yukiho_boutique" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">테마 연계</span>
         <h3>사사가키 형사의 19년 추적(사건 기록)</h3>
         <p>1973년 사건을 담당했던 형사 사사가키 준조가 은퇴한 뒤에도 놓지 않는 미완의 수사. 특정 장소가 아니라 그가 19년에 걸쳐 두 사람의 궤적을 쫓는 시간 그 자체를 가리키는 항목이라 좌표를 표시하지 않는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_sasagaki_pursuit" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>오사카성(테마 추천)</h3>
         <p>후세에서 지하철로 이동하기 좋은 오사카의 대표 랜드마크. 작품 속 특정 장면의 배경은 아니지만, 소설의 시대적 무대인 오사카를 함께 둘러볼 때 자연스럽게 들르게 되는 실존 명소라 테마 여행지로 소개한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_osaka_castle" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>도톤보리(테마 추천)</h3>
         <p>오사카를 대표하는 번화가로, 후세와 함께 오사카의 서로 다른 두 얼굴 — 서민 동네와 화려한 도심 — 을 비교하며 둘러보기 좋은 실존 명소다. 작품과 직접적 연관은 없는 테마 추천 장소다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_dotonbori" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>미쓰카이도역 (水海道駅), 이바라키현 조소시</h3>
         <p>2006년 TBS 드라마 《白夜行》가 실제로 촬영한 역. 원작 소설의 무대는 오사카 후세지만, 이 영상판은 별도로 이바라키현 조소시의 미쓰카이도역 일대에서 촬영됐다. 원작 무대와 혼동하지 않도록 별도 노드로 소개한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_mitsukaido_station" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

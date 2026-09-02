@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,86 +438,137 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>두브로브니크 구시가 (Dubrovnik Old Town, Croatia)</h3>
         <p>A UNESCO World Heritage walled city that served as King's Landing from Season 2 through Season 8. Minčeta Tower on the city walls became the House of the Undying, and the Jesuit Staircase is the literal staircase used for Cersei's Walk of Shame.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="dubrovnik" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>로브리예나츠 요새 (Fort Lovrijenac, Dubrovnik)</h3>
         <p>A clifftop fortress right beside Dubrovnik's Old Town, used as the exterior of the Red Keep.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="lovrijenac" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>로크룸 섬 (Lokrum Island)</h3>
         <p>A small island just off Dubrovnik, known for Daenerys's Qarth scenes and for once displaying an Iron Throne prop.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="lokrum" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스플리트 (Split, Croatia)</h3>
         <p>A city built around Diocletian's Palace, used for Meereen's underground scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="split" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>트르스테노 수목원 (Trsteno Arboretum)</h3>
         <p>An old garden near Dubrovnik used as the royal palace garden.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="trsteno" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>다크 헤지스 (Dark Hedges, Northern Ireland)</h3>
         <p>A tunnel of beech trees used as the King's Road in Northern Ireland.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="darkhedges" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>캐슬 워드 (Castle Ward)</h3>
         <p>An 18th-century estate used for the Winterfell courtyard scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="castleward" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>발린토이 항구 (Ballintoy Harbour)</h3>
         <p>A small harbour on the Northern Ireland coast used as the Iron Islands.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="ballintoy" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>쿠셴던 동굴 (Cushendun Caves)</h3>
         <p>Coastal caves used for Melisandre's shadow-birth scene.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="cushendun" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>톨리모어 숲 공원 (Tollymore Forest)</h3>
         <p>A forest park used for the northern woods beyond the Wall, including the direwolf discovery scene in episode one.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="tollymore" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>싱벨리어 국립공원 (Þingvellir, Iceland)</h3>
         <p>A national park where the tectonic plates split, used as the landscape beyond the Wall.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="thingvellir" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>바트나요쿨 빙하 (Vatnajökull, Iceland)</h3>
         <p>Europe's largest glacier, used for the far-northern snowy landscapes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="vatnajokull" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>지로나 (Girona, Spain)</h3>
         <p>A city with a maze-like old town used as the backdrop for Braavos.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="girona" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>세비야 알카사르 (Alcázar of Seville)</h3>
         <p>An ornate Mudéjar-style royal palace used as the setting for Dorne.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="alcazarseville" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>가스텔루가체 (Gaztelugatxe, Spain)</h3>
         <p>An island hermitage on the Basque coast used as the exterior of Dragonstone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="gaztelugatxe" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>에사우이라 (Essaouira, Morocco)</h3>
         <p>A port city on Morocco's Atlantic coast used as the setting for Astapor.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="essaouira" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>왕좌의 게임 스튜디오 투어 (Game of Thrones Studio Tour, Banbridge)</h3>
         <p>An official studio tour in Northern Ireland featuring real sets, costumes, and props from the series.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="gotstudiotour" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

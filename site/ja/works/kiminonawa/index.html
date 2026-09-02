@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -430,76 +437,121 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町 — 飛騨古川駅</h3>
         <p>瀧が三葉を探して訪れた駅。劇中に登場するタクシー乗り場が実在する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="hida_furukawa_station" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町 — 気多若宮神社</h3>
         <p>劇中の「宮水神社」のモデルとして知られる。聖地巡礼の中心スポット。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="ketawakamiya_shrine" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町 — 飛騨市図書館</h3>
         <p>糸守町を調べるシーンの背景モデル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="hida_library" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町・駅前 — なかや</h3>
         <p>ラーメン店の店主が「糸守」を教えてくれるシーンのモデルになった実在の食事処。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="nakaya_ramen" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町 — 味処古川</h3>
         <p>劇中の老舗のモデルとして知られる定食屋。映画公開後は五平餅も販売している。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="ajidokoro_furukawa" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>長野県諏訪市・岡谷市一帯 — 諏訪湖</h3>
         <p>劇中の「糸守湖」のモデルになった長野県最大の湖。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="lake_suwa" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県高山市～長野県方面 — 国道361号一帯</h3>
         <p>瀧が飛騨へ向かう劇中の道路風景のモデル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="route361" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>東京都渋谷区/新宿区の境 — 新宿駅南口</h3>
         <p>東京パートの主要な背景のひとつ。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="shinjuku_south" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>東京都新宿区 — 信濃町駅周辺</h3>
         <p>東京市街パートの背景として登場。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="shinanomachi" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>東京都新宿区 — 四ツ谷駅</h3>
         <p>須賀神社に近い駅で、東京パートの背景。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="yotsuya_station" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>東京都新宿区四谷 — 須賀神社の階段</h3>
         <p>エンディングの名シーン（階段での再会）のモデルとして知られる、ファンの間で最高人気の聖地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="suga_shrine" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>東京都港区六本木 — 国立新美術館</h3>
         <p>東京パートで言及・背景として登場。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="national_art_center" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県高山市 — 飛騨高山の市街</h3>
         <p>飛騨エリアの観光動線であわせて紹介される古い町並みの城下町。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="hida_takayama" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県飛騨市古川町 — 瀬戸川と白壁土蔵街</h3>
         <p>糸守の町並みのモデルとされる古い通り。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="furukawa_machinami" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>岐阜県高山市近郊 — 飛騨大鍾乳洞</h3>
         <p>飛騨エリアの聖地巡礼コースであわせて語られる周辺名所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="kiminonawa" data-location-id="hida_daishonyudo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

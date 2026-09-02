@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -430,61 +437,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>칸타쿠지노 성 (Cantacuzino Castle, Romania)</h3>
         <p>네버모어 아카데미 외관의 실제 촬영지. 1911년 루마니아 총리를 지낸 게오르게 그리고레 칸타쿠지노 공의 여름 별장으로 지어진 네오루마니아 양식 성으로, 제2차 세계대전 이후에는 내무부 소유였다가 복원되어 일반에 공개됐다. 팀 버튼 감독은 &quot;루마니아를 버몬트처럼 보이게 만드는 게 흥미로운 도전이었다&quot;고 밝혔다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="cantacuzino" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>부쿠레슈티 식물원 (Bucharest Botanical Garden)</h3>
         <p>학교 정원 장면들이 촬영된 부쿠레슈티의 식물원이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="bucharestgarden" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>몬테오루 궁전 (Palatul Monteoru)</h3>
         <p>라리사 윔스 교장실 장면이 촬영된 부쿠레슈티의 역사적 저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="palatulmonteoru" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>니쿨레스쿠-도로반츠 저택 (Casa Niculescu-Dorobanțu)</h3>
         <p>실내 공간 장면 다수가 촬영된 부쿠레슈티의 저택이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="casaniculescu" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>시나이아 기차역 (Sinaia Railway Station)</h3>
         <p>등장인물들의 이동 장면이 촬영된 루마니아 산악 지역의 기차역이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="sinaiastation" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>부쿠레슈티 폴리테흐니카 대학 (Politehnica University)</h3>
         <p>학교 공간 장면 일부가 촬영된 부쿠레슈티의 대학 캠퍼스다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="politehnica" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>부프테아 스튜디오 (Buftea Studios)</h3>
         <p>세트 촬영이 이뤄진 루마니아의 대형 영화 스튜디오다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="buftea" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>파워스코트 사유지 (Powerscourt Estate, Ireland)</h3>
         <p>시즌2 촬영에 쓰인 아일랜드 위클로의 대저택과 정원이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="powerscourt" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>찰빌 성 (Charleville Castle, Ireland)</h3>
         <p>고딕 분위기의 실내 공간이 촬영된 아일랜드의 고성이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="charleville" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>클로라 숲 (Cloragh Woods, Ireland)</h3>
         <p>숲 장면들이 촬영된 아일랜드 위클로 지역의 숲이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="claraghwoods" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>더블린·위클로 (Dublin·Wicklow)</h3>
         <p>시즌2 촬영 거점이 된 아일랜드 더블린과 위클로 일대다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="dublinwicklow" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>부쉬테니 (Bușteni, Romania)</h3>
         <p>루마니아 촬영지 여행의 거점이 되는 산악 마을이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="wednesday" data-location-id="busteni" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

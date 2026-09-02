@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -432,61 +439,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>CSIC 본부 (Madrid)</h3>
         <p>Spain's National Research Council (CSIC) building in Madrid, used as the exterior of the Royal Mint. The real Royal Mint (Fábrica Nacional de Moneda y Timbre) sits on a narrow, busy street in the Salamanca district, making action-scene filming there impractical, and as a working banknote-and-coin facility it couldn't allow interior filming at all. The CSIC building, by contrast, sits in a traffic-free zone that was far easier to film in. The Mint and bank interior sets were built separately at a studio in Colmenar Viejo.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="csicmadrid" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>누에보스 미니스테리오스 (Nuevos Ministerios)</h3>
         <p>A Madrid government complex used for some Bank of Spain exterior scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="nuevosministerios" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>포멘토 궁전 (Ministerio de Fomento)</h3>
         <p>A historic Madrid government building used as a backdrop for the heist storyline.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="ministeriofomento" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>칼라오 광장 (Plaza del Callao)</h3>
         <p>Central Madrid's iconic square, used for crowd and protest scenes — and the real backdrop for the famous scene where a zeppelin drops cash over the city.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="plazacallao" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>그란 비아 (Gran Vía)</h3>
         <p>Madrid's main thoroughfare, appearing in many city-backdrop scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="granvia" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>산 프루토스 은자원 (San Frutos Hermitage, Segovia)</h3>
         <p>Ruined hermitage near Segovia, used as the team's training location.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="sanfrutos" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>토레로도네스 (Torrelodones)</h3>
         <p>A town near Madrid used as the setting for The Professor's hideout.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="torrelodones" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>파나마·태국 설정 장면</h3>
         <p>Locations depicted as characters' hideouts in later seasons.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="panamathailand" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>피렌체 (Florence, Italy)</h3>
         <p>An Italian city used for flashback scenes related to Berlín.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="florence" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>코펜하겐 설정</h3>
         <p>Denmark's capital, referenced as part of the story's international expansion.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="copenhagen" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>마드리드 스튜디오 세트</h3>
         <p>A Madrid film studio where the Mint and bank interior sets were built.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="madridstudio" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>스페인 도시명·캐릭터명 지도</h3>
         <p>A concept map, centered on Madrid, introducing the world cities the team's codenames are drawn from.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="moneyheist" data-location-id="madridcitymap" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

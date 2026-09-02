@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -434,126 +441,201 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>킹스크로스역 (King's Cross Station)</h3>
         <p>The real London railway station used as the departure point for Platform 9¾ and the Hogwarts Express. Today it has an official photo spot with a luggage cart appearing to vanish into the wall, plus a gift shop — one of the most visited Harry Potter pilgrimage sites in the world.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="kingscross" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>세인트 판크라스 인터내셔널 (St Pancras International)</h3>
         <p>The ornate Gothic-revival station right next to King's Cross, used as the exterior in the flying-car scene from Chamber of Secrets.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="stpancras" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>리든홀 마켓 (Leadenhall Market)</h3>
         <p>A Victorian-era covered market in the heart of the City of London, used as the entrance to Diagon Alley and the exterior of the Leaky Cauldron in Philosopher's Stone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="leadenhall" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>오스트레일리아 하우스 (Australia House)</h3>
         <p>The Australian High Commission building on the Strand, whose grand marble hall inspired the interior of Gringotts Bank in Philosopher's Stone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="australiahouse" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>런던동물원 파충류관 (London Zoo Reptile House)</h3>
         <p>The real reptile house where Harry first discovers he can speak Parseltongue in the opening scenes of Philosopher's Stone.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="londonzoo" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>밀레니엄 브리지 (Millennium Bridge)</h3>
         <p>The pedestrian bridge over the Thames destroyed by Death Eaters in the opening sequence of Half-Blood Prince.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="millenniumbridge" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>클레어몬트 스퀘어 (Claremont Square)</h3>
         <p>A Georgian residential square in Islington that served as the model for the exterior of Grimmauld Place, headquarters of the Order of the Phoenix.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="claremontsquare" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>워너 브라더스 스튜디오 투어 런던 (Warner Bros. Studio Tour London)</h3>
         <p>The official studio tour in Watford where you can walk through the real Great Hall set, the Diagon Alley street set, and see original props and costumes — less a &quot;filming location&quot; than the filmmaking process itself, on display.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="wbstudiotour" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>크라이스트처치 칼리지 (Christ Church College), 옥스퍼드</h3>
         <p>A historic Oxford college whose staircase beneath Tom Tower inspired the entrance to the Hogwarts Great Hall, with several corridor scenes filmed on location.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="christchurch" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>보들리언 도서관 듀크 험프리스룸 (Bodleian Library / Duke Humfrey's)</h3>
         <p>One of the world's oldest libraries — its dark wood-paneled reading room served as the backdrop for the Hogwarts library scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="bodleian" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>디비니티 스쿨 (Divinity School), 옥스퍼드</h3>
         <p>A 15th-century building attached to the Bodleian, whose ornate fan-vaulted ceiling served as the Hogwarts hospital wing and the dance-lesson scene in Goblet of Fire.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="divinityschool" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>뉴 칼리지 회랑 (New College Cloisters), 옥스퍼드</h3>
         <p>A quiet medieval cloister where Draco Malfoy is punished by Professor Moody following the Buckbeak incident, among other scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="newcollege" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>글로스터 대성당 (Gloucester Cathedral)</h3>
         <p>A cathedral whose stunning fan-vaulted cloisters appear repeatedly as Hogwarts corridors throughout the series.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="gloucestercathedral" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>라콕 애비 (Lacock Abbey)</h3>
         <p>A National Trust-managed medieval abbey used as Professor Snape's potions classroom and Professor Quirrell's Defence Against the Dark Arts classroom.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="lacockabbey" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>라콕 마을 (Lacock Village)</h3>
         <p>A time-capsule Cotswolds village whose streets helped capture the atmosphere of Godric's Hollow.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="lacockvillage" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>알른윅 성 (Alnwick Castle)</h3>
         <p>A grand Northumberland castle whose courtyard was used for Harry's first broomstick flying lesson in the first two films.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="alnwickcastle" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>더럼 대성당 (Durham Cathedral)</h3>
         <p>A UNESCO World Heritage Norman cathedral whose cloister and chapter house appear repeatedly as Hogwarts corridors and classrooms.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="durhamcathedral" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>고애슬랜드역 (Goathland Station)</h3>
         <p>A steam railway station on the North Yorkshire Moors Railway used as Hogsmeade Station in the first film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="goathland" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>말럼 코브 (Malham Cove)</h3>
         <p>A massive limestone rock formation in the Yorkshire Dales, used for the trio's camping scenes in Deathly Hallows Part 1.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="malhamcove" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>글렌피넌 육교 (Glenfinnan Viaduct)</h3>
         <p>An arched viaduct in the Scottish Highlands over which the Hogwarts Express travels — one of the series' most iconic images.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="glenfinnan" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>글렌코 (Glencoe)</h3>
         <p>A dramatic, rugged Scottish glen used as the mountainous landscape surrounding Hagrid's hut and Hogwarts.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="glencoe" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>로크 실 (Loch Shiel)</h3>
         <p>A long, narrow loch near Glenfinnan that, through aerial photography and CG compositing, became the Great Lake in front of Hogwarts Castle.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="lochshiel" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스틸 폭포 (Steall Falls)</h3>
         <p>Scotland's second-highest waterfall in Glen Nevis, used as a backdrop for the dragon sequence in the Triwizard Tournament and aerial Quidditch shots.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="steallfalls" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>프레시워터 웨스트 (Freshwater West), 웨일스</h3>
         <p>A rugged Atlantic beach in Pembrokeshire, Wales, where the set for Bill and Fleur's cottage, Shell Cottage, was built for Deathly Hallows.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="freshwaterwest" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>스윈리 숲 (Swinley Forest), 버크셔</h3>
         <p>A public forest near London used for the scenes of the trio wandering the woods while on the run in Deathly Hallows.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="harrypotter" data-location-id="swinleyforest" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -433,66 +440,105 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>월터 화이트의 집 (3828 Piermont Dr NE)</h3>
         <p>The most iconic house in the series. It's still a private residence today, so you can only view the exterior — but standing in front of the driveway seen throughout the show is the #1 pilgrimage spot for fans.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="walterwhite_house" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>제시 핑크맨의 집 (322 16th St SW)</h3>
         <p>The real house used as Jesse's aunt's home in the show, and the site of several early-season cook scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="jesse_house" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>로스 포요스 에르마노스 (실제 상호: Twisters, 4257 Isleta Blvd SW)</h3>
         <p>The real restaurant (operating as Twisters) used as Gus Fring's front business, Los Pollos Hermanos. Since it's a working fast-food restaurant, fans can actually eat inside and take photos — the highlight of the pilgrimage route.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="lospollos" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>A1A 세차장 (구 Octopus Car Wash, 9560 Snow Heights Cir NE)</h3>
         <p>The car wash that served as Walter's cover job, appearing in 16 episodes — a symbolic site where his &quot;ordinary life&quot; and double life constantly collide.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="carwash" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>투코의 은신처 (현 Java Joe's, 906 Park Ave SW)</h3>
         <p>The building that served as Tuco Salamanca's hideout. It now operates as a real café (Java Joe's), so you can actually go inside.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="tuco_office" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>구스의 세탁 공장 / 슈퍼랩 입구 (실제 상호: Delta Uniform &amp; Linen, 1617 Candelaria Rd NE)</h3>
         <p>The real industrial facility used as the above-ground entrance to Gus Fring's underground superlab.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="gus_laundry" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>바모노스 페스트 컨트롤 (시즌5 이동식 랩, 2016 Ridgecrest Dr SE)</h3>
         <p>The real pest-control company building used in Season 5 as the base for the tented-house mobile meth lab operation.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="vamonos_pest" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>사울 굿맨의 사무실 (9800 Montgomery Blvd NE)</h3>
         <p>The real commercial building used as Saul Goodman's law office, famous for its flashy signage in the show.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="saul_office" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>구스 프링의 집 (1213 Jefferson St NE)</h3>
         <p>The real house used as Gus Fring's deceptively ordinary-looking home — another site symbolizing his double life.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="gusfring_house" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>행크·마리의 집 (4901 Cumbre Del Sur Ct NE)</h3>
         <p>The real house used as Hank and Marie's home — also the setting for key family scenes once the truth begins to surface.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="hank_marie_house" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>헥터 살라만카 요양원 (8820 Horizon Blvd NE)</h3>
         <p>The real facility used as the nursing home where the silent, wheelchair-bound Hector Salamanca resides — the backdrop for one of the show's most talked-about late-series scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="hector_nursing" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>투하히일리 인디언 보호구역 (나바호 네이션 영내, 앨버커키 서쪽 약 40분)</h3>
         <p>The location where the desert shootout in the &quot;Ozymandias&quot; episode was filmed — the setting for the series' biggest turning point.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="tohajiilee" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>화이트 샌즈 국립공원 (뉴멕시코주 남부)</h3>
         <p>The gleaming white gypsum dune field used for early-season desert scenes — filmed on location with no green screen.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="breakingbad" data-location-id="whitesands" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

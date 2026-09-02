@@ -77,6 +77,11 @@
   .stopActions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
   .stopCta{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;background:var(--accent);color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;border-radius:10px;box-sizing:border-box;}
   .stopCta:hover{opacity:.9;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;box-sizing:border-box;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .stopStatusLink{font-size:12.5px;font-weight:600;color:var(--sub);text-decoration:underline;}
   .stopNextHint{font-size:12.5px;color:var(--sub);margin:10px 0 0;font-style:italic;}
   .guideRelated{margin-top:8px;}
@@ -97,6 +102,7 @@
     .routeStep{font-size:12px;padding:7px 12px 7px 7px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristTrip","name":"原作の『舞台』とドラマの『ロケ地』は、別々に歩こう","description":"『白夜行』の聖地巡礼を、原作の物語舞台・大阪の布施と、2006年TBSドラマ版の実際のロケ地・水海道駅に分けて案内。『舞台』と『撮影地』を混同しないガイド。","url":"https://geugotjigeum.com/ja/guides/byakuya-pilgrimage/","itinerary":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"布施駅 — 物語の空気に入る入口"},{"@type":"ListItem","position":2,"name":"布施本通商店街 — 『白夜行』の生活感を歩く"},{"@type":"ListItem","position":3,"name":"水海道駅 — 2006年TBS版はここで撮った"}]}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"あの場所、いま","item":"https://geugotjigeum.com/ja/"},{"@type":"ListItem","position":2,"name":"原作の『舞台』とドラマの『ロケ地』は、別々に歩こう","item":"https://geugotjigeum.com/ja/guides/byakuya-pilgrimage/"}]}</script>
 </head>
@@ -152,6 +158,7 @@
             <p class="stopVisitNote">💡 訪問時の注意: 通常の鉄道駅。通行や乗降の妨げにならないようにする。</p>
             <div class="stopActions">
               <a class="stopCta" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_station">🗺️ 地図で位置を見る →</a>
+              <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_station" data-surface="guide" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
               <a class="stopStatusLink" href="https://www.kintetsu.co.jp/station/" target="_blank" rel="noopener">現在の営業情報を確認 →</a>
             </div>
             <p class="stopNextHint">駅前から布施本通商店街へ徒歩でつなぐ。</p>
@@ -172,6 +179,7 @@
             <p class="stopVisitNote">💡 訪問時の注意: 営業中の店舗や地域住民の通行を妨げない。</p>
             <div class="stopActions">
               <a class="stopCta" href="https://geugotjigeum.com/?work=byakuya&amp;loc=by_fuse_honodori">🗺️ 地図で位置を見る →</a>
+              <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_fuse_honodori" data-surface="guide" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
               
             </div>
             <p class="stopNextHint">大阪編はここで終了。茨城のロケ地編は別日程として扱う。</p>
@@ -200,6 +208,7 @@
             <p class="stopVisitNote">💡 訪問時の注意: 通常の鉄道駅。利用者や鉄道運行を妨げない。</p>
             <div class="stopActions">
               <a class="stopCta" href="https://geugotjigeum.com/ja/places/byakuya-by_mitsukaido_station/">📍 場所の詳細を見る →</a>
+              <button type="button" class="save-place-btn" data-work-id="byakuya" data-location-id="by_mitsukaido_station" data-surface="guide" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
               <a class="stopStatusLink" href="https://www.kantetsu.co.jp/train/mitsukaido" target="_blank" rel="noopener">現在の営業情報を確認 →</a>
             </div>
             <p class="stopNextHint">北水海道駅も撮影利用が確認されるが、v1では補足のみ。canonical stopは追加しない。</p>

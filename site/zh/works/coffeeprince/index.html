@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -428,26 +435,41 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>咖啡王子1號店咖啡廳場景（首爾麻浦區西橋洞）</h3>
         <p>韓結和恩燦工作的咖啡廳「咖啡王子1號店」外觀與內部的實際拍攝地，位於弘大入口站沿臥牛山路上坡處。播出後長年是粉絲朝聖地，約2019～2020年間歇業後便荒廢至今，截至2025年仍以廢墟狀態、開價百億韓元求售。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="coffeeprince" data-location-id="coffeeprince_cafe" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>山轉角咖啡廳（首爾鍾路區付岩洞）</h3>
         <p>作為崔漢成（李善均飾）自宅登場的咖啡廳，劇中描寫為他與愛犬「率子」一起生活的家。目前仍以咖啡廳形式營業，是韓劇拍攝地巡禮的熱門去處，訪客絡繹不絕。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="coffeeprince" data-location-id="sanmotungi_cafe" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>崔韓結自宅場景舊址（首爾中區藝場洞）</h3>
         <p>作為崔韓結（孔劉飾）宅邸登場的場景舊址，是在南山首爾動畫中心（「漫畫之家」）園區內特別搭建的拍攝用場景，拍攝結束後隨即拆除，目前已不存在。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="coffeeprince" data-location-id="hangyul_house_set" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">直接</span>
         <h3>高恩燦的社區（首爾恩平區鷹岩洞一帶）</h3>
         <p>扛起家計的恩燦與母親金智香、妹妹恩世一起生活的頂樓加蓋房與社區。具體建築尚未被確認，但鷹岩洞一帶被認為是這個場景的背景地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="coffeeprince" data-location-id="eunchan_neighborhood" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">官方・直接</span>
         <h3>北岳天際路（首爾鍾路區・城北區）</h3>
         <p>崔韓結反覆慢跑場景中登場的環狀道路，至今仍是首爾市民熱愛的兜風、散步路線。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="coffeeprince" data-location-id="bukak_skyway" data-surface="work" data-label-save="收藏" data-label-saved="已收藏" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">收藏</span></button>
+        </div>
       </div>
 
 

@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -384,81 +391,129 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>강원감영 (강원 원주시 일산동)</h3>
         <p>1580년(선조 13년) 정월, 45세의 정철이 강원도관찰사로 제수받아 부임한 강원도 감영. 관동별곡은 이곳 원주에서 임금의 부름을 받고 부임하는 장면으로 시작된다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="wonju_gamyeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>만폭동 (내금강, 북한)</h3>
         <p>내금강 제일의 명소로 꼽히는 계곡. 관동별곡 2단에서 정철이 금강산 유람의 초입에 감탄하며 노래한 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="manpokdong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>금강대 (내금강, 북한)</h3>
         <p>내금강의 봉우리 중 하나로, 관동별곡에서 신선이 학을 타고 노닌다고 묘사된 절경.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="geumgangdae" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>진헐대 (내금강, 북한)</h3>
         <p>내금강의 전망대 중 하나로, 정철이 금강산 봉우리들을 조망하며 감흥을 노래한 장소.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="jinheoldae" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>개심대 (내금강, 북한)</h3>
         <p>'마음이 열리는 대'라는 이름의 전망대로, 관동별곡에서 금강산 만이천봉을 한눈에 굽어보며 노래한 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="gaesimdae" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>화룡연 (내금강, 북한)</h3>
         <p>용이 승천했다는 전설이 깃든 못. 관동별곡에서 폭포와 못의 신비로운 정경을 묘사한 곳 중 하나다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="hwaryongyeon" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>십이폭포 (내금강, 북한)</h3>
         <p>열두 굽이로 떨어진다는 폭포로, 관동별곡 2단의 절정부에서 웅장하게 묘사된다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="sibipokpo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>총석정 (관동팔경, 강원 통천군, 북한)</h3>
         <p>관동팔경 중 하나로, 바닷속에서 솟은 육각형 돌기둥들이 정자를 둘러싼 절경. 정철은 이곳에서 해돋이를 보며 감흥을 노래했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="chongseokjeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>삼일포 (관동팔경, 강원 고성군, 북한)</h3>
         <p>신라 시대 화랑들이 사흘을 머물렀다는 전설에서 이름 붙은 호수. 관동팔경 중 하나로, 관동별곡에서 신비로운 호수의 풍경으로 그려진다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="samilpo" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>의상대 (양양 낙산사 경내)</h3>
         <p>신라 승려 의상대사가 좌선했다는 전설이 깃든 정자로, 낙산사 경내 해안 절벽 위에 있다. 관동별곡에서 정철이 동해의 일출을 바라보며 감격을 노래한 장소로 유명하다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="uisangdae" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>청간정 (관동팔경, 강원 고성군 간성)</h3>
         <p>관동팔경 중 하나로, 정철이 맑은 시냇물과 바다가 만나는 풍경을 노래한 정자.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="cheongganjeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>낙산사 (관동팔경, 강원 양양)</h3>
         <p>신라 문무왕 때 의상대사가 창건한 사찰로, 관동팔경 중 하나. 관동별곡에서 정철이 방문해 그 절경을 노래했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="naksansa" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>경포대 (관동팔경, 강원 강릉)</h3>
         <p>관동팔경 중 하나로, 경포호와 동해를 함께 조망할 수 있는 누각. 정철은 이곳에서 하늘과 호수, 바다에 뜬 세 개의 달을 노래한 것으로 유명하다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="gyeongpodae" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>죽서루 (관동팔경, 강원 삼척)</h3>
         <p>오십천 절벽 위에 자연 암반을 기둥 삼아 세워진 누각으로, 관동팔경 중 하나. 관동별곡에서 그 빼어난 위치를 노래했다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="jukseoru" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>망양정 (관동팔경, 경북 울진)</h3>
         <p>관동팔경 중 하나로 '관동제일루'로도 불린다. 관동별곡의 마지막 유람지 중 하나로, 정철이 동해 바다의 광활함을 노래한 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="mangyangjeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>월송정 (관동팔경, 경북 울진 평해)</h3>
         <p>울창한 소나무 숲과 백사장으로 둘러싸인 정자로, 관동팔경 중 하나. 관동별곡 여정의 마지막 부분에서 언급되는 명소다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gwandong" data-location-id="wolsongjeong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

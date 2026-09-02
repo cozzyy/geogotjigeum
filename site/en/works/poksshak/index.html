@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -365,141 +372,225 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 서귀포시 — 성산일출봉</h3>
         <p>Where Ae-sun, unable to conceive after marriage, follows her mother-in-law up to perform three thousand bows in one of the show's most tearful scenes. A UNESCO World Natural Heritage site.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="seongsan_ilchulbong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 — 김녕해수욕장</h3>
         <p>The beach where Ae-sun and Gwan-sik's childhood, and the haenyeo lives of their mothers' generation, were filmed.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="gimnyeong_beach" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 — 협재해수욕장</h3>
         <p>The beach behind some of the drama's warmest moments — Ae-sun and Gwan-sik playing in the surf and watching the sunset together.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="hyeopjae_beach" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 서귀포시 — 섭지코지</h3>
         <p>The coastal hill behind some of the drama's most memorable walking scenes, including a walk toward the lighthouse.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="seopjikoji" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 오라동 — 메밀꽃밭</h3>
         <p>A field that fills with white buckwheat blossoms, used as the backdrop for a romantic scene. Visitor numbers rose sharply after the show aired.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="ora_buckwheat_field" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 서귀포시 표선면 가시리 — 유채꽃밭</h3>
         <p>The yellow canola field that serves as the backdrop for Ae-sun and Gwan-sik's first kiss, near the Gasi-ri pony experience park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="gasi_canola_field" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 — 제주목 관아</h3>
         <p>A reconstruction of Jeju's old Joseon-era government office, used as a backdrop for scenes set in old downtown Jeju.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jejumok_gwana" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경북 안동시 풍천면 — 도동리 세트장 부지(경북도청신도시)</h3>
         <p>Most of the 1950s–60s 'Dodong-ri' village scenes were actually filmed not in Jeju but at a purpose-built set here in Andong, complete with 80-some thatched houses, stone walls, a harbor, and four fishing boats. The set was dismantled after filming, so only the site itself remains today.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="andong_set" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경북 안동시 — 안동호·호명호(안동호반)</h3>
         <p>A real lake near the 'Dodong-ri' set, used alongside it as an actual waterside backdrop to complement the set's artificial sea scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="andong_lake" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>강원 연천 — 시대 변화 거리 세트장 부지</h3>
         <p>A large outdoor set built to recreate a street and its buildings changing over 60 years, from the 1960s to present-day 2025. Like the Andong set, it was dismantled after filming wrapped.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="yeoncheon_set" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>전북 고창군 — 학원농장(보리나라 학원농장) 유채꽃밭</h3>
         <p>The scene many viewers assumed was filmed in a Jeju canola field — Ae-sun and Gwan-sik's first kiss — was actually shot here, in the canola field at Gochang's Hagwon Farm. The farm's entrance has canola on one side and green barley on the hillside opposite, so both can be seen in the same visit.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="gochang_hagwon_farm" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>대구 중구 계산동 — 계산성당 주변 오픈세트</h3>
         <p>The postwar-market scene where young Ae-sun and Gwan-sik sell cabbages and fish was filmed on an open set around this historic cathedral — including a grandmother wearing a sign searching for family separated by the war.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="daegu_gyesan_set" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경북 칠곡군 — 가실성당</h3>
         <p>A red-brick Gothic cathedral built in 1895, later used as the backdrop for Geum-myeong's wedding scene.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="chilgok_gasil_cathedral" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>광주 동구 — 광주극장(극중 '깐느극장')</h3>
         <p>South Korea's oldest single-screen theater, opened in 1935. In the drama it appears as the 'Cannes Theater,' where an adult Geum-myeong sells tickets and Park Chung-seop paints the film posters — a key setting for the show's later chapters.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="gwangju_theater" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>전북 정읍시 칠보면 — 칠보중학교</h3>
         <p>A school confirmed as one of the real filming locations for scenes set in the characters' school years.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeongeup_chilbo_ms" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>전북 전주시 완산구 — 팔달로 일대</h3>
         <p>A downtown Jeonju street confirmed as a filming location for the drama's cityscape scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeonju_paldalro" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>전북 전주시 덕진구 — 전북대학교병원</h3>
         <p>Confirmed as the real filming location for the drama's hospital scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeonbuk_univ_hospital" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>광주 북구 용봉동 — 전남대학교</h3>
         <p>A campus confirmed as a filming location for university-years scenes, geographically linked to the Gwangju Theater storyline nearby.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeonnam_univ" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>서울 종로구 — 중앙고등학교</h3>
         <p>A historic Seoul high school founded in 1908, confirmed as a real filming location for the drama's Seoul-set scenes.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jongno_joongang_hs" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>경북 청도군 운문면 — 운문사</h3>
         <p>A real thousand-year-old Buddhist temple where the drama's temple-visit scene was filmed.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="unmunsa_temple" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>부산 동구 — 매축지마을</h3>
         <p>A neighborhood of narrow alleys and makeshift housing built by Korean War refugees. The scene of 19-year-old Gwan-sik and 18-year-old Ae-sun running away together was filmed here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="busan_maechukji" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>전남 여수시</h3>
         <p>It became a notable trivia point after the show aired that the drama's very first scene — its opening sequence — was actually filmed not in Jeju but here in Yeosu.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="yeosu_opening" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>서울 관악구 — 서울대학교</h3>
         <p>Where Geum-myeong, having left Jeju, enrolled in the English Literature department in 1987. Her first Seoul love interest, Park Yeong-beom, also studied here at the College of Law — the starting point of their Seoul-era story.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="seoul_national_univ" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 — 청심국제해양청소년수련원</h3>
         <p>A marine youth training facility confirmed as a filming location for a group-activity scene from the characters' teenage years.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="cheongsim_camp" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 — 우도</h3>
         <p>A small island reached by boat from Seongsan Port. The scene of the two leads spending a leisurely afternoon cycling together was filmed here.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="udo_island" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 제주시 조천읍 — 함덕해수욕장·서우봉</h3>
         <p>A beach famous for its emerald water, white sand, and the canola flowers that turn Seowobong hill yellow every spring. Used as the backdrop for a scene of the two leads having a heart-to-heart by the sea.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="hamdeok_seowoobong" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 서귀포시 표선면 — 제주민속촌</h3>
         <p>A folk village that faithfully recreates traditional Jeju houses and daily life, used to help recreate the look of a 1960s Jeju village.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeju_folk_village" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>제주 — 오름길(용눈이오름 인근)</h3>
         <p>Jeju's distinctive gently-sloped volcanic hills. This landscape appears repeatedly as the backdrop for scenes of Ae-sun and Gwan-sik walking side by side.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="poksshak" data-location-id="jeju_oreum_trail" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
     <div class="cultureBox">

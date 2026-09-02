@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -432,511 +439,817 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>パインウッド・アトランタ・スタジオ（Pinewood Atlanta Studios）、フェイエットビル</h3>
         <p>映画の大半のセット撮影が行われた実在のスタジオ。アトランタをニューヨーク・クイーンズに見立てるマーベル映画の多くがここを拠点にしている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="pinewoodatlanta" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>マンダリン オリエンタル アトランタ（Mandarin Oriental Hotel）、バックヘッド</h3>
         <p>ピーターがスターク社にアップグレードされた新スーツを初めて発見する「ベルリンのホテル」シーンが撮影された実在の五つ星ホテル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="mandarinorientalatl" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ヘンリー・W・グレイディ高校（Henry W. Grady High School）</h3>
         <p>「ミッドタウン科学技術高校」の廊下・教室など校内シーンが撮影された実在のアトランタの公立高校。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="gradyhighschool" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>デルマーズ・デリ 撮影地、92 Peachtree St SW、アトランタ</h3>
         <p>ピーターの行きつけのデリ「デルマーズ」の外観撮影地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="delmarsdeli" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ラーナー・ショップス・ビルディング（Lerner Shops Building）、62 Peachtree St SW</h3>
         <p>スパイダーマンが盗まれた自転車を持ち主に返すシーンが撮影されたアールデコ調の商業ビル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="lernershops" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>オリジナル・ネイルズ（Original Nails）、85 Peachtree Street SW</h3>
         <p>ピーターが糸にぶら下がり屋上の給水塔でバク宙を披露するシーンが撮影された実在のビル屋上。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="originalnails" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>99 Peachtree St SW、アトランタ</h3>
         <p>アベンジャーズの仮面をつけた強盗が「クイーンズ・コミュニティ銀行」を襲うシーンが撮影された実在のビル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="peachtree99" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>シルヴァン・ビルディング（Sylvan Building）、233 Mitchell Street</h3>
         <p>メイおばさんがピーターに夕食をおごりながらインターンシップについて問い詰めるシーンが撮影された場所。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="sylvanbuilding" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>229 Little John Trail NE、アンズリー・パーク</h3>
         <p>リズのホームカミング・パーティーが開かれるガラス張りの邸宅の撮影地。2015年建築の実在の個人住宅。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="littlejohntrail" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>パーク・ドライブ・ブリッジ（Park Drive Bridge）、ミッドタウン・アトランタ</h3>
         <p>トゥームスの手下がエアロンに最新兵器を売ろうとしスパイダーマンに発覚するシーンが撮影された実在の橋。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="parkdrivebridge" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>アトランタ・ヒンドゥー寺院（Hindu Temple of Atlanta）、リバーデール</h3>
         <p>スタークが「インドから」ピーターに電話をかけるシーンの背景に使われた1990年建立の実在のヒンドゥー寺院。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="hindutempleatlanta" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>エンバシー・スイーツ・アトランタ・ペリミターセンター（Embassy Suites）、ダンウッディ</h3>
         <p>ディケイスロン・チームが宿泊する「ワシントンDC」のホテルとして使われた実在のアトランタのホテル。巨大な室内アトリウムと滝が特徴。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="embassysuitesperimeter" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ポルシェ・エクスペリエンス・センター（Porsche Experience Center）</h3>
         <p>『シビル・ウォー』から続くアベンジャーズの新本部の外観として使われた実在のポルシェ体験施設。空港のすぐ隣にある。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="porschecenter" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>フラッシング・メドウズ・コロナ・パーク（Flushing Meadows Corona Park）、クイーンズ</h3>
         <p>ハッピーがピーターをJFK空港へ送る道中、1964年万博の象徴ユニスフィアがよぎる実在のクイーンズの公園。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="flushingmeadowsdrive" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>43-25 43rd Street、ロングアイランドシティ</h3>
         <p>ピーターとメイおばさんが暮らす7階建てアパートの外観撮影地。カルヴァリー墓地のすぐ北西にある実在の住宅街のビル。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="longislandcityapt" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>퀸즈 대로 44~45번가 (Queens Boulevard), 롱아일랜드시티</h3>
         <p>The street with the fire escape where Peter waits for a call from Happy — right beside where Tobey Maguire chased his school bus in Sam Raimi's 2002 Spider-Man.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="queensblvdfireescape" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>75セント・エルダーツ・レーン駅、ブルックリン</h3>
         <p>ピーターが登校時に利用する「36番街駅」として登場する実在の高架鉄道駅。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="steldertsstation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>フランクリン・K・レーン高校（Franklin K. Lane High School）、ブルックリン</h3>
         <p>「ミッドタウン科学技術高校」の実際の外観撮影地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="franklinlanehigh" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>31st Street &amp; Ditmars Blvd、アストリア</h3>
         <p>ピーターがスパイダーマン・スーツに着替えるため駆け込む路地の撮影地。アトランタには高架鉄道がないため、このシーンだけは実際のニューヨークで撮影された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="thirtyfirststreet" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>キングス・フライド・チキン（King's Fried Chicken）、ジャマイカ・ヒル</h3>
         <p>街のハラール・ホットドッグ屋台のために屋上で宙返りを見せるシーンが撮影された実在のフライドチキン店。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="kingsfriedchicken" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>スタテンアイランド・フェリー、ホワイトホール・ターミナル</h3>
         <p>ピーターが単独で武器取引を阻止しようとしフェリーを真っ二つにしてしまうシーンの撮影地。今も無料で乗れるニューヨークの名物フェリー。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="statenislandferry" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ガバナーズ島 換気塔（Ventilation Shaft）</h3>
         <p>スタークに厳しく叱られスーツを没収されるシーンが撮影されたブルックリン・バッテリー・トンネルの実在の換気塔。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="governorsislandvent" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>コニーアイランド・ボードウォーク &amp; ルナパーク</h3>
         <p>アベンジャーズの無人輸送機が撃墜されパラシュート・タワーを破壊するシーンと、ピーターがサイクロン・ジェットコースターの上から後始末を見守るシーンの撮影地。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="coneyislandboardwalk" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>ワシントン記念塔（Washington Monument）</h3>
         <p>チームの優勝祝いの訪問シーンと、スパイダーマンが実在のランドマークとCGを融合させて繰り広げるクライマックスの救出劇が撮影された実在の国立記念物。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="washingtonmonument" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>テーゲル空港 &amp; ブランデンブルク門、ベルリン</h3>
         <p>ピーターがアベンジャーズの一員として初めて任務に赴くベルリンのシーンが撮影された実在の空港とゲート。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="tegelbrandenburg" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>그랜드 센트럴 터미널 (Grand Central Terminal), 맨해튼</h3>
         <p>The real Grand Central Terminal that inspired the ruined &quot;Grand Central&quot; seen being cleared of Chitauri-invasion debris in the opening.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="grandcentralterminal" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>미드타운 맨해튼 스카이라인 (파크 애비뉴 일대)</h3>
         <p>The real Midtown Manhattan skyline where the fictional Stark Tower / Avengers Tower is set within the MCU.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="starktowernyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>퀸즈보로 다리 (Ed Koch Queensboro Bridge)</h3>
         <p>The real bridge linking Queens and Manhattan — a recurring, iconic swinging route across the entire Spider-Man film franchise.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="queensborobridge" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>애스토리아 대로역 (Astoria Blvd Station)</h3>
         <p>The real elevated station glimpsed during the patrol montage set to the Ramones' &quot;Blitzkrieg Bop,&quot; with the Robert F. Kennedy Bridge visible behind it.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="astoriablvdstation" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>코트 스퀘어~헌터스포인트 애비뉴 구간, 롱아일랜드시티</h3>
         <p>The real stretch of the 7 train line used for the patrol-montage shot of Spider-Man riding atop a subway car.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="courtsquarehunterspoint" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>JFK 국제공항, 퀸즈</h3>
         <p>The real New York international airport Peter departs from with Happy for the Avengers' Berlin mission.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="jfkairportqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>화이트홀 스트리트 남단, 로어맨해튼</h3>
         <p>The real southernmost stretch of Lower Manhattan where the Staten Island Ferry terminal sits, close to Battery Park and Statue of Liberty viewpoints.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="whitehallstreetlower" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>내셔널 몰 리플렉팅 풀, 워싱턴 DC</h3>
         <p>The real reflecting pool linking the Washington Monument and Lincoln Memorial — the central axis of the National Mall backdrop.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="reflectingpooldc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>포레스트힐스 (Forest Hills), 퀸즈</h3>
         <p>The real Queens neighborhood depicted as Peter Parker's hometown in the original comics. The film blends several other Queens locales, but this is the origin of the &quot;kid from Queens&quot; premise.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="forestneighborhoodqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>칼바리 묘지 (Calvary Cemetery), 퀸즈</h3>
         <p>A real, large cemetery just southeast of the Peter &amp; May apartment location — also known as the burial site of Don Corleone in The Godfather.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="calvarycemeteryqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>유니스피어 (Unisphere), 플러싱 메도우스</h3>
         <p>A giant stainless-steel globe built for the 1964–65 New York World's Fair — also famous from Men in Black — glimpsed through the car window early in the film.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="unispherelandmark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>루스벨트 아일랜드 트램웨이</h3>
         <p>A real aerial tramway crossing the East River alongside the Queensboro Bridge, offering a fresh angle on Spider-Man's signature swing route.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="rooseveltislandtram" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>미드타운 맨해튼 (학교명의 유래)</h3>
         <p>The real central Manhattan business district that lends its name to the fictional &quot;Midtown School of Science and Technology&quot; — the school itself is in Queens.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="midtownhighnamesake" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>조지아 수족관 (Georgia Aquarium)</h3>
         <p>One of the world's largest indoor aquariums, within walking distance of the downtown Atlanta filming locations.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="georgiaaquarium" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>월드 오브 코카콜라 (World of Coca-Cola)</h3>
         <p>An interactive museum celebrating Atlanta as the birthplace of Coca-Cola, right next to the Georgia Aquarium.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="worldofcocacola" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>CNN 센터 (CNN Center)</h3>
         <p>The real headquarters building of CNN, offering behind-the-scenes studio tours.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="cnncenter" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>센테니얼 올림픽 파크 (Centennial Olympic Park)</h3>
         <p>A downtown park built to commemorate the 1996 Atlanta Olympics, famous for its Fountain of Rings.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="centennialolympicpark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>애틀랜타 벨트라인 (Atlanta BeltLine)</h3>
         <p>A former rail corridor converted into Atlanta's signature walking and biking trail, lined with murals and public art.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="atlantabeltline" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>폰스 시티 마켓 (Ponce City Market)</h3>
         <p>A former Sears distribution warehouse converted into a large food hall and shopping complex, directly connected to the BeltLine.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="poncecitymarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>폭스 시어터 (Fox Theatre)</h3>
         <p>An exotic Moorish Revival theater opened in 1929, still hosting concerts and shows as an Atlanta landmark.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="foxtheatreatlanta" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>애틀랜타 역사센터 (Atlanta History Center)</h3>
         <p>A museum and garden complex covering the broader history of Georgia and Atlanta.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="atlantahistorycenter" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>피드몬트 파크 (Piedmont Park)</h3>
         <p>Atlanta's largest city park, adjacent to the Park Drive Bridge filming location.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="piedmontparkatl" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>메르세데스-벤츠 스타디움</h3>
         <p>Home stadium of the NFL's Atlanta Falcons, notable for its unique retractable aperture-style roof.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="mercedesbenzstadium" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>하이 미술관 (High Museum of Art)</h3>
         <p>One of the largest art museums in the U.S. Southeast, located at the edge of Midtown near Buckhead.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="highmuseumart" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>스톤 마운틴 파크 (Stone Mountain Park)</h3>
         <p>A famous natural park just outside Atlanta, centered on a massive granite monadnock.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="stonemountainpark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>애틀랜타 동물원 (Zoo Atlanta)</h3>
         <p>One of the few U.S. zoos home to giant pandas, a short trip from downtown.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="zooatlanta" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>마틴 루터 킹 주니어 국립역사공원</h3>
         <p>A national historic site including Dr. Martin Luther King Jr.'s birth home and Ebenezer Baptist Church — walkable from the Delmar's Deli filming location.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="mlkhistoricsite" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>크로그 스트리트 마켓 (Krog Street Market)</h3>
         <p>A popular food hall in a converted factory building, directly connected to the BeltLine Eastside Trail.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="krogstreetmarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>타임스스퀘어 (Times Square)</h3>
         <p>The iconic Midtown crossroads famous for its giant billboards and crowds.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="timessquarenyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>엠파이어 스테이트 빌딩</h3>
         <p>The Art Deco skyscraper synonymous with the NYC skyline, with an observation deck overlooking the city.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="empirestatebuilding" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>탑 오브 더 록 (Top of the Rock)</h3>
         <p>The observation deck atop Rockefeller Center, famous for its skyline view that includes the Empire State Building.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="topoftherocknyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>센트럴 파크 (Central Park)</h3>
         <p>A vast urban park in the middle of Manhattan and a daily retreat for New Yorkers.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="centralparknyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>브루클린 다리 (Brooklyn Bridge)</h3>
         <p>A 19th-century suspension bridge linking Manhattan and Brooklyn, open to pedestrians.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="brooklynbridgenyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>록펠러 센터 (Rockefeller Center)</h3>
         <p>An Art Deco complex famous in winter for its ice rink and Christmas tree.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="rockefellercenternyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>자유의 여신상 (Statue of Liberty)</h3>
         <p>The iconic statue standing in New York Harbor, reachable by ferry.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="statueoflibertynyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>그랜드 센트럴 마켓 (Grand Central Market)</h3>
         <p>A long-running grocery and food-hall arcade tucked beneath Grand Central Terminal.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="grandcentralfoodhall" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>크라이슬러 빌딩 (Chrysler Building)</h3>
         <p>A landmark Art Deco skyscraper famous for its stainless-steel spire.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="chryslerbuildingnyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>원 월드 전망대 (One World Observatory)</h3>
         <p>The observation deck of One World Trade Center, the tallest building in the Western Hemisphere.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="oneworldobservatory" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>퀸즈 미술관 (Queens Museum)</h3>
         <p>A museum inside Flushing Meadows Corona Park, famous for its giant scale-model &quot;Panorama of the City of New York.&quot;</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="queensmuseumny" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>MoMA PS1, 롱아일랜드시티</h3>
         <p>The Queens outpost of MoMA, known for experimental contemporary art exhibitions.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="momaps1queens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>퀸즈 나이트 마켓 (Queens Night Market)</h3>
         <p>A multicultural night market held Saturday evenings from April to October in Flushing Meadows Corona Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="queensnightmarket" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>애스토리아 파크 (Astoria Park)</h3>
         <p>A Queens riverfront park on the East River, with striking views of the Triborough Bridge.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="astoriaparknyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>하이라인 (The High Line)</h3>
         <p>A linear park on Manhattan's west side, converted from a former elevated rail line.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="highlinenyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>브루클린 미술관 (Brooklyn Museum)</h3>
         <p>One of New York's largest art museums, right next to Prospect Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="brooklynmuseumny" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>월가 황소상 (Charging Bull)</h3>
         <p>The bronze bull sculpture that has become a symbol of Wall Street.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="wallstreetbullny" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>유니언 스퀘어 (Union Square)</h3>
         <p>A signature Manhattan plaza that hosts a year-round farmers market.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="unionsquareny" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>내셔널 몰 (National Mall)</h3>
         <p>The iconic central green space stretching from the Capitol to the Lincoln Memorial.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="nationalmalldc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>링컨 기념관 (Lincoln Memorial)</h3>
         <p>The memorial to President Abraham Lincoln at the western end of the Reflecting Pool.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="lincolnmemorialdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>스미스소니언 국립 항공우주박물관</h3>
         <p>A world-class aerospace museum displaying real spacecraft and aircraft, free to enter.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="airandspacemuseumdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>미국 국회의사당 (U.S. Capitol)</h3>
         <p>The U.S. federal legislature building, famous for its massive dome.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="uscapitoldc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>백악관 조망 (White House View)</h3>
         <p>The U.S. presidential residence, viewable from Lafayette Square and nearby vantage points.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="whitehouseviewdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>제퍼슨 기념관 (Jefferson Memorial)</h3>
         <p>The memorial to President Thomas Jefferson, set on the shore of the Tidal Basin.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="jeffersonmemorialdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>미국 의회도서관 (Library of Congress)</h3>
         <p>The world's largest library, renowned for its ornate interior decoration.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="libraryofcongressdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>스미스소니언 국립자연사박물관</h3>
         <p>A free museum displaying the massive Hope Diamond and dinosaur fossils, among other exhibits.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="naturalhistorymuseumdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>국립문서기록관리청 (National Archives)</h3>
         <p>A free archive where visitors can view the original U.S. Declaration of Independence and Constitution.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="nationalarchivesdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>조지타운 워터프런트, 워싱턴 DC</h3>
         <p>The historic Georgetown district along the Potomac River, lined with shops and restaurants.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="georgetownwaterfrontdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>독일 연방의회 의사당 (Reichstag Building)</h3>
         <p>The German federal parliament building, famous for its glass dome, right next to the Brandenburg Gate.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="reichstagberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>이스트 사이드 갤러리 (East Side Gallery)</h3>
         <p>The longest surviving stretch of the Berlin Wall, painted with murals by artists from around the world.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="eastsidegalleryberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>베를린 TV 타워 (Fernsehturm)</h3>
         <p>Berlin's tallest structure, towering over Alexanderplatz, with a rotating observation deck and restaurant.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="tvtowerberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>체크포인트 찰리 (Checkpoint Charlie)</h3>
         <p>The site of the famous Cold War-era checkpoint between East and West Berlin, now marked by a replica guard post and sign.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="checkpointcharlieberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>박물관 섬 (Museum Island)</h3>
         <p>A UNESCO World Heritage island in the Spree River, entirely given over to a complex of major museums.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="museumislandberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>테겔 공원 (Tegel Airport 부지, 현재)</h3>
         <p>The Tegel Airport seen in the film closed in 2020 and no longer operates — the site is being redeveloped into a residential and research district.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="tegelparknow" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>쿠담 거리 (Kurfürstendamm)</h3>
         <p>West Berlin's signature boulevard, lined with department stores and shops.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="kudammberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>카우프만 아스토리아 스튜디오 (Kaufman Astoria Studios)</h3>
         <p>One of New York's largest working film and TV studios, near the Astoria alleyway filming location — home to productions like Sesame Street.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="kaufmanastoriastudios" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>움직이는 이미지 박물관 (Museum of the Moving Image)</h3>
         <p>A specialized Astoria museum exploring the filmmaking process and special effects behind movies and TV.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="movingimagemuseum" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>브라이언트 파크 (Bryant Park)</h3>
         <p>A small Midtown park directly behind the New York Public Library.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="bryantparknyc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>뉴욕 공립도서관 본관 (NYPL)</h3>
         <p>New York's flagship library, famous for the marble lions guarding its entrance.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="nyplmain" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>매디슨 스퀘어 가든</h3>
         <p>Home arena of the New York Knicks and a world-famous concert venue, sitting directly above Penn Station.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="madisonsquaregardenny" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>라과디아 공항 (LaGuardia Airport), 퀸즈</h3>
         <p>Unlike the JFK Airport referenced in the film, this is the airport actually located within Queens itself, recently rebuilt.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="laguardiaairportqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>플러싱 차이나타운, 퀸즈</h3>
         <p>One of New York's largest Chinatowns, embodying the real multicultural face of Queens that the film portrays.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="flushingchinatownqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>더 배터리 애틀랜타 (The Battery Atlanta)</h3>
         <p>A new commercial and entertainment district built beside Truist Park, home of the Atlanta Braves.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="batteryatlantadistrict" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>프리덤 파크 (Freedom Park), 애틀랜타</h3>
         <p>One of Atlanta's longest linear parks, with well-developed biking and walking paths.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="freedomparkatlanta" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>이스트 포토맥 파크, 워싱턴 DC</h3>
         <p>A Potomac riverside walkway connecting to the Jefferson Memorial, also famous for cherry blossoms.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="eastpotomacparkdc" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>포츠다머 플라츠 (Potsdamer Platz), 베를린</h3>
         <p>A Berlin square once divided by the Wall during the Cold War, reborn as a skyscraper district after reunification.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="potsdamerplatzberlin" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(201,162,39,0.12);color:#c9a227;border:1px solid rgba(201,162,39,0.35)">テーマ関連</span>
         <h3>로버트 F. 케네디 다리 (Triborough Bridge)</h3>
         <p>The real bridge visible behind the Astoria Blvd station shot, connecting the boroughs of Manhattan, Queens, and the Bronx.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="robertfkennedybridgeview" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>갠트리 플라자 주립공원, 롱아일랜드시티</h3>
         <p>A park near Peter's apartment location with a head-on view of the Manhattan skyline across the East River.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="gantryplazastatepark" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>시티필드 (Citi Field), 퀸즈</h3>
         <p>The home stadium of MLB's New York Mets, right next to Flushing Meadows Corona Park.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="spiderman" data-location-id="citifieldqueens" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

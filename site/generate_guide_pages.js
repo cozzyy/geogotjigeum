@@ -53,7 +53,8 @@ const GUIDE_LOCALE_META = {
       ctxScreen: '이곳에서 나온 장면', ctxStory: '이곳과 연결된 이야기', ctxAdapt: '영상판은 여기서 찍혔다',
       roleOptional: '선택 · 연장 코스',
       footerTag: '이야기 속 장소를 실제로 가볼 수 있는 개인 여행지도 블로그',
-      titleTag: '그곳, 지금'
+      titleTag: '그곳, 지금',
+      saveBtnLabelSave: '저장', saveBtnLabelSaved: '저장됨'
     } },
   ja: { urlPrefix: '/ja', htmlLang: 'ja', ogLocale: 'ja_JP', siteName: 'あの場所、いま', hreflang: 'ja',
     ui: {
@@ -71,7 +72,8 @@ const GUIDE_LOCALE_META = {
       ctxScreen: 'この場所で撮られたシーン', ctxStory: 'この場所とつながる物語', ctxAdapt: 'ドラマ版はここで撮影された',
       roleOptional: '任意 · 延長コース',
       footerTag: '物語の中の場所を実際に訪れられる個人旅行地図ブログ',
-      titleTag: 'あの場所、いま'
+      titleTag: 'あの場所、いま',
+      saveBtnLabelSave: '保存', saveBtnLabelSaved: '保存済み'
     } }
 };
 
@@ -147,6 +149,11 @@ const SHARED_CSS = `
   .stopActions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
   .stopCta{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;background:var(--accent);color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;border-radius:10px;box-sizing:border-box;}
   .stopCta:hover{opacity:.9;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;box-sizing:border-box;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .stopStatusLink{font-size:12.5px;font-weight:600;color:var(--sub);text-decoration:underline;}
   .stopNextHint{font-size:12.5px;color:var(--sub);margin:10px 0 0;font-style:italic;}
   .guideRelated{margin-top:8px;}
@@ -197,6 +204,7 @@ function renderStopCard(stop, work, locale, stopCountInSeg){
             ${visitNoteHtml}
             <div class="stopActions">
               <a class="stopCta" href="${esc(link.url)}">${esc(ctaLabel)}</a>
+              <button type="button" class="save-place-btn" data-work-id="${esc(work.id)}" data-location-id="${esc(stop.canonical_location_id)}" data-surface="guide" data-label-save="${esc(ui.saveBtnLabelSave)}" data-label-saved="${esc(ui.saveBtnLabelSaved)}" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">${esc(ui.saveBtnLabelSave)}</span></button>
               ${statusHtml}
             </div>
             ${nextHintHtml}
@@ -323,6 +331,7 @@ function renderGuidePage(guide){
   gtag('config', '${GA_ID}');
 </script>
 <style>${SHARED_CSS}</style>
+<script src="/saved_places.js"></script>
 ${jsonLdTrip}
 ${jsonLdBreadcrumb}
 </head>

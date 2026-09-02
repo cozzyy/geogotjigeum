@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -363,61 +370,97 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Cape Town Film Studios</h3>
         <p>A major South African studio where the primary sets for the Netflix live-action series were built — one of the largest film production facilities on the African continent. Season 1 filmed here in 2022, and Season 2 from July 2024 through February 2025; series creator Eiichiro Oda reportedly visited the set in person to personally sign off on set and prop details. Season 3 has been filming at the same studio from late 2025 through a planned wrap in June 2026.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="capetownstudios" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>웨스턴케이프 해안</h3>
         <p>South Africa's Atlantic coastline, used for numerous sea and harbor scenes — including real locations around Hout Bay and near Table Mountain.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="westerncapecoast" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>남아프리카공화국 촬영 권역</h3>
         <p>The greater Cape Town area, used as the backdrop for the East Blue setting.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="southafricaregion" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Canary Islands, Spain</h3>
         <p>A Spanish island group mentioned as a candidate for additional filming, confirmed on a season-by-season basis.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="canaryislands" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>Cape Town Film Studios 내</h3>
         <p>The studio where a full-scale replica of the Going Merry ship was built.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="goingmerryset" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>바라티에 세트</h3>
         <p>The set recreating Baratie, the floating restaurant where Sanji once worked.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="baratieset" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>로그타운 세트</h3>
         <p>The set for Loguetown, where Gol D. Roger was executed in the story.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="loguetownset" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">FILMED HERE</span>
         <h3>드럼 아일랜드 세트</h3>
         <p>The Season 2 set for the snow-covered Drum Island, home to Chopper.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="drumislandset" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>Kumamoto</h3>
         <p>Author Eiichiro Oda's hometown in Kyushu, Japan, home to statues of the Straw Hat crew.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="kumamotostatues" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>도쿄 원피스 관련 전시 (기간 갱신)</h3>
         <p>A Tokyo landmark area frequently hosting limited-run One Piece exhibitions and pop-ups.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="tokyoexhibit" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">HANDS-ON</span>
         <h3>Osaka</h3>
         <p>An Osaka theme park that regularly hosts One Piece-themed seasonal events.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="usjosaka" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">RELATED</span>
         <h3>애니메이션 섬 지도 (가상)</h3>
         <p>A fictional-world map layer, not tied to a real location — showing the manga/anime's in-universe geography.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="onepiece" data-location-id="animeislandmap" data-surface="work" data-label-save="Save" data-label-saved="Saved" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">Save</span></button>
+        </div>
       </div>
 
 

@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -429,36 +436,57 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>センターフィールド WEST（ソウル 江南区テヘラン路）</h3>
         <p>劇中の法律事務所ハンバダの回転ドアのロケ地。回転ドアを怖がるヨンウが、同僚イ・ジュノの手を借りてワルツを踊るように通り抜けるシーンが、実際にこのビルのロビーで撮影された。実際には韓国のゲーム会社などが入居するオフィスビルで、劇中の設定どおり駅三駅の近くにある。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="hanbadabuilding" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>カザグルマ（水原市八達区・行宮洞）</h3>
         <p>劇中、ヨンウの父ウ・グァンホが営む「ウ・ヨンウキンパ」の実際のロケ地。水原・行宮洞のカフェ通り（ヘンリダンギル）にある実在の日本食店で、劇と違ってメニューにキンパはなく、うどんや丼物を出している。外観と店内の多くのシーンがこの店で撮影された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="gimbapplace" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>水原 行宮洞ヘンリダンギル（京畿 水原市八達区）</h3>
         <p>ウ・ヨンウキンパ店のロケ地があるカフェ通り一帯で、水原華城・行宮近くの路地商店街。劇に直接登場するのはキンパ店のロケ地だけだが、訪問者の間ではウ・ヨンウロケ地ツアーの自然な延長コースとして定着した。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="suwonhaenggung" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>忠清北道庁 本館・庭園（忠北 清州市上党区）</h3>
         <p>第8話の劇中「キョンヘ道庁」のシーンが実際に撮影された場所。職員が逃げ出す屋内シーンは道議会のある新館で、建物の外に出てくるシーンは本館入口で撮影され、道庁の庭園とあずまやも登場する。このサイトでは忠北を作品全体の舞台としてではなく、第8話ソドクトン関連シーンの公式ロケ地としてのみ表記する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukprovoffice" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>忠清北道議会（忠北道庁 新館内）</h3>
         <p>忠北道庁本館に隣接する新館の建物で、第8話の劇中、職員が屋内を逃げ回るシーンが撮影された場所。実際には忠清北道議会が使う空間で、清州映像委員会の資料で撮影が確認されている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="chungbukassembly" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>昌原 東部村（慶南 昌原市義昌区大山面）</h3>
         <p>劇中の架空の村「ソドクトン」として登場した実在の村。第7～8話の撮影後、劇中に登場したクジラの壁画が村の入口の民家の壁に描かれていまも残り、村のシンボルだったエノキの木も実際にここに立っている。洛東江を背に大山平野に面した静かな農村で、実際に住民が暮らす空間であることを心に留めたい。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="changwondongbu" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">体験施設</span>
         <h3>清州 中央公園・城安通り圏域（ザ・グローリーのロケ地と連携）</h3>
         <p>忠北道庁から徒歩で移動できる清州旧市街の圏域で、同じ清州にある別の作品「ザ・グローリー」の実際のロケ地（清州中央公園・龍華寺）と組み合わせて「清州Kドラマ徒歩統合コース」をつくれる地点。劇に直接登場するシーンではないが、忠北道庁のあとに自然に続けられる実際の動線として紹介する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="woo" data-location-id="cheongjuoldtownlink" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 

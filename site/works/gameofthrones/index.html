@@ -150,6 +150,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -236,6 +242,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -431,86 +438,137 @@
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>두브로브니크 구시가 (Dubrovnik Old Town, Croatia)</h3>
         <p>유네스코 세계문화유산인 성벽 도시로, 시즌2부터 시즌8까지 킹스랜딩의 실제 배경이 됐다. 성벽 위 민체타 탑은 &quot;언데드의 집&quot;으로, 예수회 계단(예수이트 스텝스)은 세르세이의 &quot;수치의 행진&quot; 장면 그 계단으로 실제 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="dubrovnik" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로브리예나츠 요새 (Fort Lovrijenac, Dubrovnik)</h3>
         <p>두브로브니크 구시가 바로 옆 절벽 위에 선 요새로, 붉은 성채(레드킵) 외관으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="lovrijenac" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>로크룸 섬 (Lokrum Island)</h3>
         <p>두브로브니크 앞바다의 작은 섬으로, 대너리스가 노예 도시 콰스를 여행하는 장면과 철왕좌 소품이 전시됐던 곳으로 알려져 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="lokrum" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>스플리트 (Split, Croatia)</h3>
         <p>로마 황제 디오클레티아누스 궁전이 남아있는 도시로, 미린의 지하 공간 장면이 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="split" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>트르스테노 수목원 (Trsteno Arboretum)</h3>
         <p>두브로브니크 근교의 오래된 정원으로, 왕궁 정원 장면의 배경이 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="trsteno" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>다크 헤지스 (Dark Hedges, Northern Ireland)</h3>
         <p>너도밤나무가 터널처럼 늘어선 길로, 킹스로드 장면의 배경이 된 북아일랜드의 명소다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="darkhedges" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>캐슬 워드 (Castle Ward)</h3>
         <p>18세기 저택과 농원으로, 윈터펠의 마당 장면들이 촬영된 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="castleward" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>발린토이 항구 (Ballintoy Harbour)</h3>
         <p>북아일랜드 해안의 작은 항구로, 강철군도의 배경으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="ballintoy" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>쿠셴던 동굴 (Cushendun Caves)</h3>
         <p>해안 절벽의 동굴로, 멜리산드레의 출산 장면이 촬영된 곳이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="cushendun" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>톨리모어 숲 공원 (Tollymore Forest)</h3>
         <p>장벽 너머 북부 숲 장면들이 촬영된 공원으로, 첫 회 다이어울프 발견 장면의 배경이다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="tollymore" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>싱벨리어 국립공원 (Þingvellir, Iceland)</h3>
         <p>북미판과 유라시아판이 갈라지는 지형으로, 장벽 너머 풍경의 배경이 됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="thingvellir" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>바트나요쿨 빙하 (Vatnajökull, Iceland)</h3>
         <p>유럽 최대 규모의 빙하로, 극북의 설원 풍경 배경으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="vatnajokull" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>지로나 (Girona, Spain)</h3>
         <p>구시가지 골목이 미로처럼 이어지는 도시로, 브라보스의 배경으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="girona" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>세비야 알카사르 (Alcázar of Seville)</h3>
         <p>무데하르 양식의 화려한 왕궁으로, 도른의 배경으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="alcazarseville" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>가스텔루가체 (Gaztelugatxe, Spain)</h3>
         <p>바스크 해안의 섬 수도원으로, 드래곤스톤 성의 외관으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="gaztelugatxe" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>에사우이라 (Essaouira, Morocco)</h3>
         <p>모로코 대서양 연안의 항구 도시로, 아스타포르의 배경으로 쓰였다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="essaouira" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,124,224,0.12);color:#3a7ce0;border:1px solid rgba(58,124,224,0.35)">체험시설</span>
         <h3>왕좌의 게임 스튜디오 투어 (Game of Thrones Studio Tour, Banbridge)</h3>
         <p>실제 세트·의상·소품을 볼 수 있는 공식 스튜디오 투어 시설로, 북아일랜드에 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="gameofthrones" data-location-id="gotstudiotour" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
 

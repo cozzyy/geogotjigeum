@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -428,36 +435,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>양주 대장금 테마파크 터 (경기 양주, 폐장)</h3>
         <p>대장금을 촬영하기 위해 실제로 지어진 원조 세트장. 궁궐 야외세트·수라간·소주방·동헌 등을 재현해 2004년 일반에 개방됐지만, 안전 문제와 노후화로 2011년 말 폐장했다. 세트 일부는 이후 용인대장금파크로 옮겨 복원됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yangju_theme_park" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>용인대장금파크 (경기 용인, 원조 세트의 후신)</h3>
         <p>지금 '대장금파크'로 불리는 이곳은 사실 2003년 대장금 방영 당시 실제 촬영지가 아니다. 원래는 'MBC 드라미아'라는 별도의 사극 종합 세트장으로, 2011년 양주 세트가 폐장한 뒤 2015년 8월 대장금 IP를 살려 '대장금파크'로 개칭하며 양주의 세트 일부를 이전·복원한 곳이다. 태종 이방원·슈룹·옷소매 붉은 끝동 등 다른 사극도 이곳에서 촬영됐다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yongin_daejanggeum_park" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>제주민속촌박물관 (제주 서귀포 표선면)</h3>
         <p>장금이 제주로 유배된 시기의 관아·움막 장면이 촬영된 곳. 2003년 12월 17일간 촬영이 진행됐다. 지금도 촬영 안내판과 포토존, 의상·대본·약초·의료기구를 전시한 미니 테마파크가 남아있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="jeju_folk_village" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>협재해수욕장 (제주 제주시)</h3>
         <p>장금과 민정호가 함께 산책하고 배를 타러 가는 장면이 촬영된 해변. 제주 서쪽 해안의 대표적인 해수욕장으로 지금도 관광객이 즐겨 찾는다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hyeopjae_beach" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">공식·직접</span>
         <h3>낙안읍성 (전남 순천)</h3>
         <p>장터와 백정마을 장면이 촬영된 조선시대 읍성. 지금도 실제 주민이 거주하는 민속마을로 상시 개방돼 있다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="naganeupseong" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>경복궁 소주방 (서울 종로구)</h3>
         <p>궁중 수라간 관련 장면의 배경으로 여러 여행 정보에 언급되는 장소이지만, 정확히 어느 회차의 어떤 장면인지는 1차 출처로 확인되지 않았다. 참고 정보로만 수록한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="gyeongbokgung_sojubang" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">직접</span>
         <h3>화성행궁 (경기 수원)</h3>
         <p>궁중 사극 촬영지로 자주 언급되는 행궁이지만, 대장금의 구체적인 촬영 장면은 1차 출처로 확인되지 않았다. 참고 정보로만 수록한다.</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hwaseong_haenggung" data-surface="work" data-label-save="저장" data-label-saved="저장됨" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">저장</span></button>
+        </div>
       </div>
 
     <div class="cultureBox">

@@ -151,6 +151,12 @@
   .locCard h3{font-size:16px;margin:0 0 6px;}
   .tierBadge{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-bottom:8px;}
   .locCard p{font-size:14px;color:#333;margin:0;}
+  .save-place-row{margin-top:10px;}
+  .save-place-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+  .save-place-btn .save-place-btn-icon{font-size:15px;line-height:1;}
+  .save-place-btn:hover{border-color:var(--accent);}
+  .save-place-btn.is-saved{background:rgba(255,123,87,.12);border-color:var(--accent);color:#b8492a;}
+  .save-place-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .relatedList{list-style:none;padding:0;margin:0;}
   .relatedList li{margin-bottom:10px;}
   .relatedList a{color:var(--ds-accent-soft);text-decoration:none;font-size:15px;font-weight:600;}
@@ -237,6 +243,7 @@
     .wsNext h2{font-size:19px;}
   }
 </style>
+<script src="/saved_places.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6290350430336608"
      crossorigin="anonymous"></script>
 
@@ -428,36 +435,57 @@
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>楊州 チャングムテーマパーク跡地（京畿 楊州、閉園）</h3>
         <p>チャングムを撮影するために実際に建てられたオリジナルのセット場。宮殿の野外セット・水刺間・焼酒房・東軒などを再現し2004年に一般公開されたが、安全問題と老朽化により2011年末に閉園した。セットの一部はその後、龍仁チャングムパークに移設・復元された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yangju_theme_park" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>龍仁チャングムパーク（京畿 龍仁、オリジナルセットの後身）</h3>
         <p>今「チャングムパーク」と呼ばれるこの場所は、実は2003年のチャングム放送当時の実際の撮影地ではない。もともとは「MBCドラミア」という別の時代劇総合セット場で、2011年に楊州のセットが閉園した後、2015年8月にチャングムのIPを活かして「チャングムパーク」に改称し、楊州のセットの一部を移設・復元した場所である。他の時代劇もここで撮影された。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="yongin_daejanggeum_park" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>済州民俗村博物館（済州 西帰浦市表善面）</h3>
         <p>チャングムが済州に流刑になった時期の官衙・小屋のシーンが撮影された場所。2003年12月に17日間撮影が行われた。今も撮影案内板とフォトゾーン、衣装・台本・薬草・医療器具を展示するミニテーマパークが残っている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="jeju_folk_village" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>挟才海水浴場（済州 済州市）</h3>
         <p>チャングムとミン・ジョンホが一緒に散歩し、船に乗るシーンが撮影された海辺。済州西海岸を代表する海水浴場で、今も観光客に人気。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hyeopjae_beach" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(58,192,124,0.12);color:#3ac07c;border:1px solid rgba(58,192,124,0.35)">公式・直接</span>
         <h3>楽安邑城（全南 順天）</h3>
         <p>市場や白丁村のシーンが撮影された朝鮮時代の邑城。今も実際の住民が暮らす民俗村として常時開放されている。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="naganeupseong" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>景福宮 焼酒房（ソウル 鍾路区）</h3>
         <p>宮中の水刺間関連シーンの背景として複数の旅行情報で言及される場所だが、正確にどの回のどのシーンかは一次資料で確認されていない。参考情報として掲載する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="gyeongbokgung_sojubang" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
       <div class="locCard">
         <span class="tierBadge" style="background:rgba(138,143,163,0.12);color:#8a8fa3;border:1px solid rgba(138,143,163,0.35)">関連</span>
         <h3>華城行宮（京畿 水原）</h3>
         <p>宮中時代劇の撮影地としてよく言及される行宮だが、チャングムの具体的な撮影シーンは一次資料で確認されていない。参考情報として掲載する。</p>
+        <div class="save-place-row">
+          <button type="button" class="save-place-btn" data-work-id="daejanggeum" data-location-id="hwaseong_haenggung" data-surface="work" data-label-save="保存" data-label-saved="保存済み" aria-pressed="false"><span class="save-place-btn-icon" aria-hidden="true">♡</span><span class="save-place-btn-label">保存</span></button>
+        </div>
       </div>
 
 
