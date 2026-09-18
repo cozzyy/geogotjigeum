@@ -14,12 +14,22 @@ class DirectionModels:
     tree: Pipeline
 
 
-def make_direction_models() -> DirectionModels:
-    logistic = Pipeline([
+def make_logistic(C: float = 0.5, balanced: bool = False) -> Pipeline:
+    return Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
         ("scaler", StandardScaler()),
-        ("model", LogisticRegression(max_iter=2000, class_weight="balanced", C=0.5)),
+        ("model", LogisticRegression(
+            max_iter=3000,
+            class_weight="balanced" if balanced else None,
+            C=C,
+            solver="lbfgs",
+        )),
     ])
+
+
+def make_direction_models() -> DirectionModels:
+    # Legacy baseline kept for comparison.
+    logistic = make_logistic(C=0.5, balanced=True)
     tree = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
         ("model", HistGradientBoostingClassifier(
