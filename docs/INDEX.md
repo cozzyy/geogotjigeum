@@ -129,6 +129,9 @@ docs/
 
 ## 콘텐츠
 
+- [`content/the-big-short-stock-prediction-pilot-v1.md`](content/the-big-short-stock-prediction-pilot-v1.md)  
+  《빅쇼트》를 금융시장 집단심리 콘텐츠로 신규 등록하고, 하위 `주가예측` 서비스의 route/menu/integration boundary를 준비하는 파일럿 기획안.
+
 - [`content/pachinko-content-plan-v1.md`](content/pachinko-content-plan-v1.md)  
   Apple TV+ 『파친코』의 인물·역사·촬영지·이주·여행을 연결하는 장기 운영형 콘텐츠 기획안의 GitHub 구조화본.
 
