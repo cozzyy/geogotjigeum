@@ -7,12 +7,22 @@ SUPPORTED = {
     "035720": {"name": "카카오", "symbol": "035720.KS"},
 }
 
+# Yahoo Finance symbols.  한국시장 지수는 당일 종가 사용 가능,
+# 미국/글로벌 신호는 한국장 기준 이전에 확정된 세션만 사용한다.
 MARKET_SYMBOLS = {
     "kospi": "^KS11",
     "kosdaq": "^KQ11",
+    "sp500": "^GSPC",
     "nasdaq": "^IXIC",
     "sox": "^SOX",
+    "smh": "SMH",
+    "soxx": "SOXX",
+    "nvda": "NVDA",
+    "micron": "MU",
+    "tsm": "TSM",
     "vix": "^VIX",
+    "tnx": "^TNX",
+    "dxy": "DX-Y.NYB",
     "usdkrw": "KRW=X",
 }
 
