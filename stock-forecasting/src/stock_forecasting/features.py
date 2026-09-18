@@ -26,7 +26,7 @@ def _atr(df: pd.DataFrame, window: int = 14) -> pd.Series:
     return tr.rolling(window).mean() / prev_close
 
 
-def _strict_previous_merge(base: pd.DataFrame, aux: pd.DataFrame, prefix: str) -> pd.DataFrame:
+def _merge_aux(base: pd.DataFrame, aux: pd.DataFrame, prefix: str, allow_exact_matches: bool) -> pd.DataFrame:
     if aux is None or aux.empty:
         return base
     x = aux[["close"]].copy()
@@ -38,8 +38,11 @@ def _strict_previous_merge(base: pd.DataFrame, aux: pd.DataFrame, prefix: str) -
     left = base.reset_index()
     left = left.rename(columns={left.columns[0]: "date"})
     merged = pd.merge_asof(
-        left.sort_values("date"), x.sort_values("date"), on="date",
-        direction="backward", allow_exact_matches=False,
+        left.sort_values("date"),
+        x.sort_values("date"),
+        on="date",
+        direction="backward",
+        allow_exact_matches=allow_exact_matches,
     )
     return merged.set_index("date")
 
@@ -76,8 +79,13 @@ def make_dataset(bundle: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, list[st
     out["month_end"] = out.index.is_month_end.astype(int)
     out["quarter_end"] = out.index.is_quarter_end.astype(int)
 
-    for key in ["kospi", "kosdaq", "nasdaq", "sox", "vix", "usdkrw"]:
-        out = _strict_previous_merge(out, bundle.get(key), key)
+    # 한국시장 종가 기준 예측: 당일 KOSPI/KOSDAQ 값은 이미 관측 가능.
+    for key in ["kospi", "kosdaq"]:
+        out = _merge_aux(out, bundle.get(key), key, allow_exact_matches=True)
+
+    # 미국시장/변동성/환율은 시간대·종가 확정 시점을 보수적으로 처리해 이전 세션만 사용.
+    for key in ["nasdaq", "sox", "vix", "usdkrw"]:
+        out = _merge_aux(out, bundle.get(key), key, allow_exact_matches=False)
 
     next_close = close.shift(-1)
     out["target_up_1d"] = (next_close > close).astype(float).where(next_close.notna())
