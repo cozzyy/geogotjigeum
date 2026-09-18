@@ -68,6 +68,49 @@ def _period_metrics(pred: pd.DataFrame, months: int | None):
     return {**_direction_metrics(d), **_range_metrics(d)}
 
 
+def _direction_period_metrics(pred: pd.DataFrame, months: int | None):
+    d = pred if months is None else pred.loc[pred.index >= pred.index.max() - pd.DateOffset(months=months)]
+    return _direction_metrics(d)
+
+
+def run_direction_walk_forward(dataset: pd.DataFrame, feature_cols: list[str], min_train_days: int = 504, test_months: int = 6) -> dict[str, BacktestResult]:
+    data = dataset.dropna(subset=["target_up_1d"]).copy()
+    folds = _month_steps(data.index, min_train_days=min_train_days, test_months=test_months)
+    if not folds:
+        raise ValueError("walk-forward에 필요한 데이터가 부족합니다.")
+
+    rows_by_model = {"logistic": [], "tree": []}
+    for train_mask, test_mask in folds:
+        train = data.loc[train_mask]
+        test = data.loc[test_mask]
+        Xtr, Xte = train[feature_cols], test[feature_cols]
+        ytr = train["target_up_1d"].astype(int)
+
+        models = make_direction_models()
+        for model_name in ["logistic", "tree"]:
+            clf = getattr(models, model_name)
+            clf.fit(Xtr, ytr)
+            p = clf.predict_proba(Xte)[:, 1]
+            fold = pd.DataFrame({
+                "prob_up": p,
+                "actual_up": test["target_up_1d"].values,
+            }, index=test.index)
+            rows_by_model[model_name].append(fold)
+
+    outputs = {}
+    for model_name, rows in rows_by_model.items():
+        pred = pd.concat(rows).sort_index()
+        summary = {
+            "all": _direction_period_metrics(pred, None),
+            "36m": _direction_period_metrics(pred, 36),
+            "12m": _direction_period_metrics(pred, 12),
+            "6m": _direction_period_metrics(pred, 6),
+            "3m": _direction_period_metrics(pred, 3),
+        }
+        outputs[model_name] = BacktestResult(predictions=pred, summary=summary, model_name=model_name)
+    return outputs
+
+
 def run_walk_forward(dataset: pd.DataFrame, feature_cols: list[str], min_train_days: int = 504, test_months: int = 6) -> dict[str, BacktestResult]:
     data = dataset.dropna(subset=["target_up_1d", "target_high_ret_5d", "target_low_ret_5d"]).copy()
     folds = _month_steps(data.index, min_train_days=min_train_days, test_months=test_months)
