@@ -67,7 +67,7 @@ class YahooProvider:
         try:
             import yfinance as yf
         except ImportError as exc:
-            raise RuntimeError("yfinance가 필요합니다. `pip install -e .`를 실행하세요.") from exc
+            raise RuntimeError("yfinance가 필요합니다. pip install -e . 를 실행하세요.") from exc
 
         df = yf.download(
             symbol,
