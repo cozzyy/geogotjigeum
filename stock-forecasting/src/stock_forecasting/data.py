@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Dict
+import hashlib
+import time
 import pandas as pd
 
 from .config import MARKET_SYMBOLS
@@ -30,12 +33,42 @@ def _normalize_yf_frame(df: pd.DataFrame, symbol: str) -> pd.DataFrame:
 @dataclass
 class YahooProvider:
     auto_adjust: bool = False
+    cache_dir: str = ".cache/yfinance"
+    cache_ttl_hours: int = 6
 
-    def download(self, symbol: str, start: str, end: str | None = None) -> pd.DataFrame:
+    def _cache_path(self, symbol: str, start: str, end: str | None) -> Path:
+        raw = f"{symbol}|{start}|{end}|{self.auto_adjust}".encode("utf-8")
+        digest = hashlib.sha1(raw).hexdigest()[:16]
+        safe_symbol = symbol.replace("^", "IDX_").replace("=", "_")
+        return Path(self.cache_dir) / f"{safe_symbol}_{digest}.pkl"
+
+    def _read_cache(self, path: Path) -> pd.DataFrame | None:
+        if not path.exists():
+            return None
+        age_hours = (time.time() - path.stat().st_mtime) / 3600
+        if age_hours > self.cache_ttl_hours:
+            return None
+        try:
+            return pd.read_pickle(path)
+        except Exception:
+            return None
+
+    def _write_cache(self, path: Path, df: pd.DataFrame) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_pickle(path)
+
+    def download(self, symbol: str, start: str, end: str | None = None, use_cache: bool = True) -> pd.DataFrame:
+        cache_path = self._cache_path(symbol, start, end)
+        if use_cache:
+            cached = self._read_cache(cache_path)
+            if cached is not None and not cached.empty:
+                return cached.copy()
+
         try:
             import yfinance as yf
         except ImportError as exc:
             raise RuntimeError("yfinance가 필요합니다. `pip install -e .`를 실행하세요.") from exc
+
         df = yf.download(
             symbol,
             start=start,
@@ -45,13 +78,16 @@ class YahooProvider:
             actions=False,
             threads=False,
         )
-        return _normalize_yf_frame(df, symbol)
+        normalized = _normalize_yf_frame(df, symbol)
+        if use_cache:
+            self._write_cache(cache_path, normalized)
+        return normalized
 
-    def load_bundle(self, stock_symbol: str, start: str, end: str | None = None) -> Dict[str, pd.DataFrame]:
-        bundle = {"stock": self.download(stock_symbol, start, end)}
+    def load_bundle(self, stock_symbol: str, start: str, end: str | None = None, use_cache: bool = True) -> Dict[str, pd.DataFrame]:
+        bundle = {"stock": self.download(stock_symbol, start, end, use_cache=use_cache)}
         for name, symbol in MARKET_SYMBOLS.items():
             try:
-                bundle[name] = self.download(symbol, start, end)
+                bundle[name] = self.download(symbol, start, end, use_cache=use_cache)
             except Exception:
                 bundle[name] = pd.DataFrame()
         return bundle
