@@ -2,6 +2,7 @@ import streamlit as st
 from stock_forecasting.config import SUPPORTED
 from stock_forecasting.pipeline import forecast
 from stock_forecasting.ablation import run_ablation, best_rows
+from stock_forecasting.adaptive import run_adaptive, rank_adaptive
 
 st.set_page_config(page_title="주가예측 실험실", page_icon="📈", layout="centered")
 st.title("주가예측 실험실")
@@ -32,10 +33,10 @@ if st.button("예측해보기", type="primary", use_container_width=True):
             st.write(f"**{label}** — 방향 {s.get('accuracy',0)*100:.1f}% · 범위 {s.get('range_coverage',0)*100:.1f}% · 표본 {s.get('samples',0)}")
 
 st.markdown("#### 알고리즘 비교")
-st.caption("가격 → 거래량/변동성 → 요일 → 국내시장 → 미국시장/SOX/VIX → 환율 순으로 feature를 추가해 OOS 성능 변화를 비교합니다.")
+st.caption("1차 ablation은 feature를 누적 추가하면서 전체 OOS 성능 변화를 봅니다.")
 
 if st.button("Feature ablation 실행", use_container_width=True):
-    with st.spinner("여러 feature 조합과 모델을 순차 백테스트하고 있습니다. 일반 예측보다 오래 걸릴 수 있습니다..."):
+    with st.spinner("여러 feature 조합과 모델을 순차 백테스트하고 있습니다..."):
         report = best_rows(run_ablation(code))
     view = report[[
         "stage", "features", "model", "samples",
@@ -47,11 +48,29 @@ if st.button("Feature ablation 실행", use_container_width=True):
         view[col] = view[col].map(lambda x: None if x is None else round(x * 100, 2))
     view["brier"] = view["brier"].round(4)
     st.dataframe(view, use_container_width=True, hide_index=True)
+
+st.markdown("#### 최근시장 적응형 실험")
+st.caption("feature 조합을 비누적식으로 비교하고, 최근 2·3·5년 rolling 학습과 expanding 학습을 함께 비교합니다. Logistic만 사용합니다.")
+
+if st.button("Adaptive Logistic 실험", use_container_width=True):
+    with st.spinner("feature 조합과 학습기간을 비교하고 있습니다. 시간이 걸릴 수 있습니다..."):
+        report = rank_adaptive(run_adaptive(code))
+    view = report[[
+        "recipe", "train_window", "features", "samples",
+        "accuracy", "balanced_accuracy", "brier", "roc_auc",
+        "accuracy_12m", "brier_12m", "accuracy_6m", "brier_6m", "score",
+    ]].copy()
+    for col in ["accuracy", "balanced_accuracy", "roc_auc", "accuracy_12m", "accuracy_6m"]:
+        view[col] = view[col].map(lambda x: None if x is None else round(x * 100, 2))
+    for col in ["brier", "brier_12m", "brier_6m", "score"]:
+        view[col] = view[col].round(4)
+    st.dataframe(view, use_container_width=True, hide_index=True)
     if not report.empty:
         best = report.iloc[0]
         st.caption(
-            f"현재 Brier 기준 최상위: {best['stage']} / {best['model']} "
-            f"(전체 방향 적중률 {best['accuracy']*100:.1f}%, Brier {best['brier']:.4f})"
+            f"현재 종합점수 최상위: {best['recipe']} / {best['train_window']} "
+            f"(전체 정확도 {best['accuracy']*100:.1f}%, 최근 1년 {best['accuracy_12m']*100:.1f}%, "
+            f"최근 6개월 {best['accuracy_6m']*100:.1f}%)"
         )
 
 st.divider()
