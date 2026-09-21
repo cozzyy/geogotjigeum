@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from .config import CROSS_SECTION_UNIVERSE
-from .krx_data import KRXProvider, krx_credentials_present
+from .krx_data import KRXProvider, krx_credentials_present, require_krx_credentials
 from .v6_robust import (
     build_panel as build_v6_panel,
     _model,
@@ -330,10 +330,11 @@ def main():
 
     print("=== V8 KRX 독립변수 panel 생성 ===", flush=True)
     print(
-        f"KRX credential env: {'있음' if krx_credentials_present() else '없음'} "
-        "(공개 API가 동작하면 없어도 진행 가능)",
+        f"KRX credential env: {'있음' if krx_credentials_present() else '없음'}",
         flush=True,
     )
+    require_krx_credentials()
+    print("KRX 인증 환경변수 확인 완료. 데이터 수집을 시작합니다.", flush=True)
     t0 = time.perf_counter()
     panel, groups = build_panel(
         start=args.start,
