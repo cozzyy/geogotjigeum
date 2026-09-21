@@ -3944,6 +3944,14 @@ function showLocation(work, data, locId, isRefresh, from){
   const specialty = (typeof SPECIALTIES !== 'undefined') ? SPECIALTIES[loc.id] : null;
   const scienceNote = (loc.scienceNoteId && typeof SCIENCE_NOTES !== 'undefined') ? SCIENCE_NOTES[loc.scienceNoteId] : null;
 
+  // Issue #49 — 공공데이터(TourAPI) 실시간 장소 정보. 케이팝 데몬헌터스 파일럿 한정, loc.liveInfo가
+  // 있고(=TourAPI contentId 검증 완료된 장소만) 한국어 화면일 때만 노출한다(TourAPI 국문 서비스라
+  // 응답이 한국어 텍스트뿐 — 퀴즈 기능과 동일하게 ko 파일럿으로 먼저 검증). Netlify Function
+  // (netlify/functions/live-info.js)이 실제 배포되기 전까지는 조용히 로딩 상태에 머물거나
+  // 실패 시 아무것도 보여주지 않는다(페이지 깨짐 방지).
+  const liveInfoCfg = (work.id === 'kdemonhunters' && currentLang === 'ko' &&
+    loc.liveInfo && loc.liveInfo.tourApi && loc.liveInfo.tourApi.contentId) ? loc.liveInfo : null;
+
   // 실제 방문자들이 올린 사진을 찾아볼 수 있는 외부 검색 링크 모음
   // (인스타그램은 '인기순 API'를 외부에 공개하지 않아 직접 가져올 수 없어서, 대신 정확한 해시태그/검색 페이지로 바로 연결)
   // 한국어 지명 하나만 태그로 쓰면 게시물이 거의 없는 경우가 많아서(실제로 그 태그를 쓰는 사람이 적음),
@@ -3955,6 +3963,21 @@ function showLocation(work, data, locId, isRefresh, from){
 
   // 상세 패널을 열자마자 실제 사진 한 장이 크게 보이도록, 위키백과에서 사진을 비동기로 찾아온다.
   // (링크 모음만으로는 화면이 밋밋해서, 찾아지면 render()를 다시 호출해 사진을 채워넣는 방식)
+  let liveInfoData = null;
+  let liveInfoFailed = false;
+  let liveInfoFetchStarted = false;
+  function ensureLiveInfo(){
+    if (!liveInfoCfg || liveInfoFetchStarted) return;
+    liveInfoFetchStarted = true;
+    fetch('/.netlify/functions/live-info?type=tour&contentId=' + encodeURIComponent(liveInfoCfg.tourApi.contentId))
+      .then(function(res){ if (!res.ok) throw new Error('live-info http ' + res.status); return res.json(); })
+      .then(function(json){
+        if (json && json.ok && json.data) { liveInfoData = json.data; } else { liveInfoFailed = true; }
+        render();
+      })
+      .catch(function(){ liveInfoFailed = true; render(); });
+  }
+
   let photoInnerHtml = null;
   let photoFetchStarted = false;
   function ensurePhoto(){
@@ -4151,6 +4174,21 @@ function showLocation(work, data, locId, isRefresh, from){
       ? '<div class="photo-hero loading"><div class="photo-hero-skel">' + t('photoLoading') + '</div></div>'
       : (photoInnerHtml ? '<div class="photo-hero">' + photoInnerHtml + '</div>' : '');
 
+    // Issue #49 — TourAPI 실시간 장소 정보 박스. liveInfoCfg가 없는 장소(파일럿 대상이 아니거나
+    // contentId 미검증)에서는 아무것도 렌더링하지 않는다. 로딩 중엔 옅은 스켈레톤, 실패 시엔
+    // 조용히 숨김(Netlify Function 미배포 상태에서도 화면이 깨지지 않도록).
+    const liveInfoBoxHtml = !liveInfoCfg ? '' :
+      (liveInfoData
+        ? '<div class="live-info-box" style="margin-top:8px;padding:9px 11px;background:var(--panel2);border:1px solid var(--border);border-radius:8px;font-size:12.5px;line-height:1.6;color:var(--text);">' +
+            '<div style="font-weight:700;margin-bottom:3px;">🏛️ 실시간 장소 정보</div>' +
+            (liveInfoData.addr ? '<div>📍 ' + liveInfoData.addr + '</div>' : '') +
+            (liveInfoData.tel ? '<div>☎️ ' + liveInfoData.tel + '</div>' : '') +
+            (liveInfoData.homepage ? '<div>🔗 ' + liveInfoData.homepage + '</div>' : '') +
+            '<div style="opacity:.6;font-size:11px;margin-top:3px;">한국관광공사 제공</div>' +
+          '</div>'
+        : (liveInfoFailed ? '' :
+            '<div class="live-info-box" style="margin-top:8px;padding:9px 11px;background:var(--panel2);border:1px solid var(--border);border-radius:8px;font-size:12.5px;opacity:.65;">실시간 정보 불러오는 중…</div>'));
+
     // 2026-08 전후 비교(작품 속/지금) UI — SCENE_MOMENTS에 장면 묘사가 있는 장소는 그 텍스트("그때")와
     // 위키 실사진("지금")을 나란히 붙인 compare-card로 보여준다. 저작권상 실제 스틸컷은 쓸 수 없으니
     // "그때"는 항상 텍스트, "지금"은 항상 실사진이라는 원칙은 유지한 채 배치만 비교형으로 바꾼 것.
@@ -4201,6 +4239,7 @@ function showLocation(work, data, locId, isRefresh, from){
               ? '<a class="travel-btn" href="' + mapsUrl + '" target="_blank" rel="noopener">' + t('mapsBtn') + '</a><br>'
               : (universeMapUrl ? '<a class="travel-btn" style="background:#5b3ea6;" href="' + universeMapUrl + '" target="_blank" rel="noopener">' + t('universeMapBtn') + '</a><br>' : '')) +
             '<a class="travel-btn" style="background:#2b6cb0;" href="' + wikiUrl + '" target="_blank" rel="noopener">' + t('wikiBtn') + '</a>' +
+            liveInfoBoxHtml +
           '</div>' +
           socialHtml +
           peopleBlock +
@@ -4212,6 +4251,7 @@ function showLocation(work, data, locId, isRefresh, from){
       document.getElementById('btnModern').classList.toggle('active', eraMode === 'modern');
     }
     ensurePhoto();
+    ensureLiveInfo();
   }
   window.setEra = function(mode){ eraMode = mode; render(); };
   render();
