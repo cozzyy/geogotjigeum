@@ -144,6 +144,25 @@ Phase 1 배포 후 실제 모바일 사용성, 검색/탐색 행동, SEO/유입 
 
 ---
 
+## 2026-09-21 — 케이팝 데몬헌터스 실시간 정보 위젯: 공공API 키를 Netlify Function으로 프록시
+
+### 결정
+TourAPI/서울시 실시간 도시데이터 연동 시, 서비스키를 정적 페이지 클라이언트에서 직접 노출하지 않고 Netlify Function(`netlify/functions/live-info.js`)을 통해 서버사이드에서만 사용한다 (Issue #49 NEEDS DECISION의 B안 채택).
+
+### 이유
+그곳지금은 서버 백엔드 없는 정적 사이트이나 실제로는 이미 Netlify에 호스팅 중임을 확인했다 (응답 헤더로 확인, `docs/DEPLOYMENT_HANDOFF.md`의 "로컬 ZIP 수동 배포" 설명은 최신 상태를 반영하지 못한 것으로 보임). Netlify Functions를 쓰면 새 호스팅 플랫폼을 추가할 필요 없이 키 노출 없이 서버사이드 호출과 캐싱이 가능하다.
+
+### 영향
+- `netlify/functions/live-info.js` 추가 (TourAPI `detailCommon2`, 서울시 `citydata` 프록시 + 5분 메모리 캐시).
+- 실제 배포를 위해서는 Netlify 사이트 환경변수에 `TOURAPI_SERVICE_KEY`, `SEOUL_RTD_SERVICE_KEY`를 등록해야 하며, 이는 사용자가 Netlify 콘솔에서 직접 수행해야 한다 (Claude가 대신 할 수 없음).
+- `docs/DEPLOYMENT_HANDOFF.md`의 배포 방식 설명이 실제와 다르므로 별도로 갱신 필요 (후속 작업).
+- 서울시 실시간 도시데이터 API는 아직 별도 활용신청 전이라 `SEOUL_RTD_SERVICE_KEY` 관련 코드는 실동작 미검증 상태.
+
+### 재검토 조건
+Netlify Function 배포/환경변수 설정 후 실제 호출 테스트 결과, 또는 Netlify 무료 티어 호출량 한도에 걸릴 경우 재검토.
+
+---
+
 ## 새 결정 작성 형식
 
 ```md
