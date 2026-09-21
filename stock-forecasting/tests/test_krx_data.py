@@ -26,3 +26,13 @@ def test_require_krx_credentials_passes_with_env(monkeypatch):
 
     assert krx_credentials_present()
     require_krx_credentials()
+
+
+def test_require_krx_credentials_rejects_placeholder(monkeypatch):
+    monkeypatch.setenv("KRX_ID", "본인의_KRX_ID")
+    monkeypatch.setenv("KRX_PW", "본인의_KRX_비밀번호")
+
+    with pytest.raises(RuntimeError) as exc:
+        require_krx_credentials()
+
+    assert "예시 문자열" in str(exc.value)
