@@ -121,7 +121,8 @@ def strict_next_trade_date(
 
 def _days_since(index: pd.DatetimeIndex, event_mask: pd.Series) -> pd.Series:
     event_dates = pd.Series(pd.NaT, index=index, dtype="datetime64[ns]")
-    event_dates.loc[event_mask.astype(bool)] = index[event_mask.astype(bool)]
+    mask = event_mask.astype(bool)
+    event_dates.loc[mask] = index[mask.to_numpy()]
     last = event_dates.ffill()
     return pd.Series(
         (pd.Series(index, index=index) - last).dt.days.to_numpy(dtype=float),
