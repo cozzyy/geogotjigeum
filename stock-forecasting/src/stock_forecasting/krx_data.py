@@ -223,3 +223,105 @@ def require_krx_credentials() -> None:
             '  $env:KRX_PW="실제_KRX_로그인_비밀번호"\n\n'
             "실제 자격증명은 이 채팅에 보내지 마세요."
         )
+
+
+def diagnose_krx_login() -> dict:
+    """KRX 로그인 응답을 1회 진단한다. 비밀번호는 출력/반환하지 않는다."""
+    import requests
+
+    require_krx_credentials()
+
+    login_id = os.environ["KRX_ID"].strip()
+    login_pw = os.environ["KRX_PW"]
+
+    login_page = "https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001.cmd"
+    login_jsp = (
+        "https://data.krx.co.kr/contents/MDC/COMS/client/view/login.jsp?site=mdc"
+    )
+    login_url = (
+        "https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001D1.cmd"
+    )
+    user_agent = (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/131.0.0.0 Safari/537.36"
+    )
+
+    session = requests.Session()
+    try:
+        session.get(
+            login_page,
+            headers={"User-Agent": user_agent},
+            timeout=15,
+        ).raise_for_status()
+        session.get(
+            login_jsp,
+            headers={"User-Agent": user_agent, "Referer": login_page},
+            timeout=15,
+        ).raise_for_status()
+
+        payload = {
+            "mbrNm": "",
+            "telNo": "",
+            "di": "",
+            "certType": "",
+            "mbrId": login_id,
+            "pw": login_pw,
+        }
+        headers = {"User-Agent": user_agent, "Referer": login_page}
+        resp = session.post(login_url, data=payload, headers=headers, timeout=15)
+
+        result = {
+            "http_status": resp.status_code,
+            "content_type": resp.headers.get("content-type", ""),
+            "login_id_length": len(login_id),
+            "password_length": len(login_pw),
+        }
+
+        try:
+            data = resp.json()
+        except Exception:
+            result.update({
+                "ok": False,
+                "error_code": "NON_JSON",
+                "error_message": (
+                    "KRX 로그인 응답이 JSON이 아닙니다. "
+                    "네트워크/WAF/로그인 엔드포인트 변경 가능성이 있습니다."
+                ),
+            })
+            return result
+
+        code = str(data.get("_error_code", ""))
+        message = str(data.get("_error_message", ""))
+
+        if code == "CD011":
+            payload["skipDup"] = "Y"
+            resp2 = session.post(login_url, data=payload, headers=headers, timeout=15)
+            try:
+                data2 = resp2.json()
+                code = str(data2.get("_error_code", ""))
+                message = str(data2.get("_error_message", ""))
+                result["duplicate_login_retry"] = True
+                result["retry_http_status"] = resp2.status_code
+            except Exception:
+                result.update({
+                    "ok": False,
+                    "error_code": "NON_JSON_AFTER_DUP_RETRY",
+                    "error_message": "중복 로그인 재시도 응답이 JSON이 아닙니다.",
+                })
+                return result
+
+        result.update({
+            "ok": code == "CD001",
+            "error_code": code or "EMPTY_CODE",
+            "error_message": message,
+        })
+        return result
+    except requests.RequestException as exc:
+        return {
+            "ok": False,
+            "error_code": "NETWORK_ERROR",
+            "error_message": str(exc),
+            "login_id_length": len(login_id),
+            "password_length": len(login_pw),
+        }
