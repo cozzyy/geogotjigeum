@@ -359,15 +359,24 @@ class DARTProvider:
         out = []
         for year in range(int(start_year), int(end_year) + 1):
             for report_code, period_name in REPORT_CODES.items():
-                data = self._request_json(
-                    "fnlttSinglAcnt.json",
-                    {
-                        "corp_code": corp_code,
-                        "bsns_year": str(year),
-                        "reprt_code": report_code,
-                    },
+                raw_path = self._cache_path(
+                    "financial_raw", stock_code, year, report_code
                 )
-                rows = list(data.get("list", []) or [])
+                raw_cached = self._load_df(raw_path)
+                if raw_cached is not None:
+                    rows = raw_cached.to_dict("records")
+                else:
+                    data = self._request_json(
+                        "fnlttSinglAcnt.json",
+                        {
+                            "corp_code": corp_code,
+                            "bsns_year": str(year),
+                            "reprt_code": report_code,
+                        },
+                    )
+                    rows = list(data.get("list", []) or [])
+                    self._save_df(raw_path, pd.DataFrame(rows))
+
                 if not rows:
                     continue
 
