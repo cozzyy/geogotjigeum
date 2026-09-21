@@ -280,6 +280,17 @@ class DARTProvider:
             )
         return str(hit.iloc[0]["corp_code"]).zfill(8)
 
+    def stock_to_corp_code(self, stock_codes: list[str]) -> dict[str, str]:
+        """Map listed stock codes to OpenDART corp codes in one pass."""
+        frame = self.corp_codes().copy()
+        if "stock_code" not in frame.columns or "corp_code" not in frame.columns:
+            return {}
+        frame["stock_code"] = frame["stock_code"].astype(str).str.strip().str.zfill(6)
+        frame["corp_code"] = frame["corp_code"].astype(str).str.strip().str.zfill(8)
+        wanted = {str(code).zfill(6) for code in stock_codes}
+        listed = frame[frame["stock_code"].isin(wanted)]
+        return dict(zip(listed["stock_code"], listed["corp_code"]))
+
     def disclosures(
         self,
         stock_code: str,
@@ -507,3 +518,24 @@ def diagnose_dart_key() -> dict:
             "message": str(exc),
             "key_length": len(key),
         }
+
+
+# V11 compatibility names. Keep the canonical implementation above while
+# exposing explicit API-oriented names used by the experiment CLI.
+def dart_api_key_present() -> bool:
+    return dart_key_present()
+
+
+def require_dart_api_key() -> str:
+    return require_dart_key()
+
+
+def diagnose_dart_api() -> dict:
+    result = diagnose_dart_key()
+    if result.get("ok"):
+        return {
+            **result,
+            "listed_rows": int(result.get("corp_count", 0)),
+            "message": "OpenDART 인증 및 corpCode 조회 정상",
+        }
+    return result
