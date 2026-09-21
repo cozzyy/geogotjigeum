@@ -6,7 +6,12 @@ import numpy as np
 import pandas as pd
 
 from .config import CROSS_SECTION_UNIVERSE
-from .krx_data import KRXProvider, krx_credentials_present, require_krx_credentials
+from .krx_data import (
+    KRXProvider,
+    krx_credentials_present,
+    require_krx_credentials,
+    diagnose_krx_login,
+)
 from .v6_robust import (
     build_panel as build_v6_panel,
     _model,
@@ -334,7 +339,16 @@ def main():
         flush=True,
     )
     require_krx_credentials()
-    print("KRX 인증 환경변수 확인 완료. 데이터 수집을 시작합니다.", flush=True)
+    diag = diagnose_krx_login()
+    if not diag.get("ok"):
+        raise RuntimeError(
+            "KRX 로그인 preflight 실패: "
+            f"code={diag.get('error_code')} "
+            f"message={diag.get('error_message')} "
+            f"(HTTP {diag.get('http_status', '-')}). "
+            "먼저 py -m stock_forecasting.krx_login_check 로 원인을 확인하세요."
+        )
+    print("KRX 로그인 preflight 성공. 데이터 수집을 시작합니다.", flush=True)
     t0 = time.perf_counter()
     panel, groups = build_panel(
         start=args.start,
