@@ -290,8 +290,7 @@ def add_dart_event_features(
         c for c in all_event
         if c not in earnings
         and (
-            "dart_event_" in c
-            or "dart_amendment_" in c
+            "dart_amendment_" in c
             or any(
                 f"dart_{category}_" in c
                 for category in EVENT_CATEGORIES
