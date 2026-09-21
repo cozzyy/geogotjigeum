@@ -251,7 +251,7 @@ def add_dart_event_features(
             flush=True,
         )
         disclosures = provider.disclosures(
-            mapping[ticker],
+            ticker,
             start,
             end,
         )
