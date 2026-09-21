@@ -186,13 +186,19 @@ def save_shadow_log(root: Path, log: pd.DataFrame) -> None:
     for c in [
         "as_of_date",
         "realized_date",
-        "created_at_utc",
-        "settled_at_utc",
+        "train_start_date",
+        "train_label_cutoff",
     ]:
         if c in out.columns:
             out[c] = pd.to_datetime(
                 out[c], errors="coerce"
             ).dt.strftime("%Y-%m-%d")
+    for c in ["created_at_utc", "settled_at_utc"]:
+        if c in out.columns:
+            dt = pd.to_datetime(out[c], errors="coerce", utc=True)
+            out[c] = dt.map(
+                lambda x: x.isoformat() if pd.notna(x) else ""
+            )
     tmp = path.with_suffix(".csv.tmp")
     out.to_csv(tmp, index=False, encoding="utf-8-sig")
     tmp.replace(path)
@@ -473,10 +479,7 @@ def _daily_shadow_metrics(
         rows.append({
             "date": pd.Timestamp(dt),
             "tickers": len(g),
-            "coverage": len(g) / max(
-                1,
-                g["ticker"].nunique(),
-            ),
+            "coverage": len(g) / 30.0,
             "base_ic": base_ic,
             "candidate_ic": final_ic,
             "delta_ic": final_ic - base_ic,
