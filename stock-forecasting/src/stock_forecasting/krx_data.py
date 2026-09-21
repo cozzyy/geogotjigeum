@@ -164,6 +164,7 @@ class KRXProvider:
         return out
 
     def bundle(self, ticker: str, start: str, end: str) -> pd.DataFrame:
+        require_krx_credentials()
         pieces = []
         errors = []
 
@@ -190,3 +191,19 @@ class KRXProvider:
 
 def krx_credentials_present() -> bool:
     return bool(os.environ.get("KRX_ID") and os.environ.get("KRX_PW"))
+
+
+def require_krx_credentials() -> None:
+    if krx_credentials_present():
+        return
+
+    raise RuntimeError(
+        "V8의 KRX 수급/시총/펀더멘털 조회에는 KRX 로그인이 필요합니다.\n"
+        "현재 KRX_ID 또는 KRX_PW 환경변수가 없습니다.\n\n"
+        "PowerShell 현재 세션에서 아래처럼 설정하세요.\n"
+        '  $env:KRX_ID="본인의_KRX_ID"\n'
+        '  $env:KRX_PW="본인의_KRX_비밀번호"\n\n'
+        "그 다음 같은 PowerShell 창에서 다시 실행하세요.\n"
+        "  py -m stock_forecasting.v8_krx_variables --fast --max-tickers 10\n\n"
+        "주의: ID/비밀번호를 코드, .env, GitHub에 커밋하지 마세요."
+    )
