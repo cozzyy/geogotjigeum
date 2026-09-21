@@ -194,16 +194,32 @@ def krx_credentials_present() -> bool:
 
 
 def require_krx_credentials() -> None:
-    if krx_credentials_present():
-        return
+    login_id = os.environ.get("KRX_ID", "").strip()
+    login_pw = os.environ.get("KRX_PW", "").strip()
 
-    raise RuntimeError(
-        "V8의 KRX 수급/시총/펀더멘털 조회에는 KRX 로그인이 필요합니다.\n"
-        "현재 KRX_ID 또는 KRX_PW 환경변수가 없습니다.\n\n"
-        "PowerShell 현재 세션에서 아래처럼 설정하세요.\n"
-        '  $env:KRX_ID="본인의_KRX_ID"\n'
-        '  $env:KRX_PW="본인의_KRX_비밀번호"\n\n'
-        "그 다음 같은 PowerShell 창에서 다시 실행하세요.\n"
-        "  py -m stock_forecasting.v8_krx_variables --fast --max-tickers 10\n\n"
-        "주의: ID/비밀번호를 코드, .env, GitHub에 커밋하지 마세요."
+    placeholder_tokens = (
+        "본인의_", "your_", "YOUR_", "<", ">",
+        "KRX_ID", "KRX_PW", "비밀번호",
     )
+
+    if not login_id or not login_pw:
+        raise RuntimeError(
+            "V8의 KRX 수급/시총/펀더멘털 조회에는 실제 KRX 계정 로그인이 필요합니다.\n"
+            "현재 KRX_ID 또는 KRX_PW 환경변수가 없습니다.\n\n"
+            "PowerShell에서 예시 문구가 아니라 실제 본인 계정값으로 설정하세요.\n"
+            '  $env:KRX_ID="실제_KRX_로그인_ID"\n'
+            '  $env:KRX_PW="실제_KRX_로그인_비밀번호"\n\n'
+            "ID/비밀번호를 채팅, 코드, .env, GitHub에 올리지 마세요."
+        )
+
+    if any(token in login_id for token in placeholder_tokens) or any(
+        token in login_pw for token in placeholder_tokens
+    ):
+        raise RuntimeError(
+            "KRX_ID/KRX_PW에 예시 문자열이 들어 있습니다.\n"
+            "예: '본인의_KRX_ID', '본인의_KRX_비밀번호'는 실제 계정값이 아닙니다.\n\n"
+            "PowerShell에서 실제 본인 KRX 계정값으로 다시 설정하세요.\n"
+            '  $env:KRX_ID="실제_KRX_로그인_ID"\n'
+            '  $env:KRX_PW="실제_KRX_로그인_비밀번호"\n\n'
+            "실제 자격증명은 이 채팅에 보내지 마세요."
+        )
